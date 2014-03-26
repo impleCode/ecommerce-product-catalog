@@ -43,7 +43,6 @@ if ( $wp_version < 3.8 ) {
 		'has_archive' => $product_listing_t,
 		'rewrite' => array('slug' => $slug, 'with_front' => false),
 		'supports' => array( 'title', 'thumbnail'),
-		'extras' => array('enter_title_here'=>__('Enter product name here', 'al-ecommerce-product-catalog')),
 		'register_meta_box_cb' => 'add_product_metaboxes',
 		'taxonomies' => array('al_product_cat'),
 		'menu_icon' => plugins_url() . '/ecommerce-product-catalog/img/product.png',
@@ -83,7 +82,6 @@ if ( $wp_version < 3.8 ) {
 		'has_archive' => $product_listing_t,
 		'rewrite' => array('slug' => $slug, 'with_front' => false),
 		'supports' => array( 'title', 'thumbnail'),
-		'extras' => array('enter_title_here'=>__('Enter product name here', 'al-ecommerce-product-catalog')),
 		'register_meta_box_cb' => 'add_product_metaboxes',
 		'taxonomies' => array('al_product_cat'),
 		'capability_type' => 'product',
@@ -134,7 +132,7 @@ function add_product_metaboxes() {
 	if (get_option('product_shipping_options_number',DEF_SHIPPING_OPTIONS_NUMBER) > 0) {
 	add_meta_box('al_product_shipping', __('Product Shipping', 'al-ecommerce-product-catalog'), 'al_product_shipping', 'al_product', 'side', 'default'); }
 	if (get_option('product_attributes_number',DEF_ATTRIBUTES_OPTIONS_NUMBER) > 0) {
-	add_meta_box('al_product_attributes', __('Product attributes', 'al-ecommerce-product-catalog'), 'al_product_attributes', 'al_product', 'side', 'default'); }
+	add_meta_box('al_product_attributes', __('Product attributes', 'al-ecommerce-product-catalog'), 'al_product_attributes', 'al_product', 'normal', 'default'); }
 	do_action('add_product_metaboxes');
 }
 
@@ -181,8 +179,16 @@ function al_product_attributes() {
 	// Noncename needed to verify where the data originated
 	echo '<input type="hidden" name="attributesmeta_noncename" id="attributesmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-	echo '<table class="sort-settings attributes">';
 	echo '<div class="al-box info">'. __('Only attributes with values set will be shown on product page.', 'al-ecommerce-product-catalog') .'</div>';
+	echo '<table class="sort-settings attributes">
+	<thead><tr>
+	<th class="title"><b>Name</b></th>
+	<th></th>
+	<th class="title"><b>Value</b></th>
+	<th class="title"><b>Unit</b></th>
+	</tr>
+	</thead>
+	<tbody>';
 	for ($i = 1; $i <= get_option('product_attributes_number', DEF_ATTRIBUTES_OPTIONS_NUMBER); $i++) {
 	// Get the attributes data if its already been entered
 	$attributes_option = get_option('product_attribute');
@@ -201,7 +207,7 @@ function al_product_attributes() {
 	$attributes_unit = $attributes_unit_option_field; }
 	else { $attributes_unit = $attributes_unit_option[$i]; }
 	// Echo out the field
-	echo '<tr><td class="attributes-label-column"><input class="attribute-label" type="text" name="_attribute-label'.$i.'" value="' . $attributes_label  . '" /></td><td> : <input class="attribute-value" type="text" name="_attribute'.$i.'" value="' . $attributes  . '" /></td><td><input class="attribute-unit" type="text" name="_attribute-unit'.$i.'" value="' . $attributes_unit  . '" /></td></tr>'; }
+	echo '<tr><td class="attributes-label-column"><input class="attribute-label" type="text" name="_attribute-label'.$i.'" value="' . $attributes_label  . '" /></td><td class="break-column">:</td><td class="value-column"><input class="attribute-value" type="text" name="_attribute'.$i.'" value="' . $attributes  . '" /></td><td class="unit-column"><input class="attribute-unit admin-number-field" type="text" name="_attribute-unit'.$i.'" value="' . $attributes_unit  . '" /></td></tr>'; }
 	echo '</tbody></table>'; ?>
 
 <?php

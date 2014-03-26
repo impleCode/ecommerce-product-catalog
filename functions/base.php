@@ -10,14 +10,12 @@
  */
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-add_filter( 'enter_title_here', 'al_enter_title_here', 8 );
+add_filter( 'enter_title_here', 'al_enter_title_here');
 function al_enter_title_here( $message ){
-  $screen         = get_current_screen();
-  $post_type_slug = $screen->post_type;
-  $post_type_ob   = get_post_type_object( $post_type_slug );
+  $screen = get_current_screen();
 
-  if( $extras = $post_type_ob->extras ):
-    $message = $extras['enter_title_here'];
+  if( 'al_product' == substr($screen->post_type,0,10) ):
+    $message = __('Enter product name here', 'al-ecommerce-product-catalog');
   endif;
 
   return $message;

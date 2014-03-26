@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: eCommerce Product Catalog by impleCode v1.4.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-03-20 09:44:41+0000\n"
+"PO-Revision-Date: 2014-03-25 09:53:54+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -28,9 +28,9 @@ msgstr "Lista lub rozwijalne menu z listą kategorii produktów"
 #: includes/product.php:33
 #: includes/product.php:34
 #: includes/product.php:36
+#: includes/product.php:72
 #: includes/product.php:73
-#: includes/product.php:74
-#: includes/product.php:76
+#: includes/product.php:75
 #@ al-ecommerce-product-catalog
 msgid "Add New Product"
 msgstr "Dodaj nowy produkt"
@@ -90,7 +90,7 @@ msgstr "Domyślna wartość parametru"
 msgid "Attributes disabled. To enable set minimum 1 attribute."
 msgstr "Parametry wyłączone. Aby włączyć ustaw minimum 1 parametr."
 
-#: includes/settings/general.php:66
+#: includes/settings/general.php:71
 #@ al-ecommerce-product-catalog
 msgid "Change default thumbnail"
 msgstr "Zmień domyślny obrazek"
@@ -101,8 +101,8 @@ msgid "Choose from the most used product types"
 msgstr "Wybierz z najczęściej używanych typów produktów"
 
 #: includes/product.php:35
-#: includes/product.php:75
-#: templates/content-al_product.php:53
+#: includes/product.php:74
+#: templates/content-al_product.php:52
 #@ al-ecommerce-product-catalog
 msgid "Edit Product"
 msgstr "Edytuj produkt"
@@ -117,8 +117,7 @@ msgstr "Edytuj Kategorię Produktów"
 msgid "Edit Product Type"
 msgstr "Edytuj Typ Produktów"
 
-#: includes/product.php:46
-#: includes/product.php:86
+#: functions/base.php:18
 #@ al-ecommerce-product-catalog
 msgid "Enter product name here"
 msgstr "Wprowadź tutaj nazwę produktu"
@@ -149,13 +148,13 @@ msgid "New Product Type"
 msgstr "Nowy Typ Produktów"
 
 #: includes/product.php:39
-#: includes/product.php:79
+#: includes/product.php:78
 #@ al-ecommerce-product-catalog
 msgid "No Products found"
 msgstr "Nie znaleziono produktów"
 
 #: includes/product.php:40
-#: includes/product.php:80
+#: includes/product.php:79
 #@ al-ecommerce-product-catalog
 msgid "No Products found in trash"
 msgstr "Nie znaleziono produktów w koszu"
@@ -175,7 +174,7 @@ msgstr "Liczba parametrów produktów"
 msgid "Number of shipping options"
 msgstr "Liczba opcji wysyłki produktów"
 
-#: includes/product.php:186
+#: includes/product.php:183
 #@ al-ecommerce-product-catalog
 msgid "Only attributes with values set will be shown on product page."
 msgstr "Tylko atrybuty z uzupełnionymi wartościami zostaną wyświetlone na stronie produktu."
@@ -190,7 +189,7 @@ msgstr "Nadrzędna Kategoria Produktów"
 msgid "Parent Product Category:"
 msgstr "Nadrzędna Kategoria Produktów:"
 
-#: includes/settings/general.php:113
+#: includes/settings/general.php:118
 #@ al-ecommerce-product-catalog
 msgid "Payment and currency"
 msgstr "Płatności i waluta"
@@ -201,7 +200,7 @@ msgid "Popular Product Types"
 msgstr "Popularne Typy Produktów"
 
 #: includes/product.php:32
-#: includes/product.php:72
+#: includes/product.php:71
 #@ al-ecommerce-product-catalog
 msgid "Product"
 msgstr "Produkt"
@@ -223,12 +222,12 @@ msgstr "Kategoria Produktów"
 msgid "Product Features"
 msgstr "Parametry produktu"
 
-#: includes/product.php:275
+#: includes/product.php:273
 #@ al-ecommerce-product-catalog
 msgid "Product Image"
 msgstr "Zdjęcie produktu"
 
-#: includes/product.php:133
+#: includes/product.php:131
 #@ al-ecommerce-product-catalog
 msgid "Product Price"
 msgstr "Cena produktu"
@@ -238,7 +237,7 @@ msgstr "Cena produktu"
 msgid "Product Settings"
 msgstr "Ustawienia produktów"
 
-#: includes/product.php:135
+#: includes/product.php:133
 #@ al-ecommerce-product-catalog
 msgid "Product Shipping"
 msgstr "Wysyłka"
@@ -254,7 +253,7 @@ msgstr "Typ Produktu"
 msgid "Product Types"
 msgstr "Typy Produktów"
 
-#: includes/product.php:137
+#: includes/product.php:135
 #: includes/settings/attributes.php:12
 #@ al-ecommerce-product-catalog
 msgid "Product attributes"
@@ -265,22 +264,22 @@ msgstr "Parametry produktów"
 msgid "Product attributes options"
 msgstr "Ustawienia parametrów produktów"
 
-#: includes/settings/general.php:63
+#: includes/settings/general.php:68
 #@ al-ecommerce-product-catalog
 msgid "Product default image"
 msgstr "Domyślny obrazek produktu"
 
-#: includes/product.php:132
+#: includes/product.php:130
 #@ al-ecommerce-product-catalog
 msgid "Product description"
 msgstr "Opis produktu"
 
-#: includes/settings/general.php:89
+#: includes/settings/general.php:94
 #@ al-ecommerce-product-catalog
 msgid "Product listing URL"
 msgstr "Adresy strony z listą produktów"
 
-#: includes/settings/general.php:70
+#: includes/settings/general.php:75
 #@ al-ecommerce-product-catalog
 msgid "Product listing page"
 msgstr "Strona listy produktów"
@@ -295,19 +294,19 @@ msgstr "Wysyłka produktów"
 msgid "Product shipping options"
 msgstr "Ustawienia wysyłki produktów"
 
-#: includes/product.php:131
+#: includes/product.php:129
 #@ al-ecommerce-product-catalog
 msgid "Product short description"
 msgstr "Krótki opis produktu"
 
 #: functions/activation.php:13
 #: includes/product.php:31
-#: includes/product.php:71
+#: includes/product.php:70
 #@ al-ecommerce-product-catalog
 msgid "Products"
 msgstr "Produkty"
 
-#: includes/product.php:290
+#: includes/product.php:288
 #@ al-ecommerce-product-catalog
 msgid "Remove product image"
 msgstr "Usuń zdjęcie produktu"
@@ -323,8 +322,8 @@ msgstr "Reset obrazka"
 #: includes/settings/custom-design.php:172
 #: includes/settings/custom-names.php:82
 #: includes/settings/custom-names.php:110
-#: includes/settings/general.php:123
-#: includes/settings/shipping.php:58
+#: includes/settings/general.php:135
+#: includes/settings/shipping.php:60
 #@ al-ecommerce-product-catalog
 msgid "Save changes"
 msgstr "Zapisz zmiany"
@@ -340,7 +339,7 @@ msgid "Search Product Types"
 msgstr "Szukaj Typów Produktów"
 
 #: includes/product.php:38
-#: includes/product.php:78
+#: includes/product.php:77
 #@ al-ecommerce-product-catalog
 msgid "Search Products"
 msgstr "Szukaj produktów"
@@ -355,7 +354,7 @@ msgstr "Wybierz Kategorię Produktów"
 msgid "Separate product types with commas"
 msgstr "Oddziel typy produktów przecinkami"
 
-#: includes/product.php:286
+#: includes/product.php:284
 #@ al-ecommerce-product-catalog
 msgid "Set product image"
 msgstr "Ustaw zdjęcie produktu"
@@ -370,7 +369,7 @@ msgstr "Domyślny koszt dla opcji wysyłki"
 msgid "Shipping default name"
 msgstr "Domyślna nazwa opcji wysyłki"
 
-#: includes/settings/shipping.php:62
+#: includes/settings/shipping.php:64
 #@ al-ecommerce-product-catalog
 msgid "Shipping disabled. To enable set minimum 1 shipping option."
 msgstr "Wysyłka wyłączona. Aby uruchomić ustaw minimum 1 opcję wysyłki."
@@ -397,7 +396,7 @@ msgid "Update Product Type"
 msgstr "Aktualizuj Typ Produktów"
 
 #: includes/product.php:37
-#: includes/product.php:77
+#: includes/product.php:76
 #@ al-ecommerce-product-catalog
 msgid "View Product"
 msgstr "Zobacz produkt"
@@ -408,16 +407,16 @@ msgstr "Zobacz produkt"
 msgid "You can change these default values on every product page."
 msgstr "Możesz zmienić te domyślne wartości na stronie każdego produktu."
 
-#: includes/settings/general.php:114
+#: includes/settings/general.php:119
 #@ al-ecommerce-product-catalog
 msgid "Your currency"
 msgstr "Twoja waluta"
 
 #: functions/functions.php:33
 #: includes/product.php:27
-#: includes/settings/general.php:48
-#: includes/settings/general.php:57
-#: includes/settings/general.php:94
+#: includes/settings/general.php:53
+#: includes/settings/general.php:62
+#: includes/settings/general.php:99
 #@ al-ecommerce-product-catalog
 msgid "products"
 msgstr "produkty"
@@ -438,12 +437,12 @@ msgstr "Wyświetl jako listę rozwijaną"
 msgid "Show hierarchy"
 msgstr "Pokaż hierarchię"
 
-#: includes/product.php:286
+#: includes/product.php:284
 #@ default
 msgid "Set featured image"
 msgstr ""
 
-#: includes/product.php:290
+#: includes/product.php:288
 #@ default
 msgid "Remove featured image"
 msgstr ""
@@ -721,58 +720,58 @@ msgstr "Tytuł Listy Produktów"
 msgid "Category Prefix"
 msgstr "Przedrostek Kategorii"
 
-#: includes/settings/general.php:12
+#: includes/settings/general.php:15
 #@ al-ecommerce-product-catalog
 msgid "Product settings"
 msgstr "Ustawienia produktów"
 
-#: includes/settings/general.php:32
-#: includes/settings/general.php:43
+#: includes/settings/general.php:36
+#: includes/settings/general.php:47
 #@ al-ecommerce-product-catalog
 msgid "General Settings"
 msgstr "Ogólne Ustawienia"
 
-#: includes/settings/general.php:74
+#: includes/settings/general.php:79
 #@ al-ecommerce-product-catalog
 msgid "Enable Product Listing Page"
 msgstr "Włącz Listę Produktów"
 
-#: includes/settings/general.php:82
+#: includes/settings/general.php:87
 #@ al-ecommerce-product-catalog
 msgid "Choose Product Listing Page"
 msgstr "Wybierz Stronę Listy Produktów"
 
-#: includes/settings/general.php:85
+#: includes/settings/general.php:90
 #@ al-ecommerce-product-catalog
 msgid "Default"
 msgstr "Domyślna"
 
-#: includes/settings/general.php:93
+#: includes/settings/general.php:98
 #@ al-ecommerce-product-catalog
 msgid "Product listing shows at most"
 msgstr "Lista produktów pokazuje maksymalnie"
 
-#: includes/settings/general.php:97
+#: includes/settings/general.php:102
 #@ al-ecommerce-product-catalog
 msgid "Categories Parent URL"
 msgstr "URL Rodzica Kategorii"
 
-#: includes/settings/general.php:101
+#: includes/settings/general.php:106
 #@ al-ecommerce-product-catalog
 msgid "You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. <br><br>To show products from just one category, use: [show_products category=\"2\"] where 2 is category ID (you can display several categories by inserting comma separated IDs). <br><br>To display products by IDs, use: [show_products product=\"5\"], where 5 is product ID."
 msgstr "Możesz również używać kodu (shortcode) aby wyświetlić produkty gdzie tylko chcesz na stronie. Po prostu wklej go na jakąkolwiek stronę: [show_products] a produkty zostaną wyświetlone zamiast kodu. <br><br>Aby wyświetlić produktu tylko z jednej kategorii użyj [show_products category=\"2\"], gdzie 2 to ID kategorii (możesz wyświetlić wiele kategorii wprowadzając ID oddzielone przecinkiem). <br><br>Aby wyświetlić produkty po ID, użyj: [show_products product=\"5\"], gdzie 5 to ID produktu."
 
-#: includes/settings/general.php:102
+#: includes/settings/general.php:107
 #@ al-ecommerce-product-catalog
 msgid "Product Breadcrumbs"
 msgstr "Okruszki Produktów"
 
-#: includes/settings/general.php:105
+#: includes/settings/general.php:110
 #@ al-ecommerce-product-catalog
 msgid "Enable Product Breadcrumbs:"
 msgstr "Włącz Okruszki Produktów:"
 
-#: includes/settings/general.php:109
+#: includes/settings/general.php:114
 #@ al-ecommerce-product-catalog
 msgid "Product listing breadcrumbs title:"
 msgstr "Tytuł okruszków listy produktów:"
@@ -782,8 +781,18 @@ msgstr "Tytuł okruszków listy produktów:"
 msgid "Shipping Settings"
 msgstr "Ustawienia Wysyłki"
 
+#: includes/settings/general.php:128
+#@ al-ecommerce-product-catalog
+msgid "Custom Currency Symbol"
+msgstr "Własny Symbol Waluty"
+
+#: includes/settings/general.php:132
+#@ al-ecommerce-product-catalog
+msgid "If you choose custom currency symbol, it will override \"Your Currency\" setting. This is very handy if you want to use not supported currency or a preferred symbol for your currency."
+msgstr "Jeżeli wybierzesz własny symbol waluty, to nadpiszesz ustawienie \\\"Twoja waluta\\\". To bardzo przydatna funkcja jeżeli chcesz używać nie wspieranej waluty lub preferowanego symbolu dla Twojej waluty."
+
 #: theme-product_adder_support.php:35
 #@ al-ecommerce-product-catalog
-msgid "<strong>Your theme does not declare eCommerce Product Catalog</strong> &#8211; if you encounter layout issues please read our integration guide or choose a recomended theme :)"
+msgid "<strong>Your theme does not declare eCommerce Product Catalog support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a recomended theme :)"
 msgstr "<strong>Twój szablon graficzny nie deklaruje wsparcia dla eCommerce Product Catalog</strong> &#8211; jeżeli napotkasz na problemy z układem to zapoznaj się z naszą instrukcją integracji szablonu lub wybierz jeden z rekomendowanych szablonów :)"
 

@@ -558,7 +558,7 @@ bottom:25px;
 z-index: 9999;
 }
 
-#admin-number-field, #archive_products_limit{
+#admin-number-field, #archive_products_limit, input.admin-number-field{
 width: 50px;
 }
 
@@ -661,15 +661,28 @@ width: 60%;
 margin-right: 3px;
 }
 
-.attribute-value, .attribute-unit {
-width: 85%;
+#al_product_attributes.postbox table {
+width: 100%;
 }
 
-.attributes-label-column {
-width: 50%;
-}
-.attribute-label {
+#al_product_attributes.postbox table input {
 width: 100%;
+}
+
+#al_product_attributes.postbox td.attributes-label-column {
+width: 20%;
+}
+
+#al_product_attributes.postbox td.value-column {
+width: 70%;
+}
+
+#al_product_attributes.postbox td.unit-column {
+width: 7%;
+}
+
+#al_product_attributes.postbox td.break-column {
+width: 0.5%;
 }
 
 #al_product_desc_editor_ifr, #al_product_shortdesc_editor_ifr, #wp-al_product_shortdesc_editor-editor-container {

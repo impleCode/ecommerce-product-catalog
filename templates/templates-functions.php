@@ -28,14 +28,15 @@ include 'content-al_product.php';
 }
 
 function content_product_adder_archive_before() {
-$page_id = get_option('product_archive');
+$page_id = apply_filters('before_archive_post_id', get_option('product_archive'));
 $page = get_post($page_id);
 $content = apply_filters ("the_content", $page->post_content);
 return '<div class="entry-summary">'.$content.'</div>';
 }
 
 function content_product_adder_archive_before_title() {
-$page_id = get_option('product_archive');
+$def_page_id = get_option('product_archive');
+$page_id = apply_filters('before_archive_post_id', $def_page_id);
 $page = get_post($page_id);
 echo '<h1 class="entry-title">'.$page->post_title.'</h1>';
 }

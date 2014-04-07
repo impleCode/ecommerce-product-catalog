@@ -12,19 +12,11 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 global $post; 
 $current_post_type = get_post_type();
 $taxonomies = get_object_taxonomies($current_post_type);
-
+$details_class = '';
 $default_single_names = default_single_names();
 $single_names = get_option( 'single_names', $default_single_names);
-$enable_catalog_lightbox = get_option('catalog_lightbox', 1);
-if ($enable_catalog_lightbox == 1) { ?>
-<script>
-jQuery(document).ready(function(){
-				jQuery(".a-product-image").colorbox({transition: 'elastic', initialWidth: 200});
-});
-</script>
-<?php 
-do_action('single_product_begin');} 
 $single_options = get_option('multi_single_options', unserialize(MULTI_SINGLE_OPTIONS));
+do_action('single_product_begin');
 echo product_breadcrumbs();
 ?>
 
@@ -34,17 +26,12 @@ echo product_breadcrumbs();
 		<?php do_action('single_product_header', $post, $single_names); ?>
 	</header>
 	<div class="entry-content product-entry">
-	<?php if ($single_options['enable_product_gallery'] == 1) {  ?>
-		<div class="entry-thumbnail product-image">
-			<?php if (has_post_thumbnail()) { 
-				if ($enable_catalog_lightbox == 1) {
-					$img_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large'); ?>
-					<a class="a-product-image" href="<?php echo $img_url[0];?>"><?php the_post_thumbnail('medium');?></a> <?php } 
-				else {
-				the_post_thumbnail('medium'); }
-			} 
-			else { echo default_product_thumbnail();}?>
-		</div> <?php } else { $details_class = 'no-image'; } ?>
+	<?php 
+	$enable = isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '';
+	$details_class = product_gallery_enabled($enable);
+	show_product_gallery($post, $single_options);
+	do_action('before_product_details'); ?>
+	
 		<div class="product-details <?php echo $details_class; ?>">
 			<?php do_action('product_details', $post, $single_names); ?>
 		</div>

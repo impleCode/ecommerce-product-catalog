@@ -369,3 +369,43 @@ flush_rewrite_rules(false);
 update_option('al_permalink_options_update', 0);
 }
 }
+
+function show_product_gallery($post, $single_options ) {
+$enable_catalog_lightbox = get_option('catalog_lightbox', 1);
+$single_options['enable_product_gallery'] = isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '';
+if ($enable_catalog_lightbox == 1 && $single_options['enable_product_gallery'] == 1) { ?>
+	<script>
+		jQuery(document).ready(function(){
+			jQuery(".a-product-image").colorbox({transition: 'elastic', initialWidth: 200, maxWidth: '90%', maxHeight: '90%', rel:'gal'});
+		});
+	</script> <?php 
+}
+if ($single_options['enable_product_gallery'] == 1) { ?>
+	<div class="entry-thumbnail product-image"><?php 
+	if (has_post_thumbnail()) { 
+		if ($enable_catalog_lightbox == 1) {
+			$img_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large'); ?>
+			<a class="a-product-image" href="<?php echo $img_url[0];?>"><?php the_post_thumbnail('medium');?></a> <?php } 
+		else {
+			the_post_thumbnail('medium'); }
+		} 
+	else { 
+		echo default_product_thumbnail(); 
+	} 
+	do_action('below_product_image', $post->ID);?>
+	</div> <?php 
+	
+}
+else { 
+	return;
+}
+}
+function product_gallery_enabled($enable) {
+if ($enable == 1) { 
+	return;
+}
+else { 
+	$details_class = 'no-image'; 
+	return $details_class;
+}
+}

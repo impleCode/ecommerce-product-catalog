@@ -20,12 +20,12 @@ echo product_breadcrumbs(); ?>
 				
 
 			
-<article id="product_listing" <?php post_class(); ?>>
+<article id="product_listing" <?php post_class('al_product'); ?>>
 <header <?php post_class('entry-header'); ?>>
 	<?php if (! is_tax()) { content_product_adder_archive_before_title(); } ?>
 </header> 
 	<div class="entry-content">
-		<?php $before_archive = content_product_adder_archive_before(); 
+		<?php $before_archive = content_product_adder_archive_before();
 		if (! is_tax()) {			
 			if ( $before_archive != '<div class="entry-summary"></div>') {
 				echo $before_archive; } 

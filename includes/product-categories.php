@@ -37,7 +37,7 @@ $archive_multiple_settings = get_option('archive_multiple_settings', unserialize
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'query_var'         => true,
-		'rewrite'           => array( 'slug' => $archive_multiple_settings['category_archive_url'], 'with_front' => false ),
+		'rewrite'           => array( 'slug' => apply_filters ('product_category_slug_value_register', $archive_multiple_settings['category_archive_url']), 'with_front' => false ),
 		'capabilities' => array (
             'manage_terms' => 'manage_product_categories', 
             'edit_terms' => 'edit_product_categories',

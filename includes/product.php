@@ -41,7 +41,7 @@ if ( $wp_version < 3.8 ) {
 			),
 		'public' => true,
 		'has_archive' => $product_listing_t,
-		'rewrite' => array('slug' => $slug, 'with_front' => false),
+		'rewrite' => array('slug' => apply_filters ('product_slug_value_register', $slug), 'with_front' => false),
 		'supports' => array( 'title', 'thumbnail'),
 		'register_meta_box_cb' => 'add_product_metaboxes',
 		'taxonomies' => array('al_product_cat'),
@@ -80,10 +80,10 @@ if ( $wp_version < 3.8 ) {
 			),
 		'public' => true,
 		'has_archive' => $product_listing_t,
-		'rewrite' => array('slug' => $slug, 'with_front' => false),
+		'rewrite' => array('slug' => apply_filters ('product_slug_value_register', $slug), 'with_front' => false),
 		'supports' => array( 'title', 'thumbnail'),
 		'register_meta_box_cb' => 'add_product_metaboxes',
-		'taxonomies' => array('al_product_cat'),
+		'taxonomies' => array('al_product-cat'),
 		'capability_type' => 'product',
 		'capabilities' => array(
 				'publish_posts' => 'publish_products',
@@ -109,8 +109,6 @@ if ( $wp_version < 3.8 ) {
 	
 }
 
-
-
 add_action('admin_head', 'product_icons');
 function product_icons() {
         global $post_type;
@@ -125,14 +123,13 @@ function product_icons() {
 
 // Add the Events Meta Boxes
 function add_product_metaboxes() {
-
-	add_meta_box('al_product_short_desc', __('Product short description', 'al-ecommerce-product-catalog'), 'al_product_short_desc', 'al_product', 'normal', 'default');
-	add_meta_box('al_product_desc', __('Product description', 'al-ecommerce-product-catalog'), 'al_product_desc', 'al_product', 'normal', 'default');
-	add_meta_box('al_product_price', __('Product Price', 'al-ecommerce-product-catalog'), 'al_product_price', 'al_product', 'side', 'default');
+	add_meta_box('al_product_short_desc', __('Product short description', 'al-ecommerce-product-catalog'), 'al_product_short_desc', 'al_product', apply_filters('short_desc_box_column','normal'), apply_filters('short_desc_box_priority','default'));
+	add_meta_box('al_product_desc', __('Product description', 'al-ecommerce-product-catalog'), 'al_product_desc', 'al_product', apply_filters('desc_box_column','normal'), apply_filters('desc_box_priority','default'));
+	add_meta_box('al_product_price', __('Product Price', 'al-ecommerce-product-catalog'), 'al_product_price', 'al_product', apply_filters('product_price_box_column','side'), apply_filters('product_price_box_priority','default'));
 	if (get_option('product_shipping_options_number',DEF_SHIPPING_OPTIONS_NUMBER) > 0) {
-	add_meta_box('al_product_shipping', __('Product Shipping', 'al-ecommerce-product-catalog'), 'al_product_shipping', 'al_product', 'side', 'default'); }
+	add_meta_box('al_product_shipping', __('Product Shipping', 'al-ecommerce-product-catalog'), 'al_product_shipping', 'al_product', apply_filters('product_shipping_box_column','side'), apply_filters('product_shipping_box_priority','default')); }
 	if (get_option('product_attributes_number',DEF_ATTRIBUTES_OPTIONS_NUMBER) > 0) {
-	add_meta_box('al_product_attributes', __('Product attributes', 'al-ecommerce-product-catalog'), 'al_product_attributes', 'al_product', 'normal', 'default'); }
+	add_meta_box('al_product_attributes', __('Product attributes', 'al-ecommerce-product-catalog'), 'al_product_attributes', 'al_product', apply_filters('product_attributes_box_column','normal'), apply_filters('product_attributes_box_priority','default')); }
 	do_action('add_product_metaboxes');
 }
 
@@ -180,6 +177,7 @@ function al_product_attributes() {
 	echo '<input type="hidden" name="attributesmeta_noncename" id="attributesmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	echo '<div class="al-box info">'. __('Only attributes with values set will be shown on product page.', 'al-ecommerce-product-catalog') .'</div>';
+	do_action('before_product_attributes_edit_single');
 	echo '<table class="sort-settings attributes">
 	<thead><tr>
 	<th class="title"><b>Name</b></th>
@@ -189,28 +187,34 @@ function al_product_attributes() {
 	</tr>
 	</thead>
 	<tbody>';
-	for ($i = 1; $i <= get_option('product_attributes_number', DEF_ATTRIBUTES_OPTIONS_NUMBER); $i++) {
-	// Get the attributes data if its already been entered
+	do_action('inside_attributes_edit_table');
 	$attributes_option = get_option('product_attribute');
 	$attributes_label_option = get_option('product_attribute_label');
 	$attributes_unit_option = get_option('product_attribute_unit');
-	$attributes_option_field = get_post_meta($post->ID, '_attribute'.$i, false);
-	$attributes_label_option_field = get_post_meta($post->ID, '_attribute-label'.$i, true);
-	$attributes_unit_option_field = get_post_meta($post->ID, '_attribute-unit'.$i, true);
-	if (! empty($attributes_option_field)) {
-	$attributes = $attributes_option_field[0]; }
-	else { $attributes = $attributes_option[$i]; }
-	if (! empty($attributes_label_option_field)) {
-	$attributes_label = $attributes_label_option_field; }
-	else { $attributes_label = $attributes_label_option[$i]; }
-	if (! empty($attributes_unit_option_field)) {
-	$attributes_unit = $attributes_unit_option_field; }
-	else { $attributes_unit = $attributes_unit_option[$i]; }
-	// Echo out the field
-	echo '<tr><td class="attributes-label-column"><input class="attribute-label" type="text" name="_attribute-label'.$i.'" value="' . $attributes_label  . '" /></td><td class="break-column">:</td><td class="value-column"><input class="attribute-value" type="text" name="_attribute'.$i.'" value="' . $attributes  . '" /></td><td class="unit-column"><input class="attribute-unit admin-number-field" type="text" name="_attribute-unit'.$i.'" value="' . $attributes_unit  . '" /></td></tr>'; }
-	echo '</tbody></table>'; ?>
-
-<?php
+	for ($i = 1; $i <= get_option('product_attributes_number', DEF_ATTRIBUTES_OPTIONS_NUMBER); $i++) {
+		$attributes_option_field = get_post_meta($post->ID, '_attribute'.$i, false);
+		$attributes_label_option_field = get_post_meta($post->ID, '_attribute-label'.$i, true);
+		$attributes_unit_option_field = get_post_meta($post->ID, '_attribute-unit'.$i, true);
+		if (! empty($attributes_option_field)) {
+			$attributes = $attributes_option_field[0]; }
+		else { $attributes = $attributes_option[$i]; }
+		if (! empty($attributes_label_option_field)) {
+			$attributes_label = $attributes_label_option_field; }
+		else { $attributes_label = $attributes_label_option[$i]; }
+		if (! empty($attributes_unit_option_field)) {
+			$attributes_unit = $attributes_unit_option_field; }
+		else { $attributes_unit = $attributes_unit_option[$i]; } 
+		$attribute_value_field = '<input class="attribute-value" type="text" name="_attribute'. $i .'" value="'. $attributes .'" />'; ?>
+		<tr>
+			<td class="attributes-label-column"><input class="attribute-label" type="text" name="_attribute-label<?php echo $i ?>" value="<?php echo $attributes_label ?>" /></td>
+			<td class="break-column">:</td>
+			<td class="value-column"><?php echo apply_filters ('product_attribute_value_edit', $attribute_value_field, $i, $attributes) ?></td>
+			<td class="unit-column"><input class="attribute-unit admin-number-field" type="text" name="_attribute-unit<?php echo $i ?>" value="<?php echo $attributes_unit ?>" /></td>
+		</tr>
+<?php } ?>
+	</tbody>
+	</table><?php
+	do_action('product_attributes_edit_single', $post);
 }
 
 // The Product Short Description Metabox
@@ -278,13 +282,13 @@ add_action('do_meta_boxes', 'change_image_box');
 function change_image_box()
 {
     remove_meta_box( 'postimagediv', 'al_product', 'side' );
-    add_meta_box('postimagediv', __('Product Image','al-ecommerce-product-catalog'), 'post_thumbnail_meta_box', 'al_product', 'side', 'high');
+    add_meta_box('postimagediv', __('Product Image','al-ecommerce-product-catalog'), 'post_thumbnail_meta_box', 'al_product', apply_filters('product_image_box_column','side'), apply_filters('product_image_box_priority','high'));
 }	
 
 add_action('admin_head-post-new.php', 'change_thumbnail_html');
 add_action('admin_head-post.php', 'change_thumbnail_html');
 function change_thumbnail_html( $content ) {
-    if ('al_product' == $GLOBALS['post_type'])
+    if ('al_product' == get_quasi_post_type($GLOBALS['post_type']))
       add_filter('admin_post_thumbnail_html', 'do_thumb');
 	  add_filter('admin_post_thumbnail_html', 'do_thumb_1');
 }
@@ -295,6 +299,32 @@ function do_thumb($content){
 function do_thumb_1($content){
 	 return str_replace(__('Remove featured image'), __('Remove product image', 'al-ecommerce-product-catalog'),$content);
 }
+
+function set_product_messages($messages) {
+global $post, $post_ID;
+$quasi_post_type = get_quasi_post_type();
+$post_type = get_post_type( $post_ID );
+if ($quasi_post_type == 'al_product') {
+$obj = get_post_type_object($post_type);
+$singular = $obj->labels->singular_name;
+
+$messages[$post_type] = array(
+0 => '', // Unused. Messages start at index 1.
+1 => sprintf( __($singular.' updated. <a href="%s">View '.strtolower($singular).'</a>'), esc_url( get_permalink($post_ID) ) ),
+2 => __('Custom field updated.'),
+3 => __('Custom field deleted.'),
+4 => __($singular.' updated.'),
+5 => isset($_GET['revision']) ? sprintf( __($singular.' restored to revision from %s'), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+6 => sprintf( __($singular.' published. <a href="%s">View '.strtolower($singular).'</a>'), esc_url( get_permalink($post_ID) ) ),
+7 => __('Page saved.'),
+8 => sprintf( __($singular.' submitted. <a target="_blank" href="%s">Preview '.strtolower($singular).'</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+9 => sprintf( __($singular.' scheduled for: <strong>%1$s</strong>. <a target="_blank" href="%2$s">Preview '.strtolower($singular).'</a>'), date_i18n( __( 'M j, Y @ G:i' ), strtotime( $post->post_date ) ), esc_url( get_permalink($post_ID) ) ),
+10 => sprintf( __($singular.' draft updated. <a target="_blank" href="%s">Preview '.strtolower($singular).'</a>'), esc_url( add_query_arg( 'preview', 'true', get_permalink($post_ID) ) ) ),
+); }
+return $messages; 
+}
+
+add_filter('post_updated_messages', 'set_product_messages' );
 
 require_once('product-categories.php');
 require_once('search-widget.php');

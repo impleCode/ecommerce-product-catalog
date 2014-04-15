@@ -3,8 +3,8 @@ Contributors: impleCode, ndre
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2MNWQKN7VPK4
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory
 Requires at least: 3.0
-Tested up to: 3.8.1
-Stable tag: 1.4.5
+Tested up to: 3.9
+Stable tag: 1.5.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -29,6 +29,7 @@ You can read all about [eCommerce Product Catalog](http://implecode.com/wordpres
 * __Color & Size Change__ - You can choose color and size of product catalog elements
 * __3 Product Listing Templates__ - You can choose from 3 completely different product listing templates
 * __25 currencies available__ - You can choose from 25 different currencies or just insert custom currency
+* __Customizable Price Formats__ - You can choose from 4 different price formats to suit your currency needs
 * __Drag-and-Drop functionality__ - Highly intuitive interface to manage Product Attributes and Shipping Options
 * __Product Category Widget__ - Show your product categories in sidebar
 * __Product Search Widget__ - Give your users useful search function
@@ -56,7 +57,6 @@ To display products by IDs, use: [show_products product="5"], where 5 is product
 Currently we are working on:
 
 * Feature - [show_categories] shortcode to show category listing on any page
-* Feature - Ability to choose different price formats such as $2500, USD2500 etc.
 
 **If you want to say thanks by donating to this plugin [using PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2MNWQKN7VPK4 "eCommerce Product Catalog Donation URL"), feel free ;-)**
 
@@ -133,6 +133,13 @@ Documentation will be available soon on impleCode.com.
 4. Default product single page.
 
 == Changelog ==
+
+= 1.5 - 15/04/2014 =
+
+* Feature - Ability to choose different price formats such as $2500, USD2500 etc.
+* Tweak - When short description is short enough the [...] sign will not show up in classic list theme
+* Fix - Now disabling breadcrumbs works as intended
+* Info - 1.5 is fully compatible with new 3.9 WordPress version, which is right on the corner
 
 = 1.4.5 - 07/04/2014 =
 

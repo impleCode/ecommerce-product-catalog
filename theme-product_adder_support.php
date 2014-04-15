@@ -33,7 +33,7 @@ function product_adder_theme_check_notice() { ?>
 <div id="message" class="updated product-adder-message messages-connect">
 	<div class="squeezer">
 		<h4><?php _e( '<strong>Your theme does not declare eCommerce Product Catalog support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a recomended theme :)', 'al-ecommerce-product-catalog' ); ?></h4>
-		<p class="submit"><a href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/" target="_blank" class="button-primary"><?php _e( 'Theme Integration Guide', 'al-ecommerce-product-catalog' ); ?></a> <a class="skip button-primary" href="<?php echo add_query_arg( 'hide_al_product_adder_support_check', 'true' ); ?>"><?php _e( 'Hide this notice', 'al-ecommerce-product-catalog' ); ?></a></p>
+		<p class="submit"><a href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/" target="_blank" class="button-primary"><?php _e( 'Theme Integration Guide', 'al-ecommerce-product-catalog' ); ?></a> <a class="skip button" href="<?php echo add_query_arg( 'hide_al_product_adder_support_check', 'true' ); ?>"><?php _e( 'Hide this notice', 'al-ecommerce-product-catalog' ); ?></a></p>
 	</div>
 </div> 
 <?php }

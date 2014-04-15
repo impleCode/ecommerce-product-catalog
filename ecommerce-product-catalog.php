@@ -3,7 +3,7 @@
  * Plugin Name: eCommerce Product Catalog by impleCode
  * Plugin URI: http://implecode.com
  * Description: Wordpress eCommerce easy to use, powerful and beautiful plugin from impleCode. Great choice if you want to sell easy and quick. Or just beautifully present your products on Wordpress website. Full Wordpress integration does great job not only for Merchants but also for Developers and Theme Constructors.
- * Version: 1.4.5
+ * Version: 1.5.0
  * Author: Norbert Dreszer
  * Author URI: http://implecode.com
 	
@@ -19,18 +19,20 @@ define('AL_BASE_PATH',dirname(__FILE__));
 define('AL_PLUGIN_BASE_PATH',plugins_url( '/', __FILE__ ));
 define('AL_PLUGIN_MAIN_FILE', __FILE__ );
 
-require_once( 'includes/product.php' );
-require_once( 'includes/product-settings.php' );
-require_once( 'includes/settings-defaults.php' );
-require_once( 'functions/base.php' );
-require_once( 'functions/capabilities.php' );
-require_once( 'functions/functions.php' );
-require_once( 'templates.php' );
-require_once( 'theme-product_adder_support.php' );
-require_once( 'config/const.php' );
-require_once( 'functions/shortcodes.php' );
-require_once( 'functions/activation.php' );
-require_once( 'ext-comp/index.php' );
+require_once(AL_BASE_PATH .  '/functions/index.php' );
+require_once(AL_BASE_PATH .  '/includes/index.php' );
+require_once(AL_BASE_PATH .  '/includes/product.php' );
+require_once(AL_BASE_PATH .  '/includes/product-settings.php' );
+require_once(AL_BASE_PATH .  '/includes/settings-defaults.php' );
+require_once(AL_BASE_PATH .  '/functions/base.php' );
+require_once(AL_BASE_PATH .  '/functions/capabilities.php' );
+require_once(AL_BASE_PATH .  '/functions/functions.php' );
+require_once(AL_BASE_PATH .  '/templates.php' );
+require_once(AL_BASE_PATH .  '/theme-product_adder_support.php' );
+require_once(AL_BASE_PATH .  '/config/const.php' );
+require_once(AL_BASE_PATH .  '/functions/shortcodes.php' );
+require_once(AL_BASE_PATH .  '/functions/activation.php' );
+require_once(AL_BASE_PATH .  '/ext-comp/index.php' );
 
 register_activation_hook( __FILE__, 'add_product_caps' );
 register_activation_hook( __FILE__, 'create_products_page' );

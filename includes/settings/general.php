@@ -117,20 +117,29 @@ function general_settings_content() { ?>
 					</tr>
 				</table>
 				<h3><?php _e('Payment and currency', 'al-ecommerce-product-catalog'); ?></h3>
-				<?php _e('Your currency', 'al-ecommerce-product-catalog'); ?> 
-				<select id="product_currency" name="product_currency"> 
+				<table>
+				<td><?php _e('Your currency', 'al-ecommerce-product-catalog'); ?>:</td>
+				<td><select id="product_currency" name="product_currency"> 
 					<?php $currencies = available_currencies(); 
 					foreach($currencies as $currency) : ?>
 						<option name="product_currency[<?php echo $currency; ?>]" value="<?php echo $currency; ?>"<?php selected( $currency, $product_currency); ?>><?php echo $currency; ?></option>
 					<?php endforeach; ?>
-				</select>
-				<table>
+				</select></td>	
+				<td rowspan="2"><div class="al-box info"><?php _e('If you choose custom currency symbol, it will override "Your Currency" setting. This is very handy if you want to use not supported currency or a preferred symbol for your currency.', 'al-ecommerce-product-catalog'); ?></div></td>
 				<tr>
 						<td><?php _e('Custom Currency Symbol', 'al-ecommerce-product-catalog'); ?>: </td>
 						<td><input type="text" name="product_currency_settings[custom_symbol]" class="small_text_box" id="product_currency_settings" value="<?php echo $product_currency_settings['custom_symbol']; ?>" /></td>
-					</tr>
+				</tr>
+				<?php 
+				implecode_settings_radio(__('Currency position', 'al-ecommerce-product-catalog'), 'product_currency_settings[price_format]', $product_currency_settings['price_format'], array(
+					'before' => __('Before Price<br>', 'al-ecommerce-product-catalog'), 
+					'after' => __('After Price', 'al-ecommerce-product-catalog')
+				)
+				); 
+				implecode_settings_radio(__('Space between currency & price', 'al-ecommerce-product-catalog'), 'product_currency_settings[price_space]', $product_currency_settings['price_space'], array('on' => __('On<br>', 'al-ecommerce-product-catalog'), 'off' => __('Off', 'al-ecommerce-product-catalog')));
+				?>
 				</table>
-				<div class="al-box info"><?php _e('If you choose custom currency symbol, it will override "Your Currency" setting. This is very handy if you want to use not supported currency or a preferred symbol for your currency.', 'al-ecommerce-product-catalog'); ?></div>
+				
 				<?php do_action('general-settings'); ?>
 				<p class="submit">
 					<input type="submit" class="button-primary" value="<?php _e('Save changes', 'al-ecommerce-product-catalog'); ?>" />

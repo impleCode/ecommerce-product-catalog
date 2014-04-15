@@ -5,7 +5,7 @@
  * Here all plugin functions are defined and managed.
  *
  * @version		1.0.0
- * @package		wp-messages-adder/includes
+ * @package		ecommerce-product-catalog/functions
  * @author 		Norbert Dreszer
  */
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
@@ -151,7 +151,7 @@ if (!empty($price_value)) { ?>
 	<table class="price-table">
 		<tr>
 			<td><?php echo $single_names['product_price'] ?></td>
-			<td class="price-value <?php design_schemes(); ?>"><?php echo $price_value; ?> <?php echo product_currency(); ?></td>
+			<td class="price-value <?php design_schemes(); ?>"><?php echo price_format($price_value); ?></td>
 		</tr>
 	</table>
 <?php }
@@ -275,7 +275,7 @@ add_action('single_product_end','show_related_categories', 10, 3);
 function show_archive_price($price_value) {
 if (!empty($price_value)) { ?>
 	<div class="product-price <?php design_schemes('color'); ?>">
-		<?php echo $price_value.' '.product_currency(); ?>
+		<?php echo price_format($price_value) ?>
 	</div>
 <?php }
 }
@@ -299,7 +299,7 @@ $product_archives = additional_product_listing_url();
 $product_archive = $product_archives[$catalog_id];
 $archives_ids = get_option('additional_product_archive_id');
 $breadcrumbs_options = get_option('product_breadcrumbs', unserialize (DEFAULT_PRODUCT_BREADCRUMBS));
-if (!empty($breadcrumbs_options['enable_product_breadcrumbs'][$catalog_id]) && $breadcrumbs_options['enable_product_breadcrumbs'][$catalog_id] != 1) {
+if (empty($breadcrumbs_options['enable_product_breadcrumbs'][$catalog_id]) || !empty($breadcrumbs_options['enable_product_breadcrumbs'][$catalog_id]) && $breadcrumbs_options['enable_product_breadcrumbs'][$catalog_id] != 1) {
 return;
 }
 $product_archive_title_options = $breadcrumbs_options['breadcrumbs_title'][$catalog_id];
@@ -311,7 +311,7 @@ $product_archive_title = get_the_title($archives_ids[$catalog_id]);
 }}
 else {
 $archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
-if (!empty($archive_multiple_settings['enable_product_breadcrumbs']) && $archive_multiple_settings['enable_product_breadcrumbs'] != 1) {
+if (empty($archive_multiple_settings['enable_product_breadcrumbs']) || !empty($archive_multiple_settings['enable_product_breadcrumbs']) && $archive_multiple_settings['enable_product_breadcrumbs'] != 1) {
 return;
 }
 

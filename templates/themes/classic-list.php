@@ -28,8 +28,6 @@ function list_archive_theme($post) { ?>
 			echo $url; ?>'); background-size: 150px; background-position: center;"></div>
 	<div class="product-name"><?php the_title(); ?></div>
 	<div class="product-short-descr"><p><?php 
-		$shortdesc = get_post_meta($post->ID, "_shortdesc", true);
-		$shortdesc = substr($shortdesc, 0, 243) . ' [...]';
-		echo $shortdesc; ?></p></div>
+		echo c_list_desc($post->ID); ?></p></div>
 </div>
 <?php }

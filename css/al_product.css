@@ -708,3 +708,7 @@ content: "\f174" !important;
 #breadcrumbs {
 position: relative;
 z-index: 99999; }
+
+.product-adder-message p a{
+text-decoration: none;
+}

@@ -282,7 +282,7 @@ add_action('do_meta_boxes', 'change_image_box');
 function change_image_box()
 {
     remove_meta_box( 'postimagediv', 'al_product', 'side' );
-    add_meta_box('postimagediv', __('Product Image','al-ecommerce-product-catalog'), 'post_thumbnail_meta_box', 'al_product', apply_filters('product_image_box_column','side'), apply_filters('product_image_box_priority','high'));
+   add_meta_box('postimagediv', __('Product Image','al-ecommerce-product-catalog'), 'post_thumbnail_meta_box', 'al_product', apply_filters('product_image_box_column','side'), apply_filters('product_image_box_priority','high'));
 }	
 
 add_action('admin_head-post-new.php', 'change_thumbnail_html');

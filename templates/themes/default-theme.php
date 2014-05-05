@@ -35,8 +35,7 @@ $default_modern_grid_settings = array (
 	'attributes' => 1,
 	);
 $modern_grid_settings = get_option( 'modern_grid_settings', $default_modern_grid_settings); 
-$modern_grid_settings['attributes'] = isset($modern_grid_settings['attributes']) ? $modern_grid_settings['attributes'] : '';
-$price_value = get_post_meta($post->ID, "_price", true); ?>
+$modern_grid_settings['attributes'] = isset($modern_grid_settings['attributes']) ? $modern_grid_settings['attributes'] : ''; ?>
 			<a href="<?php the_permalink(); ?>"><div class="al_archive modern-grid-element" style='background-image:url(" <?php 
 			if (wp_get_attachment_url( get_post_thumbnail_id($post->ID) )) {
 				$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
@@ -65,7 +64,7 @@ $price_value = get_post_meta($post->ID, "_price", true); ?>
 					</table>
 				</div> 
 			<?php } 
-			do_action('archive_price', $price_value); ?>
+			do_action('archive_price', $post); ?>
 			
 			</div></a>		
 <?php } 

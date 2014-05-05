@@ -146,7 +146,7 @@ echo '2500.00 EUR';
 add_action('example_price','example_price');
 
 function show_price($post, $single_names) {
-$price_value = get_post_meta($post->ID, "_price", true);
+$price_value = product_price($post->ID);
 if (!empty($price_value)) { ?>
 	<table class="price-table">
 		<tr>
@@ -157,6 +157,15 @@ if (!empty($price_value)) { ?>
 <?php }
 }
 add_action('product_details','show_price', 7, 2);
+
+function product_price($product_id, $unfiltered = null) {
+if (empty($unfiltered)) {
+$price_value = apply_filters('product_price', get_post_meta($product_id, "_price", true)); }
+else {
+$price_value = get_post_meta($product_id, "_price", true);
+}
+return $price_value;
+}
 
 function product_currency() {
 $product_currency = get_option('product_currency',DEF_CURRENCY);
@@ -272,7 +281,8 @@ if ($categories != '<li class="cat-item-none">No categories</li>') { ?>
 add_action('single_product_end','show_related_categories', 10, 3);
 
 /* Archive Functions */
-function show_archive_price($price_value) {
+function show_archive_price($post) {
+$price_value = product_price($post->ID);
 if (!empty($price_value)) { ?>
 	<div class="product-price <?php design_schemes('color'); ?>">
 		<?php echo price_format($price_value) ?>
@@ -408,4 +418,9 @@ else {
 	$details_class = 'no-image'; 
 	return $details_class;
 }
+}
+
+function product_post_type_array() {
+$array = apply_filters('product_post_type_array', array('al_product'));
+return $array;
 }

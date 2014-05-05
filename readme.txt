@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 1.5.0
+Stable tag: 1.5.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -66,6 +66,7 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 = Translations =
 
 * English - default, always included
+* Spanish - Thanks to Andrew
 * Polish - Thanks to [Norbert](http://profiles.wordpress.org/ndre/)
 * Hebrew - Thanks to Ahrale
 * *Your translation? - [Just send it in](http://implecode.com/contact/)*
@@ -134,12 +135,17 @@ Documentation will be available soon on impleCode.com.
 
 == Changelog ==
 
-= 1.5 - 15/04/2014 =
+= 1.5.1 - 05/05/2014 =
+
+* Localization - Spanish language added
+* Tweak - Minor improvements for even better performance
+
+= 1.5.0 - 15/04/2014 =
 
 * Feature - Ability to choose different price formats such as $2500, USD2500 etc.
 * Tweak - When short description is short enough the [...] sign will not show up in classic list theme
 * Fix - Now disabling breadcrumbs works as intended
-* Info - 1.5 is fully compatible with new 3.9 WordPress version, which is right on the corner
+* Info - 1.5 is fully compatible with new 3.9 WordPress version, which is right around the corner
 
 = 1.4.5 - 07/04/2014 =
 

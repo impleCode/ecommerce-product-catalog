@@ -142,7 +142,8 @@ function al_product_price() {
 	// Get the price data if its already been entered
 	$price = get_post_meta($post->ID, '_price', true);
 	// Echo out the field
-	echo '<table><tr><td class="price-column"><input type="number" min="0" step="0.01" name="_price" value="' . $price  . '" class="widefat" /></td><td>'. product_currency() .'</td></tr></table>';
+	$price_table = apply_filters('admin_price_table', '<table><tr><td class="price-column"><input type="number" min="0" step="0.01" name="_price" value="' . $price  . '" class="widefat" /></td><td>'. product_currency() .'</td></tr></table>', $post);
+	echo $price_table;
 }
 
 // The Product Shipping Metabox
@@ -274,7 +275,8 @@ function implecode_save_products_meta($post_id, $post) {
 		else if (! isset($value) && $current_value) { 
 			delete_post_meta($post->ID, $key);
 		}
-	} }
+	} 
+	do_action('product_edit_save', $post); }
 }
 add_action('save_post', 'implecode_save_products_meta', 1, 2);
 

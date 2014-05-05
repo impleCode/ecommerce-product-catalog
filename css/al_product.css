@@ -459,7 +459,7 @@ max-width: 200px;
 }
 
 /* Product Settings Page */
-.number-box {
+.number-box, .number_box{
 width: 50px;
 }
 

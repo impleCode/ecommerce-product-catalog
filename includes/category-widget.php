@@ -29,10 +29,10 @@ class product_cat_widget extends WP_Widget {
 		if ( $title )
 			echo $before_title . $title . $after_title;
 
-		$cat_args = array('orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h, 'depth' => 1, 'taxonomy' => 'al_product-cat');
+		$cat_args = array('orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h, 'taxonomy' => 'al_product-cat');
 
 		if ( $d ) {
-			$cat_args['show_option_none'] = __('Select Product Category', 'al-ecommerce-product-catalog');
+			$cat_args = array('orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h, 'taxonomy' => 'al_product-cat', 'walker' => new my_Walker_CategoryDropdown, 'show_option_none' => __('Select Product Category', 'al-ecommerce-product-catalog'));
 			wp_dropdown_categories(apply_filters('widget_categories_dropdown_args', $cat_args));
 ?>
 
@@ -40,8 +40,8 @@ class product_cat_widget extends WP_Widget {
 /* <![CDATA[ */
 	var dropdown = document.getElementById("cat");
 	function onCatChange() {
-		if ( dropdown.options[dropdown.selectedIndex].value > 0 ) {
-			location.href = "<?php echo home_url(); ?>/?cat="+dropdown.options[dropdown.selectedIndex].value;
+		if ( dropdown.options[dropdown.selectedIndex].value != '' ) {
+			location.href = "<?php echo home_url(); ?>/?al_product-cat="+dropdown.options[dropdown.selectedIndex].value;
 		}
 	}
 	dropdown.onchange = onCatChange;
@@ -93,5 +93,26 @@ class product_cat_widget extends WP_Widget {
 		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('hierarchical'); ?>" name="<?php echo $this->get_field_name('hierarchical'); ?>"<?php checked( $hierarchical ); ?> />
 		<label for="<?php echo $this->get_field_id('hierarchical'); ?>"><?php _e( 'Show hierarchy', 'al-ecommerce-product-catalog' ); ?></label></p>
 <?php
+	}
+}
+
+class my_Walker_CategoryDropdown extends Walker_CategoryDropdown {
+
+	function start_el(&$output, $category, $depth, $args) {
+		$pad = str_repeat('&nbsp;', $depth * 3);
+
+		$cat_name = apply_filters('list_cats', $category->name, $category);
+		$output .= "\t<option class=\"level-$depth\" value=\"".$category->slug."\"";
+		if ( $category->term_id == isset($args['selected']) ? $args['selected'] : '' )
+			$output .= ' selected="selected"';
+		$output .= '>';
+		$output .= $pad.$cat_name;
+		if ( isset($args['show_count']) )
+			$output .= '&nbsp;&nbsp;('. $category->count .')';
+		if ( isset($args['show_last_update']) ) {
+			$format = 'Y-m-d';
+			$output .= '&nbsp;&nbsp;' . gmdate($format, $category->last_update_timestamp);
+		}
+		$output .= "</option>\n";
 	}
 }

@@ -424,3 +424,13 @@ function product_post_type_array() {
 $array = apply_filters('product_post_type_array', array('al_product'));
 return $array;
 }
+
+function array_to_url($array) {
+$url = urlencode(serialize($array));
+return $url;
+}
+
+function url_to_array($url) {
+$array = unserialize(stripslashes(urldecode($url)));
+return $array;
+}

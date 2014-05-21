@@ -160,9 +160,9 @@ add_action('product_details','show_price', 7, 2);
 
 function product_price($product_id, $unfiltered = null) {
 if (empty($unfiltered)) {
-$price_value = apply_filters('product_price', get_post_meta($product_id, "_price", true)); }
+$price_value = apply_filters('product_price', get_post_meta($product_id, "_price", true), $product_id); }
 else {
-$price_value = get_post_meta($product_id, "_price", true);
+$price_value = apply_filters('unfiltered_product_price', get_post_meta($product_id, "_price", true), $product_id);
 }
 return $price_value;
 }

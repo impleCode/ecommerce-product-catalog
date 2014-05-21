@@ -13,6 +13,7 @@
 /* General */
 function price_format($price_value) {
 $set = get_option('product_currency_settings', unserialize(DEF_CURRENCY_SETTINGS));
+$price_value = number_format($price_value,2);
 $space = ' ';
 if ($set['price_space'] == 'off') {
 $space = '';

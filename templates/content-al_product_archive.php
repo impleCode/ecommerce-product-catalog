@@ -22,7 +22,10 @@ echo product_breadcrumbs(); ?>
 			
 <article id="product_listing" <?php post_class('al_product'); ?>>
 <header <?php post_class('entry-header'); ?>>
-	<?php if (! is_tax()) { content_product_adder_archive_before_title(); } ?>
+	<?php if (! is_tax()) { content_product_adder_archive_before_title(); }
+		else {
+		echo '<h1 class="entry-title">'.$page_title.'</h1>';
+		}	?>
 </header> 
 	<div class="entry-content">
 		<?php $before_archive = content_product_adder_archive_before();
@@ -30,11 +33,6 @@ echo product_breadcrumbs(); ?>
 			if ( $before_archive != '<div class="entry-summary"></div>') {
 				echo $before_archive; } 
 			} 
-		if ( $before_archive != '<div class="entry-summary"></div>') { ?>
-			<h2 class="archive-title"><?php
-				echo $page_title; ?>
-			</h2>
-		<?php } 
 		if (is_tax()) {
 			echo '<div class="entry-content">'.term_description().'</div>';
 			$term = get_queried_object()->term_id; 

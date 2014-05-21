@@ -71,7 +71,6 @@ function general_settings_content() { ?>
 				$button_value = __('Change default thumbnail', 'al-ecommerce-product-catalog'); 
 				$option_name = 'default_product_thumbnail';
 				upload_product_image($name, $button_value, $option_name); ?>
-				<div style="clear:both"></div>
 				<h3><?php _e('Product listing page', 'al-ecommerce-product-catalog'); ?></h3>	
 				<table>
 					<tr>

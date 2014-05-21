@@ -37,8 +37,9 @@ $default_modern_grid_settings = array (
 $modern_grid_settings = get_option( 'modern_grid_settings', $default_modern_grid_settings); 
 $modern_grid_settings['attributes'] = isset($modern_grid_settings['attributes']) ? $modern_grid_settings['attributes'] : ''; ?>
 			<a href="<?php the_permalink(); ?>"><div class="al_archive modern-grid-element" style='background-image:url(" <?php 
-			if (wp_get_attachment_url( get_post_thumbnail_id($post->ID) )) {
-				$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
+			$thumbnail_product = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
+			if ($thumbnail_product[0]) {
+				$url = $thumbnail_product[0]; 
 			} 
 			else {
 				$url = default_product_thumbnail_url(); 

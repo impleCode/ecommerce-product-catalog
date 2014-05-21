@@ -155,19 +155,19 @@ function al_product_shipping() {
 	$currency = get_option('product_currency', DEF_CURRENCY);
 	echo '<table class="sort-settings shipping"><tbody>';
 	for ($i = 1; $i <= get_option('product_shipping_options_number', DEF_SHIPPING_OPTIONS_NUMBER); $i++) {
-	// Get the shipping data if its already been entered
-	$shipping_option = get_option('product_shipping_cost');
-	$shipping_label_option = get_option('product_shipping_label');
-	$shipping_option_field = get_post_meta($post->ID, '_shipping'.$i, true);
-	$shipping_label_field = get_post_meta($post->ID, '_shipping-label'.$i, true);
-	if (! empty($shipping_option_field)) {
-	$shipping = $shipping_option_field; }
-	else { $shipping = $shipping_option[$i]; }
-	if (! empty($shipping_label_field)) {
-	$shipping_label = $shipping_label_field; }
-	else { $shipping_label = $shipping_label_option[$i]; }
+		// Get the shipping data if its already been entered
+		$shipping_option = get_option('product_shipping_cost');
+		$shipping_label_option = get_option('product_shipping_label');
+		$shipping_option_field = get_post_meta($post->ID, '_shipping'.$i, true);
+		$shipping_label_field = get_post_meta($post->ID, '_shipping-label'.$i, true);
+		if (! empty($shipping_option_field)) {
+			$shipping = $shipping_option_field; }
+		else { $shipping = isset($shipping_option[$i]) ? $shipping_option[$i] : ''; }
+		if (! empty($shipping_label_field)) {
+			$shipping_label = $shipping_label_field; }
+		else { $shipping_label = isset($shipping_label_option[$i]) ? $shipping_label_option[$i] : ''; }
 	// Echo out the fields
-	echo '<tr><td class="shipping-label-column"><input class="shipping-label" type="text" name="_shipping-label'.$i.'" value="' . $shipping_label  . '" /></td><td><input class="shipping-value" type="number" min="0" name="_shipping'.$i.'" value="' . $shipping  . '" />'. $currency .'</td></tr>'; }
+		echo '<tr><td class="shipping-label-column"><input class="shipping-label" type="text" name="_shipping-label'.$i.'" value="' . $shipping_label  . '" /></td><td><input class="shipping-value" type="number" min="0" name="_shipping'.$i.'" value="' . $shipping  . '" />'. $currency .'</td></tr>'; }
 	echo '</tbody></table>';
 }
 

@@ -12,20 +12,16 @@
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function al_product_adder_admin_notices_styles() {
-
 $template = get_option( 'template' );
-
-	if ( ! current_theme_supports( 'wp_product_adder' ) && ! in_array( $template, array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen' ) ) ) {
-	
+if ( ! current_theme_supports( 'wp_product_adder' ) && ! in_array( $template, array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen' ) ) ) {
 	if ( ! empty( $_GET['hide_al_product_adder_support_check'] ) ) {
-			update_option( 'product_adder_theme_support_check', $template );
-			return;
-		}
-if ( get_option( 'product_adder_theme_support_check' ) !== $template && current_user_can('administrator')) {		
-	add_action( 'admin_notices', 'product_adder_theme_check_notice' ); }
-	
+		update_option( 'product_adder_theme_support_check', $template );
+		return;
 	}
-	
+	if ( get_option( 'product_adder_theme_support_check' ) !== $template && current_user_can('administrator')) {		
+		add_action( 'admin_notices', 'product_adder_theme_check_notice' ); 
+	}
+}
 }	
 add_action( 'admin_print_styles', 'al_product_adder_admin_notices_styles' );	
 
@@ -38,5 +34,12 @@ function product_adder_theme_check_notice() { ?>
 </div> 
 <?php }
 
+function implecode_product_catalog_links( $links ) {
+$links[] = '<a href="'. get_admin_url(null, 'edit.php?post_type=al_product&page=product-settings.php') .'">Settings</a>';
+$links[] = '<a href="http://implecode.com/wordpress/plugins/premium-support/" target="_blank">Premium Support</a>';
+return array_reverse ($links);
+}
+
+add_filter( 'plugin_action_links_'.plugin_basename(AL_PLUGIN_MAIN_FILE), 'implecode_product_catalog_links' );
 
 ?>

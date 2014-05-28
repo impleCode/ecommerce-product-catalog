@@ -31,10 +31,18 @@ function implecode_settings_checkbox($option_label, $option_name, $option_enable
 <?php
 }
 
-function implecode_settings_text($option_label, $option_name, $option_value) { ?>
+function implecode_settings_text($option_label, $option_name, $option_value, $required = null) { 
+if ($required != '') {
+	$regired_field = 'required="required"';
+	$star = '<span class="star"> *</span>';
+}
+else {
+	$regired_field = '';
+	$star = '';
+} ?>
 	<tr>
-		<td><?php echo $option_label; ?>:</td>
-		<td><input type="text" name="<?php echo $option_name;?>" value="<?php echo $option_value; ?>" /></td>
+		<td><?php echo $option_label.$star; ?>:</td>
+		<td><input <?php echo $regired_field ?> type="text" name="<?php echo $option_name;?>" value="<?php echo $option_value; ?>" /></td>
 	</tr>
 <?php }
 

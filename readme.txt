@@ -3,8 +3,8 @@ Contributors: impleCode, ndre
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2MNWQKN7VPK4
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory
 Requires at least: 3.0
-Tested up to: 3.9.2
-Stable tag: 1.5.3
+Tested up to: 3.9.1
+Stable tag: 1.5.4
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -134,6 +134,11 @@ Documentation will be available soon on impleCode.com.
 4. Default product single page.
 
 == Changelog ==
+
+= 1.5.4 - 28/05/2014 =
+
+* Tweak - Added settings & premium support urls on plugin list
+* Tweak - Some code improvements for even better performance
 
 = 1.5.3 - 21/05/2014 =
 

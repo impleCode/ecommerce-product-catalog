@@ -99,7 +99,8 @@ if ($submenu == 'single-design') { ?>
 	<h2><?php _e('Design Settings', 'al-ecommerce-product-catalog'); ?></h2>
 	<h3><?php _e('Product Gallery', 'al-ecommerce-product-catalog'); ?></h3>
 		<input type="checkbox" name="multi_single_options[enable_product_gallery]" value="1"<?php checked( 1, isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '' ); ?> /><?php _e('Enable product image', 'al-ecommerce-product-catalog'); ?></br>
-		<input type="checkbox" name="catalog_lightbox" value="1"<?php checked( 1, $enable_catalog_lightbox ); ?> /><?php _e('Enable lightbox on product image', 'al-ecommerce-product-catalog'); 
+		<input type="checkbox" name="catalog_lightbox" value="1"<?php checked( 1, $enable_catalog_lightbox ); ?> /><?php _e('Enable lightbox on product image', 'al-ecommerce-product-catalog'); ?></br>
+		<input type="checkbox" name="multi_single_options[enable_product_gallery_only_when_exist]" value="1"<?php checked( 1, isset($single_options['enable_product_gallery_only_when_exist']) ? $single_options['enable_product_gallery_only_when_exist'] : '' ); ?> /><?php _e('Enable product image only when inserted', 'al-ecommerce-product-catalog');
 	
 	do_action('single_product_design'); ?>
 	<p class="submit">

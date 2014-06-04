@@ -159,7 +159,7 @@ if (!empty($price_value)) { ?>
 add_action('product_details','show_price', 7, 2);
 
 function product_price($product_id, $unfiltered = null) {
-if (empty($unfiltered)) {
+if (empty($unfiltered)) { 
 $price_value = apply_filters('product_price', get_post_meta($product_id, "_price", true), $product_id); }
 else {
 $price_value = apply_filters('unfiltered_product_price', get_post_meta($product_id, "_price", true), $product_id);
@@ -292,6 +292,18 @@ if (!empty($price_value)) { ?>
 
 add_action('archive_price', 'show_archive_price',10,1);
 
+function set_archive_price($archive_price, $post) {
+$price_value = product_price($post->ID);
+if (!empty($price_value)) {
+$archive_price = '<div class="product-price '. design_schemes('color', 0).'">';
+$archive_price .= price_format($price_value);
+$archive_price .= '</div>';
+}
+return $archive_price;
+}
+
+add_filter('archive_price_filter', 'set_archive_price', 10, 2);
+
 function get_quasi_post_type($post_type = null) {
 if (empty($post_type)) {
 $post_type = get_post_type(); }
@@ -383,6 +395,7 @@ update_option('al_permalink_options_update', 0);
 function show_product_gallery($post, $single_options ) {
 $enable_catalog_lightbox = get_option('catalog_lightbox', 1);
 $single_options['enable_product_gallery'] = isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '';
+$single_options['enable_product_gallery_only_when_exist'] = isset($single_options['enable_product_gallery_only_when_exist']) ? $single_options['enable_product_gallery_only_when_exist'] : '';
 if ($enable_catalog_lightbox == 1 && $single_options['enable_product_gallery'] == 1) { ?>
 	<script>
 		jQuery(document).ready(function(){
@@ -399,7 +412,7 @@ if ($single_options['enable_product_gallery'] == 1) { ?>
 		else {
 			the_post_thumbnail('medium'); }
 		} 
-	else { 
+	else if ($single_options['enable_product_gallery_only_when_exist'] != 1) { 
 		echo default_product_thumbnail(); 
 	} 
 	do_action('below_product_image', $post->ID);?>
@@ -410,12 +423,17 @@ else {
 	return;
 }
 }
-function product_gallery_enabled($enable) {
-if ($enable == 1) { 
+function product_gallery_enabled($enable, $enable_inserted, $post) {
+$details_class = 'no-image'; 
+if ($enable == 1) {
+	if ($enable_inserted == 1 && ! has_post_thumbnail()) {
+	return $details_class;
+	}
+	else {
 	return;
+	}
 }
 else { 
-	$details_class = 'no-image'; 
 	return $details_class;
 }
 }

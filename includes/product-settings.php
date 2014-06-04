@@ -98,7 +98,7 @@ function product_settings() { ?>
 		}
 	do_action('settings-content'); ?>
 	<div class="plugin-logo">
-		<a href="http://implecode.com"><img class="en" src="<?php echo AL_PLUGIN_BASE_PATH .'img/implecode.png'; ?>" width="282px" alt="Skuteczna Reklama w Internecie" /></a>
+		<a href="http://implecode.com/#cam=catalog-settings-link&key=logo-link"><img class="en" src="<?php echo AL_PLUGIN_BASE_PATH .'img/implecode.png'; ?>" width="282px" alt="Skuteczna Reklama w Internecie" /></a>
 		</div>
     </div>
 	

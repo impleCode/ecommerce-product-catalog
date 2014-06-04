@@ -28,7 +28,8 @@ echo product_breadcrumbs();
 	<div class="entry-content product-entry">
 	<?php 
 	$enable = isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '';
-	$details_class = product_gallery_enabled($enable);
+	$enable_inserted = isset($single_options['enable_product_gallery_only_when_exist']) ? $single_options['enable_product_gallery_only_when_exist'] : '' ;
+	$details_class = product_gallery_enabled($enable, $enable_inserted, $post);
 	show_product_gallery($post, $single_options);
 	do_action('before_product_details'); ?>
 	

@@ -36,3 +36,19 @@ function grid_archive_theme($post) { ?>
 		</a>
 </div>
 <?php }
+
+function get_grid_archive_theme($post) {
+if (wp_get_attachment_url( get_post_thumbnail_id($post->ID) )) {
+	$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
+} 
+else {
+	$url = default_product_thumbnail_url(); 
+}
+$archive_price = apply_filters('archive_price_filter', '', $post);
+$return = '<div class="archive-listing classic-grid">';
+$return .= '<a href="'.get_permalink().'">';
+$return .= '<div style="background-image:url(\''.$url.'\');" class="classic-grid-element"></div>';
+$return .= '<div class="product-name">'.get_the_title().'</div>'.$archive_price.'</a></div>';
+return $return;
+}
+

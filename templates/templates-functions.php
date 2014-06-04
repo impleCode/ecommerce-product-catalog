@@ -57,6 +57,7 @@ extract(shortcode_atts(array(
 		'category' => '',
 		'product' => '',
 		'products_limit' => -1,
+		'archive_template' => get_option( 'archive_template', 'default'),
     ), $atts));
 
 if ($product != 0) {
@@ -89,27 +90,11 @@ else {
 		));
 }
 $inside = '';
-$archive_template = get_option( 'archive_template', 'default');
-ob_start();
-if ($archive_template == 'default') {
-	while ( $query->have_posts() ) : $query->the_post(); global $post;
-		$inside .= default_archive_theme($post);
-	endwhile;
-	wp_reset_postdata();
-}
-else if ($archive_template == 'list') {
-	while ( $query->have_posts() ) : $query->the_post(); global $post;
-		$inside .= list_archive_theme($post);
-	endwhile; wp_reset_postdata();
-}
-else {
-	while ( $query->have_posts() ) : $query->the_post(); global $post;
-		$inside .= grid_archive_theme($post);
-	endwhile; wp_reset_postdata();
-}
-$output = ob_get_contents();
-ob_end_clean();
-return '<div class="product-list">'.$output.'</div>';
+while ( $query->have_posts() ) : $query->the_post(); global $post;
+	$inside .= get_catalog_template($archive_template, $post);
+endwhile;
+wp_reset_postdata();
+return '<div class="product-list">'.$inside.'<div style="clear:both"></div></div>';
 }
 
 add_shortcode('show_products', 'show_products_outside_loop');
@@ -173,4 +158,13 @@ if ( ! in_array( $max, $links ) ) {
 if ( get_next_posts_link() )
 	printf( '<li>%s</li>' . "\n", get_next_posts_link() );
 	echo '</ul></div>' . "\n";
+}
+
+function get_catalog_template($archive_template, $post) {
+$themes_array = apply_filters('ecommerce_catalog_templates', array(
+	'default' => get_default_archive_theme($post),
+	'list' => get_list_archive_theme($post),
+	'grid' => get_grid_archive_theme($post),
+), $post);
+return $themes_array[$archive_template];
 }

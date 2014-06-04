@@ -299,6 +299,12 @@ margin-right: 10px;
 font-weight: bold;
 }
 
+.list .product-image {
+background-size: 150px; 
+background-position: center; 
+background-repeat: no-repeat;
+}
+
 /*Grid*/
 
 .classic-grid.archive-listing {
@@ -437,7 +443,7 @@ margin: 0;
 
 .product-details.no-image .shortdesc {
 float: left;
-width: 50%;
+width: 60%;
 }
 
 .product-details.no-image .price-value {

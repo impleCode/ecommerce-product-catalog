@@ -706,7 +706,11 @@ font-weight: normal;
 }
 
 /*WP MENU*/
-.branch-3-8 #menu-posts-al_product div.wp-menu-image:before {
+.branch-3-7 #menu-posts-al_product div.wp-menu-image:before, .branch-3-6 #menu-posts-al_product div.wp-menu-image:before, .branch-3-5 #menu-posts-al_product div.wp-menu-image:before, .branch-3-7 #adminmenu li[id^="menu-posts-al_product"] div.wp-menu-image:before, .branch-3-6 #adminmenu li[id^="menu-posts-al_product"] div.wp-menu-image:before, .branch-3-5 #adminmenu li[id^="menu-posts-al_product"] div.wp-menu-image:before {
+content: "" !important;
+}
+
+#menu-posts-al_product div.wp-menu-image:before, #adminmenu li[id^="menu-posts-al_product"] div.wp-menu-image:before {
 content: "\f174" !important;
 }
 

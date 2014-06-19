@@ -97,6 +97,7 @@ function product_settings() { ?>
 		<?php custom_names_content();
 		}
 	do_action('settings-content'); ?>
+	<div style="clear:both; height: 50px;"></div>
 	<div class="plugin-logo">
 		<a href="http://implecode.com/#cam=catalog-settings-link&key=logo-link"><img class="en" src="<?php echo AL_PLUGIN_BASE_PATH .'img/implecode.png'; ?>" width="282px" alt="Skuteczna Reklama w Internecie" /></a>
 		</div>

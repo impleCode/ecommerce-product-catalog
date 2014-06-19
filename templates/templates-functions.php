@@ -168,5 +168,6 @@ $themes_array = apply_filters('ecommerce_catalog_templates', array(
 	'list' => get_list_archive_theme($post),
 	'grid' => get_grid_archive_theme($post),
 ), $post, $i, $design_scheme);
+$themes_array[$archive_template] = isset($themes_array[$archive_template]) ? $themes_array[$archive_template] : $themes_array['default'];
 return $themes_array[$archive_template];
 }

@@ -452,3 +452,46 @@ function url_to_array($url) {
 $array = unserialize(stripslashes(urldecode($url)));
 return $array;
 }
+
+function exclude_products_search( $search, &$wp_query ) {
+global $wpdb;
+	if ( empty( $search ))
+		return $search;
+$search .= " AND (($wpdb->posts.post_type NOT LIKE '%al_product%'))";
+return $search;
+}
+
+function modify_product_search($query) {
+if ( $query->is_search == 1 && isset($query->query_vars['post_type']) && $query->query_vars['post_type'] != 'al_product' ) {
+	add_filter('posts_search', 'exclude_products_search', 10, 2);
+}
+else if ($query->is_search == 1 && ! isset($query->query_vars['post_type'])) {
+	add_filter('posts_search', 'exclude_products_search', 10, 2);
+}
+}
+
+add_action( 'pre_get_posts', 'modify_product_search', 10, 1 ); 
+
+function product_archive_title($title = null, $sep = null, $seplocation = null) {
+global $post;
+$settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
+$settings['seo_title'] = isset($settings['seo_title']) ? $settings['seo_title'] : '';
+$settings['seo_title_sep'] = isset($settings['seo_title_sep']) ? $settings['seo_title_sep'] : '';
+if ($settings['seo_title_sep'] == 1) {
+if ($sep != '') {
+$sep = ' '.$sep.' ';
+}
+}
+else {
+$sep = '';
+}
+if ($settings['seo_title'] != '' && is_archive() && $post->post_type == 'al_product') {
+	if ($seplocation == 'right') {
+	$title = $settings['seo_title'].$sep; }
+	else {
+	$title = $sep.$settings['seo_title'];
+	}
+}
+return $title;
+}
+add_filter('wp_title', 'product_archive_title', 99, 3);

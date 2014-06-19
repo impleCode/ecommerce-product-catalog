@@ -16,6 +16,8 @@ define('DEFAULT_ARCHIVE_MULTIPLE_SETTINGS', serialize (array(
 	'category_archive_url' => 'product-category',
 	'enable_product_breadcrumbs' => 0,
 	'breadcrumbs_title' => '',
+	'seo_title' => '',
+	'seo_title_sep' => 1,
 	)));
 	
 define('DEFAULT_ARCHIVE_TEMPLATE', 'default');

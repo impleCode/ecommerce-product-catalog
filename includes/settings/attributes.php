@@ -62,7 +62,10 @@ if ($submenu == 'attributes') { ?>
 					$attribute = get_option('product_attribute');
 					$attribute_label = get_option('product_attribute_label');
 					$attribute_unit = get_option('product_attribute_unit');
-					for ($i = 1; $i <= get_option('product_attributes_number', '3'); $i++) { ?>
+					for ($i = 1; $i <= get_option('product_attributes_number', '3'); $i++) { 
+						$attribute_label[$i] = isset($attribute_label[$i]) ? $attribute_label[$i] : ''; 
+						$attribute[$i] = isset($attribute[$i]) ? $attribute[$i] : '';
+						$attribute_unit[$i] = isset($attribute_unit[$i]) ? $attribute_unit[$i] : '';?>
 						<tr>
 							<td class="lp-column lp'.$i.'"><?php echo $i ?>.</td>
 							<td class="product-attribute-label-column"><input class="product-attribute-label" type="text" name="product_attribute_label[<?php echo $i ?>]" value="<?php echo $attribute_label[$i] ?>" /></td><td class="lp-column">:</td>

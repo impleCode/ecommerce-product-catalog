@@ -101,6 +101,11 @@ function general_settings_content() { ?>
 						<td><?php _e('Categories Parent URL', 'al-ecommerce-product-catalog'); ?> </td>
 						<td><input type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo $archive_multiple_settings['category_archive_url']; ?>" /></td>
 					</tr>
+					<?php 
+					$archive_multiple_settings['seo_title_sep'] = isset($archive_multiple_settings['seo_title_sep']) ? $archive_multiple_settings['seo_title_sep'] : '';
+					$archive_multiple_settings['seo_title'] = isset($archive_multiple_settings['seo_title']) ? $archive_multiple_settings['seo_title'] : '';
+					implecode_settings_text(__('Archive SEO Title', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[seo_title]', $archive_multiple_settings['seo_title']);
+					implecode_settings_checkbox(__('Enable SEO title separator', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[seo_title_sep]', $archive_multiple_settings['seo_title_sep']) ?>
 					<?php do_action('product_listing_page_settings'); ?>
 				</table>
 				<div class="al-box info"><?php _e('You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. <br><br>To show products from just one category, use: [show_products category="2"] where 2 is category ID (you can display several categories by inserting comma separated IDs). <br><br>To display products by IDs, use: [show_products product="5"], where 5 is product ID.', 'al-ecommerce-product-catalog'); ?></div>

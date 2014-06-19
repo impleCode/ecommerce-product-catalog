@@ -121,7 +121,6 @@ function product_icons() {
         <?php
 }
 
-// Add the Events Meta Boxes
 function add_product_metaboxes() {
 	add_meta_box('al_product_short_desc', __('Product short description', 'al-ecommerce-product-catalog'), 'al_product_short_desc', 'al_product', apply_filters('short_desc_box_column','normal'), apply_filters('short_desc_box_priority','default'));
 	add_meta_box('al_product_desc', __('Product description', 'al-ecommerce-product-catalog'), 'al_product_desc', 'al_product', apply_filters('desc_box_column','normal'), apply_filters('desc_box_priority','default'));
@@ -133,29 +132,22 @@ function add_product_metaboxes() {
 	do_action('add_product_metaboxes');
 }
 
-// The Product Price Metabox
 function al_product_price() {
 	global $post;
-	// Noncename needed to verify where the data originated
 	echo '<input type="hidden" name="pricemeta_noncename" id="pricemeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-	// Get the price data if its already been entered
 	$price = get_post_meta($post->ID, '_price', true);
-	// Echo out the field
 	$price_table = apply_filters('admin_price_table', '<table><tr><td class="price-column"><input type="number" min="0" step="0.01" name="_price" value="' . $price  . '" class="widefat" /></td><td>'. product_currency() .'</td></tr></table>', $post);
 	echo $price_table;
 }
 
-// The Product Shipping Metabox
 function al_product_shipping() {
 	global $post;
-	// Noncename needed to verify where the data originated
 	echo '<input type="hidden" name="shippingmeta_noncename" id="shippingmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	$currency = get_option('product_currency', DEF_CURRENCY);
 	echo '<table class="sort-settings shipping"><tbody>';
 	for ($i = 1; $i <= get_option('product_shipping_options_number', DEF_SHIPPING_OPTIONS_NUMBER); $i++) {
-		// Get the shipping data if its already been entered
 		$shipping_option = get_option('product_shipping_cost');
 		$shipping_label_option = get_option('product_shipping_label');
 		$shipping_option_field = get_post_meta($post->ID, '_shipping'.$i, true);
@@ -166,15 +158,12 @@ function al_product_shipping() {
 		if (! empty($shipping_label_field)) {
 			$shipping_label = $shipping_label_field; }
 		else { $shipping_label = isset($shipping_label_option[$i]) ? $shipping_label_option[$i] : ''; }
-	// Echo out the fields
 		echo '<tr><td class="shipping-label-column"><input class="shipping-label" type="text" name="_shipping-label'.$i.'" value="' . $shipping_label  . '" /></td><td><input class="shipping-value" type="number" min="0" name="_shipping'.$i.'" value="' . $shipping  . '" />'. $currency .'</td></tr>'; }
 	echo '</tbody></table>';
 }
 
-// The Product attributes Metabox
 function al_product_attributes() {
 	global $post;
-	// Noncename needed to verify where the data originated
 	echo '<input type="hidden" name="attributesmeta_noncename" id="attributesmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	echo '<div class="al-box info">'. __('Only attributes with values set will be shown on product page.', 'al-ecommerce-product-catalog') .'</div>';
@@ -196,6 +185,9 @@ function al_product_attributes() {
 		$attributes_option_field = get_post_meta($post->ID, '_attribute'.$i, false);
 		$attributes_label_option_field = get_post_meta($post->ID, '_attribute-label'.$i, true);
 		$attributes_unit_option_field = get_post_meta($post->ID, '_attribute-unit'.$i, true);
+		$attributes_option[$i] = isset($attributes_option[$i]) ? $attributes_option[$i] : '';
+		$attributes_label_option[$i] = isset($attributes_label_option[$i]) ? $attributes_label_option[$i] : '';
+		$attributes_unit_option[$i] = isset($attributes_unit_option[$i]) ? $attributes_unit_option[$i] : '';
 		if (! empty($attributes_option_field)) {
 			$attributes = $attributes_option_field[0]; }
 		else { $attributes = $attributes_option[$i]; }
@@ -218,16 +210,11 @@ function al_product_attributes() {
 	do_action('product_attributes_edit_single', $post);
 }
 
-// The Product Short Description Metabox
 function al_product_short_desc() {
 	global $post;
-	// Noncename needed to verify where the data originated
 	echo '<input type="hidden" name="shortdescmeta_noncename" id="shortdescmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-	// Get short description data if its already been entered
 	$shortdesc = get_post_meta($post->ID, '_shortdesc', true);
-	// Echo out the field
-	// echo '<textarea name="_shortdesc" value="' . $shortdesc  . '" class="widefat" ></textarea>';
 	$short_desc_settings = array('media_buttons' => false, 'textarea_rows' => 5, 'teeny' => true);
 	wp_editor($shortdesc,'_shortdesc', $short_desc_settings);
 }
@@ -240,7 +227,6 @@ function al_product_desc() {
 	wp_editor($desc,'_desc', $desc_settings);
 }
 
-// Save the Metabox Data
 function implecode_save_products_meta($post_id, $post) {
 	$post_type_now = substr($post->post_type,0,10);
 	if($post_type_now == 'al_product' ) {
@@ -311,7 +297,7 @@ $obj = get_post_type_object($post_type);
 $singular = $obj->labels->singular_name;
 
 $messages[$post_type] = array(
-0 => '', // Unused. Messages start at index 1.
+0 => '',
 1 => sprintf( __($singular.' updated. <a href="%s">View '.strtolower($singular).'</a>'), esc_url( get_permalink($post_ID) ) ),
 2 => __('Custom field updated.'),
 3 => __('Custom field deleted.'),

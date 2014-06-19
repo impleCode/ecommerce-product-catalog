@@ -11,3 +11,5 @@
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  
 require_once(AL_BASE_PATH . '/functions/content-functions.php');
+
+require_once('support.php');

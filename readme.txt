@@ -1,10 +1,10 @@
-﻿=== Plugin Name ===
+=== Plugin Name ===
 Contributors: impleCode, ndre
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2MNWQKN7VPK4
-Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory
+Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.0
 Tested up to: 3.9.1
-Stable tag: 1.5.8
+Stable tag: 1.6.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ impleCode eCommerce Product Catalog is great choice to sell easy and quick or ju
 
 == Description ==
 
-Reward your Wordpress website with beautifull and easy to use product catalog. eCommerce Product Catalog is powerful and basic at the same time. It is built by impleCode and more futures are added every week. Expect high quality code which is great value not only for Merchants but also for Developers and Theme Constructors.
+Reward your Wordpress website with beautiful and easy to use product catalog. eCommerce Product Catalog is powerful and basic at the same time. It is built by impleCode and more futures are added every week. Expect high quality code which is great value not only for Merchants but also for Developers and Theme Constructors.
 
 = FEATURES =
 
@@ -143,6 +143,15 @@ Documentation is available [here](http://implecode.com/wordpress/product-catalog
 
 == Changelog ==
 
+= 1.6.0 - 30/06/2014 =
+
+* Feature - Product Shortcodes on product list in Admin introduced, copy and paste the shortcode from the list to show the product on the website
+
+= 1.5.9 - 24/06/2014 =
+
+* Fix - right currency display for shipping in admin
+* Fix - classic list now strips html tags from short description (they show-up on product page but not in product listing to stop breaking the layout)
+
 = 1.5.8 - 17/06/2014 =
 
 * Tweak - ability to set SEO title from product settings
@@ -165,7 +174,7 @@ Documentation is available [here](http://implecode.com/wordpress/product-catalog
 
 = 1.5.4 - 28/05/2014 =
 
-* Tweak - Added settings & premium support urls on plugin list
+* Tweak - Added settings & premium support URLs on plugin list
 * Tweak - Some code improvements for even better performance
 
 = 1.5.3 - 21/05/2014 =

@@ -744,3 +744,8 @@ z-index: 99999; }
 text-decoration: none !important;
 margin-right: 5px !important;
 }
+
+/* Product Columns */
+.column-id {
+width: 2.2em;
+}

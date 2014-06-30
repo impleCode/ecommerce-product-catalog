@@ -145,7 +145,7 @@ function al_product_shipping() {
 	global $post;
 	echo '<input type="hidden" name="shippingmeta_noncename" id="shippingmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-	$currency = get_option('product_currency', DEF_CURRENCY);
+	$currency = product_currency();
 	echo '<table class="sort-settings shipping"><tbody>';
 	for ($i = 1; $i <= get_option('product_shipping_options_number', DEF_SHIPPING_OPTIONS_NUMBER); $i++) {
 		$shipping_option = get_option('product_shipping_cost');

@@ -27,7 +27,7 @@ return apply_filters('price_format', $formatted, $price_value);
 
 /* Classic List */
 function c_list_desc($post_id) {
-$shortdesc = get_post_meta($post_id, "_shortdesc", true);
+$shortdesc = strip_tags(get_post_meta($post_id, "_shortdesc", true));
 $desclenght = strlen($shortdesc);
 $more = '';
 if ($desclenght > 243) {

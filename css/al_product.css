@@ -196,6 +196,10 @@ color: #fff;
 text-decoration: none;
 }
 
+.al_archive .product-price div {
+font-size: 1em;
+}
+
 .al_archive .product-price.green-price{
 background-color: rgb(99,171,0);
 background-color: rgba(99,171,0,0.8);
@@ -391,11 +395,11 @@ color: #63AB00;
 color: #FE3C00;
 }
 
-.price-value.big-price {
+.price-value.big-price, .price-value.big-price div {
 font-size: 30px;
 }
 
-.price-value.small-price {
+.price-value.small-price, .price-value.small-price div {
 font-size: 21px;
 }
 
@@ -748,4 +752,13 @@ margin-right: 5px !important;
 /* Product Columns */
 .column-id {
 width: 2.2em;
+}
+
+/* Category Columns */
+.manage-column.column-id {
+width: 2em;
+}
+
+.manage-column.column-shortcode, .shortcode.column-shortcode, .id.column-id, .manage-column.column-id  {
+padding: 8px;
 }

@@ -385,10 +385,10 @@ update_option('al_permalink_options_update', 1);
 }
 
 function check_permalink_options_update() {
-$options_update = get_option('al_permalink_options_update', 0);
-if ($options_update == 1) {
+$options_update = get_option('al_permalink_options_update', 'none');
+if ($options_update != 'none') {
 flush_rewrite_rules(false);
-update_option('al_permalink_options_update', 0);
+update_option('al_permalink_options_update', 'none');
 }
 }
 

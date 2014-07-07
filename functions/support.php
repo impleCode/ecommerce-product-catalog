@@ -13,7 +13,7 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 if ( !function_exists('implecode_support_menu') ):
 
 function implecode_custom_support_menu() { ?>
-	<a id="support-settings" class="element" href="./edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=support"><?php _e('Support', 'smart-multiple-catalogs'); ?></a>
+	<a id="support-settings" class="element" href="./edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=support"><?php _e('Support', 'al-ecommerce-product-catalog'); ?></a>
 <?php } 
 
 add_action('general_submenu','implecode_custom_support_menu', 20);
@@ -84,7 +84,7 @@ function implecode_custom_support_settings_content() { ?>
 								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/product-search-pro/#cam=catalog-support-tab&key=product-search-pro-link">Product Search PRO</a></li>
 								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/smarter-product-urls/#cam=catalog-support-tab&key=smarter-product-urls-link">Smarter Product URLs</a></li>
 								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/product-gallery-advanced/#cam=catalog-support-tab&key=gallery-advanced-link">Product Gallery Advanced</a></li>
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/smart-multiple-catalogs/#cam=catalog-support-tab&key=smart-multiple-catalogs-link">Smart Multiple Catalogs</a></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/al-ecommerce-product-catalog/#cam=catalog-support-tab&key=al-ecommerce-product-catalog-link">Smart Multiple Catalogs</a></li>
 							</ul>
 						</td>
 						<td>

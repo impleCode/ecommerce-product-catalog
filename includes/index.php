@@ -12,3 +12,4 @@
 
 require_once(AL_BASE_PATH . '/includes/settings/index.php'); 
 require_once('product-columns.php'); 
+require_once('product-category-columns.php'); 

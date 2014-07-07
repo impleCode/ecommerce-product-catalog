@@ -2,21 +2,21 @@
 Contributors: impleCode, ndre
 Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2MNWQKN7VPK4
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
-Requires at least: 3.0
+Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.6.0
+Stable tag: 1.6.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-impleCode eCommerce Product Catalog is great choice to sell easy and quick or just beautifully present products on Wordpress website.
+impleCode eCommerce Product Catalog is great choice to sell easy and quick or just beautifully present products on WordPress website.
 
 == Description ==
 
-Reward your Wordpress website with beautiful and easy to use product catalog. eCommerce Product Catalog is powerful and basic at the same time. It is built by impleCode and more futures are added every week. Expect high quality code which is great value not only for Merchants but also for Developers and Theme Constructors.
+Reward your WordPress website with beautiful and easy to use product catalog. eCommerce Product Catalog is powerful and basic at the same time. It is built by impleCode and more futures are added every week. Expect high quality code which is great value not only for Merchants but also for Developers and Theme Constructors.
 
 = FEATURES =
 
-You can read all about [eCommerce Product Catalog](http://implecode.com/wordpress/product-catalog/#cam=wordpress-org-catalog-page&key=ecommerce-product-catalog "eCommerce Product Catalog Website") features on the [impleCode website](http://implecode.com/#cam=wordpress-org-catalog-page&key=implecode-website "impleCode - open-source plugin developer").
+You can read all about [eCommerce Product Catalog](http://implecode.com/wordpress/product-catalog/?cam=wordpress-org-catalog-page&key=ecommerce-product-catalog#contents_table "eCommerce Product Catalog Website") features on the [impleCode website](http://implecode.com/#cam=wordpress-org-catalog-page&key=implecode-website "impleCode - open-source plugin developer").
 
 * __Unlimited number of products__ - Add as many products to your catalog as you need
 * __SEO Friendly__ - Give your site nice boost in search engines with SEO optimized product pages
@@ -44,7 +44,7 @@ And more to come every week!
 
 Future functions are specified in the "Current Donation Goal" section.
 
-= Display Products with Shortcode =
+= Display Products with a Shortcode =
 
 You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. 
 
@@ -52,11 +52,16 @@ To show products from just one category, use: [show_products category="2"] where
 
 To display products by IDs, use: [show_products product="5"], where 5 is product ID.
 
+= eCommerce Product Catalog Extensions =
+
+The feature packed extensions is that what makes eCommerce Product Catalog even more outstanding. [Browse the extensions](http://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extensions-link#extensions "eCommerce Product Catalog extensions on implecode.com"). 
+
 = Current Donation Goal =
 
 Currently we are working on:
 
 * Feature - [show_categories] shortcode to show category listing on any page
+* Tweak - usability improvements in admin
 
 **If you want to say thanks by donating to this plugin [using PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2MNWQKN7VPK4 "eCommerce Product Catalog Donation URL"), feel free ;-)**
 
@@ -69,6 +74,7 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 * Spanish - Thanks to Andrew
 * Polish - Thanks to [Norbert](http://profiles.wordpress.org/ndre/)
 * Hebrew - Thanks to Ahrale
+* Bosnian - Thanks to Faruk
 * *Your translation? - [Just send it in](http://implecode.com/contact/)*
 
 *Note:* All our plugins are localized/translatable by default. This is very important for all users worldwide. So please contribute your language to the plugin to make it even more useful. For translating we recommend the awesome ["Codestyling Localization" plugin](http://wordpress.org/extend/plugins/codestyling-localization/).
@@ -142,6 +148,12 @@ Documentation is available [here](http://implecode.com/wordpress/product-catalog
 4. Default product single page.
 
 == Changelog ==
+
+= 1.6.1 - 07/07/2014 =
+
+* Tweak - Product category shortcodes on category list in Admin added, copy and paste the shortcode from the list to show the products from certain category on the website
+* Tweak - better permalinks handling for even better performance
+* Localisation - Bosnian language added (thanks to Faruk)
 
 = 1.6.0 - 30/06/2014 =
 

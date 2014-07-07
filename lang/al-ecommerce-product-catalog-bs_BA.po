@@ -1,0 +1,979 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: eCommerce Product Catalog by impleCode v1.6.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: 2014-07-07 05:39:34+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: CSL v1.x\n"
+"X-Poedit-Language: Bosnian\n"
+"X-Poedit-Country: BOSNIA AND HERZEGOWINA\n"
+"X-Poedit-SourceCharset: utf-8\n"
+"X-Poedit-KeywordsList: __;_e;__ngettext:1,2;_n:1,2;__ngettext_noop:1,2;_n_noop:1,2;_c,_nc:4c,1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;_nx_noop:4c,1,2;\n"
+"X-Poedit-Basepath: ../\n"
+"X-Poedit-Bookmarks: \n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Textdomain-Support: yes"
+
+#: includes/category-widget.php:16
+#@ al-ecommerce-product-catalog
+msgid "A list or dropdown of product categories"
+msgstr "Lista kategorija artikala"
+
+#: includes/product.php:33
+#: includes/product.php:34
+#: includes/product.php:36
+#: includes/product.php:72
+#: includes/product.php:73
+#: includes/product.php:75
+#@ al-ecommerce-product-catalog
+msgid "Add New Product"
+msgstr "Dodaj novi artikal"
+
+#: includes/product-categories.php:29
+#@ al-ecommerce-product-catalog
+msgid "Add New Product Category"
+msgstr "Dodaj novu kategoriju artikla"
+
+#: includes/product-types.php:30
+#@ al-ecommerce-product-catalog
+msgid "Add New Product Type"
+msgstr "Dodaj novu vrstu artikla"
+
+#: includes/product-types.php:33
+#@ al-ecommerce-product-catalog
+msgid "Add or remove product types"
+msgstr "Dodaj ili ukloni vrstu artikla"
+
+#: includes/settings/custom-names.php:27
+#@ al-ecommerce-product-catalog
+msgid "All"
+msgstr "Sve"
+
+#: includes/product-categories.php:24
+#@ al-ecommerce-product-catalog
+msgid "All Product Categories"
+msgstr "Sve kategorije artikala"
+
+#: includes/product-types.php:25
+#@ al-ecommerce-product-catalog
+msgid "All Product Types"
+msgstr "Sve vrste artikala"
+
+#: includes/settings/custom-names.php:26
+#@ al-ecommerce-product-catalog
+msgid "All Products"
+msgstr "Svi artikli"
+
+#: includes/settings/attributes.php:54
+#@ al-ecommerce-product-catalog
+msgid "Attribute default name"
+msgstr "Zadani naziv naziva atributa"
+
+#: includes/settings/attributes.php:57
+#@ al-ecommerce-product-catalog
+msgid "Attribute default unit"
+msgstr "Zadana vrijednost jedinice atributa"
+
+#: includes/settings/attributes.php:56
+#@ al-ecommerce-product-catalog
+msgid "Attribute default value"
+msgstr "Zadana vrijednost atributa"
+
+#: includes/settings/attributes.php:88
+#@ al-ecommerce-product-catalog
+msgid "Attributes disabled. To enable set minimum 1 attribute."
+msgstr "Atributi onemogućeni. Da ih omogućite stavite najmanje jedan atribut"
+
+#: includes/settings/general.php:71
+#@ al-ecommerce-product-catalog
+msgid "Change default thumbnail"
+msgstr "Promjenite zadanu umanjenu sliku"
+
+#: includes/product-types.php:34
+#@ al-ecommerce-product-catalog
+msgid "Choose from the most used product types"
+msgstr "Odaberite između najkorištenijih vrsta artikala"
+
+#: includes/product.php:35
+#: includes/product.php:74
+#: templates/content-al_product.php:40
+#@ al-ecommerce-product-catalog
+msgid "Edit Product"
+msgstr "Uređivanje artikla"
+
+#: includes/product-categories.php:27
+#@ al-ecommerce-product-catalog
+msgid "Edit Product Category"
+msgstr "Uređivanje kategorija artikala"
+
+#: includes/product-types.php:28
+#@ al-ecommerce-product-catalog
+msgid "Edit Product Type"
+msgstr "Uređivanje vrste artikla"
+
+#: functions/base.php:18
+#@ al-ecommerce-product-catalog
+msgid "Enter product name here"
+msgstr "Unesite naziv artikla ovdje"
+
+#: theme-product_adder_support.php:32
+#@ al-ecommerce-product-catalog
+msgid "Hide this notice"
+msgstr "Sakrij obavijest"
+
+#: includes/settings/shipping.php:45
+#@ al-ecommerce-product-catalog
+msgid "If you fill out the fields below, system will automatically pre-fill the fields on product pages so you doesn't have to fill them every time you add product.</p><p>When every product in your catalogue has different shipping options you can leave all or just a part of these fields empty."
+msgstr "Ukoliko popunite polja ispod, sistem će automatski napuniti polja na stranicama proizvoda tako da ih ne morate svaki put popunjavati kada dodajete proizvod. Ukoliko svaki proizvod ima različite varijante dostave, onda ova polja možete ostaviti prazna."
+
+#: includes/settings/attributes.php:49
+#@ al-ecommerce-product-catalog
+msgid "If you fill out the fields below, system will automatically pre-fill the fields on product pages so you doesn't have to fill them every time you add product.</p><p>When every product in your catalogue is different you can leave all or a part of these field empty."
+msgstr "Ukoliko popunite polja ispod, sistem će automatski napuniti polja na stranicama proizvoda tako da ih ne morate svaki put popunjavati kada dodajete proizvod. Ukoliko svaki proizvod ima različite varijante dostave, onda ova polja možete ostaviti prazna."
+
+#: includes/product-categories.php:30
+#@ al-ecommerce-product-catalog
+msgid "New Product Category"
+msgstr "Nova kategorija proizvoda"
+
+#: includes/product-types.php:31
+#@ al-ecommerce-product-catalog
+msgid "New Product Type"
+msgstr "Nova vrsta proizvoda"
+
+#: includes/product.php:39
+#: includes/product.php:78
+#@ al-ecommerce-product-catalog
+msgid "No Products found"
+msgstr "Artikal nije pronađen"
+
+#: includes/product.php:40
+#: includes/product.php:79
+#@ al-ecommerce-product-catalog
+msgid "No Products found in trash"
+msgstr "Nema artikala u smeću"
+
+#: includes/product-types.php:35
+#@ al-ecommerce-product-catalog
+msgid "No product types found."
+msgstr "Nije pronađena nijedna vrsta artikla"
+
+#: includes/settings/attributes.php:42
+#@ al-ecommerce-product-catalog
+msgid "Number of product attributes"
+msgstr "Broj atributa artikla"
+
+#: includes/settings/shipping.php:40
+#@ al-ecommerce-product-catalog
+msgid "Number of shipping options"
+msgstr "Količina načina dostave"
+
+#: includes/product.php:169
+#@ al-ecommerce-product-catalog
+msgid "Only attributes with values set will be shown on product page."
+msgstr "Atributi koji imaju zadane vrijednosti će biti prikazani na stranici proizvoda"
+
+#: includes/product-categories.php:25
+#@ al-ecommerce-product-catalog
+msgid "Parent Product Category"
+msgstr "Nadkategorija proizvoda"
+
+#: includes/product-categories.php:26
+#@ al-ecommerce-product-catalog
+msgid "Parent Product Category:"
+msgstr "Nadkategorija proizvoda:"
+
+#: includes/settings/general.php:123
+#@ al-ecommerce-product-catalog
+msgid "Payment and currency"
+msgstr "Plaćanje i valuta"
+
+#: includes/product-types.php:24
+#@ al-ecommerce-product-catalog
+msgid "Popular Product Types"
+msgstr "Popularne vrste artikala"
+
+#: includes/product.php:32
+#: includes/product.php:71
+#@ al-ecommerce-product-catalog
+msgid "Product"
+msgstr "Proizvod"
+
+#: includes/category-widget.php:17
+#: includes/product-categories.php:21
+#: includes/product-categories.php:31
+#: includes/product-columns.php:21
+#@ al-ecommerce-product-catalog
+msgid "Product Categories"
+msgstr "Kategorije artikla"
+
+#: includes/product-categories.php:22
+#@ al-ecommerce-product-catalog
+msgid "Product Category"
+msgstr "Kategorija artikla"
+
+#: includes/settings/custom-names.php:16
+#@ al-ecommerce-product-catalog
+msgid "Product Features"
+msgstr "Svojstva artikla"
+
+#: includes/product.php:273
+#@ al-ecommerce-product-catalog
+msgid "Product Image"
+msgstr "Slika artikla"
+
+#: includes/product.php:127
+#@ al-ecommerce-product-catalog
+msgid "Product Price"
+msgstr "Cijena proizvoda"
+
+#: includes/product-settings.php:26
+#@ al-ecommerce-product-catalog
+msgid "Product Settings"
+msgstr "Postavke proizvoda"
+
+#: includes/product.php:129
+#@ al-ecommerce-product-catalog
+msgid "Product Shipping"
+msgstr "Dostava artikla"
+
+#: includes/product-types.php:22
+#@ al-ecommerce-product-catalog
+msgid "Product Type"
+msgstr "Vrsta artikla"
+
+#: includes/product-types.php:21
+#: includes/product-types.php:36
+#@ al-ecommerce-product-catalog
+msgid "Product Types"
+msgstr "Vrste artikala"
+
+#: includes/product.php:131
+#: includes/settings/attributes.php:12
+#@ al-ecommerce-product-catalog
+msgid "Product attributes"
+msgstr "Svojstva artikla"
+
+#: includes/settings/attributes.php:38
+#@ al-ecommerce-product-catalog
+msgid "Product attributes options"
+msgstr "Postavke svojstava artikla"
+
+#: includes/settings/general.php:68
+#@ al-ecommerce-product-catalog
+msgid "Product default image"
+msgstr "Osnovna slika artikla"
+
+#: includes/product.php:126
+#@ al-ecommerce-product-catalog
+msgid "Product description"
+msgstr "Opis artikla"
+
+#: includes/settings/general.php:93
+#@ al-ecommerce-product-catalog
+msgid "Product listing URL"
+msgstr "URL za listing artikla"
+
+#: includes/settings/general.php:74
+#@ al-ecommerce-product-catalog
+msgid "Product listing page"
+msgstr "Stranica za listu artikala"
+
+#: includes/settings/shipping.php:12
+#@ al-ecommerce-product-catalog
+msgid "Product shipping"
+msgstr "Dostava artikla"
+
+#: includes/settings/shipping.php:37
+#@ al-ecommerce-product-catalog
+msgid "Product shipping options"
+msgstr "Načini isporuke"
+
+#: includes/product.php:125
+#@ al-ecommerce-product-catalog
+msgid "Product short description"
+msgstr "Kratki opsi artikla"
+
+#: functions/activation.php:13
+#: includes/product.php:31
+#: includes/product.php:70
+#@ al-ecommerce-product-catalog
+msgid "Products"
+msgstr "Artikli"
+
+#: includes/product.php:288
+#@ al-ecommerce-product-catalog
+msgid "Remove product image"
+msgstr "Ukloni sliku artikla"
+
+#: functions/functions.php:50
+#: includes/settings/settings-functions.php:72
+#@ al-ecommerce-product-catalog
+msgid "Reset image"
+msgstr "Reset slike"
+
+#: includes/settings/attributes.php:81
+#: includes/settings/custom-design.php:80
+#: includes/settings/custom-design.php:107
+#: includes/settings/custom-design.php:173
+#: includes/settings/custom-names.php:82
+#: includes/settings/custom-names.php:110
+#: includes/settings/general.php:149
+#: includes/settings/shipping.php:60
+#@ al-ecommerce-product-catalog
+msgid "Save changes"
+msgstr "Snimi izmjene"
+
+#: includes/product-categories.php:23
+#@ al-ecommerce-product-catalog
+msgid "Search Product Categories"
+msgstr "Pretraga kategorija artikala"
+
+#: includes/product-types.php:23
+#@ al-ecommerce-product-catalog
+msgid "Search Product Types"
+msgstr "Pretraga vrsta artikala"
+
+#: includes/product.php:38
+#: includes/product.php:77
+#@ al-ecommerce-product-catalog
+msgid "Search Products"
+msgstr "Pretraga artikala"
+
+#: includes/category-widget.php:35
+#@ al-ecommerce-product-catalog
+msgid "Select Product Category"
+msgstr "Odaberite kategoriju artikla"
+
+#: includes/product-types.php:32
+#@ al-ecommerce-product-catalog
+msgid "Separate product types with commas"
+msgstr "Odvojite vrste artikala zarezom"
+
+#: includes/product.php:284
+#@ al-ecommerce-product-catalog
+msgid "Set product image"
+msgstr "Postavi sliku proizvoda"
+
+#: includes/settings/shipping.php:48
+#@ al-ecommerce-product-catalog
+msgid "Shipping default cost"
+msgstr "Zadana cijena dostave"
+
+#: includes/settings/shipping.php:48
+#@ al-ecommerce-product-catalog
+msgid "Shipping default name"
+msgstr "Zadani naziv dostave"
+
+#: includes/settings/shipping.php:64
+#@ al-ecommerce-product-catalog
+msgid "Shipping disabled. To enable set minimum 1 shipping option."
+msgstr "Dostava nije moguća. Za omogućavanje postavite najmanje 1 način dostave"
+
+#: theme-product_adder_support.php:32
+#@ al-ecommerce-product-catalog
+msgid "Theme Integration Guide"
+msgstr "Vodič za integraciju teme"
+
+#: includes/settings/attributes.php:42
+#: includes/settings/shipping.php:40
+#@ al-ecommerce-product-catalog
+msgid "Update"
+msgstr "Snimi izmjene"
+
+#: includes/product-categories.php:28
+#@ al-ecommerce-product-catalog
+msgid "Update Product Category"
+msgstr "Snimi izmjene u kategoriji artikla"
+
+#: includes/product-types.php:29
+#@ al-ecommerce-product-catalog
+msgid "Update Product Type"
+msgstr "Snimi izmjene u vrsti artikla"
+
+#: includes/product.php:37
+#: includes/product.php:76
+#@ al-ecommerce-product-catalog
+msgid "View Product"
+msgstr "Pregled artikla"
+
+#: includes/settings/attributes.php:49
+#: includes/settings/shipping.php:45
+#@ al-ecommerce-product-catalog
+msgid "You can change these default values on every product page."
+msgstr "Zadane vrijednosti možete promijeniti na svakoj stranici artikla"
+
+#: includes/settings/general.php:125
+#@ al-ecommerce-product-catalog
+msgid "Your currency"
+msgstr "Vaša valuta"
+
+#: functions/functions.php:33
+#: includes/product.php:27
+#: includes/settings/general.php:53
+#: includes/settings/general.php:62
+#: includes/settings/general.php:98
+#@ al-ecommerce-product-catalog
+msgid "products"
+msgstr "artikli"
+
+#: includes/category-widget.php:84
+#: includes/search-widget.php:42
+#@ al-ecommerce-product-catalog
+msgid "Title:"
+msgstr "Titula:"
+
+#: includes/category-widget.php:88
+#@ al-ecommerce-product-catalog
+msgid "Display as dropdown"
+msgstr "Prikaži kao listu"
+
+#: includes/category-widget.php:94
+#@ al-ecommerce-product-catalog
+msgid "Show hierarchy"
+msgstr "Prikaži hijerarhiju"
+
+#: includes/product.php:284
+#@ default
+msgid "Set featured image"
+msgstr "Postavi istaknutu sliku"
+
+#: includes/product.php:288
+#@ default
+msgid "Remove featured image"
+msgstr "Ukloni istaknutu sliku"
+
+#: includes/category-widget.php:91
+#@ al-ecommerce-product-catalog
+msgid "Show product counts"
+msgstr "Prikaži zbirove za artikal"
+
+#: includes/search-widget.php:16
+#@ al-ecommerce-product-catalog
+msgid "A search form for your products."
+msgstr "Forma za pretragu vaših artikala"
+
+#: includes/search-widget.php:17
+#@ al-ecommerce-product-catalog
+msgid "Product Search"
+msgstr "Pretraga artikala"
+
+#: includes/settings/attributes.php:35
+#@ al-ecommerce-product-catalog
+msgid "Attributes Settings"
+msgstr "Postavke atributa"
+
+#: includes/settings/custom-design.php:12
+#@ al-ecommerce-product-catalog
+msgid "Catalog Design"
+msgstr "Dizajn kataloga"
+
+#: includes/settings/custom-design.php:32
+#: includes/settings/custom-design.php:60
+#@ al-ecommerce-product-catalog
+msgid "Product Listing"
+msgstr "Listing artikala"
+
+#: includes/settings/custom-design.php:33
+#: includes/settings/custom-names.php:53
+#@ al-ecommerce-product-catalog
+msgid "Single Product"
+msgstr "Jedan artikal"
+
+#: includes/settings/custom-design.php:34
+#: includes/settings/custom-design.php:127
+#@ al-ecommerce-product-catalog
+msgid "Design Schemes"
+msgstr "Skice izgleda"
+
+#: includes/settings/custom-design.php:59
+#: includes/settings/custom-design.php:99
+#: includes/settings/custom-design.php:126
+#@ al-ecommerce-product-catalog
+msgid "Design Settings"
+msgstr "Postavke izgleda"
+
+#: includes/settings/custom-design.php:65
+#@ al-ecommerce-product-catalog
+msgid "Modern Grid"
+msgstr "Moderni grid"
+
+#: includes/settings/custom-design.php:68
+#@ al-ecommerce-product-catalog
+msgid "Additional Settings"
+msgstr "Dodatne postavke"
+
+#: includes/settings/custom-design.php:68
+#@ al-ecommerce-product-catalog
+msgid "Show Attributes"
+msgstr "Prikaži atribute"
+
+#: includes/settings/custom-design.php:70
+#@ al-ecommerce-product-catalog
+msgid "Classic List"
+msgstr "Klasična lista"
+
+#: includes/settings/custom-design.php:74
+#@ al-ecommerce-product-catalog
+msgid "Classic Grid"
+msgstr "Klasični grid"
+
+#: includes/settings/custom-design.php:100
+#@ al-ecommerce-product-catalog
+msgid "Product Gallery"
+msgstr "Galerija artikala"
+
+#: includes/settings/custom-design.php:101
+#@ al-ecommerce-product-catalog
+msgid "Enable product image"
+msgstr "Omogući sliku artikla"
+
+#: includes/settings/custom-design.php:102
+#@ al-ecommerce-product-catalog
+msgid "Enable lightbox on product image"
+msgstr "Omogući \"lightbox\" na svakoj slici"
+
+#: includes/settings/custom-design.php:128
+#@ al-ecommerce-product-catalog
+msgid "Changing design schemes has almost always impact on various elements. For example changing price color has impact on single product page and archive page price color."
+msgstr "Izmjena dizajna skoro uvijek ima uticaj na više elemenata. Na primjer, izmjena boje cijene utiče na stranicu prikaza jednog artikla i boju u arhivi artikala."
+
+#: includes/settings/custom-design.php:128
+#@ al-ecommerce-product-catalog
+msgid "You can figure it out by checking \"impact\" column."
+msgstr "Provjerite \"Uticaj\" kolonu"
+
+#: includes/settings/custom-design.php:131
+#@ al-ecommerce-product-catalog
+msgid "Setting"
+msgstr "Postavke"
+
+#: includes/settings/custom-design.php:132
+#@ al-ecommerce-product-catalog
+msgid "Value"
+msgstr "Vrijednost"
+
+#: includes/settings/custom-design.php:133
+#@ al-ecommerce-product-catalog
+msgid "Example Effect"
+msgstr "Primjer efekta"
+
+#: includes/settings/custom-design.php:134
+#@ al-ecommerce-product-catalog
+msgid "Impact"
+msgstr "Uticaj"
+
+#: includes/settings/custom-design.php:138
+#@ al-ecommerce-product-catalog
+msgid "Price Size"
+msgstr "Veličina cijene"
+
+#: includes/settings/custom-design.php:140
+#@ al-ecommerce-product-catalog
+msgid "Big"
+msgstr "Velika"
+
+#: includes/settings/custom-design.php:141
+#@ al-ecommerce-product-catalog
+msgid "Small"
+msgstr "Mala"
+
+#: includes/settings/custom-design.php:144
+#: includes/settings/custom-design.php:155
+#@ al-ecommerce-product-catalog
+msgid "single product"
+msgstr "jedan artikal"
+
+#: includes/settings/custom-design.php:147
+#@ al-ecommerce-product-catalog
+msgid "Price Color"
+msgstr "Boja cijene"
+
+#: includes/settings/custom-design.php:150
+#: includes/settings/custom-design.php:161
+#@ al-ecommerce-product-catalog
+msgid "Red"
+msgstr "Crvena"
+
+#: includes/settings/custom-design.php:151
+#: includes/settings/custom-design.php:162
+#@ al-ecommerce-product-catalog
+msgid "Orange"
+msgstr "Narandžasta"
+
+#: includes/settings/custom-design.php:152
+#: includes/settings/custom-design.php:163
+#@ al-ecommerce-product-catalog
+msgid "Green"
+msgstr "Zelena"
+
+#: includes/settings/custom-design.php:155
+#@ al-ecommerce-product-catalog
+msgid "product archive"
+msgstr "arhiva artikala"
+
+#: includes/settings/custom-design.php:158
+#@ al-ecommerce-product-catalog
+msgid "Boxes Color"
+msgstr "Boja okvira"
+
+#: includes/settings/custom-design.php:167
+#@ al-ecommerce-product-catalog
+msgid "product archive title"
+msgstr "naziv arhive artikala"
+
+#: includes/settings/custom-design.php:167
+#@ al-ecommerce-product-catalog
+msgid "archive pagination"
+msgstr "Način straničenje arhive"
+
+#: includes/settings/custom-names.php:14
+#@ al-ecommerce-product-catalog
+msgid "Product Price:"
+msgstr "Cijena artikla:"
+
+#: includes/settings/custom-names.php:15
+#@ al-ecommerce-product-catalog
+msgid "Product Shipping:"
+msgstr "Dostava artikla:"
+
+#: includes/settings/custom-names.php:17
+#@ al-ecommerce-product-catalog
+msgid "See also different:"
+msgstr "Također pogledajte drugo:"
+
+#: includes/settings/custom-names.php:18
+#@ al-ecommerce-product-catalog
+msgid "<< return to products"
+msgstr "<< povratak na artikle"
+
+#: includes/settings/custom-names.php:34
+#: includes/settings/custom-names.php:67
+#: includes/settings/custom-names.php:97
+#@ al-ecommerce-product-catalog
+msgid "Front-end Labels"
+msgstr "Front-end oznake"
+
+#: includes/settings/custom-names.php:54
+#@ al-ecommerce-product-catalog
+msgid "Archives"
+msgstr "Arhive"
+
+#: includes/settings/custom-names.php:68
+#@ al-ecommerce-product-catalog
+msgid "Single Product Labels"
+msgstr "Oznake za jedan artikal"
+
+#: includes/settings/custom-names.php:70
+#: includes/settings/custom-names.php:100
+#@ al-ecommerce-product-catalog
+msgid "Front-end Element"
+msgstr "Front-end element"
+
+#: includes/settings/custom-names.php:70
+#: includes/settings/custom-names.php:100
+#@ al-ecommerce-product-catalog
+msgid "Front-end Text"
+msgstr "Front-end tekst"
+
+#: includes/settings/custom-names.php:72
+#@ al-ecommerce-product-catalog
+msgid "Price Label"
+msgstr "Oznaka cijene"
+
+#: includes/settings/custom-names.php:73
+#@ al-ecommerce-product-catalog
+msgid "Shipping Label"
+msgstr "Oznaka dostave"
+
+#: includes/settings/custom-names.php:74
+#@ al-ecommerce-product-catalog
+msgid "Features Label"
+msgstr "Oznaka svojstava"
+
+#: includes/settings/custom-names.php:75
+#@ al-ecommerce-product-catalog
+msgid "Another Categories"
+msgstr "Druge kategorije"
+
+#: includes/settings/custom-names.php:76
+#@ al-ecommerce-product-catalog
+msgid "Return to Products"
+msgstr "Povratak na artikle"
+
+#: includes/settings/custom-names.php:98
+#@ al-ecommerce-product-catalog
+msgid "Archive Labels"
+msgstr "Oznake arhiva"
+
+#: includes/settings/custom-names.php:102
+#@ al-ecommerce-product-catalog
+msgid "Product Archive Title"
+msgstr "Naziv arhive artikla"
+
+#: includes/settings/custom-names.php:103
+#@ al-ecommerce-product-catalog
+msgid "Category Prefix"
+msgstr "Prefiks kategorije"
+
+#: includes/settings/general.php:15
+#@ al-ecommerce-product-catalog
+msgid "Product settings"
+msgstr "Postavke artikla"
+
+#: includes/settings/general.php:36
+#: includes/settings/general.php:47
+#@ al-ecommerce-product-catalog
+msgid "General Settings"
+msgstr "Opšte postavke"
+
+#: includes/settings/general.php:78
+#@ al-ecommerce-product-catalog
+msgid "Enable Product Listing Page"
+msgstr "Omogući stranicu za listing artikala"
+
+#: includes/settings/general.php:86
+#@ al-ecommerce-product-catalog
+msgid "Choose Product Listing Page"
+msgstr "Odaberite stranicu za listing artikala"
+
+#: includes/settings/general.php:89
+#@ al-ecommerce-product-catalog
+msgid "Default"
+msgstr "Zadano"
+
+#: includes/settings/general.php:97
+#@ al-ecommerce-product-catalog
+msgid "Product listing shows at most"
+msgstr "Listing artikala prikazuje najviše"
+
+#: includes/settings/general.php:101
+#@ al-ecommerce-product-catalog
+msgid "Categories Parent URL"
+msgstr "URL nadkategorije"
+
+#: includes/settings/general.php:111
+#@ al-ecommerce-product-catalog
+msgid "You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. <br><br>To show products from just one category, use: [show_products category=\"2\"] where 2 is category ID (you can display several categories by inserting comma separated IDs). <br><br>To display products by IDs, use: [show_products product=\"5\"], where 5 is product ID."
+msgstr "Možete koristiti skraćeni kod kako biste prikazali vaše artikle bilo gdje na web sajtu. Samo zalijepite na bilo koju stranicu: [show_products] i svi artikli će biti prikazani na mjestu skraćenog koda. <br><br>Da viste prikazali artikle iz samo jedne kategorije, koristite: [show_products category=\"2\"] gdje je 2 ID kategorije (možete prikazati više kategorije odvajajući njihove ID-ove zarezom).<br><br>Da biste prikazali artikle po njihovom ID broju, koristite: [show_products product=\"5\"], gdje je 5 ID artikla."
+
+#: includes/settings/general.php:112
+#@ al-ecommerce-product-catalog
+msgid "Product Breadcrumbs"
+msgstr "Breadcrumb artikla"
+
+#: includes/settings/general.php:115
+#@ al-ecommerce-product-catalog
+msgid "Enable Product Breadcrumbs:"
+msgstr "Omogući breadcrumb za artikal:"
+
+#: includes/settings/general.php:119
+#@ al-ecommerce-product-catalog
+msgid "Product listing breadcrumbs title:"
+msgstr "Naziv breadcrumba za listing artikala:"
+
+#: includes/settings/shipping.php:34
+#@ al-ecommerce-product-catalog
+msgid "Shipping Settings"
+msgstr "Postavke dostave"
+
+#: includes/settings/general.php:134
+#@ al-ecommerce-product-catalog
+msgid "Custom Currency Symbol"
+msgstr "Vaš simbol valute"
+
+#: includes/settings/general.php:132
+#@ al-ecommerce-product-catalog
+msgid "If you choose custom currency symbol, it will override \"Your Currency\" setting. This is very handy if you want to use not supported currency or a preferred symbol for your currency."
+msgstr "Ukoliko odaberete vašu valutu, onda će postavke za \"Your Currency\" biti izmjenjene na ovu vrijednost."
+
+#: functions/support.php:16
+#@ smart-multiple-catalogs
+msgid "Support"
+msgstr ""
+
+#: functions/support.php:29
+#@ al-ecommerce-product-catalog
+msgid "impleCode Support"
+msgstr ""
+
+#: functions/support.php:30
+#@ al-ecommerce-product-catalog
+msgid "<b>eCommerce Product Catalog is free to use</b> - life is wonderful and lovely! However, it is required a great deal of time and effort to develop  such a software. If you found eCommerce Product Catalog useful or it saved you some amount of time you can support its development by making a small donation. This will act as an incentive for me to carry on developing. You get some useful software and I get to carry on making it. Everybody wins."
+msgstr ""
+
+#: functions/support.php:31
+#@ al-ecommerce-product-catalog
+msgid "This awesome plugin is developed under impleCode brand which is a legally operating company. It means that <b>you can get even more value</b> if you prefer to. Choose between:"
+msgstr ""
+
+#: functions/support.php:35
+#@ al-ecommerce-product-catalog
+msgid "<b>Donation</b> (which is just a donation, it means you do not get any more value than the free plugin and its continuous development)"
+msgstr ""
+
+#: functions/support.php:44
+#@ al-ecommerce-product-catalog
+msgid "<b>One year</b> of high quality and speedy email"
+msgstr ""
+
+#: functions/support.php:44
+#@ al-ecommerce-product-catalog
+msgid "from impleCode support team for just"
+msgstr ""
+
+#: functions/support.php:53
+#, php-format
+#@ al-ecommerce-product-catalog
+msgid "<b>Extensions</b> provide additional useful features. They improve eCommerce Product Catalog in a field of <a target=\"_blank\" href=\"%1$s\">SEO</a>, <a target=\"_blank\" href=\"%3$s\">Productivity</a>, <a target=\"_blank\" href=\"%2$s\">Usability</a> and <a target=\"_blank\" href=\"%4$s\">Conversion</a>."
+msgstr ""
+
+#: functions/support.php:58
+#@ al-ecommerce-product-catalog
+msgid "Theme Integration"
+msgstr ""
+
+#: functions/support.php:59
+#, php-format
+#@ al-ecommerce-product-catalog
+msgid "As you may already know some themes may need Theme Integration to fully support eCommerce Product Catalog. I wrote this <a target=\"_blank\" href=\"%1$s\">theme integrations guide</a>, however to make it even easier you will get <a target=\"_blank\" href=\"%2$s\">Advanced Theme Integration</a> service for free* if you choose <a target=\"_blank\" href=\"%3$s\">Premium Support</a> service."
+msgstr ""
+
+#: functions/support.php:62
+#@ al-ecommerce-product-catalog
+msgid "eCommerce Product Catalog documentation"
+msgstr ""
+
+#: functions/support.php:63
+#, php-format
+#@ al-ecommerce-product-catalog
+msgid "<b>eCommerce Product Catalog</b> documentation is being developed <a target=\"_blank\" href=\"%1$s\">here</a>. For questions about eCommerce Product Catalog please use <a target=\"_blank\" href=\"%2$s\">support forum</a> or <a target=\"_blank\" href=\"%3$s\">Premium Support service</a>."
+msgstr ""
+
+#: functions/support.php:64
+#@ al-ecommerce-product-catalog
+msgid "Plugin Extensions"
+msgstr ""
+
+#: functions/support.php:65
+#@ al-ecommerce-product-catalog
+msgid "For many users eCommerce Product Catalog standard features is more than enough. However for more specialized needs there are some extensions available. eCommerce Product Catalog extensions are divided into:"
+msgstr ""
+
+#: includes/product-columns.php:18
+#@ al-ecommerce-product-catalog
+msgid "ID"
+msgstr ""
+
+#: includes/product-columns.php:19
+#@ al-ecommerce-product-catalog
+msgid "Product Name"
+msgstr ""
+
+#: includes/product-columns.php:20
+#@ al-ecommerce-product-catalog
+msgid "Shortcode"
+msgstr ""
+
+#: includes/product-columns.php:22
+#@ al-ecommerce-product-catalog
+msgid "Date"
+msgstr ""
+
+#: includes/product.php:302
+#@ default
+msgid "Custom field updated."
+msgstr ""
+
+#: includes/product.php:303
+#@ default
+msgid "Custom field deleted."
+msgstr ""
+
+#: includes/product.php:304
+#@ default
+msgid " updated."
+msgstr ""
+
+#: includes/product.php:305
+#, php-format
+#@ default
+msgid " restored to revision from %s"
+msgstr ""
+
+#: includes/product.php:307
+#@ default
+msgid "Page saved."
+msgstr ""
+
+#: includes/product.php:309
+#@ default
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: includes/settings/custom-design.php:103
+#@ al-ecommerce-product-catalog
+msgid "Enable product image only when inserted"
+msgstr ""
+
+#: includes/settings/general.php:107
+#@ al-ecommerce-product-catalog
+msgid "Archive SEO Title"
+msgstr ""
+
+#: includes/settings/general.php:108
+#@ al-ecommerce-product-catalog
+msgid "Enable SEO title separator"
+msgstr ""
+
+#: includes/settings/general.php:138
+#@ al-ecommerce-product-catalog
+msgid "Currency position"
+msgstr ""
+
+#: includes/settings/general.php:139
+#@ al-ecommerce-product-catalog
+msgid "Before Price<br>"
+msgstr ""
+
+#: includes/settings/general.php:140
+#@ al-ecommerce-product-catalog
+msgid "After Price"
+msgstr ""
+
+#: includes/settings/general.php:143
+#@ al-ecommerce-product-catalog
+msgid "Space between currency & price"
+msgstr ""
+
+#: includes/settings/general.php:143
+#@ al-ecommerce-product-catalog
+msgid "On<br>"
+msgstr ""
+
+#: includes/settings/general.php:143
+#@ al-ecommerce-product-catalog
+msgid "Off"
+msgstr ""
+
+#: templates/content-al_product_archive.php:19
+#@ al-ecommerce-product-catalog
+msgid "Search Results for:"
+msgstr ""
+
+#: theme-product_adder_support.php:31
+#@ al-ecommerce-product-catalog
+msgid "<strong>Your theme does not declare eCommerce Product Catalog support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a recomended theme :)"
+msgstr ""
+
+#: theme-product_adder_support.php:32
+#@ al-ecommerce-product-catalog
+msgid "Plugin Support"
+msgstr ""
+

@@ -45,7 +45,27 @@ else {
 	$url = default_product_thumbnail_url(); 
 }
 $archive_price = apply_filters('archive_price_filter', '', $post);
-$return = '<div class="archive-listing classic-grid">';
+$default_classic_grid_settings = array (
+	'entries' => '',
+	);
+$classic_grid_settings = get_option( 'classic_grid_settings', $default_classic_grid_settings);
+$row_class = 'full';
+if ($classic_grid_settings['entries'] != '') {
+global $row;
+if ($row > $classic_grid_settings['entries'] || !isset($row)) {$row = 1; }
+$count = $row - $classic_grid_settings['entries'];
+if ($row == 1) {
+$row_class = 'first';
+}
+else if ($count == 0) {
+$row_class = 'last';
+}
+else {
+$row_class = 'middle';
+}
+$row++;
+}
+$return = '<div class="archive-listing classic-grid '.$row_class.'">';
 $return .= '<a href="'.get_permalink().'">';
 $return .= '<div style="background-image:url(\''.$url.'\');" class="classic-grid-element"></div>';
 $return .= '<div class="product-name">'.get_the_title().'</div>'.$archive_price.'</a></div>';

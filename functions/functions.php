@@ -495,3 +495,20 @@ if ($settings['seo_title'] != '' && is_archive() && $post->post_type == 'al_prod
 return $title;
 }
 add_filter('wp_title', 'product_archive_title', 99, 3);
+
+function add_support_link($links, $file) {
+	
+	$plugin = plugin_basename(AL_PLUGIN_MAIN_FILE);
+
+	// create link
+	if ($file == $plugin) {
+		return array_merge(
+			$links,
+			array( sprintf( '<a href="edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=support">%s</a>', __('Support') ) )
+		);
+	}
+
+	return $links;
+}
+
+add_filter( 'plugin_row_meta', 'add_support_link', 10, 2 );

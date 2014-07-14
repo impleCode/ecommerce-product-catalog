@@ -58,7 +58,7 @@ echo product_breadcrumbs(); ?>
 			endwhile; }
 		else {
 			while ( have_posts() ) : the_post(); 
-				grid_archive_theme($post);
+				echo get_grid_archive_theme($post);
 			endwhile; 
 		}
 		?><span class="clear"></span>

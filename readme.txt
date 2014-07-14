@@ -4,7 +4,7 @@ Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_i
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.6.1
+Stable tag: 1.6.2
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -20,25 +20,25 @@ You can read all about [eCommerce Product Catalog](http://implecode.com/wordpres
 
 * __Unlimited number of products__ - Add as many products to your catalog as you need
 * __SEO Friendly__ - Give your site nice boost in search engines with SEO optimized product pages
-* __Usefull Product categories__ - You can divide your products into categories if you need to
-* __Intuitive Catalog Settings__ - You can fully customize your product catalog
-* __[show_products] Shortcode__ - You can show products with shortcode whenever you want on the website
-* __Lightbox on product image__ - Display your product image in nice lightbox window
-* __Product Attributes__ - You can specify attributes for each product
-* __Product Shipping__ - You can specify shipping options for each product
-* __Color & Size Change__ - You can choose color and size of product catalog elements
-* __3 Product Listing Templates__ - You can choose from 3 completely different product listing templates
-* __25 currencies available__ - You can choose from 25 different currencies or just insert custom currency
-* __Customizable Price Formats__ - You can choose from 4 different price formats to suit your currency needs
+* __Usefull Product categories__ - Divide the products into categories when needed
+* __Intuitive Catalog Settings__ - Fully customize the product catalog
+* __[show_products] Shortcode__ - Show products with shortcode whenever it’s desired on the website
+* __Lightbox on product image__ - Display product image in a nice lightbox window
+* __Product Attributes__ - Specify the attributes for each product
+* __Product Shipping__ - Specify shipping options for each product
+* __Color & Size Change__ - Choose product catalog elements color and size 
+* __3 Product Listing Templates__ - Choose from 3 completely different product listing templates
+* __25 currencies available__ - Choose from 25 different currencies or just insert custom currency
+* __Customizable Price Formats__ - Choose from 4 different price formats to suit any currency needs
 * __Drag-and-Drop functionality__ - Highly intuitive interface to manage Product Attributes and Shipping Options
-* __Product Category Widget__ - Show your product categories in sidebar
-* __Product Search Widget__ - Give your users useful search function
-* __Completely Customizable Design__ - you can use your theme CSS, its great for designers and developers
-* __Abillity to Disable the eCommerce functionality__ - very handy if you just want to present your products
+* __Product Category Widget__ - Show product categories in any sidebar on the website
+* __Product Search Widget__ - Give the users useful search function
+* __Completely Customizable Design__ - Customize with theme CSS, its great for designers and developers
+* __Abillity to Disable the eCommerce functionality__ - very handy to just present the products without price
 * __Cross Browser Compatibility__ - works in all major browsers: IE7, IE8, IE9, Safari, Firefox, Chrome, Opera
-* __Product Archive Page__ - choose a WordPress page to display your products or use [show_products] shortcode
-* __Front-end Labels Manager__ - with eCommerce Product Catalog you can manage everything your clients can see
-* __Product Breadcrumbs__ - you can use SEO friendly product breadcrumbs
+* __Product Archive Page__ - choose a WordPress page to display the products or use [show_products] shortcode
+* __Front-end Labels Manager__ - manage everything users can see
+* __Product Breadcrumbs__ - use SEO friendly product breadcrumbs
 
 And more to come every week! 
 
@@ -46,15 +46,15 @@ Future functions are specified in the "Current Donation Goal" section.
 
 = Display Products with a Shortcode =
 
-You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. 
+Use the shortcode to show products whenever needed on the website. Just paste on any page: [show_products] and watch all products in place of the shortcode. 
 
-To show products from just one category, use: [show_products category="2"] where 2 is category ID (you can display several categories by inserting comma separated IDs). 
+To show products from just one category, use: [show_products category="2"] where 2 is category ID (it's possible to display several categories by inserting comma separated IDs). 
 
 To display products by IDs, use: [show_products product="5"], where 5 is product ID.
 
 = eCommerce Product Catalog Extensions =
 
-The feature packed extensions is that what makes eCommerce Product Catalog even more outstanding. [Browse the extensions](http://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extensions-link#extensions "eCommerce Product Catalog extensions on implecode.com"). 
+The feature packed extensions is that what makes eCommerce Product Catalog more specialized solution. [Browse the extensions](http://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extensions-link#extensions "eCommerce Product Catalog extensions on implecode.com"). 
 
 = Current Donation Goal =
 
@@ -146,8 +146,15 @@ Documentation is available [here](http://implecode.com/wordpress/product-catalog
 2. Product catalog settings.
 3. Default product catalog archive.
 4. Default product single page.
+5. Classic grid product catalog archive.
+6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 1.6.2 - 14/07/2014 =
+
+* Tweak - Number of products per row introduced into classic grid theme to improve styling possibilities
+* Tweak - Support tab improved
 
 = 1.6.1 - 07/07/2014 =
 

@@ -17,6 +17,7 @@ add_action('settings-menu','design_menu');
 function design_settings() {
  	register_setting('product_design', 'archive_template');
 	register_setting('product_design', 'modern_grid_settings');
+	register_setting('product_design', 'classic_grid_settings');
 	register_setting('single_design', 'catalog_lightbox');
 	register_setting('single_design', 'multi_single_options');
 	register_setting('design_schemes', 'design_schemes');
@@ -55,14 +56,19 @@ if ($submenu == 'archive-design') { ?>
 	$default_modern_grid_settings = array (
 	'attributes' => 1,
 	);
-	$modern_grid_settings = get_option( 'modern_grid_settings', $default_modern_grid_settings);?>
+	$modern_grid_settings = get_option( 'modern_grid_settings', $default_modern_grid_settings);
+	$default_classic_grid_settings = array (
+	'entries' => '',
+	);
+	$classic_grid_settings = get_option( 'classic_grid_settings', $default_classic_grid_settings);?>
 	<h2><?php _e('Design Settings', 'al-ecommerce-product-catalog'); ?></h2>
 	<h3><?php _e('Product Listing', 'al-ecommerce-product-catalog'); ?></h3>
 		<table class="design-table">
 			<thead></thead>
 			<tbody>
 				<tr id="default-theme">
-					<td class="with-additional-styling"><input type="radio" name="archive_template" value="default"<?php checked( 'default' == $archive_template ); ?>><?php _e('Modern Grid', 'al-ecommerce-product-catalog'); ?></td>
+					<td class="with-additional-styling">
+					<input type="radio" name="archive_template" value="default"<?php checked( 'default' == $archive_template ); ?>><?php _e('Modern Grid', 'al-ecommerce-product-catalog'); ?></td>
 					<td rowspan="2" class="theme-example"><?php example_default_archive_theme(); ?></td>
 				</tr>
 				<tr><td class="additional-styling"><strong><?php _e('Additional Settings', 'al-ecommerce-product-catalog'); ?></strong><br><input type="checkbox" name="modern_grid_settings[attributes]" value="1"<?php checked( 1, isset($modern_grid_settings['attributes']) ? $modern_grid_settings['attributes'] : '' ); ?>><?php _e('Show Attributes', 'al-ecommerce-product-catalog'); ?></td></tr>
@@ -71,8 +77,12 @@ if ($submenu == 'archive-design') { ?>
 					<td class="theme-example"><?php example_list_archive_theme(); ?></td>
 				</tr>
 				<tr id="grid-theme">
-					<td class="with-additional-styling"><input type="radio" name="archive_template" value="grid"<?php checked( 'grid' == $archive_template ); ?>><?php _e('Classic Grid', 'al-ecommerce-product-catalog'); ?></td>
-					<td class="theme-example"><?php example_grid_archive_theme(); ?></td>
+					<td class="with-additional-styling">
+					<input type="radio" name="archive_template" value="grid"<?php checked( 'grid' == $archive_template ); ?>><?php _e('Classic Grid', 'al-ecommerce-product-catalog'); ?></td>
+					<td rowspan="2" class="theme-example"><?php example_grid_archive_theme(); ?></td>
+				</tr>
+				<tr>
+				<td class="additional-styling"><strong><?php _e('Additional Settings', 'al-ecommerce-product-catalog'); ?></strong><br><?php _e('Per row', 'al-ecommerce-product-catalog') ?>: <input type="number" min="1" step="1" class="number_box" name="classic_grid_settings[entries]" value="<?php echo $classic_grid_settings['entries'] ?>"><?php _e('products', 'al-ecommerce-product-catalog') ?></td>
 				</tr>
 			</tbody>
 		</table>

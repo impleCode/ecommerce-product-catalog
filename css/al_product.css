@@ -317,6 +317,14 @@ margin-right: 18px;
 float: left;
 }
 
+.classic-grid.archive-listing.last {
+clear: right;
+}
+
+.classic-grid.archive-listing.first {
+clear: left;
+}
+
 .classic-grid.archive-listing .classic-grid-element {
 background-size: 200px; 
 background-position: center; 
@@ -592,6 +600,13 @@ padding: 10px;
 font-size: 14px;
 }
 
+.support-tab table td ul li{
+background: #ededed;
+padding: 5px;
+border-radius: 3px;
+max-width: 300px;
+}
+
 #admin-number-field, #archive_products_limit, input.admin-number-field{
 width: 50px;
 }
@@ -643,6 +658,7 @@ padding: 10px 20px;
 td.additional-styling {
 vertical-align: top;
 padding: 0;
+min-width: 200px;
 }
 
 td.with-additional-styling {
@@ -755,7 +771,7 @@ width: 2.2em;
 }
 
 /* Category Columns */
-.manage-column.column-id {
+.taxonomy-al_product-cat .manage-column.column-id {
 width: 2em;
 }
 

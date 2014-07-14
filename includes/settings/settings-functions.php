@@ -10,28 +10,27 @@
  */
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  
-function implecode_settings_radio($option_label, $option_name, $option_value, $elements = array()) { ?>
-	<tr>
-		<td><?php echo $option_label; ?>:</td>
-		<td><?php foreach ($elements as $key => $element) { ?>
-		<input type="radio" class="number_box" name="<?php echo $option_name;?>" value="<?php echo $key ?>"<?php checked( $key == $option_value ); ?>/> <?php echo $element;
-		} ?></td>
-	</tr>
-<?php }
-
-function implecode_settings_checkbox($option_label, $option_name, $option_enabled) { ?>
-	<tr>
-		<td>
-			<?php echo $option_label; ?>:
-		</td>
-		<td>
-			<input type="checkbox" name="<?php echo $option_name;?>" value="1"<?php checked( 1, $option_enabled ); ?> />
-		</td>
-	</tr>
-<?php
+function implecode_settings_radio($option_label, $option_name, $option_value, $elements = array(), $echo = 1) {
+	$return = '<tr>';
+		$return .= '<td>'. $option_label .':</td>';
+		$return .= '<td>';
+		foreach ($elements as $key => $element) { 
+		$return .= '<input type="radio" class="number_box" name="'. $option_name .'" value="'. $key .'"'. checked( $key, $option_value, 0).'/>'. $element;
+		} 
+		$return .= '</td>';
+	$return .= '</tr>';
+return echo_ic_setting($return, $echo);
 }
 
-function implecode_settings_text($option_label, $option_name, $option_value, $required = null) { 
+function implecode_settings_checkbox($option_label, $option_name, $option_enabled, $echo = 1) {
+	$return = '<tr>';
+		$return .='<td>'.$option_label.'</td>';
+		$return .='<td><input type="checkbox" name="'. $option_name.'" value="1"'. checked( 1, $option_enabled, 0) .'/></td>';
+	$return .='</tr>';
+return echo_ic_setting($return, $echo);
+}
+
+function implecode_settings_text($option_label, $option_name, $option_value, $required = null, $echo = 1) { 
 if ($required != '') {
 	$regired_field = 'required="required"';
 	$star = '<span class="star"> *</span>';
@@ -39,26 +38,29 @@ if ($required != '') {
 else {
 	$regired_field = '';
 	$star = '';
-} ?>
-	<tr>
-		<td><?php echo $option_label.$star; ?>:</td>
-		<td><input <?php echo $regired_field ?> type="text" name="<?php echo $option_name;?>" value="<?php echo $option_value; ?>" /></td>
-	</tr>
-<?php }
+} 
+	$return = '<tr>';
+		$return .= '<td>'. $option_label.$star .':</td>';
+		$return .= '<td><input '. $regired_field .' type="text" name="'. $option_name .'" value="'. $option_value .'" /></td>';
+	$return .= '</tr>';
+return echo_ic_setting($return, $echo);
+}
 
-function implecode_settings_number($option_label, $option_name, $option_value, $unit) { ?>
-	<tr>
-		<td><?php echo $option_label; ?>:</td>
-		<td><input type="number" class="number_box" name="<?php echo $option_name;?>" value="<?php echo $option_value; ?>" /><?php echo $unit; ?></td>
-	</tr>
-<?php }
+function implecode_settings_number($option_label, $option_name, $option_value, $unit, $echo = 1) {
+	$return = '<tr>';
+		$return .= '<td>'. $option_label .':</td>';
+		$return .= '<td><input type="number" class="number_box" name="'. $option_name .'" value="'. $option_value .'" />'. $unit .'</td>';
+	$return .= '</tr>';
+return echo_ic_setting($return, $echo);
+}
 
-function implecode_settings_textarea($option_label, $option_name, $option_value) { ?>
-	<tr>
-		<td><?php echo $option_label; ?>:</td>
-		<td><textarea name="<?php echo $option_name;?>"><?php echo $option_value; ?></textarea></td>
-	</tr>
-<?php }
+function implecode_settings_textarea($option_label, $option_name, $option_value, $echo = 1) {
+	$return = '<tr>';
+		$return .= '<td>'. $option_label .':</td>';
+		$return .= '<td><textarea name="'. $option_name .'">'. $option_value .'</textarea></td>';
+	$return .= '</tr>';
+return echo_ic_setting($return, $echo);
+}
 
 function implecode_upload_image($button_value, $option_name, $option_value, $default_image = null) {
 wp_enqueue_media(); ?>
@@ -95,3 +97,12 @@ jQuery('.media-image').attr("src", src);
 });
 </script>
 <?php }
+
+function echo_ic_setting($return, $echo = 1) {
+if ($echo == 1) {
+echo $return;
+}
+else {
+return $return;
+}
+}

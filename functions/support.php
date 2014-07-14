@@ -51,7 +51,7 @@ function implecode_custom_support_settings_content() { ?>
 			</td>
 			<td>
 			<?php echo sprintf( __('<b>Extensions</b> provide additional useful features. They improve eCommerce Product Catalog in a field of <a target="_blank" href="%1$s">SEO</a>, <a target="_blank" href="%3$s">Productivity</a>, <a target="_blank" href="%2$s">Usability</a> and <a target="_blank" href="%4$s">Conversion</a>.','al-ecommerce-product-catalog'), esc_url( 'http://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-seo#seo_usability_boosters' ),  esc_url( 'http://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-usability#seo_usability_boosters' ), esc_url( 'http://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-productivity#productivity_boosters' ), esc_url( 'http://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-conversion#conversion_boosters' )) ?>
-			<p><a target="_blank" href="http://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link#conversion_boosters"><input style="cursor:pointer;" class="classic-button" type="button" value="Check out the extensions &raquo;"></a></p>
+			<p><a target="_blank" href="http://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link#extensions"><input style="cursor:pointer;" class="classic-button" type="button" value="Check out the extensions &raquo;"></a></p>
 			</td>
 			</tr>
 			</table>
@@ -79,24 +79,24 @@ function implecode_custom_support_settings_content() { ?>
 					<tr>
 						<td>
 							<ul class="support-ul">
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/custom-product-order/#cam=catalog-support-tab&key=custom-product-order-link">Custom Product Order</a></li>
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/upload-pdf/#cam=catalog-support-tab&key=upload-pdf-link">Upload PDF</a></li>
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/product-search-pro/#cam=catalog-support-tab&key=product-search-pro-link">Product Search PRO</a></li>
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/smarter-product-urls/#cam=catalog-support-tab&key=smarter-product-urls-link">Smarter Product URLs</a></li>
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/product-gallery-advanced/#cam=catalog-support-tab&key=gallery-advanced-link">Product Gallery Advanced</a></li>
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/al-ecommerce-product-catalog/#cam=catalog-support-tab&key=al-ecommerce-product-catalog-link">Smart Multiple Catalogs</a></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/custom-product-order/#cam=catalog-support-tab&key=custom-product-order-link">Custom Product Order</a> - <?php _e('show products in custom order, show featured products always on top', 'al-ecommerce-product-catalog') ?></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/upload-pdf/#cam=catalog-support-tab&key=upload-pdf-link">Upload PDF</a> - <?php _e('a downloadable PDF attached to the product', 'al-ecommerce-product-catalog') ?></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/product-search-pro/#cam=catalog-support-tab&key=product-search-pro-link">Product Search PRO</a> - <?php _e('better product search, completely rewritten search engine', 'al-ecommerce-product-catalog') ?></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/smarter-product-urls/#cam=catalog-support-tab&key=smarter-product-urls-link">Smarter Product URLs</a> - <?php _e('URL structure improved for SEO and Usabilty purpose', 'al-ecommerce-product-catalog') ?></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/product-gallery-advanced/#cam=catalog-support-tab&key=gallery-advanced-link">Product Gallery Advanced</a> - <?php _e('add more images and show them in lightbox', 'al-ecommerce-product-catalog') ?></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/smart-multiple-catalogs/#cam=catalog-support-tab&key=smart-multiple-catalogs-link">Smart Multiple Catalogs</a> - <?php _e('create completely separate product catalogs, with separate categories and URL structure, even with separate management in WP Admin', 'al-ecommerce-product-catalog') ?></li>
 							</ul>
 						</td>
 						<td>
 							<ul class="support-ul">
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/drop-attributes/#cam=catalog-support-tab&key=drop-down-attributes-link">Drop-down Attributes</a></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/drop-attributes/#cam=catalog-support-tab&key=drop-down-attributes-link">Drop-down Attributes</a> - <?php _e('limit possible values for certain attributes', 'al-ecommerce-product-catalog') ?></li>
 							</ul>
 						</td>
 						<td>
 							<ul class="support-ul">
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/quote-form/#cam=catalog-support-tab&key=quote-form-link">Quote Form</a></li>
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/paypal-gateway/#cam=catalog-support-tab&key=paypal-gateway-link">PayPal Gateway</a></li>
-								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/order-form/#cam=catalog-support-tab&key=order-form-link">Order Form</a></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/quote-form/#cam=catalog-support-tab&key=quote-form-link">Quote Form</a> - <?php _e('allow users to ask for a quote for individual products', 'al-ecommerce-product-catalog') ?></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/paypal-gateway/#cam=catalog-support-tab&key=paypal-gateway-link">PayPal Gateway</a> - <?php _e('allow fast PayPal payments trough order form', 'al-ecommerce-product-catalog') ?></li>
+								<li><a target="_blank" href="http://implecode.com/wordpress/plugins/order-form/#cam=catalog-support-tab&key=order-form-link">Order Form</a> - <?php _e('allow users to order individual products (not a shopping cart), good when users buy only one product at a time', 'al-ecommerce-product-catalog') ?></li>
 							</ul>
 						</td>
 					</tr>

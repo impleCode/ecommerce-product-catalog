@@ -215,7 +215,13 @@ function al_product_short_desc() {
 	echo '<input type="hidden" name="shortdescmeta_noncename" id="shortdescmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	$shortdesc = get_post_meta($post->ID, '_shortdesc', true);
-	$short_desc_settings = array('media_buttons' => false, 'textarea_rows' => 5, 'teeny' => true);
+	$short_desc_settings = array('media_buttons' => false, 'textarea_rows' => 5, 'tinymce' => array(
+	'menubar' => false,
+        'toolbar1' => 'bold,italic,underline,blockquote,strikethrough,bullist,numlist,alignleft,aligncenter,alignright,undo,redo,link,unlink,fullscreen',
+		'toolbar2' => '',
+		'toolbar3' => '',
+		'toolbar4' => '',
+    ));
 	wp_editor($shortdesc,'_shortdesc', $short_desc_settings);
 }
 function al_product_desc() {

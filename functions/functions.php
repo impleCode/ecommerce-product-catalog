@@ -140,6 +140,14 @@ return $output; }
 
 /* Single Product Functions */
 
+function single_product_header($post, $single_names) { ?>
+<header class="entry-header">
+	<h1 class="entry-title product-name"><?php the_title(); ?></h1>
+	<?php do_action('single_product_header', $post, $single_names); ?>
+</header><?php
+}
+add_action('before_product_entry','single_product_header', 10, 2);
+
 function example_price() {
 echo '2500.00 EUR';
 }
@@ -187,7 +195,7 @@ for ($i = 1; $i <= $shipping_options; $i++) {
 		$any_shipping_value = $sh_val; }
 }
 if ($shipping_options > 0 AND ! empty($any_shipping_value)) { ?>
-	<table>
+	<table class="shipping-table">
 		<tr>
 			<td>
 				<?php echo $single_names['product_shipping'] ?>
@@ -229,7 +237,7 @@ for ($i = 1; $i <= $attributes_number; $i++) {
 	}
 }
 if ($attributes_number > 0 AND ! empty($any_attribute_value)) { ?>
-	<div class="product-features">
+	<div id="product_features" class="product-features">
 		<h3><?php echo $single_names['product_features']; ?></h3>
 		<table class="features-table">
 			<?php for ($i = 1; $i <= $attributes_number; $i++) { 
@@ -264,7 +272,7 @@ return;
 $term = $terms[0];
 $categories = wp_list_categories('title_li=&taxonomy='.$taxonomy_name.'&include='.$term.'&echo=0&hierarchical=0'); 
 if ($categories != '<li class="cat-item-none">No categories</li>') { ?>
-	<div class="product-subcategories">
+	<div id="product_subcategories" class="product-subcategories">
 		<table>
 			<tr>
 				<td>

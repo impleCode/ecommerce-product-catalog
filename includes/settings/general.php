@@ -18,7 +18,6 @@ function general_menu() { ?>
 add_action('settings-menu','general_menu');
  
 function general_settings() {
-	register_setting('product_settings', 'default_product_thumbnail');
 	register_setting('product_settings', 'product_listing_url');
 	register_setting('product_settings', 'product_currency');
 	register_setting('product_settings', 'product_currency_settings');
@@ -65,12 +64,6 @@ function general_settings_content() { ?>
 					update_option( 'product_archive', $page_get->ID );
 					$product_archive = get_option('product_archive');
 				} ?>
-				<h3><?php _e('Product default image', 'al-ecommerce-product-catalog'); ?></h3>
-				<?php global $name, $button_value, $option_name; 
-				$name = 'default_product_thumbnail'; 
-				$button_value = __('Change default thumbnail', 'al-ecommerce-product-catalog'); 
-				$option_name = 'default_product_thumbnail';
-				upload_product_image($name, $button_value, $option_name); ?>
 				<h3><?php _e('Product listing page', 'al-ecommerce-product-catalog'); ?></h3>	
 				<table>
 					<tr>

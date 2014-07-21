@@ -48,19 +48,10 @@ echo product_breadcrumbs(); ?>
 			<?php } 
 		} 
 		$archive_template = get_option( 'archive_template', DEFAULT_ARCHIVE_TEMPLATE);
-		if ($archive_template == 'default') {
-			while ( have_posts() ) : the_post(); 
-				default_archive_theme($post);
-			endwhile; }
-		else if ($archive_template == 'list') {
-			while ( have_posts() ) : the_post(); 
-				list_archive_theme($post);
-			endwhile; }
-		else {
-			while ( have_posts() ) : the_post(); 
-				echo get_grid_archive_theme($post);
-			endwhile; 
-		}
+		do_action('before_product_list', $archive_template);
+		while ( have_posts() ) : the_post(); 
+			echo get_catalog_template($archive_template, $post);
+		endwhile;
 		?><span class="clear"></span>
 	</div>
 	

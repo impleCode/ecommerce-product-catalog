@@ -38,6 +38,9 @@ function grid_archive_theme($post) { ?>
 <?php }
 
 function get_grid_archive_theme($post) {
+$archive_template = get_option( 'archive_template', 'default');
+$archive_template = !empty($archive_template) ? $archive_template : 'default';
+if ($archive_template == 'grid') {
 if (wp_get_attachment_url( get_post_thumbnail_id($post->ID) )) {
 	$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
 } 
@@ -63,12 +66,17 @@ $row_class = 'last';
 else {
 $row_class = 'middle';
 }
-$row++;
+if (more_products()) {
+$row++; }
+else {
+unset($row);
+}
 }
 $return = '<div class="archive-listing classic-grid '.$row_class.'">';
 $return .= '<a href="'.get_permalink().'">';
 $return .= '<div style="background-image:url(\''.$url.'\');" class="classic-grid-element"></div>';
 $return .= '<div class="product-name">'.get_the_title().'</div>'.$archive_price.'</a></div>';
 return $return;
+}
 }
 

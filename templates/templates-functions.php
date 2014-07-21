@@ -52,6 +52,7 @@ echo '<h1 class="entry-title">'.$page->post_title.'</h1>';
 }
 
 function show_products_outside_loop($atts) {
+global $shortcode_query;
 extract(shortcode_atts(array( 
 		'post_type' => 'al_product',
 		'category' => '',
@@ -63,15 +64,15 @@ extract(shortcode_atts(array(
 
 if ($product != 0) {
 	$product_array = explode(',', $product);
-	$query = new WP_Query( array (
+	$query_param = array (
 		'post_type' => 'al_product',
 		'post__in' => $product_array,
 		'posts_per_page' => $products_limit,
-		));
+		);
 }
 else if ($category != 0) {
 	$category_array = explode(',', $category);
-	$query = new WP_Query( array (
+	$query_param = array (
 		'post_type' => 'al_product',
 		'tax_query' => array(
 			array(
@@ -81,18 +82,21 @@ else if ($category != 0) {
 			),
 		),
 		'posts_per_page' => $products_limit,
-		));
+		);
 }
 else {
 	$product_array = explode(',', $product);
-	$query = new WP_Query( array (
+	$query_param = array (
 		'post_type' => 'al_product',
 		'posts_per_page' => $products_limit,
-		));
+		);
 }
+$query_param = apply_filters('shortcode_query', $query_param);
+$shortcode_query = new WP_Query($query_param);
 $inside = '';
 $i = 0;
-while ( $query->have_posts() ) : $query->the_post(); global $post; $i++;
+do_action('before_product_list', $archive_template);
+while ( $shortcode_query->have_posts() ) : $shortcode_query->the_post(); global $post; $i++;
 	$inside .= get_catalog_template($archive_template, $post, $i, $design_scheme);
 endwhile;
 wp_reset_postdata();
@@ -157,9 +161,11 @@ if ( ! in_array( $max, $links ) ) {
 		$class = $paged == $max ? ' class="active"' : '';
 		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ).'#product_archive_nav', $max );
 }
-if ( get_next_posts_link() )
-	printf( '<li>%s</li>' . "\n", get_next_posts_link() );
+if ( get_next_posts_link() ) {
+	printf( '<li>%s</li>' . "\n", get_next_posts_link() ); }
 	echo '</ul></div>' . "\n";
+	
+wp_reset_postdata();
 }
 
 function get_catalog_template($archive_template, $post, $i = null, $design_scheme = null) {
@@ -170,4 +176,15 @@ $themes_array = apply_filters('ecommerce_catalog_templates', array(
 ), $post, $i, $design_scheme);
 $themes_array[$archive_template] = isset($themes_array[$archive_template]) ? $themes_array[$archive_template] : $themes_array['default'];
 return $themes_array[$archive_template];
+}
+
+function more_products() {
+global $wp_query, $shortcode_query;
+if($wp_query->current_post > 0) {
+	$y_query = $wp_query;
+}
+else {
+	$y_query = $shortcode_query;
+}
+return $y_query->current_post + 1 < $y_query->post_count;
 }

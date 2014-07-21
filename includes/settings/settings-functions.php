@@ -24,7 +24,7 @@ return echo_ic_setting($return, $echo);
 
 function implecode_settings_checkbox($option_label, $option_name, $option_enabled, $echo = 1) {
 	$return = '<tr>';
-		$return .='<td>'.$option_label.'</td>';
+		$return .='<td>'.$option_label.':</td>';
 		$return .='<td><input type="checkbox" name="'. $option_name.'" value="1"'. checked( 1, $option_enabled, 0) .'/></td>';
 	$return .='</tr>';
 return echo_ic_setting($return, $echo);

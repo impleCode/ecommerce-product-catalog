@@ -1,10 +1,10 @@
 === Plugin Name ===
 Contributors: impleCode, ndre
-Donate link: https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2MNWQKN7VPK4
+Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpress-org-catalog-page&key=donate-link
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.6.2
+Stable tag: 1.6.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -18,8 +18,8 @@ Reward your WordPress website with beautiful and easy to use product catalog. eC
 
 You can read all about [eCommerce Product Catalog](http://implecode.com/wordpress/product-catalog/?cam=wordpress-org-catalog-page&key=ecommerce-product-catalog#contents_table "eCommerce Product Catalog Website") features on the [impleCode website](http://implecode.com/#cam=wordpress-org-catalog-page&key=implecode-website "impleCode - open-source plugin developer").
 
-* __Unlimited number of products__ - Add as many products to your catalog as you need
-* __SEO Friendly__ - Give your site nice boost in search engines with SEO optimized product pages
+* __Unlimited number of products__ - Add as many products to the catalog as needed
+* __SEO Friendly__ - Give the site nice boost in search engines with SEO optimized product pages
 * __Usefull Product categories__ - Divide the products into categories when needed
 * __Intuitive Catalog Settings__ - Fully customize the product catalog
 * __[show_products] Shortcode__ - Show products with shortcode whenever it’s desired on the website
@@ -42,8 +42,6 @@ You can read all about [eCommerce Product Catalog](http://implecode.com/wordpres
 
 And more to come every week! 
 
-Future functions are specified in the "Current Donation Goal" section.
-
 = Display Products with a Shortcode =
 
 Use the shortcode to show products whenever needed on the website. Just paste on any page: [show_products] and watch all products in place of the shortcode. 
@@ -55,15 +53,6 @@ To display products by IDs, use: [show_products product="5"], where 5 is product
 = eCommerce Product Catalog Extensions =
 
 The feature packed extensions is that what makes eCommerce Product Catalog more specialized solution. [Browse the extensions](http://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extensions-link#extensions "eCommerce Product Catalog extensions on implecode.com"). 
-
-= Current Donation Goal =
-
-Currently we are working on:
-
-* Feature - [show_categories] shortcode to show category listing on any page
-* Tweak - usability improvements in admin
-
-**If you want to say thanks by donating to this plugin [using PayPal](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=E2MNWQKN7VPK4 "eCommerce Product Catalog Donation URL"), feel free ;-)**
 
 = Get involved =
 Developers can contribute to the source code on the [eCommerce Product Catalog GitHub Repository](https://github.com/impleCode/ecommerce-product-catalog).
@@ -150,6 +139,12 @@ Documentation is available [here](http://implecode.com/wordpress/product-catalog
 6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 1.6.3 - 21/07/2014 =
+
+* Fix - More unified styling for features table
+* Tweak - Default product image moved to catalog desing settings
+* Tweak - Even better performance for shortcode product listings
 
 = 1.6.2 - 14/07/2014 =
 

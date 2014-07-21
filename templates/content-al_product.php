@@ -21,19 +21,16 @@ echo product_breadcrumbs();
 ?>
 
 <article id="post-<?php the_ID(); ?>" <?php post_class('al_product'); ?>>
-	<header class="entry-header">
-		<h1 class="entry-title product-name"><?php the_title(); ?></h1>
-		<?php do_action('single_product_header', $post, $single_names); ?>
-	</header>
-	<div class="entry-content product-entry">
-	<?php 
+	<?php do_action('before_product_entry', $post, $single_names); ?>
+	<div class="entry-content product-entry"><?php 
+	do_action('start_product_entry', $post, $single_names);
 	$enable = isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '';
 	$enable_inserted = isset($single_options['enable_product_gallery_only_when_exist']) ? $single_options['enable_product_gallery_only_when_exist'] : '' ;
 	$details_class = product_gallery_enabled($enable, $enable_inserted, $post);
 	show_product_gallery($post, $single_options);
 	do_action('before_product_details'); ?>
 	
-		<div class="product-details <?php echo $details_class; ?>">
+		<div id="product_details" class="product-details <?php echo $details_class; ?>">
 			<?php do_action('product_details', $post, $single_names); ?>
 		</div>
 		<div class="entry-meta">

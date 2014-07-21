@@ -27,18 +27,13 @@ function implecode_custom_support_settings_content() { ?>
 	</script>
 		<div class="setting-content submenu support-tab">
 			<h2><?php _e('impleCode Support', 'al-ecommerce-product-catalog'); ?></h2>
-			<p><?php _e('<b>eCommerce Product Catalog is free to use</b> - life is wonderful and lovely! However, it is required a great deal of time and effort to develop  such a software. If you found eCommerce Product Catalog useful or it saved you some amount of time you can support its development by making a small donation. This will act as an incentive for me to carry on developing. You get some useful software and I get to carry on making it. Everybody wins.','al-ecommerce-product-catalog'); ?></p>
-			<p><?php _e('This awesome plugin is developed under impleCode brand which is a legally operating company. It means that <b>you can get even more value</b> if you prefer to. Choose between:', 'al-ecommerce-product-catalog') ?></p>
+			<p><?php _e('<b>eCommerce Product Catalog is free to use</b>, however it is required a great deal of time and effort to develop such a software. If you found eCommerce Product Catalog useful or it saved you some amount of time you can support its development by buying premium support or an extension. This is better than a donation, because you get even more value with it. All the income from premium support and extensions goes for eCommerce Product Catalog and its extensions development. Everybody wins.','al-ecommerce-product-catalog'); ?></p>
+			<p><?php _e('This awesome plugin is developed under impleCode brand which is a legally operating company. It means that <b>you can be assured that the high quality development will be continuous</b>.', 'al-ecommerce-product-catalog') ?></p>
 			<table>
 			<tr>
 			<td>
-				<?php _e('<b>Donation</b> (which is just a donation, it means you do not get any more value than the free plugin and its continuous development)','al-ecommerce-product-catalog') ?>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
-				<input type="hidden" name="cmd" value="_s-xclick">
-				<input type="hidden" name="hosted_button_id" value="JWBN4VA7EDJKY">
-				<input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donateCC_LG.gif" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
-				<img alt="" border="0" src="https://www.paypalobjects.com/pl_PL/i/scr/pixel.gif" width="1" height="1">
-			</form>
+				<?php echo sprintf( __('<b>Please do not donate</b> (we finance the eCommerce Product Catalog development from <a target="_blank" href="%1$s">premium support</a> and <a target="_blank" href="%2$s">extensions</a>)','al-ecommerce-product-catalog'),esc_url( 'http://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=donation-support-link' ) ,esc_url( 'http://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=donation-extensions-link#extensions' )) ?>
+			<div style="clear: both;"></div><a target="_blank" href="http://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=donation-support-link"><img height="60px" src="<?php echo AL_PLUGIN_BASE_PATH.'img/do-not-donate.png' ?>" /></a>
 			</td>
 			<td>
 				<?php _e('<b>One year</b> of high quality and speedy email', 'al-ecommerce-product-catalog') ?> <a target="_blank" href="http://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link">Premium Support</a> <?php _e('from impleCode support team for just','al-ecommerce-product-catalog') ?> $19.99.

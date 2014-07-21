@@ -20,6 +20,7 @@ function design_settings() {
 	register_setting('product_design', 'classic_grid_settings');
 	register_setting('single_design', 'catalog_lightbox');
 	register_setting('single_design', 'multi_single_options');
+	register_setting('single_design', 'default_product_thumbnail');
 	register_setting('design_schemes', 'design_schemes');
 }
 add_action('product-settings-list','design_settings');
@@ -84,6 +85,7 @@ if ($submenu == 'archive-design') { ?>
 				<tr>
 				<td class="additional-styling"><strong><?php _e('Additional Settings', 'al-ecommerce-product-catalog'); ?></strong><br><?php _e('Per row', 'al-ecommerce-product-catalog') ?>: <input type="number" min="1" step="1" class="number_box" name="classic_grid_settings[entries]" value="<?php echo $classic_grid_settings['entries'] ?>"><?php _e('products', 'al-ecommerce-product-catalog') ?></td>
 				</tr>
+				<?php do_action('product_listing_theme_settings', $archive_template) ?>
 			</tbody>
 		</table>
 	<p class="submit">
@@ -107,7 +109,12 @@ if ($submenu == 'single-design') { ?>
 	$enable_catalog_lightbox = get_option('catalog_lightbox', ENABLE_CATALOG_LIGHTBOX);
 	$single_options = get_option('multi_single_options', unserialize(MULTI_SINGLE_OPTIONS)); ?>
 	<h2><?php _e('Design Settings', 'al-ecommerce-product-catalog'); ?></h2>
-	<h3><?php _e('Product Gallery', 'al-ecommerce-product-catalog'); ?></h3>
+	<h3><?php _e('Default Product Image', 'al-ecommerce-product-catalog'); ?></h3><?php
+		$name = 'default_product_thumbnail'; 
+		$button_value = __('Change default thumbnail', 'al-ecommerce-product-catalog'); 
+		$option_name = 'default_product_thumbnail';
+		upload_product_image($name, $button_value, $option_name); ?>
+		<h3><?php _e('Product Gallery', 'al-ecommerce-product-catalog'); ?></h3>
 		<input type="checkbox" name="multi_single_options[enable_product_gallery]" value="1"<?php checked( 1, isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '' ); ?> /><?php _e('Enable product image', 'al-ecommerce-product-catalog'); ?></br>
 		<input type="checkbox" name="catalog_lightbox" value="1"<?php checked( 1, $enable_catalog_lightbox ); ?> /><?php _e('Enable lightbox on product image', 'al-ecommerce-product-catalog'); ?></br>
 		<input type="checkbox" name="multi_single_options[enable_product_gallery_only_when_exist]" value="1"<?php checked( 1, isset($single_options['enable_product_gallery_only_when_exist']) ? $single_options['enable_product_gallery_only_when_exist'] : '' ); ?> /><?php _e('Enable product image only when inserted', 'al-ecommerce-product-catalog');

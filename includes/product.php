@@ -124,7 +124,7 @@ function product_icons() {
 function add_product_metaboxes() {
 	add_meta_box('al_product_short_desc', __('Product short description', 'al-ecommerce-product-catalog'), 'al_product_short_desc', 'al_product', apply_filters('short_desc_box_column','normal'), apply_filters('short_desc_box_priority','default'));
 	add_meta_box('al_product_desc', __('Product description', 'al-ecommerce-product-catalog'), 'al_product_desc', 'al_product', apply_filters('desc_box_column','normal'), apply_filters('desc_box_priority','default'));
-	add_meta_box('al_product_price', __('Product Price', 'al-ecommerce-product-catalog'), 'al_product_price', 'al_product', apply_filters('product_price_box_column','side'), apply_filters('product_price_box_priority','default'));
+	add_meta_box('al_product_price', __('Product Details', 'al-ecommerce-product-catalog'), 'al_product_price', 'al_product', apply_filters('product_price_box_column','side'), apply_filters('product_price_box_priority','default'));
 	if (get_option('product_shipping_options_number',DEF_SHIPPING_OPTIONS_NUMBER) > 0) {
 	add_meta_box('al_product_shipping', __('Product Shipping', 'al-ecommerce-product-catalog'), 'al_product_shipping', 'al_product', apply_filters('product_shipping_box_column','side'), apply_filters('product_shipping_box_priority','default')); }
 	if (get_option('product_attributes_number',DEF_ATTRIBUTES_OPTIONS_NUMBER) > 0) {
@@ -134,10 +134,17 @@ function add_product_metaboxes() {
 
 function al_product_price() {
 	global $post;
+	$archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
+	$archive_multiple_settings['disable_sku'] = isset($archive_multiple_settings['disable_sku']) ? $archive_multiple_settings['disable_sku'] : '';
 	echo '<input type="hidden" name="pricemeta_noncename" id="pricemeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
 	$price = get_post_meta($post->ID, '_price', true);
-	$price_table = apply_filters('admin_price_table', '<table><tr><td class="price-column"><input type="number" min="0" step="0.01" name="_price" value="' . $price  . '" class="widefat" /></td><td>'. product_currency() .'</td></tr></table>', $post);
+	$price_table = apply_filters('admin_price_table', '<table><tr><td class="label-column">'. __('Price', 'al-ecommerce-product-catalog')	.':</td><td class="price-column"><input type="number" min="0" step="0.01" name="_price" value="' . $price  . '" class="widefat" /></td><td>'. product_currency() .'</td></tr></table>', $post);
+	if ($archive_multiple_settings['disable_sku'] != 1) {
+		$sku = get_post_meta($post->ID, '_sku', true);
+		$sku_table = apply_filters('admin_sku_table', '<table><tr><td class="label-column">'. __('SKU', 'al-ecommerce-product-catalog')	.':</td><td class="sku-column"><input type="text" name="_sku" value="' . $sku  . '" class="widefat" /></td></tr></table>', $post);
+		$price_table .= $sku_table;
+	}
 	echo $price_table;
 }
 
@@ -243,6 +250,7 @@ function implecode_save_products_meta($post_id, $post) {
 	if ( !current_user_can( 'edit_post', $post->ID ))
 		return $post->ID;
 	$product_meta['_price'] = !empty($_POST['_price']) ? $_POST['_price'] : '';
+	$product_meta['_sku'] = !empty($_POST['_sku']) ? $_POST['_sku'] : '';
 	$product_meta['_shortdesc'] = !empty($_POST['_shortdesc']) ? $_POST['_shortdesc'] : '';
 	$product_meta['_desc'] = !empty($_POST['_desc']) ? $_POST['_desc'] : '';
 	for ($i = 1; $i <= get_option('product_shipping_options_number',DEF_SHIPPING_OPTIONS_NUMBER); $i++) {

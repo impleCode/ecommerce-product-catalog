@@ -12,6 +12,7 @@
 function default_single_names() {
 $single_names = array (
 'product_price' => __('Product Price:', 'al-ecommerce-product-catalog'),
+'product_sku' => __('SKU:', 'al-ecommerce-product-catalog'),
 'product_shipping' => __('Product Shipping:', 'al-ecommerce-product-catalog'),
 'product_features' => __('Product Features', 'al-ecommerce-product-catalog'),
 'other_categories' => __('See also different:', 'al-ecommerce-product-catalog'),
@@ -62,7 +63,8 @@ function custom_names_content() { ?>
 		<form method="post" action="options.php">
 		<?php settings_fields('product_names_single'); 
 		$default_single_names = default_single_names();
-		$single_names = get_option( 'single_names', $default_single_names); ?>
+		$single_names = get_option( 'single_names', $default_single_names);
+		$single_names['product_sku'] = isset($single_names['product_sku']) ? $single_names['product_sku'] : 'SKU:';		?>
 		<div id="single_names" class="setting-content submenu">
 		<h2><?php _e('Front-end Labels', 'al-ecommerce-product-catalog'); ?></h2>
 		<h3><?php _e('Single Product Labels', 'al-ecommerce-product-catalog'); ?></h3>
@@ -70,10 +72,12 @@ function custom_names_content() { ?>
 		<thead><th><strong><?php _e('Front-end Element', 'al-ecommerce-product-catalog'); ?></strong></th><th><strong><?php _e('Front-end Text', 'al-ecommerce-product-catalog'); ?></strong></th></thead>
 		<tbody>
 		<tr><td><?php _e('Price Label', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" name="single_names[product_price]" value="<?php echo $single_names['product_price']; ?>" /></td></tr>
+		<tr><td><?php _e('SKU Label', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" name="single_names[product_sku]" value="<?php echo $single_names['product_sku']; ?>" /></td></tr>
 		<tr><td><?php _e('Shipping Label', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" name="single_names[product_shipping]" value="<?php echo $single_names['product_shipping']; ?>" /></td></tr>
 		<tr><td><?php _e('Features Label', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" name="single_names[product_features]" value="<?php echo $single_names['product_features']; ?>" /></td></tr>
 		<tr><td><?php _e('Another Categories', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" name="single_names[other_categories]" value="<?php echo $single_names['other_categories']; ?>" /></td></tr>
 		<tr><td><?php _e('Return to Products', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" name="single_names[return_to_archive]" value="<?php echo $single_names['return_to_archive']; ?>" /></td></tr>
+		<?php do_action('single_names_table', $single_names) ?>
 		</tbody>
 		</table>
 		</div>

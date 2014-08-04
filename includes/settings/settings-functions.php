@@ -30,7 +30,7 @@ function implecode_settings_checkbox($option_label, $option_name, $option_enable
 return echo_ic_setting($return, $echo);
 }
 
-function implecode_settings_text($option_label, $option_name, $option_value, $required = null, $echo = 1) { 
+function implecode_settings_text($option_label, $option_name, $option_value, $required = null, $echo = 1, $class = null) { 
 if ($required != '') {
 	$regired_field = 'required="required"';
 	$star = '<span class="star"> *</span>';
@@ -41,7 +41,7 @@ else {
 } 
 	$return = '<tr>';
 		$return .= '<td>'. $option_label.$star .':</td>';
-		$return .= '<td><input '. $regired_field .' type="text" name="'. $option_name .'" value="'. $option_value .'" /></td>';
+		$return .= '<td><input '. $regired_field .' class="'.$class.'" type="text" name="'. $option_name .'" value="'. $option_value .'" /></td>';
 	$return .= '</tr>';
 return echo_ic_setting($return, $echo);
 }
@@ -68,20 +68,20 @@ wp_enqueue_media(); ?>
 	<input hidden="hidden" type="text" id="default" value="<?php echo $default_image; ?>" />
 	<input hidden="hidden" type="text" name="<?php echo $option_name; ?>" id="uploaded_image" value="<?php echo $option_value ?>" />
 	<div class="admin-media-image">
-		<img class="media-image" src="<?php echo $option_value; ?>" width="100%" height="100%" />
+		<img class="media-image" name="<?php echo $option_name; ?>_image" src="<?php echo $option_value; ?>" width="100%" height="100%" />
 	</div>
 	<a href="#" class="button insert-media add_media" name="<?php echo $option_name; ?>_button" id="button_<?php echo $option_name; ?>"><span class="wp-media-buttons-icon"></span> <?php echo $button_value; ?></a>
-	<a class="button" id="reset-image-button" href="#"><?php _e('Reset image', 'al-ecommerce-product-catalog'); ?></a>
+	<a class="button" id="reset-image-button" name="<?php echo $option_name; ?>_reset" href="#"><?php _e('Reset image', 'al-ecommerce-product-catalog'); ?></a>
 </div>
 <script>
 jQuery(document).ready(function()
 {
-jQuery('.add_media').click(function()
+jQuery('.add_media[name="<?php echo $option_name ?>_button"]').click(function()
 {
 wp.media.editor.send.attachment = function(props, attachment)
 {
-jQuery('#uploaded_image').val(attachment.url);
-jQuery('.media-image').attr("src", attachment.url);
+jQuery('#uploaded_image[name="<?php echo $option_name ?>"]').val(attachment.url);
+jQuery('.media-image[name="<?php echo $option_name ?>_image"]').attr("src", attachment.url);
 }
 
 wp.media.editor.open(this);
@@ -90,10 +90,10 @@ return false;
 });
 });
 
-jQuery('#reset-image-button').click(function() {
-jQuery('#uploaded_image').val('');
+jQuery('#reset-image-button[name="<?php echo $option_name ?>_reset"]').click(function() {
+jQuery('#uploaded_image[name="<?php echo $option_name ?>"]').val('');
 src = jQuery('#default').val();
-jQuery('.media-image').attr("src", src);
+jQuery('.media-image[name="<?php echo $option_name ?>_image"]').attr("src", src);
 });
 </script>
 <?php }

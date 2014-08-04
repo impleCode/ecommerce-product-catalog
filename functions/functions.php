@@ -166,6 +166,21 @@ if (!empty($price_value)) { ?>
 }
 add_action('product_details','show_price', 7, 2);
 
+function show_sku($post, $single_names) {
+$archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
+$archive_multiple_settings['disable_sku'] = isset($archive_multiple_settings['disable_sku']) ? $archive_multiple_settings['disable_sku'] : '';
+$sku_value = get_post_meta($post->ID, '_sku', true);
+if ($archive_multiple_settings['disable_sku'] != 1 && !empty($sku_value)) { ?>
+	<table class="sku-table">
+		<tr>
+			<td><?php echo $single_names['product_sku'] ?></td>
+			<td class="sku-value"><?php echo $sku_value; ?></td>
+		</tr>
+	</table>
+<?php }
+}
+add_action('product_details','show_sku', 8, 2);
+
 function product_price($product_id, $unfiltered = null) {
 if (empty($unfiltered)) { 
 $price_value = apply_filters('product_price', get_post_meta($product_id, "_price", true), $product_id); }
@@ -356,7 +371,7 @@ if (is_single()) {
 return '<p id="breadcrumbs">
 <span xmlns:v="http://rdf.data-vocabulary.org/#">
 	<span typeof="v:Breadcrumb">
-		<a href="'.$home_page.'" rel="v:url" property="v:title">Home</a>
+		<a href="'.$home_page.'" rel="v:url" property="v:title">'.__('Home','al-ecommerce-product-catalog').'</a>
 	</span> » 
 	<span typeof="v:Breadcrumb">
 		<a href="'.$product_archive.'" rel="v:url" property="v:title">'.$product_archive_title.'</a>
@@ -370,7 +385,7 @@ else {
 return '<p id="breadcrumbs">
 <span xmlns:v="http://rdf.data-vocabulary.org/#">
 	<span typeof="v:Breadcrumb">
-		<a href="'.$home_page.'" rel="v:url" property="v:title">Home</a>
+		<a href="'.$home_page.'" rel="v:url" property="v:title">'.__('Home','al-ecommerce-product-catalog').'</a>
 	</span> » 
 	<span typeof="v:Breadcrumb">
 		<span class="breadcrumb_last" property="v:title">'.$product_archive_title.'</span>

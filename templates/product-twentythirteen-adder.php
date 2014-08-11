@@ -15,7 +15,14 @@ get_header(); ?>
 
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
-
+		<style> .post-type-archive-al_product header.al_product {
+		margin: 0 auto;
+		} 
+		p#breadcrumbs { 
+		max-width: 1080px;
+		margin: 0 auto;
+		}
+		.single .product-entry {margin: 0 auto;} .tax-al_product-cat .entry-content {padding: 0 176px 0 40px;} .post-type-archive .entry-summary {padding: 0; }</style>
 			<?php /* The loop */ ?>
 			<?php content_product_adder(); ?>
 

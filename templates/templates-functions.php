@@ -12,6 +12,7 @@
  
 function content_product_adder() {
 if (is_archive() || is_search()) {
+do_action('before_product_archive');
 content_product_adder_archive();
 }
 else {

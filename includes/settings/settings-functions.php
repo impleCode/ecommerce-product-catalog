@@ -22,6 +22,20 @@ function implecode_settings_radio($option_label, $option_name, $option_value, $e
 return echo_ic_setting($return, $echo);
 }
 
+function implecode_settings_dropdown($option_label, $option_name, $option_value, $elements = array(), $echo = 1) {
+	$return = '<tr>';
+		$return .= '<td>'. $option_label .':</td>';
+		$return .= '<td>';
+		$return .= '<select name="'.$option_name.'">';
+		foreach ($elements as $key => $element) { 
+		$return .= '<option value="'.$key.'" '.selected($key,$option_value,0).'>'.$element.'</option>';
+		} 
+		$return .= '</select>';
+		$return .= '</td>';
+	$return .= '</tr>';
+return echo_ic_setting($return, $echo);
+}
+
 function implecode_settings_checkbox($option_label, $option_name, $option_enabled, $echo = 1) {
 	$return = '<tr>';
 		$return .='<td>'.$option_label.':</td>';

@@ -419,28 +419,32 @@ function show_product_gallery($post, $single_options ) {
 $enable_catalog_lightbox = get_option('catalog_lightbox', 1);
 $single_options['enable_product_gallery'] = isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '';
 $single_options['enable_product_gallery_only_when_exist'] = isset($single_options['enable_product_gallery_only_when_exist']) ? $single_options['enable_product_gallery_only_when_exist'] : '';
-if ($enable_catalog_lightbox == 1 && $single_options['enable_product_gallery'] == 1) { ?>
+if ($enable_catalog_lightbox == 1 && $single_options['enable_product_gallery'] == 1) { 
+	$colorbox_set = apply_filters('colorbox_set', '{transition: "elastic", initialWidth: 200, maxWidth: "90%", maxHeight: "90%", rel:"gal"}'); ?>
 	<script>
 		jQuery(document).ready(function(){
-			jQuery(".a-product-image").colorbox({transition: 'elastic', initialWidth: 200, maxWidth: '90%', maxHeight: '90%', rel:'gal'});
+			jQuery(".a-product-image").colorbox(<?php echo $colorbox_set ?>);
 		});
 	</script> <?php 
 }
-if ($single_options['enable_product_gallery'] == 1) { ?>
+if ($single_options['enable_product_gallery'] == 1) { 
+	do_action('before_product_image'); ?>
 	<div class="entry-thumbnail product-image"><?php 
+	do_action('above_product_image');
+	$image_size = apply_filters('product_image_size', 'medium');
 	if (has_post_thumbnail()) { 
 		if ($enable_catalog_lightbox == 1) {
 			$img_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large'); ?>
-			<a class="a-product-image" href="<?php echo $img_url[0];?>"><?php the_post_thumbnail('medium');?></a> <?php } 
+			<a class="a-product-image" href="<?php echo $img_url[0];?>"><?php the_post_thumbnail($image_size);?></a> <?php } 
 		else {
-			the_post_thumbnail('medium'); }
+			the_post_thumbnail($image_size); }
 		} 
 	else if ($single_options['enable_product_gallery_only_when_exist'] != 1) { 
 		echo default_product_thumbnail(); 
 	} 
 	do_action('below_product_image', $post->ID);?>
 	</div> <?php 
-	
+	do_action('after_product_image');
 }
 else { 
 	return;

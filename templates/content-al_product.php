@@ -34,10 +34,14 @@ echo product_breadcrumbs();
 		<div id="product_details" class="product-details <?php echo $details_class; ?>">
 			<?php do_action('product_details', $post, $single_names); ?>
 		</div>
+		<?php if (current_user_can('administrator')) { ?>
 		<div class="entry-meta">
 			<?php edit_post_link( __( 'Edit Product', 'al-ecommerce-product-catalog' ), '<span class="edit-link">', '</span>' ); ?>
-		</div>
+		</div><?php }?>
+		<div class="after-product-details">
 		<?php do_action("after_product_details", $post, $single_names); ?>
+		</div>
+		<?php do_action("after_after_product_details", $post, $single_names); ?>
 		<div class="after-product-description">
 			<?php  do_action('single_product_end', $post, $single_names, $taxonomies[0]); ?>
 		</div>

@@ -32,10 +32,11 @@ function c_list_desc($post_id) {
 $shortdesc = strip_tags(get_post_meta($post_id, "_shortdesc", true));
 $desclenght = strlen($shortdesc);
 $more = '';
-if ($desclenght > 243) {
+$limit = apply_filters('c_list_desc_limit', 243);
+if ($desclenght > $limit) {
 $more = ' [...]';
 }
-return apply_filters('c_list_desc_content', substr($shortdesc, 0, 243) . $more, $post_id);
+return apply_filters('c_list_desc_content', substr($shortdesc, 0, $limit) . $more, $post_id);
 }
 
 /* Single Product */

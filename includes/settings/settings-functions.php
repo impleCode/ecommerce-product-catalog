@@ -76,41 +76,52 @@ function implecode_settings_textarea($option_label, $option_name, $option_value,
 return echo_ic_setting($return, $echo);
 }
 
-function implecode_upload_image($button_value, $option_name, $option_value, $default_image = null) {
-wp_enqueue_media(); ?>
-<div class="custom-uploader">
-	<input hidden="hidden" type="text" id="default" value="<?php echo $default_image; ?>" />
-	<input hidden="hidden" type="text" name="<?php echo $option_name; ?>" id="uploaded_image" value="<?php echo $option_value ?>" />
-	<div class="admin-media-image">
-		<img class="media-image" name="<?php echo $option_name; ?>_image" src="<?php echo $option_value; ?>" width="100%" height="100%" />
-	</div>
-	<a href="#" class="button insert-media add_media" name="<?php echo $option_name; ?>_button" id="button_<?php echo $option_name; ?>"><span class="wp-media-buttons-icon"></span> <?php echo $button_value; ?></a>
-	<a class="button" id="reset-image-button" name="<?php echo $option_name; ?>_reset" href="#"><?php _e('Reset image', 'al-ecommerce-product-catalog'); ?></a>
-</div>
-<script>
-jQuery(document).ready(function()
-{
-jQuery('.add_media[name="<?php echo $option_name ?>_button"]').click(function()
-{
-wp.media.editor.send.attachment = function(props, attachment)
-{
-jQuery('#uploaded_image[name="<?php echo $option_name ?>"]').val(attachment.url);
-jQuery('.media-image[name="<?php echo $option_name ?>_image"]').attr("src", attachment.url);
-}
-
-wp.media.editor.open(this);
-
-return false;
+function implecode_upload_image($button_value, $option_name, $option_value, $default_image = null, $upload_image_id = 'url', $echo = 1) {
+wp_enqueue_media(); 
+$option_value = !empty($option_value) ? $option_value : $default_image;
+$image_src = $option_value;
+if ( $upload_image_id != 'url') {
+$upload_image_id = 'id';
+$image_src = wp_get_attachment_image_src($option_value);
+$image_src = $image_src[0];
+} 
+$content = '<div class="custom-uploader">';
+$content .= '<input hidden="hidden" type="text" id="default" value="'. $default_image .'" />';
+$content .= '<input hidden="hidden" type="text" name="'. $option_name.'" id="uploaded_image" value="'. $option_value .'" />';
+$content .= '<div class="admin-media-image">';
+$content .= '<img class="media-image" name="'. $option_name.'_image" src="'. $image_src.'" width="100%" height="100%" />';
+$content .= '</div>';
+$content .= '<a href="#" class="button insert-media add_media" name="'. $option_name.'_button" id="button_'. $option_name.'"><span class="wp-media-buttons-icon"></span> '. $button_value.'</a>';
+$content .= '<a class="button" id="reset-image-button" name="'. $option_name.'_reset" href="#">'. __('Reset image', 'al-ecommerce-product-catalog').'</a>';
+$content .= '</div>
+';
+$content .= '<script>jQuery(document).ready(function() {
+';
+$content .= 'jQuery(".add_media[name=\"'. $option_name .'_button\"]").click(function() {
+';
+$content .= 'wp.media.editor.send.attachment = function(props, attachment) {
+';
+$content .= 'jQuery("#uploaded_image[name=\"'. $option_name .'\"]").val(attachment.'. $upload_image_id .
+');';
+$content .= 'jQuery(".media-image[name=\"'. $option_name .'_image\"]").attr("src", attachment.url);
+';
+$content .= '} 
+wp.media.editor.open(this); 
+return false; 
+}); 
 });
-});
-
-jQuery('#reset-image-button[name="<?php echo $option_name ?>_reset"]').click(function() {
-jQuery('#uploaded_image[name="<?php echo $option_name ?>"]').val('');
-src = jQuery('#default').val();
-jQuery('.media-image[name="<?php echo $option_name ?>_image"]').attr("src", src);
-});
-</script>
-<?php }
+';
+$content .= 'jQuery("#reset-image-button[name=\"'. $option_name .'_reset\"]").click(function() {
+';
+$content .= 'jQuery("#uploaded_image[name=\"'. $option_name .'\"]").val("");
+';
+$content .= 'src = jQuery("#default").val();
+';
+$content .= 'jQuery(".media-image[name=\"'. $option_name .'_image\"]").attr("src", src);
+';
+$content .= '}); </script>';
+return echo_ic_setting($content, $echo);
+} 
 
 function echo_ic_setting($return, $echo = 1) {
 if ($echo == 1) {

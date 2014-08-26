@@ -134,3 +134,15 @@ jQuery('.ui-sortable').height(jQuery('.ui-sortable').height());
 
 </script>
 <?php }
+
+function doc_helper($title, $url, $class = null) {
+$helper = '<div class="doc-helper '.$class.'"><div class="doc-item">
+		<div class="doc-name green-box">'.sprintf( 
+    __('%s Settings in Docs', 'al-ecommerce-product-catalog'), ucfirst($title)) .'</div>
+		<div class="doc-description">'.sprintf( 
+    __('See %s configuration tips in the impleCode documentation', 'al-ecommerce-product-catalog'), $title).'.</div>
+		<div class="doc-button"><a target="_blank" href="http://implecode.com/docs/ecommerce-product-catalog/'.$url.'/?cam=catalog-docs-box&key='.$url.'"><input class="doc_button classic-button" type="button" value="'.__('See in Docs','al-ecommerce-product-catalog').'"></a></div>
+		<a title="'.__('Click the button to visit impleCode documentation','al-ecommerce-product-catalog').'" target="_blank" href="http://implecode.com/docs/ecommerce-product-catalog/'.$url.'/?cam=catalog-docs-box&key='.$url.'" class="background-url"></a>
+		</div></div>';
+echo $helper;
+}

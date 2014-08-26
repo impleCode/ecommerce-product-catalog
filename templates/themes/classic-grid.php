@@ -49,7 +49,7 @@ else {
 }
 $archive_price = apply_filters('archive_price_filter', '', $post);
 $default_classic_grid_settings = array (
-	'entries' => '',
+	'entries' => 3,
 	);
 $classic_grid_settings = get_option( 'classic_grid_settings', $default_classic_grid_settings);
 $row_class = 'full';
@@ -69,7 +69,7 @@ $row_class = 'middle';
 if (more_products()) {
 $row++; }
 else {
-unset($row);
+$row = 1;
 }
 }
 $return = '<div class="archive-listing classic-grid '.$row_class.'">';

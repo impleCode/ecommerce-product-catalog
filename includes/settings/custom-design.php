@@ -37,6 +37,11 @@ function custom_design_content() { ?>
 				<?php do_action('custom-design-submenu'); ?>
 			</h3>
 		</div>
+		<?php 
+		$submenu = $_GET['submenu']; 
+		if ($submenu == 'single-design') { 
+			doc_helper(__('gallery', 'al-ecommerce-product-catalog'), 'product-gallery');
+		} ?>
 		<div class="setting-content submenu">
 		<?php do_action('custom-design-settings');?>
 		
@@ -59,7 +64,7 @@ if ($submenu == 'archive-design') { ?>
 	);
 	$modern_grid_settings = get_option( 'modern_grid_settings', $default_modern_grid_settings);
 	$default_classic_grid_settings = array (
-	'entries' => '',
+	'entries' => 3,
 	);
 	$classic_grid_settings = get_option( 'classic_grid_settings', $default_classic_grid_settings);?>
 	<h2><?php _e('Design Settings', 'al-ecommerce-product-catalog'); ?></h2>

@@ -181,7 +181,7 @@ return $themes_array[$archive_template];
 
 function more_products() {
 global $wp_query, $shortcode_query;
-if($wp_query->current_post > 0) {
+if((isset($wp_query->query['post_type']) && $wp_query->query['post_type'] == 'al_product') || isset($wp_query->query['al_product-cat'])) {
 	$y_query = $wp_query;
 }
 else {

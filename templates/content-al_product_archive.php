@@ -37,6 +37,9 @@ echo product_breadcrumbs(); ?>
 				echo $before_archive; } 
 			} 
 		if (is_tax()) {
+			$term = get_queried_object()->term_id; 
+			$term_img = get_option('al_product_cat_image_'.$term);
+			echo wp_get_attachment_image( $term_img, 'medium');
 			echo '<div class="entry-content">'.term_description().'</div>';
 			$term = get_queried_object()->term_id; 
 			$taxonomy_name = 'al_product-cat'; 

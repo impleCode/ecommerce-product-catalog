@@ -539,3 +539,43 @@ function add_support_link($links, $file) {
 }
 
 add_filter( 'plugin_row_meta', 'add_support_link', 10, 2 );
+
+function implecode_al_box($text, $type = 'info') {
+echo '<div class="al-box '.$type.'">';
+echo $text;
+echo '</div>';
+}
+
+function get_product_image_id( $attachment_url = '' ) {
+global $wpdb;
+$attachment_id = false;
+if ( '' == $attachment_url )
+	return;
+$upload_dir_paths = wp_upload_dir();
+if ( false !== strpos( $attachment_url, $upload_dir_paths['baseurl'] ) ) {
+	$attachment_url = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $attachment_url );
+	$attachment_url = str_replace( $upload_dir_paths['baseurl'] . '/', '', $attachment_url );
+	$attachment_id = $wpdb->get_var( $wpdb->prepare( "SELECT wposts.ID FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND wpostmeta.meta_value = '%s' AND wposts.post_type = 'attachment'", $attachment_url ) );
+}
+return $attachment_id;
+}
+
+function get_all_catalog_products() {
+$args = array(
+		'post_type' => product_post_type_array(),
+		'post_status' => 'publish',
+		'posts_per_page' => -1,
+		); 
+$products = get_posts($args);
+return $products;
+}
+
+function all_ctalog_products_dropdown($option_name, $first_option, $selected_value) {
+$pages = get_all_catalog_products(); 
+$select_box = '<select class="all_products_dropdown" id="'.$option_name.'" name="'.$option_name.'"><option value="noid">'.$first_option.'</option>';
+foreach ($pages as $page) { 
+	$select_box .= '<option class="id_'.$page->ID.'" name="' .$option_name. '[' .$page->ID. ']" value="' .$page->ID. '" ' .selected($page->ID, $selected_value, 0). '>' .$page->post_title. '</option>';
+	}  
+$select_box .= '</select>';
+return $select_box;
+}

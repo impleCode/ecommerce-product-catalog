@@ -31,6 +31,7 @@ if ($submenu == 'attributes') { ?>
 		jQuery('.settings-submenu a').removeClass('current');
 		jQuery('.settings-submenu a#attributes-settings').addClass('current');
 	</script>
+	<?php doc_helper(__('attributes', 'al-ecommerce-product-catalog'), 'product-attributes') ?>
 	<div class="attributes-product-settings setting-content submenu">
 		<h2><?php _e('Attributes Settings', 'al-ecommerce-product-catalog'); ?></h2>
 		<form method="post" action="options.php">

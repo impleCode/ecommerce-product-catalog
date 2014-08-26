@@ -33,7 +33,7 @@ class product_cat_widget extends WP_Widget {
 
 		if ( $d ) {
 			$cat_args = array('orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h, 'taxonomy' => 'al_product-cat', 'walker' => new my_Walker_CategoryDropdown, 'show_option_none' => __('Select Product Category', 'al-ecommerce-product-catalog'));
-			wp_dropdown_categories(apply_filters('widget_categories_dropdown_args', $cat_args));
+			wp_dropdown_categories(apply_filters('widget_product_categories_dropdown_args', $cat_args));
 ?>
 
 <script type='text/javascript'>
@@ -54,10 +54,11 @@ class product_cat_widget extends WP_Widget {
 		<ul>
 <?php
 		$cat_args['title_li'] = '';
-		wp_list_categories(apply_filters('widget_categories_args', $cat_args));
+		$cat_args = apply_filters('widget_product_categories_args', $cat_args, $instance);
+		wp_list_categories($cat_args);
 ?>
 		</ul>
-<?php
+<?php	do_action('after_product_category_widget', $cat_args, $instance);
 		}
 
 		echo $after_widget;
@@ -69,7 +70,7 @@ class product_cat_widget extends WP_Widget {
 		$instance['count'] = !empty($new_instance['count']) ? 1 : 0;
 		$instance['hierarchical'] = !empty($new_instance['hierarchical']) ? 1 : 0;
 		$instance['dropdown'] = !empty($new_instance['dropdown']) ? 1 : 0;
-
+		$instance = apply_filters('product_category_widget_save_instance', $instance, $new_instance, $old_instance);
 		return $instance;
 	}
 
@@ -91,14 +92,16 @@ class product_cat_widget extends WP_Widget {
 		<label for="<?php echo $this->get_field_id('count'); ?>"><?php _e( 'Show product counts', 'al-ecommerce-product-catalog' ); ?></label><br />
 
 		<input type="checkbox" class="checkbox" id="<?php echo $this->get_field_id('hierarchical'); ?>" name="<?php echo $this->get_field_name('hierarchical'); ?>"<?php checked( $hierarchical ); ?> />
-		<label for="<?php echo $this->get_field_id('hierarchical'); ?>"><?php _e( 'Show hierarchy', 'al-ecommerce-product-catalog' ); ?></label></p>
-<?php
+		<label for="<?php echo $this->get_field_id('hierarchical'); ?>"><?php _e( 'Show hierarchy', 'al-ecommerce-product-catalog' ); ?></label>
+<?php 
+$object = $this;
+do_action('product_categories_widget_settings', $instance, $object); ?> </p> <?php
 	}
 }
 
 class my_Walker_CategoryDropdown extends Walker_CategoryDropdown {
 
-	function start_el(&$output, $category, $depth, $args) {
+	function start_el(&$output, $category, $depth = 0, $args = Array(), $id = 0) {
 		$pad = str_repeat('&nbsp;', $depth * 3);
 
 		$cat_name = apply_filters('list_cats', $category->name, $category);

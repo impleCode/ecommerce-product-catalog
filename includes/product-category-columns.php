@@ -11,10 +11,16 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-//add_action('al_product-cat_edit_form_fields','product_category_edit_form_fields');
-//add_action('al_product-cat_edit_form', 'product_category_edit_form');
-//add_action('al_product-cat_add_form_fields','product_category_edit_form_fields');
-//add_action('al_product-cat_add_form','product_category_edit_form');
+function add_product_category_helper() {
+doc_helper(__('category', 'al-ecommerce-product-catalog'), 'product-categories', 'left');
+}
+
+add_action( 'al_product-cat_add_form', 'add_product_category_helper' );
+
+add_action('al_product-cat_edit_form_fields','product_category_edit_form_fields');
+add_action('al_product-cat_edit_form', 'product_category_edit_form');
+add_action('al_product-cat_add_form_fields','product_category_edit_form_fields');
+add_action('al_product-cat_add_form','product_category_edit_form');
 
 
 function product_category_edit_form() {
@@ -27,18 +33,29 @@ jQuery('#edittag').attr( "enctype", "multipart/form-data" ).attr( "encoding", "m
 <?php 
 }
 
-function product_category_edit_form_fields () {
-?>
-    <tr class="form-field">
-            <th valign="top" scope="row">
-                <label for="catpic"><?php _e('Category Picture', 'al-ecommerce-product-catalog'); ?></label>
-            </th>
-            <td>
-                <input type="file" id="catpic" name="catpic"/>
-            </td>
-        </tr>
-        <?php 
-    }
+add_action('edit_al_product-cat','save_product_cat_image');
+add_action('create_al_product-cat','save_product_cat_image');
+function save_product_cat_image($term_id) {
+if(isset($_POST['product_cat_image']))
+	update_option('al_product_cat_image_'.$term_id, $_POST['product_cat_image']);
+}
+
+add_action('delete_al_product-cat','delete_product_cat_image');
+function delete_product_cat_image($term_id) {
+delete_option('al_product_cat_image_'.$term_id);
+}
+
+function product_category_edit_form_fields ($field) {
+if (isset($field->term_id)) {
+$term_id = $field->term_id;
+$cat_img_src = get_option('al_product_cat_image_'.$term_id);
+}
+else {
+$cat_img_src = '';
+}
+$default_image = get_option('default_product_thumbnail');
+implecode_upload_image('Select Category Image', 'product_cat_image', $cat_img_src, $default_image, 'id');
+}
 	
 function product_cat_columns($product_columns) { 
     $product_columns = array_reverse($product_columns);

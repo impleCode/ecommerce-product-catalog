@@ -3,8 +3,8 @@ Contributors: impleCode, ndre
 Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpress-org-catalog-page&key=donate-link
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
-Tested up to: 3.9.2
-Stable tag: 1.7.1
+Tested up to: 4.0
+Stable tag: 1.8.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -14,7 +14,7 @@ eCommerce Product Catalog plugin is a great choice to sell easy and quick or jus
 
 Reward your WordPress website with a beautiful and easy to use product catalogue. eCommerce Product Catalog plugin is powerful and basic at the same time. It is built by the experienced folk at impleCode who constantly develops the core and the extensions. Expect high quality code which is great value not only for Developers and Theme Constructors but also for Merchants and Webmasters.
 
-https://www.youtube.com/watch?v=FgSOAgsnDqA
+https://www.youtube.com/watch?v=CTsz2X0JN7M
 
 This eCommerce plugin is a great solution for those who look for an easy way to implement product management to the WordPress website. eCommerce Product Catalog is supported on WordPress forums, Premium Support and an extensive documentation. This eCommerce store like solution works with any theme and most of WordPress plugins. It is based on custom post types.
 
@@ -152,6 +152,19 @@ This is not a store. It's main purpose is to present products or services on the
 6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 1.8.0 - 26/08/2014 =
+
+* Feature - ability to assign product category image
+* Tweak - better Twenty Fourteen theme integration
+* Tweak - documentation boxes added to product settings
+* Fix - better classic grid alignment
+* Localisation - German language added
+* Compatibility - WordPress 4.0 compatibility
+
+= 1.7.2 - 18/08/2014 =
+
+* Fix - better classic grid alignment
 
 = 1.7.1 - 11/08/2014 =
 

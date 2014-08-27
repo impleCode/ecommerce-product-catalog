@@ -38,7 +38,7 @@ register_activation_hook( __FILE__, 'add_product_caps' );
 register_activation_hook( __FILE__, 'create_products_page' );
 
 function implecode_register_styles() {
- wp_register_style( 'al_product_styles', '/wp-content/plugins/' . dirname( plugin_basename( __FILE__ ) ) . '/css/al_product.css' );
+ wp_register_style( 'al_product_styles',  plugins_url(). "/" . dirname( plugin_basename( __FILE__ ) ) . '/css/al_product.css' );
  wp_enqueue_style( 'al_product_styles' ); 
 }
 

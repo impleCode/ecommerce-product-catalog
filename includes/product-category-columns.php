@@ -62,6 +62,7 @@ function product_cat_columns($product_columns) {
 	$temp = $product_columns['cb'];
 	unset($product_columns['cb']);
 	unset($product_columns['slug']);
+	$product_columns['img'] = __('Image', 'al-ecommerce-product-catalog');
 	$product_columns['id'] = __('ID', 'al-ecommerce-product-catalog');
 	$product_columns['cb'] = $temp;
 	$product_columns = array_reverse($product_columns);
@@ -73,6 +74,10 @@ add_filter('manage_edit-al_product-cat_columns', 'product_cat_columns');
  
 function manage_product_category_columns($depr, $column_name, $term_id) {
 switch ($column_name) {
+	case 'img':
+		$attachment_id = get_option('al_product_cat_image_'.$term_id);
+		echo wp_get_attachment_image( $attachment_id, array(40,40));
+	break;
 	case 'id':
 		echo $term_id;
 	break;

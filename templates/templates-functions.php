@@ -189,3 +189,28 @@ else {
 }
 return $y_query->current_post + 1 < $y_query->post_count;
 }
+
+
+function get_row_class($grid_settings) {
+$row_class = 'full';
+if ($grid_settings['entries'] != '') {
+global $row;
+if ($row > $grid_settings['entries'] || !isset($row)) {$row = 1; }
+$count = $row - $grid_settings['entries'];
+if ($row == 1) {
+$row_class = 'first';
+}
+else if ($count == 0) {
+$row_class = 'last';
+}
+else {
+$row_class = 'middle';
+}
+if (more_products()) {
+$row++; }
+else {
+$row = 1;
+}
+}
+return $row_class;
+}

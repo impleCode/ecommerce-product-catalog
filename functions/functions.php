@@ -158,11 +158,12 @@ $price_value = product_price($post->ID);
 if (!empty($price_value)) { ?>
 	<table class="price-table">
 		<tr>
-			<td><?php echo $single_names['product_price'] ?></td>
+			<td class="price-label"><?php echo $single_names['product_price'] ?></td>
 			<td class="price-value <?php design_schemes(); ?>"><?php echo price_format($price_value); ?></td>
 		</tr>
+		<?php do_action('price_table'); ?>
 	</table>
-<?php }
+<?php do_action('after_price_table'); }
 }
 add_action('product_details','show_price', 7, 2);
 

@@ -252,6 +252,9 @@ function implecode_save_products_meta($post_id, $post) {
 	if ( !empty($pricemeta_noncename) && !wp_verify_nonce( $pricemeta_noncename, plugin_basename(__FILE__) )) {
 	return $post->ID;
 	}
+	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+		return;
+	}
 	if ( !current_user_can( 'edit_post', $post->ID ))
 		return $post->ID;
 	$product_meta['_price'] = !empty($_POST['_price']) ? $_POST['_price'] : '';
@@ -267,9 +270,8 @@ function implecode_save_products_meta($post_id, $post) {
 	$product_meta['_attribute-label'.$i] = !empty($_POST['_attribute-label'.$i]) ? $_POST['_attribute-label'.$i] : '';
 	$product_meta['_attribute-unit'.$i] = !empty($_POST['_attribute-unit'.$i]) ? $_POST['_attribute-unit'.$i] : '';
 	}
+	$product_meta = apply_filters('product_meta_save', $product_meta);
 	foreach ($product_meta as $key => $value) { 
-		if(! $post_type_now == 'al_product' ) return; 
-		$value = implode(',', (array)$value); 
 		$current_value = get_post_meta( $post->ID, $key, true );
 		if (isset($value) && ! isset($current_value)) {
 			add_post_meta( $post->ID, $key, $value, true );
@@ -283,7 +285,7 @@ function implecode_save_products_meta($post_id, $post) {
 	} 
 	do_action('product_edit_save', $post); }
 }
-add_action('save_post', 'implecode_save_products_meta', 1, 2);
+add_action('post_updated', 'implecode_save_products_meta', 1, 2);
 
 add_action('do_meta_boxes', 'change_image_box');
 function change_image_box()

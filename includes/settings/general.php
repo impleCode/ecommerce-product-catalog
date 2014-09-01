@@ -124,6 +124,8 @@ function general_settings_content() { ?>
 				</table>
 				<h3><?php _e('Payment and currency', 'al-ecommerce-product-catalog'); ?></h3>
 				<table>
+				<?php do_action('payment_settings_table_start') ?>
+				<tr>
 				<td><?php _e('Your currency', 'al-ecommerce-product-catalog'); ?>:</td>
 				<td><select id="product_currency" name="product_currency"> 
 					<?php $currencies = available_currencies(); 
@@ -132,6 +134,7 @@ function general_settings_content() { ?>
 					<?php endforeach; ?>
 				</select></td>	
 				<td rowspan="2"><div class="al-box info"><?php _e('If you choose custom currency symbol, it will override "Your Currency" setting. This is very handy if you want to use not supported currency or a preferred symbol for your currency.', 'al-ecommerce-product-catalog'); ?></div></td>
+				</tr>
 				<tr>
 						<td><?php _e('Custom Currency Symbol', 'al-ecommerce-product-catalog'); ?>: </td>
 						<td><input type="text" name="product_currency_settings[custom_symbol]" class="small_text_box" id="product_currency_settings" value="<?php echo $product_currency_settings['custom_symbol']; ?>" /></td>

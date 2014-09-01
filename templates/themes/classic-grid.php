@@ -52,26 +52,7 @@ $default_classic_grid_settings = array (
 	'entries' => 3,
 	);
 $classic_grid_settings = get_option( 'classic_grid_settings', $default_classic_grid_settings);
-$row_class = 'full';
-if ($classic_grid_settings['entries'] != '') {
-global $row;
-if ($row > $classic_grid_settings['entries'] || !isset($row)) {$row = 1; }
-$count = $row - $classic_grid_settings['entries'];
-if ($row == 1) {
-$row_class = 'first';
-}
-else if ($count == 0) {
-$row_class = 'last';
-}
-else {
-$row_class = 'middle';
-}
-if (more_products()) {
-$row++; }
-else {
-$row = 1;
-}
-}
+$row_class = get_row_class($classic_grid_settings);
 $return = '<div class="archive-listing classic-grid '.$row_class.'">';
 $return .= '<a href="'.get_permalink().'">';
 $return .= '<div style="background-image:url(\''.$url.'\');" class="classic-grid-element"></div>';

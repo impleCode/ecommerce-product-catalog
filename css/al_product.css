@@ -917,6 +917,10 @@ width: 2.2em;
 width: 2em;
 }
 
+.taxonomy-al_product-cat .manage-column.column-img {
+width: 45px;
+}
+
 .manage-column.column-id {
 width: 50px;
 }

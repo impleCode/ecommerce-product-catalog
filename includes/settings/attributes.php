@@ -25,14 +25,21 @@ function attributes_settings() {
 add_action('product-settings-list','attributes_settings');
 
 function attributes_settings_content() { 
-$submenu = $_GET['submenu'];
-if ($submenu == 'attributes') { ?>
+$submenu = $_GET['submenu']; ?>
+<div class="attributes-product-settings" style="clear:both;">
+	<div class="settings-submenu">
+		<h3>
+			<a id="attributes-settings" class="element current" href="./edit.php?post_type=al_product&page=product-settings.php&tab=attributes-settings&submenu=attributes"><?php _e('Attributes Settings', 'al-ecommerce-product-catalog'); ?></a>
+			<?php do_action('attributes_submenu'); ?>
+		</h3>
+	</div>
+<?php if ($submenu == 'attributes') { ?>
 	<script>
 		jQuery('.settings-submenu a').removeClass('current');
 		jQuery('.settings-submenu a#attributes-settings').addClass('current');
 	</script>
 	<?php doc_helper(__('attributes', 'al-ecommerce-product-catalog'), 'product-attributes') ?>
-	<div class="attributes-product-settings setting-content submenu">
+	<div class="setting-content submenu">
 		<h2><?php _e('Attributes Settings', 'al-ecommerce-product-catalog'); ?></h2>
 		<form method="post" action="options.php">
 		<?php settings_fields('product_attributes'); ?>
@@ -77,7 +84,7 @@ if ($submenu == 'attributes') { ?>
 					} ?>
 				</tbody>
 			</table>
-			<?php do_action('product-attributes'); ?>
+			<?php do_action('attributes-settings'); ?>
 			<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e('Save changes', 'al-ecommerce-product-catalog'); ?>" />
 			</p><?php 
@@ -92,7 +99,9 @@ if ($submenu == 'attributes') { ?>
 			</table><?php 
 		} ?>		
 		</form>
-	</div> <?php 
-} }
+	</div>
+	<?php } do_action('product-attributes'); ?>
+	</div><?php 
+ }
 
 add_action('general_settings', 'attributes_settings_content');

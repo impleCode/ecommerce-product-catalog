@@ -11,7 +11,7 @@
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /* General */
-function price_format($price_value) {
+function price_format($price_value, $clear = 0, $format = 1) {
 $set = get_option('product_currency_settings', unserialize(DEF_CURRENCY_SETTINGS));
 $set['th_sep'] = isset($set['th_sep']) ? $set['th_sep'] : ',';
 $set['dec_sep'] = isset($set['dec_sep']) ? $set['dec_sep'] : '.';
@@ -24,7 +24,15 @@ $formatted = $price_value.$space.product_currency();
 if ($set['price_format'] == 'before') {
 $formatted = product_currency().$space.$price_value;
 }
+if ($clear == 0) {
 return apply_filters('price_format', $formatted, $price_value);
+}
+else if ($format == 1) {
+return $formatted;
+}
+else {
+return $price_value;
+}
 }
 
 /* Classic List */

@@ -23,7 +23,7 @@ get_header(); ?>
 ?>
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
-<style>#breadcrumbs {max-width: 474px; margin: 0 auto 30px auto; }</style>
+<style>#breadcrumbs {max-width: 474px; margin: 0 auto 30px; position: relative; top: -30px; }</style>
 			<?php content_product_adder(); ?>
 
 		</div><!-- #content -->

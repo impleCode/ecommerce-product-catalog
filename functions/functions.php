@@ -445,7 +445,7 @@ if ($single_options['enable_product_gallery'] == 1) {
 	} 
 	do_action('below_product_image', $post->ID);?>
 	</div> <?php 
-	do_action('after_product_image');
+	do_action('after_product_image', $post->ID);
 }
 else { 
 	return;
@@ -580,3 +580,9 @@ foreach ($pages as $page) {
 $select_box .= '</select>';
 return $select_box;
 }
+
+function thumbnail_support_products() {
+add_theme_support( 'post-thumbnails', product_post_type_array() ); 
+}
+
+add_action('after_setup_theme', 'thumbnail_support_products');

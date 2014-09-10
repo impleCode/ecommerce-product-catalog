@@ -4,7 +4,7 @@ Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpre
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 1.8.1
+Stable tag: 1.8.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -153,7 +153,20 @@ This is not a store. It's main purpose is to present products or services on the
 
 == Changelog ==
 
-= 1.8.1 - 01/08/2014 =
+= 1.8.3 - 09/09/2014 =
+
+* Tweak - ability to disable price completely
+* Tweak - icons added in product settings
+* Tweak - styling improved in admin and product page
+* Localisation - Spanish and Polish languages updated
+
+= 1.8.2 - 04/09/2014 =
+
+* Tweak - introducing compatibility with quick edit and bulk edit WordPress features
+* Tweak - code improvements for even better performance
+* Compatibility - second compatibility test on upcoming WordPress 4.0 passed
+
+= 1.8.1 - 01/09/2014 =
 
 * Tweak - showing category image on category list in admin
 * Tweak - code improvements for even better performance

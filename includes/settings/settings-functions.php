@@ -60,10 +60,10 @@ else {
 return echo_ic_setting($return, $echo);
 }
 
-function implecode_settings_number($option_label, $option_name, $option_value, $unit, $echo = 1) {
+function implecode_settings_number($option_label, $option_name, $option_value, $unit, $echo = 1, $step = 1) {
 	$return = '<tr>';
 		$return .= '<td>'. $option_label .':</td>';
-		$return .= '<td><input type="number" class="number_box" name="'. $option_name .'" value="'. $option_value .'" />'. $unit .'</td>';
+		$return .= '<td><input type="number" step="'.$step.'" class="number_box" name="'. $option_name .'" value="'. $option_value .'" />'. $unit .'</td>';
 	$return .= '</tr>';
 return echo_ic_setting($return, $echo);
 }

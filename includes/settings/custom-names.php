@@ -52,7 +52,7 @@ function custom_names_content() { ?>
 		<div class="settings-submenu">
 			<h3>
 			<a id="single-names" class="element current" href="./edit.php?post_type=al_product&page=product-settings.php&tab=names-settings&submenu=single-names"><?php _e('Single Product', 'al-ecommerce-product-catalog'); ?></a>
-			<a id="archive-names" class="element" href="./edit.php?post_type=al_product&page=product-settings.php&tab=names-settings&submenu=archive-names"><?php _e('Archives', 'al-ecommerce-product-catalog'); ?></a>	
+			<a id="archive-names" class="element" href="./edit.php?post_type=al_product&page=product-settings.php&tab=names-settings&submenu=archive-names"><?php _e('Product Listings', 'al-ecommerce-product-catalog'); ?></a>	
 		</h3>
 		</div>
 		<?php if ($submenu == 'single-names') { ?>
@@ -99,7 +99,7 @@ function custom_names_content() { ?>
 		?>
 		<div id="archive_names" class="setting-content submenu">
 		<h2><?php _e('Front-end Labels', 'al-ecommerce-product-catalog'); ?></h2>
-		<h3><?php _e('Archive Labels', 'al-ecommerce-product-catalog'); ?></h3>
+		<h3><?php _e('Product Listing Labels', 'al-ecommerce-product-catalog'); ?></h3>
 		<table class="wp-list-table widefat product-settings-table" style="clear:right; text-align: left;">
 		<thead><th><strong><?php _e('Front-end Element', 'al-ecommerce-product-catalog'); ?></strong></th><th><strong><?php _e('Front-end Text', 'al-ecommerce-product-catalog'); ?></strong></th></thead>
 		<tbody>

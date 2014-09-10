@@ -52,9 +52,12 @@ echo product_breadcrumbs(); ?>
 		} 
 		$archive_template = get_option( 'archive_template', DEFAULT_ARCHIVE_TEMPLATE);
 		do_action('before_product_list', $archive_template);
+		$product_list = '';
 		while ( have_posts() ) : the_post(); 
-			echo get_catalog_template($archive_template, $post);
+			$product_list .= get_catalog_template($archive_template, $post);
 		endwhile;
+		$product_list = apply_filters('product_list_ready', $product_list, $archive_template);
+		echo $product_list;
 		?><span class="clear"></span>
 	</div>
 	

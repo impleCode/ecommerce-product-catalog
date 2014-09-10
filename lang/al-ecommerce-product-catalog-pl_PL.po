@@ -1,9 +1,9 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: eCommerce Product Catalog by impleCode v1.7.0\n"
+"Project-Id-Version: eCommerce Product Catalog by impleCode v1.8.2\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2014-08-04 14:13:49+0000\n"
+"PO-Revision-Date: 2014-09-09 08:05:18+0000\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -25,12 +25,12 @@ msgstr ""
 msgid "A list or dropdown of product categories"
 msgstr "Lista lub rozwijalne menu z listą kategorii produktów"
 
-#: includes/product.php:33
-#: includes/product.php:34
-#: includes/product.php:36
-#: includes/product.php:72
-#: includes/product.php:73
-#: includes/product.php:75
+#: includes/product.php:38
+#: includes/product.php:39
+#: includes/product.php:41
+#: includes/product.php:77
+#: includes/product.php:78
+#: includes/product.php:80
 #@ al-ecommerce-product-catalog
 msgid "Add New Product"
 msgstr "Dodaj nowy produkt"
@@ -70,27 +70,27 @@ msgstr "Wszystkie Typy Produktów"
 msgid "All Products"
 msgstr "Wszystkie Produkty"
 
-#: includes/settings/attributes.php:54
+#: includes/settings/attributes.php:62
 #@ al-ecommerce-product-catalog
 msgid "Attribute default name"
 msgstr "Domyślna nazwa parametru"
 
-#: includes/settings/attributes.php:57
+#: includes/settings/attributes.php:65
 #@ al-ecommerce-product-catalog
 msgid "Attribute default unit"
 msgstr "Domyślna jednostka"
 
-#: includes/settings/attributes.php:56
+#: includes/settings/attributes.php:64
 #@ al-ecommerce-product-catalog
 msgid "Attribute default value"
 msgstr "Domyślna wartość parametru"
 
-#: includes/settings/attributes.php:88
+#: includes/settings/attributes.php:96
 #@ al-ecommerce-product-catalog
 msgid "Attributes disabled. To enable set minimum 1 attribute."
 msgstr "Parametry wyłączone. Aby włączyć ustaw minimum 1 parametr."
 
-#: includes/settings/custom-design.php:114
+#: includes/settings/custom-design.php:122
 #@ al-ecommerce-product-catalog
 msgid "Change default thumbnail"
 msgstr "Zmień domyślny obrazek"
@@ -100,9 +100,9 @@ msgstr "Zmień domyślny obrazek"
 msgid "Choose from the most used product types"
 msgstr "Wybierz z najczęściej używanych typów produktów"
 
-#: includes/product.php:35
-#: includes/product.php:74
-#: templates/content-al_product.php:38
+#: includes/product.php:40
+#: includes/product.php:79
+#: templates/content-al_product.php:39
 #@ al-ecommerce-product-catalog
 msgid "Edit Product"
 msgstr "Edytuj produkt"
@@ -132,7 +132,7 @@ msgstr "Ukryj informację"
 msgid "If you fill out the fields below, system will automatically pre-fill the fields on product pages so you doesn't have to fill them every time you add product.</p><p>When every product in your catalogue has different shipping options you can leave all or just a part of these fields empty."
 msgstr "Jeżeli wypełnisz pola poniżej, to system automatycznie uzupełni odpowiednie pola podczas dodawania produktów. Dzięki temu nie musisz ich wypełniać za każdym razem kiedy dodajesz produkt.</p><p>Jeżeli każdy produkt w Twoim katalogu posiada inne opcje wysyłki to możesz pozostawić pola (wszystkie lub część) puste."
 
-#: includes/settings/attributes.php:49
+#: includes/settings/attributes.php:57
 #@ al-ecommerce-product-catalog
 msgid "If you fill out the fields below, system will automatically pre-fill the fields on product pages so you doesn't have to fill them every time you add product.</p><p>When every product in your catalogue is different you can leave all or a part of these field empty."
 msgstr "Jeżeli wypełnisz pola poniżej, to system automatycznie uzupełni odpowiednie pola podczas dodawania produktów. Dzięki temu nie musisz ich wypełniać za każdym razem kiedy dodajesz produkt.</p><p>Jeżeli każdy produkt w Twoim katalogu jest inny to możesz pozostawić pola (wszystkie lub część) puste."
@@ -147,14 +147,14 @@ msgstr "Nowa Kategoria Produktów"
 msgid "New Product Type"
 msgstr "Nowy Typ Produktów"
 
-#: includes/product.php:39
-#: includes/product.php:78
+#: includes/product.php:44
+#: includes/product.php:83
 #@ al-ecommerce-product-catalog
 msgid "No Products found"
 msgstr "Nie znaleziono produktów"
 
-#: includes/product.php:40
-#: includes/product.php:79
+#: includes/product.php:45
+#: includes/product.php:84
 #@ al-ecommerce-product-catalog
 msgid "No Products found in trash"
 msgstr "Nie znaleziono produktów w koszu"
@@ -164,7 +164,7 @@ msgstr "Nie znaleziono produktów w koszu"
 msgid "No product types found."
 msgstr "Nie znaleziono typów produktów"
 
-#: includes/settings/attributes.php:42
+#: includes/settings/attributes.php:50
 #@ al-ecommerce-product-catalog
 msgid "Number of product attributes"
 msgstr "Liczba parametrów produktów"
@@ -174,7 +174,7 @@ msgstr "Liczba parametrów produktów"
 msgid "Number of shipping options"
 msgstr "Liczba opcji wysyłki produktów"
 
-#: includes/product.php:176
+#: includes/product.php:184
 #@ al-ecommerce-product-catalog
 msgid "Only attributes with values set will be shown on product page."
 msgstr "Tylko atrybuty z uzupełnionymi wartościami zostaną wyświetlone na stronie produktu."
@@ -189,7 +189,7 @@ msgstr "Nadrzędna Kategoria Produktów"
 msgid "Parent Product Category:"
 msgstr "Nadrzędna Kategoria Produktów:"
 
-#: includes/settings/general.php:116
+#: includes/settings/general.php:125
 #@ al-ecommerce-product-catalog
 msgid "Payment and currency"
 msgstr "Płatności i waluta"
@@ -199,8 +199,8 @@ msgstr "Płatności i waluta"
 msgid "Popular Product Types"
 msgstr "Popularne Typy Produktów"
 
-#: includes/product.php:32
-#: includes/product.php:71
+#: includes/product.php:37
+#: includes/product.php:76
 #@ al-ecommerce-product-catalog
 msgid "Product"
 msgstr "Produkt"
@@ -208,7 +208,7 @@ msgstr "Produkt"
 #: includes/category-widget.php:17
 #: includes/product-categories.php:21
 #: includes/product-categories.php:31
-#: includes/product-columns.php:23
+#: includes/product-columns.php:27
 #@ al-ecommerce-product-catalog
 msgid "Product Categories"
 msgstr "Kategorie Produktów"
@@ -223,7 +223,7 @@ msgstr "Kategoria Produktów"
 msgid "Product Features"
 msgstr "Parametry produktu"
 
-#: includes/product.php:287
+#: includes/product.php:306
 #@ al-ecommerce-product-catalog
 msgid "Product Image"
 msgstr "Zdjęcie produktu"
@@ -233,7 +233,7 @@ msgstr "Zdjęcie produktu"
 msgid "Product Settings"
 msgstr "Ustawienia produktów"
 
-#: includes/product.php:129
+#: includes/product.php:137
 #@ al-ecommerce-product-catalog
 msgid "Product Shipping"
 msgstr "Wysyłka"
@@ -249,28 +249,28 @@ msgstr "Typ Produktu"
 msgid "Product Types"
 msgstr "Typy Produktów"
 
-#: includes/product.php:131
+#: includes/product.php:139
 #: includes/settings/attributes.php:12
 #@ al-ecommerce-product-catalog
 msgid "Product attributes"
 msgstr "Parametry produktów"
 
-#: includes/settings/attributes.php:38
+#: includes/settings/attributes.php:46
 #@ al-ecommerce-product-catalog
 msgid "Product attributes options"
 msgstr "Ustawienia parametrów produktów"
 
-#: includes/product.php:126
+#: includes/product.php:132
 #@ al-ecommerce-product-catalog
 msgid "Product description"
 msgstr "Opis produktu"
 
-#: includes/settings/general.php:86
+#: includes/settings/general.php:87
 #@ al-ecommerce-product-catalog
 msgid "Product listing URL"
 msgstr "Adresy strony z listą produktów"
 
-#: includes/settings/general.php:67
+#: includes/settings/general.php:68
 #@ al-ecommerce-product-catalog
 msgid "Product listing page"
 msgstr "Strona listy produktów"
@@ -285,36 +285,36 @@ msgstr "Wysyłka produktów"
 msgid "Product shipping options"
 msgstr "Ustawienia wysyłki produktów"
 
-#: includes/product.php:125
+#: includes/product.php:131
 #@ al-ecommerce-product-catalog
 msgid "Product short description"
 msgstr "Krótki opis produktu"
 
 #: functions/activation.php:13
-#: includes/product.php:31
-#: includes/product.php:70
+#: includes/product.php:36
+#: includes/product.php:75
 #@ al-ecommerce-product-catalog
 msgid "Products"
 msgstr "Produkty"
 
-#: includes/product.php:302
+#: includes/product.php:321
 #@ al-ecommerce-product-catalog
 msgid "Remove product image"
 msgstr "Usuń zdjęcie produktu"
 
 #: functions/functions.php:50
-#: includes/settings/settings-functions.php:74
+#: includes/settings/settings-functions.php:95
 #@ al-ecommerce-product-catalog
 msgid "Reset image"
 msgstr "Reset obrazka"
 
-#: includes/settings/attributes.php:81
-#: includes/settings/custom-design.php:92
-#: includes/settings/custom-design.php:124
-#: includes/settings/custom-design.php:190
+#: includes/settings/attributes.php:89
+#: includes/settings/custom-design.php:100
+#: includes/settings/custom-design.php:132
+#: includes/settings/custom-design.php:198
 #: includes/settings/custom-names.php:86
 #: includes/settings/custom-names.php:114
-#: includes/settings/general.php:152
+#: includes/settings/general.php:176
 #: includes/settings/shipping.php:60
 #@ al-ecommerce-product-catalog
 msgid "Save changes"
@@ -330,8 +330,8 @@ msgstr "Szukaj Kategorii Produktów"
 msgid "Search Product Types"
 msgstr "Szukaj Typów Produktów"
 
-#: includes/product.php:38
-#: includes/product.php:77
+#: includes/product.php:43
+#: includes/product.php:82
 #@ al-ecommerce-product-catalog
 msgid "Search Products"
 msgstr "Szukaj produktów"
@@ -346,7 +346,7 @@ msgstr "Wybierz Kategorię Produktów"
 msgid "Separate product types with commas"
 msgstr "Oddziel typy produktów przecinkami"
 
-#: includes/product.php:298
+#: includes/product.php:317
 #@ al-ecommerce-product-catalog
 msgid "Set product image"
 msgstr "Ustaw zdjęcie produktu"
@@ -371,7 +371,7 @@ msgstr "Wysyłka wyłączona. Aby uruchomić ustaw minimum 1 opcję wysyłki."
 msgid "Theme Integration Guide"
 msgstr "Instrukcja Integracji Szablonu"
 
-#: includes/settings/attributes.php:42
+#: includes/settings/attributes.php:50
 #: includes/settings/shipping.php:40
 #@ al-ecommerce-product-catalog
 msgid "Update"
@@ -387,60 +387,60 @@ msgstr "Aktualizuj Kategorię Produktów"
 msgid "Update Product Type"
 msgstr "Aktualizuj Typ Produktów"
 
-#: includes/product.php:37
-#: includes/product.php:76
+#: includes/product.php:42
+#: includes/product.php:81
 #@ al-ecommerce-product-catalog
 msgid "View Product"
 msgstr "Zobacz produkt"
 
-#: includes/settings/attributes.php:49
+#: includes/settings/attributes.php:57
 #: includes/settings/shipping.php:45
 #@ al-ecommerce-product-catalog
 msgid "You can change these default values on every product page."
 msgstr "Możesz zmienić te domyślne wartości na stronie każdego produktu."
 
-#: includes/settings/general.php:118
+#: includes/settings/general.php:133
 #@ al-ecommerce-product-catalog
 msgid "Your currency"
 msgstr "Twoja waluta"
 
 #: functions/functions.php:33
-#: includes/product.php:27
-#: includes/settings/custom-design.php:86
-#: includes/settings/general.php:52
-#: includes/settings/general.php:61
-#: includes/settings/general.php:91
+#: includes/product.php:32
+#: includes/settings/custom-design.php:93
+#: includes/settings/general.php:53
+#: includes/settings/general.php:62
+#: includes/settings/general.php:92
 #@ al-ecommerce-product-catalog
 msgid "products"
 msgstr "produkty"
 
-#: includes/category-widget.php:84
+#: includes/category-widget.php:85
 #: includes/search-widget.php:42
 #@ al-ecommerce-product-catalog
 msgid "Title:"
 msgstr "Tytuł:"
 
-#: includes/category-widget.php:88
+#: includes/category-widget.php:89
 #@ al-ecommerce-product-catalog
 msgid "Display as dropdown"
 msgstr "Wyświetl jako listę rozwijaną"
 
-#: includes/category-widget.php:94
+#: includes/category-widget.php:95
 #@ al-ecommerce-product-catalog
 msgid "Show hierarchy"
 msgstr "Pokaż hierarchię"
 
-#: includes/product.php:298
+#: includes/product.php:317
 #@ default
 msgid "Set featured image"
-msgstr ""
+msgstr "Ustaw obraz"
 
-#: includes/product.php:302
+#: includes/product.php:321
 #@ default
 msgid "Remove featured image"
-msgstr ""
+msgstr "Usuń obraz"
 
-#: includes/category-widget.php:91
+#: includes/category-widget.php:92
 #@ al-ecommerce-product-catalog
 msgid "Show product counts"
 msgstr "Pokaż liczbę produktów"
@@ -455,7 +455,8 @@ msgstr "Formularz kontaktowy dla produktów."
 msgid "Product Search"
 msgstr "Wyszukiwarka Produktów"
 
-#: includes/settings/attributes.php:35
+#: includes/settings/attributes.php:32
+#: includes/settings/attributes.php:43
 #@ al-ecommerce-product-catalog
 msgid "Attributes Settings"
 msgstr "Ustawienia Parametrów"
@@ -466,162 +467,161 @@ msgid "Catalog Design"
 msgstr "Style Katalogu"
 
 #: includes/settings/custom-design.php:34
-#: includes/settings/custom-design.php:66
+#: includes/settings/custom-design.php:71
 #@ al-ecommerce-product-catalog
 msgid "Product Listing"
 msgstr "Lista Produktów"
 
-#: includes/settings/custom-design.php:35
 #: includes/settings/custom-names.php:54
 #@ al-ecommerce-product-catalog
 msgid "Single Product"
 msgstr "Pojedyńczy Produkt"
 
 #: includes/settings/custom-design.php:36
-#: includes/settings/custom-design.php:144
+#: includes/settings/custom-design.php:152
 #@ al-ecommerce-product-catalog
 msgid "Design Schemes"
 msgstr "Schematy Graficzne"
 
-#: includes/settings/custom-design.php:65
-#: includes/settings/custom-design.php:111
-#: includes/settings/custom-design.php:143
+#: includes/settings/custom-design.php:70
+#: includes/settings/custom-design.php:119
+#: includes/settings/custom-design.php:151
 #@ al-ecommerce-product-catalog
 msgid "Design Settings"
 msgstr "Ustawienia Graficzne"
 
-#: includes/settings/custom-design.php:72
+#: includes/settings/custom-design.php:77
 #@ al-ecommerce-product-catalog
 msgid "Modern Grid"
 msgstr "Nowoczesna Siatka"
 
-#: includes/settings/custom-design.php:75
-#: includes/settings/custom-design.php:86
-#: includes/settings/general.php:145
+#: includes/settings/custom-design.php:80
+#: includes/settings/custom-design.php:93
+#: includes/settings/general.php:169
 #@ al-ecommerce-product-catalog
 msgid "Additional Settings"
 msgstr "Dodatkowe Ustawienia"
 
-#: includes/settings/custom-design.php:75
+#: includes/settings/custom-design.php:80
 #@ al-ecommerce-product-catalog
 msgid "Show Attributes"
 msgstr "Pokaż Parametry"
 
-#: includes/settings/custom-design.php:77
+#: includes/settings/custom-design.php:83
 #@ al-ecommerce-product-catalog
 msgid "Classic List"
 msgstr "Klasyczna Lista"
 
-#: includes/settings/custom-design.php:82
+#: includes/settings/custom-design.php:89
 #@ al-ecommerce-product-catalog
 msgid "Classic Grid"
 msgstr "Klasyczna Siatka"
 
-#: includes/settings/custom-design.php:117
+#: includes/settings/custom-design.php:125
 #@ al-ecommerce-product-catalog
 msgid "Product Gallery"
 msgstr "Galeria Produktu"
 
-#: includes/settings/custom-design.php:118
+#: includes/settings/custom-design.php:126
 #@ al-ecommerce-product-catalog
 msgid "Enable product image"
 msgstr "Włącz obraz produktu"
 
-#: includes/settings/custom-design.php:119
+#: includes/settings/custom-design.php:127
 #@ al-ecommerce-product-catalog
 msgid "Enable lightbox on product image"
 msgstr "Włącz lightbox na obrazie produktu"
 
-#: includes/settings/custom-design.php:145
+#: includes/settings/custom-design.php:153
 #@ al-ecommerce-product-catalog
 msgid "Changing design schemes has almost always impact on various elements. For example changing price color has impact on single product page and archive page price color."
 msgstr "Zmiana schematów graficznych ma prawie zawsze wpływ na wiele elementów. Np. zmiana koloru ceny ma wpływ na kolor ceny na liście produktów oraz na stronie produktu."
 
-#: includes/settings/custom-design.php:145
+#: includes/settings/custom-design.php:153
 #@ al-ecommerce-product-catalog
 msgid "You can figure it out by checking \"impact\" column."
 msgstr "Można to sprawdzić w kolumnie \\\"wpływ\\\"."
 
-#: includes/settings/custom-design.php:148
+#: includes/settings/custom-design.php:156
 #@ al-ecommerce-product-catalog
 msgid "Setting"
 msgstr "Ustawienie"
 
-#: includes/settings/custom-design.php:149
+#: includes/settings/custom-design.php:157
 #@ al-ecommerce-product-catalog
 msgid "Value"
 msgstr "Wartość"
 
-#: includes/settings/custom-design.php:150
+#: includes/settings/custom-design.php:158
 #@ al-ecommerce-product-catalog
 msgid "Example Effect"
 msgstr "Przykładowe Zmiany"
 
-#: includes/settings/custom-design.php:151
+#: includes/settings/custom-design.php:159
 #@ al-ecommerce-product-catalog
 msgid "Impact"
 msgstr "Wpływ"
 
-#: includes/settings/custom-design.php:155
+#: includes/settings/custom-design.php:163
 #@ al-ecommerce-product-catalog
 msgid "Price Size"
 msgstr "Wielkość Ceny"
 
-#: includes/settings/custom-design.php:157
+#: includes/settings/custom-design.php:165
 #@ al-ecommerce-product-catalog
 msgid "Big"
 msgstr "Duża"
 
-#: includes/settings/custom-design.php:158
+#: includes/settings/custom-design.php:166
 #@ al-ecommerce-product-catalog
 msgid "Small"
 msgstr "Mała"
 
-#: includes/settings/custom-design.php:161
-#: includes/settings/custom-design.php:172
+#: includes/settings/custom-design.php:169
+#: includes/settings/custom-design.php:180
 #@ al-ecommerce-product-catalog
 msgid "single product"
 msgstr "strona produktu"
 
-#: includes/settings/custom-design.php:164
+#: includes/settings/custom-design.php:172
 #@ al-ecommerce-product-catalog
 msgid "Price Color"
 msgstr "Kolor Ceny"
 
-#: includes/settings/custom-design.php:167
-#: includes/settings/custom-design.php:178
+#: includes/settings/custom-design.php:175
+#: includes/settings/custom-design.php:186
 #@ al-ecommerce-product-catalog
 msgid "Red"
 msgstr "Czerwony"
 
-#: includes/settings/custom-design.php:168
-#: includes/settings/custom-design.php:179
+#: includes/settings/custom-design.php:176
+#: includes/settings/custom-design.php:187
 #@ al-ecommerce-product-catalog
 msgid "Orange"
 msgstr "Pomarańczowy"
 
-#: includes/settings/custom-design.php:169
-#: includes/settings/custom-design.php:180
+#: includes/settings/custom-design.php:177
+#: includes/settings/custom-design.php:188
 #@ al-ecommerce-product-catalog
 msgid "Green"
 msgstr "Zielony"
 
-#: includes/settings/custom-design.php:172
+#: includes/settings/custom-design.php:180
 #@ al-ecommerce-product-catalog
 msgid "product archive"
 msgstr "lista produktów"
 
-#: includes/settings/custom-design.php:175
+#: includes/settings/custom-design.php:183
 #@ al-ecommerce-product-catalog
 msgid "Boxes Color"
 msgstr "Kolor Okien"
 
-#: includes/settings/custom-design.php:184
+#: includes/settings/custom-design.php:192
 #@ al-ecommerce-product-catalog
 msgid "product archive title"
 msgstr "nazwa produktu na liście"
 
-#: includes/settings/custom-design.php:184
+#: includes/settings/custom-design.php:192
 #@ al-ecommerce-product-catalog
 msgid "archive pagination"
 msgstr "strony listy produktów"
@@ -652,11 +652,6 @@ msgstr "<< wszystkie produkty"
 #@ al-ecommerce-product-catalog
 msgid "Front-end Labels"
 msgstr "Etykiety"
-
-#: includes/settings/custom-names.php:55
-#@ al-ecommerce-product-catalog
-msgid "Archives"
-msgstr "Listy Produktów"
 
 #: includes/settings/custom-names.php:70
 #@ al-ecommerce-product-catalog
@@ -700,11 +695,6 @@ msgstr "Inne Kategorie"
 msgid "Return to Products"
 msgstr "Powrót do Listy Produktów"
 
-#: includes/settings/custom-names.php:102
-#@ al-ecommerce-product-catalog
-msgid "Archive Labels"
-msgstr "Etykiety Listy Produktów"
-
 #: includes/settings/custom-names.php:106
 #@ al-ecommerce-product-catalog
 msgid "Product Archive Title"
@@ -721,52 +711,47 @@ msgid "Product settings"
 msgstr "Ustawienia produktów"
 
 #: includes/settings/general.php:35
-#: includes/settings/general.php:46
+#: includes/settings/general.php:47
 #@ al-ecommerce-product-catalog
 msgid "General Settings"
 msgstr "Ogólne Ustawienia"
 
-#: includes/settings/general.php:71
+#: includes/settings/general.php:72
 #@ al-ecommerce-product-catalog
 msgid "Enable Product Listing Page"
 msgstr "Włącz Listę Produktów"
 
-#: includes/settings/general.php:79
+#: includes/settings/general.php:80
 #@ al-ecommerce-product-catalog
 msgid "Choose Product Listing Page"
 msgstr "Wybierz Stronę Listy Produktów"
 
-#: includes/settings/general.php:82
+#: includes/settings/general.php:83
 #@ al-ecommerce-product-catalog
 msgid "Default"
 msgstr "Domyślna"
 
-#: includes/settings/general.php:90
+#: includes/settings/general.php:91
 #@ al-ecommerce-product-catalog
 msgid "Product listing shows at most"
 msgstr "Lista produktów pokazuje maksymalnie"
 
-#: includes/settings/general.php:94
+#: includes/settings/general.php:100
 #@ al-ecommerce-product-catalog
 msgid "Categories Parent URL"
 msgstr "URL Rodzica Kategorii"
 
-#: includes/settings/general.php:104
+#: includes/settings/general.php:96
 #@ al-ecommerce-product-catalog
 msgid "You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. <br><br>To show products from just one category, use: [show_products category=\"2\"] where 2 is category ID (you can display several categories by inserting comma separated IDs). <br><br>To display products by IDs, use: [show_products product=\"5\"], where 5 is product ID."
 msgstr "Możesz również używać kodu (shortcode) aby wyświetlić produkty gdzie tylko chcesz na stronie. Po prostu wklej go na jakąkolwiek stronę: [show_products] a produkty zostaną wyświetlone zamiast kodu. <br><br>Aby wyświetlić produktu tylko z jednej kategorii użyj [show_products category=\"2\"], gdzie 2 to ID kategorii (możesz wyświetlić wiele kategorii wprowadzając ID oddzielone przecinkiem). <br><br>Aby wyświetlić produkty po ID, użyj: [show_products product=\"5\"], gdzie 5 to ID produktu."
 
-#: includes/settings/general.php:105
-#@ al-ecommerce-product-catalog
-msgid "Product Breadcrumbs"
-msgstr "Okruszki Produktów"
-
-#: includes/settings/general.php:108
+#: includes/settings/general.php:117
 #@ al-ecommerce-product-catalog
 msgid "Enable Product Breadcrumbs:"
 msgstr "Włącz Okruszki Produktów:"
 
-#: includes/settings/general.php:112
+#: includes/settings/general.php:121
 #@ al-ecommerce-product-catalog
 msgid "Product listing breadcrumbs title:"
 msgstr "Tytuł okruszków listy produktów:"
@@ -776,12 +761,12 @@ msgstr "Tytuł okruszków listy produktów:"
 msgid "Shipping Settings"
 msgstr "Ustawienia Wysyłki"
 
-#: includes/settings/general.php:127
+#: includes/settings/general.php:143
 #@ al-ecommerce-product-catalog
 msgid "Custom Currency Symbol"
 msgstr "Własny Symbol Waluty"
 
-#: includes/settings/general.php:125
+#: includes/settings/general.php:140
 #@ al-ecommerce-product-catalog
 msgid "If you choose custom currency symbol, it will override \"Your Currency\" setting. This is very handy if you want to use not supported currency or a preferred symbol for your currency."
 msgstr "Jeżeli wybierzesz własny symbol waluty, to nadpiszesz ustawienie \\\"Twoja waluta\\\". To bardzo przydatna funkcja jeżeli chcesz używać nie wspieranej waluty lub preferowanego symbolu dla Twojej waluty."
@@ -791,304 +776,381 @@ msgstr "Jeżeli wybierzesz własny symbol waluty, to nadpiszesz ustawienie \\\"T
 msgid "<strong>Your theme does not declare eCommerce Product Catalog support</strong> &#8211; if you encounter layout issues please read our integration guide or choose a recomended theme :)"
 msgstr "<strong>Twój szablon graficzny nie deklaruje wsparcia dla eCommerce Product Catalog</strong> &#8211; jeżeli napotkasz na problemy z układem to zapoznaj się z naszą instrukcją integracji szablonu lub wybierz jeden z rekomendowanych szablonów :)"
 
-#: functions/functions.php:374
-#: functions/functions.php:388
+#: functions/functions.php:375
+#: functions/functions.php:389
 #@ al-ecommerce-product-catalog
 msgid "Home"
 msgstr ""
 
-#: functions/functions.php:530
+#: functions/functions.php:535
 #: functions/support.php:16
 #@ default
 #@ al-ecommerce-product-catalog
 msgid "Support"
-msgstr ""
+msgstr "Wsparcie"
 
 #: functions/support.php:29
 #@ al-ecommerce-product-catalog
 msgid "impleCode Support"
-msgstr ""
+msgstr "Wsparcie ImpleCode"
 
 #: functions/support.php:30
 #@ al-ecommerce-product-catalog
 msgid "<b>eCommerce Product Catalog is free to use</b>, however it is required a great deal of time and effort to develop such a software. If you found eCommerce Product Catalog useful or it saved you some amount of time you can support its development by buying premium support or an extension. This is better than a donation, because you get even more value with it. All the income from premium support and extensions goes for eCommerce Product Catalog and its extensions development. Everybody wins."
-msgstr ""
+msgstr "<b>eCommerce Product Catalog jest becpłatny</b>, jednak potrzeba wiele czasu oraz wysiłku aby rozwijać tego typu oprogramowanie. Jeżeli eCommerce Product Catalog okazał się dla Ciebie przydatny lub zyskałeś dzięki niemu trochę czasu możesz wesprzeć jego rozwój poprzez inwestycję w wersję premium lub jedno z rozszerzeń. To jest lepszy sposób niż darowizna ponieważ otrzymujesz dodatkową wartość. Środki pochodzące ze sprzedaży wersji premium oraz rozszerzeć są przeznaczane na rozwój eCommerce Product Catalog oraz rozszerzeń. Dzięki temu każdy wygrywa."
 
 #: functions/support.php:31
 #@ al-ecommerce-product-catalog
 msgid "This awesome plugin is developed under impleCode brand which is a legally operating company. It means that <b>you can be assured that the high quality development will be continuous</b>."
-msgstr ""
+msgstr "Ta niesamowita wtyczka jest rozwijana po marką impleCode czyli legalnie działającą firmą. To oznacza że <b>możesz być pewien że jej rozwój nie zostanie zaniechany</b>. "
 
 #: functions/support.php:35
 #, php-format
 #@ al-ecommerce-product-catalog
 msgid "<b>Please do not donate</b> (we finance the eCommerce Product Catalog development from <a target=\"_blank\" href=\"%1$s\">premium support</a> and <a target=\"_blank\" href=\"%2$s\">extensions</a>)"
-msgstr ""
+msgstr "<b>Prosimy nie przekazywać darowizn</b> (finansujemy rozwój wtyczki eCommerce Product Catalog ze sprzedaży <a target=\"_blank\" href=\"%1$s\">wersji premium</a> oraz <a target=\"_blank\" href=\"%2$s\">wtyczek</a>)"
 
 #: functions/support.php:39
 #@ al-ecommerce-product-catalog
 msgid "<b>One year</b> of high quality and speedy email"
-msgstr ""
+msgstr "<b>Jeden rok</b> wysokiej jakości i szybkiej email"
 
 #: functions/support.php:39
 #@ al-ecommerce-product-catalog
 msgid "from impleCode support team for just"
-msgstr ""
+msgstr "od ekipy impleCode jedynie za"
 
 #: functions/support.php:48
 #, php-format
 #@ al-ecommerce-product-catalog
 msgid "<b>Extensions</b> provide additional useful features. They improve eCommerce Product Catalog in a field of <a target=\"_blank\" href=\"%1$s\">SEO</a>, <a target=\"_blank\" href=\"%3$s\">Productivity</a>, <a target=\"_blank\" href=\"%2$s\">Usability</a> and <a target=\"_blank\" href=\"%4$s\">Conversion</a>."
-msgstr ""
+msgstr "<b>Rozszerzenia</b> udostępniają dodatkowe przydatne funkcje. eCommerce Product Catalog staje się lepszy na płaszczyźnie <a target=\"_blank\" href=\"%1$s\">SEO</a>, <a target=\"_blank\" href=\"%3$s\">Wydajność</a>, <a target=\"_blank\" href=\"%2$s\">Użyteczność</a> oraz <a target=\"_blank\" href=\"%4$s\">Konwersja</a>."
 
 #: functions/support.php:53
 #@ al-ecommerce-product-catalog
 msgid "Theme Integration"
-msgstr ""
+msgstr "Integracja Szablonu Graficznego"
 
 #: functions/support.php:54
 #, php-format
 #@ al-ecommerce-product-catalog
 msgid "As you may already know some themes may need Theme Integration to fully support eCommerce Product Catalog. I wrote this <a target=\"_blank\" href=\"%1$s\">theme integrations guide</a>, however to make it even easier you will get <a target=\"_blank\" href=\"%2$s\">Advanced Theme Integration</a> service for free* if you choose <a target=\"_blank\" href=\"%3$s\">Premium Support</a> service."
-msgstr ""
+msgstr "Jak już zapewne wiesz niektóe szablony graficzne mogą potrzebować dodatkowej integracji do pełnego współdziałania z eCommerce Product Catalog. Udostępniamy tę <a target=\"_blank\" href=\"%1$s\">instrukcję integracji</a>, jednak aby jeszcze to ułatwić udostępmiamy <a target=\"_blank\" href=\"%2$s\">Zaawansowaną integrację</a> bezpłatnie* jeżeli wybierzesz <a target=\"_blank\" href=\"%3$s\">Wersję Premium</a>."
 
 #: functions/support.php:57
 #@ al-ecommerce-product-catalog
 msgid "eCommerce Product Catalog documentation"
-msgstr ""
+msgstr "Dokumentacja eCommerce Product Catalog"
 
 #: functions/support.php:58
 #, php-format
 #@ al-ecommerce-product-catalog
 msgid "<b>eCommerce Product Catalog</b> documentation is being developed <a target=\"_blank\" href=\"%1$s\">here</a>. For questions about eCommerce Product Catalog please use <a target=\"_blank\" href=\"%2$s\">support forum</a> or <a target=\"_blank\" href=\"%3$s\">Premium Support service</a>."
-msgstr ""
+msgstr "Dokumentacja <b>eCommerce Product Catalog</b> jest rozwijana <a target=\"_blank\" href=\"%1$s\">tutaj</a>. Dla zapytań na temat funkcji eCommerce Product Catalog proszę używać <a target=\"_blank\" href=\"%2$s\">forum</a> lub <a target=\"_blank\" href=\"%3$s\">Usługi Premium</a>."
 
 #: functions/support.php:59
 #@ al-ecommerce-product-catalog
 msgid "Plugin Extensions"
-msgstr ""
+msgstr "Rozszerzenia"
 
 #: functions/support.php:60
 #@ al-ecommerce-product-catalog
 msgid "For many users eCommerce Product Catalog standard features is more than enough. However for more specialized needs there are some extensions available. eCommerce Product Catalog extensions are divided into:"
-msgstr ""
+msgstr "Dla większośc użytkowników domyślne funkcje eCommerce Product Catalog to nawet więcej niż potrzeba. Jednak dla bardziej specjalistycznych zastosowań istnieją różnorodne rozszerzenia. Rozszerzenia eCommerce Product Catalog są podzielone na:"
 
 #: functions/support.php:77
 #@ al-ecommerce-product-catalog
 msgid "show products in custom order, show featured products always on top"
-msgstr ""
+msgstr "wyświetlaj produkty według zdefiniowanej kolejności, pokazuj najważniejsze produkty zawsze u góry listy"
 
 #: functions/support.php:78
 #@ al-ecommerce-product-catalog
 msgid "a downloadable PDF attached to the product"
-msgstr ""
+msgstr "plik PDF na stronie każdego produktu"
 
 #: functions/support.php:79
 #@ al-ecommerce-product-catalog
 msgid "better product search, completely rewritten search engine"
-msgstr ""
+msgstr "lepsza wyszukiwarka produktów, funkcja wyszukiwania napisana od nowa"
 
 #: functions/support.php:80
 #@ al-ecommerce-product-catalog
 msgid "URL structure improved for SEO and Usabilty purpose"
-msgstr ""
+msgstr "Lepsza struktura adresów dla SEO i użyteczności"
 
 #: functions/support.php:81
 #@ al-ecommerce-product-catalog
 msgid "add more images and show them in lightbox"
-msgstr ""
+msgstr "dodaj więcej obrazów i pokazuj je w prezentacji lightbox"
 
 #: functions/support.php:82
 #@ al-ecommerce-product-catalog
 msgid "create completely separate product catalogs, with separate categories and URL structure, even with separate management in WP Admin"
-msgstr ""
+msgstr "stwórz zupełnie oddzielne katalogi produktów, z różnymi kategoriami i inną strukturą adresów URL a nawet z osobnymi oknami edycji w wp-admin"
 
 #: functions/support.php:87
 #@ al-ecommerce-product-catalog
 msgid "limit possible values for certain attributes"
-msgstr ""
+msgstr "ogranicz możliwe wartości dla wybranych atrybutów"
 
 #: functions/support.php:92
 #@ al-ecommerce-product-catalog
 msgid "allow users to ask for a quote for individual products"
-msgstr ""
+msgstr "udostępnij użytkownikom możliwośc składania zapytań ofertowych bezpośrednio ze strony produktu"
 
 #: functions/support.php:93
 #@ al-ecommerce-product-catalog
 msgid "allow fast PayPal payments trough order form"
-msgstr ""
+msgstr "udostępnij szybkie płatności PayPal w formularzu zamówienia"
 
 #: functions/support.php:94
 #@ al-ecommerce-product-catalog
 msgid "allow users to order individual products (not a shopping cart), good when users buy only one product at a time"
-msgstr ""
+msgstr "pozwól użytkownikom na zamawianie produktów, najlepsze wtedy kiedy chcesz ograniczyć możliwość zamawiania do jednego produktu na zamówienie."
 
-#: includes/product-category-columns.php:34
-#@ al-ecommerce-product-catalog
-msgid "Category Picture"
-msgstr ""
-
-#: includes/product-category-columns.php:48
-#: includes/product-columns.php:18
+#: includes/product-category-columns.php:66
+#: includes/product-columns.php:19
 #@ al-ecommerce-product-catalog
 msgid "ID"
-msgstr ""
+msgstr "ID"
 
-#: includes/product-category-columns.php:51
-#: includes/product-columns.php:22
+#: includes/product-category-columns.php:69
+#: includes/product-columns.php:25
 #@ al-ecommerce-product-catalog
 msgid "Shortcode"
 msgstr ""
 
-#: includes/product-columns.php:19
-#@ al-ecommerce-product-catalog
-msgid "Image"
-msgstr ""
-
+#: includes/product-category-columns.php:65
 #: includes/product-columns.php:20
 #@ al-ecommerce-product-catalog
-msgid "Product Name"
-msgstr ""
+msgid "Image"
+msgstr "Obraz"
 
 #: includes/product-columns.php:21
-#: includes/product.php:142
+#@ al-ecommerce-product-catalog
+msgid "Product Name"
+msgstr "Nazwa Produktu"
+
+#: includes/product-columns.php:23
+#: includes/product.php:150
+#: includes/settings/general.php:129
 #@ al-ecommerce-product-catalog
 msgid "Price"
-msgstr ""
+msgstr "Cena"
 
-#: includes/product-columns.php:24
+#: includes/product-columns.php:28
 #@ al-ecommerce-product-catalog
 msgid "Date"
-msgstr ""
+msgstr "Data"
 
-#: includes/product.php:127
+#: includes/product.php:134
 #@ al-ecommerce-product-catalog
 msgid "Product Details"
-msgstr ""
+msgstr "Szczegóły Produktu"
 
-#: includes/product.php:145
+#: includes/product.php:153
 #@ al-ecommerce-product-catalog
 msgid "SKU"
-msgstr ""
+msgstr "Kod produktu"
 
-#: includes/product.php:316
+#: includes/product.php:335
 #@ default
 msgid "Custom field updated."
-msgstr ""
+msgstr "Pole zaktualizowane."
 
-#: includes/product.php:317
+#: includes/product.php:336
 #@ default
 msgid "Custom field deleted."
-msgstr ""
+msgstr "Pole usunięte."
 
-#: includes/product.php:318
+#: includes/product.php:337
 #@ default
 msgid " updated."
-msgstr ""
+msgstr "zaktualizowano."
 
-#: includes/product.php:319
+#: includes/product.php:338
 #, php-format
 #@ default
 msgid " restored to revision from %s"
-msgstr ""
+msgstr "przywrócono wersję z %s"
 
-#: includes/product.php:321
+#: includes/product.php:340
 #@ default
 msgid "Page saved."
-msgstr ""
+msgstr "Strona zapisana."
 
-#: includes/product.php:323
+#: includes/product.php:342
 #@ default
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: includes/settings/custom-design.php:86
+#: includes/settings/custom-design.php:93
 #@ al-ecommerce-product-catalog
 msgid "Per row"
-msgstr ""
-
-#: includes/settings/custom-design.php:112
-#@ al-ecommerce-product-catalog
-msgid "Default Product Image"
-msgstr ""
+msgstr "Na wers"
 
 #: includes/settings/custom-design.php:120
 #@ al-ecommerce-product-catalog
+msgid "Default Product Image"
+msgstr "Domyślny Obraz Produktu"
+
+#: includes/settings/custom-design.php:128
+#@ al-ecommerce-product-catalog
 msgid "Enable product image only when inserted"
-msgstr ""
+msgstr "Włącz obraz produktu tylko wtedy kiedy dodany"
 
 #: includes/settings/custom-names.php:15
 #@ al-ecommerce-product-catalog
 msgid "SKU:"
-msgstr ""
+msgstr "Kod:"
 
 #: includes/settings/custom-names.php:75
 #@ al-ecommerce-product-catalog
 msgid "SKU Label"
-msgstr ""
+msgstr "Etykieta kodu"
 
-#: includes/settings/general.php:100
+#: includes/settings/general.php:110
 #@ al-ecommerce-product-catalog
 msgid "Archive SEO Title"
-msgstr ""
+msgstr "Tytuł SEO dla listy produktów"
 
-#: includes/settings/general.php:101
+#: includes/settings/general.php:111
 #@ al-ecommerce-product-catalog
 msgid "Enable SEO title separator"
-msgstr ""
+msgstr "Włącz separator w tytule SEO"
 
-#: includes/settings/general.php:131
+#: includes/settings/general.php:147
 #@ al-ecommerce-product-catalog
 msgid "Currency position"
-msgstr ""
-
-#: includes/settings/general.php:132
-#@ al-ecommerce-product-catalog
-msgid "Before Price<br>"
-msgstr ""
-
-#: includes/settings/general.php:133
-#@ al-ecommerce-product-catalog
-msgid "After Price"
-msgstr ""
-
-#: includes/settings/general.php:136
-#@ al-ecommerce-product-catalog
-msgid "Space between currency & price"
-msgstr ""
-
-#: includes/settings/general.php:136
-#@ al-ecommerce-product-catalog
-msgid "On<br>"
-msgstr ""
-
-#: includes/settings/general.php:136
-#@ al-ecommerce-product-catalog
-msgid "Off"
-msgstr ""
-
-#: includes/settings/general.php:141
-#@ al-ecommerce-product-catalog
-msgid "Thousands Separator"
-msgstr ""
-
-#: includes/settings/general.php:142
-#@ al-ecommerce-product-catalog
-msgid "Decimal Separator"
-msgstr ""
+msgstr "Pozycja waluty"
 
 #: includes/settings/general.php:148
 #@ al-ecommerce-product-catalog
+msgid "Before Price<br>"
+msgstr "Przed Ceną<br>"
+
+#: includes/settings/general.php:149
+#@ al-ecommerce-product-catalog
+msgid "After Price"
+msgstr "Za Ceną"
+
+#: includes/settings/general.php:152
+#@ al-ecommerce-product-catalog
+msgid "Space between currency & price"
+msgstr "Odstęp pomiędzy walutą a ceną"
+
+#: includes/settings/general.php:129
+#: includes/settings/general.php:152
+#@ al-ecommerce-product-catalog
+msgid "On<br>"
+msgstr "Włączone<br>"
+
+#: includes/settings/general.php:129
+#: includes/settings/general.php:152
+#@ al-ecommerce-product-catalog
+msgid "Off"
+msgstr "Wyłączone"
+
+#: includes/settings/general.php:153
+#@ al-ecommerce-product-catalog
+msgid "Thousands Separator"
+msgstr "Separator tysięcy"
+
+#: includes/settings/general.php:154
+#@ al-ecommerce-product-catalog
+msgid "Decimal Separator"
+msgstr "Separator dziesiętny"
+
+#: includes/settings/general.php:172
+#@ al-ecommerce-product-catalog
 msgid "Disable SKU"
-msgstr ""
+msgstr "Wyłącz Kod Produktu"
 
 #: templates/content-al_product_archive.php:19
 #@ al-ecommerce-product-catalog
 msgid "Search Results for:"
-msgstr ""
+msgstr "Wyniki Wyszukiwania dla:"
 
 #: theme-product_adder_support.php:32
 #@ al-ecommerce-product-catalog
 msgid "Plugin Support"
+msgstr "Pomoc dla Wtyczki"
+
+#: includes/product-category-columns.php:15
+#@ al-ecommerce-product-catalog
+msgid "category"
+msgstr "kategoria"
+
+#: includes/product-settings.php:141
+#, php-format
+#@ al-ecommerce-product-catalog
+msgid "%s Settings in Docs"
+msgstr "Ustawienia %s w dokumentacji"
+
+#: includes/product-settings.php:143
+#, php-format
+#@ al-ecommerce-product-catalog
+msgid "See %s configuration tips in the impleCode documentation"
+msgstr "Zobacz porady dla konfiguracji %s w dokumentacji impleCode"
+
+#: includes/product-settings.php:144
+#@ al-ecommerce-product-catalog
+msgid "See in Docs"
+msgstr "Zobacz w Dokumentacji"
+
+#: includes/product-settings.php:145
+#@ al-ecommerce-product-catalog
+msgid "Click the button to visit impleCode documentation"
+msgstr "Kliknij przycisk aby odwiedzić dokumentację impleCode"
+
+#: includes/search-widget.php:31
+#: includes/search-widget.php:32
+#@ al-ecommerce-product-catalog
+msgid "Search"
+msgstr "Szukaj"
+
+#: includes/settings/attributes.php:41
+#@ al-ecommerce-product-catalog
+msgid "attributes"
+msgstr "atrybuty"
+
+#: includes/settings/custom-design.php:35
+#@ al-ecommerce-product-catalog
+msgid "Product Page"
+msgstr "Strona Produktu"
+
+#: includes/settings/custom-design.php:43
+#@ al-ecommerce-product-catalog
+msgid "gallery"
+msgstr "galeria"
+
+#: includes/settings/custom-names.php:55
+#@ al-ecommerce-product-catalog
+msgid "Product Listings"
+msgstr "Listy Produktów"
+
+#: includes/settings/custom-names.php:102
+#@ al-ecommerce-product-catalog
+msgid "Product Listing Labels"
+msgstr "Etykiety Listy Produktów"
+
+#: includes/settings/general.php:45
+#@ al-ecommerce-product-catalog
+msgid "shortcode"
 msgstr ""
+
+#: includes/settings/general.php:97
+#@ al-ecommerce-product-catalog
+msgid "Categories Settings"
+msgstr "Ustawienia Kategorii"
+
+#: includes/settings/general.php:105
+#@ al-ecommerce-product-catalog
+msgid "SEO Settings"
+msgstr "Ustawienia SEO"
+
+#: includes/settings/general.php:114
+#@ al-ecommerce-product-catalog
+msgid "Breadcrumbs Settings"
+msgstr "Ustawienia Okruszków"
 

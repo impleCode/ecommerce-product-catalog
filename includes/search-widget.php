@@ -28,8 +28,8 @@ class product_widget_search extends WP_Widget {
 		// Use current theme search form if it exists
 		echo '<form role="search" method="get" id="product_search_form" action="'.home_url( '/' ).'">
 <input type="hidden" name="post_type" value="al_product" />
-<input class="product-search-box" type="text" value="" id="s" name="s" placeholder="Search" />
-<input class="product-search-submit" type="submit" name="submit" id="searchsubmit" value="Search" />
+<input class="product-search-box" type="text" value="" id="s" name="s" placeholder="'.__('Search', 'al-ecommerce-product-catalog').'" />
+<input class="product-search-submit" type="submit" name="submit" id="searchsubmit" value="'.__('Search', 'al-ecommerce-product-catalog').'" />
 </form>';
 
 		echo $after_widget;

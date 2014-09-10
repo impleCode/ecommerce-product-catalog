@@ -48,7 +48,7 @@ function general_settings_content() { ?>
 			<form method="post" action="options.php">
 				<?php settings_fields('product_settings'); 
 				$product_currency = get_option('product_currency', DEF_CURRENCY);
-				$product_currency_settings = get_option('product_currency_settings', unserialize(DEF_CURRENCY_SETTINGS));
+				$product_currency_settings = get_currency_settings();
 				$enable_product_listing = get_option('enable_product_listing', 1);
 				$product_listing_url = get_option('product_listing_url', __('products', 'al-ecommerce-product-catalog'));
 				$product_archive_created = get_option('product_archive_page_id','0');
@@ -123,8 +123,12 @@ function general_settings_content() { ?>
 					</tr>
 				</table>
 				<h3><?php _e('Payment and currency', 'al-ecommerce-product-catalog'); ?></h3>
-				<table>
-				<?php do_action('payment_settings_table_start') ?>
+				<table id="payment_table">
+				<thead>
+				<?php 
+				implecode_settings_radio(__('Price', 'al-ecommerce-product-catalog'), 'product_currency_settings[price_enable]', $product_currency_settings['price_enable'], array('on' => __('On<br>', 'al-ecommerce-product-catalog'), 'off' => __('Off', 'al-ecommerce-product-catalog'))); ?>
+				</thead><tbody><?php
+				do_action('payment_settings_table_start') ?>
 				<tr>
 				<td><?php _e('Your currency', 'al-ecommerce-product-catalog'); ?>:</td>
 				<td><select id="product_currency" name="product_currency"> 
@@ -146,14 +150,22 @@ function general_settings_content() { ?>
 				)
 				); 
 				implecode_settings_radio(__('Space between currency & price', 'al-ecommerce-product-catalog'), 'product_currency_settings[price_space]', $product_currency_settings['price_space'], array('on' => __('On<br>', 'al-ecommerce-product-catalog'), 'off' => __('Off', 'al-ecommerce-product-catalog')));
-				$local['mon_thousands_sep'] = ',';
-				$local['decimal_point'] = '.';
-				$product_currency_settings['th_sep'] = isset($product_currency_settings['th_sep']) ? $product_currency_settings['th_sep'] :$local['mon_thousands_sep'];
-				$product_currency_settings['dec_sep'] = isset($product_currency_settings['dec_sep']) ? $product_currency_settings['dec_sep'] :$local['decimal_point'];
 				implecode_settings_text(__('Thousands Separator', 'al-ecommerce-product-catalog'), 'product_currency_settings[th_sep]', $product_currency_settings['th_sep'], null, 1, 'small_text_box');
 				implecode_settings_text(__('Decimal Separator', 'al-ecommerce-product-catalog'), 'product_currency_settings[dec_sep]', $product_currency_settings['dec_sep'], null, 1, 'small_text_box');
 				?>
+				</tbody>
 				</table>
+				<script>jQuery(document).ready(function() {
+				jQuery("input[name=\"product_currency_settings[price_enable]\"]").change(function() {
+					if (jQuery(this).val() == 'off') {
+						jQuery("#payment_table tbody").hide("slow");
+					}
+					else {
+						jQuery("#payment_table tbody").show("slow");
+					}
+				});
+				jQuery("input[name=\"product_currency_settings[price_enable]\"]").change();
+				});</script>
 				<h3><?php _e('Additional Settings', 'al-ecommerce-product-catalog'); ?></h3>
 				<table><?php 
 				$archive_multiple_settings['disable_sku'] = isset($archive_multiple_settings['disable_sku']) ? $archive_multiple_settings['disable_sku'] : '';
@@ -173,3 +185,13 @@ function general_settings_content() { ?>
 	</div>
 
 <?php }
+
+function get_currency_settings() {
+$product_currency_settings = get_option('product_currency_settings', unserialize(DEF_CURRENCY_SETTINGS));
+$local['mon_thousands_sep'] = ',';
+$local['decimal_point'] = '.';
+$product_currency_settings['th_sep'] = isset($product_currency_settings['th_sep']) ? $product_currency_settings['th_sep'] :$local['mon_thousands_sep'];
+$product_currency_settings['dec_sep'] = isset($product_currency_settings['dec_sep']) ? $product_currency_settings['dec_sep'] :$local['decimal_point'];
+$product_currency_settings['price_enable'] = isset($product_currency_settings['price_enable']) ? $product_currency_settings['price_enable'] : 'on';
+return $product_currency_settings;
+}

@@ -100,6 +100,7 @@ do_action('before_product_list', $archive_template);
 while ( $shortcode_query->have_posts() ) : $shortcode_query->the_post(); global $post; $i++;
 	$inside .= get_catalog_template($archive_template, $post, $i, $design_scheme);
 endwhile;
+$inside = apply_filters('product_list_ready', $inside, $archive_template);
 wp_reset_postdata();
 return '<div class="product-list '.$archive_template.'-list">'.$inside.'<div style="clear:both"></div></div>';
 }

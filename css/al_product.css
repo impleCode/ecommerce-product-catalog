@@ -258,6 +258,10 @@ margin: 0;
 margin-top: 0 !important;
 }
 
+.after-product-details {
+clear: both;
+}
+
 .after-product-description {
 padding: 0 0 20px 0;
 clear:both;
@@ -375,6 +379,16 @@ width: 100%;
 }
 
 /* Product Page */
+.entry-meta {
+clear: left;
+}
+
+#product_details {
+float: left;
+clear: left;
+max-width: 49%;
+}
+
 #product_details table {
 vertical-align: middle;
 margin: 0px;
@@ -486,6 +500,12 @@ width: 60%;
 
 .product-details.no-image .price-value {
 line-height: 1;
+}
+
+#product_details.no-image {
+float: none;
+clear: none;
+max-width: 100%;
 }
 
 .product-details.no-image{
@@ -665,6 +685,92 @@ text-align: center;
 clear: both;
 }
 
+.setting-content h3 {
+border-bottom: 1px dotted #d4d2d2;
+padding-bottom: 4px;
+}
+
+.setting-content h3:before {
+font-family: dashicons;
+content: "\f140";
+font-size: 0.84em;
+}
+
+.tab-menu a:before, .setting-content h2:before, .settings-submenu h3 a:before {
+font-family: dashicons;
+font-size: 0.84em;
+}
+
+.tab-menu a#general-settings:before, .settings-submenu h3 a#general-settings:before, .overall-product-settings .setting-content h2:first-of-type:before {
+content: "\f111";
+}
+
+.tab-menu a#design-settings:before, .design-product-settings .setting-content h2:first-of-type:before {
+content: "\f309";
+}
+
+.tab-menu a#design-settings:before, .design-product-settings .setting-content h2:first-of-type:before {
+content: "\f309";
+}
+.settings-submenu h3 a#archive-design:before, .settings-submenu h3 a#archive-names:before {
+content: "\f163";
+}
+
+.settings-submenu h3 a#single-design:before, .settings-submenu h3 a#single-names:before {
+content: "\f123";
+}
+
+.settings-submenu h3 a#design-schemes:before {
+content: "\f237";
+}
+
+.tab-menu a#shipping-settings:before, .shipping-product-settings.setting-content h2:first-of-type:before {
+content: "\f230";
+}
+
+.tab-menu a#attributes-settings:before, .settings-submenu h3 a#attributes-settings:before, .attributes-product-settings .setting-content h2:first-of-type:before {
+content: "\f503";
+}
+
+.tab-menu a#names-settings:before, .names-product-settings .setting-content h2:first-of-type:before {
+content: "\f473";
+}
+
+.settings-submenu h3 a#support-settings:before, .overall-product-settings .setting-content.support-tab h2:first-of-type:before {
+content: "\f110";
+}
+
+.overall-product-settings .setting-content.support-tab h2:nth-of-type(2):before {
+content: "\f181";
+}
+
+.overall-product-settings .setting-content.support-tab h2:nth-of-type(3):before {
+content: "\f497";
+}
+
+.overall-product-settings .setting-content.support-tab h2:nth-of-type(4):before {
+content: "\f238";
+}
+
+.setting-content select {
+max-width: 250px;
+}
+
+div.setting-content table td {
+max-width: 250px;
+}
+
+div.setting-content.shipping-product-settings table td, div.attributes-product-settings table td {
+max-width: 400px;
+}
+div.setting-content table.design-table td {
+max-width: 100%;
+}
+
+div.setting-content table td:nth-child(3) {
+max-width: 100%;
+}
+
 .warning {
 background-color: #fefccb;
 background-image: url('images/warning.png');
@@ -791,6 +897,24 @@ font-size: 15px;
 /* Design Settings */
 .design-table  td{
 padding: 10px 20px;
+border: 1px solid #b9b8b8;
+background: #fff;
+
+}
+
+.design-table td.theme-example {
+background: none;
+border: none;
+}
+
+.design-table td.separator {
+background: none;
+border: none;
+}
+
+.design-table .theme-name {
+font-size: 17px;
+font-weight: bold;
 }
 
 td.additional-styling {

@@ -127,9 +127,12 @@ function product_icons() {
 }
 
 function add_product_metaboxes() {
+	$product_currency = get_currency_settings();
 	add_meta_box('al_product_short_desc', __('Product short description', 'al-ecommerce-product-catalog'), 'al_product_short_desc', 'al_product', apply_filters('short_desc_box_column','normal'), apply_filters('short_desc_box_priority','default'));
 	add_meta_box('al_product_desc', __('Product description', 'al-ecommerce-product-catalog'), 'al_product_desc', 'al_product', apply_filters('desc_box_column','normal'), apply_filters('desc_box_priority','default'));
-	add_meta_box('al_product_price', __('Product Details', 'al-ecommerce-product-catalog'), 'al_product_price', 'al_product', apply_filters('product_price_box_column','side'), apply_filters('product_price_box_priority','default'));
+	if ($product_currency['price_enable'] == 'on') {
+		add_meta_box('al_product_price', __('Product Details', 'al-ecommerce-product-catalog'), 'al_product_price', 'al_product', apply_filters('product_price_box_column','side'), apply_filters('product_price_box_priority','default'));
+	}
 	if (get_option('product_shipping_options_number',DEF_SHIPPING_OPTIONS_NUMBER) > 0) {
 	add_meta_box('al_product_shipping', __('Product Shipping', 'al-ecommerce-product-catalog'), 'al_product_shipping', 'al_product', apply_filters('product_shipping_box_column','side'), apply_filters('product_shipping_box_priority','default')); }
 	if (get_option('product_attributes_number',DEF_ATTRIBUTES_OPTIONS_NUMBER) > 0) {
@@ -252,8 +255,17 @@ function implecode_save_products_meta($post_id, $post) {
 	if ( !empty($pricemeta_noncename) && !wp_verify_nonce( $pricemeta_noncename, plugin_basename(__FILE__) )) {
 	return $post->ID;
 	}
+	if (! isset($_POST['action'])) {
+	return $post->ID;
+	}
+	else if ( isset($_POST['action']) && $_POST['action'] != 'editpost') {
+	return $post->ID;
+	}
 	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-		return;
+		return $post->ID;
+	}
+	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		return $post->ID;
 	}
 	if ( !current_user_can( 'edit_post', $post->ID ))
 		return $post->ID;

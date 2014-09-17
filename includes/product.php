@@ -28,8 +28,8 @@ add_action( 'init', 'create_product' );
 function create_product() {
 global $wp_version;
 $enable_product_listing = get_option('enable_product_listing', 1);
-if ($enable_product_listing == 1) {$product_listing_t = true;} else {$product_listing_t = false;}
 $slug = untrailingslashit(get_option('product_listing_url', __('products', 'al-ecommerce-product-catalog')));
+if ($enable_product_listing == 1) {$product_listing_t = true;} else {$product_listing_t = false;}
 if ( $wp_version < 3.8 ) {
 	$reg_settings = array(
 			'labels' => array(
@@ -47,6 +47,7 @@ if ( $wp_version < 3.8 ) {
 		'public' => true,
 		'has_archive' => $product_listing_t,
 		'rewrite' => array('slug' => apply_filters ('product_slug_value_register', $slug), 'with_front' => false),
+		'query_var' => __('product', 'al-ecommerce-product-catalog'),
 		'supports' => array( 'title', 'thumbnail'),
 		'register_meta_box_cb' => 'add_product_metaboxes',
 		'taxonomies' => array('al_product_cat'),
@@ -86,6 +87,7 @@ if ( $wp_version < 3.8 ) {
 		'public' => true,
 		'has_archive' => $product_listing_t,
 		'rewrite' => array('slug' => apply_filters ('product_slug_value_register', $slug), 'with_front' => false),
+		'query_var' => __('product', 'al-ecommerce-product-catalog'),
 		'supports' => array( 'title', 'thumbnail'),
 		'register_meta_box_cb' => 'add_product_metaboxes',
 		'taxonomies' => array('al_product-cat'),
@@ -295,7 +297,7 @@ function implecode_save_products_meta($post_id, $post) {
 			delete_post_meta($post->ID, $key);
 		}
 	} 
-	do_action('product_edit_save', $post); }
+	do_action('product_edit_save', $post);  }
 }
 add_action('post_updated', 'implecode_save_products_meta', 1, 2);
 

@@ -894,6 +894,10 @@ cursor: move;
 font-size: 15px;
 }
 
+div.setting-content table td.archive-url-td {
+max-width: 100%;
+}
+
 /* Design Settings */
 .design-table  td{
 padding: 10px 20px;
@@ -954,6 +958,10 @@ border-right: 2px solid #fff;
 
 .price-value.example {
 padding-left: 30px;
+}
+
+div.setting-content table td.longer {
+max-width: 100%;
 }
 
 /* Product Edit Page */

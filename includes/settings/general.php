@@ -85,7 +85,7 @@ function general_settings_content() { ?>
 					</tr>
 					<tr>
 						<td><?php _e('Product listing URL', 'al-ecommerce-product-catalog'); ?>:</td>
-						<td><a target="_blank" class="archive-url" href="<?php echo product_listing_url() ?>"><?php echo product_listing_url(); ?></a></td>
+						<td class="archive-url-td"><a target="_blank" class="archive-url" href="<?php echo product_listing_url() ?>"><?php echo product_listing_url(); ?></a></td>
 					</tr>
 					<tr>
 						<td><?php _e('Product listing shows at most', 'al-ecommerce-product-catalog'); ?> </td>
@@ -97,8 +97,8 @@ function general_settings_content() { ?>
 				<h3><?php _e('Categories Settings', 'al-ecommerce-product-catalog'); ?></h3>
 				<table>
 				<tr>
-					<td><?php _e('Categories Parent URL', 'al-ecommerce-product-catalog'); ?> </td>
-					<td><input type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo $archive_multiple_settings['category_archive_url']; ?>" /></td>
+					<td><?php _e('Categories Parent URL', 'al-ecommerce-product-catalog'); ?>:</td>
+					<td class="longer"><?php echo site_url() ?>/<input type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo sanitize_title($archive_multiple_settings['category_archive_url']); ?>" />/<?php _e('category-name', 'al-ecommerce-product-catalog') ?>/</td>
 				</tr>
 				<?php do_action('product_category_settings', $archive_multiple_settings); ?>
 				</table>
@@ -157,14 +157,14 @@ function general_settings_content() { ?>
 				</table>
 				<script>jQuery(document).ready(function() {
 				jQuery("input[name=\"product_currency_settings[price_enable]\"]").change(function() {
-					if (jQuery(this).val() == 'off') {
+					if (jQuery(this).val() == 'off' && jQuery(this).is(':checked')) {
 						jQuery("#payment_table tbody").hide("slow");
 					}
 					else {
 						jQuery("#payment_table tbody").show("slow");
 					}
 				});
-				jQuery("input[name=\"product_currency_settings[price_enable]\"]").change();
+				jQuery("input[name=\"product_currency_settings[price_enable]\"]").trigger("change");
 				});</script>
 				<h3><?php _e('Additional Settings', 'al-ecommerce-product-catalog'); ?></h3>
 				<table><?php 

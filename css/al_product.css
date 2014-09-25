@@ -307,6 +307,11 @@ margin-right: 10px;
 
 .list .product-name {
 font-weight: bold;
+clear: none;
+}
+
+.list .product-short-descr {
+clear: none;
 }
 
 .list .product-image {
@@ -631,6 +636,7 @@ outline: none;
 
 #implecode_settings {
 min-height: 533px;
+clear: both;
 }
 .tab-menu {
 border-bottom: 2px solid #000000;
@@ -740,15 +746,20 @@ content: "\f473";
 content: "\f110";
 }
 
+
 .overall-product-settings .setting-content.support-tab h2:nth-of-type(2):before {
-content: "\f181";
+content: "\f155";
 }
 
 .overall-product-settings .setting-content.support-tab h2:nth-of-type(3):before {
-content: "\f497";
+content: "\f181";
 }
 
 .overall-product-settings .setting-content.support-tab h2:nth-of-type(4):before {
+content: "\f497";
+}
+
+.overall-product-settings .setting-content.support-tab h2:nth-of-type(5):before {
 content: "\f238";
 }
 
@@ -760,11 +771,20 @@ div.setting-content table td {
 max-width: 250px;
 }
 
+div.setting-content.support-tab table td {
+max-width: 100%;
+}
+
 div.setting-content.shipping-product-settings table td, div.attributes-product-settings table td {
 max-width: 400px;
 }
 div.setting-content table.design-table td {
 max-width: 100%;
+}
+
+div.setting-content table.design-table td table td {
+border: 0;
+padding: 0;
 }
 
 div.setting-content table td:nth-child(3) {

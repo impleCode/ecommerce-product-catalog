@@ -4,7 +4,7 @@ Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpre
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 1.8.4
+Stable tag: 1.8.6
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -152,6 +152,17 @@ This is not a store. It's main purpose is to present products or services on the
 6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 1.8.6 - 22/09/2014 =
+
+* Fix - now compatible theme featured images
+* Tweak - stop showing shortcodes on classic list theme (thanks to discsox)
+* Localisation - French language update
+
+= 1.8.5 - 18/09/2014 =
+
+* Fix - permalink rewrite fix
+* Tweak - support tab improvement
 
 = 1.8.4 - 16/09/2014 =
 

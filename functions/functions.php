@@ -129,13 +129,13 @@ $output = $design_schemes['price-size'];
 else if ($which == 'box') {
 $output = $design_schemes['box-color'];
 }
+else if ($which == 'none') {
+$output = '';
+}
 else {
 $output = $design_schemes['price-color'].' '.$design_schemes['price-size'];
 }
-if ($echo == 1) {
-echo $output; }
-else if ($echo == 0) {
-return $output; }
+return echo_ic_setting(apply_filters('design_schemes_output', $output), $echo);
 }
 
 /* Single Product Functions */
@@ -582,7 +582,27 @@ return $select_box;
 }
 
 function thumbnail_support_products() {
-add_theme_support( 'post-thumbnails', product_post_type_array() ); 
+$support = get_theme_support('post-thumbnails');
+$support_array = product_post_type_array(); 
+if (is_array($support)) {
+$support_array = array_merge($support[0], $support_array);
+add_theme_support( 'post-thumbnails', $support_array );
 }
+else if (! $support) {
+add_theme_support( 'post-thumbnails', $support_array );
+}
+else {
+add_theme_support( 'post-thumbnails' );
+}
+}
+add_action('after_setup_theme', 'thumbnail_support_products', 99);
 
-add_action('after_setup_theme', 'thumbnail_support_products');
+function set_product_thumbnail_size_in_admin( $sizes ) { //print_r($sizes);
+$post_type = get_post_type($_REQUEST['post_id']);
+$product_types = product_post_type_array(); 
+if (in_array($post_type, $product_types)) {
+	$sizes['post-thumbnail'] = array( 'width' => 150, 'height' => 150, 'crop' => false);
+}
+return $sizes;
+}
+add_filter( 'intermediate_image_sizes_advanced', 'set_product_thumbnail_size_in_admin', 10);

@@ -27,7 +27,8 @@ function implecode_custom_support_settings_content() { ?>
 	</script>
 		<div class="setting-content submenu support-tab">
 			<h2><?php _e('impleCode Support', 'al-ecommerce-product-catalog'); ?></h2>
-			<p><?php _e('<b>eCommerce Product Catalog is free to use</b>, however it is required a great deal of time and effort to develop such a software. If you found eCommerce Product Catalog useful or it saved you some amount of time you can support its development by buying premium support or an extension. This is better than a donation, because you get even more value with it. All the income from premium support and extensions goes for eCommerce Product Catalog and its extensions development. Everybody wins.','al-ecommerce-product-catalog'); ?></p>
+			<p><?php _e('<b>eCommerce Product Catalog is free to use</b>. That\'s great! It\'s a pleasure to serve it to you. Let\'s keep it free forever!','al-ecommerce-product-catalog'); ?></p>
+			<p><?php _e('If you found eCommerce Product Catalog useful or it saved you some amount of time please consider to support its development by buying premium support or an extension. This is better than a donation, because you get even more value with it. All the income from premium support and extensions goes for eCommerce Product Catalog and its extensions development. Everybody wins.','al-ecommerce-product-catalog'); ?></p>
 			<p><?php _e('This awesome plugin is developed under impleCode brand which is a legally operating company. It means that <b>you can be assured that the high quality development will be continuous</b>.', 'al-ecommerce-product-catalog') ?></p>
 			<table>
 			<tr>
@@ -50,6 +51,18 @@ function implecode_custom_support_settings_content() { ?>
 			</td>
 			</tr>
 			</table>
+			<h2><?php _e('Premium Support Free Additions', 'al-ecommerce-product-catalog') ?></h2>
+			<p><?php _e('Apart of fast, confidential email support <b>every premium support member will receive some advanced features</b> for eCommerce Product Catalog as a free welcome gift.','al-ecommerce-product-catalog'); ?></p>
+			<h4><?php _e('Premium Features:', 'al-ecommerce-product-catalog') ?></h4>
+			<ol>
+			<li><?php _e('<b>Product tags</b> - which is considered as SEO booster if used properly'. 'al-ecommerce-product-catalog')?></li>
+			<li><?php _e('<b>Product sidebar</b> on product page under the image'. 'al-ecommerce-product-catalog')?></li>
+			<li><?php _e('<b>Enable/disable sidebar</b> on product listing pages'. 'al-ecommerce-product-catalog')?></li>
+			<li><?php _e('<b>More styling</b> - set product sidebar and product description width'. 'al-ecommerce-product-catalog')?></li>
+			<li><?php _e('<b>Category widget enhancement</b> - Show child categories only on parent category pages'. 'al-ecommerce-product-catalog')?></li>
+			</ol>
+			<p><?php _e('Please just go ahead and use the Buy Now button above to receive the premium support service and the free additions immediately. You will receive the premium extension on your PayPal email address immediately after the payment is confirmed.','al-ecommerce-product-catalog'); ?></p>
+			<p><?php echo sprintf(__('If you need to get it on different email address please use the <a target="_blank" href="%s">impleCode website to order the premium support</a>. It will let you set different email address than the one for PayPal.','al-ecommerce-product-catalog'),esc_url( 'http://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link-1' )); ?></p>
 			<h2><?php _e('Theme Integration', 'al-ecommerce-product-catalog') ?></h2>
 			<p><?php echo sprintf( __('As you may already know some themes may need Theme Integration to fully support eCommerce Product Catalog. I wrote this <a target="_blank" href="%1$s">theme integrations guide</a>, however to make it even easier you will get <a target="_blank" href="%2$s">Advanced Theme Integration</a> service for free* if you choose <a target="_blank" href="%3$s">Premium Support</a> service.','al-ecommerce-product-catalog'), esc_url( 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-support-tab&key=integration-link' ),  esc_url( 'http://implecode.com/wordpress/plugins/advanced-theme-integration/#cam=catalog-support-tab&key=integration-service-link' ), esc_url( 'http://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link-2' )) ?></p>
 			

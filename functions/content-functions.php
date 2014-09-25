@@ -38,6 +38,8 @@ return $price_value;
 /* Classic List */
 function c_list_desc($post_id) {
 $shortdesc = strip_tags(get_post_meta($post_id, "_shortdesc", true));
+//remove all shortcodes - discsox 
+$shortdesc = trim(strip_shortcodes($shortdesc)); 
 $desclenght = strlen($shortdesc);
 $more = '';
 $limit = apply_filters('c_list_desc_limit', 243);

@@ -122,7 +122,7 @@ add_filter("the_content", "product_page_content");
 
 function theme_integration_shortcode($atts) {
 $current_mode = get_real_integration_mode();
-if (current_user_can("administrator")) {
+if (current_user_can("administrator") && ! is_advanced_mode_forced()) {
 extract(shortcode_atts( array(
 'class' => 'relative-box',
 ), $atts ));
@@ -236,4 +236,26 @@ exit();
 }
 
 add_action('admin_init', 'create_sample_product_with_redirect');
+
+function implecode_supported_themes() {
+return array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen' );
+}
+
+function is_theme_implecode_supported() {
+$template = get_option( 'template' );
+$return = false;
+if (in_array( $template, implecode_supported_themes() ) || current_theme_supports( 'ecommerce-product-catalog' )) {
+$return = true;
+}
+return $return;
+}
+
+function is_advanced_mode_forced() {
+$template = get_option( 'template' );
+$return = false;
+if (is_theme_implecode_supported() || is_integraton_file_active() ) {
+$return = true;
+}
+return $return;
+}
 ?>

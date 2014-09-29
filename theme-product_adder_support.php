@@ -12,8 +12,8 @@
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function al_product_adder_admin_notices_styles() {
-$template = get_option( 'template' );
-if ( ! current_theme_supports( 'ecommerce-product-catalog' ) && ! in_array( $template, array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen' ) ) && ! file_exists(get_theme_root() . '/'. get_template() . '/product-adder.php') ) {
+if (! is_advanced_mode_forced() ) {
+	$template = get_option( 'template' );
 	$integration_type = get_integration_type();
 	if ( ! empty( $_GET['hide_al_product_adder_support_check'] ) ) {
 		update_option( 'product_adder_theme_support_check', $template );

@@ -65,7 +65,7 @@ function general_settings_content() { ?>
 					update_option( 'product_archive', $page_get->ID );
 					$product_archive = get_option('product_archive');
 				} 
-				if (! file_exists(get_theme_root() . '/'. get_template() . '/product-adder.php')) { ?>
+				if (! is_advanced_mode_forced()) { ?>
 				<h3><?php _e('Theme Integration', 'al-ecommerce-product-catalog'); ?></h3><?php
 				$disabled = ''; 
 				if (get_integration_type() == 'simple') { 
@@ -222,7 +222,8 @@ return $product_currency_settings;
 
 function get_multiple_settings() {
 $archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
-if (file_exists(get_theme_root() . '/'. get_template() . '/product-adder.php') || (isset($_GET['test_advanced']) && ($_GET['test_advanced'] == 1 || $_GET['test_advanced'] == 'ok'))) {
+$template = get_option( 'template' );
+if (is_advanced_mode_forced() || (isset($_GET['test_advanced']) && ($_GET['test_advanced'] == 1 || $_GET['test_advanced'] == 'ok'))) {
 $archive_multiple_settings['integration_type'] = 'advanced';
 }
 else {

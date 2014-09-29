@@ -249,7 +249,7 @@ function show_short_desc($post, $single_names) {
 $shortdesc = get_post_meta($post->ID, "_shortdesc", true);  
 $content = $shortdesc; ?>
 <div class="shortdesc">
-	<?php echo do_shortcode($shortdesc); ?>
+	<?php echo wpautop(do_shortcode($shortdesc)); ?>
 </div>
 <?php }
 add_action('product_details','show_short_desc', 5, 2);

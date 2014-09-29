@@ -14,16 +14,26 @@ function default_product_thumbnail() {
  if (get_option('default_product_thumbnail')) {
  $url = get_option('default_product_thumbnail');
  }
- else {$url = AL_PLUGIN_BASE_PATH .'img/no-default-thumbnail.png';}
+ else {
+ $product_id = get_the_ID();
+ if ($product_id == sample_product_id()) {
+	$url = AL_PLUGIN_BASE_PATH .'img/implecode.jpg';
+ }
+ else {
+	$url = AL_PLUGIN_BASE_PATH .'img/no-default-thumbnail.png';
+ }
+ }
 
-return '<img width="150px" src="'.$url.'"  />';
+return '<img src="'.$url.'"  />';
  }
 
 function default_product_thumbnail_url() {
  if (get_option('default_product_thumbnail')) {
  $url = get_option('default_product_thumbnail');
  }
- else {$url = AL_PLUGIN_BASE_PATH .'img/no-default-thumbnail.png';}
+ else {
+ $url = AL_PLUGIN_BASE_PATH .'img/no-default-thumbnail.png';
+ }
 
 return $url;
  }
@@ -140,11 +150,13 @@ return echo_ic_setting(apply_filters('design_schemes_output', $output), $echo);
 
 /* Single Product Functions */
 
-function single_product_header($post, $single_names) { ?>
+function single_product_header($post, $single_names) { 
+if (get_integration_type() != 'simple') { ?>
 <header class="entry-header">
 	<h1 class="entry-title product-name"><?php the_title(); ?></h1>
 	<?php do_action('single_product_header', $post, $single_names); ?>
 </header><?php
+}
 }
 add_action('before_product_entry','single_product_header', 10, 2);
 
@@ -234,10 +246,10 @@ if ($shipping_options > 0 AND ! empty($any_shipping_value)) { ?>
 add_action('product_details','show_shipping_options', 9, 2);
 
 function show_short_desc($post, $single_names) { 
-$shortdesc = get_post_meta($post->ID, "_shortdesc", true); 
-$content = apply_filters ("the_content", $shortdesc); ?>
+$shortdesc = get_post_meta($post->ID, "_shortdesc", true);  
+$content = $shortdesc; ?>
 <div class="shortdesc">
-	<?php echo $content; ?>
+	<?php echo do_shortcode($shortdesc); ?>
 </div>
 <?php }
 add_action('product_details','show_short_desc', 5, 2);
@@ -272,8 +284,13 @@ add_action('after_product_details','show_product_attributes', 10, 2);
 function show_product_description($post, $single_names) {
 $product_description = get_post_meta($post->ID, "_desc", true);
 if (! empty($product_description)) { ?>
-	<div class="product-description">
-		<?php echo apply_filters( 'the_content',$product_description);  ?>
+	<div class="product-description"><?php 
+		if (get_integration_type() == 'simple') {
+			echo do_shortcode($product_description);
+		}
+		else {
+			echo apply_filters( 'the_content',$product_description);
+		} ?>
 	</div>
 <?php }
 }
@@ -336,6 +353,7 @@ return $quasi_post_type;
 }
 
 function product_breadcrumbs() {
+if (get_integration_type() != 'simple') {
 global $post;
 $post_type = get_post_type();
 $home_page = get_home_url();
@@ -393,6 +411,7 @@ return '<p id="breadcrumbs">
 	</span>
 </span>
 </p>';
+}
 }
 }
 

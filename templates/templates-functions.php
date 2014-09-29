@@ -32,7 +32,13 @@ function content_product_adder_archive_before() {
 $page_id = apply_filters('before_archive_post_id', get_option('product_archive'));
 $page = get_post($page_id);
 if ($page != '') {
-$content = apply_filters ("the_content", $page->post_content); }
+	if (get_integration_type() != 'simple') { 
+		$content = apply_filters ("the_content", $page->post_content);
+	}
+	else {
+		$content = $page->post_content;
+	}
+}
 else {
 $content = '';
 }

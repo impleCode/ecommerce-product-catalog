@@ -95,23 +95,27 @@ function custom_names_content() { ?>
 		<form method="post" action="options.php">
 		<?php settings_fields('product_names_archive'); 
 		$default_archive_names = default_archive_names();
-		$archive_names = get_option( 'archive_names', $default_archive_names);
-		?>
+		$archive_names = get_option( 'archive_names', $default_archive_names); ?>
 		<div id="archive_names" class="setting-content submenu">
-		<h2><?php _e('Front-end Labels', 'al-ecommerce-product-catalog'); ?></h2>
+		<h2><?php _e('Front-end Labels', 'al-ecommerce-product-catalog'); ?></h2><?php
+		$disabled = '';
+		if (get_integration_type() == 'simple') { 
+			$disabled = 'disabled'; 
+			implecode_warning(sprintf(__('Product listing pages are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product listing pages.', 'al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-simple-mode-info'));
+		} ?>
 		<h3><?php _e('Product Listing Labels', 'al-ecommerce-product-catalog'); ?></h3>
 		<table class="wp-list-table widefat product-settings-table" style="clear:right; text-align: left;">
 		<thead><th><strong><?php _e('Front-end Element', 'al-ecommerce-product-catalog'); ?></strong></th><th><strong><?php _e('Front-end Text', 'al-ecommerce-product-catalog'); ?></strong></th></thead>
 		<tbody>
-		<tr><td><?php _e('Product Archive Title', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" name="archive_names[all_products]" value="<?php echo $archive_names['all_products']; ?>" /></td></tr>
-		<tr><td><?php _e('Category Prefix', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" name="archive_names[all_prefix]" value="<?php echo $archive_names['all_prefix']; ?>" /></td></tr>
+		<tr><td><?php _e('Product Archive Title', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" <?php echo $disabled ?> name="archive_names[all_products]" value="<?php echo $archive_names['all_products']; ?>" /></td></tr>
+		<tr><td><?php _e('Category Prefix', 'al-ecommerce-product-catalog'); ?></td><td><input type="text" <?php echo $disabled ?> name="archive_names[all_prefix]" value="<?php echo $archive_names['all_prefix']; ?>" /></td></tr>
 		</tbody>
 		</table>
 		</div>
 		
 		<div class="setting-content submenu">
 			<p class="submit">
-                <input type="submit" class="button-primary" value="<?php _e('Save changes', 'al-ecommerce-product-catalog'); ?>" />
+                <input type="submit" <?php echo $disabled ?> class="button-primary" value="<?php _e('Save changes', 'al-ecommerce-product-catalog'); ?>" />
             </p>	
 		</div>
 		</form>

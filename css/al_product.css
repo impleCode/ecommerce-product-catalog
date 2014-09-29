@@ -452,9 +452,13 @@ min-height: 135px;
 }
 .al_product div.entry-thumbnail.product-image {
 float:right;
-width:50%;
+width:49%;
 text-align: center;
-padding-left: 5px;
+margin-left: 5px;
+}
+
+.al_product div.entry-thumbnail.product-image img, #content .al_product div.entry-thumbnail.product-image img {
+max-width: 100%;
 }
 
 .product-details .shortdesc {
@@ -592,7 +596,7 @@ position: relative;
 top: 5px;
 }
 
-.doc-helper  input.classic-button{
+.doc-helper  input.classic-button, .al-box .classic-button{
 background: #a6a6a6;
 background: -webkit-linear-gradient(top, #a6a6a6 0%, #b2b2b2 100%);
 background: linear-gradient(to bottom, #a6a6a6 0%, #b2b2b2 100%);
@@ -609,7 +613,7 @@ text-shadow: none;
 border-radius: 5px;
 }
 
-.doc-helper  input.classic-button:hover {
+.doc-helper  input.classic-button:hover, .al-box .classic-button:hover {
 background: #a2a2a2;
 background: -webkit-linear-gradient(top, #a2a2a2 0%, #adacac 100%);
 background: linear-gradient(to bottom, #a2a2a2 0%, #adacac 100%);
@@ -619,7 +623,7 @@ border-bottom: 3px solid #a2a2a2;
 box-shadow: none;
 }
 
-.doc-helper  input.classic-button:active, .doc-helper  input.classic-button:focus {
+.doc-helper  input.classic-button:active, .doc-helper  input.classic-button:focus, .al-box .classic-button:focus {
 background: #a2a2a2;
 background: -webkit-linear-gradient(top, #a2a2a2 0%, #adacac 100%);
 background: linear-gradient(to bottom, #a2a2a2 0%, #adacac 100%);
@@ -630,6 +634,7 @@ transform: scale(0.97);
 -ms-transform:scale(0.97);
 outline: none;
 }
+
 .doc-helper  a:focus, .doc-helper  a:active {
 outline: none;
 }
@@ -816,6 +821,7 @@ position: relative;
 display: block;
 width: 100%;
 max-width: 509px;
+box-shadow: 0 0 1px 1px #444;
 }
 
 #product_listing_url {
@@ -1092,4 +1098,220 @@ width:100px;
 .edit-tags-php .custom-uploader {
 margin: 0 0 10px;
 padding: 8px 0;
+}
+
+/* Theme Integration System */
+.wp-admin .widget-inside .warning {
+width: auto;
+}
+
+.product-entry .al-box {
+position: relative;
+max-width: 800px;
+margin: 10px auto;
+width: auto;
+border: 0;
+outline: 0;
+}
+
+.product-entry .al-box h4{
+font-family: Arial, Helvetica;
+font-size: 26px;
+font-style: normal;
+font-variant: normal;
+font-weight: bold;
+line-height: 32.5px;
+margin: 0;
+padding: 0;
+border: 0;
+color: #000;
+}
+
+.product-entry .al-box p {
+font-family: sans-serif, Arial, Helvetica;
+font-size: 16px;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+line-height: 28px;
+border: 0;
+margin: 0 0 20px 0;
+padding: 0;
+color: #000;
+}
+
+.product-entry .al-box ol {
+font-family: sans-serif, Arial, Helvetica;
+font-size: 14px;
+font-style: normal;
+font-variant: normal;
+font-weight: normal;
+line-height: 22px;
+border: 0;
+margin: 0 21px 10px 10px;
+padding: 0 0 0 28px;
+display: block;
+list-style-image: none;
+list-style-position: outside;
+list-style-type: decimal;
+color: #000;
+}
+
+.product-entry .al-box li{
+font-family: sans-serif, Arial, Helvetica;
+font-variant: normal;
+font-size: 14px;
+font-style: normal;
+font-weight: normal;
+line-height: 22px;
+border: 0;
+display: list-item;
+margin: 0;
+padding: 0;
+text-align: left;
+}
+
+div.fixed-box {
+position: fixed;
+top: 22px;
+right: 0px;
+max-width: 420px;
+z-index: 9999999;
+}
+
+div.relative-box {
+width: 95%;
+margin: 0 auto;
+}
+
+.al-box .wp-core-ui .button,
+.al-box .wp-core-ui .button-primary,
+.al-box .wp-core-ui .button-secondary {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 13px;
+	line-height: 26px;
+	height: 28px;
+	margin: 0;
+	padding: 0 10px 1px;
+	cursor: pointer;
+	border-width: 1px;
+	border-style: solid;
+	-webkit-appearance: none;
+	-webkit-border-radius: 3px;
+	border-radius: 3px;
+	white-space: nowrap;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	margin-right: 5px;
+	font-family: "Open Sans",sans-serif;
+	-webkit-font-smoothing: subpixel-antialiased;
+	font-weight: normal;
+}
+
+.al-box .wp-core-ui .button:active,
+.al-box .wp-core-ui .button:focus {
+	outline: none;
+}
+
+.al-box .wp-core-ui .button-primary {
+	background: #2ea2cc;
+	border-color: #0074a2;
+ 	-webkit-box-shadow: inset 0 1px 0 rgba( 120, 200, 230, 0.5), 0 1px 0 rgba( 0, 0, 0, 0.15 );
+ 	box-shadow: inset 0 1px 0 rgba( 120, 200, 230, 0.5 ), 0 1px 0 rgba( 0, 0, 0, 0.15 );
+ 	color: #fff !important;
+	text-decoration: none;
+}
+
+.al-box .wp-core-ui .button-primary.hover,
+.al-box .wp-core-ui .button-primary:hover,
+.al-box .wp-core-ui .button-primary.focus,
+.al-box .wp-core-ui .button-primary:focus {
+	background: #1e8cbe;
+	border-color: #0074a2;
+ 	-webkit-box-shadow: inset 0 1px 0 rgba( 120, 200, 230, 0.6 );
+ 	box-shadow: inset 0 1px 0 rgba( 120, 200, 230, 0.6 );
+	color: #fff;
+}
+
+.al-box .wp-core-ui .button-primary.focus,
+.al-box .wp-core-ui .button-primary:focus {
+	border-color: #0e3950;
+	-webkit-box-shadow:
+		inset 0 1px 0 rgba( 120, 200, 230, 0.6 ),
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8);
+	box-shadow:
+		inset 0 1px 0 rgba( 120, 200, 230, 0.6 ),
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8);
+}
+
+.al-box .wp-core-ui .button-primary.active,
+.al-box .wp-core-ui .button-primary.active:focus,
+.al-box .wp-core-ui .button-primary:active {
+	background: #1b7aa6;
+	border-color: #005684;
+	color: rgba( 255, 255, 255, 0.95 );
+ 	-webkit-box-shadow: inset 0 1px 0 rgba( 0, 0, 0, 0.1 );
+ 	box-shadow: inset 0 1px 0 rgba( 0, 0, 0, 0.1 );
+}
+
+.al-box .wp-core-ui .button,
+.al-box .wp-core-ui .button-secondary {
+	color: #555 !important;
+	border-color: #cccccc;
+	background: #f7f7f7;
+	-webkit-box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba( 0, 0, 0, 0.08 );
+	box-shadow: inset 0 1px 0 #fff, 0 1px 0 rgba( 0, 0, 0, 0.08 );
+ 	vertical-align: top;
+}
+
+.al-box .wp-core-ui .button {
+	vertical-align: baseline;
+}
+
+.al-box .wp-core-ui .button.hover,
+.al-box .wp-core-ui .button:hover,
+.al-box .wp-core-ui .button-secondary:hover,
+.al-box .wp-core-ui .button.focus,
+.al-box .wp-core-ui .button:focus,
+.al-box .wp-core-ui .button-secondary:focus {
+	background: #fafafa;
+	border-color: #999;
+	color: #222;
+}
+
+.al-box .wp-core-ui .button.focus,
+.al-box .wp-core-ui .button:focus,
+.al-box .wp-core-ui .button-secondary:focus {
+	-webkit-box-shadow:
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8);
+	box-shadow:
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8);
+}
+
+.al-box .wp-core-ui .button.active,
+.al-box .wp-core-ui .button.active:hover,
+.al-box .wp-core-ui .button:active,
+.al-box .wp-core-ui .button-secondary:active {
+	background: #eee;
+	border-color: #999;
+	color: #333;
+ 	-webkit-box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+ 	box-shadow: inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 );
+}
+
+.al-box .wp-core-ui .button.active:focus {
+	-webkit-box-shadow:
+		inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 ),
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8);
+	box-shadow:
+		inset 0 2px 5px -3px rgba( 0, 0, 0, 0.5 ),
+		0 0 0 1px #5b9dd9,
+		0 0 2px 1px rgba(30, 140, 190, .8);
 }

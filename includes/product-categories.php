@@ -16,7 +16,11 @@ add_action( 'init', 'create_product_categories');
 
 
 function create_product_categories() {
-$archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
+$archive_multiple_settings = get_multiple_settings();
+$category_enable = true;
+if (get_integration_type() == 'simple') {
+$category_enable = false;
+}
 	$labels = array(
 		'name'              => __( 'Product Categories', 'al-ecommerce-product-catalog' ),
 		'singular_name'     => __( 'Product Category', 'al-ecommerce-product-catalog' ),
@@ -32,12 +36,13 @@ $archive_multiple_settings = get_option('archive_multiple_settings', unserialize
 	);
 
 	$args = array(
-		'hierarchical'      => true,
-		'labels'            => $labels,
-		'show_ui'           => true,
+		'public' => $category_enable,
+		'hierarchical' => true,
+		'labels' => $labels,
+		'show_ui' => true,
 		'show_admin_column' => true,
-		'query_var'         => true,
-		'rewrite'           => array( 'slug' => apply_filters ('product_category_slug_value_register', sanitize_title($archive_multiple_settings['category_archive_url'])), 'with_front' => false ),
+		'query_var' => true,
+		'rewrite' => array( 'slug' => apply_filters ('product_category_slug_value_register', sanitize_title($archive_multiple_settings['category_archive_url'])), 'with_front' => false ),
 		'capabilities' => array (
             'manage_terms' => 'manage_product_categories', 
             'edit_terms' => 'edit_product_categories',

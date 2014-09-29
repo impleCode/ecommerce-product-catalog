@@ -29,4 +29,22 @@ jQuery('.sort-settings tbody').sortable({
 });
 jQuery('.attributes .ui-sortable').height(jQuery('.attributes .ui-sortable').height());
 jQuery('.shipping .ui-sortable').height(jQuery('.shipping .ui-sortable').height());
+var fields = new Array('input[name="enable_product_listing"]', 'input[name="archive_multiple_settings\[archive_products_limit\]"]', 'input[name="archive_multiple_settings\[category_archive_url\]"]', 'input[name="archive_multiple_settings\[seo_title\]"]','input[name="archive_multiple_settings\[seo_title_sep\]"]','input[name="archive_multiple_settings\[breadcrumbs_title\]"]','input[name="archive_multiple_settings\[enable_product_breadcrumbs\]"]');
+jQuery('input[name="archive_multiple_settings\[integration_type\]"]').change(function() {
+	var disable = false;
+	if (jQuery(this).is(':checked') && jQuery(this).val() == 'simple') {
+	disable = true;
+	}
+	if (jQuery(this).is(':checked')) {
+		jQuery.each(fields, function(index, element) {
+			jQuery(element).prop( "disabled", disable );
+		});
+	}
+});
+jQuery('input[name="archive_multiple_settings\[integration_type\]"]').trigger("change");
+jQuery(".overall-product-settings .submit .button-primary").click(function() {
+	jQuery.each(fields, function(index, element) {
+		jQuery(element).prop( "disabled", false );
+	});
+});
 });

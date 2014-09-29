@@ -53,7 +53,7 @@ function general_settings_content() { ?>
 				$product_listing_url = get_option('product_listing_url', __('products', 'al-ecommerce-product-catalog'));
 				$product_archive_created = get_option('product_archive_page_id','0');
 				$product_archive = get_option('product_archive', $product_archive_created);
-				$archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
+				$archive_multiple_settings = get_multiple_settings();
 				$page_get = get_page_by_path( $product_listing_url );
 				if ($product_archive != '') {
 					$new_product_listing_url = get_page_uri( $product_archive ); 
@@ -64,15 +64,31 @@ function general_settings_content() { ?>
 				else if (!empty($page_get->ID)) {
 					update_option( 'product_archive', $page_get->ID );
 					$product_archive = get_option('product_archive');
+				} 
+				if (! file_exists(get_theme_root() . '/'. get_template() . '/product-adder.php')) { ?>
+				<h3><?php _e('Theme Integration', 'al-ecommerce-product-catalog'); ?></h3><?php
+				$disabled = ''; 
+				if (get_integration_type() == 'simple') { 
+					$disabled = 'disabled'; 
+					implecode_warning('<p>'.__('The simple mode allows to use eCommerce Product Catalog most features. You can build the product listing pages and category pages by using a [show_products] shortcode. Simple mode uses your theme page layout so it can show unwanted elements on product page. If it does please switch to Advanced Mode and see if it works out of the box.', 'al-ecommerce-product-catalog').'</p><p>'.__('Switching to Advanced Mode also gives additional features: automatic product listing, category pages, product search and category widget. Building a product catalog in Advanced Mode will be less time consuming as you don’t need to use a shortcode for everything.', 'al-ecommerce-product-catalog').'</p>');
 				} ?>
-				<h3><?php _e('Product listing page', 'al-ecommerce-product-catalog'); ?></h3>	
+				<table>
+				<?php 
+				implecode_settings_radio(__('Choose theme integration type', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[integration_type]', $archive_multiple_settings['integration_type'], array('simple' => __('Simple Integration<br>', 'al-ecommerce-product-catalog'), 'advanced' => __('Advanced Integration', 'al-ecommerce-product-catalog'))) ?>
+				</table>
+				<?php } ?>
+				<h3><?php _e('Product listing page', 'al-ecommerce-product-catalog'); ?></h3><?php 
+				
+				if ($disabled == 'simple') {
+					implecode_warning(sprintf(__('Product listing page is disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product listing page with pagination or use [show_products] shortcode on the page selected below.', 'al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-simple-mode-info'));
+				} ?>
 				<table>
 					<tr>
 						<td>
 							<?php _e('Enable Product Listing Page', 'al-ecommerce-product-catalog'); ?>: 
 						</td>
 						<td>
-							<input type="checkbox" name="enable_product_listing" value="1"<?php checked( 1, $enable_product_listing ); ?> />
+							<input <?php echo $disabled; ?> type="checkbox" name="enable_product_listing" value="1"<?php checked( 1, $enable_product_listing ); ?> />
 						</td>
 					</tr>
 					<tr>
@@ -89,38 +105,47 @@ function general_settings_content() { ?>
 					</tr>
 					<tr>
 						<td><?php _e('Product listing shows at most', 'al-ecommerce-product-catalog'); ?> </td>
-						<td><input size="30" class="number-box" type="number" step="1" min="0" name="archive_multiple_settings[archive_products_limit]" id="archive_products_limit" value="<?php echo $archive_multiple_settings['archive_products_limit']; ?>" /> <?php _e('products', 'al-ecommerce-product-catalog'); ?>.</td>
+						<td><input <?php echo $disabled ?> size="30" class="number-box" type="number" step="1" min="0" name="archive_multiple_settings[archive_products_limit]" id="archive_products_limit" value="<?php echo $archive_multiple_settings['archive_products_limit']; ?>" /> <?php _e('products', 'al-ecommerce-product-catalog'); ?>.</td>
 					</tr>
 					<?php do_action('product_listing_page_settings'); ?>
-				</table>
-				<div class="al-box info"><?php _e('You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. <br><br>To show products from just one category, use: [show_products category="2"] where 2 is category ID (you can display several categories by inserting comma separated IDs). <br><br>To display products by IDs, use: [show_products product="5"], where 5 is product ID.', 'al-ecommerce-product-catalog'); ?></div>
-				<h3><?php _e('Categories Settings', 'al-ecommerce-product-catalog'); ?></h3>
+				</table><?php
+				//implecode_info(__('You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. <br><br>To show products from just one category, use: [show_products category="2"] where 2 is category ID (you can display several categories by inserting comma separated IDs). <br><br>To display products by IDs, use: [show_products product="5"], where 5 is product ID.', 'al-ecommerce-product-catalog'));
+				?>
+				<h3><?php _e('Categories Settings', 'al-ecommerce-product-catalog'); ?></h3><?php
+				if ($disabled != '') {
+					implecode_warning(sprintf(__('Category pages are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable category pages or use [show_products category="1"] (where "1" is category ID) on any page to show products from certain category.', 'al-ecommerce-product-catalog'),'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-simple-mode-info'));
+				} ?>
 				<table>
 				<tr>
 					<td><?php _e('Categories Parent URL', 'al-ecommerce-product-catalog'); ?>:</td>
-					<td class="longer"><?php echo site_url() ?>/<input type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo sanitize_title($archive_multiple_settings['category_archive_url']); ?>" />/<?php _e('category-name', 'al-ecommerce-product-catalog') ?>/</td>
+					<td class="longer"><?php echo site_url() ?>/<input <?php echo $disabled ?> type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo sanitize_title($archive_multiple_settings['category_archive_url']); ?>" />/<?php _e('category-name', 'al-ecommerce-product-catalog') ?>/</td>
 				</tr>
 				<?php do_action('product_category_settings', $archive_multiple_settings); ?>
 				</table>
-				<h3><?php _e('SEO Settings', 'al-ecommerce-product-catalog'); ?></h3>
+				<h3><?php _e('SEO Settings', 'al-ecommerce-product-catalog'); ?></h3><?php
+				if ($disabled != '') {
+					implecode_warning(sprintf(__('SEO settings are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable SEO settings.', 'al-ecommerce-product-catalog'),'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-simple-mode-info'));
+				} ?>
 				<table>
 					<?php 
-					$archive_multiple_settings['seo_title_sep'] = isset($archive_multiple_settings['seo_title_sep']) ? $archive_multiple_settings['seo_title_sep'] : '';
-					$archive_multiple_settings['seo_title'] = isset($archive_multiple_settings['seo_title']) ? $archive_multiple_settings['seo_title'] : '';
 					implecode_settings_text(__('Archive SEO Title', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[seo_title]', $archive_multiple_settings['seo_title']);
 					implecode_settings_checkbox(__('Enable SEO title separator', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[seo_title_sep]', $archive_multiple_settings['seo_title_sep']) ?>
 					
 				</table>
-				<h3><?php _e('Breadcrumbs Settings', 'al-ecommerce-product-catalog'); ?></h3>
+				<h3><?php _e('Breadcrumbs Settings', 'al-ecommerce-product-catalog'); ?></h3><?php  
+				if ($disabled != '') {
+					implecode_warning(sprintf(__('Breadcrumbs are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product breadcrumbs.', 'al-ecommerce-product-catalog'),'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-simple-mode-info'));
+				} ?>
 				<table>
 					<tr>
 						<td><?php _e('Enable Product Breadcrumbs:', 'al-ecommerce-product-catalog'); ?> </td>
-						<td><input type="checkbox" name="archive_multiple_settings[enable_product_breadcrumbs]" value="1"<?php checked( 1, isset($archive_multiple_settings['enable_product_breadcrumbs']) ? $archive_multiple_settings['enable_product_breadcrumbs'] : '' ); ?> /></td>
+						<td><input <?php echo $disabled ?> type="checkbox" name="archive_multiple_settings[enable_product_breadcrumbs]" value="1"<?php checked( 1, isset($archive_multiple_settings['enable_product_breadcrumbs']) ? $archive_multiple_settings['enable_product_breadcrumbs'] : '' ); ?> /></td>
 					</tr>
 					<tr>
 						<td><?php _e('Product listing breadcrumbs title:', 'al-ecommerce-product-catalog'); ?> </td>
-						<td><input type="text" name="archive_multiple_settings[breadcrumbs_title]" id="breadcrumbs_title" value="<?php echo $archive_multiple_settings['breadcrumbs_title']; ?>" /></td>
+						<td><input <?php echo $disabled ?> type="text" name="archive_multiple_settings[breadcrumbs_title]" id="breadcrumbs_title" value="<?php echo $archive_multiple_settings['breadcrumbs_title']; ?>" /></td>
 					</tr>
+					
 				</table>
 				<h3><?php _e('Payment and currency', 'al-ecommerce-product-catalog'); ?></h3>
 				<table id="payment_table">
@@ -168,7 +193,6 @@ function general_settings_content() { ?>
 				});</script>
 				<h3><?php _e('Additional Settings', 'al-ecommerce-product-catalog'); ?></h3>
 				<table><?php 
-				$archive_multiple_settings['disable_sku'] = isset($archive_multiple_settings['disable_sku']) ? $archive_multiple_settings['disable_sku'] : '';
 				implecode_settings_checkbox(__('Disable SKU', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[disable_sku]', $archive_multiple_settings['disable_sku']) ?>
 				</table>
 				<?php do_action('general-settings'); ?>
@@ -194,4 +218,25 @@ $product_currency_settings['th_sep'] = isset($product_currency_settings['th_sep'
 $product_currency_settings['dec_sep'] = isset($product_currency_settings['dec_sep']) ? $product_currency_settings['dec_sep'] :$local['decimal_point'];
 $product_currency_settings['price_enable'] = isset($product_currency_settings['price_enable']) ? $product_currency_settings['price_enable'] : 'on';
 return $product_currency_settings;
+}
+
+function get_multiple_settings() {
+$archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
+if (file_exists(get_theme_root() . '/'. get_template() . '/product-adder.php') || (isset($_GET['test_advanced']) && ($_GET['test_advanced'] == 1 || $_GET['test_advanced'] == 'ok'))) {
+$archive_multiple_settings['integration_type'] = 'advanced';
+}
+else {
+$archive_multiple_settings['integration_type'] = isset($archive_multiple_settings['integration_type']) ? $archive_multiple_settings['integration_type'] : 'simple';
+}
+$archive_multiple_settings['disable_sku'] = isset($archive_multiple_settings['disable_sku']) ? $archive_multiple_settings['disable_sku'] : '';
+$archive_multiple_settings['seo_title_sep'] = isset($archive_multiple_settings['seo_title_sep']) ? $archive_multiple_settings['seo_title_sep'] : '';
+$archive_multiple_settings['seo_title'] = isset($archive_multiple_settings['seo_title']) ? $archive_multiple_settings['seo_title'] : '';
+$archive_multiple_settings['category_archive_url'] = isset($archive_multiple_settings['category_archive_url']) ? $archive_multiple_settings['category_archive_url'] : 'product-category';
+$archive_multiple_settings['category_archive_url'] = empty($archive_multiple_settings['category_archive_url']) ? 'product-category' : $archive_multiple_settings['category_archive_url'];
+return $archive_multiple_settings;
+}
+
+function get_integration_type() {
+$settings = get_multiple_settings();
+return $settings['integration_type'];
 }

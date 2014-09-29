@@ -29,7 +29,11 @@ function create_product() {
 global $wp_version;
 $enable_product_listing = get_option('enable_product_listing', 1);
 $slug = untrailingslashit(get_option('product_listing_url', __('products', 'al-ecommerce-product-catalog')));
-if ($enable_product_listing == 1) {$product_listing_t = true;} else {$product_listing_t = false;}
+if ($enable_product_listing == 1 && get_integration_type() != 'simple') {
+	$product_listing_t = $slug;
+} else {
+	$product_listing_t = false;
+}
 if ( $wp_version < 3.8 ) {
 	$reg_settings = array(
 			'labels' => array(

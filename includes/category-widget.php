@@ -19,7 +19,7 @@ class product_cat_widget extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract( $args );
-
+		if (get_integration_type() != 'simple') { 
 		$title = apply_filters('widget_title', $instance['title'], $instance, $this->id_base);
 		$c = ! empty( $instance['count'] ) ? '1' : '0';
 		$h = ! empty( $instance['hierarchical'] ) ? '1' : '0';
@@ -62,6 +62,7 @@ class product_cat_widget extends WP_Widget {
 		}
 
 		echo $after_widget;
+		}
 	}
 
 	function update( $new_instance, $old_instance ) {
@@ -76,6 +77,7 @@ class product_cat_widget extends WP_Widget {
 
 	function form( $instance ) {
 		//Defaults
+		if (get_integration_type() != 'simple') { 
 		$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
 		$title = esc_attr( $instance['title'] );
 		$count = isset($instance['count']) ? (bool) $instance['count'] :false;
@@ -96,6 +98,10 @@ class product_cat_widget extends WP_Widget {
 <?php 
 $object = $this;
 do_action('product_categories_widget_settings', $instance, $object); ?> </p> <?php
+}
+else {
+implecode_warning(sprintf(__('Category widget is disabled with simple theme integration. Please see <a target="_blank" href="%s">Theme Integration Guide</a> to enable product category widget.', 'al-ecommerce-product-catalog'),'http://implecode.com/wordpress/product-catalog/theme-integration-guide/'));
+}
 	}
 }
 

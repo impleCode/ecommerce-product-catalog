@@ -19,6 +19,7 @@ class product_widget_search extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
+		if (get_integration_type() != 'simple') { 
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
 		echo $before_widget;
@@ -33,22 +34,25 @@ class product_widget_search extends WP_Widget {
 </form>';
 
 		echo $after_widget;
+		}
 	}
 
-	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
-		$title = $instance['title'];
-?>
-		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'al-ecommerce-product-catalog'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></label></p>
-<?php
-	}
+function form( $instance ) {
+if (get_integration_type() != 'simple') { 
+	$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
+	$title = $instance['title']; ?>
+	<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'al-ecommerce-product-catalog'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></label></p><?php
+}
+else {
+	implecode_warning(sprintf(__('Search widget is disabled with simple theme integration. Please see <a target="_blank" href="%s">Theme Integration Guide</a> to enable product search widget.', 'al-ecommerce-product-catalog'),'http://implecode.com/wordpress/product-catalog/theme-integration-guide/'));
+}
+}
 
-	function update( $new_instance, $old_instance ) {
-		$instance = $old_instance;
-		$new_instance = wp_parse_args((array) $new_instance, array( 'title' => ''));
-		$instance['title'] = strip_tags($new_instance['title']);
-		return $instance;
-	}
-
+function update( $new_instance, $old_instance ) {
+$instance = $old_instance;
+$new_instance = wp_parse_args((array) $new_instance, array( 'title' => ''));
+$instance['title'] = strip_tags($new_instance['title']);
+return $instance;
+}
 }
 

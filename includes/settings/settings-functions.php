@@ -131,3 +131,15 @@ else {
 return $return;
 }
 }
+
+function implecode_warning($text, $echo = 1) {
+return echo_ic_setting('<div class="al-box warning">'.$text.'</div>', $echo);
+}
+
+function implecode_info($text, $echo = 1) {
+return echo_ic_setting('<div class="al-box info"><p>'.$text.'</p></div>', $echo);
+}
+
+function implecode_success($text, $echo = 1) {
+return echo_ic_setting('<div class="al-box success"><p>'.$text.'</p></div>', $echo);
+}

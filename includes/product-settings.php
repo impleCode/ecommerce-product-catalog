@@ -146,3 +146,14 @@ $helper = '<div class="doc-helper '.$class.'"><div class="doc-item">
 		</div></div>';
 echo $helper;
 }
+
+function did_know_helper($name, $desc, $url, $class = null) {
+$helper = '<div class="doc-helper '.$class.'"><div class="doc-item">
+		<div class="doc-name green-box">'.
+    __('Did you know?', 'al-ecommerce-product-catalog').'</div>
+		<div class="doc-description">'.$desc.'.</div>
+		<div class="doc-button"><a target="_blank" href="'.$url.'?cam=catalog-know-box&key='.$name.'"><input class="doc_button classic-button" type="button" value="'.__('See Now','al-ecommerce-product-catalog').'"></a></div>
+		<a title="'.__('Click the button to visit impleCode website','al-ecommerce-product-catalog').'" target="_blank" href="'.$url.'?cam=catalog-docs-box&key='.$name.'" class="background-url"></a>
+		</div></div>';
+echo $helper;
+}

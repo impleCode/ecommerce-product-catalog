@@ -541,6 +541,11 @@ width: 60px;
 width: 70px;
 }
 
+.locale-he-il .doc-helper {
+float: left;
+clear: left;
+}
+
 .doc-helper {
 float: right;
 clear: right;
@@ -581,7 +586,7 @@ margin-bottom: -23px;
 color: #0a063b;
 font-size: 19.5px;
 font-family: 'Source Sans Pro',Arial,sans-serif;
-height: 25px;
+line-height:23px;
 }
 
 .doc-helper .doc-description {
@@ -611,6 +616,10 @@ cursor: pointer;
 box-shadow: none;
 text-shadow: none;
 border-radius: 5px;
+}
+
+.locale-fr-fr .doc-helper  input.classic-button, .al-box .classic-button, .locale-pl-pl .doc-helper  input.classic-button, .al-box .classic-button{
+font-size: 13px;
 }
 
 .doc-helper  input.classic-button:hover, .al-box .classic-button:hover {
@@ -643,12 +652,22 @@ outline: none;
 min-height: 533px;
 clear: both;
 }
-.tab-menu {
+h2.tab-menu {
 border-bottom: 2px solid #000000;
 padding: 0px !important;
 position: relative;
 z-index: 1;
+font-size: 21px;
 }
+
+h2.tab-menu {
+font-size: 18px;
+}
+
+.locale-en-us h2.tab-menu {
+font-size: 21px;
+}
+
 .tab-menu a {
 color: #000000;
 border-top: 1px solid #000000;
@@ -672,6 +691,10 @@ border-left: 1px solid #d54e21;
 border-right: 1px solid #d54e21;*/
 border-bottom: 2px solid #ffffff; 
 z-index:2;
+}
+
+.locale-he-il .setting-content.submenu {
+padding: 30px 250px 0 0px;
 }
 
 .setting-content.submenu {
@@ -819,7 +842,6 @@ font-weight: bold;
 margin: 10px 0 10px 0;
 position: relative;
 display: block;
-width: 100%;
 max-width: 509px;
 box-shadow: 0 0 1px 1px #444;
 }
@@ -957,6 +979,10 @@ td.with-additional-styling {
 padding: 0;
 }
 
+.locale-he-il .settings-submenu {
+float: right;
+}
+
 .settings-submenu {
 font-weight: 400;
 width: 196px;
@@ -965,12 +991,16 @@ float:left;
 margin-top: 20px;
 }
 
+.locale-en-us .settings-submenu .element{
+font-size: 17px;
+}
+
 .settings-submenu .element{
 line-height: 29px;
 border: 2px solid #000000;
 border-right: none;
 padding: 5px;
-font-size: 17px;
+font-size: 15px;
 color: #000;
 text-decoration: none;
 display: block;

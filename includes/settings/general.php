@@ -42,7 +42,9 @@ function general_settings_content() { ?>
 	jQuery('.settings-submenu a').removeClass('current');
 	jQuery('.settings-submenu a#general-settings').addClass('current');
 	</script>
-	<?php doc_helper(__('shortcode', 'al-ecommerce-product-catalog'), 'product-shortcode') ?>
+	<?php 
+		doc_helper(__('shortcode', 'al-ecommerce-product-catalog'), 'product-shortcode');
+		did_know_helper('support', __('You can get instant support through email','al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/plugins/premium-support/')	?>
 		<div class="setting-content submenu">
 		<h2><?php _e('General Settings', 'al-ecommerce-product-catalog'); ?></h2>
 			<form method="post" action="options.php">
@@ -65,9 +67,9 @@ function general_settings_content() { ?>
 					update_option( 'product_archive', $page_get->ID );
 					$product_archive = get_option('product_archive');
 				} 
+				$disabled = ''; 
 				if (! is_advanced_mode_forced()) { ?>
 				<h3><?php _e('Theme Integration', 'al-ecommerce-product-catalog'); ?></h3><?php
-				$disabled = ''; 
 				if (get_integration_type() == 'simple') { 
 					$disabled = 'disabled'; 
 					implecode_warning('<p>'.__('The simple mode allows to use eCommerce Product Catalog most features. You can build the product listing pages and category pages by using a [show_products] shortcode. Simple mode uses your theme page layout so it can show unwanted elements on product page. If it does please switch to Advanced Mode and see if it works out of the box.', 'al-ecommerce-product-catalog').'</p><p>'.__('Switching to Advanced Mode also gives additional features: automatic product listing, category pages, product search and category widget. Building a product catalog in Advanced Mode will be less time consuming as you don’t need to use a shortcode for everything.', 'al-ecommerce-product-catalog').'</p>');

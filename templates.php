@@ -100,7 +100,7 @@ add_filter( 'template_include', 'al_product_adder_custom_template' );
 			wp_redirect(get_permalink($product_archive));
 		}
 		else {
-			return get_theme_root() . '/'. get_template() . '/page.php'; 
+			return get_theme_root() . '/'. get_template() . '/page.php';
 		}
 	}
 	
@@ -152,7 +152,7 @@ $box_content .= '<li>'.__('Keep using Simple Mode which is still functional.', '
 $box_content .= '<li>'.__('Switch the theme.', 'al-ecommerce-product-catalog').'</li>';
 $box_content .= '</ol>';
 $box_content .= '<p>'.__('Please make your choice below or switch the theme.', 'al-ecommerce-product-catalog').'</p>';
-$box_content .= '<p class="wp-core-ui"><a target="_blank" href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-mode-test" class="button-primary">'. __( 'Free Theme Integration Guide', 'al-ecommerce-product-catalog' ) .'</a><a href="'.add_query_arg( 'test_advanced', 'simple' ).'" class="button-secondary">'. __( 'Use Simple Mode', 'al-ecommerce-product-catalog' ) .'</a></p>';
+$box_content .= '<p class="wp-core-ui"><a target="_blank" href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-advanced-fail" class="button-primary">'. __( 'Free Theme Integration Guide', 'al-ecommerce-product-catalog' ) .'</a><a href="'.add_query_arg( 'test_advanced', 'simple' ).'" class="button-secondary">'. __( 'Use Simple Mode', 'al-ecommerce-product-catalog' ) .'</a></p>';
 enable_simple_mode();
 return '<div class="'.$class.'">'.implecode_warning($box_content, 0).'</div>';
 }
@@ -160,7 +160,7 @@ else if (isset($_GET['test_advanced']) && $_GET['test_advanced'] == 'ok') {
 $box_content .= '<p>'.__('Congratulations! eCommerce Product Catalog is working on Advanced Mode now. You can go to admin and add the products to the catalog.', 'al-ecommerce-product-catalog').'</p>';
 $box_content .= '<p>'.__('If you are a developer or would like to have full control on the product pages templates we still recommend to proceed with manual integration.', 'al-ecommerce-product-catalog').'</p>';
 $box_content .= '<p>'.__('You can switch between modes at any time in Product Settings.', 'al-ecommerce-product-catalog').'</p>';
-$box_content .= '<p class="wp-core-ui"><a href="'.admin_url().'" class="button-primary">'. __( 'Go to Admin', 'al-ecommerce-product-catalog' ) .'</a><a target="_blank" href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-mode-test" class="button-secondary">'. __( 'Free Theme Integration Guide', 'al-ecommerce-product-catalog' ) .'</a></p>';
+$box_content .= '<p class="wp-core-ui"><a href="'.admin_url().'" class="button-primary">'. __( 'Go to Admin', 'al-ecommerce-product-catalog' ) .'</a><a target="_blank" href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-advanced-success" class="button-secondary">'. __( 'Free Theme Integration Guide', 'al-ecommerce-product-catalog' ) .'</a></p>';
 enable_advanced_mode();
 return '<div class="'.$class.'">'.implecode_success($box_content, 0).'</div>';
 }

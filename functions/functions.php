@@ -249,10 +249,16 @@ function show_short_desc($post, $single_names) {
 $shortdesc = get_post_meta($post->ID, "_shortdesc", true);  
 $content = $shortdesc; ?>
 <div class="shortdesc">
-	<?php echo do_shortcode(wpautop($shortdesc)); ?>
+	<?php echo apply_filters('product_short_description' , $shortdesc);	?>
 </div>
 <?php }
 add_action('product_details','show_short_desc', 5, 2);
+add_filter('product_short_description', 'wptexturize');
+add_filter('product_short_description', 'convert_smilies');
+add_filter('product_short_description', 'convert_chars');
+add_filter('product_short_description', 'wpautop');
+add_filter('product_short_description', 'shortcode_unautop');
+add_filter('product_short_description', 'do_shortcode', 11);
 
 function show_product_attributes($post, $single_names) {
 $attributes_number = get_option('product_attributes_number', DEF_ATTRIBUTES_OPTIONS_NUMBER);

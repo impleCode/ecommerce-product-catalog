@@ -100,7 +100,7 @@ $object = $this;
 do_action('product_categories_widget_settings', $instance, $object); ?> </p> <?php
 }
 else {
-implecode_warning(sprintf(__('Category widget is disabled with simple theme integration. Please see <a target="_blank" href="%s">Theme Integration Guide</a> to enable product category widget.', 'al-ecommerce-product-catalog'),'http://implecode.com/wordpress/product-catalog/theme-integration-guide/'));
+implecode_warning(sprintf(__('Category widget is disabled with simple theme integration. Please see <a target="_blank" href="%s">Theme Integration Guide</a> to enable product category widget.', 'al-ecommerce-product-catalog'),'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=category-widget'));
 }
 	}
 }

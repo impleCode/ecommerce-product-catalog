@@ -29,7 +29,7 @@ class product_widget_search extends WP_Widget {
 		// Use current theme search form if it exists
 		echo '<form role="search" method="get" id="product_search_form" action="'.home_url( '/' ).'">
 <input type="hidden" name="post_type" value="al_product" />
-<input class="product-search-box" type="text" value="" id="s" name="s" placeholder="'.__('Search', 'al-ecommerce-product-catalog').'" />
+<input class="product-search-box" type="text" value="" id="s" name="s" placeholder="'.__('Product Search', 'al-ecommerce-product-catalog').'" />
 <input class="product-search-submit" type="submit" name="submit" id="searchsubmit" value="'.__('Search', 'al-ecommerce-product-catalog').'" />
 </form>';
 
@@ -44,7 +44,7 @@ if (get_integration_type() != 'simple') {
 	<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:', 'al-ecommerce-product-catalog'); ?> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></label></p><?php
 }
 else {
-	implecode_warning(sprintf(__('Search widget is disabled with simple theme integration. Please see <a target="_blank" href="%s">Theme Integration Guide</a> to enable product search widget.', 'al-ecommerce-product-catalog'),'http://implecode.com/wordpress/product-catalog/theme-integration-guide/'));
+	implecode_warning(sprintf(__('Search widget is disabled with simple theme integration. Please see <a target="_blank" href="%s">Theme Integration Guide</a> to enable product search widget.', 'al-ecommerce-product-catalog'),'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=search-widget'));
 }
 }
 

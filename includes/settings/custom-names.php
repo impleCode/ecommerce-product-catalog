@@ -101,7 +101,7 @@ function custom_names_content() { ?>
 		$disabled = '';
 		if (get_integration_type() == 'simple') { 
 			$disabled = 'disabled'; 
-			implecode_warning(sprintf(__('Product listing pages are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product listing pages.', 'al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-settings-link&key=integration-simple-mode-info'));
+			implecode_warning(sprintf(__('Product listing pages are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product listing pages.', 'al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=front-labels'));
 		} ?>
 		<h3><?php _e('Product Listing Labels', 'al-ecommerce-product-catalog'); ?></h3>
 		<table class="wp-list-table widefat product-settings-table" style="clear:right; text-align: left;">

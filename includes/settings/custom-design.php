@@ -9,7 +9,7 @@
  * @author 		Norbert Dreszer
  */
 function design_menu() { ?>
-	<a id="design-settings" href="./edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=archive-design"><?php _e('Catalog Design', 'al-ecommerce-product-catalog'); ?></a>
+	<a id="design-settings" class="nav-tab" href="./edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=archive-design"><?php _e('Catalog Design', 'al-ecommerce-product-catalog'); ?></a>
 <?php }
 
 add_action('settings-menu','design_menu');

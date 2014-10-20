@@ -81,6 +81,10 @@ background-color: rgb(253,0,2);
 margin-top: 10px;
 }
 
+.product-subcategories {
+padding-bottom: 10px;
+}
+
 .product-subcategories li {
 display: inline-block;
 list-style-type: none;
@@ -730,22 +734,19 @@ content: "\f140";
 font-size: 0.84em;
 }
 
-.tab-menu a:before, .setting-content h2:before, .settings-submenu h3 a:before {
+.nav-tab-wrapper a:before, .setting-content h2:before, .settings-submenu h3 a:before {
 font-family: dashicons;
 font-size: 0.84em;
 }
 
-.tab-menu a#general-settings:before, .settings-submenu h3 a#general-settings:before, .overall-product-settings .setting-content h2:first-of-type:before {
+.nav-tab-wrapper a#general-settings:before, .settings-submenu h3 a#general-settings:before, .overall-product-settings .setting-content h2:first-of-type:before {
 content: "\f111";
 }
 
-.tab-menu a#design-settings:before, .design-product-settings .setting-content h2:first-of-type:before {
+.nav-tab-wrapper a#design-settings:before, .design-product-settings .setting-content h2:first-of-type:before {
 content: "\f309";
 }
 
-.tab-menu a#design-settings:before, .design-product-settings .setting-content h2:first-of-type:before {
-content: "\f309";
-}
 .settings-submenu h3 a#archive-design:before, .settings-submenu h3 a#archive-names:before {
 content: "\f163";
 }
@@ -758,15 +759,15 @@ content: "\f123";
 content: "\f237";
 }
 
-.tab-menu a#shipping-settings:before, .shipping-product-settings.setting-content h2:first-of-type:before {
+.nav-tab-wrapper a#shipping-settings:before, .shipping-product-settings.setting-content h2:first-of-type:before {
 content: "\f230";
 }
 
-.tab-menu a#attributes-settings:before, .settings-submenu h3 a#attributes-settings:before, .attributes-product-settings .setting-content h2:first-of-type:before {
+.nav-tab-wrapper a#attributes-settings:before, .settings-submenu h3 a#attributes-settings:before, .attributes-product-settings .setting-content h2:first-of-type:before {
 content: "\f503";
 }
 
-.tab-menu a#names-settings:before, .names-product-settings .setting-content h2:first-of-type:before {
+.nav-tab-wrapper a#names-settings:before, .names-product-settings .setting-content h2:first-of-type:before {
 content: "\f473";
 }
 
@@ -986,7 +987,7 @@ float: right;
 .settings-submenu {
 font-weight: 400;
 width: 196px;
-border-right: 1px solid #000000;
+border-right: 1px solid #ccc;
 float:left;
 margin-top: 20px;
 }
@@ -995,6 +996,34 @@ margin-top: 20px;
 font-size: 17px;
 }
 
+.settings-submenu .element{
+padding: 6px 10px;
+font-weight: 700;
+font-size: 15px;
+line-height: 24px;
+border: 1px solid #ccc;
+border-right: 1px solid #ccc;
+background: #e4e4e4;
+color: #555;
+text-decoration: none;
+outline: 0;
+display: block;
+margin-bottom: 5px;
+margin-right: -1px;
+}
+
+.settings-submenu .element:hover {
+background-color: #fff;
+color: #464646;
+}
+
+.settings-submenu .element.current {
+border-right: 1px solid #f1f1f1;
+background: #f1f1f1;
+color: #000;
+}
+
+/*
 .settings-submenu .element{
 line-height: 29px;
 border: 2px solid #000000;
@@ -1011,7 +1040,7 @@ margin-bottom: 5px;
 background: #fff;
 border-right: 2px solid #fff;
 }
-
+*/
 .price-value.example {
 padding-left: 30px;
 }
@@ -1135,7 +1164,7 @@ padding: 8px 0;
 width: auto;
 }
 
-.product-entry .al-box {
+.product-entry .al-box, .fixed-box .al-box {
 position: relative;
 max-width: 800px;
 margin: 10px auto;
@@ -1144,7 +1173,7 @@ border: 0;
 outline: 0;
 }
 
-.product-entry .al-box h4{
+.product-entry .al-box h4, .fixed-box .al-box h4{
 font-family: Arial, Helvetica;
 font-size: 26px;
 font-style: normal;
@@ -1157,7 +1186,7 @@ border: 0;
 color: #000;
 }
 
-.product-entry .al-box p {
+.product-entry .al-box p, .fixed-box .al-box p{
 font-family: sans-serif, Arial, Helvetica;
 font-size: 16px;
 font-style: normal;
@@ -1170,7 +1199,7 @@ padding: 0;
 color: #000;
 }
 
-.product-entry .al-box ol {
+.product-entry .al-box ol, .fixed-box .al-box ol  {
 font-family: sans-serif, Arial, Helvetica;
 font-size: 14px;
 font-style: normal;
@@ -1187,7 +1216,7 @@ list-style-type: decimal;
 color: #000;
 }
 
-.product-entry .al-box li{
+.product-entry .al-box li, .fixed-box .al-box li{
 font-family: sans-serif, Arial, Helvetica;
 font-variant: normal;
 font-size: 14px;
@@ -1201,6 +1230,11 @@ padding: 0;
 text-align: left;
 }
 
+.product-entry .al-box a, .fixed-box .al-box a{
+color: #06C;
+text-decoration: none;
+font-weight: inherit;
+}
 div.fixed-box {
 position: fixed;
 top: 22px;

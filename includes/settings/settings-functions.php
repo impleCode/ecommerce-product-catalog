@@ -88,9 +88,11 @@ $image_src = $image_src[0];
 $content = '<div class="custom-uploader">';
 $content .= '<input hidden="hidden" type="text" id="default" value="'. $default_image .'" />';
 $content .= '<input hidden="hidden" type="text" name="'. $option_name.'" id="uploaded_image" value="'. $option_value .'" />';
+//if ($image_src != '') {
 $content .= '<div class="admin-media-image">';
 $content .= '<img class="media-image" name="'. $option_name.'_image" src="'. $image_src.'" width="100%" height="100%" />';
 $content .= '</div>';
+//}
 $content .= '<a href="#" class="button insert-media add_media" name="'. $option_name.'_button" id="button_'. $option_name.'"><span class="wp-media-buttons-icon"></span> '. $button_value.'</a>';
 $content .= '<a class="button" id="reset-image-button" name="'. $option_name.'_reset" href="#">'. __('Reset image', 'al-ecommerce-product-catalog').'</a>';
 $content .= '</div>
@@ -136,8 +138,16 @@ function implecode_warning($text, $echo = 1) {
 return echo_ic_setting('<div class="al-box warning">'.$text.'</div>', $echo);
 }
 
-function implecode_info($text, $echo = 1) {
-return echo_ic_setting('<div class="al-box info"><p>'.$text.'</p></div>', $echo);
+function implecode_info($text, $echo = 1, $p = 1) {
+$return = '<div class="al-box info">';
+if ($p == 1) {
+$return .= '<p>'.$text.'</p>';
+}
+else {
+$return .= $text;
+}
+$return .= '</div>';
+return echo_ic_setting($return, $echo);
 }
 
 function implecode_success($text, $echo = 1) {

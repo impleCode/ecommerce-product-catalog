@@ -12,7 +12,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function general_menu() { ?>
-	<a id="general-settings" href="./edit.php?post_type=al_product&page=product-settings.php&tab=product-settings"><?php _e('Product settings', 'al-ecommerce-product-catalog'); ?></a>
+	<a id="general-settings" class="nav-tab" href="./edit.php?post_type=al_product&page=product-settings.php&tab=product-settings"><?php _e('Product settings', 'al-ecommerce-product-catalog'); ?></a>
 <?php }
 
 add_action('settings-menu','general_menu');
@@ -86,7 +86,7 @@ function general_settings_content() { ?>
 				} ?>
 				<table>
 					<tr>
-						<td>
+						<td style="width: 180px">
 							<?php _e('Enable Product Listing Page', 'al-ecommerce-product-catalog'); ?>: 
 						</td>
 						<td>
@@ -103,7 +103,14 @@ function general_settings_content() { ?>
 					</tr>
 					<tr>
 						<td><?php _e('Product listing URL', 'al-ecommerce-product-catalog'); ?>:</td>
-						<td class="archive-url-td"><a target="_blank" class="archive-url" href="<?php echo product_listing_url() ?>"><?php echo product_listing_url(); ?></a></td>
+						<td class="archive-url-td"><a target="_blank" class="archive-url" href="<?php echo product_listing_url() ?>"><?php
+						$listin_url = product_listing_url(); 
+						$listin_urllen = strlen($listin_url);
+						if ($listin_urllen > 40) {
+							$listin_url = substr($listin_url, 0, 20).'...'.substr($listin_url, $listin_urllen - 20, $listin_urllen);
+						}
+						echo $listin_url;
+						?></a></td>
 					</tr>
 					<tr>
 						<td><?php _e('Product listing shows at most', 'al-ecommerce-product-catalog'); ?> </td>
@@ -120,7 +127,12 @@ function general_settings_content() { ?>
 				<table>
 				<tr>
 					<td><?php _e('Categories Parent URL', 'al-ecommerce-product-catalog'); ?>:</td>
-					<td class="longer"><?php echo site_url() ?>/<input <?php echo $disabled ?> type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo sanitize_title($archive_multiple_settings['category_archive_url']); ?>" />/<?php _e('category-name', 'al-ecommerce-product-catalog') ?>/</td>
+					<?php $site_url = site_url(); 
+					$urllen = strlen($site_url);
+					if ($urllen > 25) {
+						$site_url = substr($site_url, 0, 11).'...'.substr($site_url, $urllen - 11, $urllen);
+					}?>
+					<td class="longer"><?php echo $site_url ?>/<input <?php echo $disabled ?> type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo sanitize_title($archive_multiple_settings['category_archive_url']); ?>" />/<?php _e('category-name', 'al-ecommerce-product-catalog') ?>/</td>
 				</tr>
 				<?php do_action('product_category_settings', $archive_multiple_settings); ?>
 				</table>

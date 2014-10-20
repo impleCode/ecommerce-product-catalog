@@ -44,8 +44,8 @@ require_once(  AL_BASE_PATH . '/includes/settings/custom-names.php' );
 function product_settings() { ?>
 
     <div id="implecode_settings" class="wrap">
-
-		<h2 class="tab-menu">
+	<h2><?php _e('Product Settings', 'al-ecommerce-product-catalog') ?> - impleCode eCommerce Product Catalog</h2>
+		<h2 class="nav-tab-wrapper">
 			<?php do_action('settings-menu'); ?>
 		</h2>
 		<?php $tab = isset($_GET['tab']) ? $_GET['tab'] : ''; 
@@ -54,8 +54,8 @@ function product_settings() { ?>
 		
 		if ($tab == 'product-settings' OR $tab == '') { ?>
 			<script>
-				jQuery('.tab-menu a').removeClass('current');
-				jQuery('.tab-menu a#general-settings').addClass('current');
+				jQuery('.nav-tab-wrapper a').removeClass('nav-tab-active');
+				jQuery('.nav-tab-wrapper a#general-settings').addClass('nav-tab-active');
 			</script>
 			<?php general_settings_content();
 		} 
@@ -64,8 +64,8 @@ function product_settings() { ?>
 		
 		else if ($tab == 'attributes-settings') {?>
 			<script>
-				jQuery('.tab-menu a').removeClass('current');
-				jQuery('.tab-menu a#attributes-settings').addClass('current');
+				jQuery('.nav-tab-wrapper a').removeClass('nav-tab-active');
+				jQuery('.nav-tab-wrapper a#attributes-settings').addClass('nav-tab-active');
 			</script>
 			<?php attributes_settings_content(); 
 		} 
@@ -74,8 +74,8 @@ function product_settings() { ?>
 		
 		else if ($tab == 'shipping-settings') { ?>
 			<script>
-				jQuery('.tab-menu a').removeClass('current');
-				jQuery('.tab-menu a#shipping-settings').addClass('current');
+				jQuery('.nav-tab-wrapper a').removeClass('nav-tab-active');
+				jQuery('.nav-tab-wrapper a#shipping-settings').addClass('nav-tab-active');
 			</script>
 			<?php shipping_settings_content();
 		} 
@@ -84,15 +84,15 @@ function product_settings() { ?>
 		
 		else if ($tab == 'design-settings') { ?>
 			<script>
-				jQuery('.tab-menu a').removeClass('current');
-				jQuery('.tab-menu a#design-settings').addClass('current');
+				jQuery('.nav-tab-wrapper a').removeClass('nav-tab-active');
+				jQuery('.nav-tab-wrapper a#design-settings').addClass('nav-tab-active');
 			</script>
 		<?php custom_design_content();
 		} 
 		else if ($tab == 'names-settings') { ?>
 			<script>
-				jQuery('.tab-menu a').removeClass('current');
-				jQuery('.tab-menu a#names-settings').addClass('current');
+				jQuery('.nav-tab-wrapper a').removeClass('nav-tab-active');
+				jQuery('.nav-tab-wrapper a#names-settings').addClass('nav-tab-active');
 			</script>
 		<?php custom_names_content();
 		}

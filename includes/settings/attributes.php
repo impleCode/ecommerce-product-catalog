@@ -9,7 +9,7 @@
  * @author 		Norbert Dreszer
  */
 function attributes_menu() { ?>
- <a id="attributes-settings" class="element"  href="./edit.php?post_type=al_product&page=product-settings.php&tab=attributes-settings&submenu=attributes"><?php _e('Product attributes', 'al-ecommerce-product-catalog'); ?></a>
+ <a id="attributes-settings" class="nav-tab"  href="./edit.php?post_type=al_product&page=product-settings.php&tab=attributes-settings&submenu=attributes"><?php _e('Product attributes', 'al-ecommerce-product-catalog'); ?></a>
 <?php }
 
 // add_action('general_submenu','attributes_menu'); // UNCOMMENT TO INSERT IN FIRST TAB and change url above

@@ -233,7 +233,7 @@ if ($shipping_options > 0 AND ! empty($any_shipping_value)) { ?>
 					<?php for ($i = 1; $i <= $shipping_options; $i++) { 
 						$shipping_value = get_post_meta($post->ID, "_shipping".$i, true);
 						if (! empty($shipping_value)) {
-							echo '<li>'. get_post_meta($post->ID, "_shipping-label".$i, true) . ' : ' . $shipping_value . ' ' . product_currency() . '</li>'; 
+							echo '<li>'. get_post_meta($post->ID, "_shipping-label".$i, true) . ' : ' . price_format($shipping_value) . '</li>'; 
 						}
 					}?>
 				</ul>
@@ -440,12 +440,19 @@ flush_rewrite_rules(false);
 update_option('al_permalink_options_update', 'none');
 }
 }
+function is_lightbox_enabled() {
+$enable_catalog_lightbox = get_option('catalog_lightbox', 1);
+$return = false;
+if ($enable_catalog_lightbox == 1) {
+$return = true;
+}
+return apply_filters('is_lightbox_enabled', $return);
+}
 
 function show_product_gallery($post, $single_options ) {
-$enable_catalog_lightbox = get_option('catalog_lightbox', 1);
 $single_options['enable_product_gallery'] = isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '';
 $single_options['enable_product_gallery_only_when_exist'] = isset($single_options['enable_product_gallery_only_when_exist']) ? $single_options['enable_product_gallery_only_when_exist'] : '';
-if ($enable_catalog_lightbox == 1 && $single_options['enable_product_gallery'] == 1) { 
+if (is_lightbox_enabled() && $single_options['enable_product_gallery'] == 1) { 
 	$colorbox_set = apply_filters('colorbox_set', '{transition: "elastic", initialWidth: 200, maxWidth: "90%", maxHeight: "90%", rel:"gal"}'); ?>
 	<script>
 		jQuery(document).ready(function(){
@@ -459,7 +466,7 @@ if ($single_options['enable_product_gallery'] == 1) {
 	do_action('above_product_image');
 	$image_size = apply_filters('product_image_size', 'medium');
 	if (has_post_thumbnail()) { 
-		if ($enable_catalog_lightbox == 1) {
+		if (is_lightbox_enabled()) {
 			$img_url = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'large'); ?>
 			<a class="a-product-image" href="<?php echo $img_url[0];?>"><?php the_post_thumbnail($image_size);?></a> <?php } 
 		else {

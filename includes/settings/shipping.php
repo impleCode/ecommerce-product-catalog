@@ -9,7 +9,7 @@
  * @author 		Norbert Dreszer
  */
 function shipping_menu() { ?>
-	<a id="shipping-settings" class="element" href="./edit.php?post_type=al_product&page=product-settings.php&tab=shipping-settings&submenu=shipping"><?php _e('Product shipping', 'al-ecommerce-product-catalog'); ?></a>
+	<a id="shipping-settings" class="nav-tab" href="./edit.php?post_type=al_product&page=product-settings.php&tab=shipping-settings&submenu=shipping"><?php _e('Product shipping', 'al-ecommerce-product-catalog'); ?></a>
 <?php }
 
 // add_action('general_submenu','shipping_menu'); // UNCOMMENT TO INSERT IN FIRST TAB and change url above

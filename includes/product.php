@@ -13,10 +13,9 @@
 function frontend_scripts() {
 	if (!is_admin()) {
 		wp_enqueue_script('jquery');
-		$enable_catalog_lightbox = get_option('catalog_lightbox', 1);
 		$single_options = get_option('multi_single_options', unserialize(MULTI_SINGLE_OPTIONS));
 		$single_options['enable_product_gallery'] = isset($single_options['enable_product_gallery']) ? $single_options['enable_product_gallery'] : '';
-		if ($enable_catalog_lightbox == 1 && $single_options['enable_product_gallery'] == 1) {
+		if (is_lightbox_enabled() && $single_options['enable_product_gallery'] == 1) {
 		wp_register_script('colorbox', AL_PLUGIN_BASE_PATH.'js/colorbox/jquery.colorbox-min.js', array('jquery'));
 		wp_register_style('colorbox', AL_PLUGIN_BASE_PATH.'js/colorbox/colorbox.css');
 		}

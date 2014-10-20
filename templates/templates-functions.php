@@ -114,8 +114,7 @@ return '<div class="product-list '.$archive_template.'-list">'.$inside.'<div sty
 add_shortcode('show_products', 'show_products_outside_loop');
 
 function single_scripts(){
-$enable_catalog_lightbox = get_option('catalog_lightbox', 1);
-if ($enable_catalog_lightbox == 1) {
+if (is_lightbox_enabled()) {
 wp_enqueue_script('colorbox');
 wp_enqueue_style('colorbox');
 }}

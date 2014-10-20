@@ -32,7 +32,7 @@ return $archive_names;
 }
  
 function custom_names_menu() { ?>
-<a id="names-settings" href="./edit.php?post_type=al_product&page=product-settings.php&tab=names-settings&submenu=single-names"><?php _e('Front-end Labels', 'al-ecommerce-product-catalog'); ?></a>
+<a id="names-settings" class="nav-tab" href="./edit.php?post_type=al_product&page=product-settings.php&tab=names-settings&submenu=single-names"><?php _e('Front-end Labels', 'al-ecommerce-product-catalog'); ?></a>
 <?php }
 
 add_action('settings-menu','custom_names_menu');

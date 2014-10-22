@@ -9,7 +9,7 @@
  * @author 		Norbert Dreszer
  */
 function design_menu() { ?>
-	<a id="design-settings" class="nav-tab" href="./edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=archive-design"><?php _e('Catalog Design', 'al-ecommerce-product-catalog'); ?></a>
+	<a id="design-settings" class="nav-tab" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=archive-design') ?>"><?php _e('Catalog Design', 'al-ecommerce-product-catalog'); ?></a>
 <?php }
 
 add_action('settings-menu','design_menu');
@@ -26,26 +26,25 @@ function design_settings() {
 add_action('product-settings-list','design_settings');
 
 function custom_design_content() { ?>
-<div class="design-product-settings">
-		
-
-		<div class="settings-submenu">
-			<h3>
-				<a id="archive-design" class="element current" href="./edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=archive-design"><?php _e('Product Listing', 'al-ecommerce-product-catalog'); ?></a>
-				<a id="single-design" class="element" href="./edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=single-design"><?php _e('Product Page', 'al-ecommerce-product-catalog'); ?></a>
-				<a id="design-schemes" class="element" href="./edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=design-schemes"><?php _e('Design Schemes', 'al-ecommerce-product-catalog'); ?></a>
-				<?php do_action('custom-design-submenu'); ?>
-			</h3>
-		</div>
-		<?php 
+<div class="design-product-settings settings-wrapper">
+	<div class="settings-submenu">
+		<h3>
+			<a id="archive-design" class="element current" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=archive-design')?>"><?php _e('Product Listing', 'al-ecommerce-product-catalog'); ?></a>
+			<a id="single-design" class="element" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=single-design')?>"><?php _e('Product Page', 'al-ecommerce-product-catalog'); ?></a>
+			<a id="design-schemes" class="element" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=design-schemes')?>"><?php _e('Design Schemes', 'al-ecommerce-product-catalog'); ?></a><?php 
+			do_action('custom-design-submenu'); ?>
+		</h3>
+	</div>
+	<div class="setting-content submenu"><?php 
+		do_action('custom-design-settings'); ?>
+	</div>
+	<div class="helpers"><?php 
 		$submenu = $_GET['submenu']; 
-		if ($submenu == 'single-design') { 
+		if ($submenu == 'single-design') {
 			doc_helper(__('gallery', 'al-ecommerce-product-catalog'), 'product-gallery');
 		} ?>
-		<div class="setting-content submenu">
-		<?php do_action('custom-design-settings');?>
-		
-		</div> </div>
+	</div>
+</div>
 <?php }
 
 function archive_custom_design() { 

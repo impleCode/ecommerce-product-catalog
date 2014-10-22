@@ -11,7 +11,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function example_list_archive_theme() { ?>
-<div class="archive-listing list example"><a href="#list-theme"><span class="div-link"></span></a><div class="product-image" style="background-image:url('<?php echo AL_PLUGIN_BASE_PATH .'templates/themes/img/example-product.jpg'; ?>'); background-size: 150px; background-position: center;"></div><div class="product-name">White Lamp</div><div class="product-short-descr"><p>Fusce vestibulum augue ac quam tincidunt ullamcorper. Vestibulum scelerisque fermentum congue. Proin convallis dolor ac ipsum congue tincidunt. Donec ullamcorper ipsum id risus feugiat volutpat. Curabitur cursus mattis dui sit amet scelerisque. [...]</p>
+<div class="archive-listing list example"><a href="#list-theme"><span class="div-link"></span></a><div class="product-image" style="background-image:url('<?php echo AL_PLUGIN_BASE_PATH .'templates/themes/img/example-product.jpg'; ?>'); background-size: 150px; background-position: center;"></div><div class="product-name">White Lamp</div><div class="product-short-descr"><p>Fusce vestibulum augue ac quam tincidunt ullamcorper. Vestibulum scelerisque fermentum congue. Proin convallis dolor ac ipsum congue tincidunt. [...]</p>
 </div></div>
 <?php }
 

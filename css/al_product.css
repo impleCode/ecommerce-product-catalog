@@ -545,113 +545,6 @@ width: 60px;
 width: 70px;
 }
 
-.locale-he-il .doc-helper {
-float: left;
-clear: left;
-}
-
-.doc-helper {
-float: right;
-clear: right;
-width: 240px;
-min-height: 98px;
-padding: 15px 10px 20px;
-border: 3px solid #dde4e4;
-background: #edf2f2;
-margin-top: 15px;
-background-image: url('images/doc.png');
-background-position: right bottom;
-background-repeat: no-repeat;
-}
-
-.doc-helper.left {
-float: left;
-}
-
-.doc-helper.center {
-float: none;
-margin: 0 auto;
-}
-
-.doc-helper:hover {
-background-image: url('images/info.png');
-}
-
-.doc-helper .background-url{
-float: right;
-width: 50px;
-height: 50px;
-position: relative;
-left: 10px;
-margin-bottom: -23px;
-}
-
-.doc-helper .doc-name {
-color: #0a063b;
-font-size: 19.5px;
-font-family: 'Source Sans Pro',Arial,sans-serif;
-line-height:23px;
-}
-
-.doc-helper .doc-description {
-font-size: 14px;
-padding: 5px 0;
-}
-
-.doc-helper .doc-button {
-float:left;
-clear: left;
-position: relative;
-top: 5px;
-}
-
-.doc-helper  input.classic-button, .al-box .classic-button{
-background: #a6a6a6;
-background: -webkit-linear-gradient(top, #a6a6a6 0%, #b2b2b2 100%);
-background: linear-gradient(to bottom, #a6a6a6 0%, #b2b2b2 100%);
-border: none;
-border-bottom: 3px solid #a6a6a6;
-color: #fff;
-display: inline-block;
-padding: 4px 6px 3px 6px;
-text-decoration: none;
-font-size: 18px;
-cursor: pointer;
-box-shadow: none;
-text-shadow: none;
-border-radius: 5px;
-}
-
-.locale-fr-fr .doc-helper  input.classic-button, .al-box .classic-button, .locale-pl-pl .doc-helper  input.classic-button, .al-box .classic-button{
-font-size: 13px;
-}
-
-.doc-helper  input.classic-button:hover, .al-box .classic-button:hover {
-background: #a2a2a2;
-background: -webkit-linear-gradient(top, #a2a2a2 0%, #adacac 100%);
-background: linear-gradient(to bottom, #a2a2a2 0%, #adacac 100%);
-outline: none;
-border: none;
-border-bottom: 3px solid #a2a2a2;
-box-shadow: none;
-}
-
-.doc-helper  input.classic-button:active, .doc-helper  input.classic-button:focus, .al-box .classic-button:focus {
-background: #a2a2a2;
-background: -webkit-linear-gradient(top, #a2a2a2 0%, #adacac 100%);
-background: linear-gradient(to bottom, #a2a2a2 0%, #adacac 100%);
-transform: scale(0.97);
--webkit-transform:scale(0.97); 
--moz-transform:scale(0.97); 
--o-transform:scale(0.97); 
--ms-transform:scale(0.97);
-outline: none;
-}
-
-.doc-helper  a:focus, .doc-helper  a:active {
-outline: none;
-}
-
 #implecode_settings {
 min-height: 533px;
 clear: both;
@@ -699,10 +592,6 @@ z-index:2;
 
 .locale-he-il .setting-content.submenu {
 padding: 30px 250px 0 0px;
-}
-
-.setting-content.submenu {
-padding: 30px 0 0 250px;
 }
 
 .names-product-settings .setting-content td input {
@@ -759,7 +648,7 @@ content: "\f123";
 content: "\f237";
 }
 
-.nav-tab-wrapper a#shipping-settings:before, .shipping-product-settings.setting-content h2:first-of-type:before {
+.nav-tab-wrapper a#shipping-settings:before, .settings-submenu h3 a#shipping-settings:before, .shipping-product-settings .setting-content h2:first-of-type:before {
 content: "\f230";
 }
 
@@ -804,7 +693,7 @@ div.setting-content.support-tab table td {
 max-width: 100%;
 }
 
-div.setting-content.shipping-product-settings table td, div.attributes-product-settings table td {
+div.shipping-product-settings table td, div.attributes-product-settings table td {
 max-width: 400px;
 }
 div.setting-content table.design-table td {
@@ -884,7 +773,6 @@ text-align: center;
 }
 
 .support-tab table td{
-padding: 10px;
 font-size: 14px;
 }
 
@@ -982,14 +870,6 @@ padding: 0;
 
 .locale-he-il .settings-submenu {
 float: right;
-}
-
-.settings-submenu {
-font-weight: 400;
-width: 196px;
-border-right: 1px solid #ccc;
-float:left;
-margin-top: 20px;
 }
 
 .locale-en-us .settings-submenu .element{

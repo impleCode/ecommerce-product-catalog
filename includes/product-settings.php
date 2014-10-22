@@ -21,15 +21,16 @@ wp_enqueue_script( 'admin-scripts' ); }
 
 add_action( 'admin_enqueue_scripts', 'settings_scripts' );
  
-add_action('admin_menu' , 'register_product_settings'); 
-function register_product_settings() {
-    add_submenu_page('edit.php?post_type=al_product', __('Product Settings', 'al-ecommerce-product-catalog'), __('Product Settings', 'al-ecommerce-product-catalog'), 'read_private_products', basename(__FILE__), 'product_settings');
-    add_action('admin_init', 'product_settings_list');
+function register_product_settings_menu() {
+    add_submenu_page('edit.php?post_type=al_product', __('Product Settings', 'al-ecommerce-product-catalog'), __('Product Settings', 'al-ecommerce-product-catalog'), 'manage_options', basename(__FILE__), 'product_settings');
+	do_action('product_settings_menu');
 }
+add_action('admin_menu' , 'register_product_settings_menu');
 
 function product_settings_list() {
 	do_action('product-settings-list');
 }
+add_action('admin_init', 'product_settings_list');
 
 require_once(  AL_BASE_PATH . '/config/currencies.php' );
 require_once(  AL_BASE_PATH . '/templates/themes/default-theme.php' );
@@ -99,7 +100,7 @@ function product_settings() { ?>
 	do_action('settings-content'); ?>
 	<div style="clear:both; height: 50px;"></div>
 	<div class="plugin-logo">
-		<a href="http://implecode.com/#cam=catalog-settings-link&key=logo-link"><img class="en" src="<?php echo AL_PLUGIN_BASE_PATH .'img/implecode.png'; ?>" width="282px" alt="Skuteczna Reklama w Internecie" /></a>
+		<a href="http://implecode.com/#cam=catalog-settings-link&key=logo-link"><img class="en" src="<?php echo AL_PLUGIN_BASE_PATH .'img/implecode.png'; ?>" width="282px" alt="impleCode" /></a>
 		</div>
     </div>
 	

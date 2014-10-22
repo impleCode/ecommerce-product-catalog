@@ -9,7 +9,7 @@
  * @author 		Norbert Dreszer
  */
 function shipping_menu() { ?>
-	<a id="shipping-settings" class="nav-tab" href="./edit.php?post_type=al_product&page=product-settings.php&tab=shipping-settings&submenu=shipping"><?php _e('Product shipping', 'al-ecommerce-product-catalog'); ?></a>
+	<a id="shipping-settings" class="nav-tab" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=shipping-settings&submenu=shipping')?>"><?php _e('Product shipping', 'al-ecommerce-product-catalog'); ?></a>
 <?php }
 
 // add_action('general_submenu','shipping_menu'); // UNCOMMENT TO INSERT IN FIRST TAB and change url above
@@ -24,14 +24,21 @@ function shipping_settings() {
 add_action('product-settings-list','shipping_settings');
 
 function shipping_settings_content() { 
-$submenu = $_GET['submenu'];
+$submenu = $_GET['submenu']; ?>
+<div class="shipping-product-settings settings-wrapper" style="clear:both;">
+	<div class="settings-submenu">
+		<h3>
+			<a id="shipping-settings" class="element current" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=shipping-settings&submenu=shipping')?>"><?php _e('Shipping Settings', 'al-ecommerce-product-catalog'); ?></a>
+			<?php do_action('shipping_submenu'); ?>
+		</h3>
+	</div><?php
 if ($submenu == 'shipping') { ?>
-<script>
-jQuery('.settings-submenu a').removeClass('current');
-jQuery('.settings-submenu a#shipping-settings').addClass('current');
-</script>
-<div class="shipping-product-settings setting-content submenu">
-<h2><?php _e('Shipping Settings', 'al-ecommerce-product-catalog'); ?></h2>
+<div class="setting-content submenu">
+	<script>
+		jQuery('.settings-submenu a').removeClass('current');
+		jQuery('.settings-submenu a#shipping-settings').addClass('current');
+	</script>
+	<h2><?php _e('Shipping Settings', 'al-ecommerce-product-catalog'); ?></h2>
 		<form method="post" action="options.php">
 		<?php settings_fields('product_shipping'); ?>
 		<h3><?php _e('Product shipping options', 'al-ecommerce-product-catalog'); ?></h3>
@@ -55,7 +62,7 @@ jQuery('.settings-submenu a#shipping-settings').addClass('current');
 	// Echo out the field 
 	echo '<tr><td class="lp-column">'. $i .'.</td><td class="product-shipping-label-column"><input class="product-shipping-label" type="text" name="product_shipping_label['.$i.']" value="' . $shipping_label[$i] . '" /></td><td class="lp-column">:</td><td><input id="admin-number-field" class="product-shipping-cost" type="number" min="0" name="product_shipping_cost['.$i.']" value="' . $shipping_cost[$i] . '" /></td></tr>'; } ?>
 	</tbody></table>		
-		<?php do_action('product-attributes'); ?>
+		<?php //do_action('product-attributes'); ?>
 		<p class="submit">
                 <input type="submit" class="button-primary" value="<?php _e('Save changes', 'al-ecommerce-product-catalog'); ?>" />
             </p>
@@ -67,6 +74,12 @@ jQuery('.settings-submenu a#shipping-settings').addClass('current');
 	<?php } ?>
 	
 		</form>
-		</div> 
-<?php } }
+</div> 
+<div class="helpers"><?php 
+	//doc_helper(__('attributes', 'al-ecommerce-product-catalog'), 'product-attributes') ?>
+</div>
+
+<?php } do_action('product-shipping'); ?>
+</div><?php
+}
 add_action('general_settings', 'shipping_settings_content');

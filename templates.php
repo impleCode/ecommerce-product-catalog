@@ -122,11 +122,22 @@ add_filter("the_content", "product_page_content");
 
 function theme_integration_shortcode($atts) {
 $current_mode = get_real_integration_mode();
-if (current_user_can("administrator") && ! is_advanced_mode_forced()) {
+if (current_user_can("delete_private_products") && ! is_advanced_mode_forced()) {
 extract(shortcode_atts( array(
 'class' => 'relative-box',
 ), $atts ));
 $box_content = '<h4>'.__('Advanced Mode Test', 'al-ecommerce-product-catalog').'</h4>';
+$box_content .= '<script>jQuery(window).scroll( function() { if (isScrolledIntoView(".relative-box")) {jQuery(".fixed-box").hide("slow");}
+else {jQuery(".fixed-box").show("slow");}});
+function isScrolledIntoView(elem)
+{
+    var docViewTop = jQuery(window).scrollTop();
+    var docViewBottom = docViewTop + jQuery(window).height();
+    var elemTop = jQuery(elem).offset().top;
+    var elemBottom = elemTop + jQuery(elem).height();
+return ((docViewTop < elemTop) && (docViewBottom > elemBottom));
+    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
+}</script>';
 if (!isset($_GET['test_advanced'])) {
 $box_content .= '<p>'.__('eCommerce Product Catalog is currently running in Simple Mode.', 'al-ecommerce-product-catalog').'</p>';
 $box_content .= '<p>'.__('In Simple Mode the product listing, product search and category pages are disabled (please read this Sample Product Page to fully understand the difference).', 'al-ecommerce-product-catalog').'</p>';

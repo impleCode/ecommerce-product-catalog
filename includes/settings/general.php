@@ -12,7 +12,7 @@
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function general_menu() { ?>
-	<a id="general-settings" class="nav-tab" href="./edit.php?post_type=al_product&page=product-settings.php&tab=product-settings"><?php _e('Product settings', 'al-ecommerce-product-catalog'); ?></a>
+	<a id="general-settings" class="nav-tab" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=product-settings')?>"><?php _e('Product settings', 'al-ecommerce-product-catalog'); ?></a>
 <?php }
 
 add_action('settings-menu','general_menu');
@@ -29,23 +29,20 @@ add_action('product-settings-list','general_settings');
 
 function general_settings_content() { ?>
 	<?php $submenu = isset($_GET['submenu']) ? $_GET['submenu'] : '';?>
-	<div class="overall-product-settings" style="clear:both;">
+	<div class="overall-product-settings settings-wrapper" style="clear:both;">
 		<div class="settings-submenu">
 			<h3>
-				<a id="general-settings" class="element current" href="./edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=general-settings"><?php _e('General Settings', 'al-ecommerce-product-catalog'); ?></a>
+				<a id="general-settings" class="element current" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=general-settings')?>"><?php _e('General Settings', 'al-ecommerce-product-catalog'); ?></a>
 				<?php do_action('general_submenu'); ?>
 			</h3>
 		</div>
 		
 	<?php if ($submenu == 'general-settings' OR $submenu == '') { ?>
-	<script>
-	jQuery('.settings-submenu a').removeClass('current');
-	jQuery('.settings-submenu a#general-settings').addClass('current');
-	</script>
-	<?php 
-		doc_helper(__('shortcode', 'al-ecommerce-product-catalog'), 'product-shortcode');
-		did_know_helper('support', __('You can get instant support through email','al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/plugins/premium-support/')	?>
 		<div class="setting-content submenu">
+		<script>
+			jQuery('.settings-submenu a').removeClass('current');
+			jQuery('.settings-submenu a#general-settings').addClass('current');
+		</script>
 		<h2><?php _e('General Settings', 'al-ecommerce-product-catalog'); ?></h2>
 			<form method="post" action="options.php">
 				<?php settings_fields('product_settings'); 
@@ -215,6 +212,10 @@ function general_settings_content() { ?>
 				</p>
 			</form>
 		</div> 
+		<div class="helpers"><?php 
+			doc_helper(__('shortcode', 'al-ecommerce-product-catalog'), 'product-shortcode');
+			did_know_helper('support', __('You can get instant support by email','al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/plugins/premium-support/')	?>
+		</div>
 	<?php } 
 	do_action('product-settings'); 
 	

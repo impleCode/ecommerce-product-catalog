@@ -9,7 +9,7 @@
  * @author 		Norbert Dreszer
  */
 function attributes_menu() { ?>
- <a id="attributes-settings" class="nav-tab"  href="./edit.php?post_type=al_product&page=product-settings.php&tab=attributes-settings&submenu=attributes"><?php _e('Product attributes', 'al-ecommerce-product-catalog'); ?></a>
+ <a id="attributes-settings" class="nav-tab"  href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=attributes-settings&submenu=attributes') ?>"><?php _e('Product attributes', 'al-ecommerce-product-catalog'); ?></a>
 <?php }
 
 // add_action('general_submenu','attributes_menu'); // UNCOMMENT TO INSERT IN FIRST TAB and change url above
@@ -26,7 +26,7 @@ add_action('product-settings-list','attributes_settings');
 
 function attributes_settings_content() { 
 $submenu = $_GET['submenu']; ?>
-<div class="attributes-product-settings" style="clear:both;">
+<div class="attributes-product-settings settings-wrapper" style="clear:both;">
 	<div class="settings-submenu">
 		<h3>
 			<a id="attributes-settings" class="element current" href="./edit.php?post_type=al_product&page=product-settings.php&tab=attributes-settings&submenu=attributes"><?php _e('Attributes Settings', 'al-ecommerce-product-catalog'); ?></a>
@@ -34,12 +34,11 @@ $submenu = $_GET['submenu']; ?>
 		</h3>
 	</div>
 <?php if ($submenu == 'attributes') { ?>
+	<div class="setting-content submenu">
 	<script>
 		jQuery('.settings-submenu a').removeClass('current');
 		jQuery('.settings-submenu a#attributes-settings').addClass('current');
 	</script>
-	<?php doc_helper(__('attributes', 'al-ecommerce-product-catalog'), 'product-attributes') ?>
-	<div class="setting-content submenu">
 		<h2><?php _e('Attributes Settings', 'al-ecommerce-product-catalog'); ?></h2>
 		<form method="post" action="options.php">
 		<?php settings_fields('product_attributes'); ?>
@@ -99,6 +98,9 @@ $submenu = $_GET['submenu']; ?>
 			</table><?php 
 		} ?>		
 		</form>
+	</div>
+	<div class="helpers"><?php 
+		doc_helper(__('attributes', 'al-ecommerce-product-catalog'), 'product-attributes') ?>
 	</div>
 	<?php } do_action('product-attributes'); ?>
 	</div><?php 

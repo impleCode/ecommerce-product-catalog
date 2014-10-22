@@ -292,7 +292,7 @@ $product_description = get_post_meta($post->ID, "_desc", true);
 if (! empty($product_description)) { ?>
 	<div class="product-description"><?php 
 		if (get_integration_type() == 'simple') {
-			echo do_shortcode($product_description);
+			echo apply_filters('product_simple_description', $product_description);
 		}
 		else {
 			echo apply_filters( 'the_content',$product_description);
@@ -302,6 +302,12 @@ if (! empty($product_description)) { ?>
 }
 
 add_action('after_product_details','show_product_description', 10, 2);
+add_filter('product_simple_description', 'wptexturize');
+add_filter('product_simple_description', 'convert_smilies');
+add_filter('product_simple_description', 'convert_chars');
+add_filter('product_simple_description', 'wpautop');
+add_filter('product_simple_description', 'shortcode_unautop');
+//add_filter('product_simple_description', 'do_shortcode', 11);
 
 function show_related_categories($post, $single_names, $taxonomy_name) { 
 $terms = wp_get_post_terms($post->ID, $taxonomy_name, array("fields" => "ids"));

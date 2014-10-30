@@ -19,7 +19,7 @@ $twentyten = array("twentyten");
 $twentythirteen = array("twentythirteen");
 $twentyfourteen = array("twentyfourteen");
 
-if (file_exists(get_theme_root() . '/'. get_template() . '/product-adder.php')) {
+if (file_exists(get_product_adder_path())) {
 	
 	 add_filter( 'template_include', 'al_product_adder_template' ); 
 
@@ -40,7 +40,7 @@ add_filter( 'template_include', 'al_product_adder_twentythirteen_template' ); }
 else if (in_array( $theme, $twentyfourteen )) {
 add_filter( 'template_include', 'al_product_adder_twentyfourteen_template' ); }
 
-else if (get_integration_type() == 'simple' && file_exists(get_theme_root() . '/'. get_template() . '/page.php')) {
+else if (get_integration_type() == 'simple' && file_exists(get_page_php_path())) {
 add_filter( 'template_include', 'al_product_adder_page_template' ); 
 }
 
@@ -50,7 +50,7 @@ add_filter( 'template_include', 'al_product_adder_custom_template' );
 	
 	function al_product_adder_template($template) {
 	if ( 'al_product' == get_quasi_post_type()) {
-	    return get_theme_root() . '/'. get_template() . '/product-adder.php'; }
+	    return get_product_adder_path(); }
 
     return $template; }
 	
@@ -100,7 +100,7 @@ add_filter( 'template_include', 'al_product_adder_custom_template' );
 			wp_redirect(get_permalink($product_archive));
 		}
 		else {
-			return get_theme_root() . '/'. get_template() . '/page.php';
+			return get_page_php_path();
 		}
 	}
 	
@@ -222,7 +222,7 @@ return $return;
 }
 
 function is_integraton_file_active() {
-if (file_exists(get_theme_root() . '/'. get_template() . '/product-adder.php')) {
+if (file_exists(get_product_adder_path())) {
 return true;
 }
 else {
@@ -268,5 +268,19 @@ if (is_theme_implecode_supported() || is_integraton_file_active() ) {
 $return = true;
 }
 return $return;
+}
+
+function get_product_adder_path() {
+return get_stylesheet_directory() . '/product-adder.php';
+}
+
+function get_page_php_path() {
+if (file_exists(get_stylesheet_directory() . '/page.php')) {
+$path = get_stylesheet_directory() . '/page.php';
+}
+else {
+$path = get_theme_root() . '/'. get_template() . '/page.php';
+}
+return $path;
 }
 ?>

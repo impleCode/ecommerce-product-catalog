@@ -8,7 +8,46 @@
  *
  * Contributing author: Norbert Dreszer
  */
- 
+
+/* Product Columns */
+.column-id {
+width: 2.2em;
+}
+
+/* Category Columns */
+.taxonomy-al_product-cat .manage-column.column-id {
+width: 2em;
+}
+
+.taxonomy-al_product-cat .manage-column.column-img {
+width: 45px;
+}
+
+.manage-column.column-id {
+width: 50px;
+}
+
+.manage-column.column-shortcode, .shortcode.column-shortcode, .id.column-id, .manage-column.column-id  {
+padding: 8px;
+}
+
+.image.column-image, .manage-column.column-image {
+width: 42px;
+}
+
+.price.column-price, .manage-column.column-price {
+width:100px;
+}
+
+.manage-column.column-shortcode {
+width: 190px;
+}
+
+.edit-tags-php .custom-uploader {
+margin: 0 0 10px;
+padding: 8px 0;
+}
+
 /* Extensions */
 #implecode_settings .extension {
 float: left;
@@ -62,6 +101,7 @@ color:#F48702;
 display: table;
 padding-top: 20px;
 width: 100%;
+min-height: 300px;
 }
 
 #implecode_settings .settings-submenu {
@@ -189,4 +229,8 @@ outline: none;
 
 .doc-helper  a:focus, .doc-helper  a:active {
 outline: none;
+}
+
+div.setting-content table.no-limit td{
+max-width: 100%;
 }

@@ -13,9 +13,7 @@
 function settings_scripts() {
 $screen = get_current_screen();
 if ($screen->id == 'al_product_page_product-settings' || $screen->id == 'al_product') {
-wp_register_script( 'implecode-jqueryui', '//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js', array('jquery') );
-wp_enqueue_script( 'implecode-jqueryui' );
-wp_register_script( 'admin-scripts', AL_PLUGIN_BASE_PATH.'js/admin-scripts.js', array('implecode-jqueryui') );
+wp_register_script( 'admin-scripts', AL_PLUGIN_BASE_PATH.'js/admin-scripts.js?' . filemtime( AL_BASE_PATH . '/js/admin-scripts.js'), array('jquery-ui-sortable') );
 wp_enqueue_script( 'admin-scripts' ); }
 }
 
@@ -36,11 +34,6 @@ require_once(  AL_BASE_PATH . '/config/currencies.php' );
 require_once(  AL_BASE_PATH . '/templates/themes/default-theme.php' );
 require_once(  AL_BASE_PATH . '/templates/themes/classic-list.php' );
 require_once(  AL_BASE_PATH . '/templates/themes/classic-grid.php' );
-require_once(  AL_BASE_PATH . '/includes/settings/general.php' );
-require_once(  AL_BASE_PATH . '/includes/settings/attributes.php' );
-require_once(  AL_BASE_PATH . '/includes/settings/shipping.php' );
-require_once(  AL_BASE_PATH . '/includes/settings/custom-design.php' );
-require_once(  AL_BASE_PATH . '/includes/settings/custom-names.php' );
 
 function product_settings() { ?>
 

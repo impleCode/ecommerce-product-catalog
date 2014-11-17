@@ -112,8 +112,9 @@ function general_settings_content() { ?>
 					<tr>
 						<td><?php _e('Product listing shows at most', 'al-ecommerce-product-catalog'); ?> </td>
 						<td><input <?php echo $disabled ?> size="30" class="number-box" type="number" step="1" min="0" name="archive_multiple_settings[archive_products_limit]" id="archive_products_limit" value="<?php echo $archive_multiple_settings['archive_products_limit']; ?>" /> <?php _e('products', 'al-ecommerce-product-catalog'); ?>.</td>
-					</tr>
-					<?php do_action('product_listing_page_settings'); ?>
+					</tr><?php
+					implecode_settings_radio(__('Product listing shows', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[product_listing_cats]', $archive_multiple_settings['product_listing_cats'], array('off' => __('Products<br>', 'al-ecommerce-product-catalog'), 'on' => __('Products & Main Categories', 'al-ecommerce-product-catalog')));
+					do_action('product_listing_page_settings'); ?>
 				</table><?php
 				//implecode_info(__('You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. <br><br>To show products from just one category, use: [show_products category="2"] where 2 is category ID (you can display several categories by inserting comma separated IDs). <br><br>To display products by IDs, use: [show_products product="5"], where 5 is product ID.', 'al-ecommerce-product-catalog'));
 				?>
@@ -130,8 +131,10 @@ function general_settings_content() { ?>
 						$site_url = substr($site_url, 0, 11).'...'.substr($site_url, $urllen - 11, $urllen);
 					}?>
 					<td class="longer"><?php echo $site_url ?>/<input <?php echo $disabled ?> type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo sanitize_title($archive_multiple_settings['category_archive_url']); ?>" />/<?php _e('category-name', 'al-ecommerce-product-catalog') ?>/</td>
-				</tr>
-				<?php do_action('product_category_settings', $archive_multiple_settings); ?>
+				</tr><?php 
+				implecode_settings_radio(__('Category Page shows', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[category_top_cats]', $archive_multiple_settings['category_top_cats'], array('off' => __('Products<br>', 'al-ecommerce-product-catalog'), 'on' => __('Products & Main Categories', 'al-ecommerce-product-catalog')));
+				implecode_settings_radio(__('Categories Display', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[cat_template]', $archive_multiple_settings['cat_template'], array('template' => __('Template<br>', 'al-ecommerce-product-catalog'), 'link' => __('URLs', 'al-ecommerce-product-catalog')));
+				do_action('product_category_settings', $archive_multiple_settings); ?>
 				</table>
 				<h3><?php _e('SEO Settings', 'al-ecommerce-product-catalog'); ?></h3><?php
 				if ($disabled != '') {
@@ -249,6 +252,9 @@ $archive_multiple_settings['seo_title_sep'] = isset($archive_multiple_settings['
 $archive_multiple_settings['seo_title'] = isset($archive_multiple_settings['seo_title']) ? $archive_multiple_settings['seo_title'] : '';
 $archive_multiple_settings['category_archive_url'] = isset($archive_multiple_settings['category_archive_url']) ? $archive_multiple_settings['category_archive_url'] : 'product-category';
 $archive_multiple_settings['category_archive_url'] = empty($archive_multiple_settings['category_archive_url']) ? 'product-category' : $archive_multiple_settings['category_archive_url'];
+$archive_multiple_settings['product_listing_cats'] = isset($archive_multiple_settings['product_listing_cats']) ? $archive_multiple_settings['product_listing_cats'] : 'on';
+$archive_multiple_settings['category_top_cats'] = isset($archive_multiple_settings['category_top_cats']) ? $archive_multiple_settings['category_top_cats'] : 'on';
+$archive_multiple_settings['cat_template'] = isset($archive_multiple_settings['cat_template']) ? $archive_multiple_settings['cat_template'] : 'template';
 return $archive_multiple_settings;
 }
 

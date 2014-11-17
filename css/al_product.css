@@ -83,6 +83,15 @@ margin-top: 10px;
 
 .product-subcategories {
 padding-bottom: 10px;
+overflow: hidden;
+}
+
+.product-subcategories hr {
+clear: both;
+}
+
+.product-subcategories.list{
+padding-bottom: 30px;
 }
 
 .product-subcategories li {
@@ -330,6 +339,7 @@ background-repeat: no-repeat;
 max-width: 190px;
 margin-right: 18px;
 float: left;
+margin-bottom: 15px;
 }
 
 .archive-listing.last {
@@ -385,6 +395,8 @@ color: #63AB00;
 /* Shortcode */
 .product-list {
 width: 100%;
+overflow: hidden;
+padding-bottom: 10px;
 }
 
 /* Product Page */
@@ -1002,41 +1014,6 @@ z-index: 999; }
 .product-adder-message p a{
 text-decoration: none !important;
 margin-right: 5px !important;
-}
-
-/* Product Columns */
-.column-id {
-width: 2.2em;
-}
-
-/* Category Columns */
-.taxonomy-al_product-cat .manage-column.column-id {
-width: 2em;
-}
-
-.taxonomy-al_product-cat .manage-column.column-img {
-width: 45px;
-}
-
-.manage-column.column-id {
-width: 50px;
-}
-
-.manage-column.column-shortcode, .shortcode.column-shortcode, .id.column-id, .manage-column.column-id  {
-padding: 8px;
-}
-
-.image.column-image, .manage-column.column-image {
-width: 42px;
-}
-
-.price.column-price, .manage-column.column-price {
-width:100px;
-}
-
-.edit-tags-php .custom-uploader {
-margin: 0 0 10px;
-padding: 8px 0;
 }
 
 /* Theme Integration System */

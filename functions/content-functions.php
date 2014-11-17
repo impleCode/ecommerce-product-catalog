@@ -36,8 +36,10 @@ return $price_value;
 }
 
 /* Classic List */
-function c_list_desc($post_id) {
+function c_list_desc($post_id = null, $shortdesc = null) {
+if ($shortdesc == '') {
 $shortdesc = strip_tags(get_post_meta($post_id, "_shortdesc", true));
+}
 //remove all shortcodes - discsox 
 $shortdesc = trim(strip_shortcodes($shortdesc)); 
 $desclenght = strlen($shortdesc);

@@ -107,3 +107,17 @@ for ($i = 1; $i <= $attributes_number; $i++) {
 	$return .= $archive_price.'</div></a>';
 return $return;
 } 
+
+function get_default_category_theme($product_cat, $archive_template) {
+$thumbnail_product = wp_get_attachment_image_src(get_product_category_image_id($product_cat->term_id), 'large');
+if ($thumbnail_product[0]) {
+	$url = $thumbnail_product[0]; 
+} 
+else {
+	$url = default_product_thumbnail_url(); 
+}
+$return = '<a href="'. get_term_link($product_cat).'"><div class="al_archive modern-grid-element" style="background-image:url(\''. $url.'\');">';
+$return .= '<div class="product-name '. design_schemes('box', 0).'">'. $product_cat->name.'</div>';
+$return .= '</div></a>';
+return $return;
+} 

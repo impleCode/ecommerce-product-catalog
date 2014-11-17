@@ -61,3 +61,22 @@ return $return;
 }
 }
 
+function get_grid_category_theme($product_cat, $archive_template) {
+if ($archive_template == 'grid') {
+if (! $url = wp_get_attachment_url( get_product_category_image_id($product_cat->term_id) )) {
+	$url = default_product_thumbnail_url(); 
+} 
+
+$default_classic_grid_settings = array (
+	'entries' => 3,
+	);
+$classic_grid_settings = get_option( 'classic_grid_settings', $default_classic_grid_settings);
+$row_class = get_row_class($classic_grid_settings);
+$return = '<div class="archive-listing classic-grid '.$row_class.'">';
+$return .= '<a href="'.get_term_link($product_cat).'">';
+$return .= '<div style="background-image:url(\''.$url.'\');" class="classic-grid-element"></div>';
+$return .= '<div class="product-name">'.$product_cat->name.'</div></a></div>';
+return $return;
+}
+}
+

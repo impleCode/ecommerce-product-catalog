@@ -47,8 +47,7 @@ delete_option('al_product_cat_image_'.$term_id);
 
 function product_category_edit_form_fields ($field) {
 if (isset($field->term_id)) {
-$term_id = $field->term_id;
-$cat_img_src = get_option('al_product_cat_image_'.$term_id);
+$cat_img_src = get_product_category_image_id($field->term_id);
 }
 else {
 $cat_img_src = '';
@@ -75,7 +74,7 @@ add_filter('manage_edit-al_product-cat_columns', 'product_cat_columns');
 function manage_product_category_columns($depr, $column_name, $term_id) {
 switch ($column_name) {
 	case 'img':
-		$attachment_id = get_option('al_product_cat_image_'.$term_id);
+		$attachment_id = get_product_category_image_id($term_id);
 		echo wp_get_attachment_image( $attachment_id, array(40,40));
 	break;
 	case 'id':
@@ -83,7 +82,7 @@ switch ($column_name) {
 	break;
 	
 	case 'shortcode':
-		echo '[show_products category="'.$term_id.'"]';
+		echo '<code>[show_products category="'.$term_id.'"]</code><code>[show_categories include="'.$term_id.'"]</code>';
 	break;
 	
 	default:
@@ -92,3 +91,7 @@ switch ($column_name) {
 }
 
 add_action('manage_al_product-cat_custom_column', 'manage_product_category_columns', 10, 3);
+
+function get_product_category_image_id($cat_id) {
+return get_option('al_product_cat_image_'.$cat_id);
+}

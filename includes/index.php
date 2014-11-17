@@ -10,7 +10,7 @@
  */
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-require_once(AL_BASE_PATH . '/includes/settings/index.php'); 
+require_once('settings/index.php'); 
 require_once('product-columns.php'); 
 require_once('product-category-columns.php'); 
 require_once('extensions.php'); 

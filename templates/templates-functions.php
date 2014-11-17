@@ -185,15 +185,43 @@ $themes_array[$archive_template] = isset($themes_array[$archive_template]) ? $th
 return $themes_array[$archive_template];
 }
 
+function get_product_category_template($archive_template, $product_cat, $i = null, $design_scheme = null) {
+$themes_array = apply_filters('ecommerce_category_templates', array(
+	'default' => get_default_category_theme($product_cat, $archive_template),
+	'list' => get_list_category_theme($product_cat, $archive_template),
+	'grid' => get_grid_category_theme($product_cat, $archive_template),
+), $product_cat, $i, $design_scheme);
+$themes_array[$archive_template] = isset($themes_array[$archive_template]) ? $themes_array[$archive_template] : $themes_array['default'];
+return $themes_array[$archive_template];
+}
+
 function more_products() {
 global $wp_query, $shortcode_query;
-if((isset($wp_query->query['post_type']) && $wp_query->query['post_type'] == 'al_product') || isset($wp_query->query['al_product-cat'])) {
+$post_type = apply_filters('current_product_post_type', 'al_product');
+$taxonomy = apply_filters('current_product_catalog_taxonomy', 'al_product-cat');
+if((isset($wp_query->query['post_type']) && $wp_query->query['post_type'] == $post_type) || isset($wp_query->query[$taxonomy])) {
 	$y_query = $wp_query;
 }
 else {
 	$y_query = $shortcode_query;
 }
+if (isset($y_query->current_post)) {
 return $y_query->current_post + 1 < $y_query->post_count;
+}
+else {
+return false;
+}
+}
+
+function more_product_cats() {
+global $cat_shortcode_query;
+if (isset($cat_shortcode_query['current'])) {
+$result = $cat_shortcode_query['current'] + 1 < $cat_shortcode_query['count'];
+return $result;
+}
+else {
+return false;
+}
 }
 
 
@@ -212,11 +240,16 @@ $row_class = 'last';
 else {
 $row_class = 'middle';
 }
-if (more_products()) {
+if (more_products() || more_product_cats()) {
 $row++; }
 else {
 $row = 1;
 }
 }
 return $row_class;
+}
+
+function reset_row_class() {
+global $row;
+$row = 1;
 }

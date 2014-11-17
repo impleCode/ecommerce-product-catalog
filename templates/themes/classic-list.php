@@ -46,3 +46,17 @@ $return .= '<div class="product-name">'. get_the_title().'</div>';
 $return .= '<div class="product-short-descr"><p>'.c_list_desc($post->ID).'</p></div></div>';
 return $return;
 }
+
+function get_list_category_theme($product_cat, $archive_template) {
+if ($archive_template == 'list') {
+if (! $url = wp_get_attachment_url( get_product_category_image_id($product_cat->term_id) )) {
+	$url = default_product_thumbnail_url(); 
+} 
+$return = '<div class="archive-listing list example">';
+$return .= '<a href="'. get_term_link($product_cat) .'"><span class="div-link"></span></a>';
+$return .= '<div class="product-image" style="background-image:url(\''.$url.'\')"></div>';
+$return .= '<div class="product-name">'. $product_cat->name.'</div>';
+$return .= '<div class="product-short-descr"><p>'.c_list_desc($post_id = null, $product_cat->description).'</p></div></div>';
+return $return;
+}
+}

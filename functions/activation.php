@@ -100,6 +100,12 @@ if ($databse_plugin_version != $plugin_version) {
 		$hide_info = 0;
 		enable_advanced_mode($hide_info);
 	}
+	if (version_compare($first_version, '2.0.0') < 0) {
+		$archive_multiple_settings = get_multiple_settings();
+		$archive_multiple_settings['product_listing_cats'] = 'off';
+		$archive_multiple_settings['cat_template'] = 'link';
+		update_option('archive_multiple_settings', $archive_multiple_settings);
+	}
 	flush_rewrite_rules();
 }
 }

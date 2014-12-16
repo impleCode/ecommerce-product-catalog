@@ -20,10 +20,22 @@ wp_enqueue_script( 'admin-scripts' ); }
 add_action( 'admin_enqueue_scripts', 'settings_scripts' );
  
 function register_product_settings_menu() {
-    add_submenu_page('edit.php?post_type=al_product', __('Product Settings', 'al-ecommerce-product-catalog'), __('Product Settings', 'al-ecommerce-product-catalog'), 'manage_options', basename(__FILE__), 'product_settings');
+    add_submenu_page('edit.php?post_type=al_product', __('Product Settings', 'al-ecommerce-product-catalog'), __('Product Settings', 'al-ecommerce-product-catalog'), apply_filters('see_product_settings_cap', 'manage_product_settings'), basename(__FILE__), 'product_settings');
 	do_action('product_settings_menu');
 }
 add_action('admin_menu' , 'register_product_settings_menu');
+
+add_filter( 'option_page_capability_product_settings', 'map_product_settings_capability' );
+add_filter( 'option_page_capability_product_attributes', 'map_product_settings_capability' );
+add_filter( 'option_page_capability_product_shipping', 'map_product_settings_capability' );
+add_filter( 'option_page_capability_product_names_archive', 'map_product_settings_capability' );
+add_filter( 'option_page_capability_product_names_single', 'map_product_settings_capability' );
+add_filter( 'option_page_capability_product_design', 'map_product_settings_capability' );
+add_filter( 'option_page_capability_single_design', 'map_product_settings_capability' );
+add_filter( 'option_page_capability_design_schemes', 'map_product_settings_capability' );
+function map_product_settings_capability( $cap ) {
+    return apply_filters('change_product_settings_cap', 'manage_product_settings');
+}
 
 function product_settings_list() {
 	do_action('product-settings-list');

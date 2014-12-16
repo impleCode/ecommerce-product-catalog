@@ -4,7 +4,7 @@ Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpre
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 4.0
-Stable tag: 2.0.0
+Stable tag: 2.0.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -43,6 +43,7 @@ Read all about [eCommerce Product Catalog](http://implecode.com/wordpress/produc
 * __Product Archive Page__ - choose a WordPress page to display the products or use [show_products] shortcode
 * __Front-end Labels Manager__ - manage everything users can see
 * __Product Breadcrumbs__ - use SEO friendly product breadcrumbs
+* __Product Import__ - import unlimited amount of products with a CSV
 
 And more to come every week! 
 
@@ -79,7 +80,7 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 
 = Minimum Requirements =
 
-* WordPress 3.0 or greater
+* WordPress 3.5 or greater
 * PHP version 5.2.4 or greater
 * MySQL version 5.0 or greater
 
@@ -154,6 +155,19 @@ This is not a store. It's main purpose is to present products or services on the
 6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 2.0.3 - 16/12/2014 =
+
+* Tweak - coding improvements for even better performance
+
+= 2.0.2 - 09/12/2014 =
+
+* Localisation - Polish language update
+
+= 2.0.1 - 24/11/2014 =
+
+* Tweak - separate permissions for product settings edit
+* Tweak - minor product settings styling improvement
 
 = 2.0.0 - 17/11/2014 =
 

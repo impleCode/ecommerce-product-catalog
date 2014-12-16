@@ -14,7 +14,7 @@ function implecode_custom_csv_menu() { ?>
 	<a id="csv-settings" class="element" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv') ?>"><?php _e('Product Import', 'al-ecommerce-product-catalog'); ?></a>
 <?php } 
 
-add_action('general_submenu','implecode_custom_csv_menu', 20);
+add_action('general_submenu','implecode_custom_csv_menu');
 
 function implecode_custom_csv_settings_content() { ?>
 	<?php $submenu = isset($_GET['submenu']) ? $_GET['submenu'] : ''; ?>
@@ -107,7 +107,7 @@ $post = array(
 'post_status' => 'publish',
 'post_type' => 'al_product',
 );
-$id = wp_insert_post($post); 
+$id = wp_insert_post($post);
 if ($id != false) {
 	update_post_meta($id, '_price', $data['product_price']);
 	update_post_meta($id, '_shortdesc', $data['product_short_desc']);
@@ -122,12 +122,12 @@ return $id;
 
 function prepare_sample_import_file() {
 $fields = array(); 
-$fields[1]['image_url'] = __('Image URL', 'al-product-csv');
-$fields[1]['product_name'] = __('Product Name', 'al-product-csv');
-$fields[1]['product_price'] = __('Product Price', 'al-product-csv');
-$fields[1]['product_categories'] = __('Product Categories', 'al-product-csv');
-$fields[1]['product_short_desc'] = __('Short Description', 'al-product-csv');
-$fields[1]['product_desc'] = __('Long Description', 'al-product-csv'); 
+$fields[1]['image_url'] = __('Image URL', 'al-ecommerce-product-catalog');
+$fields[1]['product_name'] = __('Product Name', 'al-ecommerce-product-catalog');
+$fields[1]['product_price'] = __('Product Price', 'al-ecommerce-product-catalog');
+$fields[1]['product_categories'] = __('Product Categories', 'al-ecommerce-product-catalog');
+$fields[1]['product_short_desc'] = __('Short Description', 'al-ecommerce-product-catalog');
+$fields[1]['product_desc'] = __('Long Description', 'al-ecommerce-product-catalog'); 
 return array_filter ($fields);
 }
 

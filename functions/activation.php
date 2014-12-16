@@ -106,6 +106,9 @@ if ($databse_plugin_version != $plugin_version) {
 		$archive_multiple_settings['cat_template'] = 'link';
 		update_option('archive_multiple_settings', $archive_multiple_settings);
 	}
+	if (version_compare($first_version, '2.0.1') < 0) {
+		add_product_caps();
+	}
 	flush_rewrite_rules();
 }
 }

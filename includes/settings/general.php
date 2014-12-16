@@ -132,7 +132,7 @@ function general_settings_content() { ?>
 					}?>
 					<td class="longer"><?php echo $site_url ?>/<input <?php echo $disabled ?> type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo sanitize_title($archive_multiple_settings['category_archive_url']); ?>" />/<?php _e('category-name', 'al-ecommerce-product-catalog') ?>/</td>
 				</tr><?php 
-				implecode_settings_radio(__('Category Page shows', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[category_top_cats]', $archive_multiple_settings['category_top_cats'], array('off' => __('Products<br>', 'al-ecommerce-product-catalog'), 'on' => __('Products & Main Categories', 'al-ecommerce-product-catalog')));
+				implecode_settings_radio(__('Category Page shows', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[category_top_cats]', $archive_multiple_settings['category_top_cats'], array('off' => __('Products<br>', 'al-ecommerce-product-catalog'), 'on' => __('Products & Subcategories', 'al-ecommerce-product-catalog')));
 				implecode_settings_radio(__('Categories Display', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[cat_template]', $archive_multiple_settings['cat_template'], array('template' => __('Template<br>', 'al-ecommerce-product-catalog'), 'link' => __('URLs', 'al-ecommerce-product-catalog')));
 				do_action('product_category_settings', $archive_multiple_settings); ?>
 				</table>
@@ -176,7 +176,7 @@ function general_settings_content() { ?>
 						<option name="product_currency[<?php echo $currency; ?>]" value="<?php echo $currency; ?>"<?php selected( $currency, $product_currency); ?>><?php echo $currency; ?></option>
 					<?php endforeach; ?>
 				</select></td>	
-				<td rowspan="2"><div class="al-box info"><?php _e('If you choose custom currency symbol, it will override "Your Currency" setting. This is very handy if you want to use not supported currency or a preferred symbol for your currency.', 'al-ecommerce-product-catalog'); ?></div></td>
+				<td rowspan="4"><div class="al-box info"><?php _e('If you choose custom currency symbol, it will override "Your Currency" setting. This is very handy if you want to use not supported currency or a preferred symbol for your currency.', 'al-ecommerce-product-catalog'); ?></div></td>
 				</tr>
 				<tr>
 						<td><?php _e('Custom Currency Symbol', 'al-ecommerce-product-catalog'); ?>: </td>

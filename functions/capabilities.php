@@ -28,6 +28,7 @@ function add_product_caps() {
 	$role->add_cap( 'edit_product_categories' );
 	$role->add_cap( 'delete_product_categories' );
 	$role->add_cap( 'assign_product_categories' );
+	$role->add_cap( 'manage_product_settings' );
 	
 $current_user = wp_get_current_user();
 foreach ($current_user->roles as $current_role) {
@@ -47,6 +48,7 @@ foreach ($current_user->roles as $current_role) {
 		$role->add_cap( 'edit_product_categories' );
 		$role->add_cap( 'delete_product_categories' );
 		$role->add_cap( 'assign_product_categories' );
+		$role->add_cap( 'manage_product_settings' );
 	}
 }
 }

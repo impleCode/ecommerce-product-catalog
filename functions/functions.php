@@ -213,16 +213,24 @@ else {$currency = $product_currency; }
 return $currency;
 }
 
-function show_shipping_options($post, $single_names) {
+function get_shipping_options($product_id) {
 $shipping_options = get_option('product_shipping_options_number',DEF_SHIPPING_OPTIONS_NUMBER);
-$sh_val = '';
-$any_shipping_value = '';
+$shipping_values = array();
 for ($i = 1; $i <= $shipping_options; $i++) {
-	$sh_val = get_post_meta($post->ID, "_shipping".$i, true);
+	$sh_val = get_post_meta($product_id, "_shipping".$i, true);
 	if (! empty($sh_val)) {
 		$any_shipping_value = $sh_val; }
+	$shipping_values[$i] = $sh_val;
 }
-if ($shipping_options > 0 AND ! empty($any_shipping_value)) { ?>
+if (!isset($any_shipping_value)) {
+	$shipping_values = 'none';
+}
+return $shipping_values;
+}
+
+function show_shipping_options($post, $single_names) {
+$shipping_values = get_shipping_options($post->ID);
+if ($shipping_values != 'none') { ?>
 	<table class="shipping-table">
 		<tr>
 			<td>
@@ -230,8 +238,7 @@ if ($shipping_options > 0 AND ! empty($any_shipping_value)) { ?>
 			</td>
 			<td>
 				<ul>
-					<?php for ($i = 1; $i <= $shipping_options; $i++) { 
-						$shipping_value = get_post_meta($post->ID, "_shipping".$i, true);
+					<?php foreach($shipping_values as $i => $shipping_value) { 
 						if (! empty($shipping_value)) {
 							echo '<li>'. get_post_meta($post->ID, "_shipping-label".$i, true) . ' : ' . price_format($shipping_value) . '</li>'; 
 						}

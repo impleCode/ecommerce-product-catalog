@@ -9,6 +9,16 @@
  * Contributing author: Norbert Dreszer
  */
 
+/* Admin Messages */
+.product-adder-message p a{
+text-decoration: none !important;
+margin-right: 5px !important;
+}
+
+#wpbody-content > #implecode_message, #wpbody-content > .product-adder-message {
+display: none;
+}
+
 /* Product Columns */
 .column-id {
 width: 2.2em;
@@ -53,7 +63,7 @@ padding: 8px 0;
 float: left;
 box-sizing: border-box;
 width: 300px;
-height: 210px;
+height: 230px;
 margin: 10px 20px 10px 0;
 border: 1px solid #ccc;
 }
@@ -96,13 +106,67 @@ padding: 10px;
 color:#F48702;
 }
 
+.extension span.comp {
+font-size: 10px;
+}
+
+.extension span.comp:before {
+background: url("images/ready.png") no-repeat;
+width: 25px;
+height: 19px;
+content: " ";
+display: inline-block;
+background-size: 20px;
+background-position: center;
+position: relative;
+top: 5px;
+}
+
+.extension span.installed:before {
+background: url("images/success.png") no-repeat;
+background-size: 20px;
+background-position: center;
+}
+
+.extension span.info:before {
+background: url("images/info.png") no-repeat;
+background-size: 20px;
+background-position: center;
+}
+
+.extension span.comp.wrong:before {
+background: url("images/warning.png") no-repeat;
+background-size: 20px;
+width: 21px;
+}
+
+.extension .license_form {
+padding: 0 10px;
+}
+
+.extension .wide {
+width: 100%;
+}
+
+#implecode_settings .help {
+max-width: 700px;
+}
+
 /* Settings */
+#implecode_settings {
+min-height: 533px;
+min-width: 1000px;
+max-width:1200px;
+overflow: hidden;
+clear: both;
+}
+
 #implecode_settings .settings-wrapper {
 display: table;
 table-layout: fixed;
 padding-top: 20px;
 width: 100%;
-min-height: 300px;
+min-height: 360px;
 }
 
 #implecode_settings .settings-submenu {
@@ -111,10 +175,10 @@ font-weight: 400;
 width: 196px;
 border-right: 1px solid #ccc;
 margin-top: 20px;
+position: relative;
 }
 
 #implecode_settings .settings-submenu h3{
-position: fixed;
 width: 196px;
 }
 
@@ -133,10 +197,8 @@ height: auto;
 }
 
 .plugin-logo {
-position: absolute;
-right: 0px;
-bottom:25px;
-z-index: 9999;
+position: relative;
+text-align: right;
 }
 
 .support-ul {
@@ -231,10 +293,15 @@ margin-left: 10px;
 #implecode_settings .helpers {
 display: table-cell;
 width: 266px;
+position: relative;
 }
+/*
+#implecode_settings .helpers .wrapper{
+position: fixed;
+} */
 
 #implecode_settings .helpers .doc-helper{
-position: fixed;
+position: relative;
 }
 
 .doc-helper {
@@ -247,6 +314,11 @@ margin-top: 15px;
 background-image: url('images/doc.png');
 background-position: right bottom;
 background-repeat: no-repeat;
+}
+
+.doc-helper.main, .doc-helper.review, .doc-helper.text{
+background-image: none !important;
+min-height: 30px;
 }
 
 .doc-helper.left {
@@ -335,6 +407,31 @@ outline: none;
 
 .doc-helper  a:focus, .doc-helper  a:active {
 outline: none;
+}
+
+.al_product_page_extensions .doc-helper.text {
+width:147px;
+}
+
+.al_product_page_extensions #implecode_settings .table-wrapper {
+display: table;
+table-layout: fixed;
+width: 100%;
+}
+
+.al_product_page_extensions #implecode_settings .helpers {
+display: table-cell;
+width: 184px;
+max-width: 16%;
+vertical-align: top;
+position: relative;
+}
+
+.al_product_page_extensions #implecode_settings .extension-list {
+display: table-cell;
+overflow: hidden;
+width: 84%;
+vertical-align: top;
 }
 
 div.setting-content table.no-limit td{

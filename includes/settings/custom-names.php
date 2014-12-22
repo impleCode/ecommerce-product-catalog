@@ -83,7 +83,10 @@ function custom_names_content() { ?>
 					<input type="submit" class="button-primary" value="<?php _e('Save changes', 'al-ecommerce-product-catalog'); ?>" />
 				</p>	
 			</form>
-		</div><?php 
+		</div>
+		<div class="helpers"><div class="wrapper"><?php 
+		main_helper(); ?>
+		</div></div><?php 
 	} 
 	else if ($submenu == 'archive-names') { ?>
 		<div id="archive_names" class="setting-content submenu">
@@ -113,7 +116,10 @@ function custom_names_content() { ?>
 			<input type="submit" <?php echo $disabled ?> class="button-primary" value="<?php _e('Save changes', 'al-ecommerce-product-catalog'); ?>" />
 		</p>	
 		</form>
-		</div><?php 
+		</div>
+		<div class="helpers"><div class="wrapper"><?php 
+		main_helper(); ?>
+		</div></div><?php 
 	} do_action('names-settings'); ?>
 </div><?php 
 }

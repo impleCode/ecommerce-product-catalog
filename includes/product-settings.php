@@ -103,10 +103,9 @@ function product_settings() { ?>
 		<?php custom_names_content();
 		}
 	do_action('settings-content'); ?>
-	<div style="clear:both; height: 50px;"></div>
 	<div class="plugin-logo">
 		<a href="http://implecode.com/#cam=catalog-settings-link&key=logo-link"><img class="en" src="<?php echo AL_PLUGIN_BASE_PATH .'img/implecode.png'; ?>" width="282px" alt="impleCode" /></a>
-		</div>
+	</div>
     </div>
 	
 
@@ -117,6 +116,22 @@ var fixHelper = function(e, ui) {
 	});
 	return ui;
 };
+
+jQuery(function($) {
+	var $cache = $('.helpers .wrapper, #implecode_settings .settings-submenu h3');
+	var top = $cache.offset().top;	
+	var height = $('.settings-submenu').height();
+	function fixDiv() {
+		if ($(window).scrollTop() > top && $(window).scrollTop() < height) 
+			$cache.css({'position': 'fixed', 'top': '32px'});
+		else if ($(window).scrollTop() > height)
+			$cache.css({'position': 'absolute', 'bottom': '0px', 'top': 'auto'});
+		else
+			$cache.css({'position': 'relative', 'top': 'auto', 'bottom': 'auto'});
+	}
+	$(window).scroll(fixDiv);
+	fixDiv();
+});
 
 jQuery('.product-settings-table.dragable tbody').sortable({
 	update: function(event, ui){  
@@ -160,6 +175,39 @@ $helper = '<div class="doc-helper '.$class.'"><div class="doc-item">
 		<div class="doc-description">'.$desc.'.</div>
 		<div class="doc-button"><a target="_blank" href="'.$url.'?cam=catalog-know-box&key='.$name.'"><input class="doc_button classic-button" type="button" value="'.__('See Now','al-ecommerce-product-catalog').'"></a></div>
 		<a title="'.__('Click the button to visit impleCode website','al-ecommerce-product-catalog').'" target="_blank" href="'.$url.'?cam=catalog-docs-box&key='.$name.'" class="background-url"></a>
+		</div></div>';
+echo $helper;
+}
+
+function text_helper($title, $desc, $class = null) {
+$helper = '<div class="doc-helper text '.$class.'"><div class="doc-item">
+		<div class="doc-name green-box">'.$title.'</div>
+		<div class="doc-description">'.$desc.'</div>
+		</div></div>';
+echo $helper;
+}
+
+function review_helper() {
+$helper = '<div class="doc-helper review"><div class="doc-item">
+		<div class="doc-name green-box">'.__('Rate this Plugin!', 'al-ecommerce-product-catalog').'</div>
+		<div class="doc-description">'.sprintf(__('Please <a target="_blank" href="%s">rate</a> this plugin and tell me if it works for you or not. It really helps development.', 'al-ecommerce-product-catalog'),'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform').'</div>
+		</div></div>';
+echo $helper;
+}
+
+function main_helper() {
+$helper = '<div class="doc-helper main"><div class="doc-item">
+		<div class="doc-name green-box">'.__('Need Help?', 'al-ecommerce-product-catalog').'</div>
+		<div class="doc-description">
+			<form role="search" method="get" class="search-form" action="https://implecode.com/docs/">
+				<label>
+					<span class="screen-reader-text">Search for:</span>
+					<input type="hidden" value="al_doc" name="post_type">
+					<input type="search" class="search-field" placeholder="Search Docs …" value="" name="s" title="Search for:">
+				</label>
+				<input type="submit" class="button-primary" value="Search">
+			</form>
+		</div>
 		</div></div>';
 echo $helper;
 }

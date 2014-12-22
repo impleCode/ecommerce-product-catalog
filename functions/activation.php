@@ -109,6 +109,9 @@ if ($databse_plugin_version != $plugin_version) {
 	if (version_compare($first_version, '2.0.1') < 0) {
 		add_product_caps();
 	}
+	if (version_compare($first_version, '2.0.4') < 0) {
+		delete_transient('implecode_extensions_data');
+	}
 	flush_rewrite_rules();
 }
 }

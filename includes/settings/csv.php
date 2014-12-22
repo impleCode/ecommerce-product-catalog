@@ -25,7 +25,12 @@ function implecode_custom_csv_settings_content() { ?>
 				jQuery('.settings-submenu a#csv-settings').addClass('current');
 			</script>
 			<h2><?php _e('Product Import', 'al-ecommerce-product-catalog'); ?></h2><?php
-			simple_upload_csv_products_file();
+			simple_upload_csv_products_file(); ?>
+		</div>
+		<div class="helpers"><div class="wrapper"><?php 
+		main_helper();
+		doc_helper(__('import', 'al-ecommerce-product-catalog'), 'product-import'); ?>
+		</div></div><?php
 	} 
 }
 add_action('product-settings','implecode_custom_csv_settings_content');

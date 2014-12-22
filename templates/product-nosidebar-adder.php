@@ -14,6 +14,7 @@ get_header(); ?>
 		
 		<div id="primary">
 			<div id="content" role="main"> 
+			<style>.classic-grid.archive-listing {max-width: 176px;}</style>
 			<?php content_product_adder(); ?>
 			</div>
 		</div><!-- #content -->

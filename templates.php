@@ -18,6 +18,7 @@ $nosidebar = array("twentyeleven");
 $twentyten = array("twentyten");
 $twentythirteen = array("twentythirteen");
 $twentyfourteen = array("twentyfourteen");
+$twentyfifteen = array("twentyfifteen");
 
 if (file_exists(get_product_adder_path())) {
 	
@@ -39,6 +40,9 @@ add_filter( 'template_include', 'al_product_adder_twentythirteen_template' ); }
 
 else if (in_array( $theme, $twentyfourteen )) {
 add_filter( 'template_include', 'al_product_adder_twentyfourteen_template' ); }
+
+else if (in_array( $theme, $twentyfifteen )) {
+add_filter( 'template_include', 'al_product_adder_twentyfifteen_template' ); }
 
 else if (get_integration_type() == 'simple' && file_exists(get_page_php_path())) {
 add_filter( 'template_include', 'al_product_adder_page_template' ); 
@@ -90,6 +94,12 @@ add_filter( 'template_include', 'al_product_adder_custom_template' );
 	function al_product_adder_twentyfourteen_template($template) {
 	if ( 'al_product' == get_quasi_post_type()) {
 	    return dirname( __FILE__ ) . '/templates/product-twentyfourteen-adder.php'; }
+
+    return $template; }
+	
+	function al_product_adder_twentyfifteen_template($template) {
+	if ( 'al_product' == get_quasi_post_type()) {
+	    return dirname( __FILE__ ) . '/templates/product-twentyfifteen-adder.php'; }
 
     return $template; }
 	
@@ -249,7 +259,7 @@ exit();
 add_action('admin_init', 'create_sample_product_with_redirect');
 
 function implecode_supported_themes() {
-return array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen' );
+return array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen', 'twentyfifteen' );
 }
 
 function is_theme_implecode_supported() {

@@ -114,6 +114,8 @@ function general_settings_content() { ?>
 						<td><input <?php echo $disabled ?> size="30" class="number-box" type="number" step="1" min="0" name="archive_multiple_settings[archive_products_limit]" id="archive_products_limit" value="<?php echo $archive_multiple_settings['archive_products_limit']; ?>" /> <?php _e('products', 'al-ecommerce-product-catalog'); ?>.</td>
 					</tr><?php
 					implecode_settings_radio(__('Product listing shows', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[product_listing_cats]', $archive_multiple_settings['product_listing_cats'], array('off' => __('Products<br>', 'al-ecommerce-product-catalog'), 'on' => __('Products & Main Categories', 'al-ecommerce-product-catalog')));
+					$sort_options = get_product_sort_options();
+					implecode_settings_radio(__('Product order', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[product_order]', $archive_multiple_settings['product_order'], $sort_options);
 					do_action('product_listing_page_settings'); ?>
 				</table><?php
 				//implecode_info(__('You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. <br><br>To show products from just one category, use: [show_products category="2"] where 2 is category ID (you can display several categories by inserting comma separated IDs). <br><br>To display products by IDs, use: [show_products product="5"], where 5 is product ID.', 'al-ecommerce-product-catalog'));
@@ -215,10 +217,11 @@ function general_settings_content() { ?>
 				</p>
 			</form>
 		</div> 
-		<div class="helpers"><?php 
+		<div class="helpers"><div class="wrapper"><?php 
+			main_helper();
 			doc_helper(__('shortcode', 'al-ecommerce-product-catalog'), 'product-shortcode');
-			did_know_helper('support', __('You can get instant support by email','al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/plugins/premium-support/')	?>
-		</div>
+			//did_know_helper('support', __('You can get instant support by email','al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/plugins/premium-support/')	?>
+		</div></div>
 	<?php } 
 	do_action('product-settings'); 
 	
@@ -255,10 +258,16 @@ $archive_multiple_settings['category_archive_url'] = empty($archive_multiple_set
 $archive_multiple_settings['product_listing_cats'] = isset($archive_multiple_settings['product_listing_cats']) ? $archive_multiple_settings['product_listing_cats'] : 'on';
 $archive_multiple_settings['category_top_cats'] = isset($archive_multiple_settings['category_top_cats']) ? $archive_multiple_settings['category_top_cats'] : 'on';
 $archive_multiple_settings['cat_template'] = isset($archive_multiple_settings['cat_template']) ? $archive_multiple_settings['cat_template'] : 'template';
+$archive_multiple_settings['product_order'] = isset($archive_multiple_settings['product_order']) ? $archive_multiple_settings['product_order'] : 'date';
 return $archive_multiple_settings;
 }
 
 function get_integration_type() {
 $settings = get_multiple_settings();
 return $settings['integration_type'];
+}
+
+function get_product_sort_options() {
+$sort_options = apply_filters('product_sort_options', array('newest' => __('Sort by Newest<br>', 'al-ecommerce-product-catalog'), 'product-name' => __('Sort by Product Name<br>', 'al-ecommerce-product-catalog')));
+return $sort_options;
 }

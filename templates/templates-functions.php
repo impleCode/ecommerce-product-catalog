@@ -59,7 +59,7 @@ echo '<h1 class="entry-title">'.$page->post_title.'</h1>';
 }
 
 function show_products_outside_loop($atts) {
-global $shortcode_query;
+global $shortcode_query, $product_sort;
 extract(shortcode_atts(array( 
 		'post_type' => 'al_product',
 		'category' => '',
@@ -67,8 +67,9 @@ extract(shortcode_atts(array(
 		'products_limit' => -1,
 		'archive_template' => get_option( 'archive_template', 'default'),
 		'design_scheme' => '',
+		'sort' => 1,
     ), $atts));
-
+$product_sort = $sort;
 if ($product != 0) {
 	$product_array = explode(',', $product);
 	$query_param = array (
@@ -253,3 +254,12 @@ function reset_row_class() {
 global $row;
 $row = 1;
 }
+
+function product_class( $classes ) {
+	global $post;
+	if(($key = array_search('has-post-thumbnail', $classes)) !== false) {
+    unset($classes[$key]);
+	}
+	return $classes;
+}
+add_filter( 'post_class', 'product_class' );

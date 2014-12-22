@@ -62,7 +62,9 @@ echo product_breadcrumbs(); ?>
 			$term = get_queried_object()->term_id; 
 			$term_img = get_product_category_image_id($term);
 			echo wp_get_attachment_image( $term_img, apply_filters('product_cat_image_size', 'large'));
-			echo '<div class="entry-content">'.term_description().'</div>'; 
+			$term_description = term_description();
+			if (! empty($term_description)) {
+			echo '<div class="taxonomy-description">'.$term_description.'</div>'; }
 			if ($multiple_settings['category_top_cats'] == 'on') {
 				if ($multiple_settings['cat_template'] != 'template') {
 				$product_subcategories = wp_list_categories('show_option_none=No_cat&echo=0&title_li=&taxonomy='.$taxonomy_name.'&child_of='.$term); 
@@ -84,7 +86,7 @@ echo product_breadcrumbs(); ?>
 				}
 			}
 		} 
-		do_action('before_product_list', $archive_template);
+		do_action('before_product_list', $archive_template, $multiple_settings);
 		$product_list = '<div class="product-list">';
 		while ( have_posts() ) : the_post(); 
 			$product_list .= get_catalog_template($archive_template, $post);

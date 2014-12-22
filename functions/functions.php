@@ -218,7 +218,7 @@ $shipping_options = get_option('product_shipping_options_number',DEF_SHIPPING_OP
 $shipping_values = array();
 for ($i = 1; $i <= $shipping_options; $i++) {
 	$sh_val = get_post_meta($product_id, "_shipping".$i, true);
-	if (! empty($sh_val)) {
+	if ($sh_val != null) {
 		$any_shipping_value = $sh_val; }
 	$shipping_values[$i] = $sh_val;
 }
@@ -239,7 +239,7 @@ if ($shipping_values != 'none') { ?>
 			<td>
 				<ul>
 					<?php foreach($shipping_values as $i => $shipping_value) { 
-						if (! empty($shipping_value)) {
+						if ($shipping_value != null) {
 							echo '<li>'. get_post_meta($post->ID, "_shipping-label".$i, true) . ' : ' . price_format($shipping_value) . '</li>'; 
 						}
 					}?>
@@ -651,3 +651,65 @@ if (in_array($post_type, $product_types)) {
 return $sizes;
 }
 add_filter( 'intermediate_image_sizes_advanced', 'set_product_thumbnail_size_in_admin', 10);
+
+function set_product_order($query) {
+if ( !isset($_GET['order']) && $query->is_main_query() && (is_post_type_archive( 'al_product' ) || is_tax('al_product-cat')) ) {
+	$archive_multiple_settings = get_multiple_settings();
+	if (!isset($_GET['product_order'])) {
+		if ($archive_multiple_settings['product_order'] == 'product-name') { 
+			$query->set( 'orderby', 'title' );
+			$query->set( 'order', 'ASC' );
+		}
+		$query = apply_filters('modify_product_order', $query, $archive_multiple_settings);
+	}
+	else if ($_GET['product_order'] != 'newest' && !empty($_GET['product_order'])) {
+		$orderby = translate_product_order();
+		$query->set( 'orderby', $orderby );
+		$query->set( 'order', 'ASC' );
+		$query = apply_filters('modify_product_order-dropdown', $query, $archive_multiple_settings);
+	}
+}
+}
+add_action( 'pre_get_posts', 'set_product_order' );
+
+function set_shortcode_product_order($shortcode_query) {
+$archive_multiple_settings = get_multiple_settings();
+if (!isset($_GET['product_order'])) { 
+	if ($archive_multiple_settings['product_order'] == 'product-name') { 
+		$shortcode_query['orderby'] = 'title';
+		$shortcode_query['order'] = 'ASC';
+	}
+	$shortcode_query = apply_filters('shortcode_modify_product_order', $shortcode_query, $archive_multiple_settings);
+}
+else if ($_GET['product_order'] != 'newest' && !empty($_GET['product_order'])) { 
+	$orderby = translate_product_order();
+	$shortcode_query['orderby'] = $orderby;
+	$shortcode_query['order'] = 'ASC';
+	$shortcode_query = apply_filters('shortcode_modify_product_order-dropdown', $shortcode_query, $archive_multiple_settings);
+}
+return $shortcode_query;
+}
+add_filter('shortcode_query', 'set_shortcode_product_order');
+
+function show_product_order_dropdown($archive_template, $multiple_settings = null) {
+$multiple_settings = empty($multiple_settings) ? get_multiple_settings() : $multiple_settings;
+global $product_sort;
+if ((isset($product_sort) && $product_sort == 1) || !isset($product_sort)) {
+	$sort_options = get_product_sort_options();
+	$selected = isset($_GET['product_order']) ? $_GET['product_order'] : $multiple_settings['product_order'];
+	echo '<form id="product_order"><select id="product_order_selector" name="product_order">';
+	foreach ($sort_options as $name => $value) {
+		$option = '<option value="'.$name.'" '.selected($name, $selected, 0).'>'.$value.'</option>';
+		echo apply_filters('product_order_dropdown_options', $option, $name, $value, $multiple_settings, $selected);
+	}
+	echo '</select></form>';
+	echo '<script>jQuery("#product_order_selector").change(function() { jQuery("#product_order").submit(); });</script>';
+}
+}
+add_action('before_product_list', 'show_product_order_dropdown', 10, 2);
+
+function translate_product_order() {
+$orderby = ($_GET['product_order'] == 'product-name') ? 'title' : $_GET['product_order'];
+$orderby = apply_filters('product_order_translate', $orderby);
+return $orderby;
+}

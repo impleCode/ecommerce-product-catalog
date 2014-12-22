@@ -38,12 +38,13 @@ function custom_design_content() { ?>
 	<div class="setting-content submenu"><?php 
 		do_action('custom-design-settings'); ?>
 	</div>
-	<div class="helpers"><?php 
+	<div class="helpers"><div class="wrapper"><?php 
+		main_helper();
 		$submenu = $_GET['submenu']; 
 		if ($submenu == 'single-design') {
 			doc_helper(__('gallery', 'al-ecommerce-product-catalog'), 'product-gallery');
 		} ?>
-	</div>
+	</div></div>
 </div>
 <?php }
 

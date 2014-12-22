@@ -110,9 +110,11 @@ function implecode_custom_support_settings_content() { ?>
 				echo sprintf( __('<b>Please do not donate</b> (we finance the eCommerce Product Catalog development from <a target="_blank" href="%1$s">premium support</a> and <a target="_blank" href="%2$s">extensions</a>)','al-ecommerce-product-catalog'),esc_url( 'http://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=donation-support-link' ) ,esc_url( 'http://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=donation-extensions-link#extensions' )) ?>.
 			</p>
 		</div> 
-		<div class="helpers"><?php 
-			did_know_helper('support', __('You can get instant support by email','al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/plugins/premium-support/')	?>
-		</div><?php
+		<div class="helpers"><div class="wrapper"><?php 
+			main_helper();
+			did_know_helper('support', __('You can get instant premium support from plugin developers','al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/plugins/premium-support/');
+			review_helper() ?>
+		</div></div><?php
 
 	} 
 }

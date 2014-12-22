@@ -75,9 +75,9 @@ if ($submenu == 'shipping') { ?>
 	
 		</form>
 </div> 
-<div class="helpers"><?php 
-	//doc_helper(__('attributes', 'al-ecommerce-product-catalog'), 'product-attributes') ?>
-</div>
+<div class="helpers"><div class="wrapper"><?php 
+	main_helper(); ?>
+</div></div>
 
 <?php } do_action('product-shipping'); ?>
 </div><?php

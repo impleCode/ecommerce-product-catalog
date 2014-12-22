@@ -99,9 +99,10 @@ $submenu = $_GET['submenu']; ?>
 		} ?>		
 		</form>
 	</div>
-	<div class="helpers"><?php 
+	<div class="helpers"><div class="wrapper"><?php 
+		main_helper();
 		doc_helper(__('attributes', 'al-ecommerce-product-catalog'), 'product-attributes') ?>
-	</div>
+	</div></div>
 	<?php } do_action('product-attributes'); ?>
 	</div><?php 
  }

@@ -172,7 +172,7 @@ function al_product_shipping() {
 		$shipping_label_option = get_option('product_shipping_label');
 		$shipping_option_field = get_post_meta($post->ID, '_shipping'.$i, true);
 		$shipping_label_field = get_post_meta($post->ID, '_shipping-label'.$i, true);
-		if (! empty($shipping_option_field)) {
+		if ($shipping_option_field != null) {
 			$shipping = $shipping_option_field; }
 		else { $shipping = isset($shipping_option[$i]) ? $shipping_option[$i] : ''; }
 		if (! empty($shipping_label_field)) {
@@ -186,7 +186,7 @@ function al_product_attributes() {
 	global $post;
 	echo '<input type="hidden" name="attributesmeta_noncename" id="attributesmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename(__FILE__) ) . '" />';
-	echo '<div class="al-box info">'. __('Only attributes with values set will be shown on product page.', 'al-ecommerce-product-catalog') .'</div>';
+	echo '<div class="al-box info">'. __('Only attributes with values set will be shown on product page.', 'al-ecommerce-product-catalog') . ' '. sprintf(__('See <a target="_blank" href="%s">docs</a>.', 'al-ecommerce-product-catalog'),'http://implecode.com/docs/ecommerce-product-catalog/product-attributes/?cam=catalog-add-page-box&key=product-attributes').'</div>';
 	do_action('before_product_attributes_edit_single');
 	echo '<table class="sort-settings attributes">
 	<thead><tr>
@@ -279,7 +279,7 @@ function implecode_save_products_meta($post_id, $post) {
 	$product_meta['_shortdesc'] = !empty($_POST['_shortdesc']) ? $_POST['_shortdesc'] : '';
 	$product_meta['_desc'] = !empty($_POST['_desc']) ? $_POST['_desc'] : '';
 	for ($i = 1; $i <= get_option('product_shipping_options_number',DEF_SHIPPING_OPTIONS_NUMBER); $i++) {
-	$product_meta['_shipping'.$i] = !empty($_POST['_shipping'.$i]) ? $_POST['_shipping'.$i] : '';
+	$product_meta['_shipping'.$i] = isset($_POST['_shipping'.$i]) ? $_POST['_shipping'.$i] : '';
 	$product_meta['_shipping-label'.$i] = !empty($_POST['_shipping-label'.$i]) ? $_POST['_shipping-label'.$i] : '';
 	}
 	for ($i = 1; $i <= get_option('product_attributes_number',DEF_ATTRIBUTES_OPTIONS_NUMBER); $i++) {

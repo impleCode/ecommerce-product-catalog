@@ -13,3 +13,4 @@
 require_once(AL_BASE_PATH . '/functions/content-functions.php');
 
 require_once('support.php');
+require_once('conditionals.php');

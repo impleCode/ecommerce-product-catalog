@@ -199,13 +199,19 @@ else if (! empty($not_active_ic_plugins) && is_ic_plugin_active($slug, $not_acti
 $return .= '<p><a href="'.wp_nonce_url('plugins.php?action=activate&amp;plugin=' . urlencode( $slug.'/'.$slug.'.php' ), 'activate-plugin_' . $slug.'/'.$slug.'.php').'" class="button-primary">Activate Now</a><span class="comp info">'.__('Installed Extension', 'al-ecommerce-product-catalog').'</span></p>';
 }
 else {
+	$disabled = '';
+	$current_key = get_option('custom_license_code');
+	if (! current_user_can('install_plugins')) {
+		$disabled = 'disabled';
+		$current_key = '';
+	}
 	if ($comp_class == 'wrong') {
 		$return .= '<p><a target="_blank" href="http://implecode.com/wordpress/plugins/'.$url.'/#cam=extensions&key='.$url.'" class="button-primary">See the Extension</a><span class="comp '.$comp_class.'">'.$comp_txt.'</span></p>';
 	}
 	else {
-		$return .= '<form class="license_form" action=""><input type="hidden" name="implecode_install" value="1"><input type="hidden" name="url" value="'.$url.'"><input type="hidden" name="slug" value="'.$slug.'"><input type="hidden" name="post_type" value="al_product"><input type="hidden" name="page" value="extensions.php"><input type="text" name="license_key" class="wide" placeholder="License Key..." value="'.get_option('custom_license_code').'">';
+		$return .= '<form class="license_form" action=""><input type="hidden" name="implecode_install" value="1"><input type="hidden" name="url" value="'.$url.'"><input type="hidden" name="slug" value="'.$slug.'"><input type="hidden" name="post_type" value="al_product"><input type="hidden" name="page" value="extensions.php"><input type="text" name="license_key" '.$disabled.' class="wide" placeholder="License Key..." value="'.$current_key.'">';
 		$return .= wp_nonce_field('install-implecode-plugin_' . $slug, '_wpnonce', 0, 0);
-		$return .= '<p class="submit"><input type="submit" value="Install" class="button-primary"><span class="comp '.$comp_class.'">'.$comp_txt.'</span> <a target="_blank" href="http://implecode.com/wordpress/plugins/'.$url.'/#cam=extensions&key='.$url.'" class="button-secondary right">Get your key</a></form></p>';
+		$return .= '<p class="submit"><input type="submit" '.$disabled.' value="Install" class="button-primary"><span class="comp '.$comp_class.'">'.$comp_txt.'</span> <a target="_blank" href="http://implecode.com/wordpress/plugins/'.$url.'/#cam=extensions&key='.$url.'" class="button-secondary right">Get your key</a></form></p>';
 	}
 }
 $return .= '</div>';
@@ -222,7 +228,7 @@ function is_ic_plugin_active($slug, $all_ic_plugins) {
 }
 
 function start_implecode_install() {
-if (isset($_GET['implecode_install']) && !empty($_GET['slug']) && !empty($_GET['license_key']) && wp_verify_nonce( $_GET['_wpnonce'], 'install-implecode-plugin_' . $_GET['slug'] ) == 1) { 
+if (isset($_GET['implecode_install']) && !empty($_GET['slug']) && !empty($_GET['license_key']) && wp_verify_nonce( $_GET['_wpnonce'], 'install-implecode-plugin_' . $_GET['slug'] ) == 1 && current_user_can('install_plugins')) { 
 	$api = implecode_installation_url(); 
 	if ($api != 'error') { 
 		add_filter('install_plugin_complete_actions', 'implecode_install_actions', 10, 3);
@@ -247,10 +253,17 @@ if (isset($_GET['implecode_install']) && !empty($_GET['slug']) && !empty($_GET['
 			</div>';
 	}
 }
-else if (isset($_GET['implecode_install']) && !empty($_GET['slug']) && empty($_GET['license_key'])) {
+else if (isset($_GET['implecode_install']) && !empty($_GET['slug']) && empty($_GET['license_key']) && current_user_can('install_plugins')) {
 	echo '<div id="message error" class="error product-adder-message messages-connect">
 				<div class="squeezer">
 					<h4><strong>'.sprintf(__('You need to provide the license key to activate the extension. Get yours <a href="%s">here</a>.', 'al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/plugins/'.$_GET['url'].'/#cam=extensions&key='.$_GET['url']).'</strong></h4>
+				</div>
+			</div>';
+}
+else if (! current_user_can('install_plugins')) {
+	echo '<div id="message error" class="error product-adder-message messages-connect">
+				<div class="squeezer">
+					<h4><strong>'.__('You don\'t have permission to install and activate extensions.', 'al-ecommerce-product-catalog').'</strong></h4>
 				</div>
 			</div>';
 }

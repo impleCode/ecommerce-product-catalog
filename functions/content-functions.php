@@ -11,11 +11,13 @@
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 /* General */
-function price_format($price_value, $clear = 0, $format = 1) {
+function price_format($price_value, $clear = 0, $format = 1, $raw = 0) {
 $set = get_option('product_currency_settings', unserialize(DEF_CURRENCY_SETTINGS));
 $set['th_sep'] = isset($set['th_sep']) ? $set['th_sep'] : ',';
 $set['dec_sep'] = isset($set['dec_sep']) ? $set['dec_sep'] : '.';
-$price_value = number_format($price_value,2,$set['dec_sep'],$set['th_sep']);
+$th_symbol = addslashes($set['th_sep']);
+$raw_price_value = str_replace($th_symbol, "", $price_value);
+$price_value = number_format($raw_price_value,2,$set['dec_sep'],$set['th_sep']);
 $space = ' ';
 if ($set['price_space'] == 'off') {
 $space = '';
@@ -29,6 +31,9 @@ return apply_filters('price_format', $formatted, $price_value);
 }
 else if ($format == 1) {
 return $formatted;
+}
+else if ($raw == 1) {
+return $raw_price_value;
 }
 else {
 return $price_value;

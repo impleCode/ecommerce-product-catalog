@@ -783,41 +783,6 @@ td.with-additional-styling {
 padding: 0;
 }
 
-.locale-he-il .settings-submenu {
-float: right;
-}
-
-.locale-en-us .settings-submenu .element{
-font-size: 17px;
-}
-
-.settings-submenu .element{
-padding: 6px 10px;
-font-weight: 700;
-font-size: 15px;
-line-height: 24px;
-border: 1px solid #ccc;
-border-right: 1px solid #ccc;
-background: #e4e4e4;
-color: #555;
-text-decoration: none;
-outline: 0;
-display: block;
-margin-bottom: 5px;
-margin-right: -1px;
-}
-
-.settings-submenu .element:hover {
-background-color: #fff;
-color: #464646;
-}
-
-.settings-submenu .element.current {
-border-right: 1px solid #f1f1f1;
-background: #f1f1f1;
-color: #000;
-}
-
 /*
 .settings-submenu .element{
 line-height: 29px;

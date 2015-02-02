@@ -4,7 +4,7 @@ Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpre
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 2.1.0
+Stable tag: 2.1.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -45,11 +45,9 @@ Read all about [eCommerce Product Catalog](http://implecode.com/wordpress/produc
 * __Product Breadcrumbs__ - use SEO friendly product breadcrumbs
 * __Product Import__ - import unlimited amount of products with a CSV
 
-And more to come every week! 
-
 = Display Products with a Shortcode =
 
-Use the shortcode to show products whenever needed on the website. Just paste on any page: [show_products] and watch all products in place of the shortcode. 
+Use the shortcode to show products whenever needed on the website. Just paste on any page: [show_products] and watch all products in place of the shortcode.
 
 To show products from just one category, use: [show_products category="2"] where 2 is category ID (it's possible to display several categories by inserting comma separated IDs). 
 
@@ -58,6 +56,18 @@ To display products by IDs, use: [show_products product="5"], where 5 is product
 = Display Categories with a Shortcode =
 
 You can use [show_categories] shortcode to show the product categories on home page or any other WordPress page.
+
+= Product Catalog without Price =
+
+Easily disable price from both front-end and back-end by switching one setting.
+
+= Smart Widgets =
+
+eCommerce Product Catalog comes with two widgets: 
+
+__1. Product Categories__ - show all product categories in CSS customisable list. The widget has also several customisation settings.
+
+__2. Product Search__ - generates a search form that allows to search the products in the catalog.
 
 = eCommerce Product Catalog Extensions =
 
@@ -70,15 +80,18 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 
 * English - default, always included
 * Bosnian - Thanks to Faruk
-* French - Thanks to Denis
+* Bulgarian - Thanks to Valentina and Koceto via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
+* Dutch - Thanks to Pieter via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
+* French - Thanks to Denis & James via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * German - Thanks to Peter
 * Hebrew - Thanks to Ahrale
+* Norwegian - Thanks to Oyvind via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Polish - Thanks to Norbert
 * Serbian - Thanks to Ogi
 * Spanish - Thanks to Andrew and Norbert
-* *Your translation? - [Just send it in](http://implecode.com/contact/#cam=wordpress-org-catalog-page&key=translation-link)*
+* *Your translation? - [Just send it in](http://translate.implecode.com/projects/ecommerce-product-catalog#cam=wordpress-org-catalog-page&key=translation-link)*
 
-*Note:* All our plugins are localized/translatable by default. This is very important for all users worldwide. So please contribute your language to the plugin to make it even more useful. For translating we recommend the awesome ["Codestyling Localization" plugin](http://wordpress.org/extend/plugins/codestyling-localization/).
+*Note:* All our plugins are localized/translatable by default. This is very important for all users worldwide. So please contribute your language to the plugin to make it even more useful. For translating we invite you to join this huge impleCode [translation project](http://translate.implecode.com/projects/ecommerce-product-catalog#cam=wordpress-org-catalog-page&key=translation-link).
 
 == Installation ==
 
@@ -159,6 +172,30 @@ This is not a store. It's main purpose is to present products or services on the
 6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 2.1.3 - 02/02/2015 = 
+
+* Localisation - Bulgarian language improved thanks to Koceto via http://translate.implecode.com
+* Localisation - Russian language improved thanks to Gregory via http://translate.implecode.com
+* Localisation - Czech language introduced thanks to Martin via http://translate.implecode.com
+* Localisation - Finnish language introduced thanks to Pekka via http://translate.implecode.com
+
+= 2.1.2 - 26/01/2015 = 
+
+* Fix - Product Catalog paging numbers points to the top of the page
+* Localisation - French language improved thanks to James via http://translate.implecode.com
+* Localisation - Polish language improved thanks to Norbert via http://translate.implecode.com
+* Localisation - Dutch language improved thanks to Pieter via http://translate.implecode.com
+* Localisation - Bulgarian language improved thanks to Valentina via http://translate.implecode.com
+* Localisation - Russian language introduced thanks to Gregory via http://translate.implecode.com
+* Localisation - Norwegian language introduced thanks to Oyvind via http://translate.implecode.com
+
+Thank you on behalf of all eCommerce Product Catalog users!
+
+= 2.1.1 - 19/01/2015 = 
+
+* Tweak - the product shortcode does not show sort dropdown by default
+* Localisation - Dutch language introduced thanks to Pieter via translate.implecode.com
 
 = 2.1.0 - 22/12/2014 =
 

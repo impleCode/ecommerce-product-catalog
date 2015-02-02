@@ -653,7 +653,7 @@ return $sizes;
 add_filter( 'intermediate_image_sizes_advanced', 'set_product_thumbnail_size_in_admin', 10);
 
 function set_product_order($query) {
-if ( !isset($_GET['order']) && $query->is_main_query() && (is_post_type_archive( 'al_product' ) || is_tax('al_product-cat')) ) {
+if ( !isset($_GET['order']) && $query->is_main_query() && (is_post_type_archive( 'al_product' ) || is_tax('al_product-cat')) ) { 
 	$archive_multiple_settings = get_multiple_settings();
 	if (!isset($_GET['product_order'])) {
 		if ($archive_multiple_settings['product_order'] == 'product-name') { 

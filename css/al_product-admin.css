@@ -176,6 +176,7 @@ width: 196px;
 border-right: 1px solid #ccc;
 margin-top: 20px;
 position: relative;
+padding-left: 2px;
 }
 
 #implecode_settings .settings-submenu h3{
@@ -289,6 +290,46 @@ max-width: 250px;
 margin-left: 10px;
 }
 
+/* Settings Menu */
+.locale-he-il .settings-submenu {
+float: right;
+}
+
+.locale-en-us .settings-submenu .element{
+font-size: 17px;
+}
+
+.settings-submenu .element{
+padding: 6px 10px;
+font-weight: 700;
+font-size: 15px;
+line-height: 24px;
+border: 1px solid #ccc;
+border-right: 1px solid #ccc;
+background: #e4e4e4;
+color: #555;
+text-decoration: none;
+outline: 0;
+display: block;
+margin-bottom: 5px;
+margin-right: -1px;
+}
+
+.settings-submenu .element:focus{
+outline: 0;
+}
+
+.settings-submenu .element:hover {
+background-color: #fff;
+color: #464646;
+}
+
+.settings-submenu .element.current {
+border-right: 1px solid #f1f1f1;
+background: #f1f1f1;
+color: #000;
+}
+
 /* Settings Helpers */
 #implecode_settings .helpers {
 display: table-cell;
@@ -302,6 +343,7 @@ position: fixed;
 
 #implecode_settings .helpers .doc-helper{
 position: relative;
+overflow: hidden;
 }
 
 .doc-helper {
@@ -348,6 +390,10 @@ color: #0a063b;
 font-size: 19.5px;
 font-family: 'Source Sans Pro',Arial,sans-serif;
 line-height:23px;
+}
+
+.locale-nl-nl .doc-helper .doc-name {
+font-size: 18px;
 }
 
 .doc-helper .doc-description {

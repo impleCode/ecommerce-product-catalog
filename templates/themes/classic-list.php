@@ -32,18 +32,21 @@ function list_archive_theme($post) { ?>
 </div>
 <?php }
 
-function get_list_archive_theme($post) {
-if (wp_get_attachment_url( get_post_thumbnail_id($post->ID) )) {
-	$url = wp_get_attachment_url( get_post_thumbnail_id($post->ID) ); 
-} 
-else {
-	$url = default_product_thumbnail_url(); 
-}
-$return = '<div class="archive-listing list example">';
-$return .= '<a href="'. get_permalink() .'"><span class="div-link"></span></a>';
-$return .= '<div class="product-image" style="background-image:url(\''.$url.'\')"></div>';
-$return .= '<div class="product-name">'. get_the_title().'</div>';
-$return .= '<div class="product-short-descr"><p>'.c_list_desc($post->ID).'</p></div></div>';
+function get_list_archive_theme($post, $archive_template = null) {
+	$archive_template = isset($archive_template) ? $archive_template : get_product_listing_template();
+	$return = '';
+	if ($archive_template == 'list') {
+		if (wp_get_attachment_url(get_post_thumbnail_id($post->ID))) {
+			$url = wp_get_attachment_url(get_post_thumbnail_id($post->ID));
+		} else {
+			$url = default_product_thumbnail_url();
+		}
+		$return = '<div class="archive-listing list example">';
+		$return .= '<a href="' . get_permalink() . '"><span class="div-link"></span></a>';
+		$return .= '<div class="product-image" style="background-image:url(\'' . $url . '\')"></div>';
+		$return .= '<div class="product-name">' . get_the_title() . '</div>';
+		$return .= '<div class="product-short-descr"><p>' . c_list_desc($post->ID) . '</p></div></div>';
+	}
 return $return;
 }
 

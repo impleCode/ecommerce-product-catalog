@@ -1,19 +1,19 @@
 <?php
 /**
  * Plugin Name: eCommerce Product Catalog by impleCode
- * Plugin URI: http://implecode.com/#cam=in-plugin-urls&key=plugin-url
+ * Plugin URI: http://implecode.com/wordpress/product-catalog/#cam=in-plugin-urls&key=plugin-url
  * Description: WordPress eCommerce easy to use, powerful and beautiful plugin from impleCode. Great choice if you want to sell easy and quick. Or just beautifully present your products on WordPress website. Full WordPress integration does great job not only for Merchants but also for Developers and Theme Constructors.
- * Version: 2.1.3
+ * Version: 2.1.5
  * Author: impleCode
  * Author URI: http://implecode.com/#cam=in-plugin-urls&key=author-url
+ * Text Domain: al-ecommerce-product-catalog
+ * Domain Path: /lang/
 	
 	Copyright: 2014 impleCode.
 	License: GNU General Public License v3.0
 	License URI: http://www.gnu.org/licenses/gpl-3.0.html */
 	
 	 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
-load_plugin_textdomain( 'al-ecommerce-product-catalog', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
 
 define('AL_BASE_PATH',dirname(__FILE__));
 define('AL_PLUGIN_BASE_PATH',plugins_url( '/', __FILE__ ));
@@ -37,28 +37,43 @@ require_once(AL_BASE_PATH .  '/ext-comp/index.php' );
 register_activation_hook( __FILE__, 'add_product_caps' );
 register_activation_hook( __FILE__, 'epc_activation_function' );
 
-function implecode_register_styles() {
- wp_register_style( 'al_product_styles',  plugins_url(). '/' . dirname( plugin_basename( __FILE__ ) ) . '/css/al_product.css?' . filemtime( plugin_dir_path(__FILE__) . '/css/al_product.css') );
- wp_enqueue_style( 'al_product_styles' ); 
+function implecode_enqueue_styles() {
+wp_enqueue_style( 'al_product_styles' );
+wp_enqueue_script( 'al_product_scripts' );
 }
 
-add_action('wp_enqueue_scripts', 'implecode_register_styles');
-add_action('admin_enqueue_scripts', 'implecode_register_styles');
+add_action('wp_enqueue_scripts', 'implecode_enqueue_styles');
+add_action('admin_enqueue_scripts', 'implecode_enqueue_styles');
 
 function implecode_register_admin_styles() {
  wp_register_style( 'al_product_admin_styles',  plugins_url(). '/' . dirname( plugin_basename( __FILE__ ) ) . '/css/al_product-admin.css?' . filemtime( plugin_dir_path(__FILE__) . '/css/al_product-admin.css') );
+ wp_register_script( 'admin-scripts', AL_PLUGIN_BASE_PATH.'js/admin-scripts.js?' . filemtime( AL_BASE_PATH . '/js/admin-scripts.js'), array('jquery-ui-sortable', 'jquery-ui-tooltip') );
 }
 
 add_action('admin_init', 'implecode_register_admin_styles');
 
+function implecode_register_styles() {
+wp_register_style( 'al_product_styles',  plugins_url(). '/' . dirname( plugin_basename( __FILE__ ) ) . '/css/al_product.css?' . filemtime( plugin_dir_path(__FILE__) . '/css/al_product.css') );
+wp_register_script( 'al_product_scripts', plugins_url(). '/' . dirname( plugin_basename( __FILE__ ) ) . '/js/product.js?' . filemtime( plugin_dir_path(__FILE__) . '/js/product.js'), array('jquery'));
+}
+
+add_action('init', 'implecode_register_styles');
+
 function implecode_run_admin_styles() {
-wp_enqueue_style( 'al_product_admin_styles' ); 
+if (is_ic_admin_page()) {
+	wp_enqueue_style( 'al_product_admin_styles' ); 
+	wp_enqueue_script( 'admin-scripts' );
+}
 }
 add_action('admin_enqueue_scripts', 'implecode_run_admin_styles');
 
 function implecode_addons() {
-do_action('ecommerce-prodct-catalog-addons'); }
+load_plugin_textdomain( 'al-ecommerce-product-catalog', false, dirname( plugin_basename( __FILE__ ) ) . '/lang/' );
+	if (! is_network_admin()) {
+		do_action( 'ecommerce-prodct-catalog-addons' );
+	}
+}
 
- add_action( 'plugins_loaded', 'implecode_addons' );
+add_action( 'plugins_loaded', 'implecode_addons' );
 
 ?>

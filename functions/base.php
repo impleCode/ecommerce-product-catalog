@@ -12,13 +12,12 @@
 
 add_filter( 'enter_title_here', 'al_enter_title_here');
 function al_enter_title_here( $message ){
-  $screen = get_current_screen();
-
-  if( 'al_product' == substr($screen->post_type,0,10) ):
-    $message = __('Enter product name here', 'al-ecommerce-product-catalog');
-  endif;
-
-  return $message;
+$screen = get_current_screen();
+if( 'al_product' == substr($screen->post_type,0,10) ) {
+	$names = get_catalog_names();
+	$message = sprintf(__('Enter %s name here', 'al-ecommerce-product-catalog'), strtolower($names['singular']));
+}
+return $message;
 }
 
 

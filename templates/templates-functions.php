@@ -11,7 +11,7 @@
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  
 function content_product_adder() {
-if (is_archive() || is_search()) {
+if (is_archive() || is_search() || is_home_archive()) {
 do_action('before_product_archive');
 content_product_adder_archive();
 }
@@ -29,7 +29,7 @@ include 'content-al_product.php';
 }
 
 function content_product_adder_archive_before() {
-$page_id = apply_filters('before_archive_post_id', get_option('product_archive'));
+$page_id = apply_filters('before_archive_post_id', get_product_listing_id());
 $page = get_post($page_id);
 if ($page != '') {
 	if (get_integration_type() != 'simple') { 
@@ -46,7 +46,7 @@ return '<div class="entry-summary">'.$content.'</div>';
 }
 
 function content_product_adder_archive_before_title() {
-$def_page_id = get_option('product_archive');
+$def_page_id = get_product_listing_id();
 $archive_names = get_option('archive_names');
 $page_id = apply_filters('before_archive_post_id', $def_page_id);
 $page = get_post($page_id);
@@ -59,8 +59,8 @@ echo '<h1 class="entry-title">'.$page->post_title.'</h1>';
 }
 
 function show_products_outside_loop($atts) {
-global $shortcode_query, $product_sort;
-extract(shortcode_atts(array( 
+	global $shortcode_query, $product_sort;
+	$args = shortcode_atts(array(
 		'post_type' => 'al_product',
 		'category' => '',
 		'product' => '',
@@ -68,48 +68,54 @@ extract(shortcode_atts(array(
 		'archive_template' => get_option( 'archive_template', 'default'),
 		'design_scheme' => '',
 		'sort' => 0,
-    ), $atts));
-$product_sort = $sort;
-if ($product != 0) {
-	$product_array = explode(',', $product);
-	$query_param = array (
-		'post_type' => 'al_product',
-		'post__in' => $product_array,
-		'posts_per_page' => $products_limit,
-		);
-}
-else if ($category != 0) {
-	$category_array = explode(',', $category);
-	$query_param = array (
-		'post_type' => 'al_product',
-		'tax_query' => array(
-			array(
-				'taxonomy' => 'al_product-cat',
-				'field' => 'term_id',
-				'terms' => $category_array,
+    ), $atts);
+	$sort = (int)$args['sort'];
+	$category = esc_attr($args['category']);
+	$product = esc_attr($args['product']);
+	$products_limit = (int)$args['products_limit'];
+	$archive_template = esc_attr($args['archive_template']);
+	$design_scheme = esc_attr($args['design_scheme']);
+//	$post_type = esc_attr($args['post_type']);
+	$product_sort = $sort;
+	if ($product != 0) {
+		$product_array = explode(',', $product);
+		$query_param = array (
+			'post_type' => 'al_product',
+			'post__in' => $product_array,
+			'posts_per_page' => $products_limit,
+			);
+	}
+	else if ($category != 0) {
+		$category_array = explode(',', $category);
+		$query_param = array (
+			'post_type' => 'al_product',
+			'tax_query' => array(
+				array(
+					'taxonomy' => 'al_product-cat',
+					'field' => 'term_id',
+					'terms' => $category_array,
+				),
 			),
-		),
-		'posts_per_page' => $products_limit,
-		);
-}
-else {
-	$product_array = explode(',', $product);
-	$query_param = array (
-		'post_type' => 'al_product',
-		'posts_per_page' => $products_limit,
-		);
-}
-$query_param = apply_filters('shortcode_query', $query_param);
-$shortcode_query = new WP_Query($query_param);
-$inside = '';
-$i = 0;
-do_action('before_product_list', $archive_template);
-while ( $shortcode_query->have_posts() ) : $shortcode_query->the_post(); global $post; $i++;
-	$inside .= get_catalog_template($archive_template, $post, $i, $design_scheme);
-endwhile;
-$inside = apply_filters('product_list_ready', $inside, $archive_template);
-wp_reset_postdata();
-return '<div class="product-list '.$archive_template.'-list">'.$inside.'<div style="clear:both"></div></div>';
+			'posts_per_page' => $products_limit,
+			);
+	}
+	else {
+		$query_param = array (
+			'post_type' => 'al_product',
+			'posts_per_page' => $products_limit,
+			);
+	}
+	$query_param = apply_filters('shortcode_query', $query_param);
+	$shortcode_query = new WP_Query($query_param);
+	$inside = '';
+	$i = 0;
+	do_action('before_product_list', $archive_template);
+	while ( $shortcode_query->have_posts() ) : $shortcode_query->the_post(); global $post; $i++;
+		$inside .= get_catalog_template($archive_template, $post, $i, $design_scheme);
+	endwhile;
+	$inside = apply_filters('product_list_ready', $inside, $archive_template);
+	wp_reset_postdata();
+	return '<div class="product-list responsive '.$archive_template.'-list">'.$inside.'<div style="clear:both"></div></div>';
 }
 
 add_shortcode('show_products', 'show_products_outside_loop');
@@ -178,11 +184,12 @@ wp_reset_postdata();
 
 function get_catalog_template($archive_template, $post, $i = null, $design_scheme = null) {
 $themes_array = apply_filters('ecommerce_catalog_templates', array(
-	'default' => get_default_archive_theme($post),
-	'list' => get_list_archive_theme($post),
-	'grid' => get_grid_archive_theme($post),
+	'default' => get_default_archive_theme($post, $archive_template),
+	'list' => get_list_archive_theme($post, $archive_template),
+	'grid' => get_grid_archive_theme($post, $archive_template),
 ), $post, $i, $design_scheme);
 $themes_array[$archive_template] = isset($themes_array[$archive_template]) ? $themes_array[$archive_template] : $themes_array['default'];
+	$themes_array[$archive_template] = empty($themes_array[$archive_template]) ? get_default_archive_theme($post, 'default') : $themes_array[$archive_template];
 return $themes_array[$archive_template];
 }
 
@@ -256,10 +263,26 @@ $row = 1;
 }
 
 function product_class( $classes ) {
-	global $post;
 	if(($key = array_search('has-post-thumbnail', $classes)) !== false) {
     unset($classes[$key]);
 	}
 	return $classes;
 }
 add_filter( 'post_class', 'product_class' );
+
+function product_listing_additional_styles() {
+$styles = '<style>';
+$styles = apply_filters('product_listing_additional_styles', $styles);
+$styles .= '</style>';
+if ($styles != '<style></style>') {
+	echo $styles;
+}
+}
+
+add_action('before_product_list', 'product_listing_additional_styles');
+
+function get_product_listing_template() {
+$archive_template = get_option( 'archive_template', 'default');
+$archive_template = !empty($archive_template) ? $archive_template : 'default';
+return $archive_template;
+}

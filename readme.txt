@@ -4,19 +4,27 @@ Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpre
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 2.1.3
+Stable tag: 2.1.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-eCommerce Product Catalog plugin is a great choice to sell easy and quick or just beautifully present products on WordPress website.
+eCommerce Product Catalog responsive plugin is a great choice to sell easy and quick or just beautifully present products on WordPress website.
 
 == Description ==
 
-Reward your WordPress website with a beautiful and easy to use product catalogue. eCommerce Product Catalog plugin is powerful and basic at the same time. It is built by the experienced folk at impleCode who constantly develops the core and the [extensions](http://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extension-link#extensions "eCommerce Product Catalog Extensions"). Expect high quality code which is great value not only for Developers and Theme Constructors but also for Merchants and Webmasters.
+Reward your WordPress website with a beautiful and easy to use responsive product catalogue. eCommerce Product Catalog plugin is powerful and simple at the same time. 
+
+It is built by the experienced folk at impleCode who constantly develops the core and the [extensions](http://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extension-link#extensions "eCommerce Product Catalog Extensions"). 
+
+Expect high quality code which is great value not only for Merchants and Webmasters but also for Developers and Theme Constructors.
 
 https://www.youtube.com/watch?v=FgSOAgsnDqA
 
-This eCommerce plugin is a great solution for those who look for an easy way to implement product management to the WordPress website. eCommerce Product Catalog is supported on [WordPress forums](https://wordpress.org/support/plugin/ecommerce-product-catalog "eCommerce Product Catalog Forum"), [Premium Support](http://implecode.com/wordpress/plugins/premium-support/?cam=wordpress-org-catalog-page&key=premium-support-link "eCommerce Product Catalog Premium Support") and has a [documentation](http://implecode.com/docs/ecommerce-product-catalog/?cam=wordpress-org-catalog-page&key=docs-link "eCommerce Product Catalog Documentation") publicly available. This eCommerce store like solution works with any theme and most of WordPress plugins. It is based on custom post types.
+This eCommerce plugin is a great solution for those who look for an easy way to implement product management to the WordPress website. 
+
+eCommerce Product Catalog is supported on [WordPress forums](https://wordpress.org/support/plugin/ecommerce-product-catalog "eCommerce Product Catalog Forum"), [Premium Support](http://implecode.com/wordpress/plugins/premium-support/?cam=wordpress-org-catalog-page&key=premium-support-link "eCommerce Product Catalog Premium Support") and has a [documentation](http://implecode.com/docs/ecommerce-product-catalog/?cam=wordpress-org-catalog-page&key=docs-link "eCommerce Product Catalog Documentation") publicly available. 
+
+This eCommerce store like solution works with any theme and most of WordPress plugins. It is based on custom post types.
 
 = FEATURES =
 
@@ -44,6 +52,7 @@ Read all about [eCommerce Product Catalog](http://implecode.com/wordpress/produc
 * __Front-end Labels Manager__ - manage everything users can see
 * __Product Breadcrumbs__ - use SEO friendly product breadcrumbs
 * __Product Import__ - import unlimited amount of products with a CSV
+* __Responsive Layout__ - products listings and product pages are fully responsive unless your theme does not prevent it
 
 = Display Products with a Shortcode =
 
@@ -89,6 +98,7 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 * Polish - Thanks to Norbert
 * Serbian - Thanks to Ogi
 * Spanish - Thanks to Andrew and Norbert
+* Turkish - Thanks to Tahir via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * *Your translation? - [Just send it in](http://translate.implecode.com/projects/ecommerce-product-catalog#cam=wordpress-org-catalog-page&key=translation-link)*
 
 *Note:* All our plugins are localized/translatable by default. This is very important for all users worldwide. So please contribute your language to the plugin to make it even more useful. For translating we invite you to join this huge impleCode [translation project](http://translate.implecode.com/projects/ecommerce-product-catalog#cam=wordpress-org-catalog-page&key=translation-link).
@@ -172,6 +182,30 @@ This is not a store. It's main purpose is to present products or services on the
 6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 2.1.5 - 16/02/2015 = 
+
+* Tweak - better compatibility with IE7 and IE8
+* Tweak - improved responsive design
+* Tweak - better SEO for Modern Product Listing template
+* Fix - the catalog name setting does not prevent the product page from showing up any more
+* Localisation - Russian language improved thanks to Alex via http://translate.implecode.com
+* Localisation - Portuguese language improved thanks to Goncalo via http://translate.implecode.com
+
+= 2.1.4 - 09/02/2015 = 
+
+* Tweak - ability to choose catalog name for admin labels (e.g. Flowers instead of Products)
+* Tweak - drag & drop usability improvements in admin
+* Tweak - tooltips added for some options in product settings
+* Tweak - plugin review encourage message for users with activate_plugins permission (can be disabled) - thanks for reviews :)
+* Fix - sort drop-down compatibility with default WordPress permalinks
+* Localisation - Portuguese language introduced thanks to Jorge via http://translate.implecode.com
+* Localisation - Turkish language introduced thanks to Tahir via http://translate.implecode.com
+* Localisation - Russian language improved thanks to Alex via http://translate.implecode.com
+
+Thank you for the translations on behalf of all eCommerce Product Catalog users! 
+
+Please [post your review](https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform "Post a review on wordpress.org") for eCommerce Product Catalog. This really helps the development and is really motivating :)
 
 = 2.1.3 - 02/02/2015 = 
 

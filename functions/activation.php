@@ -11,6 +11,7 @@
 function epc_activation_function() {
 create_products_page();
 create_sample_product();
+implecode_plugin_review_notice_hide();
 permalink_options_update();
 }
 
@@ -90,12 +91,12 @@ return get_option('sample_product_id');
 
 function ecommerce_product_catalog_upgrade() {
 if (is_admin()) {
-$databse_plugin_version = get_option('ecommerce_product_catalog_ver', '1.0');
 $plugin_data = get_plugin_data(AL_PLUGIN_MAIN_FILE); 
 $plugin_version = $plugin_data["Version"];
-if ($databse_plugin_version != $plugin_version) {
+	$database_plugin_version = get_option('ecommerce_product_catalog_ver', $plugin_version);
+if ($database_plugin_version != $plugin_version) {
 	update_option('ecommerce_product_catalog_ver', $plugin_version);
-	$first_version = (string)get_option('first_activation_version', '1.0');
+	$first_version = (string)get_option('first_activation_version', $plugin_version);
 	if (version_compare($first_version, '1.9.0') < 0) {
 		$hide_info = 0;
 		enable_advanced_mode($hide_info);

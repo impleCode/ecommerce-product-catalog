@@ -10,4 +10,4 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
-require_once('wpseo.php');
+require_once(AL_BASE_PATH. '/ext-comp/wpseo.php');

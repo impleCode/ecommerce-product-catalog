@@ -19,6 +19,17 @@ margin-right: 5px !important;
 display: none;
 }
 
+.implecode-review .dashicons, .implecode-review-thanks .dashicons {
+color: #ededed;
+cursor: pointer;
+font-size: 21px;
+margin-left: 5px;
+}
+
+.implecode-review .dashicons:hover, .implecode-review-thanks .dashicons:hover {
+color: #000;
+}
+
 /* Product Columns */
 .column-id {
 width: 2.2em;
@@ -188,6 +199,12 @@ display: table-cell;
 padding: 0px 20px;
 }
 
+.select-page-wrapper {
+min-width: 280px;
+}
+
+
+
 .admin-media-image {
 max-width: 150px;
 height: auto;
@@ -259,13 +276,19 @@ vertical-align: middle;
 vertical-align: middle !important;
 }
 
-.sort-placeholder {
+.ui-sortable tr.sort-placeholder {
 background-color: #bbffbb;
-height: 46px;
+height: 45px;
 }
-.sort-settings-placeholder {
+.ui-sortable tr.sort-settings-placeholder {
 background-color: #bbffbb;
-height: 30px;
+height: 39px;
+}
+
+.ui-sortable tr.sort-settings-placeholder td {
+border-color: #bbffbb;
+background-color: #bbffbb;
+border: none;
 }
 
 th.title {
@@ -288,6 +311,330 @@ max-width: 100%;
 #payment_table .al-box {
 max-width: 250px;
 margin-left: 10px;
+}
+
+h2.tab-menu {
+border-bottom: 2px solid #000000;
+padding: 0px !important;
+position: relative;
+z-index: 1;
+font-size: 21px;
+}
+
+h2.tab-menu {
+font-size: 18px;
+}
+
+.locale-en-us h2.tab-menu {
+font-size: 21px;
+}
+
+.tab-menu a {
+color: #000000;
+border-top: 1px solid #000000;
+border-left: 1px solid #000000;
+border-right: 1px solid #000000;
+padding: 10px;
+text-decoration: none;
+background-color: #ededed;
+display:inline-block;
+position: relative;
+top: 2px;
+z-index: 0;
+
+}
+
+.tab-menu a.current {
+color: #000000;
+background-color: #ffffff;
+/* border-top: 1px solid #d54e21;
+border-left: 1px solid #d54e21;
+border-right: 1px solid #d54e21;*/
+border-bottom: 2px solid #ffffff; 
+z-index:2;
+}
+
+.locale-he-il .setting-content.submenu {
+padding: 30px 250px 0 0px;
+}
+
+.names-product-settings .setting-content td input {
+text-align: center;
+}
+
+.names-product-settings .setting-content td, .design-product-settings .setting-content td {
+text-align: left;
+padding-left: 20px;
+vertical-align: middle;
+}
+
+.names-product-settings .setting-content th {
+text-align: center;
+}
+
+.setting-content p.submit {
+clear: both;
+}
+
+.setting-content h3 {
+border-bottom: 1px dotted #d4d2d2;
+padding-bottom: 4px;
+}
+
+.setting-content h3:before {
+font-family: dashicons;
+content: "\f140";
+font-size: 0.84em;
+}
+
+.nav-tab-wrapper a:before, .setting-content h2:before, .settings-submenu h3 a:before {
+font-family: dashicons;
+font-size: 0.84em;
+}
+
+.nav-tab-wrapper a#general-settings:before, .settings-submenu h3 a#general-settings:before, .overall-product-settings .setting-content h2:first-of-type:before {
+content: "\f111";
+}
+
+.nav-tab-wrapper a#design-settings:before, .design-product-settings .setting-content h2:first-of-type:before {
+content: "\f309";
+}
+
+.settings-submenu h3 a#archive-design:before, .settings-submenu h3 a#archive-names:before {
+content: "\f163";
+}
+
+.settings-submenu h3 a#single-design:before, .settings-submenu h3 a#single-names:before {
+content: "\f123";
+}
+
+.settings-submenu h3 a#design-schemes:before {
+content: "\f237";
+}
+
+.nav-tab-wrapper a#shipping-settings:before, .settings-submenu h3 a#shipping-settings:before, .shipping-product-settings .setting-content h2:first-of-type:before {
+content: "\f230";
+}
+
+.nav-tab-wrapper a#attributes-settings:before, .settings-submenu h3 a#attributes-settings:before, .attributes-product-settings .setting-content h2:first-of-type:before {
+content: "\f503";
+}
+
+.nav-tab-wrapper a#names-settings:before, .names-product-settings .setting-content h2:first-of-type:before {
+content: "\f473";
+}
+
+.settings-submenu h3 a#support-settings:before, .overall-product-settings .setting-content.support-tab h2:first-of-type:before {
+content: "\f110";
+}
+
+
+.overall-product-settings .setting-content.support-tab h2:nth-of-type(2):before {
+content: "\f155";
+}
+
+.overall-product-settings .setting-content.support-tab h2:nth-of-type(3):before {
+content: "\f181";
+}
+
+.overall-product-settings .setting-content.support-tab h2:nth-of-type(4):before {
+content: "\f497";
+}
+
+.overall-product-settings .setting-content.support-tab h2:nth-of-type(5):before {
+content: "\f238";
+}
+
+.setting-content select {
+max-width: 150px;
+}
+
+div.setting-content table td {
+max-width: 250px;
+}
+
+div.setting-content.support-tab table td {
+max-width: 100%;
+}
+
+div.shipping-product-settings table td, div.attributes-product-settings table td {
+max-width: 400px;
+}
+div.setting-content table.design-table td {
+max-width: 100%;
+}
+
+div.setting-content table.design-table td table td {
+border: 0;
+padding: 0;
+}
+
+div.setting-content table td:nth-child(3) {
+max-width: 100%;
+}
+
+td.dragger:before{
+content: "\f156";
+font-family: dashicons;
+float: right;
+font-size: 17px;
+}
+
+td.dragger, th.dragger {
+width: 3%;
+}
+
+#al_product_attributes .ui-sortable tr td:last-child input, #al_product_shipping .ui-sortable tr td:last-child input{
+max-width: 75%;
+}
+
+#implecode_settings .al_archive {
+height: 170px;
+width: 262px;
+max-width: 100%;
+}
+
+#implecode_settings .classic-grid.archive-listing {
+width: 190px;
+}
+
+#implecode_settings .classic-grid.archive-listing h3{
+border-bottom: 0;
+}
+
+#implecode_settings .classic-grid.archive-listing h3:before{
+display: none;
+}
+
+/* Image Picker */
+.custom-uploader {
+    width: auto;
+    display: inline-block;
+    text-align: center;
+}
+
+div.implecode-admin-media-image {
+    width: 150px;
+    height: 150px;
+    border: 2px dashed #A8A8A8;
+    position: relative;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.implecode-admin-media-image.empty {
+    display: block;
+    margin: 0 auto;
+}
+
+.custom-uploader a.add_catalog_media {
+    margin-top: 7px;
+}
+
+.custom-uploader {
+    height: 191px;
+    width: auto;
+    overflow: hidden;
+}
+
+div.implecode-admin-media-image.empty:before {
+    font-family: dashicons;
+    content: "\f161";
+    color: #A8A8A8;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    display: block;
+    line-height: 150px;
+    font-size: 70px;
+    position: absolute;
+    z-index: 1;
+}
+
+div.implecode-admin-media-image img {
+    position: relative;
+    z-index: 10;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.catalog-reset-image-button {
+    position: absolute;
+    top: 2px;
+    left: 90%;
+    font-weight: bold;
+    color: red;
+    cursor: pointer;
+    z-index: 99;
+}
+
+/* Product Edit Page */
+#al_product_attributes.postbox table {
+width: 100%;
+border-collapse: collapse;
+}
+
+#al_product_attributes.postbox table th {
+border-bottom: 1px solid #ededed;
+line-height: 2.5;
+text-align: left;
+padding-left: 5px;
+}
+
+#al_product_attributes.postbox table td {
+padding: 5px;
+}
+
+#al_product_attributes.postbox table input {
+width: 100%;
+}
+
+#al_product_attributes.postbox td.attributes-label-column {
+width: 20%;
+}
+
+#al_product_attributes.postbox td.value-column {
+width: 60%;
+}
+
+#al_product_attributes.postbox td.unit-column {
+width: 10%;
+}
+
+#al_product_attributes.postbox td.break-column {
+width: 0.5%;
+}
+
+#al_product_desc_editor_ifr, #al_product_shortdesc_editor_ifr, #wp-al_product_shortdesc_editor-editor-container {
+background-color: #ffffff;
+}
+
+.post-php .al-box, .post-new-php .al-box {
+min-width: 187px;
+max-width: 100%;
+display: inline-block;
+font-weight: normal;
+min-height: 50px;
+}
+
+#al_product_short_desc .mce-menubar {
+display: none;
+}
+
+#al_product_shipping table {
+border-collapse: collapse;
+}
+
+#al_product_shipping table td{
+padding: 3px 1px;
+}
+
+#al_product_shipping .ui-sortable tr.sort-settings-placeholder {
+height: 35px;
+}
+
+#al_product_shipping td.dragger:before{
+padding-right: 3px;
 }
 
 /* Settings Menu */
@@ -482,4 +829,17 @@ vertical-align: top;
 
 div.setting-content table.no-limit td{
 max-width: 100%;
+}
+
+/* Admin ToolTip */
+
+.ui-tooltip {
+	background: #edf2f2;
+	border: 3px solid #dde4e4;
+	padding: 10px;
+	color: #0a063b;
+	border-radius: 5px;
+	font: normal 14px "Helvetica Neue", Sans-Serif;
+	max-width: 220px;
+	position: fixed;
 }

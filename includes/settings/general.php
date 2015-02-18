@@ -25,7 +25,7 @@ function general_settings() {
 	register_setting('product_settings', 'enable_product_listing');
 	register_setting('product_settings', 'archive_multiple_settings');
 }
-add_action('product-settings-list','general_settings');
+add_action('product-settings-list', 'general_settings' );
 
 function general_settings_content() { ?>
 	<?php $submenu = isset($_GET['submenu']) ? $_GET['submenu'] : '';?>
@@ -50,8 +50,7 @@ function general_settings_content() { ?>
 				$product_currency_settings = get_currency_settings();
 				$enable_product_listing = get_option('enable_product_listing', 1);
 				$product_listing_url = get_option('product_listing_url', __('products', 'al-ecommerce-product-catalog'));
-				$product_archive_created = get_option('product_archive_page_id','0');
-				$product_archive = get_option('product_archive', $product_archive_created);
+				$product_archive = get_product_listing_id();
 				$archive_multiple_settings = get_multiple_settings();
 				$page_get = get_page_by_path( $product_listing_url );
 				if ($product_archive != '') {
@@ -76,6 +75,12 @@ function general_settings_content() { ?>
 				implecode_settings_radio(__('Choose theme integration type', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[integration_type]', $archive_multiple_settings['integration_type'], array('simple' => __('Simple Integration<br>', 'al-ecommerce-product-catalog'), 'advanced' => __('Advanced Integration', 'al-ecommerce-product-catalog'))) ?>
 				</table>
 				<?php } ?>
+				<h3><?php _e('Product Catalog', 'al-ecommerce-product-catalog'); ?></h3>
+				<table><?php
+					implecode_settings_text(__('Catalog Singular Name', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[catalog_singular]', $archive_multiple_settings['catalog_singular'], null, 1, null, __('Admin panel customisation setting. Change it to what you sell.', 'al-ecommerce-product-catalog'));
+					implecode_settings_text(__('Catalog Plural Name', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[catalog_plural]', $archive_multiple_settings['catalog_plural'], null, 1, null, __('Admin panel customisation setting. Change it to what you sell.', 'al-ecommerce-product-catalog')); ?>
+				</table>
+				
 				<h3><?php _e('Product listing page', 'al-ecommerce-product-catalog'); ?></h3><?php 
 				
 				if ($disabled == 'simple') {
@@ -87,17 +92,23 @@ function general_settings_content() { ?>
 							<?php _e('Enable Product Listing Page', 'al-ecommerce-product-catalog'); ?>: 
 						</td>
 						<td>
-							<input <?php echo $disabled; ?> type="checkbox" name="enable_product_listing" value="1"<?php checked( 1, $enable_product_listing ); ?> />
+							<input <?php echo $disabled; ?> title="<?php _e('Disable and use [show_products] shortcode to display the products.', 'al-ecommerce-product-catalog'); ?>" type="checkbox" name="enable_product_listing" value="1"<?php checked( 1, $enable_product_listing ); ?> />
 						</td>
 					</tr>
 					<tr>
 						<td>
 							<?php _e('Choose Product Listing Page', 'al-ecommerce-product-catalog'); ?>: 
 						</td>
-						<td>
-							<?php select_page('product_archive', __( 'Default', 'al-ecommerce-product-catalog' ), $product_archive); ?>
+						<td><?php 
+							if ($enable_product_listing == 1) {
+								$listing_url = product_listing_url();
+								select_page('product_archive', __( 'Default', 'al-ecommerce-product-catalog' ), $product_archive, true, $listing_url);
+							}
+							else {
+								select_page('product_archive', __( 'Default', 'al-ecommerce-product-catalog' ), $product_archive, true);
+							}	?>
 						</td>
-					</tr>
+					</tr> <?php /*
 					<tr>
 						<td><?php _e('Product listing URL', 'al-ecommerce-product-catalog'); ?>:</td>
 						<td class="archive-url-td"><a target="_blank" class="archive-url" href="<?php echo product_listing_url() ?>"><?php
@@ -108,14 +119,14 @@ function general_settings_content() { ?>
 						}
 						echo $listin_url;
 						?></a></td>
-					</tr>
+					</tr> */ ?>
 					<tr>
 						<td><?php _e('Product listing shows at most', 'al-ecommerce-product-catalog'); ?> </td>
-						<td><input <?php echo $disabled ?> size="30" class="number-box" type="number" step="1" min="0" name="archive_multiple_settings[archive_products_limit]" id="archive_products_limit" value="<?php echo $archive_multiple_settings['archive_products_limit']; ?>" /> <?php _e('products', 'al-ecommerce-product-catalog'); ?>.</td>
+						<td><input <?php echo $disabled ?> title="<?php _e('You can also use shortcode with products_limit attribute to set this.', 'al-ecommerce-product-catalog'); ?>" size="30" class="number-box" type="number" step="1" min="0" name="archive_multiple_settings[archive_products_limit]" id="archive_products_limit" value="<?php echo $archive_multiple_settings['archive_products_limit']; ?>" /> <?php _e('products', 'al-ecommerce-product-catalog'); ?>.</td>
 					</tr><?php
 					implecode_settings_radio(__('Product listing shows', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[product_listing_cats]', $archive_multiple_settings['product_listing_cats'], array('off' => __('Products<br>', 'al-ecommerce-product-catalog'), 'on' => __('Products & Main Categories', 'al-ecommerce-product-catalog')));
 					$sort_options = get_product_sort_options();
-					implecode_settings_radio(__('Product order', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[product_order]', $archive_multiple_settings['product_order'], $sort_options);
+					implecode_settings_radio(__('Product order', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[product_order]', $archive_multiple_settings['product_order'], $sort_options, true, __('This is also the default setting for sorting drop-down.','al-ecommerce-product-catalog'));
 					do_action('product_listing_page_settings'); ?>
 				</table><?php
 				//implecode_info(__('You can also use shortcode to show your products whenever you want on the website. Just paste on any page: [show_products] and you will display all products in place of the shortcode. <br><br>To show products from just one category, use: [show_products category="2"] where 2 is category ID (you can display several categories by inserting comma separated IDs). <br><br>To display products by IDs, use: [show_products product="5"], where 5 is product ID.', 'al-ecommerce-product-catalog'));
@@ -132,10 +143,10 @@ function general_settings_content() { ?>
 					if ($urllen > 25) {
 						$site_url = substr($site_url, 0, 11).'...'.substr($site_url, $urllen - 11, $urllen);
 					}?>
-					<td class="longer"><?php echo $site_url ?>/<input <?php echo $disabled ?> type="text" name="archive_multiple_settings[category_archive_url]" id="category_archive_url" value="<?php echo sanitize_title($archive_multiple_settings['category_archive_url']); ?>" />/<?php _e('category-name', 'al-ecommerce-product-catalog') ?>/</td>
+					<td class="longer"><?php echo $site_url ?>/<input <?php echo $disabled ?> type="text" name="archive_multiple_settings[category_archive_url]" title="<?php _e('Cannot be the same as product listing page slug.', 'al-ecommerce-product-catalog') ?>" id="category_archive_url" value="<?php echo sanitize_title($archive_multiple_settings['category_archive_url']); ?>" />/<?php _e('category-name', 'al-ecommerce-product-catalog') ?>/</td>
 				</tr><?php 
 				implecode_settings_radio(__('Category Page shows', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[category_top_cats]', $archive_multiple_settings['category_top_cats'], array('off' => __('Products<br>', 'al-ecommerce-product-catalog'), 'on' => __('Products & Subcategories', 'al-ecommerce-product-catalog')));
-				implecode_settings_radio(__('Categories Display', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[cat_template]', $archive_multiple_settings['cat_template'], array('template' => __('Template<br>', 'al-ecommerce-product-catalog'), 'link' => __('URLs', 'al-ecommerce-product-catalog')));
+				implecode_settings_radio(__('Categories Display', 'al-ecommerce-product-catalog'), 'archive_multiple_settings[cat_template]', $archive_multiple_settings['cat_template'], array('template' => __('Template<br>', 'al-ecommerce-product-catalog'), 'link' => __('URLs', 'al-ecommerce-product-catalog')), true, array('template' => __('Display categories with the same listing theme as products.','al-ecommerce-product-catalog'),'link' => __('Display categories as simple links.','al-ecommerce-product-catalog')));
 				do_action('product_category_settings', $archive_multiple_settings); ?>
 				</table>
 				<h3><?php _e('SEO Settings', 'al-ecommerce-product-catalog'); ?></h3><?php
@@ -243,8 +254,7 @@ return $product_currency_settings;
 
 function get_multiple_settings() {
 $archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
-$template = get_option( 'template' );
-if (is_advanced_mode_forced() || (isset($_GET['test_advanced']) && ($_GET['test_advanced'] == 1 || $_GET['test_advanced'] == 'ok'))) {
+	if (is_advanced_mode_forced() || (isset($_GET['test_advanced']) && ($_GET['test_advanced'] == 1 || $_GET['test_advanced'] == 'ok'))) {
 $archive_multiple_settings['integration_type'] = 'advanced';
 }
 else {
@@ -258,8 +268,17 @@ $archive_multiple_settings['category_archive_url'] = empty($archive_multiple_set
 $archive_multiple_settings['product_listing_cats'] = isset($archive_multiple_settings['product_listing_cats']) ? $archive_multiple_settings['product_listing_cats'] : 'on';
 $archive_multiple_settings['category_top_cats'] = isset($archive_multiple_settings['category_top_cats']) ? $archive_multiple_settings['category_top_cats'] : 'on';
 $archive_multiple_settings['cat_template'] = isset($archive_multiple_settings['cat_template']) ? $archive_multiple_settings['cat_template'] : 'template';
-$archive_multiple_settings['product_order'] = isset($archive_multiple_settings['product_order']) ? $archive_multiple_settings['product_order'] : 'date';
+$archive_multiple_settings['product_order'] = isset($archive_multiple_settings['product_order']) ? $archive_multiple_settings['product_order'] : 'newest';
+$archive_multiple_settings['catalog_plural'] = isset($archive_multiple_settings['catalog_plural']) ? $archive_multiple_settings['catalog_plural'] : __('Products', 'al-ecommerce-product-catalog');
+$archive_multiple_settings['catalog_singular'] = isset($archive_multiple_settings['catalog_singular']) ? $archive_multiple_settings['catalog_singular'] : __('Product', 'al-ecommerce-product-catalog');
 return $archive_multiple_settings;
+}
+
+function get_catalog_names() {
+$multiple_settings = get_multiple_settings(); 
+$names['singular'] = $multiple_settings['catalog_singular'];
+$names['plural'] = $multiple_settings['catalog_plural'];
+return $names;
 }
 
 function get_integration_type() {
@@ -270,4 +289,10 @@ return $settings['integration_type'];
 function get_product_sort_options() {
 $sort_options = apply_filters('product_sort_options', array('newest' => __('Sort by Newest<br>', 'al-ecommerce-product-catalog'), 'product-name' => __('Sort by Product Name<br>', 'al-ecommerce-product-catalog')));
 return $sort_options;
+}
+
+function get_product_listing_id() {
+	$product_archive_created = get_option('product_archive_page_id','0');
+	$listing_id = get_option('product_archive', $product_archive_created);
+	return $listing_id;
 }

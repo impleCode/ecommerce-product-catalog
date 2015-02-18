@@ -10,15 +10,6 @@
  */
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
  
-function settings_scripts() {
-$screen = get_current_screen();
-if ($screen->id == 'al_product_page_product-settings' || $screen->id == 'al_product') {
-wp_register_script( 'admin-scripts', AL_PLUGIN_BASE_PATH.'js/admin-scripts.js?' . filemtime( AL_BASE_PATH . '/js/admin-scripts.js'), array('jquery-ui-sortable') );
-wp_enqueue_script( 'admin-scripts' ); }
-}
-
-add_action( 'admin_enqueue_scripts', 'settings_scripts' );
- 
 function register_product_settings_menu() {
     add_submenu_page('edit.php?post_type=al_product', __('Product Settings', 'al-ecommerce-product-catalog'), __('Product Settings', 'al-ecommerce-product-catalog'), apply_filters('see_product_settings_cap', 'manage_product_settings'), basename(__FILE__), 'product_settings');
 	do_action('product_settings_menu');
@@ -40,7 +31,7 @@ function map_product_settings_capability( $cap ) {
 function product_settings_list() {
 	do_action('product-settings-list');
 }
-add_action('admin_init', 'product_settings_list');
+add_action('admin_init', 'product_settings_list', 20);
 
 require_once(  AL_BASE_PATH . '/config/currencies.php' );
 require_once(  AL_BASE_PATH . '/templates/themes/default-theme.php' );
@@ -151,7 +142,7 @@ jQuery('.product-settings-table.dragable tbody').sortable({
 	helper: fixHelper,
 	placeholder: 'sort-placeholder',	
 });
-jQuery('.ui-sortable').height(jQuery('.ui-sortable').height());
+//jQuery('.ui-sortable').height(jQuery('.ui-sortable').height());
 
 </script>
 <?php }

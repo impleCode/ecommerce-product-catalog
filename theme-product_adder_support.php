@@ -12,16 +12,22 @@
  if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 
 function al_product_adder_admin_notices_styles() {
-if (! is_advanced_mode_forced() ) {
-	$template = get_option( 'template' );
-	$integration_type = get_integration_type();
-	if ( ! empty( $_GET['hide_al_product_adder_support_check'] ) ) {
-		update_option( 'product_adder_theme_support_check', $template );
-		return;
-	}
-	if ( get_option( 'product_adder_theme_support_check' ) !== $template && current_user_can('delete_others_products')) {		
-		product_adder_theme_check_notice();
-		//add_action( 'admin_notices', 'product_adder_theme_check_notice' ); 
+if (current_user_can('activate_plugins')) {
+	if (! is_advanced_mode_forced() ) {
+		$template = get_option( 'template' );
+		$integration_type = get_integration_type();
+		if ( ! empty( $_GET['hide_al_product_adder_support_check'] ) ) {
+			update_option( 'product_adder_theme_support_check', $template );
+			return;
+		}
+		if ( get_option( 'product_adder_theme_support_check' ) !== $template && current_user_can('delete_others_products')) {		
+			product_adder_theme_check_notice();
+		}
+	} 
+	if (is_ic_catalog_admin_page()) {
+		if ( false === get_transient( 'implecode_hide_plugin_review_info' ) && ic_products_count() > 5) {
+			implecode_plugin_review_notice();
+		}
 	}
 }
 }	
@@ -66,5 +72,31 @@ return array_reverse ($links);
 }
 
 add_filter( 'plugin_action_links_'.plugin_basename(AL_PLUGIN_MAIN_FILE), 'implecode_product_catalog_links' );
+
+
+function implecode_plugin_review_notice() { ?>
+<div class="update-nag implecode-review"><strong><?php _e('Rate this Plugin!', 'al-ecommerce-product-catalog') ?></strong> <?php echo sprintf(__('Please <a target="_blank" href="%s">rate</a> %s and tell me if it works for you or not. It really helps development.', 'al-ecommerce-product-catalog'),'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', 'eCommerce Product Catalog') ?> <span class="dashicons dashicons-no"></span></div>
+<div class="update-nag implecode-review-thanks" style="display: none"><?php echo sprintf(__('Thank you for <a target="_blank" href="%s">your rating</a>! I really appreciate your feedback.', 'al-ecommerce-product-catalog'),'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform') ?> <span class="dashicons dashicons-yes"></span></div><?php	
+}
+
+function implecode_plugin_review_notice_hide($forever = false) {
+if ($forever) {
+	set_transient( 'implecode_hide_plugin_review_info', 1, 0 );
+}
+else {
+	$count = get_option('implecode_hide_plugin_review_info_count', 1);
+	$count = ($count < 6) ? $count : 0;
+	set_transient( 'implecode_hide_plugin_review_info', 1, 60*60*24*14*$count );
+	$count += 1;
+	update_option( 'implecode_hide_plugin_review_info_count', $count);
+}
+}
+
+function ajax_hide_review_notice() {
+$forever = isset($_POST['forever']) ? true : false;
+implecode_plugin_review_notice_hide($forever);
+}
+
+add_action( 'wp_ajax_hide_review_notice', 'ajax_hide_review_notice' );
 
 ?>

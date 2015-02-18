@@ -13,27 +13,27 @@ if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
 class product_widget_search extends WP_Widget {
 
 	function __construct() {
-		$widget_ops = array('classname' => 'product_widget_search widget_search', 'description' => __( 'A search form for your products.', 'al-ecommerce-product-catalog') );
+		$widget_ops = array('classname' => 'product_search search', 'description' => __( 'A search form for your products.', 'al-ecommerce-product-catalog') );
 		parent::__construct('product_search', __('Product Search', 'al-ecommerce-product-catalog'), $widget_ops);
 	}
 
 	function widget( $args, $instance ) {
-		extract($args);
 		if (get_integration_type() != 'simple') { 
 		$title = apply_filters( 'widget_title', empty( $instance['title'] ) ? '' : $instance['title'], $instance, $this->id_base );
 
-		echo $before_widget;
+			echo $args['before_widget'];
 		if ( $title )
-			echo $before_title . $title . $after_title;
+			echo $args['before_title'] . $title . $args['after_title'];
 
 		// Use current theme search form if it exists
+			$search_button_text = apply_filters('product_search_button_text', __('Search', 'al-ecommerce-product-catalog'));
 		echo '<form role="search" method="get" id="product_search_form" action="'.home_url( '/' ).'">
 <input type="hidden" name="post_type" value="al_product" />
 <input class="product-search-box" type="text" value="" id="s" name="s" placeholder="'.__('Product Search', 'al-ecommerce-product-catalog').'" />
-<input class="product-search-submit" type="submit" name="submit" id="searchsubmit" value="'.__('Search', 'al-ecommerce-product-catalog').'" />
+<input class="product-search-submit" type="submit" name="submit" id="searchsubmit" value="'.$search_button_text.'" />
 </form>';
 
-		echo $after_widget;
+			echo $args['after_widget'];
 		}
 	}
 

@@ -86,7 +86,7 @@ jQuery('.media-image').attr("src", src);
 
 }
 
-function select_page($option_name,$first_option,$selected_value) {
+function select_page($option_name,$first_option,$selected_value, $buttons = false, $custom_view_url = false) {
 $args = array(
 		'sort_order' => 'ASC',
 		'sort_column' => 'post_title',
@@ -105,11 +105,20 @@ $args = array(
 		'post_status' => 'publish'
 		); 
 $pages = get_pages($args); 
-$select_box = '<select id="'.$option_name.'" name="'.$option_name.'"><option value="noid">'.$first_option.'</option>';
+$select_box = '<div class="select-page-wrapper"><select id="'.$option_name.'" name="'.$option_name.'"><option value="noid">'.$first_option.'</option>';
 foreach ($pages as $page) { 
 	$select_box .= '<option name="' .$option_name. '[' .$page->ID. ']" value="' .$page->ID. '" ' .selected($page->ID, $selected_value, 0). '>' .$page->post_title. '</option>';
 	}  
 $select_box .= '</select>';
+if ($buttons && $selected_value != 'noid' && ! empty($selected_value)) {
+	$edit_link = get_edit_post_link( $selected_value );
+	$front_link = $custom_view_url ? $custom_view_url : get_permalink($selected_value);
+	if (!empty($edit_link)) {
+		$select_box .= ' <a class="button button-small" style="vertical-align: middle;" href="'.$edit_link.'">'.__('Edit').'</a>';
+		$select_box .= ' <a class="button button-small" style="vertical-align: middle;" href="'.$front_link.'">'.__('View Page').'</a>';
+	}
+}
+$select_box .= '</div>';
 
 echo $select_box;
 }
@@ -200,6 +209,7 @@ $price_value = apply_filters('product_price', get_post_meta($product_id, "_price
 else {
 $price_value = apply_filters('unfiltered_product_price', get_post_meta($product_id, "_price", true), $product_id);
 }
+	$price_value = (is_ic_price_enabled()) ? $price_value : '';
 return $price_value;
 }
 
@@ -355,9 +365,9 @@ add_action('archive_price', 'show_archive_price',10,1);
 function set_archive_price($archive_price, $post) {
 $price_value = product_price($post->ID);
 if (!empty($price_value)) {
-$archive_price = '<div class="product-price '. design_schemes('color', 0).'">';
+$archive_price = '<span class="product-price '. design_schemes('color', 0).'">';
 $archive_price .= price_format($price_value);
-$archive_price .= '</div>';
+$archive_price .= '</span>';
 }
 return $archive_price;
 }
@@ -365,10 +375,14 @@ return $archive_price;
 add_filter('archive_price_filter', 'set_archive_price', 10, 2);
 
 function get_quasi_post_type($post_type = null) {
-if (empty($post_type)) {
-$post_type = get_post_type(); }
-$quasi_post_type = substr($post_type,0,10);
-return $quasi_post_type;
+	if (empty($post_type) && is_home_archive()) {
+		$post_type = 'al_product';
+	}
+	else if (empty($post_type)) {
+		$post_type = get_post_type();
+	}
+	$quasi_post_type = substr($post_type,0,10);
+	return $quasi_post_type;
 }
 
 function product_breadcrumbs() {
@@ -445,14 +459,17 @@ add_action( 'widgets_init', 'al_product_register_widgets' );
 function permalink_options_update() {
 update_option('al_permalink_options_update', 1);
 }
+if (! function_exists('check_permalink_options_update')) {
+	function check_permalink_options_update() {
+		$options_update = get_option( 'al_permalink_options_update', 'none' );
+		if ( $options_update != 'none' ) {
+			flush_rewrite_rules( false );
+			update_option( 'al_permalink_options_update', 'none' );
+		}
+	}
+}
+add_action('init', 'check_permalink_options_update', 99);
 
-function check_permalink_options_update() {
-$options_update = get_option('al_permalink_options_update', 'none');
-if ($options_update != 'none') {
-flush_rewrite_rules(false);
-update_option('al_permalink_options_update', 'none');
-}
-}
 function is_lightbox_enabled() {
 $enable_catalog_lightbox = get_option('catalog_lightbox', 1);
 $return = false;
@@ -592,7 +609,7 @@ echo $text;
 echo '</div>';
 }
 
-function get_product_image_id( $attachment_url = '' ) {
+function get_product_image_id( $attachment_url = '') {
 global $wpdb;
 $attachment_id = false;
 if ( '' == $attachment_url )
@@ -702,7 +719,13 @@ if ((isset($product_sort) && $product_sort == 1) || !isset($product_sort)) {
 		$option = '<option value="'.$name.'" '.selected($name, $selected, 0).'>'.$value.'</option>';
 		echo apply_filters('product_order_dropdown_options', $option, $name, $value, $multiple_settings, $selected);
 	}
-	echo '</select></form>';
+	echo '</select>';
+	foreach ($_GET as $key => $get_value) {
+		if ($key != 'product_order') {
+			echo '<input type="hidden" value="'.$get_value.'" name="'.$key.'" />';
+		}
+	}
+	echo '</form>';
 	echo '<script>jQuery("#product_order_selector").change(function() { jQuery("#product_order").submit(); });</script>';
 }
 }
@@ -712,4 +735,9 @@ function translate_product_order() {
 $orderby = ($_GET['product_order'] == 'product-name') ? 'title' : $_GET['product_order'];
 $orderby = apply_filters('product_order_translate', $orderby);
 return $orderby;
+}
+
+function ic_products_count() {
+$count = wp_count_posts('al_product');
+return $count->publish;
 }

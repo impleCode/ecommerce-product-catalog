@@ -21,7 +21,7 @@ do_action('single_product_begin');
 echo product_breadcrumbs();
 ?>
 
-<article id="post-<?php the_ID(); ?>" <?php post_class('al_product'); ?>>
+<article id="post-<?php the_ID(); ?>" <?php post_class('al_product responsive'); ?>>
 	<?php do_action('before_product_entry', $post, $single_names); ?>
 	<div class="entry-content product-entry"><?php 
 	do_action('start_product_entry', $post, $single_names);

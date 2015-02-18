@@ -29,7 +29,7 @@ $submenu = $_GET['submenu']; ?>
 <div class="attributes-product-settings settings-wrapper" style="clear:both;">
 	<div class="settings-submenu">
 		<h3>
-			<a id="attributes-settings" class="element current" href="./edit.php?post_type=al_product&page=product-settings.php&tab=attributes-settings&submenu=attributes"><?php _e('Attributes Settings', 'al-ecommerce-product-catalog'); ?></a>
+			<a id="attributes-settings" class="element current" href="<?php echo admin_url('edit.php?post_type=al_product&page=product-settings.php&tab=attributes-settings&submenu=attributes') ?>"><?php _e('Attributes Settings', 'al-ecommerce-product-catalog'); ?></a>
 			<?php do_action('attributes_submenu'); ?>
 		</h3>
 	</div>
@@ -63,6 +63,7 @@ $submenu = $_GET['submenu']; ?>
 						<th class="title"><b><?php _e('Attribute default value', 'al-ecommerce-product-catalog'); ?></b></th>
 						<th class="title"><b><?php _e('Attribute default unit', 'al-ecommerce-product-catalog'); ?></b></th>
 						<?php do_action('product_attributes_settings_table_th'); ?>
+						<th class="dragger"></th>
 					</tr>
 				</thead>
 				<tbody><?php 
@@ -79,6 +80,7 @@ $submenu = $_GET['submenu']; ?>
 							<td><input id="admin-number-field" class="product-attribute" type="text" name="product_attribute[<?php echo $i ?>]" value="<?php echo $attribute[$i] ?>" /></td>
 							<td><input id="admin-number-field" class="product-attribute-unit" type="text" name="product_attribute_unit[<?php echo $i ?>]" value="<?php echo $attribute_unit[$i] ?>" /></td>
 							<?php do_action('product_attributes_settings_table_td', $i); ?>
+							<td class="dragger"></td>
 						</tr> <?php
 					} ?>
 				</tbody>

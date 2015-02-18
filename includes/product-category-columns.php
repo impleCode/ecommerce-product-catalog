@@ -52,8 +52,7 @@ $cat_img_src = get_product_category_image_id($field->term_id);
 else {
 $cat_img_src = '';
 }
-$default_image = get_option('default_product_thumbnail');
-implecode_upload_image('Select Category Image', 'product_cat_image', $cat_img_src, $default_image, 'id');
+implecode_upload_image(__('Select Category Image', 'al-ecommerce-product-catalog'), 'product_cat_image', $cat_img_src, null, 'id');
 }
 	
 function product_cat_columns($product_columns) { 

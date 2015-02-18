@@ -33,24 +33,27 @@ if ($enable_product_listing == 1 && get_integration_type() != 'simple') {
 } else {
 	$product_listing_t = false;
 }
+$names = get_catalog_names();
+	$query_var = sanitize_title(strtolower($names['singular']));
+	$query_var = (strpos($query_var, '%') !== false) ? __('product', 'al-ecommerce-product-catalog') : $query_var;
 if ( $wp_version < 3.8 ) {
 	$reg_settings = array(
 			'labels' => array(
-				'name' => __('Products', 'al-ecommerce-product-catalog'),
-				'singular_name' => __('Product', 'al-ecommerce-product-catalog'),
-				'add_new'            => __( 'Add New Product','al-ecommerce-product-catalog'),
-				'add_new_item'       => __( 'Add New Product','al-ecommerce-product-catalog'),
-				'edit_item'          => __( 'Edit Product','al-ecommerce-product-catalog'),
-				'new_item'           => __( 'Add New Product','al-ecommerce-product-catalog'),
-				'view_item'          => __( 'View Product','al-ecommerce-product-catalog'),
-				'search_items'       => __( 'Search Products','al-ecommerce-product-catalog'),
-				'not_found'          => __( 'No Products found','al-ecommerce-product-catalog'),
-				'not_found_in_trash' => __( 'No Products found in trash','al-ecommerce-product-catalog')
+				'name' => $names['plural'],
+				'singular_name' => $names['singular'],
+				'add_new'            => sprintf(__( 'Add New %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'add_new_item'       => sprintf(__( 'Add New %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'edit_item'          => sprintf(__( 'Edit %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'new_item'           => sprintf(__( 'Add New %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'view_item'          => sprintf(__( 'View %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'search_items'       => sprintf(__( 'Search %s','al-ecommerce-product-catalog'), ucfirst($names['plural'])),
+				'not_found'          => sprintf(__( 'No %s found','al-ecommerce-product-catalog'), $names['plural']),
+				'not_found_in_trash' => sprintf(__( 'No %s found in trash','al-ecommerce-product-catalog'), $names['plural'])
 			),
 		'public' => true,
 		'has_archive' => $product_listing_t,
 		'rewrite' => array('slug' => apply_filters ('product_slug_value_register', $slug), 'with_front' => false),
-		'query_var' => __('product', 'al-ecommerce-product-catalog'),
+		'query_var' => $query_var,
 		'supports' => array( 'title', 'thumbnail'),
 		'register_meta_box_cb' => 'add_product_metaboxes',
 		'taxonomies' => array('al_product_cat'),
@@ -76,21 +79,21 @@ if ( $wp_version < 3.8 ) {
 	else {
 	$reg_settings = array(
 			'labels' => array(
-				'name' => __('Products', 'al-ecommerce-product-catalog'),
-				'singular_name' => __('Product', 'al-ecommerce-product-catalog'),
-				'add_new'            => __( 'Add New Product','al-ecommerce-product-catalog'),
-				'add_new_item'       => __( 'Add New Product','al-ecommerce-product-catalog'),
-				'edit_item'          => __( 'Edit Product','al-ecommerce-product-catalog'),
-				'new_item'           => __( 'Add New Product','al-ecommerce-product-catalog'),
-				'view_item'          => __( 'View Product','al-ecommerce-product-catalog'),
-				'search_items'       => __( 'Search Products','al-ecommerce-product-catalog'),
-				'not_found'          => __( 'No Products found','al-ecommerce-product-catalog'),
-				'not_found_in_trash' => __( 'No Products found in trash','al-ecommerce-product-catalog')
+				'name' => $names['plural'],
+				'singular_name' => $names['singular'],
+				'add_new'            => sprintf(__( 'Add New %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'add_new_item'       => sprintf(__( 'Add New %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'edit_item'          => sprintf(__( 'Edit %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'new_item'           => sprintf(__( 'Add New %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'view_item'          => sprintf(__( 'View %s','al-ecommerce-product-catalog'), ucfirst($names['singular'])),
+				'search_items'       => sprintf(__( 'Search %s','al-ecommerce-product-catalog'), ucfirst($names['plural'])),
+				'not_found'          => sprintf(__( 'No %s found','al-ecommerce-product-catalog'), $names['plural']),
+				'not_found_in_trash' => sprintf(__( 'No %s found in trash','al-ecommerce-product-catalog'), $names['plural'])
 			),
 		'public' => true,
 		'has_archive' => $product_listing_t,
 		'rewrite' => array('slug' => apply_filters ('product_slug_value_register', $slug), 'with_front' => false),
-		'query_var' => __('product', 'al-ecommerce-product-catalog'),
+		'query_var' => $query_var,
 		'supports' => array( 'title', 'thumbnail'),
 		'register_meta_box_cb' => 'add_product_metaboxes',
 		'taxonomies' => array('al_product-cat'),
@@ -132,16 +135,17 @@ function product_icons() {
 }
 
 function add_product_metaboxes() {
-	$product_currency = get_currency_settings();
-	add_meta_box('al_product_short_desc', __('Product short description', 'al-ecommerce-product-catalog'), 'al_product_short_desc', 'al_product', apply_filters('short_desc_box_column','normal'), apply_filters('short_desc_box_priority','default'));
-	add_meta_box('al_product_desc', __('Product description', 'al-ecommerce-product-catalog'), 'al_product_desc', 'al_product', apply_filters('desc_box_column','normal'), apply_filters('desc_box_priority','default'));
-	if ($product_currency['price_enable'] == 'on') {
-		add_meta_box('al_product_price', __('Product Details', 'al-ecommerce-product-catalog'), 'al_product_price', 'al_product', apply_filters('product_price_box_column','side'), apply_filters('product_price_box_priority','default'));
+	$names = get_catalog_names();
+	$names['singular'] = ucfirst($names['singular']);
+	add_meta_box('al_product_short_desc', sprintf(__('%s Short Description', 'al-ecommerce-product-catalog'), $names['singular']), 'al_product_short_desc', 'al_product', apply_filters('short_desc_box_column','normal'), apply_filters('short_desc_box_priority','default'));
+	add_meta_box('al_product_desc', sprintf(__('%s description', 'al-ecommerce-product-catalog'), $names['singular']), 'al_product_desc', 'al_product', apply_filters('desc_box_column','normal'), apply_filters('desc_box_priority','default'));
+	if (is_ic_price_enabled()) {
+		add_meta_box('al_product_price', sprintf(__('%s Details', 'al-ecommerce-product-catalog'), $names['singular']), 'al_product_price', 'al_product', apply_filters('product_price_box_column','side'), apply_filters('product_price_box_priority','default'));
 	}
 	if (get_option('product_shipping_options_number',DEF_SHIPPING_OPTIONS_NUMBER) > 0) {
-	add_meta_box('al_product_shipping', __('Product Shipping', 'al-ecommerce-product-catalog'), 'al_product_shipping', 'al_product', apply_filters('product_shipping_box_column','side'), apply_filters('product_shipping_box_priority','default')); }
+	add_meta_box('al_product_shipping', sprintf(__('%s Shipping', 'al-ecommerce-product-catalog'), $names['singular']), 'al_product_shipping', 'al_product', apply_filters('product_shipping_box_column','side'), apply_filters('product_shipping_box_priority','default')); }
 	if (get_option('product_attributes_number',DEF_ATTRIBUTES_OPTIONS_NUMBER) > 0) {
-	add_meta_box('al_product_attributes', __('Product attributes', 'al-ecommerce-product-catalog'), 'al_product_attributes', 'al_product', apply_filters('product_attributes_box_column','normal'), apply_filters('product_attributes_box_priority','default')); }
+	add_meta_box('al_product_attributes', sprintf(__('%s Attributes', 'al-ecommerce-product-catalog'), $names['singular']), 'al_product_attributes', 'al_product', apply_filters('product_attributes_box_column','normal'), apply_filters('product_attributes_box_priority','default')); }
 	do_action('add_product_metaboxes');
 }
 
@@ -178,7 +182,7 @@ function al_product_shipping() {
 		if (! empty($shipping_label_field)) {
 			$shipping_label = $shipping_label_field; }
 		else { $shipping_label = isset($shipping_label_option[$i]) ? $shipping_label_option[$i] : ''; }
-		echo '<tr><td class="shipping-label-column"><input class="shipping-label" type="text" name="_shipping-label'.$i.'" value="' . $shipping_label  . '" /></td><td><input class="shipping-value" type="number" min="0" name="_shipping'.$i.'" value="' . $shipping  . '" />'. $currency .'</td></tr>'; }
+		echo '<tr><td class="dragger"></td><td class="shipping-label-column"><input class="shipping-label" type="text" name="_shipping-label'.$i.'" value="' . $shipping_label  . '" /></td><td><input class="shipping-value" type="number" min="0" name="_shipping'.$i.'" value="' . $shipping  . '" />'. $currency .'</td></tr>'; }
 	echo '</tbody></table>';
 }
 
@@ -194,9 +198,10 @@ function al_product_attributes() {
 	<th></th>
 	<th class="title"><b>Value</b></th>
 	<th class="title"><b>Unit</b></th>
+	<th class="dragger"></th>
 	</tr>
 	</thead>
-	<tbody>';
+	<tbody><tr style="height: 6px;"></tr>';
 	do_action('inside_attributes_edit_table');
 	$attributes_option = get_option('product_attribute');
 	$attributes_label_option = get_option('product_attribute_label');
@@ -223,6 +228,7 @@ function al_product_attributes() {
 			<td class="break-column">:</td>
 			<td class="value-column"><?php echo apply_filters ('product_attribute_value_edit', $attribute_value_field, $i, $attributes) ?></td>
 			<td class="unit-column"><input class="attribute-unit admin-number-field" type="text" name="_attribute-unit<?php echo $i ?>" value="<?php echo $attributes_unit ?>" /></td>
+			<td class="dragger"></td>
 		</tr>
 <?php } ?>
 	</tbody>
@@ -305,11 +311,11 @@ function implecode_save_products_meta($post_id, $post) {
 add_action('post_updated', 'implecode_save_products_meta', 1, 2);
 
 add_action('do_meta_boxes', 'change_image_box');
-function change_image_box()
-{
-    remove_meta_box( 'postimagediv', 'al_product', 'side' );
-   add_meta_box('postimagediv', __('Product Image','al-ecommerce-product-catalog'), 'post_thumbnail_meta_box', 'al_product', apply_filters('product_image_box_column','side'), apply_filters('product_image_box_priority','high'));
-}	
+function change_image_box() {
+$names = get_catalog_names();
+remove_meta_box( 'postimagediv', 'al_product', 'side' );
+add_meta_box('postimagediv', sprintf(__('%s Image','al-ecommerce-product-catalog'),ucfirst($names['singular'])), 'post_thumbnail_meta_box', 'al_product', apply_filters('product_image_box_column','side'), apply_filters('product_image_box_priority','high'));
+}
 
 add_action('admin_head-post-new.php', 'change_thumbnail_html');
 add_action('admin_head-post.php', 'change_thumbnail_html');
@@ -319,11 +325,13 @@ function change_thumbnail_html( $content ) {
 	  add_filter('admin_post_thumbnail_html', 'do_thumb_1');
 }
 function do_thumb($content){
-	 return str_replace(__('Set featured image'), __('Set product image', 'al-ecommerce-product-catalog'),$content);
+$names = get_catalog_names();
+return str_replace(__('Set featured image'), sprintf(__('Set %s image', 'al-ecommerce-product-catalog'), strtolower($names['singular'])),$content);
 }
 
 function do_thumb_1($content){
-	 return str_replace(__('Remove featured image'), __('Remove product image', 'al-ecommerce-product-catalog'),$content);
+$names = get_catalog_names();
+return str_replace(__('Remove featured image'), sprintf(__('Remove %s image', 'al-ecommerce-product-catalog'), strtolower($names['singular'])),$content);
 }
 
 function set_product_messages($messages) {
@@ -352,8 +360,8 @@ return $messages;
 
 add_filter('post_updated_messages', 'set_product_messages' );
 
-require_once('product-categories.php');
-require_once('search-widget.php');
+require_once(AL_BASE_PATH. '/includes/product-categories.php');
+require_once(AL_BASE_PATH. '/includes/search-widget.php');
 // require_once('product-types.php');
 
 ?>

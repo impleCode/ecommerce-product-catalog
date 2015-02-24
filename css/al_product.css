@@ -114,7 +114,8 @@ vertical-align: top;
 white-space: nowrap; }
 
 .product-list .al_archive .product-attributes, #content .al_archive .product-attributes, .al_archive .product-attributes {
-max-width: 120px;
+max-width: 43%;
+    max-height: 30%;
 position: absolute;
 left: 5px;
 bottom: 15px;

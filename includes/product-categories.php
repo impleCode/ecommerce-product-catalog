@@ -12,7 +12,7 @@
  
  require_once(AL_BASE_PATH. '/includes/category-widget.php');
 
-add_action( 'init', 'create_product_categories');
+add_action( 'init', 'create_product_categories', 9);
 
 
 function create_product_categories() {

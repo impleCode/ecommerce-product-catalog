@@ -319,16 +319,16 @@ function is_home_archive()
 }
 
 function is_product_listing_home_set() {
-    $fronpage = get_option('page_on_front');
-    $product_listing = get_product_listing_id();
-    if (!empty($fronpage) && !empty($product_listing) && get_option('page_on_front') == get_product_listing_id()){
+    $frontpage = get_option('page_on_front');
+    $product_listing_id = get_product_listing_id();
+    if (!empty($frontpage) && !empty($product_listing_id) && $frontpage == $product_listing_id){
         return true;
     }
     return false;
 }
 
 function home_product_listing_redirect($template) {
-    if (is_product_listing_home_set() && !is_front_page() && is_post_type_archive( 'al_product' )) {
+    if (is_product_listing_home_set() && !is_front_page() && is_post_type_archive( 'al_product' ) && !is_search()) {
         wp_redirect(get_site_url(), 301);
         exit;
     }

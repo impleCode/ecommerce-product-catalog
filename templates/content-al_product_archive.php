@@ -39,7 +39,7 @@ echo product_breadcrumbs(); ?>
 </header> 
 	<div class="entry-content">
 		<?php $before_archive = content_product_adder_archive_before();
-		$archive_template = get_option( 'archive_template', DEFAULT_ARCHIVE_TEMPLATE);
+		$archive_template = get_product_listing_template();
 		$taxonomy_name = apply_filters('current_product_catalog_taxonomy', 'al_product-cat');
 		if (! is_tax() && !is_search()) {			
 			if ( $before_archive != '<div class="entry-summary"></div>') {

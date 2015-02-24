@@ -81,18 +81,18 @@ function get_default_archive_theme($post, $archive_template = null) {
 		$modern_grid_settings = get_option('modern_grid_settings', $default_modern_grid_settings);
 		$modern_grid_settings['attributes'] = isset($modern_grid_settings['attributes']) ? $modern_grid_settings['attributes'] : '';
 		$thumbnail_product = wp_get_attachment_image_src(get_post_thumbnail_id($post->ID), 'full');
-		if ($thumbnail_product[0]) {
+        $img_class = '';
+        if ($thumbnail_product) {
 			$url = $thumbnail_product[0];
-            $img_class = '';
-            $ratio = $thumbnail_product[1] / $thumbnail_product[2];
-            if ($ratio <= 1.35 && $ratio > 1.20) {
-                $img_class = ' class="higher"';
-            }
-            else if ($ratio <= 1.20) {
-                $img_class = ' class="higher rect"';
-            }
-            else if ($ratio > 2) {
-                $img_class = ' class="wider rect"';
+            if (!empty($thumbnail_product[2])) {
+                $ratio = $thumbnail_product[1] / $thumbnail_product[2];
+                if ($ratio <= 1.35 && $ratio > 1.20) {
+                    $img_class = ' class="higher"';
+                } else if ($ratio <= 1.15) {
+                    $img_class = ' class="higher rect"';
+                } else if ($ratio > 2) {
+                    $img_class = ' class="wider rect"';
+                }
             }
 		} else {
 			$url = default_product_thumbnail_url();
@@ -128,7 +128,7 @@ return $return;
 
 function get_default_category_theme($product_cat, $archive_template) {
 $thumbnail_product = wp_get_attachment_image_src(get_product_category_image_id($product_cat->term_id), 'large');
-if ($thumbnail_product[0]) {
+if ($thumbnail_product) {
 	$url = $thumbnail_product[0];
     $img_class = '';
     $ratio = $thumbnail_product[1] / $thumbnail_product[2];

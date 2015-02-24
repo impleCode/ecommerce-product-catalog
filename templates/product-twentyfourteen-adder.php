@@ -23,7 +23,7 @@ get_header(); ?>
 ?>
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
-<style>#breadcrumbs {max-width: 474px; margin: 0 auto 30px; position: relative; top: -30px; }</style>
+<style>#breadcrumbs {max-width: 474px; margin: 0 auto 30px; position: relative; top: -30px; } .product-list .al_archive {max-width: 43%;} .al_archive .product-name {font-size: 14px;} .al_archive .product-price {font-size: 16px}</style>
 			<?php content_product_adder(); ?>
 
 		</div><!-- #content -->

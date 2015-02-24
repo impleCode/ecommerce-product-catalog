@@ -309,7 +309,7 @@ max-width: 100%;
 }
 
 #payment_table .al-box {
-max-width: 250px;
+max-width: 320px;
 margin-left: 10px;
 }
 
@@ -511,6 +511,11 @@ display: none;
     width: auto;
     display: inline-block;
     text-align: center;
+}
+
+#postimagediv .custom-uploader, #ic_postimagediv .custom-uploader {
+    height: auto;
+    width: 100%;
 }
 
 div.implecode-admin-media-image {

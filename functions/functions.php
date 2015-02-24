@@ -85,42 +85,46 @@ jQuery('.media-image').attr("src", src);
 <?php
 
 }
-
-function select_page($option_name,$first_option,$selected_value, $buttons = false, $custom_view_url = false) {
-$args = array(
-		'sort_order' => 'ASC',
-		'sort_column' => 'post_title',
-		'hierarchical' => 1,
-		'exclude' => '',
-		'include' => '',
-		'meta_key' => '',
-		'meta_value' => '',
-		'authors' => '',
-		'child_of' => 0,
-		'parent' => -1,
-		'exclude_tree' => '',
-		'number' => '',
-		'offset' => 0,
-		'post_type' => 'page',
-		'post_status' => 'publish'
-		); 
-$pages = get_pages($args); 
-$select_box = '<div class="select-page-wrapper"><select id="'.$option_name.'" name="'.$option_name.'"><option value="noid">'.$first_option.'</option>';
-foreach ($pages as $page) { 
-	$select_box .= '<option name="' .$option_name. '[' .$page->ID. ']" value="' .$page->ID. '" ' .selected($page->ID, $selected_value, 0). '>' .$page->post_title. '</option>';
-	}  
-$select_box .= '</select>';
-if ($buttons && $selected_value != 'noid' && ! empty($selected_value)) {
-	$edit_link = get_edit_post_link( $selected_value );
-	$front_link = $custom_view_url ? $custom_view_url : get_permalink($selected_value);
-	if (!empty($edit_link)) {
-		$select_box .= ' <a class="button button-small" style="vertical-align: middle;" href="'.$edit_link.'">'.__('Edit').'</a>';
-		$select_box .= ' <a class="button button-small" style="vertical-align: middle;" href="'.$front_link.'">'.__('View Page').'</a>';
-	}
-}
-$select_box .= '</div>';
-
-echo $select_box;
+if (!function_exists('select_page')) {
+    function select_page($option_name, $first_option, $selected_value, $buttons = false, $custom_view_url = false, $echo = 1, $custom = false)
+    {
+        $args = array(
+            'sort_order' => 'ASC',
+            'sort_column' => 'post_title',
+            'hierarchical' => 1,
+            'exclude' => '',
+            'include' => '',
+            'meta_key' => '',
+            'meta_value' => '',
+            'authors' => '',
+            'child_of' => 0,
+            'parent' => -1,
+            'exclude_tree' => '',
+            'number' => '',
+            'offset' => 0,
+            'post_type' => 'page',
+            'post_status' => 'publish'
+        );
+        $pages = get_pages($args);
+        $select_box = '<div class="select-page-wrapper"><select id="' . $option_name . '" name="' . $option_name . '"><option value="noid">' . $first_option . '</option>';
+        foreach ($pages as $page) {
+            $select_box .= '<option name="' . $option_name . '[' . $page->ID . ']" value="' . $page->ID . '" ' . selected($page->ID, $selected_value, 0) . '>' . $page->post_title . '</option>';
+        }
+        if ($custom) {
+            $select_box .= '<option value="custom"' . selected('custom', $selected_value, 0) . '>'.__('Custom URL', 'al-ecommerce-product-catalog').'</option>';
+        }
+        $select_box .= '</select>';
+        if ($buttons && $selected_value != 'noid' && !empty($selected_value)) {
+            $edit_link = get_edit_post_link($selected_value);
+            $front_link = $custom_view_url ? $custom_view_url : get_permalink($selected_value);
+            if (!empty($edit_link)) {
+                $select_box .= ' <a class="button button-small" style="vertical-align: middle;" href="' . $edit_link . '">' . __('Edit') . '</a>';
+                $select_box .= ' <a class="button button-small" style="vertical-align: middle;" href="' . $front_link . '">' . __('View Page') . '</a>';
+            }
+        }
+        $select_box .= '</div>';
+        return echo_ic_setting($select_box, $echo);
+    }
 }
 
 function show_page_link($page_id) {
@@ -189,10 +193,8 @@ if (!empty($price_value)) { ?>
 add_action('product_details','show_price', 7, 2);
 
 function show_sku($post, $single_names) {
-$archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
-$archive_multiple_settings['disable_sku'] = isset($archive_multiple_settings['disable_sku']) ? $archive_multiple_settings['disable_sku'] : '';
 $sku_value = get_post_meta($post->ID, '_sku', true);
-if ($archive_multiple_settings['disable_sku'] != 1 && !empty($sku_value)) { ?>
+if (is_ic_sku_enabled() && !empty($sku_value)) { ?>
 	<table class="sku-table">
 		<tr>
 			<td><?php echo $single_names['product_sku'] ?></td>
@@ -375,14 +377,24 @@ return $archive_price;
 add_filter('archive_price_filter', 'set_archive_price', 10, 2);
 
 function get_quasi_post_type($post_type = null) {
-	if (empty($post_type) && is_home_archive()) {
-		$post_type = 'al_product';
-	}
-	else if (empty($post_type)) {
-		$post_type = get_post_type();
-	}
-	$quasi_post_type = substr($post_type,0,10);
-	return $quasi_post_type;
+    if (empty($post_type) && is_home_archive()) {
+        $post_type = 'al_product';
+    }
+    else if (empty($post_type)) {
+        $post_type = get_post_type();
+    }
+    $quasi_post_type = substr($post_type,0,10);
+    return $quasi_post_type;
+}
+
+function get_quasi_post_tax_name($tax_name, $exact = true) {
+    if ($exact) {
+        $quasi_tax_name = substr($tax_name, 0, 14);
+    }
+    else if (strpos($tax_name,'al_product-cat') !== false) {
+        $quasi_tax_name = 'al_product-cat';
+    }
+    return $quasi_tax_name;
 }
 
 function product_breadcrumbs() {
@@ -456,8 +468,11 @@ do_action('implecode_register_widgets');
 
 add_action( 'widgets_init', 'al_product_register_widgets' );
 
-function permalink_options_update() {
-update_option('al_permalink_options_update', 1);
+if (! function_exists('permalink_options_update')) {
+    function permalink_options_update()
+    {
+        update_option('al_permalink_options_update', 1);
+    }
 }
 if (! function_exists('check_permalink_options_update')) {
 	function check_permalink_options_update() {
@@ -531,6 +546,11 @@ else {
 function product_post_type_array() {
 $array = apply_filters('product_post_type_array', array('al_product'));
 return $array;
+}
+
+function product_taxonomy_array() {
+    $array = apply_filters('product_taxonomy_array', array('al_product-cat'));
+    return $array;
 }
 
 function array_to_url($array) {

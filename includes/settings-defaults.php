@@ -35,7 +35,7 @@ define('MULTI_SINGLE_OPTIONS', serialize (array(
 	)));
 
 define('DEF_CURRENCY_SETTINGS', serialize (array(
-	'custom_symbol' => '',
+	'custom_symbol' => '$',
 	'price_format' => 'before',
 	'price_space' => 'off',
 	'price_enable' => 'on',

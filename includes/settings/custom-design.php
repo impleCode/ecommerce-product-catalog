@@ -58,7 +58,7 @@ if ($submenu == 'archive-design') { ?>
 </script>
 <form method="post" action="options.php">
 	<?php settings_fields('product_design'); 
-	$archive_template = get_option( 'archive_template', 'default');
+	$archive_template = get_product_listing_template();
 	$default_modern_grid_settings = array (
 	'attributes' => 0,
 	);

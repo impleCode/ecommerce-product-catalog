@@ -17,6 +17,10 @@ get_header(); ?>
 		<main id="main" class="site-main" role="main">
 
 		<?php
+        remove_action('single_product_begin', 'add_product_breadcrumbs');
+        remove_action('product_listing_begin', 'add_product_breadcrumbs');
+        add_action('single_product_header', 'add_product_breadcrumbs', 5);
+        add_action('product_listing_header', 'add_product_breadcrumbs', 5);
 		content_product_adder();
 		?>
 

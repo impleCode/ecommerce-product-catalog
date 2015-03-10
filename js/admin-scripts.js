@@ -13,7 +13,7 @@ var fixHelper = function(e, ui) {
 };
 
 jQuery('.sort-settings tbody').sortable({
-	update: function(event, ui){  
+	update: function(){
               jQuery('.sort-settings tbody tr').each(function(){
 			  var r = jQuery(this).index() + 1;
 			  jQuery(this).find('td .attribute-label').attr('name', '_attribute-label'+r);
@@ -25,7 +25,7 @@ jQuery('.sort-settings tbody').sortable({
               })
              },
 	helper: fixHelper,
-	placeholder: 'sort-settings-placeholder',	
+	placeholder: 'sort-settings-placeholder'
 });
 //jQuery('.attributes .ui-sortable').height(jQuery('.attributes .ui-sortable').height());
 //jQuery('.shipping .ui-sortable').height(jQuery('.shipping .ui-sortable').height());
@@ -50,12 +50,21 @@ jQuery(".overall-product-settings .submit .button-primary").click(function() {
 
 jQuery(".implecode-review .dashicons-no").click(function() {
 	var data = {
-			'action': 'hide_review_notice',
+			'action': 'hide_review_notice'
 		};
 	jQuery.post(ajaxurl, data, function(response) {
 		jQuery(".implecode-review").hide("slow");
 	});
 });
+
+    jQuery(".implecode-translate .dashicons-no").click(function() {
+        var data = {
+            'action': 'hide_translate_notice'
+        };
+        jQuery.post(ajaxurl, data, function(response) {
+            jQuery(".implecode-translate").hide("slow");
+        });
+    });
 
 jQuery(".implecode-review-thanks .dashicons-yes").click(function() {
 	jQuery(".implecode-review-thanks").hide("slow");
@@ -64,7 +73,7 @@ jQuery(".implecode-review-thanks .dashicons-yes").click(function() {
 jQuery(".implecode-review a").click(function() {
 	var data = {
 			'action': 'hide_review_notice',
-			'forever': 'yes',
+			'forever': 'yes'
 		};
 	jQuery.post(ajaxurl, data, function(response) {
 		jQuery(".implecode-review").hide("slow");
@@ -77,10 +86,10 @@ jQuery(function() {
 			position: {
 				my: "left-48 top+37",
 				at: "right+48 bottom-37",
-				collision: "flip",
+				collision: "flip"
 			},
 			track: true,
-			show: {delay: 200},
+			show: {delay: 200}
 		});
 	});
 
@@ -95,6 +104,7 @@ jQuery(function() {
 				clicked.parent("div").children("#uploaded_image").val(attachment.id);
 			}
 			clicked.prev("div").children("img").attr("src", attachment.url);
+            clicked.prev("div").children("img").show();
 			clicked.prev("div").children(".catalog-reset-image-button").show();
 			clicked.prev("div.implecode-admin-media-image.empty").removeClass('empty');
 			clicked.hide();
@@ -108,6 +118,12 @@ jQuery(function() {
 		clicked.parent("div").prev("#uploaded_image").val("");
 		src = jQuery("#default").val();
 		clicked.next(".media-image").attr("src", src);
+        if (src != '') {
+            clicked.next(".media-image").show();
+        }
+        else {
+            clicked.next(".media-image").hide();
+        }
 		clicked.parent("div").next(".add_catalog_media").show();
 		clicked.parent(".implecode-admin-media-image").addClass('empty');
 		clicked.hide();

@@ -47,7 +47,7 @@ return '<div class="entry-summary">'.$content.'</div>';
 
 function content_product_adder_archive_before_title() {
 $def_page_id = get_product_listing_id();
-$archive_names = get_option('archive_names');
+$archive_names = get_archive_names();
 $page_id = apply_filters('before_archive_post_id', $def_page_id);
 $page = get_post($page_id);
 if ($page == '') {
@@ -128,14 +128,16 @@ wp_enqueue_style('colorbox');
 add_action( 'wp_enqueue_scripts', 'single_scripts' );
 
 
-add_action( 'pre_get_posts', 'set_products_limit' );
+
  
 function set_products_limit( $query ) {
-$archive_multiple_settings = get_option('archive_multiple_settings', unserialize (DEFAULT_ARCHIVE_MULTIPLE_SETTINGS));
-if ( ! is_admin() && is_post_type_archive( 'al_product' ) || is_tax('al_product-cat') ) {
+$archive_multiple_settings = get_multiple_settings();
+if ( ! is_admin() && (is_post_type_archive( 'al_product' ) || is_tax('al_product-cat')) ) {
 	$query->set( 'posts_per_page', $archive_multiple_settings['archive_products_limit'] );
 }
 }
+
+add_action( 'pre_get_posts', 'set_products_limit' );
 
 function product_archive_pagination() {
 if( is_singular() )
@@ -311,3 +313,52 @@ function show_parent_product_categories($echo = 1, $return = '') {
     }
     return echo_ic_setting($return, $echo);
 }
+
+function override_product_page_title ($page_title, $id = null) {
+    if (!is_admin() && is_ic_catalog_page() && !is_ic_product_page() && !in_the_loop() && (empty($id) || (get_quasi_post_type(get_post_type($id)) == 'al_product'))) {
+        $archive_names = get_archive_names();
+        if (is_ic_taxonomy_page()) {
+            $the_tax = get_term_by('slug', get_query_var('term'), get_query_var('taxonomy'));
+            $page_title = $archive_names['all_prefix'] . ' ' . $the_tax->name;
+        } else if (is_search()) {
+            $page_title = __('Search Results for:', 'al-ecommerce-product-catalog') . ' ' . $_GET['s'];
+        } else if (is_ic_product_listing()) {
+            $page_title = get_product_listing_title ();
+        }
+    }
+    return $page_title;
+}
+
+add_filter( 'the_title', 'override_product_page_title', 10, 2 );
+
+function get_product_listing_title () {
+    $archive_names = get_archive_names();
+    $def_page_id = get_product_listing_id();
+    $page_id = apply_filters('before_archive_post_id', $def_page_id);
+    $page = get_post($page_id);
+    if ($page == '') {
+        $page_title = $archive_names['all_products'];
+    }
+    else {
+        $page_title = $page->post_title;
+    }
+    return $page_title;
+}
+
+
+function product_listing_current_nav_class($classes, $item)
+{
+    global $post;
+    if (isset($post->ID) && $item->object_id == get_product_listing_id() && is_post_type_archive('al_product')) {
+        $current_post_type = get_post_type_object(get_post_type($post->ID));
+        $current_post_type_slug = $current_post_type->rewrite['slug'];
+        $current_post_type_slug = !empty($current_post_type_slug) ? '/' . $current_post_type_slug . '/' : $current_post_type_slug;
+        $menu_slug = strtolower(trim($item->url));
+        if (strpos($menu_slug, $current_post_type_slug) !== false) {
+            $classes[] = 'current-menu-item';
+        }
+    }
+    return $classes;
+}
+
+add_action('nav_menu_css_class', 'product_listing_current_nav_class', 10, 2);

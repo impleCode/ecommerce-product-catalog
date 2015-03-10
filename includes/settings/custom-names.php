@@ -95,9 +95,8 @@ function custom_names_content() { ?>
 		jQuery('.settings-submenu a#archive-names').addClass('current');
 		</script>
 		<form method="post" action="options.php"><?php 
-		settings_fields('product_names_archive'); 
-		$default_archive_names = default_archive_names();
-		$archive_names = get_option( 'archive_names', $default_archive_names); ?>
+		settings_fields('product_names_archive');
+		$archive_names = get_archive_names(); ?>
 		<h2><?php _e('Front-end Labels', 'al-ecommerce-product-catalog'); ?></h2><?php
 		$disabled = '';
 		if (get_integration_type() == 'simple') { 
@@ -122,4 +121,10 @@ function custom_names_content() { ?>
 		</div></div><?php 
 	} do_action('names-settings'); ?>
 </div><?php 
+}
+
+function get_archive_names() {
+    $default_archive_names = default_archive_names();
+    $archive_names = get_option( 'archive_names', $default_archive_names);
+    return $archive_names;
 }

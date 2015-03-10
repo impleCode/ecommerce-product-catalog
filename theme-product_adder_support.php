@@ -25,9 +25,14 @@ if (current_user_can('activate_plugins')) {
 		}
 	} 
 	if (is_ic_catalog_admin_page()) {
-		if ( false === get_transient( 'implecode_hide_plugin_review_info' ) && ic_products_count() > 5) {
-			implecode_plugin_review_notice();
-		}
+        $product_count = ic_products_count();
+        if ($product_count > 5) {
+            if (false === get_transient('implecode_hide_plugin_review_info')) {
+                implecode_plugin_review_notice();
+            } else if (false === get_transient('implecode_hide_plugin_translation_info')) {
+                implecode_plugin_translation_notice();
+            }
+        }
 	}
 }
 }	
@@ -79,6 +84,10 @@ function implecode_plugin_review_notice() { ?>
 <div class="update-nag implecode-review-thanks" style="display: none"><?php echo sprintf(__('Thank you for <a target="_blank" href="%s">your rating</a>! I really appreciate your feedback.', 'al-ecommerce-product-catalog'),'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform') ?> <span class="dashicons dashicons-yes"></span></div><?php	
 }
 
+function implecode_plugin_translation_notice() { ?>
+    <div class="update-nag implecode-translate"><?php echo sprintf(__("<strong>Psst, it's less than 1 minute</strong> to add some translations to eCommerce Product Catalog collaborative <a target='_blank' href='%s'>translation project</a>", 'al-ecommerce-product-catalog'),'http://translate.implecode.com/projects/ecommerce-product-catalog', 'eCommerce Product Catalog') ?> <span class="dashicons dashicons-no"></span></div><?php
+}
+
 function implecode_plugin_review_notice_hide($forever = false) {
 if ($forever) {
 	set_transient( 'implecode_hide_plugin_review_info', 1, 0 );
@@ -93,10 +102,20 @@ else {
 }
 
 function ajax_hide_review_notice() {
-$forever = isset($_POST['forever']) ? true : false;
-implecode_plugin_review_notice_hide($forever);
+    $forever = isset($_POST['forever']) ? true : false;
+    implecode_plugin_review_notice_hide($forever);
 }
 
 add_action( 'wp_ajax_hide_review_notice', 'ajax_hide_review_notice' );
+
+function implecode_plugin_translation_notice_hide() {
+    set_transient( 'implecode_hide_plugin_translation_info', 1, 0 );
+}
+
+function ajax_hide_translation_notice() {
+    implecode_plugin_translation_notice_hide();
+}
+
+add_action( 'wp_ajax_hide_translate_notice', 'ajax_hide_translation_notice' );
 
 ?>

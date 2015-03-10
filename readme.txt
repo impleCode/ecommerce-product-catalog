@@ -4,19 +4,23 @@ Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpre
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 2.1.6
+Stable tag: 2.1.9
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-eCommerce Product Catalog responsive plugin is a great choice to sell easy and quick or just beautifully present products on WordPress website.
+100% responsive eCommerce Product Catalog plugin is a powerful and free software for beautiful products and services management on WordPress website.
 
 == Description ==
 
-Reward your WordPress website with a beautiful and easy to use responsive product catalogue. eCommerce Product Catalog plugin is powerful and simple at the same time. 
+Reward your WordPress website with a beautiful and easy to use 100% responsive product catalogue plugin. 
 
-It is built by the experienced folk at impleCode who constantly develops the core and the [extensions](http://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extension-link#extensions "eCommerce Product Catalog Extensions"). 
+eCommerce Product Catalog plugin is __powerful, highly customizable and simple solution__ that __works with any theme and most of WordPress plugins__. It will make your web development even more effective. 
 
-Expect high quality code which is great value not only for Merchants and Webmasters but also for Developers and Theme Constructors.
+__Live Front-end & Back-end Demo -->__ Make sure to visit eCommerce Product Catalog [live demo](http://demo.implecode.com?cam=wordpress-org-catalog-page&key=demo-link "eCommerce Product Catalog Live Demo") with multiple possible configurations.
+
+It is built from the ground at impleCode. The plugin, [documentation](http://implecode.com/docs/ecommerce-product-catalog/?cam=wordpress-org-catalog-page&key=docs-link "eCommerce Product Catalog Documentation") and the [extensions](http://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extension-link#extensions "eCommerce Product Catalog Extensions") are in constant development. New features, tweaks and fixes come regularly.
+
+Expect __high quality code, beautiful design and detailed documentation__ which is great value not only for skilled professionals but also for newbies less experienced in web development.
 
 https://www.youtube.com/watch?v=FgSOAgsnDqA
 
@@ -90,10 +94,12 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 * English - default, always included
 * Bosnian - Thanks to Faruk
 * Bulgarian - Thanks to Valentina and Koceto via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
+* Croatian - Thanks to Vedran 
 * Dutch - Thanks to Pieter via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * French - Thanks to Denis & James via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * German - Thanks to Peter
 * Hebrew - Thanks to Ahrale
+* Japanese - Thanks to Diginatu via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Norwegian - Thanks to Oyvind via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Polish - Thanks to Norbert
 * Serbian - Thanks to Ogi
@@ -182,6 +188,26 @@ This is not a store. It's main purpose is to present products or services on the
 6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 2.1.9 - 10/03/2015 = 
+
+* Tweak - Limit modern grid width
+* Tweak - ability to edit price in quick edit
+* Tweak - child and parent category classes for classic list
+* Tweak - show default attributes values only when adding new product
+* Tweak - better integration with twenty fifteen theme
+* Localisation - Japanese language introduced thanks to Diginatu by http://translate.implecode.com
+
+= 2.1.8 - 03/03/2015 = 
+
+* Fix - no more same product names in Admin
+
+= 2.1.7 - 02/03/2015 = 
+
+* Tweak - ability to filter by category in admin
+* Fix - theme calls to page title
+* Fix - limited size of attributes table in modern grid
+* Localisation - Portuguese language improved thanks to  João by http://translate.implecode.com
 
 = 2.1.6 - 23/02/2015 = 
 

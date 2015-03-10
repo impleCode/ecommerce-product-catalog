@@ -19,14 +19,14 @@ margin-right: 5px !important;
 display: none;
 }
 
-.implecode-review .dashicons, .implecode-review-thanks .dashicons {
+.implecode-translate .dashicons, .implecode-review .dashicons, .implecode-review-thanks .dashicons {
 color: #ededed;
 cursor: pointer;
 font-size: 21px;
 margin-left: 5px;
 }
 
-.implecode-review .dashicons:hover, .implecode-review-thanks .dashicons:hover {
+.implecode-translate .dashicons:hover, .implecode-review .dashicons:hover, .implecode-review-thanks .dashicons:hover {
 color: #000;
 }
 
@@ -518,6 +518,14 @@ display: none;
     width: 100%;
 }
 
+#postimagediv img {
+    max-height: 150px;
+}
+
+#postimagediv .hide-if-no-js {
+    text-align: center;
+}
+
 div.implecode-admin-media-image {
     width: 150px;
     height: 150px;
@@ -751,6 +759,10 @@ font-size: 18px;
 .doc-helper .doc-description {
 font-size: 14px;
 padding: 5px 0;
+}
+
+.doc-helper .doc-description input.search-field {
+max-width: 70%;
 }
 
 .doc-helper .doc-button {

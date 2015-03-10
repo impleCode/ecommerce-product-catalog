@@ -231,37 +231,27 @@ function al_product_attributes()
     $attributes_label_option = get_option('product_attribute_label');
     $attributes_unit_option = get_option('product_attribute_unit');
     for ($i = 1; $i <= get_option('product_attributes_number', DEF_ATTRIBUTES_OPTIONS_NUMBER); $i++) {
-        $attributes_option_field = get_post_meta($post->ID, '_attribute' . $i, false);
+        $attributes_option_field = get_post_meta($post->ID, '_attribute' . $i, true);
         $attributes_label_option_field = get_post_meta($post->ID, '_attribute-label' . $i, true);
         $attributes_unit_option_field = get_post_meta($post->ID, '_attribute-unit' . $i, true);
         $attributes_option[$i] = isset($attributes_option[$i]) ? $attributes_option[$i] : '';
         $attributes_label_option[$i] = isset($attributes_label_option[$i]) ? $attributes_label_option[$i] : '';
         $attributes_unit_option[$i] = isset($attributes_unit_option[$i]) ? $attributes_unit_option[$i] : '';
-        if (!empty($attributes_option_field)) {
-            $attributes = $attributes_option_field[0];
-        } else {
-            $attributes = $attributes_option[$i];
+        if (is_ic_new_product_screen()) {
+            $attributes_option_field = !empty($attributes_option_field) ? $attributes_option_field : $attributes_option[$i];
+            $attributes_label_option_field = !empty($attributes_label_option_field) ? $attributes_label_option_field : $attributes_label_option[$i];
+            $attributes_unit_option_field = !empty($attributes_unit_option_field) ? $attributes_unit_option_field : $attributes_unit_option[$i];
         }
-        if (!empty($attributes_label_option_field)) {
-            $attributes_label = $attributes_label_option_field;
-        } else {
-            $attributes_label = $attributes_label_option[$i];
-        }
-        if (!empty($attributes_unit_option_field)) {
-            $attributes_unit = $attributes_unit_option_field;
-        } else {
-            $attributes_unit = $attributes_unit_option[$i];
-        }
-        $attribute_value_field = '<input class="attribute-value" type="text" name="_attribute' . $i . '" value="' . $attributes . '" />'; ?>
+        $attribute_value_field = '<input class="attribute-value" type="text" name="_attribute' . $i . '" value="' . $attributes_option_field . '" />'; ?>
         <tr>
             <td class="attributes-label-column"><input class="attribute-label" type="text"
                                                        name="_attribute-label<?php echo $i ?>"
-                                                       value="<?php echo $attributes_label ?>"/></td>
+                                                       value="<?php echo $attributes_label_option_field ?>"/></td>
             <td class="break-column">:</td>
-            <td class="value-column"><?php echo apply_filters('product_attribute_value_edit', $attribute_value_field, $i, $attributes) ?></td>
+            <td class="value-column"><?php echo apply_filters('product_attribute_value_edit', $attribute_value_field, $i, $attributes_option_field) ?></td>
             <td class="unit-column"><input class="attribute-unit admin-number-field" type="text"
                                            name="_attribute-unit<?php echo $i ?>"
-                                           value="<?php echo $attributes_unit ?>"/></td>
+                                           value="<?php echo $attributes_unit_option_field ?>"/></td>
             <td class="dragger"></td>
         </tr>
     <?php } ?>

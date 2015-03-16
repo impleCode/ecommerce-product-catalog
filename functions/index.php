@@ -14,6 +14,7 @@ require_once(AL_BASE_PATH . '/functions/content-functions.php');
 
 require_once(AL_BASE_PATH. '/functions/support.php');
 require_once(AL_BASE_PATH. '/functions/conditionals.php');
+require_once(AL_BASE_PATH. '/functions/compatibility.php');
 
 function start_admin_only_functions()
 {

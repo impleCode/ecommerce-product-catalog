@@ -58,11 +58,11 @@ $product_field['_attribute-unit2'] = '';
 $product_field['_attribute-unit3'] = __('lbs', 'al-ecommerce-product-catalog');
 $product_field['_shipping-label1'] = 'UPS';
 $product_field['_shipping1'] = 15;
-$product_field['_shortdesc'] = '[theme_integration class="fixed-box"]';
-$product_field['_shortdesc'] .= '<p>'.__('Welcome on product test page. This is short description. It should show up on the left of the product image and below product name. You shouldn\'t see nothing between product name and short description. No author, time or date. Absolutely nothing. If there is something that you don\'t want to see than you probably need Advanced Integration Mode.', 'al-ecommerce-product-catalog').'</p>';
-$product_field['_shortdesc'] .= '<p><strong>'.__('Please read this page carefully to fully understand the difference between simple and advanced mode and how the product page look like.', 'al-ecommerce-product-catalog').'</strong></p>';
+$product_field['excerpt'] = '[theme_integration class="fixed-box"]';
+$product_field['excerpt'] .= '<p>'.__('Welcome on product test page. This is short description. It should show up on the left of the product image and below product name. You shouldn\'t see nothing between product name and short description. No author, time or date. Absolutely nothing. If there is something that you don\'t want to see than you probably need Advanced Integration Mode.', 'al-ecommerce-product-catalog').'</p>';
+$product_field['excerpt'] .= '<p><strong>'.__('Please read this page carefully to fully understand the difference between simple and advanced mode and how the product page look like.', 'al-ecommerce-product-catalog').'</strong></p>';
 
-$long_desc .= '<p>'.__('This section is product long description. It should appear under the attributes table. Between the short description and the attributes table you should see the price, SKU and shipping options (all can be disabled). The attributes also can be disabled.','al-ecommerce-product-catalog').'</p>';
+$long_desc = '<p>'.__('This section is product long description. It should appear under the attributes table. Between the short description and the attributes table you should see the price, SKU and shipping options (all can be disabled). The attributes also can be disabled.','al-ecommerce-product-catalog').'</p>';
 $long_desc .= '<h2>'.__('Advanced Theme Integration Mode','al-ecommerce-product-catalog').'</h2>';
 $long_desc .= '<p>'.sprintf(__('With Advanced Mode you will be able to use eCommerce Product Catalog in %s. The product listing page, category pages, product search and category widget will be enabled in advanced mode. You can enable the Advanced Mode %s free. To see how please see <a target="_blank" href="%s">Theme Integration Guide</a>','al-ecommerce-product-catalog'), '100%', '100%', 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=sample-product-page&key=integration-mode-test').'</p>';
 $long_desc .= '<p>'.__('The Advanced Mode works out of the box on all default WordPress themes and all themes with the integration done properly.','al-ecommerce-product-catalog').'</p>';
@@ -76,7 +76,7 @@ $long_desc .= '<h2>'.__('Product Description End','al-ecommerce-product-catalog'
 $long_desc .= '<p>'.__('Below the product description you should see nothing apart of return to products URL and Advanced Mode Test which will not show up on your product pages. When using advanced mode also the related products will show up.','al-ecommerce-product-catalog').'</p>';
 $long_desc .= '<p>'.sprintf(__('Thank you for choosing eCommerce Product Catalog. If you have any questions or comments please use <a target="_blank" href="%s">plugin support forum</a>.','al-ecommerce-product-catalog'), 'https://wordpress.org/support/plugin/ecommerce-product-catalog').'</p>';
 $long_desc .= '[theme_integration]';
-$product_field['_desc'] = $long_desc;
+$product_field['content'] = $long_desc;
 foreach ($product_field as $key => $value) { 
 add_post_meta( $product_id, $key, $value, true );
 }

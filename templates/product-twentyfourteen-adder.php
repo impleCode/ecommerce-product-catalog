@@ -10,20 +10,20 @@
  * @subpackage Twenty_Fourteen
  * @since Twenty Fourteen 1.0
  */
-
-get_header(); ?>
+get_header();
+?>
 
 <div id="main-content" class="main-content">
 
-<?php
+	<?php
 	if ( is_front_page() && twentyfourteen_has_featured_posts() ) {
 		// Include the featured content template.
 		get_template_part( 'featured-content' );
 	}
-?>
+	?>
 	<div id="primary" class="content-area">
 		<div id="content" class="site-content" role="main">
-<style>#breadcrumbs {max-width: 474px; margin: 0 auto 30px; position: relative; top: -30px; } .product-list .al_archive {max-width: 43%;} .al_archive .product-name {font-size: 14px;} .al_archive .product-price {font-size: 16px}</style>
+			<style>#breadcrumbs {max-width: 474px; margin: 0 auto 30px; position: relative; top: -30px; } .al_archive .product-name {font-size: 14px;} .al_archive .product-price {font-size: 16px}</style>
 			<?php content_product_adder(); ?>
 
 		</div><!-- #content -->

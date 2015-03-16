@@ -310,8 +310,7 @@ add_action('product_details', 'show_shipping_options', 9, 2);
 
 function show_short_desc($post, $single_names)
 {
-    $shortdesc = get_post_meta($post->ID, "_shortdesc", true);
-    $content = $shortdesc; ?>
+    $shortdesc = get_product_short_description($post->ID); ?>
     <div class="shortdesc">
         <?php echo apply_filters('product_short_description', $shortdesc); ?>
     </div>
@@ -355,7 +354,7 @@ add_action('after_product_details', 'show_product_attributes', 10, 2);
 
 function show_product_description($post, $single_names)
 {
-    $product_description = get_post_meta($post->ID, "_desc", true);
+    $product_description = get_product_description($post->ID);
     if (!empty($product_description)) { ?>
         <div class="product-description"><?php
             if (get_integration_type() == 'simple') {

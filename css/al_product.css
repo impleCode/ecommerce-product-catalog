@@ -116,9 +116,10 @@
 .product-list .al_archive .product-attributes, #content .al_archive .product-attributes, .al_archive .product-attributes {
     max-width: 43%;
     max-height: 30%;
+    overflow: hidden;
     position: absolute;
-    left: 5px;
-    bottom: 15px;
+    left: 2%;
+    bottom: 5%;
     background-color: rgb(0, 82, 0);
     background-color: rgba(0, 82, 0, 0.8);
     z-index: 0;
@@ -166,6 +167,7 @@
 .product-list .al_archive .product-attributes table td, #content .al_archive .product-attributes table td {
     border: none;
     padding: 0;
+    line-height: 1.1;
 }
 
 .product-list .al_archive .product-attributes table tr, #content .al_archive .product-attributes table tr {
@@ -177,19 +179,18 @@
     padding-left: 5px;
 }
 
-.al_archive .product-name {
+.al_archive .product-name, #product_listing .al_archive .product-name {
     background-color: rgb(0, 82, 0);
     background-color: rgba(0, 82, 0, 0.8);
     max-width: 80%;
     box-shadow: 0 0 5px #005200;
-    padding: 5px;
+    padding: 8px 5px;
     position: absolute;
-    top: 10px;
-    left: 5px;
+    top: 5%;
+    left: 2%;
     color: #fff;
-    font-weight: bold;
     font-size: 16px;
-    line-height: 1.5;
+    line-height: 1.1;
     text-decoration: none;
     cursor: pointer;
     margin: 0;
@@ -231,8 +232,8 @@
 
 .al_archive .product-price {
     position: absolute;
-    right: 10px;
-    bottom: 10px;
+    right: 3%;
+    bottom: 4%;
     background-color: rgb(253, 0, 2);
     background-color: rgba(253, 0, 2, 0.8);
     max-width: 80%;
@@ -265,18 +266,38 @@ margin-bottom: 0px;
 } */
 
 .al_archive {
-    max-width: 300px;
-    min-width: 200px;
+    max-width:100%;
+    min-width: 100px;
     background-size: 100% auto;
     box-shadow: 0 0 5px #005200;
     position: relative;
     cursor: pointer;
     float: left;
-    width: 44%;
-    margin: 5px 25px 25px 5px;
+    width: 47.5%;
+    margin: 1% 2% 2% 1%;
     line-height: 1.5;
     height: auto;
     *border: 1px solid #005200;
+}
+
+.per-row-1 .modern-grid-element {
+    width: 97.5%;
+}
+
+.per-row-3 .modern-grid-element {
+    width: 30.5%;
+}
+
+.per-row-4 .modern-grid-element {
+    width: 22.3%;
+}
+
+.per-row-5 .modern-grid-element {
+    width: 17.2%;
+}
+
+.per-row-1 .modern-grid-element, .per-row-2 .modern-grid-element:nth-child(2n), .per-row-3 .modern-grid-element:nth-child(3n), .per-row-4 .modern-grid-element:nth-child(4n), .per-row-5 .modern-grid-element:nth-child(5n) {
+    margin-right: 0;
 }
 
 .modern-grid-element {
@@ -1011,6 +1032,7 @@ div.relative-box {
     display: table-cell;
     padding: 5px;
     vertical-align: middle;
+    font-size: 15px;
 }
 
 .table-head:first-child, .table-cell:first-child {
@@ -1024,6 +1046,7 @@ div.relative-box {
 .table-head {
     border-bottom: 1px solid #ededed;
     font-weight: 600;
+    font-size: 16px;
 }
 
 /* Product Order */

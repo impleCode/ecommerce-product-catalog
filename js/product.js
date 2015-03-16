@@ -2,8 +2,7 @@ jQuery(document).ready(function($) {
 	reponsive_product_catalog();
 	$(window).resize( function() {
 		reponsive_product_catalog();
-	});
-	
+	});	
 	
   $.ic = {
     /**
@@ -80,5 +79,17 @@ if (product_page_width < 600) {
 }
 else {
 	jQuery("article.al_product").removeClass("responsive");
+}
+}
+
+jQuery(window).resize(modern_grid_font_size);
+jQuery(document).ready(modern_grid_font_size);
+function modern_grid_font_size() {
+    var fontSize = jQuery(".modern-grid-element").width() * 0.08; // 10% of container width
+    if (fontSize < 16) {
+    jQuery(".modern-grid-element h3").css('font-size', fontSize);
+    jQuery(".modern-grid-element .product-price").css('font-size', fontSize);
+    fontSize = fontSize * 0.8;
+    jQuery(".modern-grid-element .product-attributes table").css('font-size', fontSize);
 }
 }

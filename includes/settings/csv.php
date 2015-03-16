@@ -115,8 +115,8 @@ $post = array(
 $id = wp_insert_post($post);
 if ($id != false) {
 	update_post_meta($id, '_price', $data['product_price']);
-	update_post_meta($id, '_shortdesc', $data['product_short_desc']);
-	update_post_meta($id, '_desc', $data['product_desc']);
+	update_post_meta($id, 'excerpt', $data['product_short_desc']);
+	update_post_meta($id, 'content', $data['product_desc']);
 	$image_url = get_product_image_id($data['image_url']);
 	set_post_thumbnail( $id, $image_url );
 	wp_set_object_terms( $id, $data['product_categories'], 'al_product-cat');

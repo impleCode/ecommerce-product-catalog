@@ -265,7 +265,7 @@ function al_product_short_desc()
     global $post;
     echo '<input type="hidden" name="shortdescmeta_noncename" id="shortdescmeta_noncename" value="' .
         wp_create_nonce(plugin_basename(__FILE__)) . '" />';
-    $shortdesc = get_post_meta($post->ID, '_shortdesc', true);
+    $shortdesc = get_product_short_description($post->ID);
     $short_desc_settings = array('media_buttons' => false, 'textarea_rows' => 5, 'tinymce' => array(
         'menubar' => false,
         'toolbar1' => 'bold,italic,underline,blockquote,strikethrough,bullist,numlist,alignleft,aligncenter,alignright,undo,redo,link,unlink,fullscreen',
@@ -273,7 +273,7 @@ function al_product_short_desc()
         'toolbar3' => '',
         'toolbar4' => '',
     ));
-    wp_editor($shortdesc, '_shortdesc', $short_desc_settings);
+    wp_editor($shortdesc, 'excerpt', $short_desc_settings);
 }
 
 function al_product_desc()
@@ -281,9 +281,9 @@ function al_product_desc()
     global $post;
     echo '<input type="hidden" name="descmeta_noncename" id="descmeta_noncename" value="' .
         wp_create_nonce(plugin_basename(__FILE__)) . '" />';
-    $desc = get_post_meta($post->ID, '_desc', true);
+    $desc = get_product_description($post->ID);
     $desc_settings = array('textarea_rows' => 30);
-    wp_editor($desc, '_desc', $desc_settings);
+    wp_editor($desc, 'content', $desc_settings);
 }
 
 function implecode_save_products_meta($post_id, $post)
@@ -309,8 +309,8 @@ function implecode_save_products_meta($post_id, $post)
             return $post->ID;
         $product_meta['_price'] = !empty($_POST['_price']) ? $_POST['_price'] : '';
         $product_meta['_sku'] = !empty($_POST['_sku']) ? $_POST['_sku'] : '';
-        $product_meta['_shortdesc'] = !empty($_POST['_shortdesc']) ? $_POST['_shortdesc'] : '';
-        $product_meta['_desc'] = !empty($_POST['_desc']) ? $_POST['_desc'] : '';
+        $product_meta['excerpt'] = !empty($_POST['excerpt']) ? $_POST['excerpt'] : '';
+        $product_meta['content'] = !empty($_POST['content']) ? $_POST['content'] : '';
         for ($i = 1; $i <= get_option('product_shipping_options_number', DEF_SHIPPING_OPTIONS_NUMBER); $i++) {
             $product_meta['_shipping' . $i] = isset($_POST['_shipping' . $i]) ? $_POST['_shipping' . $i] : '';
             $product_meta['_shipping-label' . $i] = !empty($_POST['_shipping-label' . $i]) ? $_POST['_shipping-label' . $i] : '';
@@ -351,6 +351,7 @@ function change_thumbnail_html($content)
         add_filter('admin_post_thumbnail_html', 'modify_add_product_image_label');
     }
 }
+
 add_action('admin_head-post-new.php', 'change_thumbnail_html');
 add_action('admin_head-post.php', 'change_thumbnail_html');
 
@@ -390,6 +391,18 @@ function set_product_messages($messages)
 }
 
 add_filter('post_updated_messages', 'set_product_messages');
+
+function get_product_description($product_id)
+{
+    $product_desc = get_post_meta($product_id, 'content', true);
+    return apply_filters('get_product_description', $product_desc, $product_id);
+}
+
+function get_product_short_description($product_id)
+{
+    $product_desc = get_post_meta($product_id, 'excerpt', true);
+    return apply_filters('get_product_short_description', $product_desc, $product_id);
+}
 
 require_once(AL_BASE_PATH . '/includes/product-categories.php');
 require_once(AL_BASE_PATH . '/includes/search-widget.php');

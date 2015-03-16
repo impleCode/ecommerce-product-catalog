@@ -43,7 +43,7 @@ return $price_value;
 /* Classic List */
 function c_list_desc($post_id = null, $shortdesc = null) {
 if ($shortdesc == '') {
-$shortdesc = strip_tags(get_post_meta($post_id, "_shortdesc", true));
+$shortdesc = strip_tags(get_product_short_description($post_id));
 }
 //remove all shortcodes - discsox 
 $shortdesc = trim(strip_shortcodes($shortdesc)); 

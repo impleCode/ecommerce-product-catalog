@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 /**
  * WP Product template functions
  *
@@ -9,9 +13,6 @@
  * @package		ecommerce-product-catalog/
  * @author 		Norbert Dreszer
  */
-if ( !defined( 'ABSPATH' ) )
-	exit; // Exit if accessed directly
-
 function content_product_adder() {
 	if ( is_archive() || is_search() || is_home_archive() ) {
 		do_action( 'before_product_archive' );
@@ -57,23 +58,22 @@ function content_product_adder_archive_before_title() {
 }
 
 function show_products_outside_loop( $atts ) {
-	global $shortcode_query, $product_sort;
+	global $shortcode_query, $product_sort, $archive_template;
 	$args				 = shortcode_atts( array(
 		'post_type'			 => 'al_product',
 		'category'			 => '',
 		'product'			 => '',
 		'products_limit'	 => -1,
-		'archive_template'	 => get_option( 'archive_template', 'default' ),
+		'archive_template'	 => get_product_listing_template(),
 		'design_scheme'		 => '',
 		'sort'				 => 0,
 	), $atts );
-	$sort				 = (int) $args[ 'sort' ];
+	$sort				 = intval( $args[ 'sort' ] );
 	$category			 = esc_attr( $args[ 'category' ] );
 	$product			 = esc_attr( $args[ 'product' ] );
-	$products_limit		 = (int) $args[ 'products_limit' ];
+	$products_limit		 = intval( $args[ 'products_limit' ] );
 	$archive_template	 = esc_attr( $args[ 'archive_template' ] );
 	$design_scheme		 = esc_attr( $args[ 'design_scheme' ] );
-//	$post_type = esc_attr($args['post_type']);
 	$product_sort		 = $sort;
 	if ( $product != 0 ) {
 		$product_array	 = explode( ',', $product );
@@ -113,6 +113,7 @@ function show_products_outside_loop( $atts ) {
 	endwhile;
 	$inside = apply_filters( 'product_list_ready', $inside, $archive_template );
 	wp_reset_postdata();
+	reset_row_class();
 	return '<div class="product-list responsive ' . $archive_template . '-list ' . product_list_class() . '">' . $inside . '<div style="clear:both"></div></div>';
 }
 
@@ -156,26 +157,26 @@ function product_archive_pagination() {
 	}
 	echo '<div id="product_archive_nav" class="product-archive-nav ' . design_schemes( 'box', 0 ) . '"><ul>' . "\n";
 	if ( get_previous_posts_link() )
-		printf( '<li>%s</li>' . "\n", get_previous_posts_link() );
+		printf( '<li>%s</li> ' . "\n", get_previous_posts_link() );
 	if ( !in_array( 1, $links ) ) {
 		$class = 1 == $paged ? ' class="active"' : '';
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
+		printf( '<li%s><a href="%s">%s</a></li> ' . "\n", $class, esc_url( get_pagenum_link( 1 ) ), '1' );
 		if ( !in_array( 2, $links ) )
 			echo '<li>…</li>';
 	}
 	sort( $links );
 	foreach ( (array) $links as $link ) {
 		$class = $paged == $link ? ' class="active"' : '';
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
+		printf( '<li%s><a href="%s">%s</a></li> ' . "\n", $class, esc_url( get_pagenum_link( $link ) ), $link );
 	}
 	if ( !in_array( $max, $links ) ) {
 		if ( !in_array( $max - 1, $links ) )
 			echo '<li>…</li>' . "\n";
 		$class = $paged == $max ? ' class="active"' : '';
-		printf( '<li%s><a href="%s">%s</a></li>' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
+		printf( '<li%s><a href="%s">%s</a></li> ' . "\n", $class, esc_url( get_pagenum_link( $max ) ), $max );
 	}
 	if ( get_next_posts_link() ) {
-		printf( '<li>%s</li>' . "\n", get_next_posts_link() );
+		printf( '<li>%s</li> ' . "\n", get_next_posts_link() );
 	}
 	echo '</ul></div>' . "\n";
 
@@ -183,23 +184,23 @@ function product_archive_pagination() {
 }
 
 function get_catalog_template( $archive_template, $post, $i = null, $design_scheme = null ) {
-	$themes_array					 = apply_filters( 'ecommerce_catalog_templates', array(
+	$themes_array						 = apply_filters( 'ecommerce_catalog_templates', array(
 		'default'	 => get_default_archive_theme( $post, $archive_template ),
 		'list'		 => get_list_archive_theme( $post, $archive_template ),
 		'grid'		 => get_grid_archive_theme( $post, $archive_template ),
 	), $post, $i, $design_scheme );
-	$themes_array[ $archive_template ] = isset( $themes_array[ $archive_template ] ) ? $themes_array[ $archive_template ] : $themes_array[ 'default' ];
-	$themes_array[ $archive_template ] = empty( $themes_array[ $archive_template ] ) ? get_default_archive_theme( $post, 'default' ) : $themes_array[ $archive_template ];
+	$themes_array[ $archive_template ]	 = isset( $themes_array[ $archive_template ] ) ? $themes_array[ $archive_template ] : $themes_array[ 'default' ];
+	$themes_array[ $archive_template ]	 = empty( $themes_array[ $archive_template ] ) ? get_default_archive_theme( $post, 'default' ) : $themes_array[ $archive_template ];
 	return $themes_array[ $archive_template ];
 }
 
 function get_product_category_template( $archive_template, $product_cat, $i = null, $design_scheme = null ) {
-	$themes_array					 = apply_filters( 'ecommerce_category_templates', array(
+	$themes_array						 = apply_filters( 'ecommerce_category_templates', array(
 		'default'	 => get_default_category_theme( $product_cat, $archive_template ),
 		'list'		 => get_list_category_theme( $product_cat, $archive_template ),
 		'grid'		 => get_grid_category_theme( $product_cat, $archive_template ),
 	), $product_cat, $i, $design_scheme );
-	$themes_array[ $archive_template ] = isset( $themes_array[ $archive_template ] ) ? $themes_array[ $archive_template ] : $themes_array[ 'default' ];
+	$themes_array[ $archive_template ]	 = isset( $themes_array[ $archive_template ] ) ? $themes_array[ $archive_template ] : $themes_array[ 'default' ];
 	return $themes_array[ $archive_template ];
 }
 
@@ -266,21 +267,34 @@ function product_class( $classes ) {
 }
 
 add_filter( 'post_class', 'product_class' );
+add_action( 'before_product_list', 'product_listing_additional_styles' );
 
+/**
+ * Ads product listing inline styles container
+ */
 function product_listing_additional_styles() {
 	$styles	 = '<style>';
 	$styles	 = apply_filters( 'product_listing_additional_styles', $styles );
 	$styles .= '</style>';
-	if ( $styles != '<style></style>' ) {
+	if ( $styles != '<style></style>' && !is_admin() ) {
 		echo $styles;
 	}
 }
 
-add_action( 'before_product_list', 'product_listing_additional_styles' );
-
+/**
+ * Returns product listing template defined in settings
+ *
+ * @return string
+ */
 function get_product_listing_template() {
-	$archive_template	 = get_option( 'archive_template', DEFAULT_ARCHIVE_TEMPLATE );
-	$archive_template	 = !empty( $archive_template ) ? $archive_template : 'default';
+	global $shortcode_query;
+	if ( isset( $shortcode_query ) ) {
+		global $archive_template;
+		$archive_template = isset( $archive_template ) ? $archive_template : get_option( 'archive_template', DEFAULT_ARCHIVE_TEMPLATE );
+	} else {
+		$archive_template = get_option( 'archive_template', DEFAULT_ARCHIVE_TEMPLATE );
+	}
+	$archive_template = !empty( $archive_template ) ? $archive_template : 'default';
 	return $archive_template;
 }
 
@@ -356,4 +370,44 @@ add_action( 'nav_menu_css_class', 'product_listing_current_nav_class', 10, 2 );
 
 function product_list_class() {
 	return apply_filters( 'product-list-class', '' );
+}
+
+add_action( 'before_product_listing_category_list', 'product_list_categories_header' );
+
+/**
+ * Adds product main categories label on product listing
+ *
+ */
+function product_list_categories_header() {
+	$archive_names = get_archive_names();
+	if ( !empty( $archive_names[ 'all_main_categories' ] ) && !isset( $shortcode_query ) ) {
+		echo '<h2>' . $archive_names[ 'all_main_categories' ] . '</h2>';
+	}
+}
+
+add_action( 'before_category_subcategories', 'category_list_subcategories_header' );
+
+/**
+ * Adds product subcategories label on category product listing
+ *
+ */
+function category_list_subcategories_header() {
+	$archive_names = get_archive_names();
+	if ( !empty( $archive_names[ 'all_subcategories' ] ) && !isset( $shortcode_query ) ) {
+		echo '<h2>' . $archive_names[ 'all_subcategories' ] . '</h2>';
+	}
+}
+
+add_action( 'before_product_list', 'product_list_header', 9 );
+
+/**
+ * Adds product header on product listing
+ *
+ */
+function product_list_header() {
+	global $shortcode_query;
+	$archive_names = get_archive_names();
+	if ( !empty( $archive_names[ 'all_products' ] ) && !isset( $shortcode_query ) ) {
+		echo '<h2>' . $archive_names[ 'all_products' ] . '</h2>';
+	}
 }

@@ -1,15 +1,14 @@
 <?php
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * The template for displaying products archive content.
- *
- *
  *
  * @version		1.1.3
  * @package		ecommerce-product-catalog/templates
  * @author 		Norbert Dreszer
  */
-if ( !defined( 'ABSPATH' ) )
-	exit; // Exit if accessed directly
 global $post;
 $default_archive_names	 = default_archive_names();
 $multiple_settings		 = get_multiple_settings();
@@ -17,7 +16,7 @@ $archive_names			 = get_archive_names();
 do_action( 'product_listing_begin' );
 ?>
 <article id="product_listing" <?php post_class( 'al_product responsive' ); ?>>
-		<?php do_action( 'before_product_listing_entry', $post, $archive_names ); ?>
+	<?php do_action( 'before_product_listing_entry', $post, $archive_names ); ?>
 	<div class="entry-content">
 		<?php
 		$before_archive			 = content_product_adder_archive_before();
@@ -28,6 +27,7 @@ do_action( 'product_listing_begin' );
 				echo $before_archive;
 			}
 			if ( $multiple_settings[ 'product_listing_cats' ] == 'on' ) {
+				do_action( 'before_product_listing_category_list' );
 				if ( $multiple_settings[ 'cat_template' ] != 'template' ) {
 					$product_subcategories = wp_list_categories( 'show_option_none=No_cat&echo=0&title_li=&taxonomy=' . $taxonomy_name . '&parent=0' );
 					if ( !strpos( $product_subcategories, 'No_cat' ) ) {
@@ -59,13 +59,17 @@ do_action( 'product_listing_begin' );
 					if ( !strpos( $product_subcategories, 'No_cat' ) ) {
 						?>
 						<div class="product-subcategories">
-						<?php echo $product_subcategories; ?>
+							<?php
+							do_action( 'before_category_subcategories' );
+							echo $product_subcategories;
+							?>
 						</div>
-					<?php
+						<?php
 					}
 				} else {
 					$show_categories = do_shortcode( '[show_categories parent=' . get_queried_object_id() . ']' );
 					if ( !empty( $show_categories ) ) {
+						do_action( 'before_category_subcategories' );
 						echo $show_categories;
 						if ( $archive_template != 'list' ) {
 							echo '<hr>';

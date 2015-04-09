@@ -506,6 +506,17 @@ border-bottom: 0;
 display: none;
 }
 
+/* Classic List Example */
+.list.example .product-image {
+  max-width: 170px;
+  float: left;
+  margin-right: 10px;
+}
+
+.list.example.archive-listing {
+    max-width: 700px;
+}
+
 /* Image Picker */
 .custom-uploader {
     width: auto;

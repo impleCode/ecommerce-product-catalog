@@ -4,7 +4,7 @@ Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpre
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 4.1
-Stable tag: 2.2.0
+Stable tag: 2.2.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -98,13 +98,14 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 * Dutch - Thanks to Pieter via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * French - Thanks to Denis & James via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * German - Thanks to Peter
+* Greek - Thanks to Giorgos via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Hebrew - Thanks to Ahrale
 * Italian - Thanks to Fabio via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Japanese - Thanks to Diginatu via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Norwegian - Thanks to Oyvind via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Polish - Thanks to Norbert
 * Serbian - Thanks to Ogi
-* Spanish - Thanks to Andrew and Norbert
+* Spanish - Thanks to Andrew, Norbert and Josu
 * Turkish - Thanks to Tahir via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * *Your translation? - [Just send it in](http://translate.implecode.com/projects/ecommerce-product-catalog#cam=wordpress-org-catalog-page&key=translation-link)*
 
@@ -189,6 +190,42 @@ This is not a store. It's main purpose is to present products or services on the
 6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 2.2.5 - 09/04/2015 = 
+
+* Tweak - classic grid element width now adjusts to the theme content width. The product listing elements in one row will occupy the full width now
+* Tweak - page load on product listing is now faster because of product images optimisation (this works for all future products, if your want this for the product images that are already uploaded please use the Regenerate Thumbnails free WordPress plugin)
+* Tweak - SEO for classic grid improved
+* Tweak - SEO for classic list improved
+* Tweak - New headers "All Categories" and "Subcategories" on product listings before categories (by default disabled for existing installations)
+* Fix - no more changing category templates on plugin update
+* Fix - now it is possible to move the product.js to footer without breaking jQuery scripts
+* Fix - icons in admin work again
+* Fix - category image upload on localhost fixed 
+
+= 2.2.4 - 30/03/2015 = 
+
+* Fix - product scripts incompatibility fixed
+
+= 2.2.3 - 30/03/2015 = 
+
+* Fix - layout fix on very small screens
+* Fix - color design scheme switch for modern grid fixed
+* Tweak - improved integration with some themes
+* Localisation - Greek language improved thanks to Giorgos via http://translate.implecode.com
+* Localisation - Spanish language improved thanks to Lucia via http://translate.implecode.com
+* Localisation - Chinese introduced improved thanks to Yuen Ka Hei via http://translate.implecode.com
+
+= 2.2.2 - 23/03/2015 = 
+
+* Localisation - Croatian language improved thanks to Giorgos via http://translate.implecode.com
+* Localisation - Spanish language improved thanks to Josu via http://translate.implecode.com
+* Localisation - Greek language introduced thanks to Giorgos via http://translate.implecode.com
+
+= 2.2.1 - 17/03/2015 = 
+
+* Fix - font size on modern grid got to small in some cases
+* Fix - product description appears again (in rare cases it was not visible after 2.2.0 update)
 
 = 2.2.0 - 16/03/2015 = 
 

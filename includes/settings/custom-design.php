@@ -59,8 +59,8 @@ function archive_custom_design() {
 	if ( $submenu == 'archive-design' ) {
 		?>
 		<script>
-			jQuery( '.settings-submenu a' ).removeClass( 'current' );
-			jQuery( '.settings-submenu a#archive-design' ).addClass( 'current' );
+		    jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		    jQuery( '.settings-submenu a#archive-design' ).addClass( 'current' );
 		</script>
 		<form method="post" action="options.php">
 			<?php
@@ -95,7 +95,7 @@ function archive_custom_design() {
 						<td rowspan="2" class="theme-example"><?php example_grid_archive_theme(); ?></td>
 					</tr>
 					<tr>
-						<td class="additional-styling"><strong><?php _e( 'Additional Settings', 'al-ecommerce-product-catalog' ); ?></strong><br><?php _e( 'Per row', 'al-ecommerce-product-catalog' ) ?>: <input type="number" min="1" step="1" class="number_box" title="<?php _e( 'Your theme must have the content section wide enough.', 'al-ecommerce-product-catalog' ) ?>" name="classic_grid_settings[entries]" value="<?php echo $classic_grid_settings[ 'entries' ] ?>"><?php _e( 'products', 'al-ecommerce-product-catalog' ) ?></td>
+						<td class="additional-styling"><strong><?php _e( 'Additional Settings', 'al-ecommerce-product-catalog' ); ?></strong><br><?php _e( 'Per row', 'al-ecommerce-product-catalog' ) ?>: <input type="number" min="1" step="1" class="number_box" title="<?php _e( 'The product listing element width will adjust accordingly to your theme content width.', 'al-ecommerce-product-catalog' ) ?>" name="classic_grid_settings[entries]" value="<?php echo $classic_grid_settings[ 'entries' ] ?>"><?php _e( 'products', 'al-ecommerce-product-catalog' ) ?></td>
 					</tr>
 					<tr><td colspan="2" class="separator"></td></tr>
 					<?php do_action( 'product_listing_theme_settings', $archive_template ) ?>
@@ -117,8 +117,8 @@ function single_custom_design() {
 	if ( $submenu == 'single-design' ) {
 		?>
 		<script>
-			jQuery( '.settings-submenu a' ).removeClass( 'current' );
-			jQuery( '.settings-submenu a#single-design' ).addClass( 'current' );
+		    jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		    jQuery( '.settings-submenu a#single-design' ).addClass( 'current' );
 		</script>
 		<form method="post" action="options.php">
 			<?php
@@ -158,8 +158,8 @@ function color_schemes() {
 	if ( $submenu == 'design-schemes' ) {
 		?>
 		<script>
-			jQuery( '.settings-submenu a' ).removeClass( 'current' );
-			jQuery( '.settings-submenu a#design-schemes' ).addClass( 'current' );
+		    jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		    jQuery( '.settings-submenu a#design-schemes' ).addClass( 'current' );
 		</script>
 		<form method="post" action="options.php">
 			<?php

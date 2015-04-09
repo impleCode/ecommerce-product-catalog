@@ -1,8 +1,17 @@
 jQuery(document).ready(function($) {
 	reponsive_product_catalog();
+        setTimeout("modern_grid_font_size()",0)
 	$(window).resize( function() {
 		reponsive_product_catalog();
-	});	
+                setTimeout("modern_grid_font_size()",0)
+	});
+        if (typeof colorbox == 'object') {
+        $(".a-product-image").colorbox(product_object.lightbox_settings);
+        }
+        
+        jQuery("#product_order_selector").change(function() { 
+            jQuery("#product_order").submit(); 
+        });
 	
   $.ic = {
     /**
@@ -82,8 +91,6 @@ else {
 }
 }
 
-jQuery(window).resize(modern_grid_font_size);
-jQuery(document).ready(modern_grid_font_size);
 function modern_grid_font_size() {
     var fontSize = jQuery(".modern-grid-element").width() * 0.08; // 10% of container width
     if (fontSize < 16) {

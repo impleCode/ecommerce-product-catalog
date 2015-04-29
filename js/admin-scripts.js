@@ -4,6 +4,7 @@
  (c) 2014 Norbert Dreszer - http://implecode.com
  */
 
+
 jQuery( document ).ready( function () {
     var fixHelper = function ( e, ui ) {
         ui.children().each( function () {
@@ -128,6 +129,7 @@ jQuery( document ).ready( function () {
         clicked.parent( ".implecode-admin-media-image" ).addClass( 'empty' );
         clicked.hide();
     } );
+    jQuery( 'form#post' ).validate();
 } );
 
 jQuery( document ).ready( function ( $ ) {
@@ -218,3 +220,4 @@ function modern_grid_font_size() {
         jQuery( ".modern-grid-element .product-attributes table" ).css( 'font-size', fontSize );
     }
 }
+

@@ -1,4 +1,7 @@
 <?php
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * Manages licenses columns
  *
@@ -8,9 +11,6 @@
  * @package		digital-products-licenses/includes
  * @author 		Norbert Dreszer
  */
-if ( !defined( 'ABSPATH' ) )
-	exit; // Exit if accessed directly
-
 add_filter( 'manage_edit-al_product_columns', 'add_product_columns' );
 
 function add_product_columns( $product_columns ) {
@@ -70,32 +70,42 @@ function product_sortable_columns( $columns ) {
 	return $columns;
 }
 
-function product_cat_sort_column( $clauses, $wp_query ) {
-	global $wpdb;
-	if ( isset( $wp_query->query[ 'orderby' ] ) && $wp_query->query[ 'orderby' ] == 'taxonomy-al_product-cat' ) {
-		$clauses[ 'join' ] .= <<<SQL
-LEFT OUTER JOIN {$wpdb->term_relationships} ON {$wpdb->posts}.ID={$wpdb->term_relationships}.object_id
-LEFT OUTER JOIN {$wpdb->term_taxonomy} USING (term_taxonomy_id)
-LEFT OUTER JOIN {$wpdb->terms} USING (term_id)
-SQL;
-		$clauses[ 'where' ] .= "AND (taxonomy = 'al_product-cat' OR taxonomy IS NULL)";
-		$clauses[ 'groupby' ]	 = "object_id";
-		$clauses[ 'orderby' ]	 = "GROUP_CONCAT({$wpdb->terms}.name ORDER BY name ASC)";
-		if ( strtoupper( $wp_query->get( 'order' ) ) == 'ASC' ) {
-			$clauses[ 'orderby' ] .= 'ASC';
-		} else {
-			$clauses[ 'orderby' ] .= 'DESC';
-		}
-	}
-	return $clauses;
-}
+/*
+  function product_cat_sort_column( $clauses, $wp_query ) {
+  global $wpdb;
+  if ( isset( $wp_query->query[ 'orderby' ] ) && $wp_query->query[ 'orderby' ] == 'taxonomy-al_product-cat' ) {
+  $clauses[ 'join' ] .= <<<SQL
+  LEFT OUTER JOIN {$wpdb->term_relationships} ON {$wpdb->posts}.ID={$wpdb->term_relationships}.object_id
+  LEFT OUTER JOIN {$wpdb->term_taxonomy} USING (term_taxonomy_id)
+  LEFT OUTER JOIN {$wpdb->terms} USING (term_id)
+  SQL;
+  $clauses[ 'where' ] .= "AND (taxonomy = 'al_product-cat' OR taxonomy IS NULL)";
+  $clauses[ 'groupby' ]	 = "object_id";
+  $clauses[ 'orderby' ]	 = "GROUP_CONCAT({$wpdb->terms}.name ORDER BY name ASC)";
+  if ( strtoupper( $wp_query->get( 'order' ) ) == 'ASC' ) {
+  $clauses[ 'orderby' ] .= 'ASC';
+  } else {
+  $clauses[ 'orderby' ] .= 'DESC';
+  }
+  }
+  return $clauses;
+  }
+ */
 
 //add_filter('posts_clauses', 'product_cat_sort_column', 10, 2);
+add_filter( 'posts_orderby', 'orderby_product_cat', 10, 2 );
 
-function color_orderby( $orderby, $wp_query ) {
+/**
+ * Order by product categories when clicking on table header label
+ * @global object $wpdb
+ * @param string $orderby
+ * @param object $wp_query
+ * @return string
+ */
+function orderby_product_cat( $orderby, $wp_query ) {
 	global $wpdb;
 
-	if ( isset( $wp_query->query[ 'orderby' ] ) && 'taxonomy-al_product-cat' == $wp_query->query[ 'orderby' ] ) {
+	if ( is_admin() && isset( $wp_query->query[ 'orderby' ] ) && 'taxonomy-al_product-cat' == $wp_query->query[ 'orderby' ] ) {
 		$orderby = "(
 			SELECT GROUP_CONCAT(name ORDER BY name ASC)
 			FROM $wpdb->term_relationships
@@ -110,8 +120,6 @@ function color_orderby( $orderby, $wp_query ) {
 
 	return $orderby;
 }
-
-add_filter( 'posts_orderby', 'color_orderby', 10, 2 );
 
 add_action( 'pre_get_posts', 'column_orderby_price' );
 
@@ -183,6 +191,12 @@ class ic_walker_tax_slug_dropdown extends Walker_CategoryDropdown {
 
 add_action( 'quick_edit_custom_box', 'display_custom_quickedit_product', 10, 2 );
 
+/**
+ * Adds quick edit support for product fields
+ *
+ * @staticvar boolean $product_quick_edit_nonce
+ * @param str $column_name
+ */
 function display_custom_quickedit_product( $column_name ) {
 	static $product_quick_edit_nonce = TRUE;
 	if ( $product_quick_edit_nonce ) {
@@ -193,9 +207,9 @@ function display_custom_quickedit_product( $column_name ) {
 	<fieldset class="inline-edit-col-right inline-edit-product">
 		<div class="inline-edit-col column-<?php echo $column_name; ?>">
 			<label class="inline-edit-group">
-				<?php
-				if ( $column_name == 'price' ) {
-					?><span class="title"><?php _e( 'Price', 'al-ecommerce-product-catalog' ) ?></span><input type="number" min="0" step="0.01" name="_price" value="" class="widefat" /><?php
+	<?php
+	if ( $column_name == 'price' ) {
+		?><span class="title"><?php _e( 'Price', 'al-ecommerce-product-catalog' ) ?></span><input type="number" min="0" step="0.01" name="_price" value="" class="widefat" /><?php
 					echo product_currency();
 				} else {
 					do_action( 'product_quickedit', $column_name );
@@ -209,10 +223,12 @@ function display_custom_quickedit_product( $column_name ) {
 
 add_action( 'save_post', 'save_product_quick_edit' );
 
+/**
+ * Handles quick edit save for products
+ *
+ * @param int $product_id
+ */
 function save_product_quick_edit( $product_id ) {
-	/* in production code, $slug should be set only once in the plugin,
-	  preferably as a class property, rather than in each function that needs it.
-	 */
 	$slug = 'al_product';
 	if ( !isset( $_POST[ 'post_type' ] ) ) {
 		return;
@@ -228,7 +244,7 @@ function save_product_quick_edit( $product_id ) {
 		return;
 	}
 
-	if ( isset( $_REQUEST[ '_price' ] ) ) {
+	if ( isset( $_REQUEST[ '_price' ] ) && $_REQUEST[ '_price' ] != null ) {
 		update_post_meta( $product_id, '_price', $_REQUEST[ '_price' ] );
 	}
 	do_action( 'save_product_quick_edit', $product_id );

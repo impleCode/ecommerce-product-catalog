@@ -26,21 +26,37 @@ function create_product_categories() {
 	if ( get_integration_type() == 'simple' ) {
 		$category_enable = false;
 	}
-	$names				 = get_catalog_names();
-	$names[ 'singular' ]	 = ucfirst( $names[ 'singular' ] );
-	$labels				 = array(
-		'name'				 => sprintf( __( '%s Categories', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'singular_name'		 => sprintf( __( '%s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'search_items'		 => sprintf( __( 'Search %s Categories', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'all_items'			 => sprintf( __( 'All %s Categories', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'parent_item'		 => sprintf( __( 'Parent %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'parent_item_colon'	 => sprintf( __( 'Parent %s Category:', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'edit_item'			 => sprintf( __( 'Edit %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'update_item'		 => sprintf( __( 'Update %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'add_new_item'		 => sprintf( __( 'Add New %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'new_item_name'		 => sprintf( __( 'New %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-		'menu_name'			 => sprintf( __( '%s Categories', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
-	);
+	if ( is_plural_form_active() ) {
+		$names				 = get_catalog_names();
+		$names[ 'singular' ] = ucfirst( $names[ 'singular' ] );
+		$labels				 = array(
+			'name'				 => sprintf( __( '%s Categories', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'singular_name'		 => sprintf( __( '%s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'search_items'		 => sprintf( __( 'Search %s Categories', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'all_items'			 => sprintf( __( 'All %s Categories', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'parent_item'		 => sprintf( __( 'Parent %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'parent_item_colon'	 => sprintf( __( 'Parent %s Category:', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'edit_item'			 => sprintf( __( 'Edit %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'update_item'		 => sprintf( __( 'Update %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'add_new_item'		 => sprintf( __( 'Add New %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'new_item_name'		 => sprintf( __( 'New %s Category', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+			'menu_name'			 => sprintf( __( '%s Categories', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ),
+		);
+	} else {
+		$labels = array(
+			'name'				 => __( 'Categories', 'al-ecommerce-product-catalog' ),
+			'singular_name'		 => __( 'Category', 'al-ecommerce-product-catalog' ),
+			'search_items'		 => __( 'Search Categories', 'al-ecommerce-product-catalog' ),
+			'all_items'			 => __( 'All Categories', 'al-ecommerce-product-catalog' ),
+			'parent_item'		 => __( 'Parent Category', 'al-ecommerce-product-catalog' ),
+			'parent_item_colon'	 => __( 'Parent Category:', 'al-ecommerce-product-catalog' ),
+			'edit_item'			 => __( 'Edit Category', 'al-ecommerce-product-catalog' ),
+			'update_item'		 => __( 'Update Category', 'al-ecommerce-product-catalog' ),
+			'add_new_item'		 => __( 'Add New Category', 'al-ecommerce-product-catalog' ),
+			'new_item_name'		 => __( 'New Category', 'al-ecommerce-product-catalog' ),
+			'menu_name'			 => __( 'Categories', 'al-ecommerce-product-catalog' )
+		);
+	}
 
 	$args = array(
 		'public'			 => $category_enable,

@@ -68,13 +68,12 @@ function show_products_outside_loop( $atts ) {
 		'design_scheme'		 => '',
 		'sort'				 => 0,
 	), $atts );
-	$sort				 = intval( $args[ 'sort' ] );
 	$category			 = esc_attr( $args[ 'category' ] );
 	$product			 = esc_attr( $args[ 'product' ] );
 	$products_limit		 = intval( $args[ 'products_limit' ] );
 	$archive_template	 = esc_attr( $args[ 'archive_template' ] );
 	$design_scheme		 = esc_attr( $args[ 'design_scheme' ] );
-	$product_sort		 = $sort;
+	$product_sort		 = intval( $args[ 'sort' ] );
 	if ( $product != 0 ) {
 		$product_array	 = explode( ',', $product );
 		$query_param	 = array(
@@ -127,19 +126,32 @@ function single_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'single_scripts' );
+add_action( 'pre_get_posts', 'set_products_limit' );
 
+/**
+ * Sets product limit on product listing pages
+ * @param object $query
+ */
 function set_products_limit( $query ) {
 	$archive_multiple_settings = get_multiple_settings();
-	if ( !is_admin() && (is_post_type_archive( 'al_product' ) || is_tax( 'al_product-cat' )) ) {
+	if ( !is_admin() && (is_post_type_archive( 'al_product' ) || is_tax( 'al_product-cat' )) && $query->is_main_query() ) {
 		$query->set( 'posts_per_page', $archive_multiple_settings[ 'archive_products_limit' ] );
 	}
 }
 
-add_action( 'pre_get_posts', 'set_products_limit' );
+add_action( 'product_listing_end', 'product_archive_pagination' );
 
+/**
+ * Adds paginaion to the product listings
+ *
+ * @global object $wp_query
+ * @return string
+ */
 function product_archive_pagination() {
-	if ( is_singular() )
+	if ( is_singular() ) {
 		return;
+	}
+
 	global $wp_query;
 	if ( $wp_query->max_num_pages <= 1 )
 		return;
@@ -188,7 +200,7 @@ function get_catalog_template( $archive_template, $post, $i = null, $design_sche
 		'default'	 => get_default_archive_theme( $post, $archive_template ),
 		'list'		 => get_list_archive_theme( $post, $archive_template ),
 		'grid'		 => get_grid_archive_theme( $post, $archive_template ),
-	), $post, $i, $design_scheme );
+	), $post, $i, $design_scheme, $archive_template );
 	$themes_array[ $archive_template ]	 = isset( $themes_array[ $archive_template ] ) ? $themes_array[ $archive_template ] : $themes_array[ 'default' ];
 	$themes_array[ $archive_template ]	 = empty( $themes_array[ $archive_template ] ) ? get_default_archive_theme( $post, 'default' ) : $themes_array[ $archive_template ];
 	return $themes_array[ $archive_template ];
@@ -199,7 +211,7 @@ function get_product_category_template( $archive_template, $product_cat, $i = nu
 		'default'	 => get_default_category_theme( $product_cat, $archive_template ),
 		'list'		 => get_list_category_theme( $product_cat, $archive_template ),
 		'grid'		 => get_grid_category_theme( $product_cat, $archive_template ),
-	), $product_cat, $i, $design_scheme );
+	), $product_cat, $i, $design_scheme, $archive_template );
 	$themes_array[ $archive_template ]	 = isset( $themes_array[ $archive_template ] ) ? $themes_array[ $archive_template ] : $themes_array[ 'default' ];
 	return $themes_array[ $archive_template ];
 }
@@ -259,15 +271,23 @@ function reset_row_class() {
 	$row = 1;
 }
 
-function product_class( $classes ) {
-	if ( ($key = array_search( 'has-post-thumbnail', $classes )) !== false ) {
+add_filter( 'post_class', 'product_post_class' );
+
+/**
+ * Deletes default WordPress has-post-thumbnail class
+ *
+ * @param array $classes
+ * @return array
+ */
+function product_post_class( $classes ) {
+	if ( is_ic_catalog_page() && ($key = array_search( 'has-post-thumbnail', $classes )) !== false ) {
 		unset( $classes[ $key ] );
 	}
 	return $classes;
 }
 
-add_filter( 'post_class', 'product_class' );
 add_action( 'before_product_list', 'product_listing_additional_styles' );
+add_action( 'before_category_list', 'product_listing_additional_styles' );
 
 /**
  * Ads product listing inline styles container
@@ -275,6 +295,20 @@ add_action( 'before_product_list', 'product_listing_additional_styles' );
 function product_listing_additional_styles() {
 	$styles	 = '<style>';
 	$styles	 = apply_filters( 'product_listing_additional_styles', $styles );
+	$styles .= '</style>';
+	if ( $styles != '<style></style>' && !is_admin() ) {
+		echo $styles;
+	}
+}
+
+add_action( 'before_product_entry', 'product_page_additional_styles' );
+
+/**
+ * Ads product page inline styles container
+ */
+function product_page_additional_styles() {
+	$styles	 = '<style>';
+	$styles	 = apply_filters( 'product_page_additional_styles', $styles );
 	$styles .= '</style>';
 	if ( $styles != '<style></style>' && !is_admin() ) {
 		echo $styles;
@@ -368,8 +402,20 @@ function product_listing_current_nav_class( $classes, $item ) {
 
 add_action( 'nav_menu_css_class', 'product_listing_current_nav_class', 10, 2 );
 
+/**
+ * Defines custom classes to product or category listing div
+ * @return string
+ */
 function product_list_class() {
 	return apply_filters( 'product-list-class', '' );
+}
+
+/**
+ * Defines custom classes to product or category element div
+ * @return string
+ */
+function product_class( $product_id ) {
+	return apply_filters( 'product-class', '', $product_id );
 }
 
 add_action( 'before_product_listing_category_list', 'product_list_categories_header' );
@@ -381,7 +427,7 @@ add_action( 'before_product_listing_category_list', 'product_list_categories_hea
 function product_list_categories_header() {
 	$archive_names = get_archive_names();
 	if ( !empty( $archive_names[ 'all_main_categories' ] ) && !isset( $shortcode_query ) ) {
-		echo '<h2>' . $archive_names[ 'all_main_categories' ] . '</h2>';
+		echo '<h2>' . do_shortcode( $archive_names[ 'all_main_categories' ] ) . '</h2>';
 	}
 }
 
@@ -393,8 +439,8 @@ add_action( 'before_category_subcategories', 'category_list_subcategories_header
  */
 function category_list_subcategories_header() {
 	$archive_names = get_archive_names();
-	if ( !empty( $archive_names[ 'all_subcategories' ] ) && !isset( $shortcode_query ) ) {
-		echo '<h2>' . $archive_names[ 'all_subcategories' ] . '</h2>';
+	if ( !empty( $archive_names[ 'all_subcategories' ] ) && !is_ic_shortcode_query() ) {
+		echo '<h2>' . do_shortcode( $archive_names[ 'all_subcategories' ] ) . '</h2>';
 	}
 }
 
@@ -405,9 +451,22 @@ add_action( 'before_product_list', 'product_list_header', 9 );
  *
  */
 function product_list_header() {
-	global $shortcode_query;
 	$archive_names = get_archive_names();
-	if ( !empty( $archive_names[ 'all_products' ] ) && !isset( $shortcode_query ) ) {
-		echo '<h2>' . $archive_names[ 'all_products' ] . '</h2>';
+	if ( !empty( $archive_names[ 'all_products' ] ) && !is_ic_shortcode_query() ) {
+		if ( !is_tax() ) {
+			echo '<h2>' . do_shortcode( $archive_names[ 'all_products' ] ) . '</h2>';
+		} else if ( is_tax() && has_category_children() ) {
+			$the_tax = get_term_by( 'slug', get_query_var( 'term' ), get_query_var( 'taxonomy' ) );
+			echo '<h2>' . do_shortcode( $archive_names[ 'category_products' ] ) . '</h2>';
+		}
 	}
+}
+
+/**
+ * Defines example image URL
+ *
+ * @return string
+ */
+function design_settings_examples_image() {
+	return AL_PLUGIN_BASE_PATH . 'templates/themes/img/example-product.jpg';
 }

@@ -1,3 +1,9 @@
+/*!
+ impleCode Product Scripts v1.0.0 - 2014-02-11
+ Manages product related scripts
+ (c) 2014 Norbert Dreszer - http://implecode.com
+ */
+
 jQuery(document).ready(function($) {
 	reponsive_product_catalog();
         setTimeout("modern_grid_font_size()",0)

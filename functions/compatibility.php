@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 /**
  * Defines compatibility functions with previous versions
  *
@@ -8,9 +12,6 @@
  * Time: 12:49
  * Package: compatibility.php
  */
-if ( !defined( 'ABSPATH' ) )
-	exit; // Exit if accessed directly
-
 function ic_start_compatibility() {
 	$first_version = (string) get_option( 'first_activation_version' );
 	if ( version_compare( $first_version, '2.2.0' ) < 0 ) {

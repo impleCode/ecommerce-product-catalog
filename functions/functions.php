@@ -48,18 +48,21 @@ function default_product_thumbnail_url() {
 	return $url;
 }
 
+add_action( 'wp', 'redirect_listing_on_non_permalink' );
+
 /**
- * Returns product listing URL
+ * Redirects the product listing page to archive page on non permalink configuration
  *
- * @return string
  */
-function product_listing_url() {
-	if ( get_option( 'permalink_structure' ) ) {
-		$listing_url = site_url() . '/' . get_option( 'product_listing_url', __( 'products', 'al-ecommerce-product-catalog' ) ) . '/';
-	} else {
-		$listing_url = get_post_type_archive_link( 'al_product' );
+function redirect_listing_on_non_permalink() {
+	if ( !is_ic_permalink_product_catalog() ) {
+		$product_listing_id = get_product_listing_id();
+		if ( is_ic_product_listing_enabled() && is_page( $product_listing_id ) ) {
+			$url = product_listing_url();
+			wp_redirect( $url, 301 );
+			exit;
+		}
 	}
-	return $listing_url;
 }
 
 function upload_product_image( $name, $button_value, $option_name, $option_value = null, $default_image = null ) {
@@ -77,8 +80,8 @@ function upload_product_image( $name, $button_value, $option_name, $option_value
 	}
 	?>
 	<div class="custom-uploader">
-		<input hidden="hidden" type="text" id="default" value="<?php echo $default_image; ?>"/>
-		<input hidden="hidden" type="text" name="<?php echo $option_name; ?>" id="<?php echo $name; ?>"
+		<input type="hidden" id="default" value="<?php echo $default_image; ?>"/>
+		<input type="hidden" name="<?php echo $option_name; ?>" id="<?php echo $name; ?>"
 			   value="<?php echo $option_value; ?>"/>
 
 		<div class="admin-media-image"><img class="media-image" src="<?php echo $src; ?>" width="100%" height="100%"/>
@@ -89,24 +92,24 @@ function upload_product_image( $name, $button_value, $option_name, $option_value
 		   href="#"><?php _e( 'Reset image', 'al-ecommerce-product-catalog' ); ?></a>
 	</div>
 	<script>
-	    jQuery( document ).ready( function () {
-	        jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
-	            wp.media.editor.send.attachment = function ( props, attachment ) {
-	                jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
-	                jQuery( '.media-image' ).attr( "src", attachment.url );
-	            }
+		jQuery( document ).ready( function () {
+			jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
+				wp.media.editor.send.attachment = function ( props, attachment ) {
+					jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
+					jQuery( '.media-image' ).attr( "src", attachment.url );
+				}
 
-	            wp.media.editor.open( this );
+				wp.media.editor.open( this );
 
-	            return false;
-	        } );
-	    } );
+				return false;
+			} );
+		} );
 
-	    jQuery( '#reset-image-button' ).on( 'click', function () {
-	        jQuery( '#<?php echo $name; ?>' ).val( '' );
-	        src = jQuery( '#default' ).val();
-	        jQuery( '.media-image' ).attr( "src", src );
-	    } );
+		jQuery( '#reset-image-button' ).on( 'click', function () {
+			jQuery( '#<?php echo $name; ?>' ).val( '' );
+			src = jQuery( '#default' ).val();
+			jQuery( '.media-image' ).attr( "src", src );
+		} );
 	</script>
 	<?php
 }
@@ -186,7 +189,14 @@ function design_schemes( $which = null, $echo = 1 ) {
 }
 
 /* Single Product Functions */
+add_action( 'before_product_entry', 'single_product_header', 10, 2 );
 
+/**
+ * Displays header on product pages
+ *
+ * @param object $post
+ * @param array $single_names
+ */
 function single_product_header( $post, $single_names ) {
 	if ( get_integration_type() != 'simple' ) {
 		?>
@@ -196,14 +206,23 @@ function single_product_header( $post, $single_names ) {
 	}
 }
 
-add_action( 'before_product_entry', 'single_product_header', 10, 2 );
+add_action( 'single_product_header', 'add_product_name' );
 
+/**
+ * Shows product name on product page
+ */
 function add_product_name() {
 	echo '<h1 class="entry-title product-name">' . get_the_title() . '</h1>';
 }
 
-add_action( 'single_product_header', 'add_product_name' );
+add_action( 'before_product_listing_entry', 'product_listing_header', 10, 2 );
 
+/**
+ * Shows product listing header
+ *
+ * @param object $post
+ * @param array $archive_names
+ */
 function product_listing_header( $post, $archive_names ) {
 	if ( get_integration_type() != 'simple' ) {
 		?>
@@ -213,13 +232,14 @@ function product_listing_header( $post, $archive_names ) {
 	}
 }
 
-add_action( 'before_product_listing_entry', 'product_listing_header', 10, 2 );
+add_action( 'product_listing_header', 'add_product_listing_name' );
 
+/**
+ * Shows product listing title tag
+ */
 function add_product_listing_name() {
 	echo '<h1 class="entry-title product-listing-name">' . get_the_title() . '</h1>';
 }
-
-add_action( 'product_listing_header', 'add_product_listing_name' );
 
 function example_price() {
 	echo '2500.00 EUR';
@@ -576,12 +596,16 @@ function get_product_url( $product_id = null ) {
 	return get_permalink( $product_id );
 }
 
+add_action( 'single_product_begin', 'add_product_breadcrumbs' );
+add_action( 'product_listing_begin', 'add_product_breadcrumbs' );
+
+/**
+ * Shows product breadcrumbs
+ *
+ */
 function add_product_breadcrumbs() {
 	echo product_breadcrumbs();
 }
-
-add_action( 'single_product_begin', 'add_product_breadcrumbs' );
-add_action( 'product_listing_begin', 'add_product_breadcrumbs' );
 
 function al_product_register_widgets() {
 	register_widget( 'product_cat_widget' );
@@ -609,7 +633,7 @@ if ( !function_exists( 'check_permalink_options_update' ) ) {
 	function check_permalink_options_update() {
 		$options_update = get_option( 'al_permalink_options_update', 'none' );
 		if ( $options_update != 'none' ) {
-			flush_rewrite_rules( false );
+			flush_rewrite_rules();
 			update_option( 'al_permalink_options_update', 'none' );
 		}
 	}
@@ -627,17 +651,16 @@ function is_lightbox_enabled() {
 	return apply_filters( 'is_lightbox_enabled', $return );
 }
 
-function show_product_gallery( $post, $single_options ) {
-	$single_options[ 'enable_product_gallery' ]					 = isset( $single_options[ 'enable_product_gallery' ] ) ? $single_options[ 'enable_product_gallery' ] : '';
-	$single_options[ 'enable_product_gallery_only_when_exist' ]	 = isset( $single_options[ 'enable_product_gallery_only_when_exist' ] ) ? $single_options[ 'enable_product_gallery_only_when_exist' ] : '';
-	/* if (is_lightbox_enabled() && $single_options['enable_product_gallery'] == 1) {
-	  $colorbox_set = apply_filters('colorbox_set', '{transition: "elastic", initialWidth: 200, maxWidth: "90%", maxHeight: "90%", rel:"gal"}'); ?>
-	  <script>
-	  jQuery(document).ready(function () {
-	  jQuery(".a-product-image").colorbox(<?php echo $colorbox_set ?>);
-	  });
-	  </script> <?php
-	  } */
+add_action( 'before_product_details', 'show_product_gallery', 10, 2 );
+
+/**
+ * Shows product gallery on product page
+ *
+ * @param int $product_id
+ * @param array $single_options
+ * @return string
+ */
+function show_product_gallery( $product_id, $single_options ) {
 	if ( $single_options[ 'enable_product_gallery' ] == 1 ) {
 		do_action( 'before_product_image' );
 		?>
@@ -646,7 +669,7 @@ function show_product_gallery( $post, $single_options ) {
 			$image_size = apply_filters( 'product_image_size', 'medium' );
 			if ( has_post_thumbnail() ) {
 				if ( is_lightbox_enabled() ) {
-					$img_url = wp_get_attachment_image_src( get_post_thumbnail_id( $post->ID ), 'large' );
+					$img_url = wp_get_attachment_image_src( get_post_thumbnail_id( $product_id ), 'large' );
 					?>
 					<a class="a-product-image"
 					   href="<?php echo $img_url[ 0 ]; ?>"><?php the_post_thumbnail( $image_size ); ?></a> <?php
@@ -656,10 +679,10 @@ function show_product_gallery( $post, $single_options ) {
 			   } else if ( $single_options[ 'enable_product_gallery_only_when_exist' ] != 1 ) {
 				   echo default_product_thumbnail();
 			   }
-			   do_action( 'below_product_image', $post->ID );
+			   do_action( 'below_product_image', $product_id );
 			   ?>
 		</div> <?php
-		do_action( 'after_product_image', $post->ID );
+		do_action( 'after_product_image', $product_id );
 	} else {
 		return;
 	}
@@ -707,9 +730,9 @@ function exclude_products_search( $search, &$wp_query ) {
 }
 
 function modify_product_search( $query ) {
-	if ( $query->is_search == 1 && isset( $query->query_vars[ 'post_type' ] ) && $query->query_vars[ 'post_type' ] != 'al_product' ) {
+	if ( !is_admin() && $query->is_search == 1 && isset( $query->query_vars[ 'post_type' ] ) && $query->query_vars[ 'post_type' ] != 'al_product' ) {
 		add_filter( 'posts_search', 'exclude_products_search', 10, 2 );
-	} else if ( $query->is_search == 1 && !isset( $query->query_vars[ 'post_type' ] ) ) {
+	} else if ( !is_admin() && $query->is_search == 1 && !isset( $query->query_vars[ 'post_type' ] ) ) {
 		add_filter( 'posts_search', 'exclude_products_search', 10, 2 );
 	}
 }
@@ -764,10 +787,11 @@ function implecode_al_box( $text, $type = 'info' ) {
 
 function get_product_image_id( $attachment_url = '' ) {
 	global $wpdb;
-	$attachment_id		 = false;
-	if ( '' == $attachment_url )
+	$attachment_id = false;
+	if ( '' == $attachment_url ) {
 		return;
-	$upload_dir_paths	 = wp_upload_dir();
+	}
+	$upload_dir_paths = wp_upload_dir();
 	if ( false !== strpos( $attachment_url, $upload_dir_paths[ 'baseurl' ] ) ) {
 		$attachment_url	 = preg_replace( '/-\d+x\d+(?=\.(jpg|jpeg|png|gif)$)/i', '', $attachment_url );
 		$attachment_url	 = str_replace( $upload_dir_paths[ 'baseurl' ] . '/', '', $attachment_url );
@@ -776,6 +800,10 @@ function get_product_image_id( $attachment_url = '' ) {
 	return $attachment_id;
 }
 
+/**
+ * Returns all products object
+ * @return object
+ */
 function get_all_catalog_products() {
 	$args		 = array(
 		'post_type'		 => product_post_type_array(),
@@ -810,9 +838,15 @@ function thumbnail_support_products() {
 }
 
 add_action( 'after_setup_theme', 'thumbnail_support_products', 99 );
+add_action( 'pre_get_posts', 'set_product_order' );
 
+/**
+ * Sets default product order
+ *
+ * @param object $query
+ */
 function set_product_order( $query ) {
-	if ( !isset( $_GET[ 'order' ] ) && $query->is_main_query() && (is_post_type_archive( 'al_product' ) || is_tax( 'al_product-cat' )) ) {
+	if ( !is_admin() && !isset( $_GET[ 'order' ] ) && $query->is_main_query() && (is_post_type_archive( 'al_product' ) || is_tax( 'al_product-cat' )) ) {
 		$archive_multiple_settings = get_multiple_settings();
 		if ( !isset( $_GET[ 'product_order' ] ) ) {
 			if ( $archive_multiple_settings[ 'product_order' ] == 'product-name' ) {
@@ -828,8 +862,6 @@ function set_product_order( $query ) {
 		}
 	}
 }
-
-add_action( 'pre_get_posts', 'set_product_order' );
 
 function set_shortcode_product_order( $shortcode_query ) {
 	$archive_multiple_settings = get_multiple_settings();
@@ -849,11 +881,19 @@ function set_shortcode_product_order( $shortcode_query ) {
 }
 
 add_filter( 'shortcode_query', 'set_shortcode_product_order' );
+add_action( 'before_product_list', 'show_product_order_dropdown', 10, 2 );
 
+/**
+ * Shows sorting drop down
+ *
+ * @global string $product_sort
+ * @param string $archive_template
+ * @param array $multiple_settings
+ */
 function show_product_order_dropdown( $archive_template, $multiple_settings = null ) {
 	$multiple_settings = empty( $multiple_settings ) ? get_multiple_settings() : $multiple_settings;
 	global $product_sort;
-	if ( (isset( $product_sort ) && $product_sort == 1) || !isset( $product_sort ) ) {
+	if ( (isset( $product_sort ) && $product_sort == 1) || (!is_ic_shortcode_query()) ) {
 		$sort_options	 = get_product_sort_options();
 		$selected		 = isset( $_GET[ 'product_order' ] ) ? $_GET[ 'product_order' ] : $multiple_settings[ 'product_order' ];
 		echo '<form id="product_order"><select id="product_order_selector" name="product_order">';
@@ -870,8 +910,6 @@ function show_product_order_dropdown( $archive_template, $multiple_settings = nu
 		echo '</form>';
 	}
 }
-
-add_action( 'before_product_list', 'show_product_order_dropdown', 10, 2 );
 
 function translate_product_order() {
 	$orderby = ($_GET[ 'product_order' ] == 'product-name') ? 'title' : $_GET[ 'product_order' ];

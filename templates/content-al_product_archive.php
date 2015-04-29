@@ -13,16 +13,16 @@ global $post;
 $default_archive_names	 = default_archive_names();
 $multiple_settings		 = get_multiple_settings();
 $archive_names			 = get_archive_names();
-do_action( 'product_listing_begin' );
+do_action( 'product_listing_begin', $multiple_settings );
 ?>
 <article id="product_listing" <?php post_class( 'al_product responsive' ); ?>>
 	<?php do_action( 'before_product_listing_entry', $post, $archive_names ); ?>
 	<div class="entry-content">
 		<?php
-		$before_archive			 = content_product_adder_archive_before();
 		$archive_template		 = get_product_listing_template();
 		$taxonomy_name			 = apply_filters( 'current_product_catalog_taxonomy', 'al_product-cat' );
 		if ( !is_tax() && !is_search() ) {
+			$before_archive = content_product_adder_archive_before();
 			if ( $before_archive != '<div class="entry-summary"></div>' ) {
 				echo $before_archive;
 			}
@@ -34,7 +34,7 @@ do_action( 'product_listing_begin' );
 						echo '<div class="product-subcategories">' . $product_subcategories . '</div>';
 					}
 				} else {
-					$show_categories = do_shortcode( '[show_categories parent="0"]' );
+					$show_categories = do_shortcode( '[show_categories parent="0" shortcode_query="no"]' );
 					if ( !empty( $show_categories ) ) {
 						echo '<div class="product-subcategories ' . $archive_template . '">' . $show_categories;
 						if ( $archive_template != 'list' ) {
@@ -44,8 +44,7 @@ do_action( 'product_listing_begin' );
 					}
 				}
 			}
-		}
-		if ( is_tax() ) {
+		} else if ( is_tax() ) {
 			$term				 = get_queried_object()->term_id;
 			$term_img			 = get_product_category_image_id( $term );
 			echo wp_get_attachment_image( $term_img, apply_filters( 'product_cat_image_size', 'large' ) );
@@ -67,7 +66,7 @@ do_action( 'product_listing_begin' );
 						<?php
 					}
 				} else {
-					$show_categories = do_shortcode( '[show_categories parent=' . get_queried_object_id() . ']' );
+					$show_categories = do_shortcode( '[show_categories parent=' . get_queried_object_id() . ' shortcode_query=no]' );
 					if ( !empty( $show_categories ) ) {
 						do_action( 'before_category_subcategories' );
 						echo $show_categories;
@@ -79,7 +78,7 @@ do_action( 'product_listing_begin' );
 			}
 		}
 		do_action( 'before_product_list', $archive_template, $multiple_settings );
-		$product_list = '<div class="product-list responsive ' . product_list_class() . '">';
+		$product_list = '<div class="product-list responsive ' . $archive_template . ' ' . product_list_class() . '">';
 		if ( is_home_archive() ) {
 			$args	 = array( 'post_type' => 'al_product' );
 			query_posts( $args );
@@ -97,5 +96,5 @@ do_action( 'product_listing_begin' );
 		?><span class="clear"></span>
 	</div>
 
-</article>
-<?php product_archive_pagination(); ?>
+</article><?php
+do_action( 'product_listing_end', $archive_template, $multiple_settings );

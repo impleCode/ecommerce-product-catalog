@@ -128,7 +128,7 @@ function get_default_archive_theme( $post, $archive_template = null ) {
 			$url = default_product_thumbnail_url();
 		}
 		$product_name		 = get_the_title();
-		$return				 = '<div class="al_archive modern-grid-element ' . product_listing_size_class( $thumbnail_product ) . '">';
+		$return				 = '<div class="al_archive modern-grid-element ' . product_listing_size_class( $thumbnail_product ) . ' ' . product_class( $post->ID ) . '">';
 		$return .= '<div class="pseudo"></div>';
 		$return .= '<a href="' . get_permalink() . '"><img' . $img_class . ' src="' . $url . '" alt="' . $product_name . '">';
 		$return .= '<h3 class="product-name ' . design_schemes( 'box', 0 ) . '">' . $product_name . '</h3>';

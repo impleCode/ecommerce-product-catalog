@@ -1,5 +1,9 @@
 <?php
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 /**
  * Manages product conditional functions
  *
@@ -9,9 +13,6 @@
  * @package		ecommerce-product-catalog/functions
  * @author 		Norbert Dreszer
  */
-if ( !defined( 'ABSPATH' ) )
-	exit; // Exit if accessed directly
-
 function is_ic_catalog_page() {
 	if ( is_ic_product_page() || is_ic_product_listing() || is_ic_taxonomy_page() ) {
 		return true;
@@ -26,6 +27,11 @@ function is_ic_taxonomy_page() {
 	return false;
 }
 
+/**
+ * Checks if current page is main product listing
+ *
+ * @return boolean
+ */
 function is_ic_product_listing() {
 	if ( is_post_type_archive( product_post_type_array() ) ) {
 		return true;
@@ -71,6 +77,14 @@ function is_ic_sku_enabled() {
 	return false;
 }
 
+function is_ic_product_listing_enabled() {
+	if ( get_option( 'enable_product_listing', 1 ) == 1 ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
 function ic_string_contains( $string, $contains ) {
 	if ( strpos( $string, $contains ) !== false ) {
 		return true;
@@ -88,7 +102,7 @@ function is_ic_new_product_screen() {
 
 /**
  * Checks if product gallery should be enabled
- * 
+ *
  * @return boolean
  */
 function is_ic_product_gallery_enabled() {
@@ -98,4 +112,112 @@ function is_ic_product_gallery_enabled() {
 		return true;
 	}
 	return false;
+}
+
+/**
+ * Checks if current product category has children
+ * @param object $category
+ * @return boolean
+ */
+function has_category_children( $category = null ) {
+	if ( !isset( $category ) ) {
+		$taxonomy	 = get_query_var( 'taxonomy' );
+		$category	 = get_term_by( 'slug', get_query_var( 'term' ), $taxonomy );
+	} else {
+		$taxonomy = $category->taxonomy;
+	}
+	$children = get_term_children( $category->term_id, $taxonomy );
+	if ( sizeof( $children ) > 0 ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Checks if product has short description
+ *
+ * @param int $product_id
+ * @return boolean
+ */
+function has_product_short_description( $product_id ) {
+	$desc = get_product_short_description( $product_id );
+	if ( !empty( $desc ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Checks if product has long description
+ *
+ * @param int $product_id
+ * @return boolean
+ */
+function has_product_description( $product_id ) {
+	$desc = get_product_description( $product_id );
+	if ( !empty( $desc ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Ckecks if product has image attached
+ *
+ * @param int $product_id
+ * @return boolean
+ */
+function has_product_image( $product_id ) {
+	if ( has_post_thumbnail( $product_id ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Checks if current view is triggered by shortcode
+ *
+ * @global type $cat_shortcode_query
+ * @global type $shortcode_query
+ * @return boolean
+ */
+function is_ic_shortcode_query() {
+	global $cat_shortcode_query, $shortcode_query;
+	if ( (isset( $cat_shortcode_query ) && $cat_shortcode_query[ 'enable' ] == 'yes') || isset( $shortcode_query ) ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Checks if a plural catalog name should be used
+ *
+ * @return boolean
+ */
+function is_plural_form_active() {
+	$lang = get_locale();
+	if ( $lang != 'de_DE' && $lang != 'pl_PL' ) {
+		echo 'ddddd';
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Checks if permalinks are enabled
+ * 
+ * @return boolean
+ */
+function is_ic_permalink_product_catalog() {
+	if ( get_option( 'permalink_structure' ) ) {
+		return true;
+	} else {
+		return false;
+	}
 }

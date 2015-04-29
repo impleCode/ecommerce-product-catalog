@@ -70,7 +70,7 @@ function get_grid_archive_theme( $post, $archive_template = null ) {
 		$classic_grid_settings	 = get_classic_grid_settings();
 		$row_class				 = get_row_class( $classic_grid_settings );
 		$product_name			 = get_product_name();
-		$return					 = '<div class="archive-listing classic-grid ' . $row_class . '">';
+		$return					 = '<div class="archive-listing classic-grid ' . $row_class . ' ' . product_class( $post->ID ) . '">';
 		$return .= '<a href="' . get_permalink() . '">';
 		//$return .= '<div style="background-image:url(\'' . $url . '\');" class="classic-grid-element"></div>';
 		$return .= '<div class="classic-grid-image-wrapper"><div class="pseudo"></div><div class="image"><img src="' . $url . '" class="classic-grid-image" alt="' . $product_name . '" ></div></div>';

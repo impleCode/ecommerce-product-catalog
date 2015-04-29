@@ -160,7 +160,7 @@ function isScrolledIntoView(elem)
 			$box_content .= '<p>' . __( 'eCommerce Product Catalog is currently running in Simple Mode.', 'al-ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p>' . __( 'In Simple Mode the product listing, product search and category pages are disabled (please read this Sample Product Page to fully understand the difference).', 'al-ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p>' . __( 'Please use the button below to check out how the product page looks in Automatic Advanced Mode.', 'al-ecommerce-product-catalog' ) . '</p>';
-			$box_content .= '<p class="wp-core-ui"><a href="' . add_query_arg( 'test_advanced', '1' ) . '" class="button-primary">' . __( 'Start Advanced Mode Test', 'al-ecommerce-product-catalog' ) . '</a><a href="' . add_query_arg( 'test_advanced', 'simple' ) . '" class="button-secondary">' . __( 'Use Simple Mode', 'al-ecommerce-product-catalog' ) . '</a></p>';
+			$box_content .= '<p class="wp-core-ui"><a href="' . esc_url( add_query_arg( 'test_advanced', '1' ) ) . '" class="button-primary">' . __( 'Start Advanced Mode Test', 'al-ecommerce-product-catalog' ) . '</a><a href="' . esc_url( add_query_arg( 'test_advanced', 'simple' ) ) . '" class="button-secondary">' . __( 'Use Simple Mode', 'al-ecommerce-product-catalog' ) . '</a></p>';
 			if ( $current_mode == 'simple' ) {
 				return '<div class="' . $class . '">' . implecode_info( $box_content, 0 ) . '</div>';
 			}
@@ -168,7 +168,7 @@ function isScrolledIntoView(elem)
 			$box_content .= '<p>' . __( 'Advanced Mode is temporary enabled for this page now.', 'al-ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p>' . __( 'Please use the buttons below to let the script know if the Automatic Advanced Integration is done right.', 'al-ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p>' . __( 'Is everything looking fine, without design break and correct sidebar position?', 'al-ecommerce-product-catalog' ) . '</p>';
-			$box_content .= '<p class="wp-core-ui"><a href="' . add_query_arg( 'test_advanced', 'ok' ) . '" class="button-primary">' . __( 'It\'s Fine', 'al-ecommerce-product-catalog' ) . '</a><a href="' . add_query_arg( 'test_advanced', 'bad' ) . '" class="button-secondary">' . __( 'It\'s Broken', 'al-ecommerce-product-catalog' ) . '</a></p>';
+			$box_content .= '<p class="wp-core-ui"><a href="' . esc_url( add_query_arg( 'test_advanced', 'ok' ) ) . '" class="button-primary">' . __( 'It\'s Fine', 'al-ecommerce-product-catalog' ) . '</a><a href="' . esc_url( add_query_arg( 'test_advanced', 'bad' ) ) . '" class="button-secondary">' . __( 'It\'s Broken', 'al-ecommerce-product-catalog' ) . '</a></p>';
 			return '<div class="' . $class . '">' . implecode_info( $box_content, 0 ) . '</div>';
 		} else if ( isset( $_GET[ 'test_advanced' ] ) && $_GET[ 'test_advanced' ] == 'bad' ) {
 			$box_content .= '<p>' . __( 'It seems that Manual Theme Integration is needed in order to use Advanced Mode with your current theme.', 'al-ecommerce-product-catalog' ) . '</p>';
@@ -179,7 +179,7 @@ function isScrolledIntoView(elem)
 			$box_content .= '<li>' . __( 'Switch the theme.', 'al-ecommerce-product-catalog' ) . '</li>';
 			$box_content .= '</ol>';
 			$box_content .= '<p>' . __( 'Please make your choice below or switch the theme.', 'al-ecommerce-product-catalog' ) . '</p>';
-			$box_content .= '<p class="wp-core-ui"><a target="_blank" href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=integration-advanced-fail" class="button-primary">' . __( 'Free Theme Integration Guide', 'al-ecommerce-product-catalog' ) . '</a><a href="' . add_query_arg( 'test_advanced', 'simple' ) . '" class="button-secondary">' . __( 'Use Simple Mode', 'al-ecommerce-product-catalog' ) . '</a></p>';
+			$box_content .= '<p class="wp-core-ui"><a target="_blank" href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=integration-advanced-fail" class="button-primary">' . __( 'Free Theme Integration Guide', 'al-ecommerce-product-catalog' ) . '</a><a href="' . esc_url( add_query_arg( 'test_advanced', 'simple' ) ) . '" class="button-secondary">' . __( 'Use Simple Mode', 'al-ecommerce-product-catalog' ) . '</a></p>';
 			enable_simple_mode();
 			return '<div class="' . $class . '">' . implecode_warning( $box_content, 0 ) . '</div>';
 		} else if ( isset( $_GET[ 'test_advanced' ] ) && $_GET[ 'test_advanced' ] == 'ok' ) {
@@ -193,7 +193,7 @@ function isScrolledIntoView(elem)
 			$box_content .= '<p>' . __( 'You are using simple mode now.', 'al-ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p>' . __( 'You can switch between modes at any time in Product Settings.', 'al-ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p>' . __( 'Use the buttons below to try the advanced integration again or go to admin and start adding your products.', 'al-ecommerce-product-catalog' ) . '</p>';
-			$box_content .= '<p class="wp-core-ui"><a href="' . admin_url( 'edit.php?post_type=al_product' ) . '" class="button-primary">' . __( 'Go to Admin', 'al-ecommerce-product-catalog' ) . '</a><a href="' . add_query_arg( 'test_advanced', '1' ) . '" class="button-secondary">' . __( 'Restart Advanced Mode Test', 'al-ecommerce-product-catalog' ) . '</a></p>';
+			$box_content .= '<p class="wp-core-ui"><a href="' . admin_url( 'edit.php?post_type=al_product' ) . '" class="button-primary">' . __( 'Go to Admin', 'al-ecommerce-product-catalog' ) . '</a><a href="' . esc_url( add_query_arg( 'test_advanced', '1' ) ) . '" class="button-secondary">' . __( 'Restart Advanced Mode Test', 'al-ecommerce-product-catalog' ) . '</a></p>';
 			enable_simple_mode();
 			return '<div class="' . $class . '">' . implecode_success( $box_content, 0 ) . '</div>';
 		}

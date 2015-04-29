@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * Manages externa compatibility functions folder
  *
@@ -7,7 +11,4 @@
  * @package		digital-products-order/functions
  * @author 		Norbert Dreszer
  */
-
-if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
-require_once(AL_BASE_PATH. '/ext-comp/wpseo.php');
+require_once(AL_BASE_PATH . '/ext-comp/wpseo.php');

@@ -1,4 +1,8 @@
 <?php
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 /**
  * Manages general settings
  *
@@ -8,42 +12,80 @@
  * @package        ecommerce-product-catalog/functions
  * @author        Norbert Dreszer
  */
-if ( !defined( 'ABSPATH' ) )
-	exit; // Exit if accessed directly
-
 function general_menu() {
 	?>
-	<a id="general-settings" class="nav-tab"
-	   href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings' ) ?>"><?php _e( 'Product settings', 'al-ecommerce-product-catalog' ); ?></a>
-	   <?php
-   }
+	<a id="general-settings" class="nav-tab" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings' ) ?>"><?php _e( 'General Settings', 'al-ecommerce-product-catalog' ); ?></a><?php
+}
 
-   add_action( 'settings-menu', 'general_menu' );
+add_action( 'settings-menu', 'general_menu' );
 
-   function general_settings() {
-	   register_setting( 'product_settings', 'product_listing_url' );
-	   register_setting( 'product_settings', 'product_currency' );
-	   register_setting( 'product_settings', 'product_currency_settings' );
-	   register_setting( 'product_settings', 'product_archive' );
-	   register_setting( 'product_settings', 'enable_product_listing' );
-	   register_setting( 'product_settings', 'archive_multiple_settings' );
-   }
+function general_settings() {
+	register_setting( 'product_settings', 'product_listing_url' );
+	register_setting( 'product_settings', 'product_currency' );
+	register_setting( 'product_settings', 'product_currency_settings' );
+	register_setting( 'product_settings', 'product_archive' );
+	register_setting( 'product_settings', 'enable_product_listing' );
+	register_setting( 'product_settings', 'archive_multiple_settings' );
+}
 
-   add_action( 'product-settings-list', 'general_settings' );
+add_action( 'product-settings-list', 'general_settings' );
 
-   function general_settings_content() {
-	   ?>
-	   <?php $submenu = isset( $_GET[ 'submenu' ] ) ? $_GET[ 'submenu' ] : ''; ?>
+/**
+ * Validates archive multiple settings
+ *
+ * @param array $new_value
+ * @param array $old_value
+ * @return array
+ */
+function archive_multiple_settings_validation( $new_value ) {
+	$product_slug = get_product_slug();
+	if ( $new_value[ 'category_archive_url' ] == $product_slug ) {
+		$new_value[ 'category_archive_url' ] = $new_value[ 'category_archive_url' ] . '-1';
+	}
+	return $new_value;
+}
+
+/**
+ * Validates product currency settings
+ *
+ * @param array $new_value
+ * @return array
+ */
+function product_currency_settings_validation( $new_value ) {
+	if ( $new_value[ 'th_sep' ] == $new_value[ 'dec_sep' ] ) {
+		if ( $new_value[ 'th_sep' ] == ',' ) {
+			$new_value[ 'th_sep' ] = '.';
+		} else {
+			$new_value[ 'th_sep' ] = ',';
+		}
+	}
+	return $new_value;
+}
+
+add_action( 'init', 'general_options_validation_filters' );
+
+/**
+ * Initializes validation filters for general settings
+ *
+ */
+function general_options_validation_filters() {
+	add_filter( 'pre_update_option_archive_multiple_settings', 'archive_multiple_settings_validation' );
+	add_filter( 'pre_update_option_product_currency_settings', 'product_currency_settings_validation' );
+}
+
+function general_settings_content() {
+	$submenu = isset( $_GET[ 'submenu' ] ) ? $_GET[ 'submenu' ] : '';
+	?>
 	<div class="overall-product-settings settings-wrapper" style="clear:both;">
 		<div class="settings-submenu">
 			<h3>
 				<a id="general-settings" class="element current"
 				   href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=general-settings' ) ?>"><?php _e( 'General Settings', 'al-ecommerce-product-catalog' ); ?></a>
-				   <?php do_action( 'general_submenu' ); ?>
+	<?php do_action( 'general_submenu' ); ?>
 			</h3>
 		</div>
 
-		<?php if ( $submenu == 'general-settings' OR $submenu == '' ) { ?>
+	<?php if ( $submenu == 'general-settings' OR $submenu == '' ) { ?>
 			<div class="setting-content submenu">
 				<script>
 					jQuery( '.settings-submenu a' ).removeClass( 'current' );
@@ -57,22 +99,24 @@ function general_menu() {
 					$product_currency			 = get_product_currency_code();
 					$product_currency_settings	 = get_currency_settings();
 					$enable_product_listing		 = get_option( 'enable_product_listing', 1 );
-					$product_listing_url		 = get_option( 'product_listing_url', __( 'products', 'al-ecommerce-product-catalog' ) );
+					$product_listing_url		 = product_listing_url();
 					$product_archive			 = get_product_listing_id();
 					$archive_multiple_settings	 = get_multiple_settings();
-					$page_get					 = get_page_by_path( $product_listing_url );
-					if ( $product_archive != '' ) {
-						$new_product_listing_url = get_page_uri( $product_archive );
-						if ( $new_product_listing_url != '' ) {
-							update_option( 'product_listing_url', $new_product_listing_url );
-						} else {
-							update_option( 'product_listing_url', __( 'products', 'al-ecommerce-product-catalog' ) );
-						}
-					} else if ( !empty( $page_get->ID ) ) {
-						update_option( 'product_archive', $page_get->ID );
-						$product_archive = get_option( 'product_archive' );
-					}
-					$disabled = '';
+					/*
+					  $page_get					 = get_page_by_path( $product_listing_url );
+
+					  if ( $product_archive != '' ) {
+					  $new_product_listing_url = get_page_uri( $product_archive );
+					  if ( $new_product_listing_url != '' ) {
+					  update_option( 'product_listing_url', $new_product_listing_url );
+					  } else {
+					  update_option( 'product_listing_url', __( 'products', 'al-ecommerce-product-catalog' ) );
+					  }
+					  } else if ( !empty( $page_get->ID ) ) {
+					  update_option( 'product_archive', $page_get->ID );
+					  $product_archive = $page_get->ID;
+					  } */
+					$disabled					 = '';
 					if ( !is_advanced_mode_forced() ) {
 						?>
 						<h3><?php _e( 'Theme Integration', 'al-ecommerce-product-catalog' ); ?></h3><?php
@@ -82,9 +126,9 @@ function general_menu() {
 						}
 						?>
 						<table>
-							<?php implecode_settings_radio( __( 'Choose theme integration type', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type]', $archive_multiple_settings[ 'integration_type' ], array( 'simple' => __( 'Simple Integration<br>', 'al-ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'al-ecommerce-product-catalog' ) ) ) ?>
+						<?php implecode_settings_radio( __( 'Choose theme integration type', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type]', $archive_multiple_settings[ 'integration_type' ], array( 'simple' => __( 'Simple Integration<br>', 'al-ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'al-ecommerce-product-catalog' ) ) ) ?>
 						</table>
-					<?php } ?>
+		<?php } ?>
 					<h3><?php _e( 'Product Catalog', 'al-ecommerce-product-catalog' ); ?></h3>
 					<table><?php
 						implecode_settings_text( __( 'Catalog Singular Name', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[catalog_singular]', $archive_multiple_settings[ 'catalog_singular' ], null, 1, null, __( 'Admin panel customisation setting. Change it to what you sell.', 'al-ecommerce-product-catalog' ) );
@@ -100,7 +144,7 @@ function general_menu() {
 					<table>
 						<tr>
 							<td style="width: 180px">
-								<?php _e( 'Enable Product Listing Page', 'al-ecommerce-product-catalog' ); ?>:
+		<?php _e( 'Enable Product Listing Page', 'al-ecommerce-product-catalog' ); ?>:
 							</td>
 							<td>
 								<input <?php echo $disabled; ?>
@@ -111,7 +155,7 @@ function general_menu() {
 						</tr>
 						<tr>
 							<td>
-								<?php _e( 'Choose Product Listing Page', 'al-ecommerce-product-catalog' ); ?>:
+		<?php _e( 'Choose Product Listing Page', 'al-ecommerce-product-catalog' ); ?>:
 							</td>
 							<td><?php
 								if ( $enable_product_listing == 1 ) {
@@ -123,17 +167,17 @@ function general_menu() {
 								?>
 							</td>
 						</tr> <?php /*
-						  <tr>
-						  <td><?php _e('Product listing URL', 'al-ecommerce-product-catalog'); ?>:</td>
-						  <td class="archive-url-td"><a target="_blank" class="archive-url" href="<?php echo product_listing_url() ?>"><?php
-						  $listin_url = product_listing_url();
-						  $listin_urllen = strlen($listin_url);
-						  if ($listin_urllen > 40) {
-						  $listin_url = substr($listin_url, 0, 20).'...'.substr($listin_url, $listin_urllen - 20, $listin_urllen);
-						  }
-						  echo $listin_url;
-						  ?></a></td>
-						  </tr> */ ?>
+								  <tr>
+								  <td><?php _e('Product listing URL', 'al-ecommerce-product-catalog'); ?>:</td>
+								  <td class="archive-url-td"><a target="_blank" class="archive-url" href="<?php echo product_listing_url() ?>"><?php
+								  $listin_url = product_listing_url();
+								  $listin_urllen = strlen($listin_url);
+								  if ($listin_urllen > 40) {
+								  $listin_url = substr($listin_url, 0, 20).'...'.substr($listin_url, $listin_urllen - 20, $listin_urllen);
+								  }
+								  echo $listin_url;
+								  ?></a></td>
+								  </tr> */ ?>
 						<tr>
 							<td><?php _e( 'Product listing shows at most', 'al-ecommerce-product-catalog' ); ?> </td>
 							<td><input <?php echo $disabled ?>
@@ -158,23 +202,25 @@ function general_menu() {
 					}
 					?>
 					<table>
-						<tr>
-							<td><?php _e( 'Categories Parent URL', 'al-ecommerce-product-catalog' ); ?>:</td>
-							<?php
-							$site_url	 = site_url();
-							$urllen		 = strlen( $site_url );
-							if ( $urllen > 25 ) {
-								$site_url = substr( $site_url, 0, 11 ) . '...' . substr( $site_url, $urllen - 11, $urllen );
-							}
-							?>
-							<td class="longer"><?php echo $site_url ?>/<input <?php echo $disabled ?> type="text"
-																									  name="archive_multiple_settings[category_archive_url]"
-																									  title="<?php _e( 'Cannot be the same as product listing page slug.', 'al-ecommerce-product-catalog' ) ?>"
-																									  id="category_archive_url"
-																									  value="<?php echo sanitize_title( $archive_multiple_settings[ 'category_archive_url' ] ); ?>"/>/<?php _e( 'category-name', 'al-ecommerce-product-catalog' ) ?>
-								/
-							</td>
-						</tr><?php
+		<?php if ( is_ic_permalink_product_catalog() ) { ?>
+							<tr>
+								<td><?php _e( 'Categories Parent URL', 'al-ecommerce-product-catalog' ); ?>:</td>
+								<?php
+								$site_url	 = site_url();
+								$urllen		 = strlen( $site_url );
+								if ( $urllen > 25 ) {
+									$site_url = substr( $site_url, 0, 11 ) . '...' . substr( $site_url, $urllen - 11, $urllen );
+								}
+								?>
+								<td class="longer"><?php echo $site_url ?>/<input <?php echo $disabled ?> type="text"
+																										  name="archive_multiple_settings[category_archive_url]"
+																										  title="<?php _e( 'Cannot be the same as product listing page slug.', 'al-ecommerce-product-catalog' ) ?>"
+																										  id="category_archive_url"
+																										  value="<?php echo sanitize_title( $archive_multiple_settings[ 'category_archive_url' ] ); ?>"/>/<?php _e( 'category-name', 'al-ecommerce-product-catalog' ) ?>
+									/
+								</td>
+							</tr><?php
+						}
 						implecode_settings_radio( __( 'Category Page shows', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[category_top_cats]', $archive_multiple_settings[ 'category_top_cats' ], array( 'off' => __( 'Products<br>', 'al-ecommerce-product-catalog' ), 'on' => __( 'Products & Subcategories', 'al-ecommerce-product-catalog' ) ) );
 						implecode_settings_radio( __( 'Categories Display', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[cat_template]', $archive_multiple_settings[ 'cat_template' ], array( 'template' => __( 'Template<br>', 'al-ecommerce-product-catalog' ), 'link' => __( 'URLs', 'al-ecommerce-product-catalog' ) ), true, array( 'template' => __( 'Display categories with the same listing theme as products.', 'al-ecommerce-product-catalog' ), 'link' => __( 'Display categories as simple links.', 'al-ecommerce-product-catalog' ) ) );
 						do_action( 'product_category_settings', $archive_multiple_settings );
@@ -218,7 +264,7 @@ function general_menu() {
 					<h3><?php _e( 'Payment and currency', 'al-ecommerce-product-catalog' ); ?></h3>
 					<table id="payment_table">
 						<thead>
-							<?php implecode_settings_radio( __( 'Price', 'al-ecommerce-product-catalog' ), 'product_currency_settings[price_enable]', $product_currency_settings[ 'price_enable' ], array( 'on' => __( 'On<br>', 'al-ecommerce-product-catalog' ), 'off' => __( 'Off', 'al-ecommerce-product-catalog' ) ) ); ?>
+		<?php implecode_settings_radio( __( 'Price', 'al-ecommerce-product-catalog' ), 'product_currency_settings[price_enable]', $product_currency_settings[ 'price_enable' ], array( 'on' => __( 'On<br>', 'al-ecommerce-product-catalog' ), 'off' => __( 'Off', 'al-ecommerce-product-catalog' ) ) ); ?>
 						</thead>
 						<tbody><?php do_action( 'payment_settings_table_start' ) ?>
 							<tr>
@@ -308,7 +354,7 @@ function get_currency_settings() {
 
 /**
  * Returns product currency code even if the currency symbol is set
- * 
+ *
  * @return string
  */
 function get_product_currency_code() {
@@ -333,7 +379,7 @@ function get_multiple_settings() {
 	$archive_multiple_settings[ 'product_order' ]		 = isset( $archive_multiple_settings[ 'product_order' ] ) ? $archive_multiple_settings[ 'product_order' ] : 'newest';
 	$archive_multiple_settings[ 'catalog_plural' ]		 = isset( $archive_multiple_settings[ 'catalog_plural' ] ) ? $archive_multiple_settings[ 'catalog_plural' ] : __( 'Products', 'al-ecommerce-product-catalog' );
 	$archive_multiple_settings[ 'catalog_singular' ]	 = isset( $archive_multiple_settings[ 'catalog_singular' ] ) ? $archive_multiple_settings[ 'catalog_singular' ] : __( 'Product', 'al-ecommerce-product-catalog' );
-	return $archive_multiple_settings;
+	return apply_filters( 'catalog_multiple_settings', $archive_multiple_settings );
 }
 
 function get_catalog_names() {
@@ -359,7 +405,33 @@ function get_product_listing_id() {
 	return $listing_id;
 }
 
+/**
+ * Returns product listing URL
+ *
+ * @return string
+ */
+function product_listing_url() {
+	if ( is_ic_permalink_product_catalog() && 'noid' != ($page_id = get_product_listing_id()) ) {
+		$listing_url = get_permalink( $page_id );
+	} else {
+		$listing_url = get_post_type_archive_link( 'al_product' );
+	}
+	return $listing_url;
+}
+
 function get_product_slug() {
-	$slug = untrailingslashit( get_option( 'product_listing_url', __( 'products', 'al-ecommerce-product-catalog' ) ) );
+	$page_id = get_product_listing_id();
+	$slug	 = untrailingslashit( get_page_uri( $page_id ) );
+	if ( empty( $slug ) ) {
+		$slug = __( 'products', 'al-ecommerce-product-catalog' );
+	}
 	return apply_filters( 'product_slug', $slug );
+}
+
+add_action( 'updated_option', 'rewrite_permalinks_after_update' );
+
+function rewrite_permalinks_after_update( $option ) {
+	if ( $option == 'product_archive' || $option == 'archive_multiple_settings' ) {
+		flush_rewrite_rules();
+	}
 }

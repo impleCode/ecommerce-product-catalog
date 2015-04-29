@@ -4,7 +4,7 @@
  * Plugin Name: eCommerce Product Catalog by impleCode
  * Plugin URI: http://implecode.com/wordpress/product-catalog/#cam=in-plugin-urls&key=plugin-url
  * Description: WordPress eCommerce easy to use, powerful and beautiful plugin from impleCode. Great choice if you want to sell easy and quick. Or just beautifully present your products on WordPress website. Full WordPress integration does great job not only for Merchants but also for Developers and Theme Constructors.
- * Version: 2.2.5
+ * Version: 2.2.7
  * Author: impleCode
  * Author URI: http://implecode.com/#cam=in-plugin-urls&key=author-url
  * Text Domain: al-ecommerce-product-catalog
@@ -50,7 +50,9 @@ add_action( 'wp_enqueue_scripts', 'implecode_enqueue_styles' );
 
 function implecode_register_admin_styles() {
 	wp_register_style( 'al_product_admin_styles', plugins_url() . '/' . dirname( plugin_basename( __FILE__ ) ) . '/css/al_product-admin.css?' . filemtime( plugin_dir_path( __FILE__ ) . '/css/al_product-admin.css' ) );
-	wp_register_script( 'admin-scripts', AL_PLUGIN_BASE_PATH . 'js/admin-scripts.js?' . filemtime( AL_BASE_PATH . '/js/admin-scripts.js' ), array( 'jquery-ui-sortable', 'jquery-ui-tooltip' ) );
+	wp_register_script( 'jquery-validate', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/jquery.validate.min.js', array( 'jquery' ) );
+	wp_register_script( 'jquery-validate-add', 'https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.13.1/additional-methods.min.js', array( 'jquery-validate' ) );
+	wp_register_script( 'admin-scripts', AL_PLUGIN_BASE_PATH . 'js/admin-scripts.js?' . filemtime( AL_BASE_PATH . '/js/admin-scripts.js' ), array( 'jquery-ui-sortable', 'jquery-ui-tooltip', 'jquery-validate-add' ) );
 }
 
 add_action( 'admin_init', 'implecode_register_admin_styles' );
@@ -79,4 +81,3 @@ function implecode_addons() {
 }
 
 add_action( 'plugins_loaded', 'implecode_addons' );
-?>

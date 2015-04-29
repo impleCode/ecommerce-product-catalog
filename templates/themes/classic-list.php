@@ -19,7 +19,13 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 function example_list_archive_theme() {
 	?>
-	<div class="archive-listing list example"><a href="#list-theme"><span class="div-link"></span></a><div class="product-image" style="background-image:url('<?php echo AL_PLUGIN_BASE_PATH . 'templates/themes/img/example-product.jpg'; ?>'); background-size: 150px; background-position: center;"></div><div class="product-name">White Lamp</div><div class="product-short-descr"><p>Fusce vestibulum augue ac quam tincidunt ullamcorper. Vestibulum scelerisque fermentum congue. Proin convallis dolor ac ipsum congue tincidunt. [...]</p>
+	<div class="archive-listing list example">
+		<a href="#list-theme">
+			<span class="div-link"></span>
+		</a>
+		<div class="product-image" style="background-image:url('<?php echo AL_PLUGIN_BASE_PATH . 'templates/themes/img/example-product.jpg'; ?>'); background-size: 150px; background-position: center;"></div>
+		<div class="product-name">White Lamp</div>
+		<div class="product-short-descr"><p>Fusce vestibulum augue ac quam tincidunt ullamcorper. Vestibulum scelerisque fermentum congue. Proin convallis dolor ac ipsum congue tincidunt. [...]</p>
 		</div></div>
 	<?php
 }
@@ -55,7 +61,7 @@ function get_list_archive_theme( $post, $archive_template = null ) {
 			$url = default_product_thumbnail_url();
 		}
 		$product_name	 = get_product_name();
-		$return			 = '<div class="archive-listing list">';
+		$return			 = '<div class="archive-listing list ' . product_class( $post->ID ) . '">';
 		$return .= '<a href="' . get_permalink() . '"><span class="div-link"></span></a>';
 		$return .= '<div class="classic-list-image-wrapper"><div class="pseudo"></div><img src="' . $url . '" class="classic-list-image" alt="' . $product_name . '" ></div>';
 		$return .= '<div class="product-name">' . $product_name . '</div>';

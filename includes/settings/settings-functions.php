@@ -1,5 +1,8 @@
 <?php
 
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * Manages product functions folder
  *
@@ -9,8 +12,6 @@
  * @package		ecommerce-product-catalog/includes/settings
  * @author 		Norbert Dreszer
  */
-if ( !defined( 'ABSPATH' ) )
-	exit; // Exit if accessed directly
 if ( !function_exists( 'echo_ic_setting' ) ) {
 
 	function implecode_settings_radio( $option_label, $option_name, $option_value, $elements = array(), $echo = 1,
@@ -58,6 +59,19 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 		return echo_ic_setting( $return, $echo );
 	}
 
+	/**
+	 * Shows settings text fiels
+	 *
+	 * @param string $option_label
+	 * @param string $option_name
+	 * @param string|int $option_value
+	 * @param string $required
+	 * @param int $echo
+	 * @param string $class
+	 * @param string $tip
+	 * @param string $disabled
+	 * @return string
+	 */
 	function implecode_settings_text( $option_label, $option_name, $option_value, $required = null, $echo = 1,
 								   $class = null, $tip = null, $disabled = '' ) {
 		if ( !empty( $disabled ) ) {

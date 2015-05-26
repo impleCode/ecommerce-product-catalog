@@ -14,6 +14,16 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 if ( !function_exists( 'echo_ic_setting' ) ) {
 
+	/**
+	 * Shows radio buttons in <tr> and <td> tags
+	 * @param string $option_label
+	 * @param string $option_name
+	 * @param string|int $option_value
+	 * @param array $elements
+	 * @param int $echo
+	 * @param string $tip
+	 * @return string
+	 */
 	function implecode_settings_radio( $option_label, $option_name, $option_value, $elements = array(), $echo = 1,
 									$tip = '' ) {
 		if ( !empty( $tip ) && !is_array( $tip ) ) {
@@ -95,10 +105,13 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 		return echo_ic_setting( $return, $echo );
 	}
 
-	function implecode_settings_number( $option_label, $option_name, $option_value, $unit, $echo = 1, $step = 1 ) {
-		$return = '<tr>';
+	function implecode_settings_number( $option_label, $option_name, $option_value, $unit, $echo = 1, $step = 1,
+									 $tip = null, $min = null ) {
+		$return	 = '<tr>';
 		$return .= '<td>' . $option_label . ':</td>';
-		$return .= '<td><input type="number" step="' . $step . '" class="number_box" name="' . $option_name . '" value="' . $option_value . '" />' . $unit . '</td>';
+		$tip	 = !empty( $tip ) ? 'title="' . $tip . '" ' : '';
+		$min	 = !empty( $min ) ? 'min="' . intval( $min ) . '" ' : '';
+		$return .= '<td><input type="number" step="' . $step . '" ' . $min . ' ' . $tip . ' class="number_box" name="' . $option_name . '" value="' . $option_value . '" />' . $unit . '</td>';
 		$return .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );

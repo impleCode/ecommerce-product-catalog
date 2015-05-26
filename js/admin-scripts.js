@@ -71,15 +71,26 @@ jQuery( document ).ready( function () {
         jQuery( ".implecode-review-thanks" ).hide( "slow" );
     } );
 
-    jQuery( ".implecode-review a" ).click( function () {
-        var data = {
-            'action': 'hide_review_notice',
-            'forever': 'yes'
-        };
-        jQuery.post( ajaxurl, data, function ( response ) {
-            jQuery( ".implecode-review" ).hide( "slow" );
-            jQuery( ".implecode-review-thanks" ).show( "slow" );
-        } );
+    jQuery( ".implecode-review a" ).click( function (e) {
+        if ( jQuery( this ).hasClass( "button" ) ) {
+            e.preventDefault();
+            var data = {
+                'action': 'hide_review_notice',
+                'forever': 'yes'
+            };
+            jQuery.post( ajaxurl, data, function ( response ) {
+                jQuery( ".implecode-review" ).hide( "slow" );
+            } );
+        } else {
+            var data = {
+                'action': 'hide_review_notice',
+                'forever': 'yes'
+            };
+            jQuery.post( ajaxurl, data, function ( response ) {
+                jQuery( ".implecode-review" ).hide( "slow" );
+                jQuery( ".implecode-review-thanks" ).show( "slow" );
+            } );
+        }
     } );
 
     jQuery( function () {

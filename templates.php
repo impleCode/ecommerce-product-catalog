@@ -30,11 +30,14 @@ function initialize_product_adder_template() {
 	$twentythirteen	 = array( "twentythirteen" );
 	$twentyfourteen	 = array( "twentyfourteen" );
 	$twentyfifteen	 = array( "twentyfifteen" );
+	$third_party	 = array( "storefront" );
 
 	if ( is_integraton_file_active() ) {
 		add_filter( 'template_include', 'al_product_adder_template' );
 	} else if ( in_array( $theme, $woothemes ) ) {
 		add_filter( 'template_include', 'al_product_adder_woo_template' );
+	} else if ( in_array( $theme, $third_party ) ) {
+		add_filter( 'template_include', 'al_product_adder_third_party_templates' );
 	} else if ( in_array( $theme, $nosidebar ) ) {
 		add_filter( 'template_include', 'al_product_adder_nosidebar_template' );
 	} else if ( in_array( $theme, $twentyten ) ) {
@@ -53,7 +56,7 @@ function initialize_product_adder_template() {
 }
 
 function al_product_adder_template( $template ) {
-	if ( 'al_product' == get_quasi_post_type() ) {
+	if ( is_ic_catalog_page() ) {
 		return get_product_adder_path();
 	}
 	return $template;
@@ -70,6 +73,14 @@ function al_product_adder_custom_template( $template ) {
 function al_product_adder_woo_template( $template ) {
 	if ( 'al_product' == get_quasi_post_type() ) {
 		return dirname( __FILE__ ) . '/templates/product-woo-adder.php';
+	}
+	return $template;
+}
+
+function al_product_adder_third_party_templates( $template ) {
+	if ( 'al_product' == get_quasi_post_type() ) {
+		$theme = get_option( 'template' );
+		return dirname( __FILE__ ) . '/templates/third-party/' . $theme . '.php';
 	}
 	return $template;
 }
@@ -263,7 +274,7 @@ function create_sample_product_with_redirect() {
 add_action( 'admin_init', 'create_sample_product_with_redirect' );
 
 function implecode_supported_themes() {
-	return array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen', 'twentyfifteen', 'pub/minileven' );
+	return array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen', 'twentyfifteen', 'pub/minileven', 'storefront' );
 }
 
 function is_theme_implecode_supported() {

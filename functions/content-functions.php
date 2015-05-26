@@ -15,16 +15,17 @@ if ( !defined( 'ABSPATH' ) ) {
 /* General */
 
 function price_format( $price_value, $clear = 0, $format = 1, $raw = 0 ) {
-	$set		 = get_currency_settings();
-	$th_symbol	 = addslashes( $set[ 'th_sep' ] );
-	$dec_symbol	 = addslashes( $set[ 'dec_sep' ] );
-	if ( $set[ 'dec_sep' ] != '.' ) {
-		$raw_price_value = str_replace( array( $th_symbol, $dec_symbol ), array( "", '.' ), $price_value );
-	} else {
-		$raw_price_value = str_replace( $th_symbol, "", $price_value );
-	}
-	$price_value = number_format( $raw_price_value, 2, $set[ 'dec_sep' ], $set[ 'th_sep' ] );
-	$space		 = ' ';
+	$set			 = get_currency_settings();
+	$th_symbol		 = addslashes( $set[ 'th_sep' ] );
+	$dec_symbol		 = addslashes( $set[ 'dec_sep' ] );
+	/*  if ( $set[ 'dec_sep' ] != '.' ) {
+	  $raw_price_value = str_replace( array( $th_symbol, $dec_symbol ), array( "", '.' ), $price_value );
+	  } else {
+	  $raw_price_value = str_replace( $th_symbol, "", $price_value );
+	  } */
+	$raw_price_value = $price_value;
+	$price_value	 = number_format( $raw_price_value, 2, $set[ 'dec_sep' ], $set[ 'th_sep' ] );
+	$space			 = ' ';
 	if ( $set[ 'price_space' ] == 'off' ) {
 		$space = '';
 	}
@@ -43,6 +44,27 @@ function price_format( $price_value, $clear = 0, $format = 1, $raw = 0 ) {
 	}
 }
 
+add_filter( 'product_price', 'raw_price_format', 5 );
+add_filter( 'unfiltered_product_price', 'raw_price_format', 5 );
+
+/**
+ * Transforms price for internal use
+ *
+ * @param int|string $price_value
+ * @return int
+ */
+function raw_price_format( $price_value ) {
+	$set		 = get_currency_settings();
+	$th_symbol	 = addslashes( $set[ 'th_sep' ] );
+	$dec_symbol	 = addslashes( $set[ 'dec_sep' ] );
+	if ( $set[ 'dec_sep' ] != '.' ) {
+		$raw_price_value = str_replace( array( $th_symbol, $dec_symbol ), array( "", '.' ), $price_value );
+	} else {
+		$raw_price_value = str_replace( $th_symbol, "", $price_value );
+	}
+	return $raw_price_value;
+}
+
 /* Classic List */
 
 function c_list_desc( $post_id = null, $shortdesc = null ) {
@@ -57,7 +79,7 @@ function c_list_desc( $post_id = null, $shortdesc = null ) {
 	if ( $desclenght > $limit ) {
 		$more = ' [...]';
 	}
-	return apply_filters( 'c_list_desc_content', substr( $shortdesc, 0, $limit ) . $more, $post_id );
+	return apply_filters( 'c_list_desc_content', mb_substr( $shortdesc, 0, $limit ) . $more, $post_id );
 }
 
 /* Single Product */
@@ -75,3 +97,14 @@ function add_back_to_products_url( $post, $single_names, $taxonomies ) {
 
 add_action( 'single_product_end', 'add_back_to_products_url', 99, 3 );
 
+/**
+ * Shows product search form
+ */
+function product_search_form() {
+	$search_button_text = __( 'Search', 'al-ecommerce-product-catalog' );
+	echo '<form role="search" method="get" class="search-form product_search_form" action="' . esc_url( home_url( '/' ) ) . '">
+<input type="hidden" name="post_type" value="al_product" />
+<input class="product-search-box" type="search" value="' . get_search_query() . '" id="s" name="s" placeholder="' . __( 'Product Search', 'al-ecommerce-product-catalog' ) . '" />
+<input class="search-submit product-search-submit" type="submit" value="' . $search_button_text . '" />
+</form>';
+}

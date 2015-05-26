@@ -30,9 +30,12 @@ function al_product_adder_admin_notices_styles() {
 			if ( $product_count > 5 ) {
 				if ( false === get_transient( 'implecode_hide_plugin_review_info' ) ) {
 					implecode_plugin_review_notice();
-				} else if ( false === get_transient( 'implecode_hide_plugin_translation_info' ) ) {
+					set_transient( 'implecode_hide_plugin_translation_info', 1, WEEK_IN_SECONDS );
+				} else if ( false === get_transient( 'implecode_hide_plugin_translation_info' ) && is_english_catalog_active() ) {
 					implecode_plugin_translation_notice();
 				}
+			} else {
+				set_transient( 'implecode_hide_plugin_review_info', 1, WEEK_IN_SECONDS );
 			}
 		}
 	}
@@ -82,9 +85,12 @@ function implecode_product_catalog_links( $links ) {
 add_filter( 'plugin_action_links_' . plugin_basename( AL_PLUGIN_MAIN_FILE ), 'implecode_product_catalog_links' );
 
 function implecode_plugin_review_notice() {
+	/* ?>
+	  <div class="update-nag implecode-review"><strong><?php _e( 'Rate this Plugin!', 'al-ecommerce-product-catalog' ) ?></strong> <?php echo sprintf( __( 'Please <a target="_blank" href="%s">rate</a> %s and tell me if it works for you or not. It really helps development.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', 'eCommerce Product Catalog' ) ?> <span class="dashicons dashicons-no"></span></div> */
 	?>
-	<div class="update-nag implecode-review"><strong><?php _e( 'Rate this Plugin!', 'al-ecommerce-product-catalog' ) ?></strong> <?php echo sprintf( __( 'Please <a target="_blank" href="%s">rate</a> %s and tell me if it works for you or not. It really helps development.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', 'eCommerce Product Catalog' ) ?> <span class="dashicons dashicons-no"></span></div>
-	<div class="update-nag implecode-review-thanks" style="display: none"><?php echo sprintf( __( 'Thank you for <a target="_blank" href="%s">your rating</a>! I really appreciate your feedback.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform' ) ?> <span class="dashicons dashicons-yes"></span></div><?php
+	<div class="update-nag implecode-review"><?php echo sprintf( __( 'We’d like to ask you a <strong>favor</strong>. Would you mind taking <strong>a few seconds</strong> to <a target="_blank" href="%s">write a review</a> for us please? Your comments <strong>help others know what to expect</strong> when they install %s.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', 'eCommerce Product Catalog' ) ?>
+		<p><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform" class="button-primary"><?php _e( 'Rate Now & Hide Forever', 'al-ecommerce-product-catalog' ); ?></a> <a href="" class="button"><?php _e( 'Hide Forever', 'al-ecommerce-product-catalog' ); ?></a></div>
+	<div class="update-nag implecode-review-thanks" style="display: none"><?php echo sprintf( __( 'Thank you for <a target="_blank" href="%s">your rating</a>! We appreciate your time and input.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform' ) ?> <span class="dashicons dashicons-yes"></span></div><?php
 }
 
 function implecode_plugin_translation_notice() {
@@ -98,7 +104,7 @@ function implecode_plugin_review_notice_hide( $forever = false ) {
 	} else {
 		$count	 = get_option( 'implecode_hide_plugin_review_info_count', 1 );
 		$count	 = ($count < 6) ? $count : 0;
-		set_transient( 'implecode_hide_plugin_review_info', 1, 60 * 60 * 24 * 14 * $count );
+		set_transient( 'implecode_hide_plugin_review_info', 1, WEEK_IN_SECONDS * $count );
 		$count += 1;
 		update_option( 'implecode_hide_plugin_review_info_count', $count );
 	}

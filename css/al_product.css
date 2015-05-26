@@ -367,6 +367,11 @@ margin: 0;
     clear: both;
 }
 
+/* General Archive Listing */
+.archive-listing a:focus {
+    outline: 0;
+}
+
 /*List*/
 .list.archive-listing:hover {
     background-color: #ededed;
@@ -593,7 +598,7 @@ margin: 0;
     padding: 0px 10px 0px 0px;
 }
 
-#product_details table tr {
+#product_details table tr, #product_details table td, #product_details table tbody {
     background: transparent;
 }
 
@@ -655,7 +660,7 @@ margin: 0;
     border: 0;
 }
 
-#product_subcategories table tr {
+#product_subcategories table tr, #product_subcategories table td, #product_subcategories table tbody, #product_subcategories table {
     background: transparent;
 }
 
@@ -1080,6 +1085,22 @@ div.relative-box {
     border-bottom: 1px solid #ededed;
     font-weight: 600;
     font-size: 16px;
+}
+
+.table-cell.center, .table.center {
+    text-align: center;
+}
+
+.table.middle {
+    vertical-align: middle;
+}
+
+.table-cell.title {
+    text-align: left;
+}
+
+.table .table-cell.no-bg {
+    background-color: transparent;
 }
 
 /* Product Order */

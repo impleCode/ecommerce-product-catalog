@@ -22,7 +22,7 @@ get_header();
 				max-width: 1080px;
 				margin: 0 auto;
 			}
-			.single .product-entry {margin: 0 auto;} .tax-al_product-cat .entry-content {padding: 0 176px 0 40px;} .post-type-archive .entry-summary {padding: 0; } .post-type-archive-al_product .site-content article, .tax-al_product-cat .site-content article, .post-type-archive-al_product .al_product.article {padding: 40px 0px;}</style>
+			.single .product-entry {margin: 0 auto;} .post-type-archive .entry-summary {padding: 0; } .post-type-archive-al_product .site-content article, .tax-al_product-cat .site-content article, .post-type-archive-al_product .al_product.article {padding: 40px 0px;}</style>
 			<?php /* The loop */ ?>
 			<?php content_product_adder(); ?>
 

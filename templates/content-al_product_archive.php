@@ -26,7 +26,7 @@ do_action( 'product_listing_begin', $multiple_settings );
 			if ( $before_archive != '<div class="entry-summary"></div>' ) {
 				echo $before_archive;
 			}
-			if ( $multiple_settings[ 'product_listing_cats' ] == 'on' ) {
+			if ( $multiple_settings[ 'product_listing_cats' ] == 'on' || $multiple_settings[ 'product_listing_cats' ] == 'cats_only' ) {
 				do_action( 'before_product_listing_category_list' );
 				if ( $multiple_settings[ 'cat_template' ] != 'template' ) {
 					$product_subcategories = wp_list_categories( 'show_option_none=No_cat&echo=0&title_li=&taxonomy=' . $taxonomy_name . '&parent=0' );
@@ -37,7 +37,7 @@ do_action( 'product_listing_begin', $multiple_settings );
 					$show_categories = do_shortcode( '[show_categories parent="0" shortcode_query="no"]' );
 					if ( !empty( $show_categories ) ) {
 						echo '<div class="product-subcategories ' . $archive_template . '">' . $show_categories;
-						if ( $archive_template != 'list' ) {
+						if ( $archive_template != 'list' && !is_ic_only_main_cats() ) {
 							echo '<hr>';
 						}
 						echo '</div>';
@@ -45,14 +45,16 @@ do_action( 'product_listing_begin', $multiple_settings );
 				}
 			}
 		} else if ( is_tax() ) {
-			$term				 = get_queried_object()->term_id;
-			$term_img			 = get_product_category_image_id( $term );
-			echo wp_get_attachment_image( $term_img, apply_filters( 'product_cat_image_size', 'large' ) );
-			$term_description	 = term_description();
+			$term = get_queried_object()->term_id;
+			if ( is_ic_category_image_enabled() ) {
+				$term_img = get_product_category_image_id( $term );
+				echo wp_get_attachment_image( $term_img, apply_filters( 'product_cat_image_size', 'large' ) );
+			}
+			$term_description = term_description();
 			if ( !empty( $term_description ) ) {
 				echo '<div class="taxonomy-description">' . $term_description . '</div>';
 			}
-			if ( $multiple_settings[ 'category_top_cats' ] == 'on' ) {
+			if ( $multiple_settings[ 'category_top_cats' ] == 'on' || $multiple_settings[ 'category_top_cats' ] == 'only_subcategories' ) {
 				if ( $multiple_settings[ 'cat_template' ] != 'template' ) {
 					$product_subcategories = wp_list_categories( 'show_option_none=No_cat&echo=0&title_li=&taxonomy=' . $taxonomy_name . '&child_of=' . $term );
 					if ( !strpos( $product_subcategories, 'No_cat' ) ) {
@@ -70,31 +72,35 @@ do_action( 'product_listing_begin', $multiple_settings );
 					if ( !empty( $show_categories ) ) {
 						do_action( 'before_category_subcategories' );
 						echo $show_categories;
-						if ( $archive_template != 'list' ) {
+						if ( $archive_template != 'list' && !is_ic_only_main_cats() ) {
 							echo '<hr>';
 						}
 					}
 				}
 			}
 		}
-		do_action( 'before_product_list', $archive_template, $multiple_settings );
-		$product_list = '<div class="product-list responsive ' . $archive_template . ' ' . product_list_class() . '">';
-		if ( is_home_archive() ) {
-			$args	 = array( 'post_type' => 'al_product' );
-			query_posts( $args );
-			$is_home = 1;
+		if ( (is_tax() || is_search() || !is_ic_only_main_cats()) && more_products() ) {
+			do_action( 'before_product_list', $archive_template, $multiple_settings );
+			$product_list = '<div class="product-list responsive ' . $archive_template . ' ' . product_list_class() . '">';
+			if ( is_home_archive() ) {
+				$args	 = array( 'post_type' => 'al_product' );
+				query_posts( $args );
+				$is_home = 1;
+			}
+			while ( have_posts() ) : the_post();
+				$product_list .= get_catalog_template( $archive_template, $post );
+			endwhile;
+			if ( isset( $is_home ) ) {
+				wp_reset_query();
+			}
+			$product_list .= '</div>';
+			$product_list = apply_filters( 'product_list_ready', $product_list, $archive_template );
+			echo $product_list . '<span class="clear"></span></div>';
+		} else if ( is_search() && !more_products() ) {
+			echo '<p>' . __( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'al-ecommerce-product-catalog' ) . '</p>';
+			product_search_form();
 		}
-		while ( have_posts() ) : the_post();
-			$product_list .= get_catalog_template( $archive_template, $post );
-		endwhile;
-		if ( isset( $is_home ) ) {
-			wp_reset_query();
-		}
-		$product_list .= '</div>';
-		$product_list = apply_filters( 'product_list_ready', $product_list, $archive_template );
-		echo $product_list;
-		?><span class="clear"></span>
-	</div>
+		?>
 
 </article><?php
 do_action( 'product_listing_end', $archive_template, $multiple_settings );

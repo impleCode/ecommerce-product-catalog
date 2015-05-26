@@ -327,7 +327,13 @@ function get_shipping_options( $product_id ) {
 	if ( !isset( $any_shipping_value ) ) {
 		$shipping_values = 'none';
 	}
-	return $shipping_values;
+	return apply_filters( 'product_shipping_values', $shipping_values );
+}
+
+function get_shipping_label( $i = 1, $product_id ) {
+	$label	 = get_post_meta( $product_id, "_shipping-label" . $i, true );
+	$label	 = empty( $label ) ? __( 'Shipping', 'al-ecommerce-product-catalog' ) : $label;
+	return;
 }
 
 function show_shipping_options( $post, $single_names ) {
@@ -544,7 +550,7 @@ function product_breadcrumbs() {
 				$product_archive_title = get_product_listing_title();
 			}
 		}
-		$current_product = get_the_title( $post->ID );
+		$current_product = get_the_title();
 		if ( is_ic_product_page() ) {
 			return '<p id="breadcrumbs">
 <span xmlns:v="http://rdf.data-vocabulary.org/#">

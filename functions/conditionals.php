@@ -202,7 +202,20 @@ function is_ic_shortcode_query() {
 function is_plural_form_active() {
 	$lang = get_locale();
 	if ( $lang != 'de_DE' && $lang != 'pl_PL' ) {
-		echo 'ddddd';
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Checks if WordPress language is english
+ *
+ * @return boolean
+ */
+function is_english_catalog_active() {
+	$lang = get_locale();
+	if ( strpos( $lang, 'en_' ) !== false ) {
 		return true;
 	} else {
 		return false;
@@ -211,7 +224,7 @@ function is_plural_form_active() {
 
 /**
  * Checks if permalinks are enabled
- * 
+ *
  * @return boolean
  */
 function is_ic_permalink_product_catalog() {
@@ -220,4 +233,45 @@ function is_ic_permalink_product_catalog() {
 	} else {
 		return false;
 	}
+}
+
+/**
+ * Checks if only categories should be showed
+ * @return boolean
+ */
+function is_ic_only_main_cats() {
+	$multiple_settings = get_multiple_settings();
+	if ( is_ic_product_listing() && $multiple_settings[ 'product_listing_cats' ] == 'cats_only' ) {
+		return true;
+	} else if ( is_ic_taxonomy_page() && $multiple_settings[ 'category_top_cats' ] == 'only_subcategories' ) {
+		return true;
+	} else {
+		return false;
+	}
+}
+
+/**
+ * Checks if product listing is showign product categories
+ * @return boolean
+ */
+function is_ic_product_listing_showing_cats() {
+	$multiple_settings = get_multiple_settings();
+	if ( $multiple_settings[ 'category_top_cats' ] == 'on' || $multiple_settings[ 'category_top_cats' ] == 'only_subcategories' ) {
+		if ( !is_tax() || (is_tax() && has_category_children()) ) {
+			return true;
+		}
+	}
+	return false;
+}
+
+/**
+ * Checks if category image is enabled on category page
+ * @return boolean
+ */
+function is_ic_category_image_enabled() {
+	$multiple_settings = get_multiple_settings();
+	if ( $multiple_settings[ 'cat_image_disabled' ] != 1 ) {
+		return true;
+	}
+	return false;
 }

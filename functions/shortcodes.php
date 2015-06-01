@@ -47,7 +47,7 @@ function product_cat_shortcode( $atts ) {
 		'sort'				 => 0,
 		'shortcode_query'	 => 'yes',
 	), $atts );
-	$div								 = '<div class="product-subcategories ' . $args[ 'archive_template' ] . ' ' . product_list_class() . '">';
+	$div								 = '<div class="product-subcategories ' . $args[ 'archive_template' ] . ' ' . product_list_class( 'category-list' ) . '">';
 	$cats								 = get_terms( 'al_product-cat', $args );
 	$cat_shortcode_query[ 'count' ]		 = count( $cats );
 	$cat_shortcode_query[ 'enable' ]	 = $args[ 'shortcode_query' ];

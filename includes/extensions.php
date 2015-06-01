@@ -22,48 +22,48 @@ function product_extensions() {
 	?>
 
 	<div id="implecode_settings" class="wrap">
-	    <h2><?php _e( 'Extensions', 'al-ecommerce-product-catalog' ) ?> - impleCode eCommerce Product Catalog</h2>
-	    <h2 class="nav-tab-wrapper">
-	        <a id="extensions" class="nav-tab"
-	           href="<?php echo admin_url( 'edit.php?post_type=al_product&page=extensions.php&tab=product-extensions' ) ?>"><?php _e( 'Extensions', 'al-ecommerce-product-catalog' ); ?></a>
-	        <a id="help" class="nav-tab"
-	           href="<?php echo admin_url( 'edit.php?post_type=al_product&page=extensions.php&tab=help' ) ?>"><?php _e( 'Help', 'al-ecommerce-product-catalog' ); ?></a>
-	    </h2>
-	    <div class="table-wrapper">
+		<h2><?php _e( 'Extensions', 'al-ecommerce-product-catalog' ) ?> - impleCode eCommerce Product Catalog</h2>
+		<h2 class="nav-tab-wrapper">
+			<a id="extensions" class="nav-tab"
+			   href="<?php echo admin_url( 'edit.php?post_type=al_product&page=extensions.php&tab=product-extensions' ) ?>"><?php _e( 'Extensions', 'al-ecommerce-product-catalog' ); ?></a>
+			<a id="help" class="nav-tab"
+			   href="<?php echo admin_url( 'edit.php?post_type=al_product&page=extensions.php&tab=help' ) ?>"><?php _e( 'Help', 'al-ecommerce-product-catalog' ); ?></a>
+		</h2>
+		<div class="table-wrapper">
 
-	<?php
-	$tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : '';
+			<?php
+			$tab = isset( $_GET[ 'tab' ] ) ? $_GET[ 'tab' ] : '';
 
-	/* GENERAL SETTINGS */
+			/* GENERAL SETTINGS */
 
-	if ( $tab == 'product-extensions' OR $tab == '' ) {
-		?>
+			if ( $tab == 'product-extensions' OR $tab == '' ) {
+				?>
 				<div class="extension-list">
 					<script>
-						jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-						jQuery( '.nav-tab-wrapper a#extensions' ).addClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a#extensions' ).addClass( 'nav-tab-active' );
 					</script><?php
-		start_implecode_install();
-		if ( false === ($extensions = get_transient( 'implecode_extensions_data' )) ) {
-			$extensions = wp_remote_get( 'http://app.implecode.com/index.php?provide_extensions' );
-			if ( !is_wp_error( $extensions ) || 200 != wp_remote_retrieve_response_code( $extensions ) ) {
-				$extensions = json_decode( wp_remote_retrieve_body( $extensions ), true );
-				if ( $extensions ) {
-					set_transient( 'implecode_extensions_data', $extensions, 60 * 60 * 24 * 7 );
-				}
-			} else {
-				$extensions = implecode_extensions();
-			}
-		}
-		$all_ic_plugins = '';
-		if ( function_exists( 'get_implecode_active_plugins' ) ) {
-			$all_ic_plugins = get_implecode_active_plugins();
-		}
-		$not_active_ic_plugins = get_implecode_not_active_plugins();
-		foreach ( $extensions as $extension ) {
-			echo extension_box( $extension[ 'name' ], $extension[ 'url' ], $extension[ 'desc' ], $extension[ 'comp' ], $extension[ 'slug' ], $all_ic_plugins, $not_active_ic_plugins );
-		}
-		?> </div>
+					start_implecode_install();
+					if ( false === ($extensions = get_transient( 'implecode_extensions_data' )) ) {
+						$extensions = wp_remote_get( 'http://app.implecode.com/index.php?provide_extensions' );
+						if ( !is_wp_error( $extensions ) || 200 != wp_remote_retrieve_response_code( $extensions ) ) {
+							$extensions = json_decode( wp_remote_retrieve_body( $extensions ), true );
+							if ( $extensions ) {
+								set_transient( 'implecode_extensions_data', $extensions, 60 * 60 * 24 * 7 );
+							}
+						} else {
+							$extensions = implecode_extensions();
+						}
+					}
+					$all_ic_plugins = '';
+					if ( function_exists( 'get_implecode_active_plugins' ) ) {
+						$all_ic_plugins = get_implecode_active_plugins();
+					}
+					$not_active_ic_plugins = get_implecode_not_active_plugins();
+					foreach ( $extensions as $extension ) {
+						echo extension_box( $extension[ 'name' ], $extension[ 'url' ], $extension[ 'desc' ], $extension[ 'comp' ], $extension[ 'slug' ], $all_ic_plugins, $not_active_ic_plugins );
+					}
+					?> </div>
 				<div class="helpers">
 					<div class="wrapper"><h2><?php _e( 'Did you Know?', 'al-ecommerce-product-catalog' ) ?></h2><?php
 						text_helper( '', __( 'All extensions are designed to work with each other smoothly.', 'al-ecommerce-product-catalog' ) );
@@ -78,8 +78,8 @@ function product_extensions() {
 				?>
 				<div class="help">
 					<script>
-						jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-						jQuery( '.nav-tab-wrapper a#help' ).addClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a#help' ).addClass( 'nav-tab-active' );
 					</script> <?php
 					echo '<h3>How to Install the extension?</h3>';
 					echo '<ol><li>Click the "Get your key" button on the extension that you want to install;</li>';
@@ -95,12 +95,12 @@ function product_extensions() {
 					?>
 					<div class="helpers">
 						<div class="wrapper"><h2><?php _e( 'Did you Know?', 'al-ecommerce-product-catalog' ) ?></h2><?php
-					text_helper( '', __( 'The installation process takes less than 10 seconds.', 'al-ecommerce-product-catalog' ) );
-					text_helper( '', sprintf( __( 'You can take advantage of premium support and <a href="%s">send support tickets</a> to impleCode developers once you have your license key.', 'al-ecommerce-product-catalog' ), 'https://implecode.com/support/?support_type=support' ) );
-					?>
+							text_helper( '', __( 'The installation process takes less than 10 seconds.', 'al-ecommerce-product-catalog' ) );
+							text_helper( '', sprintf( __( 'You can take advantage of premium support and <a href="%s">send support tickets</a> to impleCode developers once you have your license key.', 'al-ecommerce-product-catalog' ), 'https://implecode.com/support/?support_type=support' ) );
+							?>
 						</div>
 					</div><?php }
-				?>
+						?>
 
 			</div>
 			<div style="clear:both; height: 50px;"></div>
@@ -109,7 +109,7 @@ function product_extensions() {
 																							 src="<?php echo AL_PLUGIN_BASE_PATH . 'img/implecode.png'; ?>"
 																							 width="282px" alt="impleCode"/></a>
 			</div>
-	    </div><?php
+		</div><?php
 		/*
 		  if ($tab == 'product-extensions' OR $tab == '') { ?>
 		  <script>
@@ -137,56 +137,120 @@ function product_extensions() {
 				'url'	 => 'premium-support',
 				'name'	 => 'eCommerce Product Catalog Premium',
 				'desc'	 => 'The premium version of eCommerce Product Catalog with more features & premium support.',
+				'comp'	 => 'simple',
+				'slug'	 => 'implecode-product-sidebar',
 			),
 			array(
-				'url'	 => 'product-discounts',
-				'name'	 => 'Product Discounts',
-				'desc'	 => 'Apply percentage or value discounts for catalog products. Show the discount offers with a robust widget or shortcode and more!',
+				'url'	 => 'shopping-cart',
+				'name'	 => 'Shopping Cart',
+				'desc'	 => 'Full featured shopping cart with advanced customisation options. Transform your product catalog into a Web Store!',
+				'comp'	 => 'simple',
+				'slug'	 => 'implecode-shopping-cart',
 			),
 			array(
 				'url'	 => 'quote-form',
 				'name'	 => 'Quote Form',
-				'desc'	 => 'Improve the conversion rate with quote button which redirects to professional product quote form.',
+				'desc'	 => 'Improve the conversion rate with quote/inquiry button which redirects to fully customizable product quote form.',
+				'comp'	 => 'simple',
+				'slug'	 => 'implecode-quote-form',
 			),
 			array(
 				'url'	 => 'order-form',
 				'name'	 => 'Order Form',
-				'desc'	 => 'This powerful extension allows you to sell individual products by adding order button into each product page.',
+				'desc'	 => 'This powerful extension allows you to sell individual products with buy now button and fully customizable order form.',
+				'comp'	 => 'simple',
+				'slug'	 => 'implecode-order-form',
 			),
 			array(
-				'url'	 => 'custom-product-order',
-				'name'	 => 'Custom Product Order',
-				'desc'	 => 'Set custom product order with new priority feature and sort products by price. Assign featured products.',
+				'url'	 => 'paypal-gateway',
+				'name'	 => 'PayPal Gateway',
+				'desc'	 => 'Boost the conversion rate with a robust PayPal shopping cart, buy now button or order form implementation.',
+				'comp'	 => 'simple',
+				'slug'	 => 'implecode-paypal-gateway',
 			),
 			array(
-				'url'	 => 'upload-pdf',
-				'name'	 => 'Upload PDF',
-				'desc'	 => 'Easily attach PDF files to the products, upload to server and provide to clients on product pages.',
-			),
-			array(
-				'url'	 => 'product-search-pro',
-				'name'	 => 'Product Search PRO',
-				'desc'	 => 'Improve WordPress default search engine to provide better product search results. Show product search form with a shortcode.',
-			),
-			array(
-				'url'	 => 'smarter-product-urls',
-				'name'	 => 'Smarter Product URLs',
-				'desc'	 => 'Set up SEO and USER friendly product page URLs. Add product category in product page URLs.',
+				'url'	 => 'product-page-customizer',
+				'name'	 => 'Product Page Customizer',
+				'desc'	 => 'Customize product page with simple settings. Change product page elements, their size, position and colors easily in a few seconds.',
+				'comp'	 => 'simple',
+				'slug'	 => 'product-page-customizer',
 			),
 			array(
 				'url'	 => 'product-gallery-advanced',
 				'name'	 => 'Product Gallery Advanced',
 				'desc'	 => 'Add unlimited number of product images and show them in a robust product slider or beautiful light-box presentation.',
+				'comp'	 => 'simple',
+				'slug'	 => 'product-gallery-advanced',
+			),
+			array(
+				'url'	 => 'custom-product-order',
+				'name'	 => 'Custom Product Order',
+				'desc'	 => 'Sort products by priority, lowest price, highest price or randomly. New options in sort drop-down. Assign featured products.',
+				'comp'	 => 'simple',
+				'slug'	 => 'custom-product-order',
+			),
+			array(
+				'url'	 => 'upload-pdf',
+				'name'	 => 'Upload PDF',
+				'desc'	 => 'Easily attach unlimited PDF files to the products, upload to server and provide to clients on product pages.',
+				'comp'	 => 'simple',
+				'slug'	 => 'implecode-upload-pdf',
+			),
+			array(
+				'url'	 => 'product-search-pro',
+				'name'	 => 'Product Search PRO',
+				'desc'	 => 'Improve WordPress default search engine to provide better product search results. Show product search form with a shortcode.',
+				'comp'	 => 'adv',
+				'slug'	 => 'implecode-product-search',
 			),
 			array(
 				'url'	 => 'smart-multiple-catalogs',
 				'name'	 => 'Smart Multiple Catalogs',
 				'desc'	 => 'Create completely separate, multiple catalogs at one website. Assign separate categories, parent URLs, manage them from different...',
+				'comp'	 => 'simple',
+				'slug'	 => 'smart-multiple-catalogs',
+			),
+			array(
+				'url'	 => 'smarter-product-urls',
+				'name'	 => 'Smarter Product URLs',
+				'desc'	 => 'Set up SEO and USER friendly product page URLs. Add product category in product page URLs.',
+				'comp'	 => 'adv',
+				'slug'	 => 'smarter-product-urls',
 			),
 			array(
 				'url'	 => 'drop-attributes',
 				'name'	 => 'Drop-down Attributes',
 				'desc'	 => 'Select attributes values with a drop-down. Define default drop-down values for each attribute in product settings.',
+				'comp'	 => 'simple',
+				'slug'	 => 'drop-down-attributes',
+			),
+			array(
+				'url'	 => 'product-csv',
+				'name'	 => 'Product CSV',
+				'desc'	 => 'Import, Export & Update products all fields and attributes with a simple CSV file.',
+				'comp'	 => 'simple',
+				'slug'	 => 'implecode-product-csv',
+			),
+			array(
+				'url'	 => 'product-discounts',
+				'name'	 => 'Product Discounts',
+				'desc'	 => 'Apply percentage or value discounts for catalog products. Show the discount offers with a robust widget or shortcode and more!',
+				'comp'	 => 'simple',
+				'slug'	 => 'implecode-product-discounts',
+			),
+			array(
+				'url'	 => 'classic-list-button',
+				'name'	 => 'Classic List with Button',
+				'desc'	 => 'Premium product listing theme for your eCommerce Product Catalog. Easily set image size, description name and button position.',
+				'comp'	 => 'simple',
+				'slug'	 => 'classic-list-button',
+			),
+			array(
+				'url'	 => 'slim-grid',
+				'name'	 => 'Slim Grid Theme',
+				'desc'	 => 'Premium Grid Theme for product listing. Has additional settings for size, per row elements, description length and price.',
+				'comp'	 => 'simple',
+				'slug'	 => 'slim-classic-grid',
 			),
 		);
 		return $extensions;
@@ -202,7 +266,7 @@ function product_extensions() {
 		}
 
 		$return		 = '<div class="extension ' . $url . '">
-	<a target="_blank" href="http://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '"><h3><span>' . $name . '</span></h3></a>
+	<a class="extension-name" target="_blank" href="http://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '"><h3><span>' . $name . '</span></h3><span class="click-span">' . __( 'Click for more', 'al-ecommerce-product-catalog' ) . '</span></a>
 	<p>' . $desc . '</p>';
 		$disabled	 = '';
 		$current_key = get_option( 'custom_license_code' );
@@ -319,7 +383,7 @@ function product_extensions() {
 		foreach ( $all_plugins as $not_active_name => $not_active_plugin ) {
 			if ( $not_active_plugin[ 'Author' ] == 'Norbert Dreszer' && $not_active_plugin[ 'Name' ] != 'eCommerce Product Catalog by impleCode' ) {
 				$ic_plugins[ $i ][ 'dir_file' ]	 = $not_active_name;
-				$not_active_name			 = explode( '/', $not_active_name );
+				$not_active_name				 = explode( '/', $not_active_name );
 				$ic_plugins[ $i ][ 'slug' ]		 = $not_active_name[ 0 ];
 			}
 			$i++;

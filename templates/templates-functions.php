@@ -14,7 +14,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @author 		Norbert Dreszer
  */
 function content_product_adder() {
-	if ( is_archive() || is_search() || is_home_archive() ) {
+	if ( is_archive() || is_search() || is_home_archive() || is_ic_product_listing() ) {
 		do_action( 'before_product_archive' );
 		content_product_adder_archive();
 	} else {
@@ -125,7 +125,6 @@ add_shortcode( 'show_products', 'show_products_outside_loop' );
 
 function single_scripts() {
 	if ( is_lightbox_enabled() ) {
-		wp_enqueue_script( 'colorbox' );
 		wp_enqueue_style( 'colorbox' );
 	}
 }
@@ -139,7 +138,7 @@ add_action( 'pre_get_posts', 'set_products_limit' );
  */
 function set_products_limit( $query ) {
 	$archive_multiple_settings = get_multiple_settings();
-	if ( !is_admin() && (is_post_type_archive( 'al_product' ) || is_tax( 'al_product-cat' )) && $query->is_main_query() ) {
+	if ( !is_admin() && (is_post_type_archive( 'al_product' ) || is_tax( 'al_product-cat' ) || is_home_archive( $query )) && $query->is_main_query() ) {
 		$query->set( 'posts_per_page', $archive_multiple_settings[ 'archive_products_limit' ] );
 	}
 }
@@ -411,8 +410,8 @@ add_action( 'nav_menu_css_class', 'product_listing_current_nav_class', 10, 2 );
  * Defines custom classes to product or category listing div
  * @return string
  */
-function product_list_class() {
-	return apply_filters( 'product-list-class', '' );
+function product_list_class( $where = 'product-list' ) {
+	return apply_filters( 'product-list-class', '', $where );
 }
 
 /**
@@ -484,4 +483,18 @@ function exclude_products_from_child_cat( $query ) {
 			$query->tax_query->queries[ $i ][ 'include_children' ] = 0;
 		}
 	}
+}
+
+add_filter( 'product_listing_classes', 'add_classes_on_categories' );
+
+/**
+ * Adds neccessary classes for some themes
+ * @param string $classes
+ * @return string
+ */
+function add_classes_on_categories( $classes ) {
+	if ( is_tax() && is_ic_only_main_cats() ) {
+		$classes .= ' hentry status-publish';
+	}
+	return $classes;
 }

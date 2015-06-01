@@ -82,7 +82,12 @@ border: 1px solid #ccc;
 #implecode_settings .support-tab .extension {
 height: 230px;
 }
-
+#implecode_settings a.extension-name {
+overflow: hidden;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+}
 #implecode_settings .extension a {
 text-decoration: none;
 }
@@ -161,6 +166,18 @@ width: 100%;
 
 #implecode_settings .help {
 max-width: 700px;
+}
+
+#implecode_settings .extension .click-span {
+  position: absolute;
+  bottom: 1px;
+  right: 3px;
+  padding: 2px;
+  color: #ededed;
+}
+
+#implecode_settings .extension a:hover .click-span {
+    color: #000;
 }
 
 /* Settings */

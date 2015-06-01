@@ -33,7 +33,8 @@ function is_ic_taxonomy_page() {
  * @return boolean
  */
 function is_ic_product_listing() {
-	if ( is_post_type_archive( product_post_type_array() ) ) {
+	$listing_id = get_product_listing_id();
+	if ( is_post_type_archive( product_post_type_array() ) || is_home_archive() || (is_ic_product_listing_enabled() && is_page( $listing_id )) ) {
 		return true;
 	}
 	return false;
@@ -78,11 +79,11 @@ function is_ic_sku_enabled() {
 }
 
 function is_ic_product_listing_enabled() {
-	if ( get_option( 'enable_product_listing', 1 ) == 1 ) {
+	$enable_product_listing = get_option( 'enable_product_listing', 1 );
+	if ( $enable_product_listing == 1 ) {
 		return true;
-	} else {
-		return false;
 	}
+	return false;
 }
 
 function ic_string_contains( $string, $contains ) {

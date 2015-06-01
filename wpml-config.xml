@@ -1,0 +1,73 @@
+<wpml-config>
+    <custom-fields>
+        <custom-field action="copy">_price</custom-field>
+        <custom-field action="copy">_sku</custom-field>
+        <custom-field action="translate">content</custom-field>
+        <custom-field action="translate">excerpt</custom-field>
+		<custom-field action="translate">_attribute1</custom-field>
+		<custom-field action="translate">_attribute-label1</custom-field>
+		<custom-field action="translate">_attribute-unit1</custom-field>
+		<custom-field action="translate">_attribute2</custom-field>
+		<custom-field action="translate">_attribute-label2</custom-field>
+		<custom-field action="translate">_attribute-unit2</custom-field>
+		<custom-field action="translate">_attribute3</custom-field>
+		<custom-field action="translate">_attribute-label3</custom-field>
+		<custom-field action="translate">_attribute-unit3</custom-field>
+		<custom-field action="translate">_shipping1</custom-field>
+		<custom-field action="translate">_shipping-label1</custom-field>
+		<custom-field action="translate">_shipping2</custom-field>
+		<custom-field action="translate">_shipping-label2</custom-field>
+    </custom-fields>
+    <custom-types>
+        <custom-type translate="1">al_product</custom-type>
+    </custom-types>    
+    <taxonomies>
+        <taxonomy translate="1">al_product-cat</taxonomy>
+    </taxonomies>    
+    <admin-texts>
+            <key name="single_names">
+                <key name="product_price" />
+                <key name="product_sku" />
+				<key name="product_shipping" />
+                <key name="product_features" />
+				<key name="other_categories" />
+                <key name="return_to_archive" />
+            </key>
+            <key name="archive_names">
+                <key name="all_products" />
+                <key name="all_main_categories" />
+				<key name="all_subcategories" />
+				<key name="all_prefix" />
+				<key name="category_products" />
+            </key>
+			<key name="archive_multiple_settings">
+                <key name="seo_title" />
+                <key name="breadcrumbs_title" />
+            </key>
+			<key name="product_attribute">
+                <key name="1" />
+                <key name="2" />
+				<key name="3" />
+            </key>
+			<key name="product_attribute_label">
+                <key name="1" />
+                <key name="2" />
+				<key name="3" />
+            </key>
+			<key name="product_attribute_unit">
+                <key name="1" />
+                <key name="2" />
+				<key name="3" />
+            </key>
+			<key name="product_shipping_cost">
+                <key name="1" />
+                <key name="2" />
+            </key>
+			<key name="product_shipping_label">
+                <key name="1" />
+                <key name="2" />
+            </key>
+    </admin-texts>    
+</wpml-config>
+
+

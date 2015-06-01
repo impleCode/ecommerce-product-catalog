@@ -92,24 +92,24 @@ function upload_product_image( $name, $button_value, $option_name, $option_value
 		   href="#"><?php _e( 'Reset image', 'al-ecommerce-product-catalog' ); ?></a>
 	</div>
 	<script>
-		jQuery( document ).ready( function () {
-			jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
-				wp.media.editor.send.attachment = function ( props, attachment ) {
-					jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
-					jQuery( '.media-image' ).attr( "src", attachment.url );
-				}
+	    jQuery( document ).ready( function () {
+	        jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
+	            wp.media.editor.send.attachment = function ( props, attachment ) {
+	                jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
+	                jQuery( '.media-image' ).attr( "src", attachment.url );
+	            }
 
-				wp.media.editor.open( this );
+	            wp.media.editor.open( this );
 
-				return false;
-			} );
-		} );
+	            return false;
+	        } );
+	    } );
 
-		jQuery( '#reset-image-button' ).on( 'click', function () {
-			jQuery( '#<?php echo $name; ?>' ).val( '' );
-			src = jQuery( '#default' ).val();
-			jQuery( '.media-image' ).attr( "src", src );
-		} );
+	    jQuery( '#reset-image-button' ).on( 'click', function () {
+	        jQuery( '#<?php echo $name; ?>' ).val( '' );
+	        src = jQuery( '#default' ).val();
+	        jQuery( '.media-image' ).attr( "src", src );
+	    } );
 	</script>
 	<?php
 }
@@ -518,11 +518,11 @@ function get_quasi_post_tax_name( $tax_name, $exact = true ) {
 }
 
 function product_breadcrumbs() {
-	if ( get_integration_type() != 'simple' ) {
+	if ( get_integration_type() != 'simple' && !is_front_page() ) {
 		global $post;
 		$post_type	 = get_post_type();
 		$home_page	 = get_home_url();
-		if ( function_exists( 'additional_product_listing_url' ) AND $post_type != 'al_product' ) {
+		if ( function_exists( 'additional_product_listing_url' ) && $post_type != 'al_product' ) {
 			$catalog_id			 = catalog_id( $post_type );
 			$product_archives	 = additional_product_listing_url();
 			$product_archive	 = $product_archives[ $catalog_id ];

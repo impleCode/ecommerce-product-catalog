@@ -14,7 +14,7 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 function implecode_custom_csv_menu() {
 	?>
-	<a id="csv-settings" class="element" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv' ) ?>"><?php _e( 'Product Import', 'al-ecommerce-product-catalog' ); ?></a>
+	<a id="csv-settings" class="element" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv' ) ?>"><?php _e( 'Simple CSV', 'al-ecommerce-product-catalog' ); ?></a>
 	<?php
 }
 
@@ -26,15 +26,26 @@ function implecode_custom_csv_settings_content() {
 	<?php if ( $submenu == 'csv' ) { ?>
 		<div class="setting-content submenu csv-tab">
 			<script>
-				jQuery( '.settings-submenu a' ).removeClass( 'current' );
-				jQuery( '.settings-submenu a#csv-settings' ).addClass( 'current' );
+		        jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		        jQuery( '.settings-submenu a#csv-settings' ).addClass( 'current' );
 			</script>
-			<h2><?php _e( 'Product Import', 'al-ecommerce-product-catalog' ); ?></h2><?php simple_upload_csv_products_file(); ?>
+			<h2><?php _e( 'Simple CSV', 'al-ecommerce-product-catalog' ); ?></h2>
+			<h3><?php _e( 'Simple Product Export', 'al-ecommerce-product-catalog' ); ?></h3>
+			<?php
+			$export = isset( $_GET[ 'export_csv' ] ) ? $_GET[ 'export_csv' ] : '';
+			if ( $export == 1 ) {
+				$url = simple_export_to_csv();
+				echo '<a style="display: block; margin-top: 20px;" href="' . $url . '">' . __( "Download CSV", 'al-ecommerce-product-catalog' ) . '</a>';
+			} else {
+				?>
+				<a style="display: block; margin-top: 20px;" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv&export_csv=1' ) ?>"><button class="button" ><?php _e( "Export All Products to CSV file", 'al-product-csv' ) ?></button></a>
+				<h3><?php _e( 'Simple Product Import', 'al-ecommerce-product-catalog' ); ?></h3><?php simple_upload_csv_products_file(); ?>
+			<?php } ?>
 		</div>
 		<div class="helpers"><div class="wrapper"><?php
-		main_helper();
-		doc_helper( __( 'import', 'al-ecommerce-product-catalog' ), 'product-import' );
-		?>
+				main_helper();
+				doc_helper( __( 'import', 'al-ecommerce-product-catalog' ), 'product-import' );
+				?>
 			</div></div><?php
 	}
 }
@@ -154,4 +165,61 @@ function sample_import_file_url() {
 function simple_close_csv_file( $fp ) {
 	fclose( $fp );
 	ini_set( 'auto_detect_line_endings', false );
+}
+
+function simple_get_all_exported_products() {
+	$args		 = array(
+		'posts_per_page'	 => -1,
+		'orderby'			 => 'title',
+		'order'				 => 'ASC',
+		'post_type'			 => 'al_product',
+		'post_status'		 => 'publish',
+		'suppress_filters'	 => true );
+	$products	 = get_posts( $args );
+	return $products;
+}
+
+function simple_prepare_products_to_export() {
+	$products							 = simple_get_all_exported_products();
+	$fields								 = array();
+	$fields[ 1 ][ 'image_url' ]			 = __( 'Image URL', 'al-product-csv' );
+	$fields[ 1 ][ 'product_name' ]		 = __( 'Product Name', 'al-product-csv' );
+	$fields[ 1 ][ 'product_price' ]		 = __( 'Product Price', 'al-product-csv' );
+	$fields[ 1 ][ 'product_categories' ] = __( 'Product Categories', 'al-product-csv' );
+	$fields[ 1 ][ 'product_short_desc' ] = __( 'Short Description', 'al-product-csv' );
+	$fields[ 1 ][ 'product_desc' ]		 = __( 'Long Description', 'al-product-csv' );
+	$z									 = 2;
+	foreach ( $products as $product ) {
+		$image							 = wp_get_attachment_image_src( get_post_thumbnail_id( $product->ID ), 'full' );
+		$desc							 = get_product_description( $product->ID );
+		$short_desc						 = get_product_short_description( $product->ID );
+		$fields[ $z ][ 'image_url' ]	 = $image[ 0 ];
+		$fields[ $z ][ 'product_name' ]	 = $product->post_title;
+		$fields[ $z ][ 'product_price' ] = get_post_meta( $product->ID, '_price', true );
+		$category_array					 = get_the_terms( $product->ID, 'al_product-cat' );
+		$category						 = array();
+		if ( !empty( $category_array ) ) {
+			foreach ( $category_array as $p_cat ) {
+				$value		 = html_entity_decode( $p_cat->name );
+				$category[]	 = $value;
+			}
+		}
+		$fields[ $z ][ 'product_categories' ]	 = implode( ' | ', $category );
+		$fields[ $z ][ 'product_short_desc' ]	 = $short_desc;
+		$fields[ $z ][ 'product_desc' ]			 = $desc;
+		$z++;
+	}
+	return array_filter( $fields );
+}
+
+function simple_export_to_csv() {
+	$fp		 = simple_prepare_csv_file();
+	$fields	 = simple_prepare_products_to_export();
+	fprintf( $fp, chr( 0xEF ) . chr( 0xBB ) . chr( 0xBF ) );
+	foreach ( $fields as $field ) {
+		fputcsv( $fp, $field, ';', '"' );
+	}
+	simple_close_csv_file( $fp );
+	$csv_temp = wp_upload_dir();
+	return $csv_temp[ 'baseurl' ] . '/simple-products.csv';
 }

@@ -4,7 +4,7 @@ Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpre
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 4.2
-Stable tag: 2.2.11
+Stable tag: 2.3.0
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -100,6 +100,7 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 * German - Thanks to Peter & Toby via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Greek - Thanks to Giorgos via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Hebrew - Thanks to Ahrale
+* Hungarian - Thanks to Orsolya via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Italian - Thanks to Fabio via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Japanese - Thanks to Diginatu via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Norwegian - Thanks to Oyvind via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
@@ -192,12 +193,21 @@ This is not a store. It's main purpose is to present products or services on the
 
 == Changelog ==
 
-= 2.3.0 - 26/05/2015 = 
+= 2.3.0 - 01/06/2015 = 
 
 * Feature - Ability to show only subcategories on category pages (products will be shown only on assigned category pages)
+* Feature - Product export
 * Tweak - ability to disable image on category page
+* Tweak - compatibility with multilingual solutions
 * Fix - encoding error fixed in classic list for some languages
 * Fix - product search title now showing properly
+* Fix - show SKU even if price disabled
+* Localisation - Portuguese language improved thanks to Rodrigo via http://translate.implecode.com
+* Localisation - French language improved thanks to Antoine via http://translate.implecode.com
+* Localisation - Polish language improved thanks to Wladek via http://translate.implecode.com
+* Localisation - Danish language improved thanks to Peter via http://translate.implecode.com
+* Localisation - Hungarian language introduces thanks to Orsolya via http://translate.implecode.com
+* Localisation - Chinese language improved thanks to Suyang via http://translate.implecode.com
 
 = 2.2.11 - 11/05/2015 = 
 

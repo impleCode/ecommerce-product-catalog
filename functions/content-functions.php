@@ -85,10 +85,7 @@ function c_list_desc( $post_id = null, $shortdesc = null ) {
 /* Single Product */
 
 function add_back_to_products_url( $post, $single_names, $taxonomies ) {
-	?>
-	<?php
-	$enable_product_listing = get_option( 'enable_product_listing', 1 );
-	if ( $enable_product_listing == 1 ) {
+	if ( is_ic_product_listing_enabled() ) {
 		?>
 		<a href="<?php echo product_listing_url(); ?>"><?php echo $single_names[ 'return_to_archive' ]; ?></a>
 		<?php

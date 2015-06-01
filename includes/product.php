@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @package        ecommerce-product-catalog/includes
  * @author        Norbert Dreszer
  */
-add_action( 'init', 'frontend_scripts' );
+add_action( 'register_catalog_styles', 'frontend_scripts' );
 
 /**
  * Registers product related front-end scripts
@@ -30,11 +30,14 @@ function frontend_scripts() {
 
 add_action( 'init', 'create_product' );
 
+/**
+ * Registers products post type
+ * @global type $wp_version
+ */
 function create_product() {
 	global $wp_version;
-	$enable_product_listing	 = get_option( 'enable_product_listing', 1 );
-	$slug					 = get_product_slug();
-	if ( $enable_product_listing == 1 && get_integration_type() != 'simple' ) {
+	$slug = get_product_slug();
+	if ( is_ic_product_listing_enabled() && get_integration_type() != 'simple' ) {
 		$product_listing_t = $slug;
 	} else {
 		$product_listing_t = false;
@@ -157,7 +160,7 @@ function add_product_metaboxes() {
 	$names[ 'singular' ] = ucfirst( $names[ 'singular' ] );
 	add_meta_box( 'al_product_short_desc', sprintf( __( '%s Short Description', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ), 'al_product_short_desc', 'al_product', apply_filters( 'short_desc_box_column', 'normal' ), apply_filters( 'short_desc_box_priority', 'default' ) );
 	add_meta_box( 'al_product_desc', sprintf( __( '%s description', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ), 'al_product_desc', 'al_product', apply_filters( 'desc_box_column', 'normal' ), apply_filters( 'desc_box_priority', 'default' ) );
-	if ( is_ic_price_enabled() ) {
+	if ( is_ic_price_enabled() || is_ic_sku_enabled() ) {
 		add_meta_box( 'al_product_price', sprintf( __( '%s Details', 'al-ecommerce-product-catalog' ), $names[ 'singular' ] ), 'al_product_price', 'al_product', apply_filters( 'product_price_box_column', 'side' ), apply_filters( 'product_price_box_priority', 'default' ) );
 	}
 	if ( get_option( 'product_shipping_options_number', DEF_SHIPPING_OPTIONS_NUMBER ) > 0 ) {

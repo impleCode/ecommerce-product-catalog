@@ -40,7 +40,7 @@ function custom_design_content() {
 				<a id="archive-design" class="element current" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=archive-design' ) ?>"><?php _e( 'Product Listing', 'al-ecommerce-product-catalog' ); ?></a>
 				<a id="single-design" class="element" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=single-design' ) ?>"><?php _e( 'Product Page', 'al-ecommerce-product-catalog' ); ?></a>
 				<a id="design-schemes" class="element" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=design-schemes' ) ?>"><?php _e( 'Design Schemes', 'al-ecommerce-product-catalog' ); ?></a>
-	<?php do_action( 'custom-design-submenu' ); ?>
+				<?php do_action( 'custom-design-submenu' ); ?>
 			</h3>
 		</div>
 		<div class="setting-content submenu"><?php do_action( 'custom-design-settings' ); ?>
@@ -86,7 +86,7 @@ function archive_custom_design() {
 							<input type="radio" name="archive_template" value="default"<?php checked( 'default' == $archive_template ); ?>><?php _e( 'Modern Grid', 'al-ecommerce-product-catalog' ); ?></td>
 						<td rowspan="2" class="theme-example"><?php example_default_archive_theme(); ?></td>
 					</tr>
-					<tr><td class="additional-styling"><strong><?php _e( 'Additional Settings', 'al-ecommerce-product-catalog' ); ?></strong><br><input title="<?php _e( 'Use this only with short attributes labels and values e.g. Color: Red', 'al-ecommerce-product-catalog' ) ?>" type="checkbox" name="modern_grid_settings[attributes]" value="1"<?php checked( 1, isset( $modern_grid_settings[ 'attributes' ] ) ? $modern_grid_settings[ 'attributes' ] : ''  ); ?>><?php _e( 'Show Attributes', 'al-ecommerce-product-catalog' ); ?><br><?php _e( 'Per row', 'al-ecommerce-product-catalog' ) ?>: <input type="number" min="1" step="1" class="number_box" name="modern_grid_settings[per-row]" value="<?php echo $modern_grid_settings[ 'per-row' ] ?>"><?php _e( 'products', 'al-ecommerce-product-catalog' ) ?></td></tr>
+					<tr><td class="additional-styling"><strong><?php _e( 'Additional Settings', 'al-ecommerce-product-catalog' ); ?></strong><br><input title="<?php _e( 'Use this only with short attributes labels and values e.g. Color: Red', 'al-ecommerce-product-catalog' ) ?>" type="checkbox" name="modern_grid_settings[attributes]" value="1"<?php checked( 1, isset( $modern_grid_settings[ 'attributes' ] ) ? $modern_grid_settings[ 'attributes' ] : ''  ); ?>><?php _e( 'Show Attributes', 'al-ecommerce-product-catalog' ); ?><br><?php _e( 'Per row', 'al-ecommerce-product-catalog' ) ?>: <input type="number" min="1" max="5" step="1" class="number_box" name="modern_grid_settings[per-row]" value="<?php echo $modern_grid_settings[ 'per-row' ] ?>"><?php _e( 'products', 'al-ecommerce-product-catalog' ) ?></td></tr>
 					<tr><td colspan="2" class="separator"></td></tr>
 					<tr id="list-theme">
 						<td class="with-additional-styling theme-name"><input type="radio" name="archive_template" value="list"<?php checked( 'list' == $archive_template ); ?>><?php _e( 'Classic List', 'al-ecommerce-product-catalog' ); ?></td>
@@ -102,7 +102,7 @@ function archive_custom_design() {
 						<td class="additional-styling"><strong><?php _e( 'Additional Settings', 'al-ecommerce-product-catalog' ); ?></strong><br><?php _e( 'Per row', 'al-ecommerce-product-catalog' ) ?>: <input type="number" min="1" step="1" class="number_box" title="<?php _e( 'The product listing element width will adjust accordingly to your theme content width.', 'al-ecommerce-product-catalog' ) ?>" name="classic_grid_settings[entries]" value="<?php echo $classic_grid_settings[ 'entries' ] ?>"><?php _e( 'products', 'al-ecommerce-product-catalog' ) ?></td>
 					</tr>
 					<tr><td colspan="2" class="separator"></td></tr>
-		<?php do_action( 'product_listing_theme_settings', $archive_template ) ?>
+					<?php do_action( 'product_listing_theme_settings', $archive_template ) ?>
 				</tbody>
 			</table>
 			<p class="submit">
@@ -216,7 +216,7 @@ function color_schemes() {
 					</tr>
 				</tbody>
 			</table>
-		<?php do_action( 'color_schemes_settings' ); ?>
+			<?php do_action( 'color_schemes_settings' ); ?>
 			<p class="submit">
 				<input type="submit" class="button-primary" value="<?php _e( 'Save changes', 'al-ecommerce-product-catalog' ); ?>" />
 			</p>

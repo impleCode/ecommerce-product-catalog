@@ -38,10 +38,10 @@ function attributes_settings_content() {
 		<div class="settings-submenu">
 			<h3>
 				<a id="attributes-settings" class="element current" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=attributes-settings&submenu=attributes' ) ?>"><?php _e( 'Attributes Settings', 'al-ecommerce-product-catalog' ); ?></a>
-	<?php do_action( 'attributes_submenu' ); ?>
+				<?php do_action( 'attributes_submenu' ); ?>
 			</h3>
 		</div>
-	<?php if ( $submenu == 'attributes' ) { ?>
+		<?php if ( $submenu == 'attributes' ) { ?>
 			<div class="setting-content submenu">
 				<script>
 					jQuery( '.settings-submenu a' ).removeClass( 'current' );
@@ -49,7 +49,7 @@ function attributes_settings_content() {
 				</script>
 				<h2><?php _e( 'Attributes Settings', 'al-ecommerce-product-catalog' ); ?></h2>
 				<form method="post" action="options.php">
-		<?php settings_fields( 'product_attributes' ); ?>
+					<?php settings_fields( 'product_attributes' ); ?>
 					<h3><?php _e( 'Product attributes options', 'al-ecommerce-product-catalog' ); ?></h3>
 					<table>
 						<tr>
@@ -71,7 +71,7 @@ function attributes_settings_content() {
 									<th></th>
 									<th class="title"><b><?php _e( 'Attribute default value', 'al-ecommerce-product-catalog' ); ?></b></th>
 									<th class="title"><b><?php _e( 'Attribute default unit', 'al-ecommerce-product-catalog' ); ?></b></th>
-			<?php do_action( 'product_attributes_settings_table_th' ); ?>
+									<?php do_action( 'product_attributes_settings_table_th' ); ?>
 									<th class="dragger"></th>
 								</tr>
 							</thead>
@@ -89,18 +89,18 @@ function attributes_settings_content() {
 										<td class="product-attribute-label-column"><input class="product-attribute-label" type="text" name="product_attribute_label[<?php echo $i ?>]" value="<?php echo $attribute_label[ $i ] ?>" /></td><td class="lp-column">:</td>
 										<td><input id="admin-number-field" class="product-attribute" type="text" name="product_attribute[<?php echo $i ?>]" value="<?php echo $attribute[ $i ] ?>" /></td>
 										<td><input id="admin-number-field" class="product-attribute-unit" type="text" name="product_attribute_unit[<?php echo $i ?>]" value="<?php echo $attribute_unit[ $i ] ?>" /></td>
-									<?php do_action( 'product_attributes_settings_table_td', $i ); ?>
+										<?php do_action( 'product_attributes_settings_table_td', $i ); ?>
 										<td class="dragger"></td>
 									</tr> <?php }
-								?>
+									?>
 							</tbody>
 						</table>
-			<?php do_action( 'attributes-settings' ); ?>
+						<?php do_action( 'attributes-settings' ); ?>
 						<p class="submit">
 							<input type="submit" class="button-primary" value="<?php _e( 'Save changes', 'al-ecommerce-product-catalog' ); ?>" />
 						</p><?php
-		} else {
-			?>
+					} else {
+						?>
 						<table>
 							<tr>
 								<td colspan="2">
@@ -108,7 +108,7 @@ function attributes_settings_content() {
 								</td>
 							</tr>
 						</table><?php }
-		?>
+					?>
 				</form>
 			</div>
 			<div class="helpers"><div class="wrapper"><?php
@@ -116,7 +116,7 @@ function attributes_settings_content() {
 					doc_helper( __( 'attributes', 'al-ecommerce-product-catalog' ), 'product-attributes' )
 					?>
 				</div></div>
-	<?php } do_action( 'product-attributes' ); ?>
+		<?php } do_action( 'product-attributes' ); ?>
 	</div><?php
 }
 
@@ -129,4 +129,16 @@ add_action( 'general_settings', 'attributes_settings_content' );
  */
 function product_attributes_number() {
 	return get_option( 'product_attributes_number', DEF_ATTRIBUTES_OPTIONS_NUMBER );
+}
+
+/**
+ * Returns default product attribute label defined in product settings
+ *
+ * @param int $i
+ * @return string
+ */
+function get_default_product_attribute_label( $i ) {
+	$attribute_label		 = get_option( 'product_attribute_label' );
+	$attribute_label[ $i ]	 = isset( $attribute_label[ $i ] ) ? $attribute_label[ $i ] : '';
+	return $attribute_label[ $i ];
 }

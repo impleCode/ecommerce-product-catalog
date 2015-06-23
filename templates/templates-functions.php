@@ -58,8 +58,8 @@ function content_product_adder_archive_before_title() {
 }
 
 function show_products_outside_loop( $atts ) {
-	global $shortcode_query, $product_sort, $archive_template;
-	$args				 = shortcode_atts( array(
+	global $shortcode_query, $product_sort, $archive_template, $shortcode_args;
+	$available_args		 = apply_filters( 'show_products_shortcode_args', array(
 		'post_type'			 => 'al_product',
 		'category'			 => '',
 		'product'			 => '',
@@ -67,7 +67,9 @@ function show_products_outside_loop( $atts ) {
 		'archive_template'	 => get_product_listing_template(),
 		'design_scheme'		 => '',
 		'sort'				 => 0,
-	), $atts );
+	) );
+	$args				 = shortcode_atts( $available_args, $atts );
+	$shortcode_args		 = $args;
 	$category			 = esc_html( $args[ 'category' ] );
 	$product			 = esc_html( $args[ 'product' ] );
 	$products_limit		 = intval( $args[ 'products_limit' ] );
@@ -115,9 +117,10 @@ function show_products_outside_loop( $atts ) {
 		$i++;
 		$inside .= get_catalog_template( $archive_template, $post, $i, $design_scheme );
 	endwhile;
-	$inside = apply_filters( 'product_list_ready', $inside, $archive_template );
+	$inside = apply_filters( 'product_list_ready', $inside, $archive_template, $args );
 	wp_reset_postdata();
 	reset_row_class();
+	unset( $shortcode_args );
 	return '<div class="product-list responsive ' . $archive_template . '-list ' . product_list_class() . '">' . $inside . '<div style="clear:both"></div></div>';
 }
 

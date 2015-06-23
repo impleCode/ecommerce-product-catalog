@@ -87,21 +87,20 @@ $listing_class			 = apply_filters( 'product_listing_classes', 'al_product respon
 		}
 		if ( (is_tax() || is_search() || !is_ic_only_main_cats()) && more_products() ) {
 			do_action( 'before_product_list', $archive_template, $multiple_settings );
-			$product_list = '<div class="product-list responsive ' . $archive_template . ' ' . product_list_class() . '">';
+			$product_list = '';
 			while ( have_posts() ) : the_post();
 				$product_list .= get_catalog_template( $archive_template, $post );
 			endwhile;
 			if ( isset( $is_home ) ) {
 				wp_reset_query();
 			}
-			$product_list .= '</div>';
-			$product_list = apply_filters( 'product_list_ready', $product_list, $archive_template );
-			echo $product_list . '<span class="clear"></span></div>';
+			$product_list = apply_filters( 'product_list_ready', $product_list, $archive_template, 'auto_listing' );
+			echo '<div class="product-list responsive ' . $archive_template . ' ' . product_list_class() . '">' . $product_list . '</div><span class="clear"></span>';
 		} else if ( is_search() && !more_products() ) {
 			echo '<p>' . __( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'al-ecommerce-product-catalog' ) . '</p>';
 			product_search_form();
 		}
 		?>
-
+	</div>
 </article><?php
 do_action( 'product_listing_end', $archive_template, $multiple_settings );

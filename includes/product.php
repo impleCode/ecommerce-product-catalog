@@ -180,7 +180,7 @@ function al_product_price() {
 	if ( is_ic_price_enabled() ) {
 		$set		 = get_currency_settings();
 		$price		 = get_post_meta( $post->ID, '_price', true );
-		$price_table = apply_filters( 'admin_price_table', '<table><tr><td class="label-column">' . __( 'Price', 'al-ecommerce-product-catalog' ) . ':</td><td class="price-column"><input type="text" title="' . sprintf( __( 'Example price format: %s or %s', 'al-ecommerce-product-catalog' ), price_format( '1587.89', 1, 0 ), '1587' . $set[ 'dec_sep' ] . '89' ) . '" pattern="^(([1-9](\\d*|\\d{0,2}(' . $set[ 'th_sep' ] . '\\d{3})*))|0)(\\' . $set[ 'dec_sep' ] . '\\d{1,2})?$" name="_price" value="' . $price . '" class="widefat" /></td><td>' . product_currency() . '</td></tr></table>', $post );
+		$price_table = apply_filters( 'admin_price_table', '<table><tr><td class="label-column">' . __( 'Price', 'al-ecommerce-product-catalog' ) . ':</td><td class="price-column"><input type="text" title="' . sprintf( __( 'Example price format: %s or %s', 'al-ecommerce-product-catalog' ), price_format( '1587.89', 1, 0 ), '1587' . $set[ 'dec_sep' ] . '89' ) . ' (' . __( 'you can change it in product settings', 'al-ecommerce-product-catalog' ) . ')" pattern="^(([1-9](\\d*|\\d{0,2}(' . $set[ 'th_sep' ] . '\\d{3})*))|0)(\\' . $set[ 'dec_sep' ] . '\\d{1,2})?$" name="_price" value="' . $price . '" class="widefat" /></td><td>' . product_currency() . '</td></tr></table>', $post );
 		$price_table .= '<div id="invalid-_price" class="ui-state-error ui-corner-all message" style="padding: 0 .7em; display: none;"><p>' . sprintf( __( 'Please provide a correct price format according to your currency settings. Example price format: %s or %s', 'al-ecommerce-product-catalog' ), price_format( '1587.89', 1, 0 ), '1587' . $set[ 'dec_sep' ] . '89' ) . '</p></div>';
 	}
 	if ( is_ic_sku_enabled() ) {
@@ -188,7 +188,7 @@ function al_product_price() {
 		$sku_table	 = apply_filters( 'admin_sku_table', '<table><tr><td class="label-column">' . __( 'SKU', 'al-ecommerce-product-catalog' ) . ':</td><td class="sku-column"><input type="text" name="_sku" value="' . $sku . '" class="widefat" /></td></tr></table>', $post );
 		$price_table .= $sku_table;
 	}
-	echo $price_table;
+	echo apply_filters( 'admin_product_details', $price_table, $post->ID );
 }
 
 function al_product_shipping() {
@@ -212,7 +212,7 @@ function al_product_shipping() {
 		} else {
 			$shipping_label = isset( $shipping_label_option[ $i ] ) ? $shipping_label_option[ $i ] : '';
 		}
-		echo '<tr><td class="dragger"></td><td class="shipping-label-column"><input class="shipping-label" type="text" name="_shipping-label' . $i . '" value="' . $shipping_label . '" /></td><td><input class="shipping-value" type="number" min="0" name="_shipping' . $i . '" value="' . $shipping . '" />' . $currency . '</td></tr>';
+		echo '<tr><td class="dragger"></td><td class="shipping-label-column"><input class="shipping-label" type="text" name="_shipping-label' . $i . '" value="' . $shipping_label . '" /></td><td><input class="shipping-value" type="number" min="0" step="0.01" name="_shipping' . $i . '" value="' . $shipping . '" />' . $currency . '</td></tr>';
 	}
 	echo '</tbody></table>';
 }

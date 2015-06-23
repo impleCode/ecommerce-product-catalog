@@ -167,10 +167,12 @@ function get_default_category_theme( $product_cat, $archive_template ) {
 	$thumbnail_product	 = wp_get_attachment_image_src( get_product_category_image_id( $product_cat->term_id ), 'modern-grid-listing' );
 	$img_class			 = '';
 	if ( $thumbnail_product ) {
-		$url	 = $thumbnail_product[ 0 ];
-		$ratio	 = $thumbnail_product[ 1 ] / $thumbnail_product[ 2 ];
-		if ( $ratio <= 1.35 ) {
-			$img_class = ' class="higher"';
+		$url = $thumbnail_product[ 0 ];
+		if ( !empty( $thumbnail_product[ 2 ] ) ) {
+			$ratio = $thumbnail_product[ 1 ] / $thumbnail_product[ 2 ];
+			if ( $ratio <= 1.35 ) {
+				$img_class = ' class="higher"';
+			}
 		}
 	} else {
 		$url = default_product_thumbnail_url();

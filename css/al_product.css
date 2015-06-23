@@ -593,6 +593,11 @@ margin: 0;
     padding: 0;
 }
 
+#product_details table.shipping-table ul {
+  list-style-position: inside;
+  min-width: 150px;
+}
+
 .product-details table td {
     border: none;
     padding: 0px 10px 0px 0px;
@@ -1101,6 +1106,11 @@ div.relative-box {
 
 .table .table-cell.no-bg {
     background-color: transparent;
+}
+
+/* Buttons */
+.button {
+    cursor: pointer;
 }
 
 /* Product Order */

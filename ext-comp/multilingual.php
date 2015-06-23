@@ -26,3 +26,29 @@ function replace_product_listing_id( $listing_id ) {
 	}
 	return $listing_id;
 }
+
+add_filter( 'pll_get_taxonomies', 'product_catalog_multilingual_taxonomies' );
+
+/**
+ * Adds taxonomy translation support to polylang
+ *
+ * @param array $taxonomies
+ * @return array
+ */
+function product_catalog_multilingual_taxonomies( $taxonomies ) {
+	$taxonomies[] = 'al_product-cat';
+	return $taxonomies;
+}
+
+add_filter( 'pll_get_post_types', 'product_catalog_multilingual_post_types' );
+
+/**
+ * Adds post type translation support to polylang
+ *
+ * @param array $post_types
+ * @return array
+ */
+function product_catalog_multilingual_post_types( $post_types ) {
+	$post_types[] = 'al_product';
+	return $post_types;
+}

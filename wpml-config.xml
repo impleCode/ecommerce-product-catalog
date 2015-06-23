@@ -17,13 +17,7 @@
 		<custom-field action="translate">_shipping-label1</custom-field>
 		<custom-field action="translate">_shipping2</custom-field>
 		<custom-field action="translate">_shipping-label2</custom-field>
-    </custom-fields>
-    <custom-types>
-        <custom-type translate="1">al_product</custom-type>
-    </custom-types>    
-    <taxonomies>
-        <taxonomy translate="1">al_product-cat</taxonomy>
-    </taxonomies>    
+    </custom-fields> 
     <admin-texts>
             <key name="single_names">
                 <key name="product_price" />

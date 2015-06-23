@@ -24,3 +24,25 @@ add_action( 'add_meta_boxes', 'implecode_wpseo_compatible' );
 function implecode_wpseo_compatible_priority() {
 	return 'low';
 }
+
+add_action( 'wp', 'remove_default_catalog_title', 100 );
+
+/**
+ * Allows to set product listing title tag from wpseo settings
+ */
+function remove_default_catalog_title() {
+	remove_filter( 'wp_title', 'product_archive_title', 99, 3 );
+}
+
+add_action( 'add_meta_boxes', 'product_listing_remove_wpseo', 16 );
+
+/**
+ * Removes the WPSEO metabox from product listing edit screen
+ * The title and description is managed from WPSEO settings
+ */
+function product_listing_remove_wpseo() {
+	$id = get_product_listing_id();
+	if ( is_admin() && isset( $_GET[ 'post' ] ) && $_GET[ 'post' ] == $id ) {
+		remove_meta_box( 'wpseo_meta', 'page', 'normal' );
+	}
+}

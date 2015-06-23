@@ -71,7 +71,7 @@ jQuery( document ).ready( function () {
         jQuery( ".implecode-review-thanks" ).hide( "slow" );
     } );
 
-    jQuery( ".implecode-review a" ).click( function (e) {
+    jQuery( ".implecode-review a" ).click( function ( e ) {
         if ( jQuery( this ).hasClass( "button" ) ) {
             e.preventDefault();
             var data = {
@@ -140,7 +140,14 @@ jQuery( document ).ready( function () {
         clicked.parent( ".implecode-admin-media-image" ).addClass( 'empty' );
         clicked.hide();
     } );
-    jQuery( 'form#post' ).validate();
+    jQuery( "form#post" ).submit( function ( e ) {
+        if ( !jQuery( 'input[name="_price"]' ).valid() ) {
+            e.preventDefault();
+            jQuery( 'html, body' ).animate( {
+                scrollTop: jQuery( "#_price-error" ).offset().top - 200
+            }, 100 );
+        }
+    } );
 } );
 
 jQuery( document ).ready( function ( $ ) {

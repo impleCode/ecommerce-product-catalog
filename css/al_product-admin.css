@@ -267,7 +267,7 @@ max-width: 300px;
 width: 50px;
 }
 
-input[name="_price"], input[name="_sku"] {
+input[name="_price"], input[name="_sku"], #al_product_price.postbox input {
 width: 130px;
 text-align: center;
 }
@@ -471,6 +471,10 @@ content: "\f238";
 max-width: 150px;
 }
 
+.attributes-product-settings .setting-content table select {
+max-width: 113px;
+}
+
 div.setting-content table td {
 max-width: 250px;
 }
@@ -508,6 +512,7 @@ width: 3%;
 
 #al_product_attributes .ui-sortable tr td:last-child input, #al_product_shipping .ui-sortable tr td:last-child input{
 max-width: 75%;
+min-width: 60px;
 }
 
 #implecode_settings .al_archive {
@@ -550,11 +555,12 @@ display: none;
 .design-table .theme-name {
     font-size: 17px;
     font-weight: bold;
+    padding: 20px;
 }
 
 td.additional-styling {
     vertical-align: top;
-    padding: 0;
+    padding: 10px;
     min-width: 200px;
 }
 
@@ -935,14 +941,31 @@ max-width: 100%;
 label.error {
     position: absolute;
     top: 30px;
-    left: 10px;
+    right: 0px;
     padding: 5px;
     border-radius: 5px;
-    box-shadow: 0 0 1px 1px;
+    box-shadow: 0 0 1px 1px #000;
     font-size: 15px;
     background: #fff;
+    z-index: 99;
+    min-width: 200px;
+    display: block;
 }
 
 input.error {
     background: #f4aeae;
+}
+
+.postbox .inside table td {
+    position: relative;
+}
+
+.upgrade-now {
+    float: right;
+    color: #fb3c00;
+    font-size: 14px;
+}
+
+.upgrade-now:hover {
+   color: #D23E10;
 }

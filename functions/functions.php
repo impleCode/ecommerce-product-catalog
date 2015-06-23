@@ -92,24 +92,24 @@ function upload_product_image( $name, $button_value, $option_name, $option_value
 		   href="#"><?php _e( 'Reset image', 'al-ecommerce-product-catalog' ); ?></a>
 	</div>
 	<script>
-	    jQuery( document ).ready( function () {
-	        jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
-	            wp.media.editor.send.attachment = function ( props, attachment ) {
-	                jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
-	                jQuery( '.media-image' ).attr( "src", attachment.url );
-	            }
+		jQuery( document ).ready( function () {
+			jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
+				wp.media.editor.send.attachment = function ( props, attachment ) {
+					jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
+					jQuery( '.media-image' ).attr( "src", attachment.url );
+				}
 
-	            wp.media.editor.open( this );
+				wp.media.editor.open( this );
 
-	            return false;
-	        } );
-	    } );
+				return false;
+			} );
+		} );
 
-	    jQuery( '#reset-image-button' ).on( 'click', function () {
-	        jQuery( '#<?php echo $name; ?>' ).val( '' );
-	        src = jQuery( '#default' ).val();
-	        jQuery( '.media-image' ).attr( "src", src );
-	    } );
+		jQuery( '#reset-image-button' ).on( 'click', function () {
+			jQuery( '#<?php echo $name; ?>' ).val( '' );
+			src = jQuery( '#default' ).val();
+			jQuery( '.media-image' ).attr( "src", src );
+		} );
 	</script>
 	<?php
 }
@@ -171,6 +171,12 @@ function verify_page_status( $page_id ) {
 	}
 }
 
+/**
+ *
+ * @param string $which color, size, box or none
+ * @param int $echo
+ * @return string
+ */
 function design_schemes( $which = null, $echo = 1 ) {
 	$custom_design_schemes	 = unserialize( DEFAULT_DESIGN_SCHEMES );
 	$design_schemes			 = get_option( 'design_schemes', $custom_design_schemes );
@@ -380,7 +386,14 @@ add_filter( 'product_short_description', 'convert_chars' );
 add_filter( 'product_short_description', 'wpautop' );
 add_filter( 'product_short_description', 'shortcode_unautop' );
 add_filter( 'product_short_description', 'do_shortcode', 11 );
+add_action( 'after_product_details', 'show_product_attributes', 10, 2 );
 
+/**
+ * Shows product attributes table on product page
+ *
+ * @param object $post
+ * @param array $single_names
+ */
 function show_product_attributes( $post, $single_names ) {
 	$attributes_number	 = get_option( 'product_attributes_number', DEF_ATTRIBUTES_OPTIONS_NUMBER );
 	$at_val				 = '';
@@ -409,8 +422,6 @@ function show_product_attributes( $post, $single_names ) {
 		<?php
 	}
 }
-
-add_action( 'after_product_details', 'show_product_attributes', 10, 2 );
 
 function show_product_description( $post, $single_names ) {
 	$product_description = get_product_description( $post->ID );
@@ -459,10 +470,10 @@ function show_related_categories( $post, $single_names, $taxonomy_name ) {
 			<table>
 				<tr>
 					<td>
-						<?php echo $single_names[ 'other_categories' ]; ?>
+		<?php echo $single_names[ 'other_categories' ]; ?>
 					</td>
 					<td>
-						<?php echo $categories; ?>
+		<?php echo $categories; ?>
 					</td>
 				</tr>
 			</table>
@@ -478,7 +489,7 @@ function show_archive_price( $post ) {
 	if ( !empty( $price_value ) ) {
 		?>
 		<div class="product-price <?php design_schemes( 'color' ); ?>">
-			<?php echo price_format( $price_value ) ?>
+		<?php echo price_format( $price_value ) ?>
 		</div>
 		<?php
 	}
@@ -744,30 +755,69 @@ function modify_product_search( $query ) {
 }
 
 add_action( 'pre_get_posts', 'modify_product_search', 10, 1 );
+add_action( 'wp', 'modify_product_listing_title_tag', 99 );
 
-function product_archive_title( $title = null, $sep = null, $seplocation = null ) {
-	global $post;
-	$settings					 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
-	$settings[ 'seo_title' ]	 = isset( $settings[ 'seo_title' ] ) ? $settings[ 'seo_title' ] : '';
-	$settings[ 'seo_title_sep' ] = isset( $settings[ 'seo_title_sep' ] ) ? $settings[ 'seo_title_sep' ] : '';
-	if ( $settings[ 'seo_title_sep' ] == 1 ) {
-		if ( $sep != '' ) {
-			$sep = ' ' . $sep . ' ';
-		}
-	} else {
-		$sep = '';
+function modify_product_listing_title_tag() {
+	if ( is_ic_product_listing() ) {
+		add_filter( 'wp_title', 'product_archive_title', 99, 3 );
+		add_filter( 'wp_title', 'product_archive_custom_title', 99, 3 );
 	}
-	if ( $settings[ 'seo_title' ] != '' && is_archive() && $post->post_type == 'al_product' ) {
-		if ( $seplocation == 'right' ) {
-			$title = $settings[ 'seo_title' ] . $sep;
-		} else {
-			$title = $sep . $settings[ 'seo_title' ];
+}
+
+/**
+ * Modifies main product listing title tag
+ *
+ * @global type $post
+ * @param type $title
+ * @param type $sep
+ * @param type $seplocation
+ * @return type
+ */
+function product_archive_custom_title( $title = null, $sep = null, $seplocation = null ) {
+	global $post;
+	if ( is_ic_product_listing() && $post->post_type == 'al_product' ) {
+		$settings = get_multiple_settings();
+		if ( $settings[ 'seo_title' ] != '' ) {
+			$settings					 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
+			$settings[ 'seo_title' ]	 = isset( $settings[ 'seo_title' ] ) ? $settings[ 'seo_title' ] : '';
+			$settings[ 'seo_title_sep' ] = isset( $settings[ 'seo_title_sep' ] ) ? $settings[ 'seo_title_sep' ] : '';
+			if ( $settings[ 'seo_title_sep' ] == 1 ) {
+				if ( $sep != '' ) {
+					$sep = ' ' . $sep . ' ';
+				}
+			} else {
+				$sep = '';
+			}
+			if ( $seplocation == 'right' ) {
+				$title = $settings[ 'seo_title' ] . $sep;
+			} else {
+				$title = $sep . $settings[ 'seo_title' ];
+			}
 		}
 	}
 	return $title;
 }
 
-add_filter( 'wp_title', 'product_archive_title', 99, 3 );
+function product_archive_title( $title = null, $sep = null, $seplocation = null ) {
+	global $post;
+	if ( is_ic_product_listing() && $post->post_type == 'al_product' ) {
+		$settings = get_multiple_settings();
+		if ( $settings[ 'seo_title' ] == '' ) {
+			$id		 = get_product_listing_id();
+			$title	 = get_single_post_title( $id, $sep, $seplocation );
+		}
+	}
+	return $title;
+}
+
+function get_single_post_title( $post_id, $sep, $seplocation ) {
+	global $wp_query;
+	$wp_query	 = new WP_Query( 'page_id=' . $post_id );
+	remove_filter( 'wp_title', 'product_archive_title', 99, 3 );
+	$title		 = wp_title( $sep, false, $seplocation );
+	wp_reset_query();
+	return $title;
+}
 
 function add_support_link( $links, $file ) {
 
@@ -804,6 +854,14 @@ function get_product_image_id( $attachment_url = '' ) {
 		$attachment_id	 = $wpdb->get_var( $wpdb->prepare( "SELECT wposts.ID FROM $wpdb->posts wposts, $wpdb->postmeta wpostmeta WHERE wposts.ID = wpostmeta.post_id AND wpostmeta.meta_key = '_wp_attached_file' AND wpostmeta.meta_value = '%s' AND wposts.post_type = 'attachment'", $attachment_url ) );
 	}
 	return $attachment_id;
+}
+
+function get_product_image_url( $product_id ) {
+	$img_url = wp_get_attachment_image_src( get_post_thumbnail_id( $product_id ), 'large' );
+	if ( !$img_url ) {
+		$img_url[ 0 ] = default_product_thumbnail_url();
+	}
+	return $img_url[ 0 ];
 }
 
 /**

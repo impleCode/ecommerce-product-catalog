@@ -4,7 +4,7 @@ Donate link: http://implecode.com/wordpress/plugins/premium-support/#cam=wordpre
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue
 Requires at least: 3.5
 Tested up to: 4.2
-Stable tag: 2.3.0
+Stable tag: 2.3.3
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -95,7 +95,7 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 * Bosnian - Thanks to Faruk
 * Bulgarian - Thanks to Valentina and Koceto via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Croatian - Thanks to Vedran 
-* Dutch - Thanks to Pieter via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
+* Dutch - Thanks to Pieter & Chippie via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * French - Thanks to Denis & James & Antoine via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * German - Thanks to Peter & Toby via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
 * Greek - Thanks to Giorgos via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
@@ -192,6 +192,22 @@ This is not a store. It's main purpose is to present products or services on the
 6. Classic list product catalog archive.
 
 == Changelog ==
+
+= 2.3.3 - 23/06/2015 = 
+
+* Fix - division by zero warning for some configurations fixed
+* Localisation - Serbian language improved thanks to Branislav via http://translate.implecode.com
+
+= 2.3.2 - 15/06/2015 = 
+
+* Tweak - SEO settings improved
+* Tweak - Better integration with WPSEO
+
+= 2.3.1 - 08/06/2015 = 
+
+* Localisation - Chinese language improved thanks to Thomas via http://translate.implecode.com
+* Localisation - Serbian language improved thanks to Sasa via http://translate.implecode.com
+* Localisation - Dutch language improved thanks to Chippie via http://translate.implecode.com
 
 = 2.3.0 - 01/06/2015 = 
 

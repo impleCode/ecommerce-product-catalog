@@ -69,10 +69,12 @@ function raw_price_format( $price_value ) {
 
 function c_list_desc( $post_id = null, $shortdesc = null ) {
 	if ( $shortdesc == '' ) {
-		$shortdesc = strip_tags( get_product_short_description( $post_id ) );
+		$shortdesc = clean_short_description( $post_id );
+	} else {
+		$shortdesc	 = strip_tags( $shortdesc );
+		$shortdesc	 = trim( strip_shortcodes( $shortdesc ) );
+		$shortdesc	 = str_replace( array( "\r\n" ), ' ', $shortdesc );
 	}
-//remove all shortcodes - discsox
-	$shortdesc	 = trim( strip_shortcodes( $shortdesc ) );
 	$desclenght	 = strlen( $shortdesc );
 	$more		 = '';
 	$limit		 = apply_filters( 'c_list_desc_limit', 243 );
@@ -80,6 +82,20 @@ function c_list_desc( $post_id = null, $shortdesc = null ) {
 		$more = ' [...]';
 	}
 	return apply_filters( 'c_list_desc_content', mb_substr( $shortdesc, 0, $limit ) . $more, $post_id );
+}
+
+/**
+ * Returns short description text without HTML
+ *
+ * @param int $product_id
+ * @return string
+ */
+function clean_short_description( $product_id, $new_line = ' ' ) {
+	$shortdesc	 = get_product_short_description( $product_id );
+	$shortdesc	 = strip_tags( $shortdesc );
+	$shortdesc	 = trim( strip_shortcodes( $shortdesc ) );
+	$shortdesc	 = str_replace( array( "\r\n" ), $new_line, $shortdesc );
+	return $shortdesc;
 }
 
 /* Single Product */

@@ -71,8 +71,8 @@ function custom_names_content() {
 		</div><?php if ( $submenu == 'single-names' ) { ?>
 			<div id="single_names" class="setting-content submenu">
 				<script>
-					jQuery( '.settings-submenu a' ).removeClass( 'current' );
-					jQuery( '.settings-submenu a#single-names' ).addClass( 'current' );
+		            jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		            jQuery( '.settings-submenu a#single-names' ).addClass( 'current' );
 				</script>
 				<form method="post" action="options.php">
 					<?php
@@ -92,7 +92,7 @@ function custom_names_content() {
 							<tr><td><?php _e( 'Features Label', 'al-ecommerce-product-catalog' ); ?></td><td><input type="text" name="single_names[product_features]" value="<?php echo $single_names[ 'product_features' ]; ?>" /></td></tr>
 							<tr><td><?php _e( 'Another Categories', 'al-ecommerce-product-catalog' ); ?></td><td><input type="text" name="single_names[other_categories]" value="<?php echo $single_names[ 'other_categories' ]; ?>" /></td></tr>
 							<tr><td><?php _e( 'Return to Products', 'al-ecommerce-product-catalog' ); ?></td><td><input type="text" name="single_names[return_to_archive]" value="<?php echo $single_names[ 'return_to_archive' ]; ?>" /></td></tr>
-		<?php do_action( 'single_names_table', $single_names ) ?>
+							<?php do_action( 'single_names_table', $single_names ) ?>
 						</tbody>
 					</table>
 					<p class="submit">
@@ -106,8 +106,8 @@ function custom_names_content() {
 			?>
 			<div id="archive_names" class="setting-content submenu">
 				<script>
-					jQuery( '.settings-submenu a' ).removeClass( 'current' );
-					jQuery( '.settings-submenu a#archive-names' ).addClass( 'current' );
+		            jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		            jQuery( '.settings-submenu a#archive-names' ).addClass( 'current' );
 				</script>
 				<form method="post" action="options.php"><?php
 					settings_fields( 'product_names_archive' );
@@ -117,7 +117,11 @@ function custom_names_content() {
 					$disabled		 = '';
 					if ( get_integration_type() == 'simple' ) {
 						$disabled = 'disabled';
-						implecode_warning( sprintf( __( 'Product listing pages are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product listing pages.', 'al-ecommerce-product-catalog' ), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=front-labels' ) );
+						if ( is_integration_mode_selected() ) {
+							implecode_warning( sprintf( __( 'Product listing pages are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product listing pages.', 'al-ecommerce-product-catalog' ), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=front-labels' ) );
+						} else {
+							implecode_warning( sprintf( __( 'Product listing pages are disabled due to a lack of theme integration.%s', 'al-ecommerce-product-catalog' ), sample_product_button( 'p' ) ) );
+						}
 					}
 					?>
 					<h3><?php _e( 'Product Listing Labels', 'al-ecommerce-product-catalog' ); ?></h3>

@@ -594,8 +594,8 @@ margin: 0;
 }
 
 #product_details table.shipping-table ul {
-  list-style-position: inside;
-  min-width: 150px;
+    list-style-position: inside;
+    min-width: 150px;
 }
 
 .product-details table td {
@@ -860,6 +860,10 @@ div.setting-content table td.longer {
     outline: 0;
 }
 
+.fixed-box .al-box {
+    margin: 0;
+}
+
 .product-entry .al-box h4, .fixed-box .al-box h4 {
     font-family: Arial, Helvetica;
     font-size: 26px;
@@ -873,7 +877,7 @@ div.setting-content table td.longer {
     color: #000;
 }
 
-.product-entry .al-box p, .fixed-box .al-box p {
+.product-entry .al-box p, .fixed-box .al-box p, .fixed-box .al-box table, .fixed-box .al-box table td {
     font-family: sans-serif, Arial, Helvetica;
     font-size: 16px;
     font-style: normal;
@@ -884,6 +888,19 @@ div.setting-content table td.longer {
     margin: 0 0 20px 0;
     padding: 0;
     color: #000;
+    vertical-align: middle;
+    text-align: left;
+}
+#integration_wizard.fixed-box .al-box table input{
+  background: #fff;
+  padding: 2px 5px;
+  width: 60px;
+  height: auto;
+  box-sizing: border-box;
+}
+
+#integration_wizard.fixed-box .wp-color-result {
+    box-sizing: initial;
 }
 
 .product-entry .al-box ol, .fixed-box .al-box ol {
@@ -925,10 +942,14 @@ div.setting-content table td.longer {
 
 div.fixed-box {
     position: fixed;
-    top: 22px;
+    top: 32px;
     right: 0px;
-    max-width: 420px;
+    max-width: 440px;
     z-index: 9999999;
+    max-height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+   box-shadow: 0 0 1px 1px #444;
 }
 
 div.relative-box {

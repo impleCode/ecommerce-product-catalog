@@ -39,8 +39,8 @@ function product_extensions() {
 				?>
 				<div class="extension-list">
 					<script>
-						jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-						jQuery( '.nav-tab-wrapper a#extensions' ).addClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a#extensions' ).addClass( 'nav-tab-active' );
 					</script><?php
 					start_implecode_install();
 					if ( false === ($extensions = get_transient( 'implecode_extensions_data' )) ) {
@@ -59,6 +59,7 @@ function product_extensions() {
 						$all_ic_plugins = get_implecode_active_plugins();
 					}
 					$not_active_ic_plugins = get_implecode_not_active_plugins();
+					echo extensions_bundle_box();
 					foreach ( $extensions as $extension ) {
 						echo extension_box( $extension[ 'name' ], $extension[ 'url' ], $extension[ 'desc' ], $extension[ 'comp' ], $extension[ 'slug' ], $all_ic_plugins, $not_active_ic_plugins );
 					}
@@ -78,8 +79,8 @@ function product_extensions() {
 				?>
 				<div class="help">
 					<script>
-						jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-						jQuery( '.nav-tab-wrapper a#help' ).addClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a#help' ).addClass( 'nav-tab-active' );
 					</script> <?php
 					echo '<h3>How to Install the extension?</h3>';
 					echo '<ol><li>Click the "Get your key" button on the extension that you want to install;</li>';
@@ -245,7 +246,7 @@ function extension_box( $name, $url, $desc, $comp = 'simple', $slug, $all_ic_plu
 	}
 
 	$return		 = '<div class="extension ' . $url . '">
-	<a class="extension-name" target="_blank" href="http://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '"><h3><span>' . $name . '</span></h3><span class="click-span">' . __( 'Click for more', 'al-ecommerce-product-catalog' ) . '</span></a>
+	<a class="extension-name" href="http://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '"><h3><span>' . $name . '</span></h3><span class="click-span">' . __( 'Click for more', 'al-ecommerce-product-catalog' ) . '</span></a>
 	<p>' . $desc . '</p>';
 	$disabled	 = '';
 	$current_key = get_option( 'custom_license_code' );
@@ -254,16 +255,16 @@ function extension_box( $name, $url, $desc, $comp = 'simple', $slug, $all_ic_plu
 		$current_key = '';
 	}
 	if ( !empty( $all_ic_plugins ) && is_ic_plugin_active( $slug, $all_ic_plugins ) ) {
-		$return .= '<p><a target="_blank" href="https://implecode.com/support/" class="button-primary">Support</a> <a target="_blank" href="https://implecode.com/docs/" class="button-primary">Docs</a> <span class="comp installed">' . __( 'Active Extension', 'al-ecommerce-product-catalog' ) . '</span></p>';
+		$return .= '<p><a href="https://implecode.com/support/" class="button-primary">Support</a> <a target="_blank" href="https://implecode.com/docs/" class="button-primary">Docs</a> <span class="comp installed">' . __( 'Active Extension', 'al-ecommerce-product-catalog' ) . '</span></p>';
 	} else if ( !empty( $not_active_ic_plugins ) && is_ic_plugin_active( $slug, $not_active_ic_plugins ) ) {
 		$return .= '<p><a ' . $disabled . ' href="' . wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . urlencode( $slug . '/' . $slug . '.php' ), 'activate-plugin_' . $slug . '/' . $slug . '.php' ) . '" class="button-primary">Activate Now</a><span class="comp info">' . __( 'Installed Extension', 'al-ecommerce-product-catalog' ) . '</span></p>';
 	} else {
 		if ( $comp_class == 'wrong' ) {
-			$return .= '<p><a target="_blank" href="http://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '" class="button-primary">See the Extension</a><span class="comp ' . $comp_class . '">' . $comp_txt . '</span></p>';
+			$return .= '<p><a href="http://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '" class="button-primary">See the Extension</a><span class="comp ' . $comp_class . '">' . $comp_txt . '</span></p>';
 		} else {
 			$return .= '<form class="license_form" action=""><input type="hidden" name="implecode_install" value="1"><input type="hidden" name="url" value="' . $url . '"><input type="hidden" name="slug" value="' . $slug . '"><input type="hidden" name="post_type" value="al_product"><input type="hidden" name="page" value="extensions.php"><input type="text" name="license_key" ' . $disabled . ' class="wide" placeholder="License Key..." value="' . $current_key . '">';
 			$return .= wp_nonce_field( 'install-implecode-plugin_' . $slug, '_wpnonce', 0, 0 );
-			$return .= '<p class="submit"><input type="submit" ' . $disabled . ' value="Install" class="button-primary"><span class="comp ' . $comp_class . '">' . $comp_txt . '</span> <a target="_blank" href="http://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '" class="button-secondary right">Get your key</a></form></p>';
+			$return .= '<p class="submit"><input type="submit" ' . $disabled . ' value="Install" class="button-primary"><span class="comp ' . $comp_class . '">' . $comp_txt . '</span> <a href="http://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '" class="button-secondary right">Get your key</a></form></p>';
 		}
 	}
 	$return .= '</div>';
@@ -386,7 +387,7 @@ add_action( 'settings-menu', 'add_product_catalog_upgrade_url', 99 );
  */
 function add_product_catalog_upgrade_url() {
 	if ( !function_exists( 'start_implecode_updater' ) ) {
-		echo '<a target="_blank" title="' . __( 'Now you can get multiple extensions at once with the lowest price ever.', 'al-ecommerce-product-catalog' ) . '" class="upgrade-now" href="http://implecode.com/choose-a-plan/#cam=bundles&key=settings-top-menu">' . __( 'Upgrade Now!', 'al-ecommerce-product-catalog' ) . '</a>';
+		//echo '<a target="_blank" title="' . __( 'Now you can get multiple extensions at once with the lowest price ever.', 'al-ecommerce-product-catalog' ) . '" class="upgrade-now" href="http://implecode.com/choose-a-plan/#cam=bundles&key=settings-top-menu">' . __( 'Upgrade Now!', 'al-ecommerce-product-catalog' ) . '</a>';
 	}
 }
 
@@ -398,6 +399,12 @@ add_action( 'extensions-menu', 'add_product_catalog_bundle_url', 99 );
  */
 function add_product_catalog_bundle_url() {
 	if ( !function_exists( 'start_implecode_updater' ) ) {
-		echo '<a target="_blank" title="' . __( 'Now you can get multiple extensions at once with the lowest price ever.', 'al-ecommerce-product-catalog' ) . '" class="upgrade-now" href="http://implecode.com/choose-a-plan/#cam=bundles&key=extensions-top-menu">' . __( 'Now extensions bundles from $19.99!', 'al-ecommerce-product-catalog' ) . '</a>';
+		//echo '<a target="_blank" title="' . __( 'Now you can get multiple extensions at once with the lowest price ever.', 'al-ecommerce-product-catalog' ) . '" class="upgrade-now" href="http://implecode.com/choose-a-plan/#cam=bundles&key=extensions-top-menu">' . __( 'Now extensions bundles from $19.99!', 'al-ecommerce-product-catalog' ) . '</a>';
+	}
+}
+
+function extensions_bundle_box() {
+	if ( !function_exists( 'start_implecode_updater' ) ) {
+		echo '<div class="bundle-box">' . __( 'Do you need multiple extensions?', 'al-ecommerce-product-catalog' ) . ' <a href="http://implecode.com/choose-a-plan/#cam=bundles&key=extensions-bundle-box">' . __( 'Check out extensions bundles', 'al-ecommerce-product-catalog' ) . '</a></div>';
 	}
 }

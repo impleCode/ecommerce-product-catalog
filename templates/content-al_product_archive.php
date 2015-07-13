@@ -37,11 +37,10 @@ $listing_class			 = apply_filters( 'product_listing_classes', 'al_product respon
 				} else {
 					$show_categories = do_shortcode( '[show_categories parent="0" shortcode_query="no"]' );
 					if ( !empty( $show_categories ) ) {
-						echo '<div class="product-subcategories ' . $archive_template . '">' . $show_categories;
+						echo $show_categories;
 						if ( $archive_template != 'list' && !is_ic_only_main_cats() ) {
 							echo '<hr>';
 						}
-						echo '</div>';
 					}
 				}
 			}
@@ -95,7 +94,7 @@ $listing_class			 = apply_filters( 'product_listing_classes', 'al_product respon
 				wp_reset_query();
 			}
 			$product_list = apply_filters( 'product_list_ready', $product_list, $archive_template, 'auto_listing' );
-			echo '<div class="product-list responsive ' . $archive_template . ' ' . product_list_class() . '">' . $product_list . '</div><span class="clear"></span>';
+			echo '<div class="product-list responsive ' . $archive_template . ' ' . product_list_class( $archive_template ) . '">' . $product_list . '</div><span class="clear"></span>';
 		} else if ( is_search() && !more_products() ) {
 			echo '<p>' . __( 'Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'al-ecommerce-product-catalog' ) . '</p>';
 			product_search_form();

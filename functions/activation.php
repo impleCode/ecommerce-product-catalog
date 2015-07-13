@@ -63,9 +63,9 @@ function create_sample_product() {
 		$product_field[ '_attribute-unit3' ]	 = __( 'lbs', 'al-ecommerce-product-catalog' );
 		$product_field[ '_shipping-label1' ]	 = 'UPS';
 		$product_field[ '_shipping1' ]			 = 15;
-		$product_field[ 'excerpt' ]				 = '[theme_integration class="fixed-box"]';
+		//$product_field[ 'excerpt' ]				 = '[theme_integration class="fixed-box"]';
 		$product_field[ 'excerpt' ] .= '<p>' . __( 'Welcome on product test page. This is short description. It should show up on the left of the product image and below product name. You shouldn\'t see nothing between product name and short description. No author, time or date. Absolutely nothing. If there is something that you don\'t want to see than you probably need Advanced Integration Mode.', 'al-ecommerce-product-catalog' ) . '</p>';
-		$product_field[ 'excerpt' ] .= '<p><strong>' . __( 'Please read this page carefully to fully understand the difference between simple and advanced mode and how the product page look like.', 'al-ecommerce-product-catalog' ) . '</strong></p>';
+		$product_field[ 'excerpt' ] .= '<p><strong>' . __( 'Please read this page carefully to fully understand the difference between simple and advanced mode and how the product page looks like.', 'al-ecommerce-product-catalog' ) . '</strong></p>';
 
 		$long_desc					 = '<p>' . __( 'This section is product long description. It should appear under the attributes table. Between the short description and the attributes table you should see the price, SKU and shipping options (all can be disabled). The attributes also can be disabled.', 'al-ecommerce-product-catalog' ) . '</p>';
 		$long_desc .= '<h2>' . __( 'Advanced Theme Integration Mode', 'al-ecommerce-product-catalog' ) . '</h2>';
@@ -80,7 +80,7 @@ function create_sample_product() {
 		$long_desc .= '<h2>' . __( 'Product Description End', 'al-ecommerce-product-catalog' ) . '</h2>';
 		$long_desc .= '<p>' . __( 'Below the product description you should see nothing apart of return to products URL and Advanced Mode Test which will not show up on your product pages. When using advanced mode also the related products will show up.', 'al-ecommerce-product-catalog' ) . '</p>';
 		$long_desc .= '<p>' . sprintf( __( 'Thank you for choosing eCommerce Product Catalog. If you have any questions or comments please use <a target="_blank" href="%s">plugin support forum</a>.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/plugin/ecommerce-product-catalog' ) . '</p>';
-		$long_desc .= '[theme_integration]';
+		//$long_desc .= '[theme_integration]';
 		$product_field[ 'content' ]	 = $long_desc;
 		foreach ( $product_field as $key => $value ) {
 			add_post_meta( $product_id, $key, $value, true );
@@ -92,6 +92,25 @@ function create_sample_product() {
 
 function sample_product_id() {
 	return get_option( 'sample_product_id' );
+}
+
+function sample_product_url() {
+	$product_id			 = sample_product_id();
+	$sample_product_url	 = get_permalink( $product_id );
+	$sample_product_url	 = esc_url( add_query_arg( 'test_advanced', 1, $sample_product_url ) );
+	if ( !$sample_product_url || get_post_status( $product_id ) != 'publish' ) {
+		$sample_product_url = esc_url( add_query_arg( 'create_sample_product_page', 'true' ) );
+	}
+	return $sample_product_url;
+}
+
+function sample_product_button( $p = null, $text = null ) {
+	$text = isset( $text ) ? $text : __( 'Start Auto Adjustment', 'al-ecommerce-product-catalog' );
+	if ( !isset( $p ) ) {
+		return '<a href="' . sample_product_url() . '" class="button-primary">' . $text . '</a>';
+	} else {
+		return '<p><a href="' . sample_product_url() . '" class="button-primary">' . $text . '</a></p>';
+	}
 }
 
 function ecommerce_product_catalog_upgrade() {
@@ -125,10 +144,14 @@ function ecommerce_product_catalog_upgrade() {
 				$archive_names[ 'all_subcategories' ]	 = '';
 				update_option( 'archive_names', $archive_names );
 			}
+			if ( version_compare( $first_version, '2.3.6' ) < 0 && version_compare( $database_plugin_version, '2.3.6' ) < 0 ) {
+				$archive_multiple_settings						 = get_multiple_settings();
+				$archive_multiple_settings[ 'default_sidebar' ]	 = 1;
+				update_option( 'archive_multiple_settings', $archive_multiple_settings );
+			}
 			flush_rewrite_rules();
 		}
 	}
 }
 
 add_action( 'admin_init', 'ecommerce_product_catalog_upgrade' );
-?>

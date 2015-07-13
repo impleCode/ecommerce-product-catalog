@@ -30,13 +30,20 @@ jQuery( document ).ready( function () {
     } );
 //jQuery('.attributes .ui-sortable').height(jQuery('.attributes .ui-sortable').height());
 //jQuery('.shipping .ui-sortable').height(jQuery('.shipping .ui-sortable').height());
-    var fields = new Array( 'input[name="enable_product_listing"]', 'input[name="archive_multiple_settings\[archive_products_limit\]"]', 'input[name="archive_multiple_settings\[category_archive_url\]"]', 'input[name="archive_multiple_settings\[seo_title\]"]', 'input[name="archive_multiple_settings\[seo_title_sep\]"]', 'input[name="archive_multiple_settings\[breadcrumbs_title\]"]', 'input[name="archive_multiple_settings\[enable_product_breadcrumbs\]"]', 'input[name="archive_multiple_settings\[product_listing_cats\]"]', 'input[name="archive_multiple_settings\[category_top_cats\]"]', 'input[name="archive_multiple_settings\[cat_template\]"]' );
+    var fields = new Array( 'input[name="archive_multiple_settings\[category_archive_url\]"]', 'input[name="archive_multiple_settings\[seo_title\]"]', 'input[name="archive_multiple_settings\[seo_title_sep\]"]', 'input[name="archive_multiple_settings\[breadcrumbs_title\]"]', 'input[name="archive_multiple_settings\[enable_product_breadcrumbs\]"]', 'input[name="archive_multiple_settings\[product_listing_cats\]"]', 'input[name="archive_multiple_settings\[category_top_cats\]"]', 'input[name="archive_multiple_settings\[cat_template\]"]' );
     jQuery( 'input[name="archive_multiple_settings\[integration_type\]"]' ).change( function () {
         var disable = false;
         if ( jQuery( this ).is( ':checked' ) && jQuery( this ).val() == 'simple' ) {
             disable = true;
-        }
+        } 
         if ( jQuery( this ).is( ':checked' ) ) {
+            if (!disable) {
+                 jQuery(".al-box.warning").hide('slow');
+                 jQuery(".advanced_mode_settings").show('slow');
+            } else {
+                jQuery(".advanced_mode_settings").hide();
+                jQuery(".al-box.warning").show('slow');
+            }
             jQuery.each( fields, function ( index, element ) {
                 jQuery( element ).prop( "disabled", disable );
             } );

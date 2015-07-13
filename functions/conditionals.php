@@ -180,6 +180,20 @@ function has_product_image( $product_id ) {
 }
 
 /**
+ * Checks if product has price set
+ * @param type $product_id
+ * @return boolean
+ */
+function has_product_price( $product_id = null ) {
+	$product_id	 = empty( $product_id ) ? get_the_ID() : $product_id;
+	$price		 = product_price( $product_id, 1 );
+	if ( !empty( $price ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
  * Checks if current view is triggered by shortcode
  *
  * @global type $cat_shortcode_query
@@ -272,6 +286,58 @@ function is_ic_product_listing_showing_cats() {
 function is_ic_category_image_enabled() {
 	$multiple_settings = get_multiple_settings();
 	if ( $multiple_settings[ 'cat_image_disabled' ] != 1 ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Checks if product shipping is enabled
+ *
+ * @return boolean
+ */
+function is_ic_shipping_enabled() {
+	$shipping_count = get_option( 'product_shipping_options_number', DEF_SHIPPING_OPTIONS_NUMBER );
+	if ( $shipping_count > 0 ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Checks if product attributes are enabled
+ *
+ * @return boolean
+ */
+function is_ic_attributes_enabled() {
+	$attributes_count = get_option( 'product_attributes_number', DEF_ATTRIBUTES_OPTIONS_NUMBER );
+	if ( $attributes_count > 0 ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Checks if product name on product page is enabled
+ *
+ * @return boolean
+ */
+function is_ic_product_name_enabled() {
+	$multiple_settings = get_multiple_settings();
+	if ( $multiple_settings[ 'disable_name' ] == 1 ) {
+		return false;
+	}
+	return true;
+}
+
+/**
+ * Checks if theme default sidebar should be enabled on product pages
+ * 
+ * @return boolean
+ */
+function is_ic_default_theme_sidebar_active() {
+	$settings = get_multiple_settings();
+	if ( isset( $settings[ 'default_sidebar' ] ) && $settings[ 'default_sidebar' ] == 1 ) {
 		return true;
 	}
 	return false;

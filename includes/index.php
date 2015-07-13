@@ -1,4 +1,8 @@
-<?php 
+<?php
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
 /**
  * Manages product includes folder
  *
@@ -8,9 +12,8 @@
  * @package		ecommerce-product-catalog/includes
  * @author 		Norbert Dreszer
  */
- if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
-require_once(AL_BASE_PATH. '/includes/settings/index.php');
-require_once(AL_BASE_PATH. '/includes/product-columns.php');
-require_once(AL_BASE_PATH. '/includes/product-category-columns.php');
-require_once(AL_BASE_PATH. '/includes/extensions.php');
+require_once(AL_BASE_PATH . '/includes/settings/index.php');
+require_once(AL_BASE_PATH . '/includes/product-columns.php');
+require_once(AL_BASE_PATH . '/includes/product-category-columns.php');
+require_once(AL_BASE_PATH . '/includes/system.php');
+require_once(AL_BASE_PATH . '/includes/extensions.php');

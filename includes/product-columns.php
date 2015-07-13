@@ -67,32 +67,9 @@ function product_sortable_columns( $columns ) {
 	//To make a column 'un-sortable' remove it from the array
 	//unset($columns['date']);
 
-	return $columns;
+	return apply_filters( 'product_sortable_columns', $columns );
 }
 
-/*
-  function product_cat_sort_column( $clauses, $wp_query ) {
-  global $wpdb;
-  if ( isset( $wp_query->query[ 'orderby' ] ) && $wp_query->query[ 'orderby' ] == 'taxonomy-al_product-cat' ) {
-  $clauses[ 'join' ] .= <<<SQL
-  LEFT OUTER JOIN {$wpdb->term_relationships} ON {$wpdb->posts}.ID={$wpdb->term_relationships}.object_id
-  LEFT OUTER JOIN {$wpdb->term_taxonomy} USING (term_taxonomy_id)
-  LEFT OUTER JOIN {$wpdb->terms} USING (term_id)
-  SQL;
-  $clauses[ 'where' ] .= "AND (taxonomy = 'al_product-cat' OR taxonomy IS NULL)";
-  $clauses[ 'groupby' ]	 = "object_id";
-  $clauses[ 'orderby' ]	 = "GROUP_CONCAT({$wpdb->terms}.name ORDER BY name ASC)";
-  if ( strtoupper( $wp_query->get( 'order' ) ) == 'ASC' ) {
-  $clauses[ 'orderby' ] .= 'ASC';
-  } else {
-  $clauses[ 'orderby' ] .= 'DESC';
-  }
-  }
-  return $clauses;
-  }
- */
-
-//add_filter('posts_clauses', 'product_cat_sort_column', 10, 2);
 add_filter( 'posts_orderby', 'orderby_product_cat', 10, 2 );
 
 /**
@@ -207,9 +184,9 @@ function display_custom_quickedit_product( $column_name ) {
 	<fieldset class="inline-edit-col-right inline-edit-product">
 		<div class="inline-edit-col column-<?php echo $column_name; ?>">
 			<label class="inline-edit-group">
-	<?php
-	if ( $column_name == 'price' ) {
-		?><span class="title"><?php _e( 'Price', 'al-ecommerce-product-catalog' ) ?></span><input type="number" min="0" step="0.01" name="_price" value="" class="widefat" /><?php
+				<?php
+				if ( $column_name == 'price' ) {
+					?><span class="title"><?php _e( 'Price', 'al-ecommerce-product-catalog' ) ?></span><input type="number" min="0" step="0.01" name="_price" value="" class="widefat" /><?php
 					echo product_currency();
 				} else {
 					do_action( 'product_quickedit', $column_name );

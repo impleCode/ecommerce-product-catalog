@@ -136,7 +136,7 @@ function get_product_query_var() {
 	$names		 = get_catalog_names();
 	$query_var	 = sanitize_title( strtolower( $names[ 'singular' ] ) );
 	$query_var	 = (strpos( $query_var, '%' ) !== false) ? __( 'product', 'al-ecommerce-product-catalog' ) : $query_var;
-	return $query_var;
+	return apply_filters( 'product_query_var', $query_var );
 }
 
 function product_icons() {

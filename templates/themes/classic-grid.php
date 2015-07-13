@@ -118,7 +118,7 @@ function get_classic_grid_settings() {
 	return $classic_grid_settings;
 }
 
-add_filter( 'product_listing_additional_styles', 'classic_grid_additional_styling' );
+add_filter( 'product_listing_additional_styles', 'classic_grid_additional_styling', 10, 2 );
 
 /**
  * Adds classic grid inline styling for element width
@@ -126,8 +126,7 @@ add_filter( 'product_listing_additional_styles', 'classic_grid_additional_stylin
  * @param string $styles
  * @return string
  */
-function classic_grid_additional_styling( $styles ) {
-	$archive_template = get_product_listing_template();
+function classic_grid_additional_styling( $styles, $archive_template ) {
 	if ( $archive_template == 'grid' ) {
 		$grid_settings = get_classic_grid_settings();
 		if ( $grid_settings[ 'entries' ] != 3 ) {

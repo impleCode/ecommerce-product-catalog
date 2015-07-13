@@ -59,8 +59,8 @@ function product_settings() {
 		if ( $tab == 'product-settings' OR $tab == '' ) {
 			?>
 			<script>
-				jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-				jQuery( '.nav-tab-wrapper a#general-settings' ).addClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a#general-settings' ).addClass( 'nav-tab-active' );
 			</script>
 			<?php
 			general_settings_content();
@@ -69,8 +69,8 @@ function product_settings() {
 		/* ATTRIBUTES TAB */ else if ( $tab == 'attributes-settings' ) {
 			?>
 			<script>
-				jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-				jQuery( '.nav-tab-wrapper a#attributes-settings' ).addClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a#attributes-settings' ).addClass( 'nav-tab-active' );
 			</script>
 			<?php
 			attributes_settings_content();
@@ -79,8 +79,8 @@ function product_settings() {
 		/* SHIPPING TAB */ else if ( $tab == 'shipping-settings' ) {
 			?>
 			<script>
-				jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-				jQuery( '.nav-tab-wrapper a#shipping-settings' ).addClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a#shipping-settings' ).addClass( 'nav-tab-active' );
 			</script>
 			<?php
 			shipping_settings_content();
@@ -89,16 +89,16 @@ function product_settings() {
 		/* DESIGN TAB */ else if ( $tab == 'design-settings' ) {
 			?>
 			<script>
-				jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-				jQuery( '.nav-tab-wrapper a#design-settings' ).addClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a#design-settings' ).addClass( 'nav-tab-active' );
 			</script>
 			<?php
 			custom_design_content();
 		} else if ( $tab == 'names-settings' ) {
 			?>
 			<script>
-				jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-				jQuery( '.nav-tab-wrapper a#names-settings' ).addClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		        jQuery( '.nav-tab-wrapper a#names-settings' ).addClass( 'nav-tab-active' );
 			</script>
 			<?php
 			custom_names_content();
@@ -112,48 +112,48 @@ function product_settings() {
 
 
 	<script>
-		var fixHelper = function ( e, ui ) {
-			ui.children().each( function () {
-				jQuery( this ).width( jQuery( this ).width() );
-			} );
-			return ui;
-		};
+	    var fixHelper = function ( e, ui ) {
+	        ui.children().each( function () {
+	            jQuery( this ).width( jQuery( this ).width() );
+	        } );
+	        return ui;
+	    };
 
-		jQuery( function ( $ ) {
-			var $cache = $( '.helpers .wrapper, #implecode_settings .settings-submenu h3' );
-			var top = $cache.offset().top;
-			var height = $( '.settings-submenu' ).height();
-			function fixDiv() {
-				if ( $( window ).scrollTop() > top && $( window ).scrollTop() < height )
-					$cache.css( { 'position': 'fixed', 'top': '32px' } );
-				else if ( $( window ).scrollTop() > height )
-					$cache.css( { 'position': 'absolute', 'bottom': '0px', 'top': 'auto' } );
-				else
-					$cache.css( { 'position': 'relative', 'top': 'auto', 'bottom': 'auto' } );
-			}
-			$( window ).scroll( fixDiv );
-			fixDiv();
-		} );
+	    jQuery( window ).load( function ( ) {
+	        var cache = jQuery( '.helpers .wrapper, #implecode_settings .settings-submenu h3' );
+	        var top = cache.offset().top - 32;
+	        var height = jQuery( '.settings-submenu' ).height();
+	        function fixDiv() {
+	            if ( jQuery( window ).scrollTop() > top && jQuery( window ).scrollTop() < height )
+	                cache.css( { 'position': 'fixed', 'top': 20 } );
+	            else if ( jQuery( window ).scrollTop() > height )
+	                cache.css( { 'position': 'absolute', 'bottom': '0px', 'top': 'auto' } );
+	            else
+	                cache.css( { 'position': 'relative', 'top': 'auto', 'bottom': 'auto' } );
+	        }
+	        jQuery( window ).scroll( fixDiv );
+	        fixDiv();
+	    } );
 
-		jQuery( '.product-settings-table.dragable tbody' ).sortable( {
-			update: function ( event, ui ) {
-				jQuery( '.product-settings-table.dragable tbody tr' ).each( function () {
-					var r = jQuery( this ).index() + 1;
-					jQuery( this ).children( 'td:first-child' ).html( r );
-					jQuery( this ).children( 'td:first-child' ).removeClass();
-					jQuery( this ).children( 'td:first-child' ).addClass( 'lp-column lp' + r );
-					jQuery( this ).find( '.product-attribute-label-column .product-attribute-label' ).attr( 'name', 'product_attribute_label[' + r + ']' );
-					jQuery( this ).find( 'td .product-attribute' ).attr( 'name', 'product_attribute[' + r + ']' );
-					jQuery( this ).find( 'td .product-attribute-unit' ).attr( 'name', 'product_attribute_unit[' + r + ']' );
+	    jQuery( '.product-settings-table.dragable tbody' ).sortable( {
+	        update: function ( event, ui ) {
+	            jQuery( '.product-settings-table.dragable tbody tr' ).each( function () {
+	                var r = jQuery( this ).index() + 1;
+	                jQuery( this ).children( 'td:first-child' ).html( r );
+	                jQuery( this ).children( 'td:first-child' ).removeClass();
+	                jQuery( this ).children( 'td:first-child' ).addClass( 'lp-column lp' + r );
+	                jQuery( this ).find( '.product-attribute-label-column .product-attribute-label' ).attr( 'name', 'product_attribute_label[' + r + ']' );
+	                jQuery( this ).find( 'td .product-attribute' ).attr( 'name', 'product_attribute[' + r + ']' );
+	                jQuery( this ).find( 'td .product-attribute-unit' ).attr( 'name', 'product_attribute_unit[' + r + ']' );
 
-					jQuery( this ).find( '.product-shipping-label-column .product-shipping-label' ).attr( 'name', 'product_shipping_label[' + r + ']' );
-					jQuery( this ).find( 'td .product-shipping-cost' ).attr( 'name', 'product_shipping_cost[' + r + ']' );
-				} )
-			},
-			helper: fixHelper,
-			placeholder: 'sort-placeholder',
-		} );
-		//jQuery('.ui-sortable').height(jQuery('.ui-sortable').height());
+	                jQuery( this ).find( '.product-shipping-label-column .product-shipping-label' ).attr( 'name', 'product_shipping_label[' + r + ']' );
+	                jQuery( this ).find( 'td .product-shipping-cost' ).attr( 'name', 'product_shipping_cost[' + r + ']' );
+	            } )
+	        },
+	        helper: fixHelper,
+	        placeholder: 'sort-placeholder',
+	    } );
+	    //jQuery('.ui-sortable').height(jQuery('.ui-sortable').height());
 
 	</script>
 	<?php
@@ -213,4 +213,21 @@ function main_helper() {
 		</div>
 		</div></div>';
 	echo $helper;
+}
+
+/**
+ * Returns all eCommerce Product Catalog option names
+ * (needs optimisation)
+ * @return type
+ */
+function all_ic_options( $which = 'all' ) {
+	$options = array( 'product_attributes_number', 'al_display_attributes', 'product_attribute', 'product_attribute_label', 'product_attribute_unit', 'archive_template', 'modern_grid_settings', 'classic_grid_settings', 'catalog_lightbox', 'multi_single_options', 'default_product_thumbnail', 'design_schemes', 'archive_names', 'single_names', 'product_listing_url', 'product_currency', 'product_currency_settings', 'product_archive', 'enable_product_listing', 'archive_multiple_settings', 'product_shipping_options_number', 'display_shipping', 'product_shipping_cost', 'product_shipping_label' );
+	$tools	 = array( 'ic_delete_products_uninstall', 'ecommerce_product_catalog_ver', 'sample_product_id', 'al_permalink_options_update', 'custom_license_code', 'implecode_license_owner', 'no_implecode_license_error', 'license_active_plugins', 'product_adder_theme_support_check', 'implecode_hide_plugin_review_info_count' );
+	if ( $which == 'all' ) {
+		return array_merge( $options, $tools );
+	} else if ( $which == 'tools' ) {
+		return $tools;
+	} else {
+		return $options;
+	}
 }

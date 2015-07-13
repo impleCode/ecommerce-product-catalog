@@ -31,10 +31,10 @@ function al_product_adder_admin_notices_styles() {
 				if ( false === get_transient( 'implecode_hide_plugin_review_info' ) ) {
 					implecode_plugin_review_notice();
 					set_transient( 'implecode_hide_plugin_translation_info', 1, WEEK_IN_SECONDS );
-				} else if ( false === get_transient( 'implecode_hide_plugin_translation_info' ) && is_english_catalog_active() ) {
+				} else if ( false === get_transient( 'implecode_hide_plugin_translation_info' ) && !is_english_catalog_active() ) {
 					implecode_plugin_translation_notice();
 				}
-			} else {
+			} else if ( false === get_transient( 'implecode_hide_plugin_review_info' ) ) {
 				set_transient( 'implecode_hide_plugin_review_info', 1, WEEK_IN_SECONDS );
 			}
 		}
@@ -70,7 +70,12 @@ function product_adder_theme_check_notice() {
 		<div id="implecode_message" class="error product-adder-message messages-connect">
 			<div class="squeezer">
 				<h4><?php _e( '<strong>Your theme does not declare eCommerce Product Catalog support</strong> &#8211; please proceed to sample product page where automatic layout adjustment can be done.', 'al-ecommerce-product-catalog' ); ?></h4>
-				<p class="submit"><a href="<?php echo $sample_product_url ?>" class="button-primary"><?php _e( 'Start Auto Adjustment', 'al-ecommerce-product-catalog' ); ?></a><a href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=default-mode&key=top-message" target="_blank" class="button"><?php _e( 'Theme Integration Guide', 'al-ecommerce-product-catalog' ); ?></a> <a class="skip button" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=support' ) ?>"><?php _e( 'Plugin Support', 'al-ecommerce-product-catalog' ); ?></a><a class="skip button" href="<?php echo esc_url( add_query_arg( 'hide_al_product_adder_support_check', 'true' ) ); ?>"><?php _e( 'Hide this notice', 'al-ecommerce-product-catalog' ); ?></a></p>
+				<p class="submit">
+					<?php echo sample_product_button() ?>
+					<?php /* <a href="http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=default-mode&key=top-message" target="_blank" class="button"><?php _e( 'Theme Integration Guide', 'al-ecommerce-product-catalog' ); ?></a> */ ?>
+					<?php /* <a class="skip button" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=support' ) ?>"><?php _e( 'Plugin Support', 'al-ecommerce-product-catalog' ); ?></a> */ ?>
+					<a class="skip button" href="<?php echo esc_url( add_query_arg( 'hide_al_product_adder_support_check', 'true' ) ); ?>"><?php _e( 'Hide Forever', 'al-ecommerce-product-catalog' ); ?></a>
+				</p>
 			</div>
 		</div><?php
 	}
@@ -88,7 +93,7 @@ function implecode_plugin_review_notice() {
 	/* ?>
 	  <div class="update-nag implecode-review"><strong><?php _e( 'Rate this Plugin!', 'al-ecommerce-product-catalog' ) ?></strong> <?php echo sprintf( __( 'Please <a target="_blank" href="%s">rate</a> %s and tell me if it works for you or not. It really helps development.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', 'eCommerce Product Catalog' ) ?> <span class="dashicons dashicons-no"></span></div> */
 	?>
-	<div class="update-nag implecode-review"><?php echo sprintf( __( 'eCommerce Product Catalog is a free software. Would you mind taking <strong>5 seconds</strong> to <a target="_blank" href="%s">rate the plugin</a> for us please? Your comments <strong>help others know what to expect</strong> when they install %s.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', 'eCommerce Product Catalog' ) ?>
+	<div class="update-nag implecode-review"><?php echo sprintf( __( 'eCommerce Product Catalog is a free software. Would you mind taking <strong>5 seconds</strong> to <a target="_blank" href="%s">rate the plugin</a> for us please? Your comments <strong>help others know what to expect</strong> when they install %s.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', 'eCommerce Product Catalog' ) . ' ' . __( 'A <strong>huge thank you</strong> from impleCode and WordPress community in advance!', 'al-ecommerce-product-catalog' ) ?>
 		<p><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform" class="button-primary"><?php _e( 'Rate Now & Hide Forever', 'al-ecommerce-product-catalog' ); ?></a> <a href="" class="button"><?php _e( 'Hide Forever', 'al-ecommerce-product-catalog' ); ?></a></div>
 	<div class="update-nag implecode-review-thanks" style="display: none"><?php echo sprintf( __( 'Thank you for <a target="_blank" href="%s">your rating</a>! We appreciate your time and input.', 'al-ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform' ) ?> <span class="dashicons dashicons-yes"></span></div><?php
 }
@@ -126,4 +131,3 @@ function ajax_hide_translation_notice() {
 }
 
 add_action( 'wp_ajax_hide_translate_notice', 'ajax_hide_translation_notice' );
-?>

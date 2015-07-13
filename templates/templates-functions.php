@@ -23,11 +23,27 @@ function content_product_adder() {
 }
 
 function content_product_adder_archive() {
-	include 'content-al_product_archive.php';
+	$path = get_custom_product_listing_path();
+	if ( file_exists( $path ) ) {
+		ob_start();
+		include $path;
+		$product_listing = ob_get_clean();
+		echo do_shortcode( $product_listing );
+	} else {
+		include 'content-al_product_archive.php';
+	}
 }
 
 function content_product_adder_single() {
-	include 'content-al_product.php';
+	$path = get_custom_product_page_path();
+	if ( file_exists( $path ) ) {
+		ob_start();
+		include $path;
+		$product_page = ob_get_clean();
+		echo do_shortcode( $product_page );
+	} else {
+		include 'content-al_product.php';
+	}
 }
 
 function content_product_adder_archive_before() {
@@ -63,6 +79,7 @@ function show_products_outside_loop( $atts ) {
 		'post_type'			 => 'al_product',
 		'category'			 => '',
 		'product'			 => '',
+		'exclude'			 => '',
 		'products_limit'	 => -1,
 		'archive_template'	 => get_product_listing_template(),
 		'design_scheme'		 => '',
@@ -72,6 +89,7 @@ function show_products_outside_loop( $atts ) {
 	$shortcode_args		 = $args;
 	$category			 = esc_html( $args[ 'category' ] );
 	$product			 = esc_html( $args[ 'product' ] );
+	$exclude			 = esc_html( $args[ 'exclude' ] );
 	$products_limit		 = intval( $args[ 'products_limit' ] );
 	$archive_template	 = esc_attr( $args[ 'archive_template' ] );
 	$design_scheme		 = esc_attr( $args[ 'design_scheme' ] );
@@ -102,16 +120,23 @@ function show_products_outside_loop( $atts ) {
 			'posts_per_page' => $products_limit,
 		);
 	} else {
-		$query_param = array(
+		$exclude_array	 = explode( ',', $exclude );
+		$query_param	 = array(
 			'post_type'		 => 'al_product',
 			'posts_per_page' => $products_limit,
+			'post__not_in'	 => $exclude_array,
 		);
 	}
 	$query_param	 = apply_filters( 'shortcode_query', $query_param );
 	$shortcode_query = new WP_Query( $query_param );
 	$inside			 = '';
 	$i				 = 0;
+
+	ob_start();
 	do_action( 'before_product_list', $archive_template );
+	$before = ob_get_contents();
+	ob_end_clean();
+
 	while ( $shortcode_query->have_posts() ) : $shortcode_query->the_post();
 		global $post;
 		$i++;
@@ -121,7 +146,7 @@ function show_products_outside_loop( $atts ) {
 	wp_reset_postdata();
 	reset_row_class();
 	unset( $shortcode_args );
-	return '<div class="product-list responsive ' . $archive_template . '-list ' . product_list_class() . '">' . $inside . '<div style="clear:both"></div></div>';
+	return $before . '<div class="product-list responsive ' . $archive_template . ' ' . product_list_class( $archive_template ) . '">' . $inside . '<div style="clear:both"></div></div>';
 }
 
 add_shortcode( 'show_products', 'show_products_outside_loop' );
@@ -133,7 +158,7 @@ function single_scripts() {
 }
 
 add_action( 'wp_enqueue_scripts', 'single_scripts' );
-add_action( 'pre_get_posts', 'set_products_limit' );
+add_action( 'pre_get_posts', 'set_products_limit', 99 );
 
 /**
  * Sets product limit on product listing pages
@@ -299,9 +324,9 @@ add_action( 'before_category_list', 'product_listing_additional_styles' );
 /**
  * Ads product listing inline styles container
  */
-function product_listing_additional_styles() {
+function product_listing_additional_styles( $archive_template ) {
 	$styles	 = '<style>';
-	$styles	 = apply_filters( 'product_listing_additional_styles', $styles );
+	$styles	 = apply_filters( 'product_listing_additional_styles', $styles, $archive_template );
 	$styles .= '</style>';
 	if ( $styles != '<style></style>' && !is_admin() ) {
 		echo $styles;
@@ -413,8 +438,8 @@ add_action( 'nav_menu_css_class', 'product_listing_current_nav_class', 10, 2 );
  * Defines custom classes to product or category listing div
  * @return string
  */
-function product_list_class( $where = 'product-list' ) {
-	return apply_filters( 'product-list-class', '', $where );
+function product_list_class( $archive_template, $where = 'product-list' ) {
+	return apply_filters( 'product-list-class', '', $where, $archive_template );
 }
 
 /**
@@ -500,4 +525,39 @@ function add_classes_on_categories( $classes ) {
 		$classes .= ' hentry status-publish';
 	}
 	return $classes;
+}
+
+add_action( 'advanced_mode_layout_start', 'advanced_mode_styling' );
+
+/**
+ * Adds advanced mode custom styling settings
+ *
+ */
+function advanced_mode_styling() {
+	$settings	 = get_integration_settings();
+	$styling	 = '<style>';
+	if ( $settings[ 'container_width' ] != 100 ) {
+		$styling .= '#container {width: ' . $settings[ 'container_width' ] . '%; margin: 0 auto; overflow: hidden; box-sizing: border-box; float: none;}';
+	}
+	if ( $settings[ 'container_bg' ] != '' ) {
+		$styling .= '#container {background: ' . $settings[ 'container_bg' ] . ';}';
+	}
+	if ( $settings[ 'container_padding' ] != 0 ) {
+		$styling .= '#content {padding: ' . $settings[ 'container_padding' ] . 'px; box-sizing: border-box; float: none; }';
+	}
+	$styling .= '</style>';
+	if ( $styling != '<style></style>' ) {
+		echo $styling;
+	}
+}
+
+add_action( 'advanced_mode_layout_end', 'advanced_mode_default_sidebar' );
+
+/**
+ * Shows theme default sidebar if necessary
+ */
+function advanced_mode_default_sidebar() {
+	if ( is_ic_default_theme_sidebar_active() ) {
+		get_sidebar();
+	}
 }

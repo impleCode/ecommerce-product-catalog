@@ -105,13 +105,28 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 		return echo_ic_setting( $return, $echo );
 	}
 
+	/**
+	 * Generates number field within table tr tags
+	 *
+	 * @param string $option_label
+	 * @param string $option_name
+	 * @param float $option_value
+	 * @param string $unit
+	 * @param int $echo
+	 * @param float $step
+	 * @param string $tip
+	 * @param float $min
+	 * @param float $max
+	 * @return string
+	 */
 	function implecode_settings_number( $option_label, $option_name, $option_value, $unit, $echo = 1, $step = 1,
-									 $tip = null, $min = null ) {
+									 $tip = null, $min = null, $max = null ) {
 		$return	 = '<tr>';
 		$return .= '<td>' . $option_label . ':</td>';
 		$tip	 = !empty( $tip ) ? 'title="' . $tip . '" ' : '';
-		$min	 = !empty( $min ) ? 'min="' . intval( $min ) . '" ' : '';
-		$return .= '<td><input type="number" step="' . $step . '" ' . $min . ' ' . $tip . ' class="number_box" name="' . $option_name . '" value="' . $option_value . '" />' . $unit . '</td>';
+		$min	 = isset( $min ) ? 'min="' . intval( $min ) . '" ' : '';
+		$max	 = isset( $max ) ? 'max="' . intval( $max ) . '" ' : '';
+		$return .= '<td><input type="number" step="' . $step . '" ' . $min . ' ' . $max . ' ' . $tip . ' class="number_box" name="' . $option_name . '" value="' . $option_value . '" />' . $unit . '</td>';
 		$return .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
@@ -195,6 +210,27 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 
 	function implecode_success( $text, $echo = 1 ) {
 		return echo_ic_setting( '<div class="al-box success"><p>' . $text . '</p></div>', $echo );
+	}
+
+}
+
+if ( !function_exists( 'implecode_settings_text_color' ) ) {
+
+	function implecode_settings_text_color( $option_label, $option_name, $option_value, $required = null, $echo = 1,
+										 $class = null, $change = null ) {
+		if ( $required != '' ) {
+			$regired_field	 = 'required="required"';
+			$star			 = '<span class="star"> *</span>';
+		} else {
+			$regired_field	 = '';
+			$star			 = '';
+		}
+		$return = '<tr>';
+		$return .= '<td>' . $option_label . $star . ':</td>';
+		$return .= '<td><input ' . $regired_field . ' class="color-picker ' . $class . '" type="text" name="' . $option_name . '" value="' . $option_value . '" /></td>';
+		$return .= '<script>jQuery("input[name=\'' . $option_name . '\']").wpColorPicker(' . $change . ');</script>';
+		$return .= '</tr>';
+		return echo_ic_setting( $return, $echo );
 	}
 
 }

@@ -38,15 +38,15 @@ class product_cat_widget extends WP_Widget {
 				?>
 
 				<script type='text/javascript'>
-					/* <![CDATA[ */
-					var dropdown = document.getElementById( "cat" );
-					function onCatChange() {
-						if ( dropdown.options[dropdown.selectedIndex].value != '' ) {
-							location.href = "<?php echo home_url(); ?>/?al_product-cat=" + dropdown.options[dropdown.selectedIndex].value;
-						}
-					}
-					dropdown.onchange = onCatChange;
-					/* ]]> */
+				    /* <![CDATA[ */
+				    var dropdown = document.getElementById( "cat" );
+				    function onCatChange() {
+				        if ( dropdown.options[dropdown.selectedIndex].value != '' ) {
+				            location.href = "<?php echo home_url(); ?>/?al_product-cat=" + dropdown.options[dropdown.selectedIndex].value;
+				        }
+				    }
+				    dropdown.onchange = onCatChange;
+				    /* ]]> */
 				</script>
 
 				<?php
@@ -110,31 +110,35 @@ class product_cat_widget extends WP_Widget {
 					$object			 = $this;
 					do_action( 'product_categories_widget_settings', $instance, $object );
 					?> </p> <?php
-			} else {
+		} else {
+			if ( is_integration_mode_selected() ) {
 				implecode_warning( sprintf( __( 'Category widget is disabled with simple theme integration. Please see <a target="_blank" href="%s">Theme Integration Guide</a> to enable product category widget.', 'al-ecommerce-product-catalog' ), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=category-widget' ) );
+			} else {
+				implecode_warning( sprintf( __( 'Category widget is disabled due to a lack of theme integration.%s', 'al-ecommerce-product-catalog' ), sample_product_button( 'p' ) ) );
 			}
 		}
-
 	}
 
-	class my_Walker_CategoryDropdown extends Walker_CategoryDropdown {
+}
 
-		function start_el( &$output, $category, $depth = 0, $args = Array(), $id = 0 ) {
-			$pad = str_repeat( '&nbsp;', $depth * 3 );
+class my_Walker_CategoryDropdown extends Walker_CategoryDropdown {
 
-			$cat_name = apply_filters( 'list_cats', $category->name, $category );
-			$output .= "\t<option class=\"level-$depth\" value=\"" . $category->slug . "\"";
-			if ( $category->term_id == isset( $args[ 'selected' ] ) ? $args[ 'selected' ] : '' )
-				$output .= ' selected="selected"';
-			$output .= '>';
-			$output .= $pad . $cat_name;
-			if ( isset( $args[ 'show_count' ] ) )
-				$output .= '&nbsp;&nbsp;(' . $category->count . ')';
-			if ( isset( $args[ 'show_last_update' ] ) ) {
-				$format = 'Y-m-d';
-				$output .= '&nbsp;&nbsp;' . gmdate( $format, $category->last_update_timestamp );
-			}
-			$output .= "</option>\n";
+	function start_el( &$output, $category, $depth = 0, $args = Array(), $id = 0 ) {
+		$pad = str_repeat( '&nbsp;', $depth * 3 );
+
+		$cat_name = apply_filters( 'list_cats', $category->name, $category );
+		$output .= "\t<option class=\"level-$depth\" value=\"" . $category->slug . "\"";
+		if ( $category->term_id == isset( $args[ 'selected' ] ) ? $args[ 'selected' ] : '' )
+			$output .= ' selected="selected"';
+		$output .= '>';
+		$output .= $pad . $cat_name;
+		if ( isset( $args[ 'show_count' ] ) )
+			$output .= '&nbsp;&nbsp;(' . $category->count . ')';
+		if ( isset( $args[ 'show_last_update' ] ) ) {
+			$format = 'Y-m-d';
+			$output .= '&nbsp;&nbsp;' . gmdate( $format, $category->last_update_timestamp );
 		}
-
+		$output .= "</option>\n";
 	}
+
+}

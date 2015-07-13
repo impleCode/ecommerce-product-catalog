@@ -201,7 +201,7 @@ function product_listing_size_class( $image ) {
 	return $class;
 }
 
-add_filter( 'product-list-class', 'add_modern_lising_class' );
+add_filter( 'product-list-class', 'add_modern_lising_class', 10, 3 );
 
 /**
  * Adds per row class to modern grid product listing container
@@ -209,11 +209,10 @@ add_filter( 'product-list-class', 'add_modern_lising_class' );
  * @param string $class
  * @return string
  */
-function add_modern_lising_class( $class ) {
-	$archive_template = get_product_listing_template();
+function add_modern_lising_class( $class, $where = '', $archive_template = 'default' ) {
 	if ( $archive_template == 'default' ) {
 		$settings = get_modern_grid_settings();
-		$class .= 'per-row-' . $settings[ 'per-row' ];
+		$class .= ' per-row-' . $settings[ 'per-row' ];
 	}
 	return $class;
 }

@@ -92,24 +92,24 @@ function upload_product_image( $name, $button_value, $option_name, $option_value
 		   href="#"><?php _e( 'Reset image', 'al-ecommerce-product-catalog' ); ?></a>
 	</div>
 	<script>
-		jQuery( document ).ready( function () {
-			jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
-				wp.media.editor.send.attachment = function ( props, attachment ) {
-					jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
-					jQuery( '.media-image' ).attr( "src", attachment.url );
-				}
+	    jQuery( document ).ready( function () {
+	        jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
+	            wp.media.editor.send.attachment = function ( props, attachment ) {
+	                jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
+	                jQuery( '.media-image' ).attr( "src", attachment.url );
+	            }
 
-				wp.media.editor.open( this );
+	            wp.media.editor.open( this );
 
-				return false;
-			} );
-		} );
+	            return false;
+	        } );
+	    } );
 
-		jQuery( '#reset-image-button' ).on( 'click', function () {
-			jQuery( '#<?php echo $name; ?>' ).val( '' );
-			src = jQuery( '#default' ).val();
-			jQuery( '.media-image' ).attr( "src", src );
-		} );
+	    jQuery( '#reset-image-button' ).on( 'click', function () {
+	        jQuery( '#<?php echo $name; ?>' ).val( '' );
+	        src = jQuery( '#default' ).val();
+	        jQuery( '.media-image' ).attr( "src", src );
+	    } );
 	</script>
 	<?php
 }
@@ -218,7 +218,9 @@ add_action( 'single_product_header', 'add_product_name' );
  * Shows product name on product page
  */
 function add_product_name() {
-	echo '<h1 class="entry-title product-name">' . get_the_title() . '</h1>';
+	if ( is_ic_product_name_enabled() ) {
+		echo '<h1 class="entry-title product-name">' . get_the_title() . '</h1>';
+	}
 }
 
 add_action( 'before_product_listing_entry', 'product_listing_header', 10, 2 );
@@ -470,16 +472,34 @@ function show_related_categories( $post, $single_names, $taxonomy_name ) {
 			<table>
 				<tr>
 					<td>
-		<?php echo $single_names[ 'other_categories' ]; ?>
+						<?php echo $single_names[ 'other_categories' ]; ?>
 					</td>
 					<td>
-		<?php echo $categories; ?>
+						<?php echo $categories; ?>
 					</td>
 				</tr>
 			</table>
 		</div>
 		<?php
 	}
+}
+
+add_filter( 'the_content', 'show_simple_product_listing' );
+
+/**
+ * Shows product listing in simple mode if no shortcode exists.
+ *
+ * @param string $content
+ * @return string
+ */
+function show_simple_product_listing( $content ) {
+	if ( get_integration_type() == 'simple' && is_ic_product_listing() && is_ic_product_listing_enabled() ) {
+		if ( !has_shortcode( $content, 'show_products' ) ) {
+			$archive_multiple_settings = get_multiple_settings();
+			$content .= do_shortcode( '[show_products products_limit="' . $archive_multiple_settings[ 'archive_products_limit' ] . '"]' );
+		}
+	}
+	return $content;
 }
 
 /* Archive Functions */
@@ -489,7 +509,7 @@ function show_archive_price( $post ) {
 	if ( !empty( $price_value ) ) {
 		?>
 		<div class="product-price <?php design_schemes( 'color' ); ?>">
-		<?php echo price_format( $price_value ) ?>
+			<?php echo price_format( $price_value ) ?>
 		</div>
 		<?php
 	}

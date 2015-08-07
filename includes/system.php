@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 
 function register_product_system() {
-	add_submenu_page( 'edit.php?post_type=al_product', __( 'System Status', 'al-ecommerce-product-catalog' ), __( 'System Status', 'al-ecommerce-product-catalog' ), 'manage_product_settings', basename( __FILE__ ), 'ic_system_status' );
+	add_submenu_page( 'edit.php?post_type=al_product', __( 'System Status', 'al-ecommerce-product-catalog' ), __( 'System Status', 'al-ecommerce-product-catalog' ), apply_filters( 'ic_system_status_cap', 'manage_product_settings' ), basename( __FILE__ ), 'ic_system_status' );
 }
 
 add_action( 'product_settings_menu', 'register_product_system' );
@@ -78,11 +78,11 @@ function ic_system_status() {
 					</tr>
 					<tr>
 						<td><?php _e( 'Delete all products', 'al-ecommerce-product-catalog' ); ?>:</td>
-						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_products', 1 ) ) ?>"><?php _e( 'Delete all Prodcts', 'al-ecommerce-product-catalog' ) ?></a></td>
+						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_products', 1 ) ) ?>"><?php _e( 'Delete all Products', 'al-ecommerce-product-catalog' ) ?></a></td>
 					</tr>
 					<tr>
 						<td><?php _e( 'Delete all product categories', 'al-ecommerce-product-catalog' ); ?>:</td>
-						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_product_categories', 1 ) ) ?>"><?php _e( 'Delete all Prodct Categories', 'al-ecommerce-product-catalog' ) ?></a></td>
+						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_product_categories', 1 ) ) ?>"><?php _e( 'Delete all Product Categories', 'al-ecommerce-product-catalog' ) ?></a></td>
 					</tr>
 					<tr>
 						<td><?php _e( 'Delete all products and categories on uninstall', 'al-ecommerce-product-catalog' ); ?>:</td>
@@ -329,26 +329,26 @@ function ic_system_status() {
 				</tbody>
 			</table>
 			<script>
-			    jQuery( document ).ready( function () {
-			        jQuery( "input[type='checkbox']" ).change( function () {
-			            checkbox = jQuery( this );
-			            if ( checkbox.is( ":checked" ) ) {
-			                checked = 1;
-			            } else {
-			                checked = 0;
-			            }
-			            data = {
-			                action: "save_implecode_tools",
-			                field: checkbox.attr( 'name' ) + "|" + checked
-			            };
-			            jQuery.post( "<?php echo admin_url( 'admin-ajax.php' ) ?>", data, function ( response ) {
-			                checkbox.after( "<span class='saved'>Saved!</span>" );
-			                jQuery( ".saved" ).delay( 2000 ).fadeOut( 300, function () {
-			                    jQuery( this ).remove();
-			                } );
-			            } );
-			        } );
-			    } );
+				jQuery( document ).ready( function () {
+					jQuery( "input[type='checkbox']" ).change( function () {
+						checkbox = jQuery( this );
+						if ( checkbox.is( ":checked" ) ) {
+							checked = 1;
+						} else {
+							checked = 0;
+						}
+						data = {
+							action: "save_implecode_tools",
+							field: checkbox.attr( 'name' ) + "|" + checked
+						};
+						jQuery.post( "<?php echo admin_url( 'admin-ajax.php' ) ?>", data, function ( response ) {
+							checkbox.after( "<span class='saved'>Saved!</span>" );
+							jQuery( ".saved" ).delay( 2000 ).fadeOut( 300, function () {
+								jQuery( this ).remove();
+							} );
+						} );
+					} );
+				} );
 			</script>
 			<?php
 		}

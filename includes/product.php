@@ -221,7 +221,7 @@ function al_product_attributes() {
 	global $post;
 	echo '<input type="hidden" name="attributesmeta_noncename" id="attributesmeta_noncename" value="' .
 	wp_create_nonce( plugin_basename( __FILE__ ) ) . '" />';
-	echo '<div class="al-box info">' . __( 'Only attributes with values set will be shown on product page.', 'al-ecommerce-product-catalog' ) . ' ' . sprintf( __( 'See <a target="_blank" href="%s">docs</a>.', 'al-ecommerce-product-catalog' ), 'http://implecode.com/docs/ecommerce-product-catalog/product-attributes/?cam=catalog-add-page-box&key=product-attributes' ) . '</div>';
+	echo '<div class="al-box info">' . __( 'Only attributes with values set will be shown on product page.', 'al-ecommerce-product-catalog' ) . ' ' . sprintf( __( 'See <a target="_blank" href="%s">docs</a>.', 'al-ecommerce-product-catalog' ), 'https://implecode.com/docs/ecommerce-product-catalog/product-attributes/?cam=catalog-add-page-box&key=product-attributes' ) . '</div>';
 	do_action( 'before_product_attributes_edit_single' );
 	echo '<table class="sort-settings attributes">
 	<thead><tr>
@@ -249,17 +249,17 @@ function al_product_attributes() {
 			$attributes_label_option_field	 = !empty( $attributes_label_option_field ) ? $attributes_label_option_field : $attributes_label_option[ $i ];
 			$attributes_unit_option_field	 = !empty( $attributes_unit_option_field ) ? $attributes_unit_option_field : $attributes_unit_option[ $i ];
 		}
-		$attribute_value_field = '<input class="attribute-value" type="text" name="_attribute' . $i . '" value="' . $attributes_option_field . '" />';
+		$attribute_value_field = '<input class="attribute-value" type="text" name="_attribute' . $i . '" value="' . htmlentities( $attributes_option_field ) . '" />';
 		?>
 		<tr>
 			<td class="attributes-label-column"><input class="attribute-label" type="text"
 													   name="_attribute-label<?php echo $i ?>"
-													   value="<?php echo $attributes_label_option_field ?>"/></td>
+													   value="<?php echo htmlentities( $attributes_label_option_field ) ?>"/></td>
 			<td class="break-column">:</td>
 			<td class="value-column"><?php echo apply_filters( 'product_attribute_value_edit', $attribute_value_field, $i, $attributes_option_field ) ?></td>
 			<td class="unit-column"><input class="attribute-unit admin-number-field" type="text"
 										   name="_attribute-unit<?php echo $i ?>"
-										   value="<?php echo $attributes_unit_option_field ?>"/></td>
+										   value="<?php echo htmlentities( $attributes_unit_option_field ) ?>"/></td>
 			<td class="dragger"></td>
 		</tr>
 	<?php } ?>

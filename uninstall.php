@@ -35,46 +35,28 @@ if ( $uninstall_products == 1 ) {
 	$wpdb->delete( $wpdb->term_taxonomy, array( 'taxonomy' => $taxonomy ), array( '%s' ) );
 }
 
-foreach ( all_ic_options() as $option ) {
+if ( !function_exists( 'all_ic_options' ) ) {
+
+	/**
+	 * Returns all eCommerce Product Catalog option names
+	 * (needs optimisation)
+	 * @return type
+	 */
+	function all_ic_options( $which = 'all' ) {
+		$options = array( 'product_attributes_number', 'al_display_attributes', 'product_attribute', 'product_attribute_label', 'product_attribute_unit', 'archive_template', 'modern_grid_settings', 'classic_grid_settings', 'catalog_lightbox', 'multi_single_options', 'default_product_thumbnail', 'design_schemes', 'archive_names', 'single_names', 'product_listing_url', 'product_currency', 'product_currency_settings', 'product_archive', 'enable_product_listing', 'archive_multiple_settings', 'product_shipping_options_number', 'display_shipping', 'product_shipping_cost', 'product_shipping_label' );
+		$tools	 = array( 'ic_delete_products_uninstall', 'ecommerce_product_catalog_ver', 'sample_product_id', 'al_permalink_options_update', 'custom_license_code', 'implecode_license_owner', 'no_implecode_license_error', 'license_active_plugins', 'product_adder_theme_support_check', 'implecode_hide_plugin_review_info_count' );
+		if ( $which == 'all' ) {
+			return array_merge( $options, $tools );
+		} else if ( $which == 'tools' ) {
+			return $tools;
+		} else {
+			return $options;
+		}
+	}
+
+}
+
+$all_options = all_ic_options();
+foreach ( $all_options as $option ) {
 	delete_option( $option );
 }
-/*
-delete_option( 'product_attributes_number' );
-delete_option( 'al_display_attributes' );
-delete_option( 'product_attribute' );
-delete_option( 'product_attribute_label' );
-delete_option( 'product_attribute_unit' );
-delete_option( 'archive_template' );
-delete_option( 'modern_grid_settings' );
-delete_option( 'classic_grid_settings' );
-delete_option( 'catalog_lightbox' );
-delete_option( 'multi_single_options' );
-delete_option( 'default_product_thumbnail' );
-delete_option( 'design_schemes' );
-delete_option( 'archive_names' );
-delete_option( 'single_names' );
-delete_option( 'product_listing_url' );
-delete_option( 'product_currency' );
-delete_option( 'product_currency_settings' );
-delete_option( 'product_archive' );
-delete_option( 'enable_product_listing' );
-delete_option( 'archive_multiple_settings' );
-delete_option( 'product_shipping_options_number' );
-delete_option( 'display_shipping' );
-delete_option( 'product_shipping_cost' );
-delete_option( 'product_shipping_label' );
-
-delete_option( 'ic_delete_products_uninstall' );
-delete_option( 'ecommerce_product_catalog_ver' );
-delete_option( 'sample_product_id' );
-delete_option( 'al_permalink_options_update' );
-delete_option( 'custom_license_code' );
-delete_option( 'implecode_license_owner' );
-delete_option( 'no_implecode_license_error' );
-delete_option( 'license_active_plugins' );
-delete_option( 'product_adder_theme_support_check' );
-delete_option( 'implecode_hide_plugin_review_info_count' );
- */
-
-
-

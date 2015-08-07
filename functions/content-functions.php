@@ -1,4 +1,5 @@
 <?php
+
 if ( !defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
@@ -14,6 +15,15 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 /* General */
 
+/**
+ * Transforms number to the price format
+ *
+ * @param float $price_value
+ * @param int $clear
+ * @param int $format
+ * @param int $raw
+ * @return string|float
+ */
 function price_format( $price_value, $clear = 0, $format = 1, $raw = 0 ) {
 	$set			 = get_currency_settings();
 	$th_symbol		 = addslashes( $set[ 'th_sep' ] );
@@ -99,16 +109,34 @@ function clean_short_description( $product_id, $new_line = ' ' ) {
 }
 
 /* Single Product */
+add_action( 'single_product_end', 'add_back_to_products_url', 99, 2 );
 
-function add_back_to_products_url( $post, $single_names, $taxonomies ) {
+/**
+ *
+ * @param object $post
+ * @param array $single_names
+ * @param string $taxonomies
+ */
+function add_back_to_products_url( $post, $single_names ) {
 	if ( is_ic_product_listing_enabled() ) {
-		?>
-		<a href="<?php echo product_listing_url(); ?>"><?php echo $single_names[ 'return_to_archive' ]; ?></a>
-		<?php
+		echo get_back_to_products_url( $single_names );
 	}
 }
 
-add_action( 'single_product_end', 'add_back_to_products_url', 99, 3 );
+/**
+ * Returns back to products URL
+ *
+ * @param array $v_single_names
+ * @return string
+ */
+function get_back_to_products_url( $v_single_names = null ) {
+	if ( is_ic_product_listing_enabled() ) {
+		$single_names	 = isset( $v_single_names ) ? $v_single_names : get_single_names();
+		$url			 = '<a href="' . product_listing_url() . '">' . $single_names[ 'return_to_archive' ] . '</a>';
+		return $url;
+	}
+	return;
+}
 
 /**
  * Shows product search form

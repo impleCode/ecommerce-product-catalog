@@ -26,8 +26,8 @@ function implecode_custom_csv_settings_content() {
 	<?php if ( $submenu == 'csv' ) { ?>
 		<div class="setting-content submenu csv-tab">
 			<script>
-		        jQuery( '.settings-submenu a' ).removeClass( 'current' );
-		        jQuery( '.settings-submenu a#csv-settings' ).addClass( 'current' );
+				jQuery( '.settings-submenu a' ).removeClass( 'current' );
+				jQuery( '.settings-submenu a#csv-settings' ).addClass( 'current' );
 			</script>
 			<h2><?php _e( 'Simple CSV', 'al-ecommerce-product-catalog' ); ?></h2>
 			<h3><?php _e( 'Simple Product Export', 'al-ecommerce-product-catalog' ); ?></h3>
@@ -38,7 +38,7 @@ function implecode_custom_csv_settings_content() {
 				echo '<a style="display: block; margin-top: 20px;" href="' . $url . '">' . __( "Download CSV", 'al-ecommerce-product-catalog' ) . '</a>';
 			} else {
 				?>
-				<a style="display: block; margin-top: 20px;" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv&export_csv=1' ) ?>"><button class="button" ><?php _e( "Export All Products to CSV file", 'al-product-csv' ) ?></button></a>
+				<a style="display: block; margin-top: 20px;" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv&export_csv=1' ) ?>"><button class="button" ><?php _e( "Export All Products to CSV file", 'al-ecommerce-product-catalog' ) ?></button></a>
 				<h3><?php _e( 'Simple Product Import', 'al-ecommerce-product-catalog' ); ?></h3><?php simple_upload_csv_products_file(); ?>
 			<?php } ?>
 		</div>
@@ -182,12 +182,12 @@ function simple_get_all_exported_products() {
 function simple_prepare_products_to_export() {
 	$products							 = simple_get_all_exported_products();
 	$fields								 = array();
-	$fields[ 1 ][ 'image_url' ]			 = __( 'Image URL', 'al-product-csv' );
-	$fields[ 1 ][ 'product_name' ]		 = __( 'Product Name', 'al-product-csv' );
-	$fields[ 1 ][ 'product_price' ]		 = __( 'Product Price', 'al-product-csv' );
-	$fields[ 1 ][ 'product_categories' ] = __( 'Product Categories', 'al-product-csv' );
-	$fields[ 1 ][ 'product_short_desc' ] = __( 'Short Description', 'al-product-csv' );
-	$fields[ 1 ][ 'product_desc' ]		 = __( 'Long Description', 'al-product-csv' );
+	$fields[ 1 ][ 'image_url' ]			 = __( 'Image URL', 'al-ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_name' ]		 = __( 'Product Name', 'al-ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_price' ]		 = __( 'Product Price', 'al-ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_categories' ] = __( 'Product Categories', 'al-ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_short_desc' ] = __( 'Short Description', 'al-ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_desc' ]		 = __( 'Long Description', 'al-ecommerce-product-catalog' );
 	$z									 = 2;
 	foreach ( $products as $product ) {
 		$image							 = wp_get_attachment_image_src( get_post_thumbnail_id( $product->ID ), 'full' );

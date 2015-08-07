@@ -88,8 +88,8 @@ function general_settings_content() {
 		<?php if ( $submenu == 'general-settings' OR $submenu == '' ) { ?>
 			<div class="setting-content submenu">
 				<script>
-		            jQuery( '.settings-submenu a' ).removeClass( 'current' );
-		            jQuery( '.settings-submenu a#general-settings' ).addClass( 'current' );
+					jQuery( '.settings-submenu a' ).removeClass( 'current' );
+					jQuery( '.settings-submenu a#general-settings' ).addClass( 'current' );
 				</script>
 				<h2><?php _e( 'General Settings', 'al-ecommerce-product-catalog' ); ?></h2>
 
@@ -131,12 +131,15 @@ function general_settings_content() {
 							?>
 							<table>
 								<?php
-								implecode_settings_radio( __( 'Choose theme integration type', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type]', $archive_multiple_settings[ 'integration_type' ], array( 'simple' => __( 'Simple Integration<br>', 'al-ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'al-ecommerce-product-catalog' ) ) );
+								implecode_settings_radio( __( 'Choose theme integration type', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type]', $archive_multiple_settings[ 'integration_type' ], array( 'simple' => __( 'Simple Integration', 'al-ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'al-ecommerce-product-catalog' ) ) );
 								?></table>
 							<table class="advanced_mode_settings"><?php
 								implecode_settings_number( __( 'Catalog Container Width', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[container_width]', $archive_multiple_settings[ 'container_width' ], '%' );
 								implecode_settings_text_color( __( 'Catalog Container Background', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[container_bg]', $archive_multiple_settings[ 'container_bg' ] );
 								implecode_settings_number( __( 'Catalog Container Padding', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[container_padding]', $archive_multiple_settings[ 'container_padding' ], 'px' );
+								if ( !defined( 'AL_SIDEBAR_PLUGIN_BASE_PATH' ) ) {
+									implecode_settings_radio( __( 'Default Sidebar', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[default_sidebar]', $archive_multiple_settings[ 'default_sidebar' ], array( 'none' => __( 'Disabled', 'al-ecommerce-product-catalog' ), 'left' => __( 'Left', 'al-ecommerce-product-catalog' ), 'right' => __( 'Right', 'al-ecommerce-product-catalog' ) ) );
+								}
 								implecode_settings_checkbox( __( 'Disable Product Name', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[disable_name]', $archive_multiple_settings[ 'disable_name' ] );
 								?>
 							</table>
@@ -149,7 +152,7 @@ function general_settings_content() {
 							?>
 							<table style="display: none">
 								<?php
-								implecode_settings_radio( __( 'Choose theme integration type', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type]', $archive_multiple_settings[ 'integration_type' ], array( 'simple' => __( 'Simple Integration<br>', 'al-ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'al-ecommerce-product-catalog' ) ) );
+								implecode_settings_radio( __( 'Choose theme integration type', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type]', $archive_multiple_settings[ 'integration_type' ], array( 'simple' => __( 'Simple Integration', 'al-ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'al-ecommerce-product-catalog' ) ) );
 								?></table>
 							<?php
 							echo '<a href="' . sample_product_url() . '" class="button-primary">' . __( 'Start Auto Adjustment', 'al-ecommerce-product-catalog' ) . '</a>';
@@ -165,7 +168,7 @@ function general_settings_content() {
 
 					<h3><?php _e( 'Product listing page', 'al-ecommerce-product-catalog' ); ?></h3><?php
 					/* if ( $disabled == 'disabled' ) {
-					  implecode_warning( sprintf( __( 'Product listing page is disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product listing page with pagination or use [show_products] shortcode on the page selected below.', 'al-ecommerce-product-catalog' ), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=product-listing' ) );
+					  implecode_warning( sprintf( __( 'Product listing page is disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product listing page with pagination or use [show_products] shortcode on the page selected below.', 'al-ecommerce-product-catalog' ), 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=product-listing' ) );
 					  } */
 					?>
 					<table>
@@ -212,7 +215,7 @@ function general_settings_content() {
 								.
 							</td>
 						</tr><?php
-						implecode_settings_radio( __( 'Product listing shows', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[product_listing_cats]', $archive_multiple_settings[ 'product_listing_cats' ], array( 'off' => __( 'Products', 'al-ecommerce-product-catalog' ) . '<br>', 'on' => __( 'Products & Main Categories', 'al-ecommerce-product-catalog' ) . '<br>', 'cats_only' => __( 'Main Categories', 'al-ecommerce-product-catalog' ) ) );
+						implecode_settings_radio( __( 'Product listing shows', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[product_listing_cats]', $archive_multiple_settings[ 'product_listing_cats' ], array( 'off' => __( 'Products', 'al-ecommerce-product-catalog' ), 'on' => __( 'Products & Main Categories', 'al-ecommerce-product-catalog' ), 'cats_only' => __( 'Main Categories', 'al-ecommerce-product-catalog' ) ) );
 						$sort_options = get_product_sort_options();
 						implecode_settings_radio( __( 'Product order', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[product_order]', $archive_multiple_settings[ 'product_order' ], $sort_options, true, __( 'This is also the default setting for sorting drop-down.', 'al-ecommerce-product-catalog' ) );
 						do_action( 'product_listing_page_settings' );
@@ -223,7 +226,7 @@ function general_settings_content() {
 					<h3><?php _e( 'Categories Settings', 'al-ecommerce-product-catalog' ); ?></h3><?php
 					if ( $disabled != '' ) {
 						if ( $selected ) {
-							implecode_warning( sprintf( __( 'Category pages are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable category pages or use [show_products category="1"] (where "1" is category ID) on any page to show products from certain category.', 'al-ecommerce-product-catalog' ), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=categories-settings' ) );
+							implecode_warning( sprintf( __( 'Category pages are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable category pages or use [show_products category="1"] (where "1" is category ID) on any page to show products from certain category.', 'al-ecommerce-product-catalog' ), 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=categories-settings' ) );
 						} else {
 							implecode_warning( sprintf( __( 'Category pages are disabled due to a lack of theme integration.%s', 'al-ecommerce-product-catalog' ), sample_product_button( 'p' ) ) );
 						}
@@ -249,8 +252,8 @@ function general_settings_content() {
 								</td>
 							</tr><?php
 						}
-						implecode_settings_radio( __( 'Category Page shows', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[category_top_cats]', $archive_multiple_settings[ 'category_top_cats' ], array( 'off' => __( 'Products', 'al-ecommerce-product-catalog' ) . '<br>', 'on' => __( 'Products & Subcategories', 'al-ecommerce-product-catalog' ) . '<br>', 'only_subcategories' => __( 'Subcategories', 'al-ecommerce-product-catalog' ) ) );
-						implecode_settings_radio( __( 'Categories Display', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[cat_template]', $archive_multiple_settings[ 'cat_template' ], array( 'template' => __( 'Template<br>', 'al-ecommerce-product-catalog' ), 'link' => __( 'URLs', 'al-ecommerce-product-catalog' ) ), true, array( 'template' => __( 'Display categories with the same listing theme as products.', 'al-ecommerce-product-catalog' ), 'link' => __( 'Display categories as simple links.', 'al-ecommerce-product-catalog' ) ) );
+						implecode_settings_radio( __( 'Category Page shows', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[category_top_cats]', $archive_multiple_settings[ 'category_top_cats' ], array( 'off' => __( 'Products', 'al-ecommerce-product-catalog' ), 'on' => __( 'Products & Subcategories', 'al-ecommerce-product-catalog' ), 'only_subcategories' => __( 'Subcategories', 'al-ecommerce-product-catalog' ) ) );
+						implecode_settings_radio( __( 'Categories Display', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[cat_template]', $archive_multiple_settings[ 'cat_template' ], array( 'template' => __( 'Template', 'al-ecommerce-product-catalog' ), 'link' => __( 'URLs', 'al-ecommerce-product-catalog' ) ), true, array( 'template' => __( 'Display categories with the same listing theme as products.', 'al-ecommerce-product-catalog' ), 'link' => __( 'Display categories as simple links.', 'al-ecommerce-product-catalog' ) ) );
 						implecode_settings_checkbox( __( 'Disable Image on Category Page', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[cat_image_disabled]', $archive_multiple_settings[ 'cat_image_disabled' ] );
 						do_action( 'product_category_settings', $archive_multiple_settings );
 						?>
@@ -258,7 +261,7 @@ function general_settings_content() {
 					<h3><?php _e( 'SEO Settings', 'al-ecommerce-product-catalog' ); ?></h3><?php
 					if ( $disabled != '' ) {
 						if ( $selected ) {
-							implecode_warning( sprintf( __( 'SEO settings are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable SEO settings.', 'al-ecommerce-product-catalog' ), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=seo-settings' ) );
+							implecode_warning( sprintf( __( 'SEO settings are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable SEO settings.', 'al-ecommerce-product-catalog' ), 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=seo-settings' ) );
 						} else {
 							implecode_warning( sprintf( __( 'SEO settings are disabled due to a lack of theme integration.%s', 'al-ecommerce-product-catalog' ), sample_product_button( 'p' ) ) );
 						}
@@ -274,7 +277,7 @@ function general_settings_content() {
 					<h3><?php _e( 'Breadcrumbs Settings', 'al-ecommerce-product-catalog' ); ?></h3><?php
 					if ( $disabled != '' ) {
 						if ( $selected ) {
-							implecode_warning( sprintf( __( 'Breadcrumbs are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product breadcrumbs.', 'al-ecommerce-product-catalog' ), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=breadcrumbs-settings' ) );
+							implecode_warning( sprintf( __( 'Breadcrumbs are disabled with simple theme integration. See <a href="%s">Theme Integration Guide</a> to enable product breadcrumbs.', 'al-ecommerce-product-catalog' ), 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=breadcrumbs-settings' ) );
 						} else {
 							implecode_warning( sprintf( __( 'Breadcrumbs are disabled due to a lack of theme integration.%s', 'al-ecommerce-product-catalog' ), sample_product_button( 'p' ) ) );
 						}
@@ -301,7 +304,7 @@ function general_settings_content() {
 					<h3><?php _e( 'Payment and currency', 'al-ecommerce-product-catalog' ); ?></h3>
 					<table id="payment_table">
 						<thead>
-							<?php implecode_settings_radio( __( 'Price', 'al-ecommerce-product-catalog' ), 'product_currency_settings[price_enable]', $product_currency_settings[ 'price_enable' ], array( 'on' => __( 'On<br>', 'al-ecommerce-product-catalog' ), 'off' => __( 'Off', 'al-ecommerce-product-catalog' ) ) ); ?>
+							<?php implecode_settings_radio( __( 'Price', 'al-ecommerce-product-catalog' ), 'product_currency_settings[price_enable]', $product_currency_settings[ 'price_enable' ], array( 'on' => __( 'On', 'al-ecommerce-product-catalog' ), 'off' => __( 'Off', 'al-ecommerce-product-catalog' ) ) ); ?>
 						</thead>
 						<tbody><?php do_action( 'payment_settings_table_start' ) ?>
 							<tr>
@@ -328,27 +331,27 @@ function general_settings_content() {
 							</tr>
 							<?php
 							implecode_settings_radio( __( 'Currency position', 'al-ecommerce-product-catalog' ), 'product_currency_settings[price_format]', $product_currency_settings[ 'price_format' ], array(
-								'before' => __( 'Before Price<br>', 'al-ecommerce-product-catalog' ),
+								'before' => __( 'Before Price', 'al-ecommerce-product-catalog' ),
 								'after'	 => __( 'After Price', 'al-ecommerce-product-catalog' )
 							)
 							);
-							implecode_settings_radio( __( 'Space between currency & price', 'al-ecommerce-product-catalog' ), 'product_currency_settings[price_space]', $product_currency_settings[ 'price_space' ], array( 'on' => __( 'On<br>', 'al-ecommerce-product-catalog' ), 'off' => __( 'Off', 'al-ecommerce-product-catalog' ) ) );
+							implecode_settings_radio( __( 'Space between currency & price', 'al-ecommerce-product-catalog' ), 'product_currency_settings[price_space]', $product_currency_settings[ 'price_space' ], array( 'on' => __( 'On', 'al-ecommerce-product-catalog' ), 'off' => __( 'Off', 'al-ecommerce-product-catalog' ) ) );
 							implecode_settings_text( __( 'Thousands Separator', 'al-ecommerce-product-catalog' ), 'product_currency_settings[th_sep]', $product_currency_settings[ 'th_sep' ], null, 1, 'small_text_box' );
 							implecode_settings_text( __( 'Decimal Separator', 'al-ecommerce-product-catalog' ), 'product_currency_settings[dec_sep]', $product_currency_settings[ 'dec_sep' ], null, 1, 'small_text_box' );
 							?>
 						</tbody>
 					</table>
 					<script>jQuery( document ).ready( function () {
-		                    jQuery( "input[name=\"product_currency_settings[price_enable]\"]" ).change( function () {
-		                        if ( jQuery( this ).val() == 'off' && jQuery( this ).is( ':checked' ) ) {
-		                            jQuery( "#payment_table tbody" ).hide( "slow" );
-		                        }
-		                        else {
-		                            jQuery( "#payment_table tbody" ).show( "slow" );
-		                        }
-		                    } );
-		                    jQuery( "input[name=\"product_currency_settings[price_enable]\"]" ).trigger( "change" );
-		                } );</script>
+							jQuery( "input[name=\"product_currency_settings[price_enable]\"]" ).change( function () {
+								if ( jQuery( this ).val() == 'off' && jQuery( this ).is( ':checked' ) ) {
+									jQuery( "#payment_table tbody" ).hide( "slow" );
+								}
+								else {
+									jQuery( "#payment_table tbody" ).show( "slow" );
+								}
+							} );
+							jQuery( "input[name=\"product_currency_settings[price_enable]\"]" ).trigger( "change" );
+		                        } );</script>
 					<h3><?php _e( 'Additional Settings', 'al-ecommerce-product-catalog' ); ?></h3>
 					<table><?php implecode_settings_checkbox( __( 'Disable SKU', 'al-ecommerce-product-catalog' ), 'archive_multiple_settings[disable_sku]', $archive_multiple_settings[ 'disable_sku' ] ) ?>
 					</table>
@@ -362,8 +365,8 @@ function general_settings_content() {
 			<div class="helpers">
 				<div class="wrapper"><?php
 					main_helper();
-					doc_helper( __( 'shortcode', 'al-ecommerce-product-catalog' ), 'product-shortcode' );
-					//did_know_helper('support', __('You can get instant support by email','al-ecommerce-product-catalog'), 'http://implecode.com/wordpress/plugins/premium-support/')
+					doc_helper( __( 'shortcode', 'al-ecommerce-product-catalog' ), 'product-catalog-shortcodes' );
+					//did_know_helper('support', __('You can get instant support by email','al-ecommerce-product-catalog'), 'https://implecode.com/wordpress/plugins/premium-support/')
 					?>
 				</div>
 			</div>
@@ -421,6 +424,7 @@ function get_multiple_settings() {
 	$archive_multiple_settings[ 'container_bg' ]		 = isset( $archive_multiple_settings[ 'container_bg' ] ) ? $archive_multiple_settings[ 'container_bg' ] : '';
 	$archive_multiple_settings[ 'container_padding' ]	 = isset( $archive_multiple_settings[ 'container_padding' ] ) ? $archive_multiple_settings[ 'container_padding' ] : 0;
 	$archive_multiple_settings[ 'disable_name' ]		 = isset( $archive_multiple_settings[ 'disable_name' ] ) ? $archive_multiple_settings[ 'disable_name' ] : '';
+	$archive_multiple_settings[ 'default_sidebar' ]		 = isset( $archive_multiple_settings[ 'default_sidebar' ] ) ? $archive_multiple_settings[ 'default_sidebar' ] : 'none';
 	return apply_filters( 'catalog_multiple_settings', $archive_multiple_settings );
 }
 
@@ -437,7 +441,7 @@ function get_integration_type() {
 }
 
 function get_product_sort_options() {
-	$sort_options = apply_filters( 'product_sort_options', array( 'newest' => __( 'Sort by Newest<br>', 'al-ecommerce-product-catalog' ), 'product-name' => __( 'Sort by Product Name<br>', 'al-ecommerce-product-catalog' ) ) );
+	$sort_options = apply_filters( 'product_sort_options', array( 'newest' => __( 'Sort by Newest', 'al-ecommerce-product-catalog' ), 'product-name' => __( 'Sort by Product Name', 'al-ecommerce-product-catalog' ) ) );
 	return $sort_options;
 }
 

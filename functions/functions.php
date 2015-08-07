@@ -92,24 +92,24 @@ function upload_product_image( $name, $button_value, $option_name, $option_value
 		   href="#"><?php _e( 'Reset image', 'al-ecommerce-product-catalog' ); ?></a>
 	</div>
 	<script>
-	    jQuery( document ).ready( function () {
-	        jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
-	            wp.media.editor.send.attachment = function ( props, attachment ) {
-	                jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
-	                jQuery( '.media-image' ).attr( "src", attachment.url );
-	            }
+		jQuery( document ).ready( function () {
+			jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
+				wp.media.editor.send.attachment = function ( props, attachment ) {
+					jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
+					jQuery( '.media-image' ).attr( "src", attachment.url );
+				}
 
-	            wp.media.editor.open( this );
+				wp.media.editor.open( this );
 
-	            return false;
-	        } );
-	    } );
+				return false;
+			} );
+		} );
 
-	    jQuery( '#reset-image-button' ).on( 'click', function () {
-	        jQuery( '#<?php echo $name; ?>' ).val( '' );
-	        src = jQuery( '#default' ).val();
-	        jQuery( '.media-image' ).attr( "src", src );
-	    } );
+		jQuery( '#reset-image-button' ).on( 'click', function () {
+			jQuery( '#<?php echo $name; ?>' ).val( '' );
+			src = jQuery( '#default' ).val();
+			jQuery( '.media-image' ).attr( "src", src );
+		} );
 	</script>
 	<?php
 }
@@ -254,40 +254,87 @@ function example_price() {
 }
 
 add_action( 'example_price', 'example_price' );
-
-function show_price( $post, $single_names ) {
-	$price_value = product_price( $post->ID );
-	if ( !empty( $price_value ) ) {
-		?>
-		<table class="price-table">
-			<tr>
-				<td class="price-label"><?php echo $single_names[ 'product_price' ] ?></td>
-				<td class="price-value <?php design_schemes(); ?>"><?php echo price_format( $price_value ); ?></td>
-			</tr>
-			<?php do_action( 'price_table' ); ?>
-		</table>
-		<?php
-		do_action( 'after_price_table' );
-	}
-}
-
 add_action( 'product_details', 'show_price', 7, 2 );
 
-function show_sku( $post, $single_names ) {
-	$sku_value = get_post_meta( $post->ID, '_sku', true );
-	if ( is_ic_sku_enabled() && !empty( $sku_value ) ) {
-		?>
-		<table class="sku-table">
-			<tr>
-				<td><?php echo $single_names[ 'product_sku' ] ?></td>
-				<td class="sku-value"><?php echo $sku_value; ?></td>
-			</tr>
-		</table>
-		<?php
+/**
+ * Shows price on product page
+ *
+ * @param type $post
+ * @param type $single_names
+ */
+function show_price( $post, $single_names ) {
+	echo get_product_price_table( $post->ID, $single_names );
+}
+
+/**
+ * Returns price table for product page
+ * @param type $product_id
+ * @param type $single_names
+ * @return type
+ */
+function get_product_price_table( $product_id, $single_names ) {
+	$price_value = product_price( $product_id );
+	$table		 = '';
+	if ( !empty( $price_value ) ) {
+		$table .= '<table class="price-table">';
+		$table .= '<tr>';
+		$table .= '<td class="price-label">' . $single_names[ 'product_price' ] . '</td>';
+		$table .= '<td class="price-value ' . design_schemes( null, 0 ) . '">' . price_format( $price_value ) . '</td>';
+		$table .= '</tr>';
+		ob_start();
+		do_action( 'price_table' );
+		$table .= ob_get_clean();
+		$table .= '</table>';
+		ob_start();
+		do_action( 'after_price_table' );
+		$table .= ob_get_contents();
 	}
+	return $table;
 }
 
 add_action( 'product_details', 'show_sku', 8, 2 );
+
+/**
+ * Shows product SKU table
+ *
+ * @param object $post
+ * @param array $single_names
+ */
+function show_sku( $post, $single_names ) {
+	echo get_product_sku_table( $post->ID, $single_names );
+}
+
+/**
+ * Returns sku table for product page
+ *
+ * @param int $product_id
+ * @param array $single_names
+ * @return string
+ */
+function get_product_sku_table( $product_id, $single_names ) {
+	$sku_value	 = get_product_sku( $product_id );
+	$table		 = '';
+	if ( is_ic_sku_enabled() && !empty( $sku_value ) ) {
+		$table .= '<table class="sku-table">';
+		$table .= '<tr>';
+		$table .= '<td>' . $single_names[ 'product_sku' ] . '</td>';
+		$table .= '<td class="sku-value">' . $sku_value . '</td>';
+		$table .= '</tr>';
+		$table .= '</table>';
+	}
+	return $table;
+}
+
+/**
+ * Returns SKU
+ *
+ * @param int $product_id
+ * @return string
+ */
+function get_product_sku( $product_id ) {
+	$sku = get_post_meta( $product_id, '_sku', true );
+	return $sku;
+}
 
 /**
  * Returns product price
@@ -341,36 +388,52 @@ function get_shipping_options( $product_id ) {
 function get_shipping_label( $i = 1, $product_id ) {
 	$label	 = get_post_meta( $product_id, "_shipping-label" . $i, true );
 	$label	 = empty( $label ) ? __( 'Shipping', 'al-ecommerce-product-catalog' ) : $label;
-	return;
-}
-
-function show_shipping_options( $post, $single_names ) {
-	$shipping_values = get_shipping_options( $post->ID );
-	if ( $shipping_values != 'none' ) {
-		?>
-		<table class="shipping-table">
-			<tr>
-				<td>
-					<?php echo $single_names[ 'product_shipping' ] ?>
-				</td>
-				<td>
-					<ul>
-						<?php
-						foreach ( $shipping_values as $i => $shipping_value ) {
-							if ( $shipping_value != null ) {
-								echo '<li>' . get_post_meta( $post->ID, "_shipping-label" . $i, true ) . ' : ' . price_format( $shipping_value ) . '</li>';
-							}
-						}
-						?>
-					</ul>
-				</td>
-			</tr>
-		</table>
-		<?php
-	}
+	return $label;
 }
 
 add_action( 'product_details', 'show_shipping_options', 9, 2 );
+
+/**
+ * Shows shipping table
+ *
+ * @param object $post
+ * @param array $single_names
+ */
+function show_shipping_options( $post, $single_names ) {
+	echo get_shipping_options_table( $post->ID, $single_names );
+}
+
+/**
+ * Returns shipping options table
+ *
+ * @param int $product_id
+ * @param array $v_single_names
+ * @return string
+ */
+function get_shipping_options_table( $product_id, $v_single_names = null ) {
+	$single_names	 = isset( $v_single_names ) ? $v_single_names : get_single_names();
+	$shipping_values = get_shipping_options( $product_id );
+	$table			 = '';
+	if ( $shipping_values != 'none' ) {
+		$table .= '<table class="shipping-table">';
+		$table .= '<tr>';
+		$table .= '<td>';
+		$table .= $single_names[ 'product_shipping' ];
+		$table .= '</td>';
+		$table .= '<td>';
+		$table .= '<ul>';
+		foreach ( $shipping_values as $i => $shipping_value ) {
+			if ( $shipping_value != null ) {
+				$table .= '<li>' . get_shipping_label( $i, $product_id ) . ' : ' . price_format( $shipping_value ) . '</li>';
+			}
+		}
+		$table .= '</ul>';
+		$table .= '</td>';
+		$table .= '</tr>';
+		$table .= '</table>';
+	}
+	return $table;
+}
 
 function show_short_desc( $post, $single_names ) {
 	$shortdesc = get_product_short_description( $post->ID );
@@ -397,32 +460,42 @@ add_action( 'after_product_details', 'show_product_attributes', 10, 2 );
  * @param array $single_names
  */
 function show_product_attributes( $post, $single_names ) {
+	echo get_product_attributes( $post->ID, $single_names );
+}
+
+/**
+ * Returns product attributes table
+ *
+ * @param int $product_id
+ * @param array $v_single_names
+ * @return string
+ */
+function get_product_attributes( $product_id, $v_single_names = null ) {
+	$single_names		 = isset( $v_single_names ) ? $v_single_names : get_single_names();
 	$attributes_number	 = get_option( 'product_attributes_number', DEF_ATTRIBUTES_OPTIONS_NUMBER );
 	$at_val				 = '';
 	$any_attribute_value = '';
 	for ( $i = 1; $i <= $attributes_number; $i++ ) {
-		$at_val = get_post_meta( $post->ID, "_attribute" . $i, true );
+		$at_val = get_post_meta( $product_id, "_attribute" . $i, true );
 		if ( !empty( $at_val ) ) {
 			$any_attribute_value = $at_val;
 		}
 	}
-	if ( $attributes_number > 0 AND ! empty( $any_attribute_value ) ) {
-		?>
-		<div id="product_features" class="product-features">
-			<h3><?php echo $single_names[ 'product_features' ]; ?></h3>
-			<table class="features-table">
-				<?php
-				for ( $i = 1; $i <= $attributes_number; $i++ ) {
-					$attribute_value = get_post_meta( $post->ID, "_attribute" . $i, true );
-					if ( !empty( $attribute_value ) ) {
-						echo '<tr><td class="attribute-label-single">' . get_post_meta( $post->ID, "_attribute-label" . $i, true ) . '</td><td>' . get_post_meta( $post->ID, "_attribute" . $i, true ) . ' ' . get_post_meta( $post->ID, "_attribute-unit" . $i, true ) . '</td></tr>';
-					}
-				}
-				?>
-			</table>
-		</div>
-		<?php
+	$table = '';
+	if ( $attributes_number > 0 && !empty( $any_attribute_value ) ) {
+		$table .= '<div id="product_features" class="product-features">';
+		$table .= '<h3>' . $single_names[ 'product_features' ] . '</h3>';
+		$table .= '<table class="features-table">';
+		for ( $i = 1; $i <= $attributes_number; $i++ ) {
+			$attribute_value = get_post_meta( $product_id, "_attribute" . $i, true );
+			if ( !empty( $attribute_value ) ) {
+				$table .= '<tr><td class="attribute-label-single">' . get_post_meta( $product_id, "_attribute-label" . $i, true ) . '</td><td>' . get_post_meta( $product_id, "_attribute" . $i, true ) . ' ' . get_post_meta( $product_id, "_attribute-unit" . $i, true ) . '</td></tr>';
+			}
+		}
+		$table .= '</table>';
+		$table .= '</div>';
 	}
+	return $table;
 }
 
 function show_product_description( $post, $single_names ) {
@@ -460,28 +533,42 @@ add_action( 'single_product_end', 'show_related_categories', 10, 3 );
  * @return string
  */
 function show_related_categories( $post, $single_names, $taxonomy_name ) {
-	$terms = wp_get_post_terms( $post->ID, $taxonomy_name, array( "fields" => "ids" ) );
+	echo get_related_categories( $post->ID, $single_names, $taxonomy_name );
+}
+
+/**
+ * Returns related categories table
+ *
+ * @param int $product_id
+ * @param array $v_single_names
+ * @param string $taxonomy_name
+ * @return string
+ */
+function get_related_categories( $product_id, $v_single_names = null, $taxonomy_name = 'al_product-cat' ) {
+	$single_names	 = isset( $v_single_names ) ? $v_single_names : get_single_names();
+	$terms			 = wp_get_post_terms( $product_id, $taxonomy_name, array( "fields" => "ids" ) );
 	if ( empty( $terms ) || get_integration_type() == 'simple' ) {
 		return;
 	}
 	$term		 = $terms[ 0 ];
 	$categories	 = wp_list_categories( 'title_li=&taxonomy=' . $taxonomy_name . '&include=' . $term . '&echo=0&hierarchical=0' );
+	$table		 = '';
 	if ( $categories != '<li class="cat-item-none">No categories</li>' ) {
-		?>
-		<div id="product_subcategories" class="product-subcategories">
-			<table>
-				<tr>
-					<td>
-						<?php echo $single_names[ 'other_categories' ]; ?>
-					</td>
-					<td>
-						<?php echo $categories; ?>
-					</td>
-				</tr>
-			</table>
-		</div>
-		<?php
+		$table .= '<div id="product_subcategories" class="product-subcategories">';
+		$table .= '<table>';
+		$table .= '<tr>';
+		$table .= '<td>';
+		$table .= $single_names[ 'other_categories' ];
+		$table .= '</td>';
+		$table .= '<td>';
+		$table .= $categories;
+		$table .= '</td>';
+		$table .= '</tr>';
+		$table .= '</table>';
+		$table .= '</div>';
+		return $table;
 	}
+	return;
 }
 
 add_filter( 'the_content', 'show_simple_product_listing' );
@@ -699,27 +786,49 @@ add_action( 'before_product_details', 'show_product_gallery', 10, 2 );
  */
 function show_product_gallery( $product_id, $single_options ) {
 	if ( $single_options[ 'enable_product_gallery' ] == 1 ) {
+		echo get_product_gallery( $product_id, $single_options );
+	} else {
+		return;
+	}
+}
+
+/**
+ * Returns whole product gallery for product page
+ *
+ * @param int $product_id
+ * @param array $v_single_options
+ * @return string
+ */
+function get_product_gallery( $product_id, $v_single_options = null ) {
+	$single_options = isset( $v_single_options ) ? $v_single_options : get_product_page_settings();
+	if ( $single_options[ 'enable_product_gallery' ] == 1 ) {
+		$product_gallery = '';
+		ob_start();
 		do_action( 'before_product_image' );
-		?>
-		<div class="entry-thumbnail product-image"><?php
-			do_action( 'above_product_image' );
-			$image_size = apply_filters( 'product_image_size', 'medium' );
-			if ( has_post_thumbnail() ) {
-				if ( is_lightbox_enabled() ) {
-					$img_url = wp_get_attachment_image_src( get_post_thumbnail_id( $product_id ), 'large' );
-					?>
-					<a class="a-product-image"
-					   href="<?php echo $img_url[ 0 ]; ?>"><?php the_post_thumbnail( $image_size ); ?></a> <?php
-				   } else {
-					   the_post_thumbnail( $image_size );
-				   }
-			   } else if ( $single_options[ 'enable_product_gallery_only_when_exist' ] != 1 ) {
-				   echo default_product_thumbnail();
-			   }
-			   do_action( 'below_product_image', $product_id );
-			   ?>
-		</div> <?php
+		$product_gallery .= ob_get_clean();
+		$product_gallery .= '<div class="entry-thumbnail product-image">';
+		ob_start();
+		do_action( 'above_product_image' );
+		$product_gallery .= ob_get_clean();
+		$image_size		 = apply_filters( 'product_image_size', 'medium' );
+		if ( has_post_thumbnail( $product_id ) ) {
+			if ( is_lightbox_enabled() ) {
+				$img_url = wp_get_attachment_image_src( get_post_thumbnail_id( $product_id ), 'large' );
+				$product_gallery .= '<a class="a-product-image" href="' . $img_url[ 0 ] . '">' . get_the_post_thumbnail( $product_id, $image_size ) . '</a>';
+			} else {
+				$product_gallery .= get_the_post_thumbnail( $product_id, $image_size );
+			}
+		} else if ( $single_options[ 'enable_product_gallery_only_when_exist' ] != 1 ) {
+			$product_gallery .= default_product_thumbnail();
+		}
+		ob_start();
+		do_action( 'below_product_image', $product_id );
+		$product_gallery .= ob_get_clean();
+		$product_gallery .= '</div>';
+		ob_start();
 		do_action( 'after_product_image', $product_id );
+		$product_gallery .= ob_get_clean();
+		return $product_gallery;
 	} else {
 		return;
 	}
@@ -795,7 +904,7 @@ function modify_product_listing_title_tag() {
  */
 function product_archive_custom_title( $title = null, $sep = null, $seplocation = null ) {
 	global $post;
-	if ( is_ic_product_listing() && $post->post_type == 'al_product' ) {
+	if ( is_ic_product_listing() && is_object( $post ) && $post->post_type == 'al_product' ) {
 		$settings = get_multiple_settings();
 		if ( $settings[ 'seo_title' ] != '' ) {
 			$settings					 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
@@ -820,7 +929,7 @@ function product_archive_custom_title( $title = null, $sep = null, $seplocation 
 
 function product_archive_title( $title = null, $sep = null, $seplocation = null ) {
 	global $post;
-	if ( is_ic_product_listing() && $post->post_type == 'al_product' ) {
+	if ( is_ic_product_listing() && is_object( $post ) && $post->post_type == 'al_product' ) {
 		$settings = get_multiple_settings();
 		if ( $settings[ 'seo_title' ] == '' ) {
 			$id		 = get_product_listing_id();
@@ -930,7 +1039,7 @@ add_action( 'pre_get_posts', 'set_product_order' );
  * @param object $query
  */
 function set_product_order( $query ) {
-	if ( !is_admin() && !isset( $_GET[ 'order' ] ) && $query->is_main_query() && (is_post_type_archive( 'al_product' ) || is_tax( 'al_product-cat' )) ) {
+	if ( !is_admin() && !isset( $_GET[ 'order' ] ) && $query->is_main_query() && (is_ic_product_listing( $query ) || is_ic_taxonomy_page()) ) {
 		$archive_multiple_settings = get_multiple_settings();
 		if ( !isset( $_GET[ 'product_order' ] ) ) {
 			if ( $archive_multiple_settings[ 'product_order' ] == 'product-name' ) {
@@ -946,6 +1055,9 @@ function set_product_order( $query ) {
 		}
 	}
 }
+
+add_filter( 'shortcode_query', 'set_shortcode_product_order' );
+add_filter( 'home_product_listing_query', 'set_shortcode_product_order' );
 
 function set_shortcode_product_order( $shortcode_query ) {
 	$archive_multiple_settings = get_multiple_settings();
@@ -964,7 +1076,6 @@ function set_shortcode_product_order( $shortcode_query ) {
 	return $shortcode_query;
 }
 
-add_filter( 'shortcode_query', 'set_shortcode_product_order' );
 add_action( 'before_product_list', 'show_product_order_dropdown', 10, 2 );
 
 /**
@@ -975,11 +1086,10 @@ add_action( 'before_product_list', 'show_product_order_dropdown', 10, 2 );
  * @param array $multiple_settings
  */
 function show_product_order_dropdown( $archive_template, $multiple_settings = null ) {
-	$multiple_settings = empty( $multiple_settings ) ? get_multiple_settings() : $multiple_settings;
-	global $product_sort;
-	if ( (isset( $product_sort ) && $product_sort == 1) || (!is_ic_shortcode_query()) ) {
-		$sort_options	 = get_product_sort_options();
-		$selected		 = isset( $_GET[ 'product_order' ] ) ? $_GET[ 'product_order' ] : $multiple_settings[ 'product_order' ];
+	if ( is_product_sort_bar_active() ) {
+		$multiple_settings	 = empty( $multiple_settings ) ? get_multiple_settings() : $multiple_settings;
+		$sort_options		 = get_product_sort_options();
+		$selected			 = isset( $_GET[ 'product_order' ] ) ? $_GET[ 'product_order' ] : $multiple_settings[ 'product_order' ];
 		echo '<form id="product_order"><select id="product_order_selector" name="product_order">';
 		foreach ( $sort_options as $name => $value ) {
 			$option = '<option value="' . $name . '" ' . selected( $name, $selected, 0 ) . '>' . $value . '</option>';

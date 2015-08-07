@@ -14,44 +14,45 @@ if ( !defined( 'ABSPATH' ) ) {
  * @author 		Norbert Dreszer
  */
 function add_product_caps() {
-	// gets the author role
-	$role = get_role( 'administrator' );
+	if ( is_user_logged_in() ) {
+		$role = get_role( 'administrator' );
 
-	$role->add_cap( 'publish_products' );
-	$role->add_cap( 'edit_products' );
-	$role->add_cap( 'edit_others_products' );
-	$role->add_cap( 'edit_private_products' );
-	$role->add_cap( 'delete_products' );
-	$role->add_cap( 'delete_others_products' );
-	$role->add_cap( 'read_private_products' );
-	$role->add_cap( 'delete_private_products' );
-	$role->add_cap( 'delete_published_products' );
-	$role->add_cap( 'edit_published_products' );
-	$role->add_cap( 'manage_product_categories' );
-	$role->add_cap( 'edit_product_categories' );
-	$role->add_cap( 'delete_product_categories' );
-	$role->add_cap( 'assign_product_categories' );
-	$role->add_cap( 'manage_product_settings' );
+		$role->add_cap( 'publish_products' );
+		$role->add_cap( 'edit_products' );
+		$role->add_cap( 'edit_others_products' );
+		$role->add_cap( 'edit_private_products' );
+		$role->add_cap( 'delete_products' );
+		$role->add_cap( 'delete_others_products' );
+		$role->add_cap( 'read_private_products' );
+		$role->add_cap( 'delete_private_products' );
+		$role->add_cap( 'delete_published_products' );
+		$role->add_cap( 'edit_published_products' );
+		$role->add_cap( 'manage_product_categories' );
+		$role->add_cap( 'edit_product_categories' );
+		$role->add_cap( 'delete_product_categories' );
+		$role->add_cap( 'assign_product_categories' );
+		$role->add_cap( 'manage_product_settings' );
 
-	$current_user = wp_get_current_user();
-	foreach ( $current_user->roles as $current_role ) {
-		if ( $current_role != 'administrator' ) {
-			$role = get_role( $current_role );
-			$role->add_cap( 'publish_products' );
-			$role->add_cap( 'edit_products' );
-			$role->add_cap( 'edit_others_products' );
-			$role->add_cap( 'edit_private_products' );
-			$role->add_cap( 'delete_products' );
-			$role->add_cap( 'delete_others_products' );
-			$role->add_cap( 'read_private_products' );
-			$role->add_cap( 'delete_private_products' );
-			$role->add_cap( 'delete_published_products' );
-			$role->add_cap( 'edit_published_products' );
-			$role->add_cap( 'manage_product_categories' );
-			$role->add_cap( 'edit_product_categories' );
-			$role->add_cap( 'delete_product_categories' );
-			$role->add_cap( 'assign_product_categories' );
-			$role->add_cap( 'manage_product_settings' );
+		$current_user = wp_get_current_user();
+		foreach ( $current_user->roles as $current_role ) {
+			if ( $current_role != 'administrator' ) {
+				$role = get_role( $current_role );
+				$role->add_cap( 'publish_products' );
+				$role->add_cap( 'edit_products' );
+				$role->add_cap( 'edit_others_products' );
+				$role->add_cap( 'edit_private_products' );
+				$role->add_cap( 'delete_products' );
+				$role->add_cap( 'delete_others_products' );
+				$role->add_cap( 'read_private_products' );
+				$role->add_cap( 'delete_private_products' );
+				$role->add_cap( 'delete_published_products' );
+				$role->add_cap( 'edit_published_products' );
+				$role->add_cap( 'manage_product_categories' );
+				$role->add_cap( 'edit_product_categories' );
+				$role->add_cap( 'delete_product_categories' );
+				$role->add_cap( 'assign_product_categories' );
+				$role->add_cap( 'manage_product_settings' );
+			}
 		}
 	}
 }

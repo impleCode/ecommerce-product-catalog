@@ -38,15 +38,15 @@ class product_cat_widget extends WP_Widget {
 				?>
 
 				<script type='text/javascript'>
-				    /* <![CDATA[ */
-				    var dropdown = document.getElementById( "cat" );
-				    function onCatChange() {
-				        if ( dropdown.options[dropdown.selectedIndex].value != '' ) {
-				            location.href = "<?php echo home_url(); ?>/?al_product-cat=" + dropdown.options[dropdown.selectedIndex].value;
-				        }
-				    }
-				    dropdown.onchange = onCatChange;
-				    /* ]]> */
+					/* <![CDATA[ */
+					var dropdown = document.getElementById( "cat" );
+					function onCatChange() {
+						if ( dropdown.options[dropdown.selectedIndex].value != '' ) {
+							location.href = "<?php echo home_url(); ?>/?al_product-cat=" + dropdown.options[dropdown.selectedIndex].value;
+						}
+					}
+					dropdown.onchange = onCatChange;
+					/* ]]> */
 				</script>
 
 				<?php
@@ -112,7 +112,7 @@ class product_cat_widget extends WP_Widget {
 					?> </p> <?php
 		} else {
 			if ( is_integration_mode_selected() ) {
-				implecode_warning( sprintf( __( 'Category widget is disabled with simple theme integration. Please see <a target="_blank" href="%s">Theme Integration Guide</a> to enable product category widget.', 'al-ecommerce-product-catalog' ), 'http://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=category-widget' ) );
+				implecode_warning( sprintf( __( 'Category widget is disabled with simple theme integration. Please see <a href="%s">Theme Integration Guide</a> to enable product category widget.', 'al-ecommerce-product-catalog' ), 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=category-widget' ) );
 			} else {
 				implecode_warning( sprintf( __( 'Category widget is disabled due to a lack of theme integration.%s', 'al-ecommerce-product-catalog' ), sample_product_button( 'p' ) ) );
 			}

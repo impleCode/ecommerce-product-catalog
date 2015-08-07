@@ -48,7 +48,7 @@ $listing_class			 = apply_filters( 'product_listing_classes', 'al_product respon
 			$term = get_queried_object()->term_id;
 			if ( is_ic_category_image_enabled() ) {
 				$term_img = get_product_category_image_id( $term );
-				echo wp_get_attachment_image( $term_img, apply_filters( 'product_cat_image_size', 'large' ) );
+				echo wp_get_attachment_image( $term_img, apply_filters( 'product_cat_image_size', 'large' ), false, array( 'class' => 'product-category-image' ) );
 			}
 			$term_description = term_description();
 			if ( !empty( $term_description ) ) {
@@ -80,7 +80,14 @@ $listing_class			 = apply_filters( 'product_listing_classes', 'al_product respon
 			}
 		}
 		if ( is_home_archive() ) {
-			$args	 = array( 'post_type' => 'al_product', 'posts_per_page' => $multiple_settings[ 'archive_products_limit' ] );
+			if ( get_query_var( 'paged' ) ) {
+				$paged = get_query_var( 'paged' );
+			} elseif ( get_query_var( 'page' ) ) {
+				$paged = get_query_var( 'page' );
+			} else {
+				$paged = 1;
+			}
+			$args	 = apply_filters( 'home_product_listing_query', array( 'post_type' => 'al_product', 'posts_per_page' => $multiple_settings[ 'archive_products_limit' ], 'paged' => $paged ) );
 			query_posts( $args );
 			$is_home = 1;
 		}
@@ -90,9 +97,6 @@ $listing_class			 = apply_filters( 'product_listing_classes', 'al_product respon
 			while ( have_posts() ) : the_post();
 				$product_list .= get_catalog_template( $archive_template, $post );
 			endwhile;
-			if ( isset( $is_home ) ) {
-				wp_reset_query();
-			}
 			$product_list = apply_filters( 'product_list_ready', $product_list, $archive_template, 'auto_listing' );
 			echo '<div class="product-list responsive ' . $archive_template . ' ' . product_list_class( $archive_template ) . '">' . $product_list . '</div><span class="clear"></span>';
 		} else if ( is_search() && !more_products() ) {
@@ -103,3 +107,6 @@ $listing_class			 = apply_filters( 'product_listing_classes', 'al_product respon
 	</div>
 </article><?php
 do_action( 'product_listing_end', $archive_template, $multiple_settings );
+if ( isset( $is_home ) ) {
+	wp_reset_query();
+}

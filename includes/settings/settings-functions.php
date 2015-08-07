@@ -25,16 +25,16 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 	 * @return string
 	 */
 	function implecode_settings_radio( $option_label, $option_name, $option_value, $elements = array(), $echo = 1,
-									$tip = '' ) {
+									$tip = '', $line = '<br>' ) {
 		if ( !empty( $tip ) && !is_array( $tip ) ) {
 			$tip = 'title="' . $tip . '"';
 		}
 		$return = '<tr>';
 		$return .= '<td>' . $option_label . ':</td>';
-		$return .= '<td>';
+		$return .= '<td class="ic_radio_td">';
 		foreach ( $elements as $key => $element ) {
 			$show_tip = is_array( $tip ) ? 'title="' . $tip[ $key ] . '" ' : $tip;
-			$return .= '<input type="radio" ' . $show_tip . 'class="number_box" name="' . $option_name . '" value="' . $key . '"' . checked( $key, $option_value, 0 ) . '/>' . $element;
+			$return .= '<input type="radio" ' . $show_tip . 'class="number_box" id="' . $option_name . '_' . $key . '" name="' . $option_name . '" value="' . $key . '"' . checked( $key, $option_value, 0 ) . '/>' . '<label for="' . $option_name . '_' . $key . '">' . $element . '</label>' . $line;
 		}
 		$return .= '</td>';
 		$return .= '</tr>';

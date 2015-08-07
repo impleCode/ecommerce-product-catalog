@@ -1,6 +1,6 @@
 /*
  * eCommerce Product Catalog
- * http://impleCode.com
+ * https://impleCode.com
  *
  * Copyright 2014 impleCode
  * Free to use under the GPLv3 license.
@@ -156,6 +156,10 @@
     margin-left: -20%;
 }
 
+.product-category-image {
+    max-width: 100%;
+}
+
 .product-list .al_archive .product-attributes table, #content .al_archive .product-attributes table, .al_archive .product-attributes table {
     border: none;
     font-size: 12px;
@@ -196,6 +200,28 @@
     cursor: pointer;
     margin: 0;
 }
+
+.content-area.product-catalog {
+    float: none;
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+    overflow: hidden;
+    border: 0;
+    box-shadow: none;
+}
+
+.content-area.product-catalog #content{
+ width: 100%;   
+ overflow: hidden;
+ margin: 0;
+ padding: 0;
+}
+.content-area.product-catalog #catalog_sidebar {
+    width: 30%;
+    float: right;
+}
+
 
 .al_archive .product-name.red-box, #product_listing .al_archive .product-name.red-box {
     background-color: rgb(253, 0, 2);
@@ -552,7 +578,7 @@ margin: 0;
 }
 
 #product_archive_nav li {
-    margin: 0;
+    margin: 0 1px;
 }
 
 /* Shortcode */
@@ -605,6 +631,7 @@ margin: 0;
 
 #product_details table tr, #product_details table td, #product_details table tbody {
     background: transparent;
+    border: 0;
 }
 
 .price-value.red-price {
@@ -769,7 +796,7 @@ margin: 0;
     background-image: url('images/success.png');
 }
 
-.al-box {
+.al-box, .al-box.success {
     background-repeat: no-repeat;
     background-position: 1%;
     padding: 10px 10px 10px 60px;
@@ -780,6 +807,7 @@ margin: 0;
     max-width: 509px;
     box-shadow: 0 0 1px 1px #444;
     box-sizing: border-box;
+    line-height: 1.2;
 }
 
 #product_listing_url {
@@ -822,7 +850,7 @@ div.setting-content table td.longer {
 }
 
 #al_product_shipping table td.shipping-label-column {
-    width: 60%;
+    width: 55%;
     padding-right: 2px;
 }
 
@@ -897,6 +925,24 @@ div.setting-content table td.longer {
   width: 60px;
   height: auto;
   box-sizing: border-box;
+}
+
+#integration_wizard.fixed-box .al-box table input[type="radio"] {
+    width: auto;
+}
+
+#integration_wizard.fixed-box .ic_radio_td {
+    padding-top: 3px;
+    line-height: 1.2;
+}
+
+#integration_wizard.fixed-box .ic_radio_td label{
+    display: inline;
+    margin: 0;
+}
+
+#integration_wizard.fixed-box .ic_radio_td input {
+    margin: 0;
 }
 
 #integration_wizard.fixed-box .wp-color-result {
@@ -1138,6 +1184,11 @@ div.relative-box {
 form#product_order {
     text-align: right;
     padding-bottom: 10px;
+}
+
+#product_order_selector {
+    width: 250px;
+    max-width: 100%;
 }
 
 /* Responsive */

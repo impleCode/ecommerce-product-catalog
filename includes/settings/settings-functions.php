@@ -15,7 +15,7 @@ if ( !defined( 'ABSPATH' ) ) {
 if ( !function_exists( 'echo_ic_setting' ) ) {
 
 	/**
-	 * Shows radio buttons in <tr> and <td> tags
+	 * Shows radio buttons in tr and td tags
 	 * @param string $option_label
 	 * @param string $option_name
 	 * @param string|int $option_value
@@ -57,13 +57,23 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 		return echo_ic_setting( $return, $echo );
 	}
 
-	function implecode_settings_checkbox( $option_label, $option_name, $option_enabled, $echo = 1, $tip = '' ) {
+	/**
+	 * Displays checkbox as HTML table row
+	 *
+	 * @param string $option_label
+	 * @param string $option_name
+	 * @param int $option_enabled
+	 * @param int $echo
+	 * @param string $tip
+	 * @return string
+	 */
+	function implecode_settings_checkbox( $option_label, $option_name, $option_enabled, $echo = 1, $tip = '', $value = 1 ) {
 		if ( !empty( $tip ) && !is_array( $tip ) ) {
 			$tip = 'title="' . $tip . '" ';
 		}
 		$return = '<tr>';
 		$return .= '<td>' . $option_label . ':</td>';
-		$return .= '<td><input ' . $tip . 'type="checkbox" name="' . $option_name . '" value="1"' . checked( 1, $option_enabled, 0 ) . '/></td>';
+		$return .= '<td><input ' . $tip . 'type="checkbox" name="' . $option_name . '" value="' . $value . '" ' . checked( 1, $option_enabled, 0 ) . '/></td>';
 		$return .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
@@ -83,7 +93,7 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 	 * @return string
 	 */
 	function implecode_settings_text( $option_label, $option_name, $option_value, $required = null, $echo = 1,
-								   $class = null, $tip = null, $disabled = '' ) {
+								   $class = null, $tip = null, $disabled = '', $attributes = null ) {
 		if ( !empty( $disabled ) ) {
 			$disabled .= ' ';
 		}
@@ -99,7 +109,7 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 		if ( $option_label != '' ) {
 			$return .= '<td>' . $option_label . $star . ':</td>';
 		}
-		$return .= '<td><input ' . $regired_field . ' ' . $disabled . 'class="' . $class . '" ' . $tip . 'type="text" name="' . $option_name . '" value="' . $option_value . '" /></td>';
+		$return .= '<td><input ' . $attributes . ' ' . $regired_field . ' ' . $disabled . 'class="' . $class . '" ' . $tip . 'type="text" name="' . $option_name . '" value="' . esc_html( $option_value ) . '" /></td>';
 		$return .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
@@ -126,7 +136,7 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 		$tip	 = !empty( $tip ) ? 'title="' . $tip . '" ' : '';
 		$min	 = isset( $min ) ? 'min="' . intval( $min ) . '" ' : '';
 		$max	 = isset( $max ) ? 'max="' . intval( $max ) . '" ' : '';
-		$return .= '<td><input type="number" step="' . $step . '" ' . $min . ' ' . $max . ' ' . $tip . ' class="number_box" name="' . $option_name . '" value="' . $option_value . '" />' . $unit . '</td>';
+		$return .= '<td><input type="number" step="' . $step . '" ' . $min . ' ' . $max . ' ' . $tip . ' class="number_box" name="' . $option_name . '" value="' . floatval( $option_value ) . '" />' . $unit . '</td>';
 		$return .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
@@ -135,7 +145,7 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 	function implecode_settings_textarea( $option_label, $option_name, $option_value, $echo = 1 ) {
 		$return = '<tr>';
 		$return .= '<td>' . $option_label . ':</td>';
-		$return .= '<td><textarea name="' . $option_name . '">' . $option_value . '</textarea></td>';
+		$return .= '<td><textarea name="' . $option_name . '">' . esc_textarea( $option_value ) . '</textarea></td>';
 		$return .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );

@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 
 function register_product_system() {
-	add_submenu_page( 'edit.php?post_type=al_product', __( 'System Status', 'al-ecommerce-product-catalog' ), __( 'System Status', 'al-ecommerce-product-catalog' ), apply_filters( 'ic_system_status_cap', 'manage_product_settings' ), basename( __FILE__ ), 'ic_system_status' );
+	add_submenu_page( 'edit.php?post_type=al_product', __( 'System Status', 'ecommerce-product-catalog' ), __( 'System Status', 'ecommerce-product-catalog' ), apply_filters( 'ic_system_status_cap', 'manage_product_settings' ), basename( __FILE__ ), 'ic_system_status' );
 }
 
 add_action( 'product_settings_menu', 'register_product_system' );
@@ -23,20 +23,20 @@ function ic_system_status() {
 				foreach ( all_ic_options( 'options' ) as $option ) {
 					delete_option( $option );
 				}
-				implecode_success( __( 'Product Settings successfully reset to default!', 'al-ecommerce-product-catalog' ) );
+				implecode_success( __( 'Product Settings successfully reset to default!', 'ecommerce-product-catalog' ) );
 			} else {
-				echo '<h3>' . __( 'All products settings will be reset to defaults. Would you like to proceed?', 'al-ecommerce-product-catalog' ) . '</h3>';
-				echo '<a class="button" href="' . esc_url( add_query_arg( 'reset_product_settings_confirm', 1 ) ) . '">' . __( 'Yes', 'al-ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'reset_product_settings' ) ) . '">' . __( 'No', 'al-ecommerce-product-catalog' ) . '</a>';
+				echo '<h3>' . __( 'All products settings will be reset to defaults. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
+				echo '<a class="button" href="' . esc_url( add_query_arg( 'reset_product_settings_confirm', 1 ) ) . '">' . __( 'Yes', 'ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'reset_product_settings' ) ) . '">' . __( 'No', 'ecommerce-product-catalog' ) . '</a>';
 			}
 		} else if ( isset( $_GET[ 'delete_all_products' ] ) ) {
 			if ( isset( $_GET[ 'delete_all_products_confirm' ] ) ) {
 				global $wpdb;
 				$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'al_product' );" );
 				$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta LEFT JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL;" );
-				implecode_success( __( 'Product Settings successfully reset to default!', 'al-ecommerce-product-catalog' ) );
+				implecode_success( __( 'Product Settings successfully reset to default!', 'ecommerce-product-catalog' ) );
 			} else {
-				echo '<h3>' . __( 'All products will be permanently deleted. Would you like to proceed?', 'al-ecommerce-product-catalog' ) . '</h3>';
-				echo '<a class="button" href="' . esc_url( add_query_arg( 'delete_all_products_confirm', 1 ) ) . '">' . __( 'Yes', 'al-ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'delete_all_products' ) ) . '">' . __( 'No', 'al-ecommerce-product-catalog' ) . '</a>';
+				echo '<h3>' . __( 'All products will be permanently deleted. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
+				echo '<a class="button" href="' . esc_url( add_query_arg( 'delete_all_products_confirm', 1 ) ) . '">' . __( 'Yes', 'ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'delete_all_products' ) ) . '">' . __( 'No', 'ecommerce-product-catalog' ) . '</a>';
 			}
 		} else if ( isset( $_GET[ 'delete_all_product_categories' ] ) ) {
 			if ( isset( $_GET[ 'delete_all_product_categories_confirm' ] ) ) {
@@ -56,10 +56,18 @@ function ic_system_status() {
 
 				// Delete Taxonomy
 				$wpdb->delete( $wpdb->term_taxonomy, array( 'taxonomy' => $taxonomy ), array( '%s' ) );
-				implecode_success( __( 'All Product Categories successfully deleted!', 'al-ecommerce-product-catalog' ) );
+				implecode_success( __( 'All Product Categories successfully deleted!', 'ecommerce-product-catalog' ) );
 			} else {
-				echo '<h3>' . __( 'All product categories will be permanently deleted. Would you like to proceed?', 'al-ecommerce-product-catalog' ) . '</h3>';
-				echo '<a class="button" href="' . esc_url( add_query_arg( 'delete_all_product_categories_confirm', 1 ) ) . '">' . __( 'Yes', 'al-ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'delete_all_product_categories' ) ) . '">' . __( 'No', 'al-ecommerce-product-catalog' ) . '</a>';
+				echo '<h3>' . __( 'All product categories will be permanently deleted. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
+				echo '<a class="button" href="' . esc_url( add_query_arg( 'delete_all_product_categories_confirm', 1 ) ) . '">' . __( 'Yes', 'ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'delete_all_product_categories' ) ) . '">' . __( 'No', 'ecommerce-product-catalog' ) . '</a>';
+			}
+		} else if ( isset( $_GET[ 'delete_old_filters_bar' ] ) ) {
+			if ( isset( $_GET[ 'delete_old_filters_bar_confirm' ] ) ) {
+				delete_option( 'old_sort_bar' );
+				implecode_success( __( 'Filters bar is now empty by default!', 'ecommerce-product-catalog' ) );
+			} else {
+				echo '<h3>' . __( 'Default filters bar will become empty.', 'ecommerce-product-catalog' ) . '</h3>';
+				echo '<a class="button" href="' . esc_url( add_query_arg( 'delete_old_filters_bar_confirm', 1 ) ) . '">' . __( 'OK', 'ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'delete_old_filters_bar' ) ) . '">' . __( 'Cancel', 'ecommerce-product-catalog' ) . '</a>';
 			}
 		} else {
 			?>
@@ -68,48 +76,57 @@ function ic_system_status() {
 			<table class="widefat" cellspacing="0" id="ic_tools">
 				<thead>
 					<tr>
-						<th colspan="2"><?php _e( 'impleCode Tools', 'al-ecommerce-product-catalog' ); ?></th>
+						<th colspan="2"><?php _e( 'impleCode Tools', 'ecommerce-product-catalog' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php _e( 'Reset product settings', 'al-ecommerce-product-catalog' ); ?>:</td>
-						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'reset_product_settings', 1 ) ) ?>"><?php _e( 'Reset Product Settings', 'al-ecommerce-product-catalog' ) ?></a></td>
+						<td><?php _e( 'Reset product settings', 'ecommerce-product-catalog' ); ?>:</td>
+						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'reset_product_settings', 1 ) ) ?>"><?php _e( 'Reset Product Settings', 'ecommerce-product-catalog' ) ?></a></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Delete all products', 'al-ecommerce-product-catalog' ); ?>:</td>
-						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_products', 1 ) ) ?>"><?php _e( 'Delete all Products', 'al-ecommerce-product-catalog' ) ?></a></td>
+						<td><?php _e( 'Delete all products', 'ecommerce-product-catalog' ); ?>:</td>
+						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_products', 1 ) ) ?>"><?php _e( 'Delete all Products', 'ecommerce-product-catalog' ) ?></a></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Delete all product categories', 'al-ecommerce-product-catalog' ); ?>:</td>
-						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_product_categories', 1 ) ) ?>"><?php _e( 'Delete all Product Categories', 'al-ecommerce-product-catalog' ) ?></a></td>
+						<td><?php _e( 'Delete all product categories', 'ecommerce-product-catalog' ); ?>:</td>
+						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_product_categories', 1 ) ) ?>"><?php _e( 'Delete all Product Categories', 'ecommerce-product-catalog' ) ?></a></td>
 					</tr>
+					<?php
+					if ( get_option( 'old_sort_bar' ) == 1 ) {
+						?>
+						<tr>
+							<td><?php _e( 'Make default filters bar empty.', 'ecommerce-product-catalog' ); ?>:</td>
+							<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_old_filters_bar', 1 ) ) ?>"><?php _e( 'Empty Default Filters Bar', 'ecommerce-product-catalog' ) ?></a></td>
+						</tr>
+					<?php } ?>
 					<tr>
-						<td><?php _e( 'Delete all products and categories on uninstall', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Delete all products and categories on uninstall', 'ecommerce-product-catalog' ); ?>:</td>
 						<?php $checked		 = get_option( 'ic_delete_products_uninstall', 0 ); ?>
 						<td><input type="checkbox" name="delete_products_uninstall" <?php checked( 1, $checked ) ?> /></td>
 					</tr>
+					<?php do_action( 'ic_system_tools' ); ?>
 				</tbody>
 			</table>
 			<p></p>
 			<table class="widefat" cellspacing="0" id="status">
 				<thead>
 					<tr>
-						<th colspan="2"><?php _e( 'WordPress Environment', 'al-ecommerce-product-catalog' ); ?></th>
+						<th colspan="2"><?php _e( 'WordPress Environment', 'ecommerce-product-catalog' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php _e( 'Home URL', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Home URL', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php echo home_url(); ?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Site URL', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Site URL', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php echo site_url(); ?></td>
 					</tr>
 					<tr>
 						<td><?php
-							_e( 'eCommerce Product Catalog Version', 'al-ecommerce-product-catalog' );
+							_e( 'eCommerce Product Catalog Version', 'ecommerce-product-catalog' );
 							?>:
 						</td>
 						<td>
@@ -121,15 +138,15 @@ function ic_system_status() {
 						</td>
 					</tr>
 					<tr>
-						<td><?php _e( 'eCommerce Product Catalog Database Version', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'eCommerce Product Catalog Database Version', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php echo get_option( 'ecommerce_product_catalog_ver', $plugin_version ); ?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'WP Version', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'WP Version', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php bloginfo( 'version' ); ?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'WP Multisite', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'WP Multisite', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php
 							if ( is_multisite() )
 								echo '&#10004;';
@@ -138,14 +155,14 @@ function ic_system_status() {
 							?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'WP Memory Limit', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'WP Memory Limit', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php
 							$memory			 = WP_MEMORY_LIMIT;
 							echo size_format( $memory );
 							?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'WP Debug Mode', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'WP Debug Mode', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php
 							if ( defined( 'WP_DEBUG' ) && WP_DEBUG )
 								echo '&#10004;';
@@ -154,7 +171,7 @@ function ic_system_status() {
 							?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Language', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Language', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php echo get_locale() ?></td>
 					</tr>
 				</tbody>
@@ -163,34 +180,34 @@ function ic_system_status() {
 			<table class="widefat" cellspacing="0" id="status">
 				<thead>
 					<tr>
-						<th colspan="2"><?php _e( 'Server Environment', 'al-ecommerce-product-catalog' ); ?></th>
+						<th colspan="2"><?php _e( 'Server Environment', 'ecommerce-product-catalog' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
 					<tr>
-						<td><?php _e( 'Server Info', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Server Info', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php echo esc_html( $_SERVER[ 'SERVER_SOFTWARE' ] ); ?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'PHP Version', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'PHP Version', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php if ( function_exists( 'phpversion' ) ) echo esc_html( phpversion() ); ?></td>
 					</tr>
 					<?php if ( function_exists( 'ini_get' ) ) : ?>
 						<tr>
-							<td><?php _e( 'PHP Post Max Size', 'al-ecommerce-product-catalog' ); ?>:</td>
+							<td><?php _e( 'PHP Post Max Size', 'ecommerce-product-catalog' ); ?>:</td>
 							<td><?php echo size_format( ini_get( 'post_max_size' ) ); ?></td>
 						</tr>
 						<tr>
-							<td><?php _e( 'PHP Time Limit', 'al-ecommerce-product-catalog' ); ?>:</td>
+							<td><?php _e( 'PHP Time Limit', 'ecommerce-product-catalog' ); ?>:</td>
 							<td><?php echo ini_get( 'max_execution_time' ); ?></td>
 						</tr>
 						<tr>
-							<td><?php _e( 'PHP Max Input Vars', 'al-ecommerce-product-catalog' ); ?>:</td>
+							<td><?php _e( 'PHP Max Input Vars', 'ecommerce-product-catalog' ); ?>:</td>
 							<td><?php echo ini_get( 'max_input_vars' ); ?></td>
 						</tr>
 					<?php endif; ?>
 					<tr>
-						<td><?php _e( 'MySQL Version', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'MySQL Version', 'ecommerce-product-catalog' ); ?>:</td>
 						<td>
 							<?php
 							/** @global wpdb $wpdb */
@@ -200,7 +217,7 @@ function ic_system_status() {
 						</td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Max Upload Size', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Max Upload Size', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php echo size_format( wp_max_upload_size() ); ?></td>
 					</tr>
 				</tbody>
@@ -209,7 +226,7 @@ function ic_system_status() {
 			<table class="widefat" cellspacing="0" id="status">
 				<thead>
 					<tr>
-						<th colspan="2"><?php _e( 'Server Locale', 'al-ecommerce-product-catalog' ); ?></th>
+						<th colspan="2"><?php _e( 'Server Locale', 'ecommerce-product-catalog' ); ?></th>
 					</tr>
 				</thead>
 				<tbody>
@@ -217,7 +234,7 @@ function ic_system_status() {
 					$locale = localeconv();
 					foreach ( $locale as $key => $val ) {
 						if ( in_array( $key, array( 'decimal_point', 'mon_decimal_point', 'thousands_sep', 'mon_thousands_sep' ) ) ) {
-							echo '<tr><td>' . $key . ':</td><td>' . ( $val ? $val : __( 'N/A', 'al-ecommerce-product-catalog' ) ) . '</td></tr>';
+							echo '<tr><td>' . $key . ':</td><td>' . ( $val ? $val : __( 'N/A', 'ecommerce-product-catalog' ) ) . '</td></tr>';
 						}
 					}
 					?>
@@ -227,7 +244,7 @@ function ic_system_status() {
 			<table class="widefat" cellspacing="0" id="status">
 				<thead>
 					<tr>
-						<th colspan="2"><?php _e( 'Active Plugins', 'al-ecommerce-product-catalog' ); ?> (<?php echo count( (array) get_option( 'active_plugins' ) ); ?>)</th>
+						<th colspan="2"><?php _e( 'Active Plugins', 'ecommerce-product-catalog' ); ?> (<?php echo count( (array) get_option( 'active_plugins' ) ); ?>)</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -251,12 +268,12 @@ function ic_system_status() {
 							$plugin_name = esc_html( $plugin_data[ 'Name' ] );
 
 							if ( !empty( $plugin_data[ 'PluginURI' ] ) ) {
-								$plugin_name = '<a href="' . esc_url( $plugin_data[ 'PluginURI' ] ) . '" title="' . __( 'Visit plugin homepage', 'al-ecommerce-product-catalog' ) . '">' . $plugin_name . '</a>';
+								$plugin_name = '<a href="' . esc_url( $plugin_data[ 'PluginURI' ] ) . '" title="' . __( 'Visit plugin homepage', 'ecommerce-product-catalog' ) . '">' . $plugin_name . '</a>';
 							}
 							?>
 							<tr>
 								<td><?php echo $plugin_name; ?></td>
-								<td><?php echo sprintf( _x( 'by %s', 'by author', 'al-ecommerce-product-catalog' ), $plugin_data[ 'Author' ] ) . ' &ndash; ' . esc_html( $plugin_data[ 'Version' ] ) . $version_string . $network_string; ?></td>
+								<td><?php echo sprintf( _x( 'by %s', 'by author', 'ecommerce-product-catalog' ), $plugin_data[ 'Author' ] ) . ' &ndash; ' . esc_html( $plugin_data[ 'Version' ] ) . $version_string . $network_string; ?></td>
 							</tr>
 							<?php
 						}
@@ -268,7 +285,7 @@ function ic_system_status() {
 			<table class="widefat" cellspacing="0">
 				<thead>
 					<tr>
-						<th colspan="2"><?php _e( 'Theme', 'al-ecommerce-product-catalog' ); ?></th>
+						<th colspan="2"><?php _e( 'Theme', 'ecommerce-product-catalog' ); ?></th>
 					</tr>
 				</thead>
 				<?php
@@ -276,27 +293,27 @@ function ic_system_status() {
 				?>
 				<tbody>
 					<tr>
-						<td><?php _e( 'Name', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Name', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php echo $active_theme->Name; ?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Version', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Version', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php
 							echo $active_theme->Version;
 
 							if ( !empty( $theme_version_data[ 'version' ] ) && version_compare( $theme_version_data[ 'version' ], $active_theme->Version, '!=' ) ) {
-								echo ' &ndash; <strong style="color:red;">' . $theme_version_data[ 'version' ] . ' ' . __( 'is available', 'al-ecommerce-product-catalog' ) . '</strong>';
+								echo ' &ndash; <strong style="color:red;">' . $theme_version_data[ 'version' ] . ' ' . __( 'is available', 'ecommerce-product-catalog' ) . '</strong>';
 							}
 							?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Author URL', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Author URL', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php echo $active_theme->{'Author URI'}; ?></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Child Theme', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Child Theme', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php
-							echo is_child_theme() ? '<mark class="yes">' . '&#10004;' . '</mark>' : '&#10005; &ndash; ' . sprintf( __( 'If you\'re modifying eCommerce Product Catalog or a parent theme you didn\'t build personally we recommend using a child theme. See: <a href="%s" target="_blank">How to create a child theme</a>', 'al-ecommerce-product-catalog' ), 'http://codex.wordpress.org/Child_Themes' );
+							echo is_child_theme() ? '<mark class="yes">' . '&#10004;' . '</mark>' : '&#10005; &ndash; ' . sprintf( __( 'If you\'re modifying eCommerce Product Catalog or a parent theme you didn\'t build personally we recommend using a child theme. See: <a href="%s" target="_blank">How to create a child theme</a>', 'ecommerce-product-catalog' ), 'http://codex.wordpress.org/Child_Themes' );
 							?></td>
 					</tr>
 					<?php
@@ -304,23 +321,23 @@ function ic_system_status() {
 						$parent_theme = wp_get_theme( $active_theme->Template );
 						?>
 						<tr>
-							<td><?php _e( 'Parent Theme Name', 'al-ecommerce-product-catalog' ); ?>:</td>
+							<td><?php _e( 'Parent Theme Name', 'ecommerce-product-catalog' ); ?>:</td>
 							<td><?php echo $parent_theme->Name; ?></td>
 						</tr>
 						<tr>
-							<td><?php _e( 'Parent Theme Version', 'al-ecommerce-product-catalog' ); ?>:</td>
+							<td><?php _e( 'Parent Theme Version', 'ecommerce-product-catalog' ); ?>:</td>
 							<td><?php echo $parent_theme->Version; ?></td>
 						</tr>
 						<tr>
-							<td><?php _e( 'Parent Theme Author URL', 'al-ecommerce-product-catalog' ); ?>:</td>
+							<td><?php _e( 'Parent Theme Author URL', 'ecommerce-product-catalog' ); ?>:</td>
 							<td><?php echo $parent_theme->{'Author URI'}; ?></td>
 						</tr>
 					<?php endif ?>
 					<tr>
-						<td><?php _e( 'eCommerce Product Catalog Support', 'al-ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'eCommerce Product Catalog Support', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php
 							if ( !is_theme_implecode_supported() ) {
-								_e( 'Not Declared', 'al-ecommerce-product-catalog' );
+								_e( 'Not Declared', 'ecommerce-product-catalog' );
 							} else {
 								echo '&#10004;';
 							}
@@ -329,26 +346,26 @@ function ic_system_status() {
 				</tbody>
 			</table>
 			<script>
-				jQuery( document ).ready( function () {
-					jQuery( "input[type='checkbox']" ).change( function () {
-						checkbox = jQuery( this );
-						if ( checkbox.is( ":checked" ) ) {
-							checked = 1;
-						} else {
-							checked = 0;
-						}
-						data = {
-							action: "save_implecode_tools",
-							field: checkbox.attr( 'name' ) + "|" + checked
-						};
-						jQuery.post( "<?php echo admin_url( 'admin-ajax.php' ) ?>", data, function ( response ) {
-							checkbox.after( "<span class='saved'>Saved!</span>" );
-							jQuery( ".saved" ).delay( 2000 ).fadeOut( 300, function () {
-								jQuery( this ).remove();
-							} );
-						} );
-					} );
-				} );
+			    jQuery( document ).ready( function () {
+			        jQuery( "input[type='checkbox']" ).change( function () {
+			            checkbox = jQuery( this );
+			            if ( checkbox.is( ":checked" ) ) {
+			                checked = 1;
+			            } else {
+			                checked = 0;
+			            }
+			            data = {
+			                action: "save_implecode_tools",
+			                field: checkbox.attr( 'name' ) + "|" + checked
+			            };
+			            jQuery.post( "<?php echo admin_url( 'admin-ajax.php' ) ?>", data, function ( response ) {
+			                checkbox.after( "<span class='saved'>Saved!</span>" );
+			                jQuery( ".saved" ).delay( 2000 ).fadeOut( 300, function () {
+			                    jQuery( this ).remove();
+			                } );
+			            } );
+			        } );
+			    } );
 			</script>
 			<?php
 		}

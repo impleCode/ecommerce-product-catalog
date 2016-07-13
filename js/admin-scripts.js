@@ -14,6 +14,7 @@ jQuery( document ).ready( function () {
     };
 
     jQuery( '.sort-settings tbody' ).sortable( {
+        items: "tr:not(.ic-not-sortable)",
         update: function () {
             jQuery( '.sort-settings tbody tr' ).each( function () {
                 var r = jQuery( this ).index();
@@ -23,7 +24,7 @@ jQuery( document ).ready( function () {
                 r = r + 1;
                 jQuery( this ).find( 'td .shipping-label' ).attr( 'name', '_shipping-label' + r );
                 jQuery( this ).find( 'td .shipping-value' ).attr( 'name', '_shipping' + r );
-            } )
+            } );
         },
         helper: fixHelper,
         placeholder: 'sort-settings-placeholder'
@@ -35,14 +36,14 @@ jQuery( document ).ready( function () {
         var disable = false;
         if ( jQuery( this ).is( ':checked' ) && jQuery( this ).val() == 'simple' ) {
             disable = true;
-        } 
+        }
         if ( jQuery( this ).is( ':checked' ) ) {
-            if (!disable) {
-                 jQuery(".al-box.warning").hide('slow');
-                 jQuery(".advanced_mode_settings").show('slow');
+            if ( !disable ) {
+                jQuery( ".al-box.warning" ).hide( 'slow' );
+                jQuery( ".advanced_mode_settings" ).show( 'slow' );
             } else {
-                jQuery(".advanced_mode_settings").hide();
-                jQuery(".al-box.warning").show('slow');
+                jQuery( ".advanced_mode_settings" ).hide();
+                jQuery( ".al-box.warning" ).show( 'slow' );
             }
             jQuery.each( fields, function ( index, element ) {
                 jQuery( element ).prop( "disabled", disable );
@@ -148,13 +149,42 @@ jQuery( document ).ready( function () {
         clicked.hide();
     } );
     jQuery( "form#post" ).submit( function ( e ) {
-        if ( !jQuery( 'input[name="_price"]' ).valid() ) {
-            e.preventDefault();
-            jQuery( 'html, body' ).animate( {
-                scrollTop: jQuery( "#_price-error" ).offset().top - 200
-            }, 100 );
+        if ( jQuery( 'input[name="_price"]' ).length ) {
+            if ( !jQuery( 'input[name="_price"]' ).valid() ) {
+                e.preventDefault();
+                jQuery( 'html, body' ).animate( {
+                    scrollTop: jQuery( "#_price-error" ).offset().top - 200
+                }, 100 );
+            }
         }
     } );
+
+    jQuery( ".ic_autocomplete" ).each( function () {
+        var closing = false;
+        var autocomplete = jQuery( this ).data( 'ic-autocomplete' );
+        if ( autocomplete !== undefined ) {
+            jQuery( this ).autocomplete( {
+                source: autocomplete,
+                minLength: 0,
+                close: function ()
+                {
+                    // avoid double-pop-up issue
+                    closing = true;
+                    setTimeout( function () {
+                        closing = false;
+                    }, 300 );
+                }
+            } ).focus( function () {
+                var value = jQuery( this ).val();
+                if ( !closing && value == '' ) {
+                    jQuery( this ).autocomplete( "search" );
+                }
+            } );
+
+        }
+    } );
+
+
 } );
 
 jQuery( document ).ready( function ( $ ) {

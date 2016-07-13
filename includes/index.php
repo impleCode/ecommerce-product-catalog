@@ -13,7 +13,12 @@ if ( !defined( 'ABSPATH' ) ) {
  * @author 		Norbert Dreszer
  */
 require_once(AL_BASE_PATH . '/includes/settings/index.php');
+require_once(AL_BASE_PATH . '/includes/widgets/index.php');
 require_once(AL_BASE_PATH . '/includes/product-columns.php');
 require_once(AL_BASE_PATH . '/includes/product-category-columns.php');
+require_once(AL_BASE_PATH . '/includes/product-attributes.php');
 require_once(AL_BASE_PATH . '/includes/system.php');
 require_once(AL_BASE_PATH . '/includes/extensions.php');
+require_once(AL_BASE_PATH . '/includes/product-filters.php');
+
+

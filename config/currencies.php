@@ -1,4 +1,9 @@
-<?php 
+<?php
+
+if ( !defined( 'ABSPATH' ) ) {
+	exit; // Exit if accessed directly
+}
+
 /**
  * Manages plugin currencies
  *
@@ -8,36 +13,33 @@
  * @package		ecommerce-product-catalog/functions
  * @author 		Norbert Dreszer
  */
- 
- if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly
-
 function available_currencies() {
-$currencies = array(
-'USD',
-'EUR',
-'AUD',
-'CAD',
-'GBP',
-'JPY',
-'NZD',
-'CHF',
-'HKD',
-'SGD',
-'SEK',
-'DKK',
-'PLN',
-'NOK',
-'HUF',
-'CZK',
-'ILS',
-'MXN',
-'BRL',
-'MYR',
-'PHP',
-'TWD',
-'THB',
-'TRY',
-'RUB'
-);
-return $currencies;
+	$currencies = array(
+		'USD',
+		'EUR',
+		'AUD',
+		'CAD',
+		'GBP',
+		'JPY',
+		'NZD',
+		'CHF',
+		'HKD',
+		'SGD',
+		'SEK',
+		'DKK',
+		'PLN',
+		'NOK',
+		'HUF',
+		'CZK',
+		'ILS',
+		'MXN',
+		'BRL',
+		'MYR',
+		'PHP',
+		'TWD',
+		'THB',
+		'TRY',
+		'RUB'
+	);
+	return $currencies;
 }

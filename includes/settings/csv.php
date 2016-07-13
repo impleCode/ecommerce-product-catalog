@@ -14,7 +14,7 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 function implecode_custom_csv_menu() {
 	?>
-	<a id="csv-settings" class="element" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv' ) ?>"><?php _e( 'Simple CSV', 'al-ecommerce-product-catalog' ); ?></a>
+	<a id="csv-settings" class="element" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv' ) ?>"><?php _e( 'Simple CSV', 'ecommerce-product-catalog' ); ?></a>
 	<?php
 }
 
@@ -29,22 +29,22 @@ function implecode_custom_csv_settings_content() {
 				jQuery( '.settings-submenu a' ).removeClass( 'current' );
 				jQuery( '.settings-submenu a#csv-settings' ).addClass( 'current' );
 			</script>
-			<h2><?php _e( 'Simple CSV', 'al-ecommerce-product-catalog' ); ?></h2>
-			<h3><?php _e( 'Simple Product Export', 'al-ecommerce-product-catalog' ); ?></h3>
+			<h2><?php _e( 'Simple CSV', 'ecommerce-product-catalog' ); ?></h2>
+			<h3><?php _e( 'Simple Product Export', 'ecommerce-product-catalog' ); ?></h3>
 			<?php
 			$export = isset( $_GET[ 'export_csv' ] ) ? $_GET[ 'export_csv' ] : '';
 			if ( $export == 1 ) {
 				$url = simple_export_to_csv();
-				echo '<a style="display: block; margin-top: 20px;" href="' . $url . '">' . __( "Download CSV", 'al-ecommerce-product-catalog' ) . '</a>';
+				echo '<a style="display: block; margin-top: 20px;" href="' . $url . '">' . __( "Download CSV", 'ecommerce-product-catalog' ) . '</a>';
 			} else {
 				?>
-				<a style="display: block; margin-top: 20px;" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv&export_csv=1' ) ?>"><button class="button" ><?php _e( "Export All Products to CSV file", 'al-ecommerce-product-catalog' ) ?></button></a>
-				<h3><?php _e( 'Simple Product Import', 'al-ecommerce-product-catalog' ); ?></h3><?php simple_upload_csv_products_file(); ?>
+				<a style="display: block; margin-top: 20px;" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=csv&export_csv=1' ) ?>"><button class="button" ><?php _e( "Export All Products to CSV file", 'ecommerce-product-catalog' ) ?></button></a>
+				<h3><?php _e( 'Simple Product Import', 'ecommerce-product-catalog' ); ?></h3><?php simple_upload_csv_products_file(); ?>
 			<?php } ?>
 		</div>
 		<div class="helpers"><div class="wrapper"><?php
 				main_helper();
-				doc_helper( __( 'import', 'al-ecommerce-product-catalog' ), 'product-import' );
+				doc_helper( __( 'import', 'ecommerce-product-catalog' ), 'product-import' );
 				?>
 			</div></div><?php
 	}
@@ -64,16 +64,16 @@ function simple_upload_csv_products_file() {
 			if ( move_uploaded_file( $_FILES[ 'product_csv' ][ 'tmp_name' ], $filepath ) ) {
 				simple_import_product_from_csv();
 			} else {
-				$upload_feedback = '<div class="al-box warning">' . __( 'There was a problem with your upload.', 'al-ecommerce-product-catalog' ) . '</div>';
+				$upload_feedback = '<div class="al-box warning">' . __( 'There was a problem with your upload.', 'ecommerce-product-catalog' ) . '</div>';
 			}
 		} else {
-			$upload_feedback = '<div class="al-box warning">' . __( 'Please upload only CSV files.', 'al-ecommerce-product-catalog' ) . '</div>';
+			$upload_feedback = '<div class="al-box warning">' . __( 'Please upload only CSV files.', 'ecommerce-product-catalog' ) . '</div>';
 		}
 		echo $upload_feedback;
 	} else {
 		$url = sample_import_file_url();
-		echo '<form method="POST" enctype="multipart/form-data"><input type="file" accept=".csv" name="product_csv" id="product_csv" /><input type="submit" class="button" value="' . __( 'Import Products', 'al-ecommerce-product-catalog' ) . '" /></form>';
-		echo '<div class="al-box info"><p>' . __( "The CSV fields should be in following order: Image URL, Product Name, Product Price, Product Categories, Short Description, Long Description.", "al-ecommerce-product-catalog" ) . '</p><p>' . __( "The first row should contain the field names. Semicolon should be used as the CSV separator.", "al-ecommerce-product-catalog" ) . '</p><a href="' . $url . '" class="button-primary">' . __( 'Download CSV Template', 'al-ecommerce-product-catalog' ) . '</a></div>';
+		echo '<form method="POST" enctype="multipart/form-data"><input type="file" accept=".csv" name="product_csv" id="product_csv" /><input type="submit" class="button" value="' . __( 'Import Products', 'ecommerce-product-catalog' ) . '" /></form>';
+		echo '<div class="al-box info"><p>' . __( "The CSV fields should be in following order: Image URL, Product Name, Product Price, Product Categories, Short Description, Long Description.", "ecommerce-product-catalog" ) . '</p><p>' . __( "The first row should contain the field names. Semicolon should be used as the CSV separator.", "ecommerce-product-catalog" ) . '</p><a href="' . $url . '" class="button-primary">' . __( 'Download CSV Template', 'ecommerce-product-catalog' ) . '</a></div>';
 	}
 }
 
@@ -96,11 +96,11 @@ function simple_import_product_from_csv() {
 			}
 			echo '<div class="al-box success">';
 			echo '<p>' . $i . ' ';
-			_e( 'products successfully added to the catalog', 'al-ecommerce-product-catalog' ) . '.<p>';
+			_e( 'products successfully added to the catalog', 'ecommerce-product-catalog' ) . '.<p>';
 			echo '</div>';
 		} else {
 			echo '<div class="al-box warning">';
-			_e( 'Number of product fields and number of fields in CSV file do not match!', 'al-ecommerce-product-catalog' );
+			_e( 'Number of product fields and number of fields in CSV file do not match!', 'ecommerce-product-catalog' );
 			echo '</div>';
 		}
 	}
@@ -110,7 +110,7 @@ function simple_import_product_from_csv() {
 function simple_prepare_csv_file( $type = 'w' ) {
 	$csv_temp	 = wp_upload_dir();
 	ini_set( 'auto_detect_line_endings', true );
-	$fp			 = fopen( $csv_temp[ 'basedir' ] . '/simple-products.csv', $type );
+	$fp			 = fopen( $csv_temp[ 'basedir' ] . '/simple-products.csv', $type ) or die( implecode_warning( sprintf( __( 'Permission error. Please check WordPress uploads %sfolder permissions%s.', 'ecommerce-product-catalog' ), '<a href="https://codex.wordpress.org/Changing_File_Permissions">', '</a>' ), 0 ) );
 	return $fp;
 }
 
@@ -141,12 +141,12 @@ function simple_insert_csv_product( $data ) {
 
 function prepare_sample_import_file() {
 	$fields								 = array();
-	$fields[ 1 ][ 'image_url' ]			 = __( 'Image URL', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_name' ]		 = __( 'Product Name', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_price' ]		 = __( 'Product Price', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_categories' ] = __( 'Product Categories', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_short_desc' ] = __( 'Short Description', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_desc' ]		 = __( 'Long Description', 'al-ecommerce-product-catalog' );
+	$fields[ 1 ][ 'image_url' ]			 = __( 'Image URL', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_name' ]		 = __( 'Product Name', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_price' ]		 = __( 'Product Price', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_categories' ] = __( 'Product Categories', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_short_desc' ] = __( 'Short Description', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_desc' ]		 = __( 'Long Description', 'ecommerce-product-catalog' );
 	return array_filter( $fields );
 }
 
@@ -182,12 +182,12 @@ function simple_get_all_exported_products() {
 function simple_prepare_products_to_export() {
 	$products							 = simple_get_all_exported_products();
 	$fields								 = array();
-	$fields[ 1 ][ 'image_url' ]			 = __( 'Image URL', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_name' ]		 = __( 'Product Name', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_price' ]		 = __( 'Product Price', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_categories' ] = __( 'Product Categories', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_short_desc' ] = __( 'Short Description', 'al-ecommerce-product-catalog' );
-	$fields[ 1 ][ 'product_desc' ]		 = __( 'Long Description', 'al-ecommerce-product-catalog' );
+	$fields[ 1 ][ 'image_url' ]			 = __( 'Image URL', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_name' ]		 = __( 'Product Name', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_price' ]		 = __( 'Product Price', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_categories' ] = __( 'Product Categories', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_short_desc' ] = __( 'Short Description', 'ecommerce-product-catalog' );
+	$fields[ 1 ][ 'product_desc' ]		 = __( 'Long Description', 'ecommerce-product-catalog' );
 	$z									 = 2;
 	foreach ( $products as $product ) {
 		$image							 = wp_get_attachment_image_src( get_post_thumbnail_id( $product->ID ), 'full' );

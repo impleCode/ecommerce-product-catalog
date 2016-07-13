@@ -25,9 +25,9 @@ function al_enter_title_here( $message ) {
 	if ( ic_string_contains( $screen->id, 'al_product' ) ) {
 		if ( is_plural_form_active() ) {
 			$names	 = get_catalog_names();
-			$message = sprintf( __( 'Enter %s name here', 'al-ecommerce-product-catalog' ), strtolower( $names[ 'singular' ] ) );
+			$message = sprintf( __( 'Enter %s name here', 'ecommerce-product-catalog' ), ic_strtolower( $names[ 'singular' ] ) );
 		} else {
-			$message = __( 'Enter name here', 'al-ecommerce-product-catalog' );
+			$message = __( 'Enter item name here', 'ecommerce-product-catalog' );
 		}
 	}
 	return $message;

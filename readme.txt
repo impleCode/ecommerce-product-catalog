@@ -3,8 +3,8 @@ Contributors: impleCode, ndre
 Donate link: https://implecode.com/wordpress/plugins/premium-support/#cam=wordpress-org-catalog-page&key=donate-link
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue, catalog of goods, collection, catalogs, digital goods, e-shop, ecomerce, list, listing, online shop, online store, products catalog, sell products, selling, shopping cart, woocommerce catalog, WordPress shopping cart, wordpress store, wp catalog, wp e-commerce, cart
 Requires at least: 3.5
-Tested up to: 4.2
-Stable tag: 2.3.9
+Tested up to: 4.5
+Stable tag: 2.5.16
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -44,6 +44,7 @@ Read all about [eCommerce Product Catalog](https://implecode.com/wordpress/produ
 * __Product Shipping__ - Specify shipping options for each product
 * __Color & Size Change__ - Choose product catalog elements color and size 
 * __3 Product Listing Templates__ - Choose from 3 completely different product listing templates
+* __2 Product Page Templates__ - Choose from 2 completely different product page templates
 * __25 currencies available__ - Choose from 25 different currencies or just insert custom currency
 * __Customizable Price Formats__ - Choose from 4 different price formats to suit any currency needs
 * __Drag-and-Drop functionality__ - Highly intuitive interface to manage Product Attributes and Shipping Options
@@ -109,22 +110,23 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 
 * English - default, always included
 * Bosnian - Thanks to Faruk
-* Bulgarian - Thanks to Valentina and Koceto via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
+* Bulgarian - Thanks to Valentina & Koceto
 * Croatian - Thanks to Vedran 
-* Dutch - Thanks to Pieter & Chippie via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
-* French - Thanks to Denis & James & Antoine via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
-* German - Thanks to Peter & Toby via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
-* Greek - Thanks to Giorgos via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
+* Dutch - Thanks to Pieter & Chippie & Maas & Tim
+* Finnish - Thanks to Hannu
+* French - Thanks to Denis & James & Antoine
+* German - Thanks to Peter & Toby
+* Greek - Thanks to Giorgos
 * Hebrew - Thanks to Ahrale
-* Hungarian - Thanks to Orsolya via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
-* Italian - Thanks to Fabio via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
-* Japanese - Thanks to Diginatu via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
-* Norwegian - Thanks to Oyvind via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
+* Hungarian - Thanks to Orsolya
+* Italian - Thanks to Fabio & Pietro
+* Japanese - Thanks to Diginatu
+* Norwegian - Thanks to Oyvind
 * Polish - Thanks to Norbert
-* Romanian - Thanks to Alex via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
+* Romanian - Thanks to Alex
 * Serbian - Thanks to Ogi
 * Spanish - Thanks to Andrew, Norbert and Josu
-* Turkish - Thanks to Tahir via [translate.implecode.com](http://translate.implecode.com/projects/ecommerce-product-catalog)
+* Turkish - Thanks to Tahir
 * *Your translation? - [Just send it in](http://translate.implecode.com/projects/ecommerce-product-catalog#cam=wordpress-org-catalog-page&key=translation-link)*
 
 *Note:* All our plugins are localized/translatable by default. This is very important for all users worldwide. So please contribute your language to the plugin to make it even more useful. For translating we invite you to join this huge impleCode [translation project](http://translate.implecode.com/projects/ecommerce-product-catalog#cam=wordpress-org-catalog-page&key=translation-link).
@@ -203,17 +205,308 @@ This is not a store. It's main purpose is to present products or services on the
 1. Product edit/add screen.
 2. Product catalog settings.
 3. Default product catalog archive.
-4. Default product single page.
-5. Classic grid product catalog archive.
-6. Classic list product catalog archive.
+4. Default product product page.
+5. Plain product page
+6. Classic grid product catalog archive.
+7. Classic list product catalog archive.
 
 == Changelog ==
+
+Use [impleCode Translate Project](http://translate.implecode.com/projects/ecommerce-product-catalog/#cam=wordpress-org-changelog&key=epc-translate "eCommerce Product Catalog Translation Project") to add new or fix the existing translations. 
+
+= 2.5.16 - 06/07/2016 =
+
+* Fix - quick edit for products
+* Tweak - code improvements for even better performance
+* Localisation - Spanish language improved thanks to Hugo on impleCode Translate Project
+* Localisation - Portuguese language improved thanks to Joao on impleCode Translate Project
+
+= 2.5.15 - 07/06/2016 =
+
+* Tweak - code improvements for even better performance
+
+= 2.5.14 - 30/05/2016 =
+
+* Tweak - autocomplete on product attributes
+* Tweak - ability to show attributes on classic list
+* Tweak - an option to disable related products
+* Localisation - Slovac language improved thanks to Martin on impleCode Translate Project
+* Localisation - Russian language improved thanks to Paul on impleCode Translate Project
+
+= 2.5.13 - 23/05/2016 =
+
+* Tweak - product status class on product listing
+
+= 2.5.12 - 17/05/2016 =
+
+* Tweak - Show product listing edit link only for users with edit page permission
+* Localisation - Swedish language improved thanks to Lenny on impleCode Translate Project
+
+= 2.5.11 - 09/05/2016 =
+
+* Tweak - support menu modified
+* Tweak - theme integration info modified
+* Localisation - Slovac language improved thanks to Marek on impleCode Translate Project
+
+= 2.5.10 - 06/05/2016 =
+
+* Tweak - added filter for maximum number of attributes on product listing
+* Fix - filters preformance improved
+* Localisation - Portuguese language improved thanks to Nuno on impleCode Translate Project
+* Localisation - Slovac language improved thanks to Marek on impleCode Translate Project
+
+= 2.5.9 - 04/05/2016 =
+
+* Tweak - responsive pagination on small screens
+* Tweak - ability to show attributes on Classic Grid
+* Localisation - Indonesian language improved thanks to Samsul on impleCode Translate Project
+
+= 2.5.8 - 25/04/2016 =
+
+* Tweak - better filters bar reset functionality (a reset filters link that redirects to oryginally filtered page instead of main product listing)
+* Tweak - customizable product search widget output template
+* Tweak - customizable related products template
+* Localisation - Italian language improved thanks to Pietro on impleCode Translate Project
+
+= 2.5.7 - 18/04/2016 =
+
+* Tweak - new template parts for product listing elements customisation
+* Tweak - code improvements on better performance when adding or updating a product
+* Localisation - Chinese language improved thanks to Jason on impleCode Translate Project
+
+= 2.5.6 - 11/04/2016 =
+
+* Compatibility with WordPress 4.5 confirmed
+* Tweak - Better TwentyThirteen theme integration
+* Tweak - Show after price container only if after price text is there
+* Localisation - Czech language improved thanks to Tomas on impleCode Translate Project
+* Localisation - Chinese language improved thanks to Jason on impleCode Translate Project
+
+= 2.5.5 - 04/04/2016 =
+
+* Tweak - ability to copy product
+* Tweak - ability to set after price text on product page
+
+= 2.5.4 - 30/03/2016 =
+
+* Tweak - classic list responsiveness improved
+* Localisation - German language improved thanks to Julian on impleCode Translate Project
+* Localisation - Spanish language improved thanks to Ines on impleCode Translate Project
+
+= 2.5.3 - 21/03/2016 =
+
+* Fix - twentyeleven product page works fine again
+* Localisation - Dutch language improved thanks to Tim on impleCode Translate Project
+
+= 2.5.2 - 14/03/2016 =
+
+* Tweak - filter added for show_categories shortcode arguments
+* Tweak - more intuitive templates folder
+* Fix - styling for new formatted page template when image not present improved
+* Fix - stop redirect when sorting on category page
+
+= 2.5.1 - 07/03/2016 =
+
+* Tweak - product image template part added
+* Fix - styling for new formatted page template when image not present improved
+* Fix - don't show short description container when it is empty
+
+= 2.5.0 - 03/03/2016 =
+
+* Feature - new product page template can be selected in Products > Settings > Catalog Design > Product Page
+* Tweak - various classes and ids added to product page templates to handle new page template
+* Tweak - container div added to price template
+* Tweak - default attribute label and unit shows on product add/edit screen also for already added products if no other value was previously selected
+* Tweak - attributes and shipping sorting performance improved
+* Fix - product search order by relevance rather than by selected order in product settings
+* Localisation - Finnish language improved thanks to Mannu on impleCode Translate Project
+* Localisation - Dutch language improved thanks to Maas32 on impleCode Translate Project
+
+More about new page template switcher: https://implecode.com/new-product-page-template/
+
+= 2.4.25 - 22/02/2016 =
+
+* Tweak - Code improvements for even better performance
+
+= 2.4.24 - 17/02/2016 =
+
+* Fix - classic grid row setting fix
+
+= 2.4.23 - 16/02/2016 =
+
+* Tweak - Code improvements for even better performance
+
+= 2.4.22 - 08/02/2016 =
+
+* Tweak - more template files and hooks added for even better customization possibilities
+
+= 2.4.21 - 01/02/2016 =
+
+* Tweak - ability to edit Home element label in breadcrumbs
+* Fix - hide the review notice forever 
+* Fix - wp-session PHP errors fixed
+* Localisation - Hungarian language improved thanks to Peter on impleCode Translate Project
+* Localisation - Spanish language improved thanks to Antonio on impleCode Translate Project
+
+= 2.4.20 - 25/01/2016 =
+
+* Localisation - translations from [WordPress.org translate project](https://translate.wordpress.org/projects/wp-plugins/ecommerce-product-catalog) added
+
+= 2.4.19 - 19/01/2016 =
+* Tweak - code improvements for even better performance and customizability
+* Localisation - French language improved thanks to JLD on impleCode Translate Project
+
+= 2.4.18 - 11/01/2016 =
+
+* Tweak - support for [product_category_name] shortcode in category prefix front-end label setting
+* Fix - no price error for older PHP versions
+
+= 2.4.17 - 04/01/2016 =
+
+* Fix - attributes on product listing work fine
+* Tweak - better compatibility with twentyfourteen theme
+
+= 2.4.16 - 21/12/2015 =
+
+* Tweak - ability to set label for free product and free shipping (set price to 0 and add label in front-end labels settings section)
+
+= 2.4.15 - 14/12/2015 =
+
+* Tweak - ability to set custom templates for product page parts: price, SKU, attributes, description, short description, shipping
+* Tweak - ability to set image sizes for: modern grid, classic list, classic grid, product page, product category page
+* Tweak - full compatibility with WordPress responsive images feature
+* Localisation - Dutch language improved thanks to hb on impleCode Translate Project
+* Localisation - Turkish language improved thanks to Deevans on impleCode Translate Project
+
+Update details: https://implecode.com/ecommerce-product-catalog-2-4-15/
+
+= 2.4.14 - 07/12/2015 =
+
+* Tweak - ability to enable widget filters for shortcode output outside of main product listing
+* Tweak - improved related products now shows not always the same
+* Tweak - pagination parameter added to show_products shortcode
+* Compatibility with WordPress 4.4
+* Localisation - Slovak language improved thanks to Marek on impleCode Translate Project
+* Localisation - Portuguese language improved thanks to Paulo on impleCode Translate Project
+* Localisation - Spanish language improved thanks to Jesus on impleCode Translate Project
+
+= 2.4.13 - 30/11/2015 =
+
+* Tweak - improved integration with multi-language plugins
+* Fix - JavaScript error for some configurations in admin
+* Localisation - German language improved thanks to Toby on impleCode Translate Project
+* Localisation - Portuguese language improved thanks to Paulo on impleCode Translate Project
+* Localisation - Spanish language improved thanks to Jesus on impleCode Translate Project
+
+= 2.4.12 - 23/11/2015 =
+
+* Fix - extensions installer works again in extensions menu
+* Fix - restore compatibility with PHP 5.2.x
+* Localisation - Czech language improved thanks to TheGameCZ on impleCode Translate Project
+* Localisation - Portuguese language improved thanks to Paulo on impleCode Translate Project
+
+= 2.4.11 - 16/11/2015 =
+
+* Tweak - ability to change next and previous page links labels
+* Tweak - ability to set default filters bar to empty
+* Tweak - widget names in admin according to product catalog name setting
+* Tweak - textdomain changed to ecommerce-product-catalog
+
+= 2.4.10 - 09/11/2015 =
+
+* Tweak - CSS class added to back to products URL
+* Tweak - new action hook at the end of product page
+
+= 2.4.9 - 02/11/2015 =
+
+* Tweak - multiple server compatibility improvements
+
+= 2.4.8 - 27/10/2015 =
+
+* Compatibility - restore compatibility with PHP 5.2 (it was lost in 2.4.7) - if you are using PHP 5.2 we strongly recommend to update your PHP version as in the feature we may drop 5.2 support
+
+= 2.4.7 - 26/10/2015 =
+
+* Tweak - the plugin doesn't use session any more for wider server support
+* Tweak - code improvements for even better performance and customizability
+* Localisation - Greek language improved thanks to Andreas on impleCode Translate Project
+* Localisation - Hungarian language improved thanks to Paszti on impleCode Translate Project
+
+= 2.4.6 - 19/10/2015 =
+
+* Tweak and improvements for even better performance
+* Localisation - Swedish language improved thanks to Jacob on impleCode Translate Project
+* Localisation - Russian language improved thanks to Evgen on impleCode Translate Project
+* Localisation - Spanish language improved thanks to Bernardo on impleCode Translate Project
+
+= 2.4.5 - 12/10/2015 =
+
+* Tweak - escaping method change on product settings for wider support
+
+= 2.4.4 - 05/10/2015 =
+
+* Tweak - ability to sort shortcode categories by include parameter
+* Localisation - Slovak language introduced thanks to Radovan on impleCode Translate Project
+* Localisation - Greek language improved thanks to Andreas on impleCode Translate Project
+* Localisation - Russian language improved thanks to Evgen on impleCode Translate Project
+* Localisation - Danish language improved thanks to Bjarke on impleCode Translate Project
+
+= 2.4.3 - 28/09/2015 =
+
+* Tweak - translatable price filter label
+
+= 2.4.2 - 21/09/2015 = 
+
+* Tweak - the product filters bar is now empty by default
+* Tweak - compatibility styling for product filters bar widgets
+* Tweak - order and orderby attributes for product categories shortcode - [see details](https://implecode.com/docs/ecommerce-product-catalog/category-listing-shortcode/)
+* Localisation - Croatian language improved thanks to Hercules on impleCode Translate Project
+* Localisation - Spanish language improved thanks to Lucas on impleCode Translate Project
+* Localisation - Russian language improved thanks to Evgen on impleCode Translate Project
+* Localisation - Indonesian language improved thanks to Bahar Sobari on impleCode Translate Project
+
+= 2.4.1 - 14/09/2015 = 
+
+* Tweak - Error info if product export failed
+* Tweak - The categories URLs are hierarchical now (for child categories) - the old URLs will keep work however we recommend to set up 301 redirects
+
+= 2.4.0 - 03/09/2015 = 
+
+* Feature - new product filters bar (if you place widgets inside filters bar the sorting drop down will be replaced with widgets content)
+* Feature - product price filter widget
+* Feature - product category filter widget
+* Feature - product sort widget
+* Feature - related products widget
+* Tweak - ability to show related products instead of related categories on product page
+
+See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
+
+= 2.3.12 - 24/08/2015 = 
+
+* Tweak - better responsive design on smallest screens
+* Tweak - current menu highlighting on some themes works better
+* Fix - right sidebar shows up now
+* Localisation - Russian language improved thanks to Александр on impleCode Translate Project
+* Localisation - German language improved thanks to Oliver on impleCode Translate Project
+
+= 2.3.11 - 17/08/2015 = 
+
+* Fix - product page titles may have been mixed on some configurations, it's fixed now
+* Fix - not showing All Products header for shortcode output anymore
+* Localisation - Portuguese language improved thanks to Valteci on impleCode Translate Project
+* Localisation - Polish language improved thanks to Marek on impleCode Translate Project
+* Localisation - Dutch language improved thanks to Jehan on impleCode Translate Project
+
+= 2.3.10 - 10/08/2015 = 
+
+* Tweak - support for pagination on home page catalog
+* Localisation - Polish language improved thanks to Marek on impleCode Translate Project
 
 = 2.3.9 - 03/08/2015 = 
 
 * Tweak - support for theme sidebar with automatic adjustment
-* Localisation - Portuguese language improved thanks to Fábio via http://translate.implecode.com
-* Localisation - Russian language introduced thanks to Stanly via http://translate.implecode.com
+* Localisation - Portuguese language improved thanks to Fábio on impleCode Translate Project
+* Localisation - Russian language introduced thanks to Stanly on impleCode Translate Project
 
 = 2.3.8 - 27/07/2015 = 
 
@@ -221,28 +514,28 @@ This is not a store. It's main purpose is to present products or services on the
 * Fix - uninstall function fixed
 * Fix - better handling products with empty price on show_price shortcode
 * Fix - attributes drag and drop function no works fine
-* Localisation - French language improved thanks to Clarine via http://translate.implecode.com
-* Localisation - Swedish language introduced thanks to Anders via http://translate.implecode.com
+* Localisation - French language improved thanks to Clarine on impleCode Translate Project
+* Localisation - Swedish language introduced thanks to Anders on impleCode Translate Project
 
 = 2.3.7 - 20/07/2015 = 
 
 * Tweak - new show_products shortcode attributes order & orderby https://implecode.com/docs/ecommerce-product-catalog/product-shortcodes/
 * Tweak - new shortcodes introduced see https://implecode.com/docs/ecommerce-product-catalog/product-catalog-shortcodes/
-* Localisation - Spanish language improved thanks to César via http://translate.implecode.com
-* Localisation - Arabic language improved thanks to Supermekki via http://translate.implecode.com
+* Localisation - Spanish language improved thanks to César on impleCode Translate Project
+* Localisation - Arabic language improved thanks to Supermekki on impleCode Translate Project
 
 = 2.3.6 - 13/07/2015 = 
 
 * Tweak - system tools added - ability to delete all products or categories and restore settings to defaults
 * Tweak - option to delete all products on uninstall
 * Tweak - theme integration wizard improved - now you can use the wizard to adjust the look (apart of automatic adjustment)
-* Localisation - Arabic language introduced thanks to Supermekki via http://translate.implecode.com
+* Localisation - Arabic language introduced thanks to Supermekki on impleCode Translate Project
 
 = 2.3.5 - 07/07/2015 = 
 
 * Tweak - support for custom product page and custom product listing templates (add a folder named "implecode" to your theme with product-page.php and/or product-listing.php files)
 * Tweak - support for product listing in simple mode
-* Localisation - Dutch language improved thanks to Sander via http://translate.implecode.com
+* Localisation - Dutch language improved thanks to Sander on impleCode Translate Project
 
 = 2.3.4 - 29/06/2015 = 
 
@@ -253,7 +546,7 @@ This is not a store. It's main purpose is to present products or services on the
 = 2.3.3 - 23/06/2015 = 
 
 * Fix - division by zero warning for some configurations fixed
-* Localisation - Serbian language improved thanks to Branislav via http://translate.implecode.com
+* Localisation - Serbian language improved thanks to Branislav on impleCode Translate Project
 
 = 2.3.2 - 15/06/2015 = 
 
@@ -262,9 +555,9 @@ This is not a store. It's main purpose is to present products or services on the
 
 = 2.3.1 - 08/06/2015 = 
 
-* Localisation - Chinese language improved thanks to Thomas via http://translate.implecode.com
-* Localisation - Serbian language improved thanks to Sasa via http://translate.implecode.com
-* Localisation - Dutch language improved thanks to Chippie via http://translate.implecode.com
+* Localisation - Chinese language improved thanks to Thomas on impleCode Translate Project
+* Localisation - Serbian language improved thanks to Sasa on impleCode Translate Project
+* Localisation - Dutch language improved thanks to Chippie on impleCode Translate Project
 
 = 2.3.0 - 01/06/2015 = 
 
@@ -275,23 +568,23 @@ This is not a store. It's main purpose is to present products or services on the
 * Fix - encoding error fixed in classic list for some languages
 * Fix - product search title now showing properly
 * Fix - show SKU even if price disabled
-* Localisation - Portuguese language improved thanks to Rodrigo via http://translate.implecode.com
-* Localisation - French language improved thanks to Antoine via http://translate.implecode.com
-* Localisation - Polish language improved thanks to Wladek via http://translate.implecode.com
-* Localisation - Danish language improved thanks to Peter via http://translate.implecode.com
-* Localisation - Hungarian language introduces thanks to Orsolya via http://translate.implecode.com
-* Localisation - Chinese language improved thanks to Suyang via http://translate.implecode.com
+* Localisation - Portuguese language improved thanks to Rodrigo on impleCode Translate Project
+* Localisation - French language improved thanks to Antoine on impleCode Translate Project
+* Localisation - Polish language improved thanks to Wladek on impleCode Translate Project
+* Localisation - Danish language improved thanks to Peter on impleCode Translate Project
+* Localisation - Hungarian language introduces thanks to Orsolya on impleCode Translate Project
+* Localisation - Chinese language improved thanks to Suyang on impleCode Translate Project
 
 = 2.2.11 - 11/05/2015 = 
 
 * Fix - Twenty Thirteen styling fix
-* Localisation - Romanian language improved thanks to Alex via http://translate.implecode.com
-* Localisation - French language improved thanks to Antoine via http://translate.implecode.com
+* Localisation - Romanian language improved thanks to Alex on impleCode Translate Project
+* Localisation - French language improved thanks to Antoine on impleCode Translate Project
 
 = 2.2.10 - 05/05/2015 = 
 
 * Tweak - code improvements for even better performance
-* Localisation - Romanian language introduced thanks to Alex via http://translate.implecode.com
+* Localisation - Romanian language introduced thanks to Alex on impleCode Translate Project
 
 = 2.2.9 - 30/04/2015 = 
 
@@ -304,14 +597,14 @@ This is not a store. It's main purpose is to present products or services on the
 * Tweak - validation for price field
 * Tweak - code improvements for better performance
 * Tweak - Plural form disabled on some translation for German and Polish (feedback needed on other languages too)
-* Localisation - Romanian language introduced thanks to Alex via http://translate.implecode.com
-* Localisation - Danish language introduced thanks to Peter via http://translate.implecode.com
-* Localisation - Indonesian language introduced thanks to Tera via http://translate.implecode.com
-* Localisation - Polish language improved thanks to Adam via http://translate.implecode.com
-* Localisation - German language improved thanks to Toby via http://translate.implecode.com
-* Localisation - Greek language improved thanks to Giorgos via http://translate.implecode.com
-* Localisation - Portuguese language improved thanks to Giordano via http://translate.implecode.com
-* Localisation - Finnish language improved thanks to Sanna-Mari via http://translate.implecode.com
+* Localisation - Romanian language introduced thanks to Alex on impleCode Translate Project
+* Localisation - Danish language introduced thanks to Peter on impleCode Translate Project
+* Localisation - Indonesian language introduced thanks to Tera on impleCode Translate Project
+* Localisation - Polish language improved thanks to Adam on impleCode Translate Project
+* Localisation - German language improved thanks to Toby on impleCode Translate Project
+* Localisation - Greek language improved thanks to Giorgos on impleCode Translate Project
+* Localisation - Portuguese language improved thanks to Giordano on impleCode Translate Project
+* Localisation - Finnish language improved thanks to Sanna-Mari on impleCode Translate Project
 
 = 2.2.7 - 20/04/2015 = 
 
@@ -323,11 +616,11 @@ This is not a store. It's main purpose is to present products or services on the
 * Tweak - support for shortcodes in product listing labels
 * Fix - auto adjust classic grid in show_categories shortcode
 * Fix - product search in admin fixed
-* Localisation - Polish language improved thanks to Bartol via http://translate.implecode.com
-* Localisation - French language improved thanks to Cedric via http://translate.implecode.com
-* Localisation - Turkish language improved thanks to Yusuf via http://translate.implecode.com
-* Localisation - Italian language improved thanks to Luca via http://translate.implecode.com
-* Localisation - Finnish language improved thanks to Sanna-Mari via http://translate.implecode.com
+* Localisation - Polish language improved thanks to Bartol on impleCode Translate Project
+* Localisation - French language improved thanks to Cedric on impleCode Translate Project
+* Localisation - Turkish language improved thanks to Yusuf on impleCode Translate Project
+* Localisation - Italian language improved thanks to Luca on impleCode Translate Project
+* Localisation - Finnish language improved thanks to Sanna-Mari on impleCode Translate Project
 
 
 = 2.2.5 - 09/04/2015 = 
@@ -351,15 +644,15 @@ This is not a store. It's main purpose is to present products or services on the
 * Fix - layout fix on very small screens
 * Fix - color design scheme switch for modern grid fixed
 * Tweak - improved integration with some themes
-* Localisation - Greek language improved thanks to Giorgos via http://translate.implecode.com
-* Localisation - Spanish language improved thanks to Lucia via http://translate.implecode.com
-* Localisation - Chinese introduced improved thanks to Yuen Ka Hei via http://translate.implecode.com
+* Localisation - Greek language improved thanks to Giorgos on impleCode Translate Project
+* Localisation - Spanish language improved thanks to Lucia on impleCode Translate Project
+* Localisation - Chinese introduced improved thanks to Yuen Ka Hei on impleCode Translate Project
 
 = 2.2.2 - 23/03/2015 = 
 
-* Localisation - Croatian language improved thanks to Giorgos via http://translate.implecode.com
-* Localisation - Spanish language improved thanks to Josu via http://translate.implecode.com
-* Localisation - Greek language introduced thanks to Giorgos via http://translate.implecode.com
+* Localisation - Croatian language improved thanks to Giorgos on impleCode Translate Project
+* Localisation - Spanish language improved thanks to Josu on impleCode Translate Project
+* Localisation - Greek language introduced thanks to Giorgos on impleCode Translate Project
 
 = 2.2.1 - 17/03/2015 = 
 
@@ -406,8 +699,8 @@ This is not a store. It's main purpose is to present products or services on the
 * Tweak - improved responsive design
 * Tweak - better SEO for Modern Product Listing template
 * Fix - the catalog name setting does not prevent the product page from showing up any more
-* Localisation - Russian language improved thanks to Alex via http://translate.implecode.com
-* Localisation - Portuguese language improved thanks to Goncalo via http://translate.implecode.com
+* Localisation - Russian language improved thanks to Alex on impleCode Translate Project
+* Localisation - Portuguese language improved thanks to Goncalo on impleCode Translate Project
 
 = 2.1.4 - 09/02/2015 = 
 
@@ -416,9 +709,9 @@ This is not a store. It's main purpose is to present products or services on the
 * Tweak - tooltips added for some options in product settings
 * Tweak - plugin review encourage message for users with activate_plugins permission (can be disabled) - thanks for reviews :)
 * Fix - sort drop-down compatibility with default WordPress permalinks
-* Localisation - Portuguese language introduced thanks to Jorge via http://translate.implecode.com
-* Localisation - Turkish language introduced thanks to Tahir via http://translate.implecode.com
-* Localisation - Russian language improved thanks to Alex via http://translate.implecode.com
+* Localisation - Portuguese language introduced thanks to Jorge on impleCode Translate Project
+* Localisation - Turkish language introduced thanks to Tahir on impleCode Translate Project
+* Localisation - Russian language improved thanks to Alex on impleCode Translate Project
 
 Thank you for the translations on behalf of all eCommerce Product Catalog users! 
 
@@ -426,20 +719,20 @@ Please [post your review](https://wordpress.org/support/view/plugin-reviews/ecom
 
 = 2.1.3 - 02/02/2015 = 
 
-* Localisation - Bulgarian language improved thanks to Koceto via http://translate.implecode.com
-* Localisation - Russian language improved thanks to Gregory via http://translate.implecode.com
-* Localisation - Czech language introduced thanks to Martin via http://translate.implecode.com
-* Localisation - Finnish language introduced thanks to Pekka via http://translate.implecode.com
+* Localisation - Bulgarian language improved thanks to Koceto on impleCode Translate Project
+* Localisation - Russian language improved thanks to Gregory on impleCode Translate Project
+* Localisation - Czech language introduced thanks to Martin on impleCode Translate Project
+* Localisation - Finnish language introduced thanks to Pekka on impleCode Translate Project
 
 = 2.1.2 - 26/01/2015 = 
 
 * Fix - Product Catalog paging numbers points to the top of the page
-* Localisation - French language improved thanks to James via http://translate.implecode.com
-* Localisation - Polish language improved thanks to Norbert via http://translate.implecode.com
-* Localisation - Dutch language improved thanks to Pieter via http://translate.implecode.com
-* Localisation - Bulgarian language improved thanks to Valentina via http://translate.implecode.com
-* Localisation - Russian language introduced thanks to Gregory via http://translate.implecode.com
-* Localisation - Norwegian language introduced thanks to Oyvind via http://translate.implecode.com
+* Localisation - French language improved thanks to James on impleCode Translate Project
+* Localisation - Polish language improved thanks to Norbert on impleCode Translate Project
+* Localisation - Dutch language improved thanks to Pieter on impleCode Translate Project
+* Localisation - Bulgarian language improved thanks to Valentina on impleCode Translate Project
+* Localisation - Russian language introduced thanks to Gregory on impleCode Translate Project
+* Localisation - Norwegian language introduced thanks to Oyvind on impleCode Translate Project
 
 Thank you on behalf of all eCommerce Product Catalog users!
 

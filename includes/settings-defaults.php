@@ -33,6 +33,7 @@ define( 'ENABLE_CATALOG_LIGHTBOX', 1 );
 
 define( 'MULTI_SINGLE_OPTIONS', serialize( array(
 	'enable_product_gallery' => 1,
+	'template'				 => 'boxed'
 ) ) );
 
 define( 'DEF_CURRENCY_SETTINGS', serialize( array(

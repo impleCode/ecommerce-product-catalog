@@ -45,7 +45,7 @@
 }
 
 .manage-column.column-id {
-    width: 50px;
+    width: 54px;
 }
 
 .manage-column.column-shortcode, .shortcode.column-shortcode, .id.column-id, .manage-column.column-id  {
@@ -53,7 +53,7 @@
 }
 
 .image.column-image, .manage-column.column-image {
-    width: 42px;
+    width: 50px;
 }
 
 .price.column-price, .manage-column.column-price {
@@ -505,6 +505,11 @@ h2.tab-menu {
     max-width: 150px;
 }
 
+.attributes-product-settings .setting-content {
+    z-index: 9;
+    position: relative;
+}
+
 .attributes-product-settings .setting-content table select {
     max-width: 113px;
 }
@@ -691,23 +696,23 @@ div.implecode-admin-media-image img {
 }
 
 /* Product Edit Page */
-#al_product_attributes.postbox table {
+#al_product_attributes.postbox table, table.ic_admin_table {
     width: 100%;
     border-collapse: collapse;
 }
 
-#al_product_attributes.postbox table th {
+#al_product_attributes.postbox table th, .ic_admin_table th {
     border-bottom: 1px solid #ededed;
     line-height: 2.5;
     text-align: left;
     padding-left: 5px;
 }
 
-#al_product_attributes.postbox table td {
+#al_product_attributes.postbox table td, .ic_admin_table td {
     padding: 5px;
 }
 
-#al_product_attributes.postbox table input {
+#al_product_attributes.postbox table input[type="text"], #al_product_attributes.postbox table input[type="number"], .ic_admin_table input[type="text"],.ic_admin_table input[type="number"] {
     width: 100%;
 }
 
@@ -1003,3 +1008,10 @@ input.error {
 .upgrade-now:hover {
     color: #D23E10;
 }
+
+.post-type-al_product .ui-autocomplete {
+    max-height: 100px;
+    overflow-y: auto;
+    /* prevent horizontal scrollbar */
+    overflow-x: hidden;
+  }

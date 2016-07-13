@@ -19,7 +19,7 @@ add_action( 'al_product-cat_add_form', 'add_product_category_helper' );
  *
  */
 function add_product_category_helper() {
-	doc_helper( __( 'category', 'al-ecommerce-product-catalog' ), 'product-categories', 'left' );
+	doc_helper( __( 'category', 'ecommerce-product-catalog' ), 'product-categories', 'left' );
 }
 
 add_action( 'al_product-cat_edit_form_fields', 'product_category_edit_form_fields' );
@@ -69,7 +69,7 @@ function product_category_edit_form_fields( $field ) {
 	} else {
 		$cat_img_src = '';
 	}
-	implecode_upload_image( __( 'Select Category Image', 'al-ecommerce-product-catalog' ), 'product_cat_image', $cat_img_src, null, 'id' );
+	implecode_upload_image( __( 'Select Category Image', 'ecommerce-product-catalog' ), 'product_cat_image', $cat_img_src, null, 'id' );
 }
 
 add_filter( 'manage_edit-al_product-cat_columns', 'product_cat_columns' );
@@ -84,11 +84,11 @@ function product_cat_columns( $product_columns ) {
 	$temp							 = $product_columns[ 'cb' ];
 	unset( $product_columns[ 'cb' ] );
 	unset( $product_columns[ 'slug' ] );
-	$product_columns[ 'img' ]		 = __( 'Image', 'al-ecommerce-product-catalog' );
-	$product_columns[ 'id' ]		 = __( 'ID', 'al-ecommerce-product-catalog' );
+	$product_columns[ 'img' ]		 = __( 'Image', 'ecommerce-product-catalog' );
+	$product_columns[ 'id' ]		 = __( 'ID', 'ecommerce-product-catalog' );
 	$product_columns[ 'cb' ]		 = $temp;
 	$product_columns				 = array_reverse( $product_columns );
-	$product_columns[ 'shortcode' ]	 = __( 'Shortcode', 'al-ecommerce-product-catalog' );
+	$product_columns[ 'shortcode' ]	 = __( 'Shortcode', 'ecommerce-product-catalog' );
 	return $product_columns;
 }
 

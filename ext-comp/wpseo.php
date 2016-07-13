@@ -46,3 +46,15 @@ function product_listing_remove_wpseo() {
 		remove_meta_box( 'wpseo_meta', 'page', 'normal' );
 	}
 }
+
+/**
+ * Removes yoast seo script to avoid javascript errors on product listing edit screen
+ */
+function product_listing_remove_wpseo_js() {
+	$id = get_product_listing_id();
+	if ( is_admin() && isset( $_GET[ 'post' ] ) && $_GET[ 'post' ] == $id ) {
+		wp_deregister_script( 'yoast-seo' );
+	}
+}
+
+add_action( 'admin_print_footer_scripts', 'product_listing_remove_wpseo_js', 1 );

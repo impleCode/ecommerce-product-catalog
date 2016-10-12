@@ -18,12 +18,12 @@ $product_id			 = $post->ID;
 ic_save_global( 'product_id', $product_id );
 $current_post_type	 = get_post_type();
 $taxonomy			 = get_current_screen_tax();
+do_action( 'single_product_begin', $product_id, $current_post_type, $taxonomy );
 $single_names		 = get_single_names();
 $single_options		 = get_product_page_settings();
-do_action( 'single_product_begin', $product_id );
 ?>
 
-<article id="product-<?php the_ID(); ?>" <?php post_class( 'al_product responsive type-page product-' . $product_id . ' ' . $single_options[ 'template' ] ); ?>>
+<article id="product-<?php the_ID(); ?>" <?php post_class( 'al_product responsive type-page product-' . $product_id . ' ' . $single_options[ 'template' ] ); ?> itemscope itemtype="http://schema.org/Product">
 	<?php do_action( 'before_product_entry', $post, $single_names ); ?>
 	<div class="entry-content product-entry">
 		<div id="product_details_container">

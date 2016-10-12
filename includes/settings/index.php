@@ -16,8 +16,8 @@ if ( !defined( 'ABSPATH' ) ) {
 require_once(AL_BASE_PATH . '/includes/settings/settings-functions.php'); // }
 
 require_once(AL_BASE_PATH . '/includes/settings/general.php' );
-require_once(AL_BASE_PATH . '/includes/settings/attributes.php' );
-require_once(AL_BASE_PATH . '/includes/settings/shipping.php' );
+//require_once(AL_BASE_PATH . '/includes/settings/attributes.php' );
+//require_once(AL_BASE_PATH . '/includes/settings/shipping.php' );
 require_once(AL_BASE_PATH . '/includes/settings/custom-design.php' );
 require_once(AL_BASE_PATH . '/includes/settings/custom-names.php' );
 require_once(AL_BASE_PATH . '/includes/settings/csv.php' );

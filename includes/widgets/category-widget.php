@@ -36,11 +36,11 @@ class product_cat_widget extends WP_Widget {
 			$d					 = !empty( $instance[ 'dropdown' ] ) ? '1' : '0';
 
 			echo $args[ 'before_widget' ];
-			if ( $title )
+			if ( $title ) {
 				echo $args[ 'before_title' ] . $title . $args[ 'after_title' ];
+			}
 
 			$cat_args = array( 'orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h, 'taxonomy' => 'al_product-cat' );
-
 			if ( $d ) {
 				if ( is_plural_form_active() ) {
 					$names	 = get_catalog_names();
@@ -53,15 +53,15 @@ class product_cat_widget extends WP_Widget {
 				?>
 
 				<script type='text/javascript'>
-				    /* <![CDATA[ */
-				    var dropdown = document.getElementById( "cat" );
-				    function onCatChange() {
-				        if ( dropdown.options[dropdown.selectedIndex].value != '' ) {
-				            location.href = "<?php echo home_url(); ?>/?al_product-cat=" + dropdown.options[dropdown.selectedIndex].value;
-				        }
-				    }
-				    dropdown.onchange = onCatChange;
-				    /* ]]> */
+					/* <![CDATA[ */
+					var dropdown = document.getElementById( "cat" );
+					function onCatChange() {
+						if ( dropdown.options[dropdown.selectedIndex].value != '' ) {
+							location.href = "<?php echo home_url(); ?>/?al_product-cat=" + dropdown.options[dropdown.selectedIndex].value;
+						}
+					}
+					dropdown.onchange = onCatChange;
+					/* ]]> */
 				</script>
 
 				<?php
@@ -143,12 +143,14 @@ class my_Walker_CategoryDropdown extends Walker_CategoryDropdown {
 
 		$cat_name = apply_filters( 'list_cats', $category->name, $category );
 		$output .= "\t<option class=\"level-$depth\" value=\"" . $category->slug . "\"";
-		if ( $category->term_id == isset( $args[ 'selected' ] ) ? $args[ 'selected' ] : '' )
+		if ( $category->term_id == isset( $args[ 'selected' ] ) ? $args[ 'selected' ] : '' ) {
 			$output .= ' selected="selected"';
+		}
 		$output .= '>';
 		$output .= $pad . $cat_name;
-		if ( isset( $args[ 'show_count' ] ) )
+		if ( !empty( $args[ 'show_count' ] ) ) {
 			$output .= '&nbsp;&nbsp;(' . $category->count . ')';
+		}
 		if ( isset( $args[ 'show_last_update' ] ) ) {
 			$format = 'Y-m-d';
 			$output .= '&nbsp;&nbsp;' . gmdate( $format, $category->last_update_timestamp );

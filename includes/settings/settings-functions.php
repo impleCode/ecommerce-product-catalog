@@ -142,10 +142,10 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 		return echo_ic_setting( $return, $echo );
 	}
 
-	function implecode_settings_textarea( $option_label, $option_name, $option_value, $echo = 1 ) {
+	function implecode_settings_textarea( $option_label, $option_name, $option_value, $echo = 1, $attr = null ) {
 		$return = '<tr>';
 		$return .= '<td>' . $option_label . ':</td>';
-		$return .= '<td><textarea name="' . $option_name . '">' . esc_textarea( $option_value ) . '</textarea></td>';
+		$return .= '<td><textarea name="' . $option_name . '" ' . $attr . '>' . esc_textarea( $option_value ) . '</textarea></td>';
 		$return .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
@@ -243,4 +243,32 @@ if ( !function_exists( 'implecode_settings_text_color' ) ) {
 		return echo_ic_setting( $return, $echo );
 	}
 
+}
+
+/**
+ * Returns single catalog item name
+ *
+ * @return type
+ */
+function ic_catalog_item_name( $plural = true, $uppercase = false ) {
+	if ( is_plural_form_active() ) {
+		$names = get_catalog_names();
+		if ( $plural ) {
+			$item_name = $names[ 'plural' ];
+		} else {
+			$item_name = $names[ 'singular' ];
+		}
+	} else {
+		if ( $plural ) {
+			$item_name = __( 'items', 'ecommerce-product-catalog' );
+		} else {
+			$item_name = __( 'item', 'ecommerce-product-catalog' );
+		}
+	}
+	if ( $uppercase ) {
+		$item_name = ic_ucfirst( $item_name );
+	} else {
+		$item_name = ic_lcfirst( $item_name );
+	}
+	return $item_name;
 }

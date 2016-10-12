@@ -38,7 +38,6 @@ function product_settings_list() {
 
 add_action( 'admin_init', 'product_settings_list', 20 );
 
-require_once( AL_BASE_PATH . '/config/currencies.php' );
 require_once( AL_BASE_PATH . '/templates/themes/default-theme.php' );
 require_once( AL_BASE_PATH . '/templates/themes/classic-list.php' );
 require_once( AL_BASE_PATH . '/templates/themes/classic-grid.php' );
@@ -47,7 +46,7 @@ function product_settings() {
 	?>
 
 	<div id="implecode_settings" class="wrap">
-		<h2><?php _e( 'Settings', 'ecommerce-product-catalog' ) ?> - impleCode eCommerce Product Catalog</h2>
+		<h2><?php _e( 'Settings', 'ecommerce-product-catalog' ) ?> - impleCode <?php echo IC_CATALOG_PLUGIN_NAME ?></h2>
 		<h2 class="nav-tab-wrapper">
 			<?php do_action( 'settings-menu' ); ?>
 		</h2>
@@ -229,7 +228,7 @@ function ic_bug_report() {
 		<div class="doc-name green-box">' .
 	__( 'Do you have a problem?', 'ecommerce-product-catalog' ) . '</div>
 		<div class="doc-description">' . __( 'All bug reports and support tickets are tracked on a daily basis.', 'ecommerce-product-catalog' ) . '</div>
-			<div class="doc-description">' . __( 'Feel free to submit a ticket if you think that you found a bug or you have a problem while using eCommerce Product Catalog.', 'ecommerce-product-catalog' ) . '</div>
+			<div class="doc-description">' . sprintf( __( 'Feel free to submit a ticket if you think that you found a bug or you have a problem while using %s.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) . '</div>
 		<div class="doc-button"><a href="https://wordpress.org/support/plugin/ecommerce-product-catalog"><input class="doc_button classic-button" type="button" value="' . __( 'Report a Problem', 'ecommerce-product-catalog' ) . '"></a></div>
 		<a title="' . __( 'Click the button to visit support forum.', 'ecommerce-product-catalog' ) . '" href="https://wordpress.org/support/plugin/ecommerce-product-catalog" class="background-url"></a>
 		</div></div>';

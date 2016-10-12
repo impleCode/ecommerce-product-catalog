@@ -42,12 +42,13 @@ function product_cat_shortcode( $atts ) {
 	$available_args						 = apply_filters( 'show_categories_shortcode_args', array(
 		'exclude'			 => array(),
 		'include'			 => array(),
-		'archive_template'	 => get_option( 'archive_template', 'default' ),
+		'archive_template'	 => get_product_listing_template(),
 		'parent'			 => '',
 		'sort'				 => 0,
 		'shortcode_query'	 => 'yes',
 		'orderby'			 => 'name',
-		'order'				 => 'ASC'
+		'order'				 => 'ASC',
+		'per_row'			 => get_current_category_per_row()
 	), $atts );
 	if ( $available_args[ 'orderby' ] == 'none' ) {
 		$available_args[ 'orderby' ] = 'include';
@@ -64,6 +65,10 @@ function product_cat_shortcode( $atts ) {
 	$cat_shortcode_query[ 'enable' ] = $args[ 'shortcode_query' ];
 	$product_sort					 = intval( $args[ 'sort' ] );
 	$inside							 = '';
+	$per_row						 = intval( $args[ 'per_row' ] );
+	if ( !empty( $per_row ) ) {
+		ic_save_global( 'shortcode_per_row', $per_row );
+	}
 	if ( $args[ 'parent' ] == '' && empty( $args[ 'include' ] ) ) {
 		$old_args			 = $args;
 		$args[ 'parent' ]	 = 0;
@@ -85,13 +90,12 @@ function product_cat_shortcode( $atts ) {
 		ic_save_global( 'current_product_archive_template', $args[ 'archive_template' ] );
 		ob_start();
 		do_action( 'before_category_list', $args[ 'archive_template' ] );
-		$inside	 = ob_get_contents();
-		ob_end_clean();
-		//$inside .= $div . $ready;
-		//$inside .= '</div>';
+		$inside	 = ob_get_clean();
 		ob_start();
 		ic_show_template_file( 'product-listing/categories-listing.php' );
 		$inside .= ob_get_clean();
+		ic_delete_global( 'current_product_categories' );
+		ic_delete_global( 'current_product_archive_template' );
 	}
 	reset_row_class();
 	return $inside;
@@ -140,55 +144,6 @@ function ic_product_name( $atts ) {
 	return get_product_name( $args[ 'product' ] );
 }
 
-add_shortcode( 'product_price', 'ic_product_price' );
-
-/**
- * Shows product price
- * @param type $atts
- * @return string
- */
-function ic_product_price( $atts ) {
-	$args	 = shortcode_atts( apply_filters( 'product_price_shortcode_args', array(
-		'product'	 => get_the_ID(),
-		'formatted'	 => 1,
-	) ), $atts );
-	$price	 = apply_filters( 'shortcode_product_price', product_price( $args[ 'product' ] ), $args );
-	if ( !empty( $price ) && $args[ 'formatted' ] == 1 ) {
-		$price = price_format( $price );
-	}
-	return $price;
-}
-
-add_shortcode( 'product_price_table', 'ic_product_price_table' );
-
-/**
- * Shows product price table
- *
- * @param type $atts
- * @return string
- */
-function ic_product_price_table( $atts ) {
-	$args = shortcode_atts( array(
-		'product' => get_the_ID(),
-	), $atts );
-	return get_product_price_table( $args[ 'product' ] );
-}
-
-add_shortcode( 'product_price_label', 'product_price_label_shortcode' );
-
-/**
- * Defines product price label shortcode
- *
- * @param type $atts
- * @return type
- */
-function product_price_label_shortcode( $atts ) {
-	$args			 = shortcode_atts( apply_filters( 'product_price_label_shortcode_args', array() ), $atts );
-	$single_names	 = get_single_names();
-	$label			 = $single_names[ 'product_price' ];
-	return apply_filters( 'shortcode_product_price_label', $label, $args );
-}
-
 add_shortcode( 'product_description', 'ic_product_description' );
 
 /**
@@ -219,67 +174,6 @@ function ic_product_short_description( $atts ) {
 	), $atts );
 	$shortdesc	 = get_product_short_description( $args[ 'product' ] );
 	return apply_filters( 'product_short_description', $shortdesc );
-}
-
-add_shortcode( 'product_attributes', 'ic_product_attributes' );
-
-/**
- * Shows product attributes table
- *
- * @param type $atts
- * @return string
- */
-function ic_product_attributes( $atts ) {
-	$args = shortcode_atts( array(
-		'product' => get_the_ID(),
-	), $atts );
-	return get_product_attributes( $args[ 'product' ] );
-}
-
-add_shortcode( 'product_sku', 'ic_product_sku' );
-
-/**
- * Shows product SKU value
- *
- * @param type $atts
- * @return string
- */
-function ic_product_sku( $atts ) {
-	$args = shortcode_atts( array(
-		'product' => get_the_ID(),
-	), $atts );
-	return get_product_sku( $args[ 'product' ] );
-}
-
-add_shortcode( 'product_sku_table', 'ic_product_sku_table' );
-
-/**
- * Shows product SKU value
- *
- * @param type $atts
- * @return string
- */
-function ic_product_sku_table( $atts ) {
-	$args			 = shortcode_atts( array(
-		'product' => get_the_ID(),
-	), $atts );
-	$single_names	 = get_single_names();
-	return get_product_sku_table( $args[ 'product' ], $single_names );
-}
-
-add_shortcode( 'product_shipping', 'ic_product_shipping' );
-
-/**
- * Shows product shipping table
- *
- * @param type $atts
- * @return string
- */
-function ic_product_shipping( $atts ) {
-	$args = shortcode_atts( array(
-		'product' => get_the_ID(),
-	), $atts );
-	return get_shipping_options_table( $args[ 'product' ] );
 }
 
 add_shortcode( 'product_gallery', 'ic_product_gallery' );

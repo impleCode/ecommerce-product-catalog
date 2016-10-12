@@ -31,12 +31,12 @@ if ( !function_exists( 'implecode_support_menu' ) ):
 			        jQuery( '.settings-submenu a#support-settings' ).addClass( 'current' );
 				</script>
 				<h2><?php _e( 'impleCode Support', 'ecommerce-product-catalog' ); ?></h2>
-				<p><?php _e( '<b>eCommerce Product Catalog is free to use</b>. That\'s great! It\'s a pleasure to serve it to you. Let\'s keep it free forever!', 'ecommerce-product-catalog' ); ?></p><?php /*
+				<p><?php echo sprintf( __( '<b>%s is free to use</b>. That\'s great! It\'s a pleasure to serve it to you. Let\'s keep it free forever!', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ); ?></p><?php /*
 			  <p><?php _e('If you found eCommerce Product Catalog useful or it saved you some amount of time please consider to support its development by buying premium support or an extension. This is better than a donation, because you get even more value with it. All the income from premium support and extensions goes for eCommerce Product Catalog and its extensions development. Everybody wins.','ecommerce-product-catalog'); ?></p> */ ?>
 				<p><?php _e( 'This awesome plugin is developed under impleCode brand which is a legally operating company. It means that <b>you can be assured that the high quality development will be continuous</b>.', 'ecommerce-product-catalog' ) ?></p>
 				<div style="clear: both; height: 10px;"></div>
 				<div class="extension premium-support">
-					<a href="https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link"><h3><span>eCommerce Product Catalog Premium</span></h3></a>
+					<a href="https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link"><h3><span><?php echo IC_CATALOG_PLUGIN_NAME ?> Premium</span></h3></a>
 					<p><?php _e( '<b>One year</b> of high quality and speedy email', 'ecommerce-product-catalog' ) ?> <a href="https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link">Premium Support</a> <?php _e( 'from impleCode support team for just', 'ecommerce-product-catalog' ) ?> $19.99.</p>
 					<form style="text-align: center; position: relative; top: 10px;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 						<input type="hidden" name="cmd" value="_s-xclick">
@@ -46,13 +46,13 @@ if ( !function_exists( 'implecode_support_menu' ) ):
 					</form>
 				</div>
 				<div class="extension premium-support">
-					<a href="https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link#extensions"><h3><span>eCommerce Product Catalog Extensions</span></h3></a>
-					<p><?php echo sprintf( __( '<b>Extensions</b> provide additional useful features. They improve eCommerce Product Catalog in a field of <a href="%1$s">SEO</a>, <a href="%3$s">Productivity</a>, <a href="%2$s">Usability</a> and <a href="%4$s">Conversion</a>.', 'ecommerce-product-catalog' ), esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-seo#seo_usability_boosters' ), esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-usability#seo_usability_boosters' ), esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-productivity#productivity_boosters' ), esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-conversion#conversion_boosters' ) ) ?></p>
+					<a href="https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link#extensions"><h3><span><?php echo IC_CATALOG_PLUGIN_NAME ?> Extensions</span></h3></a>
+					<p><?php echo sprintf( __( '<b>Extensions</b> provide additional useful features. They improve %s in a field of <a href="%1$s">SEO</a>, <a href="%3$s">Productivity</a>, <a href="%2$s">Usability</a> and <a href="%4$s">Conversion</a>.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-seo#seo_usability_boosters' ), esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-usability#seo_usability_boosters' ), esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-productivity#productivity_boosters' ), esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link-conversion#conversion_boosters' ) ) ?></p>
 					<p><a href="https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=extensions-link#extensions"><input style="cursor:pointer;" class="button-primary" type="button" value="Check out the extensions &raquo;"></a></p>
 				</div>
 				<div style="clear: both; height: 10px;"></div>
 				<h2><?php _e( 'Premium Support Free Additions', 'ecommerce-product-catalog' ) ?></h2>
-				<p><?php _e( 'Apart of fast, confidential email support <b>every premium support member will receive some advanced features</b> for eCommerce Product Catalog as a free welcome gift.', 'ecommerce-product-catalog' ); ?></p>
+				<p><?php echo sprintf( __( 'Apart of fast, confidential email support <b>every premium support member will receive some advanced features</b> for %s as a free welcome gift.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ); ?></p>
 				<h4><?php _e( 'Premium Features:', 'ecommerce-product-catalog' ) ?></h4>
 				<ol>
 					<li><?php _e( '<b>Product tags</b> - which is considered as SEO booster if used properly', 'ecommerce-product-catalog' ) ?>;</li>
@@ -64,9 +64,9 @@ if ( !function_exists( 'implecode_support_menu' ) ):
 				<p><?php _e( 'Please just go ahead and use the Buy Now button above to receive the premium support service and the free additions immediately. You will receive the premium extension on your PayPal email address immediately after the payment is confirmed.', 'ecommerce-product-catalog' ); ?></p>
 				<p><?php echo sprintf( __( 'If you need to get it on different email address please use the <a href="%s">impleCode website to order the premium support</a>. It will let you set different email address than the one for PayPal.', 'ecommerce-product-catalog' ), esc_url( 'https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link-1' ) ); ?></p>
 				<h2><?php _e( 'Theme Integration', 'ecommerce-product-catalog' ) ?></h2>
-				<p><?php echo sprintf( __( 'As you may already know some themes may need Theme Integration to fully support eCommerce Product Catalog. I wrote this <a href="%1$s">theme integrations guide</a>, however to make it even easier you will get <a href="%2$s">Advanced Theme Integration</a> service for free if you choose <a href="%3$s">Premium Support</a> service.', 'ecommerce-product-catalog' ), esc_url( 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-support-tab&key=integration-link' ), esc_url( 'https://implecode.com/wordpress/plugins/advanced-theme-integration/#cam=catalog-support-tab&key=integration-service-link' ), esc_url( 'https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link-2' ) ) ?></p>
-				<h2><?php _e( 'eCommerce Product Catalog documentation', 'ecommerce-product-catalog' ) ?></h2>
-				<p><?php echo sprintf( __( '<b>eCommerce Product Catalog</b> documentation is being developed <a href="%1$s">here</a>. For questions about eCommerce Product Catalog please use <a href="%2$s">support forum</a> or <a href="%3$s">Premium Support service</a>.', 'ecommerce-product-catalog' ), esc_url( 'https://implecode.com/wordpress/product-catalog/#cam=catalog-support-tab&key=docs-link' ), esc_url( 'http://wordpress.org/support/plugin/ecommerce-product-catalog' ), esc_url( 'https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link-3' ) ) ?></p>
+				<p><?php echo sprintf( __( 'As you may already know some themes may need Theme Integration to fully support %s. I wrote this <a href="%s">theme integrations guide</a>, however to make it even easier you will get <a href="%s">Advanced Theme Integration</a> service for free if you choose <a href="%s">Premium Support</a> service.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, esc_url( 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=catalog-support-tab&key=integration-link' ), esc_url( 'https://implecode.com/wordpress/plugins/advanced-theme-integration/#cam=catalog-support-tab&key=integration-service-link' ), esc_url( 'https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link-2' ) ) ?></p>
+				<h2><?php echo sprintf( __( '%s documentation', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) ?></h2>
+				<p><?php echo sprintf( __( '<b>%4$s</b> documentation is being developed <a href="%1$s">here</a>. For questions about %4$s please use <a href="%2$s">support forum</a> or <a href="%3$s">Premium Support service</a>.', 'ecommerce-product-catalog' ), esc_url( 'https://implecode.com/wordpress/product-catalog/#cam=catalog-support-tab&key=docs-link' ), esc_url( 'http://wordpress.org/support/plugin/ecommerce-product-catalog' ), esc_url( 'https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link-3' ), IC_CATALOG_PLUGIN_NAME ) ?></p>
 				<?php /*
 				  <h2><?php _e('Plugin Extensions', 'ecommerce-product-catalog') ?></h2>
 				  <p><?php _e('For many users eCommerce Product Catalog standard features is more than enough. However for more specialized needs there are some extensions available. eCommerce Product Catalog extensions are divided into:', 'ecommerce-product-catalog') ?></p>
@@ -110,7 +110,7 @@ if ( !function_exists( 'implecode_support_menu' ) ):
 				  </tbody>
 				  </table> */ ?>
 				<p style="border: 1px solid; padding: 10px 10px 26px 10px;">
-					<a style="float: left; margin-right: 10px;" href="https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=donation-support-link"><img height="60px" src="<?php echo AL_PLUGIN_BASE_PATH . 'img/do-not-donate.png' ?>" /></a><?php echo sprintf( __( '<b>Please do not donate</b> (we finance the eCommerce Product Catalog development from <a href="%1$s">premium support</a> and <a href="%2$s">extensions</a>)', 'ecommerce-product-catalog' ), esc_url( 'https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=donation-support-link' ), esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=donation-extensions-link#extensions' ) ) ?>.
+					<a style="float: left; margin-right: 10px;" href="https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=donation-support-link"><img height="60px" src="<?php echo AL_PLUGIN_BASE_PATH . 'img/do-not-donate.png' ?>" /></a><?php echo sprintf( __( '<b>Please do not donate</b> (we finance the %3$s development from <a href="%1$s">premium support</a> and <a href="%2$s">extensions</a>)', 'ecommerce-product-catalog' ), esc_url( 'https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=donation-support-link' ), esc_url( 'https://implecode.com/wordpress/plugins/?cam=catalog-support-tab&key=donation-extensions-link#extensions' ), IC_CATALOG_PLUGIN_NAME ) ?>.
 				</p>
 			</div>
 			<div class="helpers"><div class="wrapper"><?php
@@ -160,6 +160,10 @@ if ( !function_exists( 'implecode_support_menu' ) ):
 	function ic_disable_license_message() {
 		remove_action( 'admin_init', 'check_if_license_exists', 99 );
 	}
+
+
+
+
 
 
 

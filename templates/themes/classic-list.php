@@ -72,7 +72,7 @@ function get_list_archive_theme( $post, $archive_template = null ) {
 		$return .= '<div class="product-name">' . $product_name . '</div>';
 		$return .= '<div class="product-short-descr"><p>' . c_list_desc( $product_id ) . '</p></div>';
 		$classic_list_settings	 = get_classic_list_settings();
-		if ( $classic_list_settings[ 'attributes' ] == 1 ) {
+		if ( $classic_list_settings[ 'attributes' ] == 1 && function_exists( 'product_attributes_number' ) ) {
 			$attributes_number = product_attributes_number();
 			if ( $attributes_number > 0 && has_product_any_attributes( $product_id ) ) {
 				$max_listing_attributes	 = apply_filters( 'max_product_listing_attributes', $classic_list_settings[ 'attributes_num' ] );
@@ -91,6 +91,7 @@ function get_list_archive_theme( $post, $archive_template = null ) {
 				$return .= '</table></div>';
 			}
 		}
+		$return = apply_filters( 'classic_list_entry_bottom', $return );
 		$return .= '</div>';
 	}
 	return $return;

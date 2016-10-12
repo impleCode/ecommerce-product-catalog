@@ -3,18 +3,18 @@ Contributors: impleCode, ndre
 Donate link: https://implecode.com/wordpress/plugins/premium-support/#cam=wordpress-org-catalog-page&key=donate-link
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue, catalog of goods, collection, catalogs, digital goods, e-shop, ecomerce, list, listing, online shop, online store, products catalog, sell products, selling, shopping cart, woocommerce catalog, WordPress shopping cart, wordpress store, wp catalog, wp e-commerce, cart
 Requires at least: 3.5
-Tested up to: 4.5
-Stable tag: 2.5.16
+Tested up to: 4.6
+Stable tag: 2.5.22
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
-100% responsive eCommerce Product Catalog plugin is a powerful and free software for beautiful products and services management on WordPress website.
+eCommerce Product Catalog 100% responsive plugin is a powerful and free software for beautiful products and services management on WordPress website.
 
 == Description ==
 
-Reward your WordPress website with a beautiful and easy to use 100% responsive product catalogue plugin. 
+Reward your WordPress website with a beautiful and easy to use 100% responsive product catalogue plugin.
 
-eCommerce Product Catalog plugin is __powerful, highly customizable and simple solution__ that __works with any theme and most of WordPress plugins__. It will make your web development even more effective. 
+eCommerce Product Catalog plugin is __powerful, highly customizable and simple solution__ that __works with any theme and most of WordPress plugins__. It will make your web development even more effective.
 
 __Live Front-end & Back-end Demo -->__ Make sure to visit eCommerce Product Catalog [live demo](http://demo.implecode.com?cam=wordpress-org-catalog-page&key=demo-link "eCommerce Product Catalog Live Demo") with multiple possible configurations.
 
@@ -24,9 +24,9 @@ Expect __high quality code, beautiful design and detailed documentation__ which 
 
 https://www.youtube.com/watch?v=FgSOAgsnDqA
 
-This eCommerce plugin is a great solution for those who look for an easy way to implement product management to the WordPress website. 
+This eCommerce plugin is a great solution for those who look for an easy way to implement product management to the WordPress website.
 
-eCommerce Product Catalog is supported on [WordPress forums](https://wordpress.org/support/plugin/ecommerce-product-catalog "eCommerce Product Catalog Forum"), [Premium Support](https://implecode.com/wordpress/plugins/premium-support/?cam=wordpress-org-catalog-page&key=premium-support-link "eCommerce Product Catalog Premium Support") and has a [documentation](https://implecode.com/docs/ecommerce-product-catalog/?cam=wordpress-org-catalog-page&key=docs-link "eCommerce Product Catalog Documentation") publicly available. 
+eCommerce Product Catalog is supported on [WordPress forums](https://wordpress.org/support/plugin/ecommerce-product-catalog "eCommerce Product Catalog Forum"), [Premium Support](https://implecode.com/wordpress/plugins/premium-support/?cam=wordpress-org-catalog-page&key=premium-support-link "eCommerce Product Catalog Premium Support") and has a [documentation](https://implecode.com/docs/ecommerce-product-catalog/?cam=wordpress-org-catalog-page&key=docs-link "eCommerce Product Catalog Documentation") publicly available.
 
 This eCommerce store like solution works with any theme and most of WordPress plugins. It is based on custom post types.
 
@@ -42,7 +42,7 @@ Read all about [eCommerce Product Catalog](https://implecode.com/wordpress/produ
 * __Lightbox on product image__ - Display product image in a nice lightbox window
 * __Product Attributes__ - Specify the attributes for each product
 * __Product Shipping__ - Specify shipping options for each product
-* __Color & Size Change__ - Choose product catalog elements color and size 
+* __Color & Size Change__ - Choose product catalog elements color and size
 * __3 Product Listing Templates__ - Choose from 3 completely different product listing templates
 * __2 Product Page Templates__ - Choose from 2 completely different product page templates
 * __25 currencies available__ - Choose from 25 different currencies or just insert custom currency
@@ -63,7 +63,7 @@ Read all about [eCommerce Product Catalog](https://implecode.com/wordpress/produ
 
 Use the shortcode to show products whenever needed on the website. Just paste on any page: [show_products] and watch all products in place of the shortcode.
 
-To show products from just one category, use: [show_products category="2"] where 2 is category ID (it's possible to display several categories by inserting comma separated IDs). 
+To show products from just one category, use: [show_products category="2"] where 2 is category ID (it's possible to display several categories by inserting comma separated IDs).
 
 To display products by IDs, use: [show_products product="5"], where 5 is product ID.
 
@@ -77,7 +77,7 @@ Easily disable price from both front-end and back-end by switching one setting.
 
 = Smart Widgets =
 
-eCommerce Product Catalog comes with two widgets: 
+eCommerce Product Catalog comes with two widgets:
 
 __1. Product Categories__ - show all product categories in CSS customisable list. The widget has also several customisation settings.
 
@@ -85,7 +85,7 @@ __2. Product Search__ - generates a search form that allows to search the produc
 
 = eCommerce Product Catalog Extensions =
 
-This eCommerce plugin is extensible. The feature packed extensions is that what makes eCommerce Product Catalog plugin a more specialized solution. [Browse the extensions](https://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extensions-link#extensions "eCommerce Product Catalog extensions on implecode.com"). 
+This eCommerce plugin is extensible. The feature packed extensions is that what makes eCommerce Product Catalog plugin a more specialized solution. [Browse the extensions](https://implecode.com/wordpress/plugins/?cam=wordpress-org-catalog-page&key=extensions-link#extensions "eCommerce Product Catalog extensions on implecode.com").
 
 Some extensions examples:
 
@@ -111,7 +111,7 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 * English - default, always included
 * Bosnian - Thanks to Faruk
 * Bulgarian - Thanks to Valentina & Koceto
-* Croatian - Thanks to Vedran 
+* Croatian - Thanks to Vedran
 * Dutch - Thanks to Pieter & Chippie & Maas & Tim
 * Finnish - Thanks to Hannu
 * French - Thanks to Denis & James & Antoine
@@ -199,7 +199,7 @@ Yes, but it is not a store. See the question below.
 
 = What's the difference between eCommerce Product Catalog and classic ecommerce plugin (e.g. store)? =
 
-This is not a store. It's main purpose is to present products or services on the website in a convenient and easy to manage way. It's more lightweight than most of eCommerce Plugins. It's commonly used for company pages or blogs with product catalogue. It's easily CSS customisable and has 3 themes for product listings in the default version. It can be extended to work with product quotes (for products without price), order forms (for product with price), payment gateways, PDF specifications and even separate catalogues with separate menus in admin. 
+This is not a store. It's main purpose is to present products or services on the website in a convenient and easy to manage way. It's more lightweight than most of eCommerce Plugins. It's commonly used for company pages or blogs with product catalogue. It's easily CSS customisable and has 3 themes for product listings in the default version. It can be extended to work with product quotes (for products without price), order forms (for product with price), payment gateways, PDF specifications and even separate catalogues with separate menus in admin.
 
 == Screenshots ==
 1. Product edit/add screen.
@@ -212,7 +212,41 @@ This is not a store. It's main purpose is to present products or services on the
 
 == Changelog ==
 
-Use [impleCode Translate Project](http://translate.implecode.com/projects/ecommerce-product-catalog/#cam=wordpress-org-changelog&key=epc-translate "eCommerce Product Catalog Translation Project") to add new or fix the existing translations. 
+Use [impleCode Translate Project](http://translate.implecode.com/projects/ecommerce-product-catalog/#cam=wordpress-org-changelog&key=epc-translate "eCommerce Product Catalog Translation Project") to add new or fix the existing translations.
+
+= 2.5.23 - 11/10/2016 =
+
+* Tweak - compatibility with free Reviews Plus extension that adds reviews support for products
+
+= 2.5.22 - 04/10/2016 =
+
+* Tweak - multiple hooks added for better customizability
+* Tweak - detect correct export/import separator
+
+= 2.5.21 - 27/09/2016 =
+
+* Tweak - code improvements for even better organization and performance
+* Localisation - Dutch language improved thanks to Hugo on impleCode Translate Project
+* Localisation - Romanian language improved thanks to Cojocar Alexandru  on impleCode Translate Project
+
+= 2.5.20 - 08/09/2016 =
+
+* Fix - product attributes shortcodes fixed
+
+= 2.5.19 - 07/09/2016 =
+
+* Tweak - ability to set empty shortcode output text
+* Tweak - mutliple code improvements for even better organization and performance
+
+= 2.5.18 - 25/07/2016 =
+
+* Tweak - category per row setting also for classic grid
+
+= 2.5.17 - 25/07/2016 =
+
+* Tweak - ability to set different number of categories per row
+* Tweak - new per-row attribute for shortcodes
+* Fix - ability to disable the product count on category widget
 
 = 2.5.16 - 06/07/2016 =
 
@@ -343,7 +377,7 @@ More about new page template switcher: https://implecode.com/new-product-page-te
 = 2.4.21 - 01/02/2016 =
 
 * Tweak - ability to edit Home element label in breadcrumbs
-* Fix - hide the review notice forever 
+* Fix - hide the review notice forever
 * Fix - wp-session PHP errors fixed
 * Localisation - Hungarian language improved thanks to Peter on impleCode Translate Project
 * Localisation - Spanish language improved thanks to Antonio on impleCode Translate Project
@@ -455,7 +489,7 @@ Update details: https://implecode.com/ecommerce-product-catalog-2-4-15/
 
 * Tweak - translatable price filter label
 
-= 2.4.2 - 21/09/2015 = 
+= 2.4.2 - 21/09/2015 =
 
 * Tweak - the product filters bar is now empty by default
 * Tweak - compatibility styling for product filters bar widgets
@@ -465,12 +499,12 @@ Update details: https://implecode.com/ecommerce-product-catalog-2-4-15/
 * Localisation - Russian language improved thanks to Evgen on impleCode Translate Project
 * Localisation - Indonesian language improved thanks to Bahar Sobari on impleCode Translate Project
 
-= 2.4.1 - 14/09/2015 = 
+= 2.4.1 - 14/09/2015 =
 
 * Tweak - Error info if product export failed
 * Tweak - The categories URLs are hierarchical now (for child categories) - the old URLs will keep work however we recommend to set up 301 redirects
 
-= 2.4.0 - 03/09/2015 = 
+= 2.4.0 - 03/09/2015 =
 
 * Feature - new product filters bar (if you place widgets inside filters bar the sorting drop down will be replaced with widgets content)
 * Feature - product price filter widget
@@ -481,7 +515,7 @@ Update details: https://implecode.com/ecommerce-product-catalog-2-4-15/
 
 See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 
-= 2.3.12 - 24/08/2015 = 
+= 2.3.12 - 24/08/2015 =
 
 * Tweak - better responsive design on smallest screens
 * Tweak - current menu highlighting on some themes works better
@@ -489,7 +523,7 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - Russian language improved thanks to Александр on impleCode Translate Project
 * Localisation - German language improved thanks to Oliver on impleCode Translate Project
 
-= 2.3.11 - 17/08/2015 = 
+= 2.3.11 - 17/08/2015 =
 
 * Fix - product page titles may have been mixed on some configurations, it's fixed now
 * Fix - not showing All Products header for shortcode output anymore
@@ -497,18 +531,18 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - Polish language improved thanks to Marek on impleCode Translate Project
 * Localisation - Dutch language improved thanks to Jehan on impleCode Translate Project
 
-= 2.3.10 - 10/08/2015 = 
+= 2.3.10 - 10/08/2015 =
 
 * Tweak - support for pagination on home page catalog
 * Localisation - Polish language improved thanks to Marek on impleCode Translate Project
 
-= 2.3.9 - 03/08/2015 = 
+= 2.3.9 - 03/08/2015 =
 
 * Tweak - support for theme sidebar with automatic adjustment
 * Localisation - Portuguese language improved thanks to Fábio on impleCode Translate Project
 * Localisation - Russian language introduced thanks to Stanly on impleCode Translate Project
 
-= 2.3.8 - 27/07/2015 = 
+= 2.3.8 - 27/07/2015 =
 
 * Fix - attributes values with double quotes now show fine
 * Fix - uninstall function fixed
@@ -517,49 +551,49 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - French language improved thanks to Clarine on impleCode Translate Project
 * Localisation - Swedish language introduced thanks to Anders on impleCode Translate Project
 
-= 2.3.7 - 20/07/2015 = 
+= 2.3.7 - 20/07/2015 =
 
 * Tweak - new show_products shortcode attributes order & orderby https://implecode.com/docs/ecommerce-product-catalog/product-shortcodes/
 * Tweak - new shortcodes introduced see https://implecode.com/docs/ecommerce-product-catalog/product-catalog-shortcodes/
 * Localisation - Spanish language improved thanks to César on impleCode Translate Project
 * Localisation - Arabic language improved thanks to Supermekki on impleCode Translate Project
 
-= 2.3.6 - 13/07/2015 = 
+= 2.3.6 - 13/07/2015 =
 
 * Tweak - system tools added - ability to delete all products or categories and restore settings to defaults
 * Tweak - option to delete all products on uninstall
 * Tweak - theme integration wizard improved - now you can use the wizard to adjust the look (apart of automatic adjustment)
 * Localisation - Arabic language introduced thanks to Supermekki on impleCode Translate Project
 
-= 2.3.5 - 07/07/2015 = 
+= 2.3.5 - 07/07/2015 =
 
 * Tweak - support for custom product page and custom product listing templates (add a folder named "implecode" to your theme with product-page.php and/or product-listing.php files)
 * Tweak - support for product listing in simple mode
 * Localisation - Dutch language improved thanks to Sander on impleCode Translate Project
 
-= 2.3.4 - 29/06/2015 = 
+= 2.3.4 - 29/06/2015 =
 
 * Tweak - new shortcode attribute: exclude (allows to exclude products by ID)
 * Fix - stop showing sorting drop down by default when using shortcode
 * Fix - HTML markup fix for categories output (double div)
 
-= 2.3.3 - 23/06/2015 = 
+= 2.3.3 - 23/06/2015 =
 
 * Fix - division by zero warning for some configurations fixed
 * Localisation - Serbian language improved thanks to Branislav on impleCode Translate Project
 
-= 2.3.2 - 15/06/2015 = 
+= 2.3.2 - 15/06/2015 =
 
 * Tweak - SEO settings improved
 * Tweak - Better integration with WPSEO
 
-= 2.3.1 - 08/06/2015 = 
+= 2.3.1 - 08/06/2015 =
 
 * Localisation - Chinese language improved thanks to Thomas on impleCode Translate Project
 * Localisation - Serbian language improved thanks to Sasa on impleCode Translate Project
 * Localisation - Dutch language improved thanks to Chippie on impleCode Translate Project
 
-= 2.3.0 - 01/06/2015 = 
+= 2.3.0 - 01/06/2015 =
 
 * Feature - Ability to show only subcategories on category pages (products will be shown only on assigned category pages)
 * Feature - Product export
@@ -575,22 +609,22 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - Hungarian language introduces thanks to Orsolya on impleCode Translate Project
 * Localisation - Chinese language improved thanks to Suyang on impleCode Translate Project
 
-= 2.2.11 - 11/05/2015 = 
+= 2.2.11 - 11/05/2015 =
 
 * Fix - Twenty Thirteen styling fix
 * Localisation - Romanian language improved thanks to Alex on impleCode Translate Project
 * Localisation - French language improved thanks to Antoine on impleCode Translate Project
 
-= 2.2.10 - 05/05/2015 = 
+= 2.2.10 - 05/05/2015 =
 
 * Tweak - code improvements for even better performance
 * Localisation - Romanian language introduced thanks to Alex on impleCode Translate Project
 
-= 2.2.9 - 30/04/2015 = 
+= 2.2.9 - 30/04/2015 =
 
 * Fix - headers already send error that appeared on certain configurations fixed
 
-= 2.2.8 - 29/04/2015 = 
+= 2.2.8 - 29/04/2015 =
 
 * Fix - price with custom separators fixed
 * Tweak - validation on product settings to avoid some wrong configurations
@@ -606,12 +640,12 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - Portuguese language improved thanks to Giordano on impleCode Translate Project
 * Localisation - Finnish language improved thanks to Sanna-Mari on impleCode Translate Project
 
-= 2.2.7 - 20/04/2015 = 
+= 2.2.7 - 20/04/2015 =
 
 * Fix - no more conflict with recent posts widget
 
 
-= 2.2.6 - 13/04/2015 = 
+= 2.2.6 - 13/04/2015 =
 
 * Tweak - support for shortcodes in product listing labels
 * Fix - auto adjust classic grid in show_categories shortcode
@@ -623,7 +657,7 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - Finnish language improved thanks to Sanna-Mari on impleCode Translate Project
 
 
-= 2.2.5 - 09/04/2015 = 
+= 2.2.5 - 09/04/2015 =
 
 * Tweak - classic grid element width now adjusts to the theme content width. The product listing elements in one row will occupy the full width now
 * Tweak - page load on product listing is now faster because of product images optimisation (this works for all future products, if your want this for the product images that are already uploaded please use the Regenerate Thumbnails free WordPress plugin)
@@ -633,13 +667,13 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Fix - no more changing category templates on plugin update
 * Fix - now it is possible to move the product.js to footer without breaking jQuery scripts
 * Fix - icons in admin work again
-* Fix - category image upload on localhost fixed 
+* Fix - category image upload on localhost fixed
 
-= 2.2.4 - 30/03/2015 = 
+= 2.2.4 - 30/03/2015 =
 
 * Fix - product scripts incompatibility fixed
 
-= 2.2.3 - 30/03/2015 = 
+= 2.2.3 - 30/03/2015 =
 
 * Fix - layout fix on very small screens
 * Fix - color design scheme switch for modern grid fixed
@@ -648,18 +682,18 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - Spanish language improved thanks to Lucia on impleCode Translate Project
 * Localisation - Chinese introduced improved thanks to Yuen Ka Hei on impleCode Translate Project
 
-= 2.2.2 - 23/03/2015 = 
+= 2.2.2 - 23/03/2015 =
 
 * Localisation - Croatian language improved thanks to Giorgos on impleCode Translate Project
 * Localisation - Spanish language improved thanks to Josu on impleCode Translate Project
 * Localisation - Greek language introduced thanks to Giorgos on impleCode Translate Project
 
-= 2.2.1 - 17/03/2015 = 
+= 2.2.1 - 17/03/2015 =
 
 * Fix - font size on modern grid got to small in some cases
 * Fix - product description appears again (in rare cases it was not visible after 2.2.0 update)
 
-= 2.2.0 - 16/03/2015 = 
+= 2.2.0 - 16/03/2015 =
 
 * Feature - ability to set number of products per row for modern grid (this may change the current modern grid size a little but you can go to product settings and adjust it
 * Localisation - Italian language introduced thanks to Fabio by http://translate.implecode.com
@@ -667,7 +701,7 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - Japanese language improved thanks to Diginatu by http://translate.implecode.com
 * Localisation - Russian language improved thanks to Gregory by http://translate.implecode.com
 
-= 2.1.9 - 10/03/2015 = 
+= 2.1.9 - 10/03/2015 =
 
 * Tweak - Limit modern grid width
 * Tweak - ability to edit price in quick edit
@@ -676,24 +710,24 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Tweak - better integration with twenty fifteen theme
 * Localisation - Japanese language introduced thanks to Diginatu by http://translate.implecode.com
 
-= 2.1.8 - 03/03/2015 = 
+= 2.1.8 - 03/03/2015 =
 
 * Fix - no more same product names in Admin
 
-= 2.1.7 - 02/03/2015 = 
+= 2.1.7 - 02/03/2015 =
 
 * Tweak - ability to filter by category in admin
 * Fix - theme calls to page title
 * Fix - limited size of attributes table in modern grid
 * Localisation - Portuguese language improved thanks to  João by http://translate.implecode.com
 
-= 2.1.6 - 23/02/2015 = 
+= 2.1.6 - 23/02/2015 =
 
 * Tweak - better compatibility with old IE versions
 * Tweak - code improvements for even better performance
 * Localisation - Croatian language improved thanks to Vedran
 
-= 2.1.5 - 16/02/2015 = 
+= 2.1.5 - 16/02/2015 =
 
 * Tweak - better compatibility with IE7 and IE8
 * Tweak - improved responsive design
@@ -702,7 +736,7 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - Russian language improved thanks to Alex on impleCode Translate Project
 * Localisation - Portuguese language improved thanks to Goncalo on impleCode Translate Project
 
-= 2.1.4 - 09/02/2015 = 
+= 2.1.4 - 09/02/2015 =
 
 * Tweak - ability to choose catalog name for admin labels (e.g. Flowers instead of Products)
 * Tweak - drag & drop usability improvements in admin
@@ -713,18 +747,18 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 * Localisation - Turkish language introduced thanks to Tahir on impleCode Translate Project
 * Localisation - Russian language improved thanks to Alex on impleCode Translate Project
 
-Thank you for the translations on behalf of all eCommerce Product Catalog users! 
+Thank you for the translations on behalf of all eCommerce Product Catalog users!
 
 Please [post your review](https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform "Post a review on wordpress.org") for eCommerce Product Catalog. This really helps the development and is really motivating :)
 
-= 2.1.3 - 02/02/2015 = 
+= 2.1.3 - 02/02/2015 =
 
 * Localisation - Bulgarian language improved thanks to Koceto on impleCode Translate Project
 * Localisation - Russian language improved thanks to Gregory on impleCode Translate Project
 * Localisation - Czech language introduced thanks to Martin on impleCode Translate Project
 * Localisation - Finnish language introduced thanks to Pekka on impleCode Translate Project
 
-= 2.1.2 - 26/01/2015 = 
+= 2.1.2 - 26/01/2015 =
 
 * Fix - Product Catalog paging numbers points to the top of the page
 * Localisation - French language improved thanks to James on impleCode Translate Project
@@ -736,7 +770,7 @@ Please [post your review](https://wordpress.org/support/view/plugin-reviews/ecom
 
 Thank you on behalf of all eCommerce Product Catalog users!
 
-= 2.1.1 - 19/01/2015 = 
+= 2.1.1 - 19/01/2015 =
 
 * Tweak - the product shortcode does not show sort dropdown by default
 * Localisation - Dutch language introduced thanks to Pieter via translate.implecode.com
@@ -924,7 +958,7 @@ To enable new features go to Product Settings and select appropriate options (on
 
 = 1.5.6 - 04/06/2014 =
 
-* Feature - ability to disable "no image" graphic 
+* Feature - ability to disable "no image" graphic
 
 = 1.5.5 - 28/05/2014 =
 
@@ -943,7 +977,7 @@ To enable new features go to Product Settings and select appropriate options (on
 = 1.5.2 - 12/05/2014 =
 
 * Fix - Hierarchical product category widget now works well
-* Fix - Drop-down product category widget now works as intended 
+* Fix - Drop-down product category widget now works as intended
 
 = 1.5.1 - 05/05/2014 =
 
@@ -982,7 +1016,7 @@ To enable new features go to Product Settings and select appropriate options (on
 
 * Tweak - Search function support when product listing disabled
 * Tweak - Now "Product listing shows at most" setting works also on categories
-* Tweak - automatic permalink flush after options change 
+* Tweak - automatic permalink flush after options change
 * Fix - Some Product Search Widget styling issues resolved
 * Fix - No more problems with attributes table style on certain themes
 

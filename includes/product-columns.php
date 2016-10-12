@@ -14,7 +14,6 @@ if ( !defined( 'ABSPATH' ) ) {
 add_filter( 'manage_edit-al_product_columns', 'add_product_columns' );
 
 function add_product_columns( $product_columns ) {
-	$product_currency = get_currency_settings();
 	//$new_columns			 = $product_columns;
 	foreach ( $product_columns as $index => $column ) {
 		if ( $index == 'cb' ) {
@@ -25,10 +24,6 @@ function add_product_columns( $product_columns ) {
 		} else if ( $index == 'title' ) {
 			$new_columns[ $index ]	 = __( 'Product Name', 'ecommerce-product-catalog' );
 			$new_columns			 = apply_filters( 'product_columns_after_name', $new_columns );
-			if ( $product_currency[ 'price_enable' ] == 'on' ) {
-				$new_columns[ 'price' ] = __( 'Price', 'ecommerce-product-catalog' );
-			}
-			$new_columns = apply_filters( 'product_columns_after_price', $new_columns );
 		} else if ( $index == 'date' ) {
 			$new_columns[ 'taxonomy-al_product-cat' ]	 = __( 'Product Categories', 'ecommerce-product-catalog' );
 			$new_columns[ 'shortcode' ]					 = __( 'Shortcode', 'ecommerce-product-catalog' );
@@ -44,18 +39,12 @@ function add_product_columns( $product_columns ) {
 add_action( 'manage_al_product_posts_custom_column', 'manage_product_columns', 10, 2 );
 
 function manage_product_columns( $column_name, $product_id ) {
-	$price_value = product_price( $product_id );
 	switch ( $column_name ) {
 		case 'id':
 			echo $product_id;
 			break;
 		case 'shortcode':
 			echo '[show_products product="' . $product_id . '"]';
-			break;
-		case 'price':
-			if ( $price_value != '' ) {
-				echo price_format( $price_value );
-			}
 			break;
 		case 'image':
 			echo the_post_thumbnail( array( 40, 40 ) );
@@ -110,20 +99,6 @@ function orderby_product_cat( $orderby, $wp_query ) {
 	return $orderby;
 }
 
-add_action( 'pre_get_posts', 'column_orderby_price' );
-
-function column_orderby_price( $query ) {
-	if ( !is_admin() ) {
-		return;
-	}
-	$orderby = $query->get( 'orderby' );
-
-	if ( 'price' == $orderby ) {
-		$query->set( 'meta_key', '_price' );
-		$query->set( 'orderby', 'meta_value_num' );
-	}
-}
-
 function restrict_listings_by_product_cat() {
 	global $typenow;
 	global $wp_query;
@@ -142,9 +117,10 @@ function restrict_listings_by_product_cat() {
 			'selected'			 => $selected,
 			'hierarchical'		 => true,
 			'depth'				 => 3,
-			'show_count'		 => true,
+			//'show_count'		 => true,
 			'hide_empty'		 => true,
-			'hide_if_empty'		 => true
+			'hide_if_empty'		 => true,
+			'value_field'		 => 'slug'
 		)
 		);
 	}
@@ -170,16 +146,17 @@ class ic_walker_tax_slug_dropdown extends Walker_CategoryDropdown {
 		}
 		$output .= '>';
 		$output .= $pad . $cat_name;
-		if ( $args[ 'show_count' ] ) {
-			$output .= '&nbsp;&nbsp;(' . $category->count . ')';
-		}
+		//if ( $args[ 'show_count' ] ) {
+		$output .= '&nbsp;&nbsp;(' . $category->count . ')';
+		//	}
 
 		$output .= "</option>\n";
+		return $output;
 	}
 
 }
 
-add_action( 'quick_edit_custom_box', 'display_custom_quickedit_product', 10, 2 );
+add_action( 'quick_edit_custom_box', 'display_custom_quickedit_product' );
 
 /**
  * Adds quick edit support for product fields
@@ -198,12 +175,7 @@ function display_custom_quickedit_product( $column_name ) {
 		<div class="inline-edit-col column-<?php echo $column_name; ?>">
 			<label class="inline-edit-group">
 				<?php
-				if ( $column_name == 'price' ) {
-					?><span class="title"><?php _e( 'Price', 'ecommerce-product-catalog' ) ?></span><input type="number" min="0" step="0.01" name="_price" value="" class="widefat" /><?php
-					echo product_currency();
-				} else {
-					do_action( 'product_quickedit', $column_name );
-				}
+				do_action( 'product_quickedit', $column_name );
 				?>
 			</label>
 		</div>
@@ -232,10 +204,6 @@ function save_product_quick_edit( $product_id ) {
 	$_POST += array( "{$slug}_quick_edit_nonce" => '' );
 	if ( !wp_verify_nonce( $_POST[ "{$slug}_quick_edit_nonce" ], plugin_basename( __FILE__ ) ) ) {
 		return;
-	}
-
-	if ( isset( $_REQUEST[ '_price' ] ) && $_REQUEST[ '_price' ] != null ) {
-		update_post_meta( $product_id, '_price', $_REQUEST[ '_price' ] );
 	}
 	do_action( 'save_product_quick_edit', $product_id );
 }

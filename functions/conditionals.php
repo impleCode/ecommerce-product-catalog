@@ -122,23 +122,7 @@ function is_ic_catalog_admin_page() {
 			return true;
 		}
 	}
-	return false;
-}
-
-function is_ic_price_enabled() {
-	$product_currency = get_currency_settings();
-	if ( $product_currency[ 'price_enable' ] == 'on' ) {
-		return true;
-	}
-	return false;
-}
-
-function is_ic_sku_enabled() {
-	$archive_multiple_settings = get_multiple_settings();
-	if ( $archive_multiple_settings[ 'disable_sku' ] != 1 ) {
-		return true;
-	}
-	return false;
+	return apply_filters( 'is_ic_catalog_admin_page', false );
 }
 
 function is_ic_product_listing_enabled() {
@@ -149,17 +133,28 @@ function is_ic_product_listing_enabled() {
 	return false;
 }
 
-function ic_string_contains( $string, $contains ) {
-	if ( strpos( $string, $contains ) !== false ) {
-		return true;
+if ( !function_exists( 'ic_string_contains' ) ) {
+
+	function ic_string_contains( $string, $contains ) {
+		if ( strpos( $string, $contains ) !== false ) {
+			return true;
+		}
+		return false;
 	}
-	return false;
+
 }
 
+/**
+ * Checks if new entry screen is being displayed
+ *
+ * @return boolean
+ */
 function is_ic_new_product_screen() {
-	$screen = get_current_screen();
-	if ( is_ic_catalog_admin_page() && $screen->action == 'add' ) {
-		return true;
+	if ( is_admin() ) {
+		$screen = get_current_screen();
+		if ( $screen->action == 'add' ) {
+			return true;
+		}
 	}
 	return false;
 }
@@ -241,20 +236,6 @@ function has_product_image( $product_id ) {
 	} else {
 		return false;
 	}
-}
-
-/**
- * Checks if product has price set
- * @param type $product_id
- * @return boolean
- */
-function has_product_price( $product_id = null ) {
-	$product_id	 = empty( $product_id ) ? get_the_ID() : $product_id;
-	$price		 = product_price( $product_id, 1 );
-	if ( !empty( $price ) ) {
-		return true;
-	}
-	return false;
 }
 
 /**
@@ -356,52 +337,6 @@ function is_ic_category_image_enabled() {
 }
 
 /**
- * Checks if product shipping is enabled
- *
- * @return boolean
- */
-function is_ic_shipping_enabled() {
-	$shipping_count = get_shipping_options_number();
-	if ( $shipping_count > 0 ) {
-		return true;
-	}
-	return false;
-}
-
-/**
- * Checks if product attributes are enabled
- *
- * @return boolean
- */
-function is_ic_attributes_enabled() {
-	$attributes_count = product_attributes_number();
-	if ( $attributes_count > 0 ) {
-		return true;
-	}
-	return false;
-}
-
-/**
- * Checks if product has any attributes selected
- *
- * @param type $product_id
- * @return boolean
- */
-function has_product_any_attributes( $product_id ) {
-	$attributes_number = product_attributes_number();
-	if ( $attributes_number > 0 ) {
-		$attributes_number = product_attributes_number();
-		for ( $i = 1; $i <= $attributes_number; $i++ ) {
-			$at_val = get_post_meta( $product_id, "_attribute" . $i, true );
-			if ( !empty( $at_val ) ) {
-				return true;
-			}
-		}
-	}
-	return false;
-}
-
-/**
  * Checks if product name on product page is enabled
  *
  * @return boolean
@@ -412,6 +347,19 @@ function is_ic_product_name_enabled() {
 		return false;
 	}
 	return true;
+}
+
+/**
+ * Checks if product details metabox should be visible
+ *
+ * @return type
+ */
+function ic_product_details_box_visible() {
+	$visible = false;
+	if ( (function_exists( 'is_ic_price_enabled' ) && is_ic_price_enabled()) || (function_exists( 'is_ic_sku_enabled' ) && is_ic_sku_enabled()) ) {
+		$visible = true;
+	}
+	return apply_filters( 'product_details_box_visible', $visible );
 }
 
 /**
@@ -593,4 +541,33 @@ function ic_use_php_session() {
 		$return = true;
 	}
 	return apply_filters( 'ic_use_php_session', $return );
+}
+
+/**
+ * Checks if provided ID is a product
+ *
+ * @return boolean
+ */
+function is_ic_product( $product_id ) {
+	$post_type	 = get_post_type( $product_id );
+	$post_types	 = product_post_type_array();
+	if ( in_array( $post_type, $post_types ) ) {
+		return true;
+	}
+	return false;
+}
+
+/**
+ * Checks if product has meta value set
+ *
+ * @param type $product_id
+ * @param type $meta_name
+ * @return boolean
+ */
+function has_ic_product_meta( $product_id, $meta_name ) {
+	$custom_keys = get_post_custom_keys( $product_id );
+	if ( is_array( $custom_keys ) && in_array( $meta_name, $custom_keys ) ) {
+		return true;
+	}
+	return false;
 }

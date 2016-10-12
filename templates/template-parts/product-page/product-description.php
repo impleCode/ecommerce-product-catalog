@@ -17,7 +17,7 @@ $product_id			 = ic_get_product_id();
 $product_description = get_product_description( $product_id );
 if ( !empty( $product_description ) ) {
 	?>
-	<div id="product_description" class="product-description">
+	<div id="product_description" class="product-description" itemprop="description">
 		<?php if ( !empty( $single_names[ 'product_description' ] ) ) { ?>
 			<h3 class="catalog-header"><?php echo $single_names[ 'product_description' ] ?></h3>
 			<?php

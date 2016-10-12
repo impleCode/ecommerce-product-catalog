@@ -80,7 +80,7 @@ function get_grid_archive_theme( $post, $archive_template = null ) {
 		//$return .= '<div style="background-image:url(\'' . $url . '\');" class="classic-grid-element"></div>';
 		$return .= '<div class="classic-grid-image-wrapper"><div class="pseudo"></div><div class="image">' . $image . '</div></div>';
 		$return .= '<h3 class="product-name">' . $product_name . '</h3>' . $archive_price;
-		if ( $classic_grid_settings[ 'attributes' ] == 1 ) {
+		if ( $classic_grid_settings[ 'attributes' ] == 1 && function_exists( 'product_attributes_number' ) ) {
 			$attributes_number = product_attributes_number();
 			if ( $attributes_number > 0 && has_product_any_attributes( $product_id ) ) {
 				$max_listing_attributes	 = apply_filters( 'max_product_listing_attributes', $classic_grid_settings[ 'attributes_num' ] );
@@ -99,7 +99,9 @@ function get_grid_archive_theme( $post, $archive_template = null ) {
 				$return .= '</div>';
 			}
 		}
-		$return .= '</a></div>';
+		$return .= '</a>';
+		$return .= apply_filters( 'classic_grid_product_listing_element', '', $product_id );
+		$return .= '</div>';
 	}
 	return $return;
 }
@@ -153,7 +155,7 @@ function get_grid_category_theme( $product_cat, $archive_template ) {
  * @return array
  */
 function get_classic_grid_settings() {
-	$settings = wp_parse_args( get_option( 'classic_grid_settings' ), array( 'attributes' => 0, 'entries' => 3, 'attributes_num' => 10 ) );
+	$settings = wp_parse_args( get_option( 'classic_grid_settings' ), array( 'attributes' => 0, 'entries' => 3, 'per-row-categories' => 3, 'attributes_num' => 10 ) );
 	return $settings;
 }
 
@@ -172,6 +174,11 @@ function classic_grid_additional_styling( $styles, $archive_template ) {
 			$margin	 = (($grid_settings[ 'entries' ] - 1) * 1.5) / $grid_settings[ 'entries' ];
 			$width	 = number_format( 100 / $grid_settings[ 'entries' ] ) - $margin;
 			$styles .= '.classic-grid.archive-listing{width:' . $width . '%;}';
+		}
+		if ( $grid_settings[ 'per-row-categories' ] != 3 ) {
+			$margin	 = (($grid_settings[ 'per-row-categories' ] - 1) * 1.5) / $grid_settings[ 'per-row-categories' ];
+			$width	 = number_format( 100 / $grid_settings[ 'per-row-categories' ] ) - $margin;
+			$styles .= '.product-subcategories .classic-grid.archive-listing{width:' . $width . '%;}';
 		}
 	}
 	return $styles;

@@ -12,8 +12,10 @@ if ( !defined( 'ABSPATH' ) ) {
  * @package		ecommerce-product-catalog/templates/template-parts/product-page
  * @author 		Norbert Dreszer
  */
-$single_names	 = get_single_names();
-$product_id		 = ic_get_product_id();
+if ( function_exists( 'get_single_names' ) ) {
+	$single_names = get_single_names();
+}
+$product_id = function_exists( 'ic_get_product_id' ) ? ic_get_product_id() : get_the_ID();
 
 if ( has_product_any_attributes( $product_id ) ) {
 	$attributes_number = product_attributes_number();

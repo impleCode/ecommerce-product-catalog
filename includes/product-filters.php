@@ -30,6 +30,7 @@ if ( !function_exists( 'get_product_catalog_session' ) ) {
 			}
 			return $wp_session;
 		}
+		return '';
 	}
 
 }
@@ -97,28 +98,6 @@ function set_product_filter() {
 			unset( $session[ 'filters' ][ 'product_category' ] );
 		}
 	}
-	if ( isset( $_GET[ 'min-price' ] ) ) {
-		$filter_value = floatval( $_GET[ 'min-price' ] );
-		if ( !empty( $filter_value ) ) {
-			if ( !isset( $session[ 'filters' ] ) ) {
-				$session[ 'filters' ] = array();
-			}
-			$session[ 'filters' ][ 'min-price' ] = $filter_value;
-		} else if ( isset( $session[ 'filters' ][ 'min-price' ] ) ) {
-			unset( $session[ 'filters' ][ 'min-price' ] );
-		}
-	}
-	if ( isset( $_GET[ 'max-price' ] ) ) {
-		$filter_value = floatval( $_GET[ 'max-price' ] );
-		if ( !empty( $filter_value ) ) {
-			if ( !isset( $session[ 'filters' ] ) ) {
-				$session[ 'filters' ] = array();
-			}
-			$session[ 'filters' ][ 'max-price' ] = $filter_value;
-		} else if ( isset( $session[ 'filters' ][ 'max-price' ] ) ) {
-			unset( $session[ 'filters' ][ 'max-price' ] );
-		}
-	}
 	set_product_catalog_session( $session );
 	do_action( 'ic_set_product_filters', $session );
 	$session = get_product_catalog_session();
@@ -140,7 +119,7 @@ add_action( 'pre_get_posts', 'delete_product_filters', 2 );
  *
  */
 function delete_product_filters( $query ) {
-	if ( (!is_search() || isset( $_GET[ 'reset_filters' ] ) ) && !is_admin() && $query->is_main_query() ) {
+	if ( !is_admin() && is_product_filters_active() && (!is_search() || isset( $_GET[ 'reset_filters' ] ) ) && $query->is_main_query() ) {
 		$active_filters	 = get_active_product_filters();
 		$out			 = false;
 		foreach ( $active_filters as $filter ) {
@@ -194,28 +173,6 @@ function apply_product_filters( $query ) {
 			);
 			$query->set( 'tax_query', $taxquery );
 		}
-		if ( is_product_filter_active( 'min-price' ) || is_product_filter_active( 'max-price' ) ) {
-			$metaquery	 = array();
-			$min_price	 = get_product_filter_value( 'min-price' );
-			if ( !empty( $min_price ) ) {
-				$metaquery[] = array(
-					'key'		 => '_price',
-					'compare'	 => '>=',
-					'value'		 => $min_price,
-					'type'		 => 'NUMERIC'
-				);
-			}
-			$max_price = get_product_filter_value( 'max-price' );
-			if ( !empty( $max_price ) ) {
-				$metaquery[] = array(
-					'key'		 => '_price',
-					'compare'	 => '<=',
-					'value'		 => $max_price,
-					'type'		 => 'NUMERIC'
-				);
-			}
-			$query->set( 'meta_query', $metaquery );
-		}
 		do_action( 'apply_product_filters', $query );
 	}
 }
@@ -240,41 +197,6 @@ function apply_product_category_filter( $shortcode_query ) {
 			)
 		);
 		$shortcode_query[ 'tax_query' ]	 = $taxquery;
-	}
-	return $shortcode_query;
-}
-
-add_filter( 'shortcode_query', 'apply_product_price_filter' );
-add_filter( 'home_product_listing_query', 'apply_product_price_filter' );
-add_filter( 'category_count_query', 'apply_product_price_filter' );
-
-/**
- * Applies product price filter to shortcode query
- * @param type $shortcode_query
- * @return string
- */
-function apply_product_price_filter( $shortcode_query ) {
-	if ( is_product_filter_active( 'min-price' ) || is_product_filter_active( 'max-price' ) ) {
-		$metaquery	 = array();
-		$min_price	 = get_product_filter_value( 'min-price' );
-		if ( !empty( $min_price ) ) {
-			$metaquery[] = array(
-				'key'		 => '_price',
-				'compare'	 => '>=',
-				'value'		 => $min_price,
-				'type'		 => 'NUMERIC'
-			);
-		}
-		$max_price = get_product_filter_value( 'max-price' );
-		if ( !empty( $max_price ) ) {
-			$metaquery[] = array(
-				'key'		 => '_price',
-				'compare'	 => '<=',
-				'value'		 => $max_price,
-				'type'		 => 'NUMERIC'
-			);
-		}
-		$shortcode_query[ 'meta_query' ] = $metaquery;
 	}
 	return $shortcode_query;
 }

@@ -48,7 +48,7 @@ function product_adder_theme_check_notice() {
 		?>
 		<div id="implecode_message" class="updated product-adder-message messages-connect">
 			<div class="squeezer">
-				<h4><?php _e( 'You are currently using eCommerce Product Catalog in Simple Mode. It is perfectly fine to use it this way, however some features are limited. To switch to Advanced Mode you probably need Theme Integration.', 'ecommerce-product-catalog' ); ?></h4><h4><?php echo sprintf( __( 'You can also use a fully compatible %sCatalog Me! theme%s.', 'ecommerce-product-catalog' ), '<a href="' . admin_url( 'theme-install.php?search=Catalog%20me' ) . '">', '</a>' ) ?></h4>
+				<h4><?php sprintf( __( 'You are currently using %s in Simple Mode. It is perfectly fine to use it this way, however some features are limited. To switch to Advanced Mode you probably need Theme Integration.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ); ?></h4><h4><?php echo sprintf( __( 'You can also use a fully compatible %sCatalog Me! theme%s.', 'ecommerce-product-catalog' ), '<a href="' . admin_url( 'theme-install.php?search=Catalog%20me' ) . '">', '</a>' ) ?></h4>
 				<p class="submit"><a href="https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=top-message" target="_blank" class="button-primary"><?php _e( 'Theme Integration Guide', 'ecommerce-product-catalog' ); ?></a> <a class="skip button" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=support' ) ?>"><?php _e( 'Plugin Support', 'ecommerce-product-catalog' ); ?></a> <a class="skip button" href="<?php echo esc_url( add_query_arg( 'hide_al_product_adder_support_check', 'true' ) ); ?>"><?php _e( 'I know, don\'t bug me', 'ecommerce-product-catalog' ); ?></a></p>
 			</div>
 		</div><div class="clear"></div><?php
@@ -63,7 +63,7 @@ function product_adder_theme_check_notice() {
 		?>
 		<div id="implecode_message" class="updated product-adder-message messages-connect">
 			<div class="squeezer">
-				<h4><?php _e( 'Congratulations! Now your theme is fully integrated with eCommerce Product Catalog.', 'ecommerce-product-catalog' ); ?></h4>
+				<h4><?php echo sprintf( __( 'Congratulations! Now your theme is fully integrated with %s.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ); ?></h4>
 				<p class="submit"><a href="<?php echo admin_url( 'post-new.php?post_type=al_product' ) ?>" class="button-primary"><?php _e( 'Add Product', 'ecommerce-product-catalog' ); ?></a> <a class="skip button" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php' ) ?>"><?php _e( 'Product Settings', 'ecommerce-product-catalog' ); ?></a> <a href="https://implecode.com/docs/ecommerce-product-catalog/#cam=advanced-mode&key=top-message-docs" class="button"><?php _e( 'Help & Documentation', 'ecommerce-product-catalog' ); ?></a>
 				</p>
 			</div>
@@ -80,7 +80,7 @@ function product_adder_theme_check_notice() {
 		?>
 		<div id="implecode_message" class="error product-adder-message messages-connect">
 			<div class="squeezer">
-				<h4><?php _e( '<strong>Your theme does not declare eCommerce Product Catalog support</strong> &#8211; please proceed to sample product page where automatic layout adjustment can be done.', 'ecommerce-product-catalog' ); ?> <?php echo sprintf( __( 'You can also use a fully compatible %sCatalog Me! theme%s.', 'ecommerce-product-catalog' ), '<a href="' . admin_url( 'theme-install.php?search=Catalog%20me' ) . '">', '</a>' ) ?></h4>
+				<h4><?php echo sprintf( __( '<strong>Your theme does not declare %s support</strong> &#8211; please proceed to sample product page where automatic layout adjustment can be done.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) ?> <?php echo sprintf( __( 'You can also use a fully compatible %sCatalog Me! theme%s.', 'ecommerce-product-catalog' ), '<a href="' . admin_url( 'theme-install.php?search=Catalog%20me' ) . '">', '</a>' ) ?></h4>
 				<p class="submit">
 					<?php echo sample_product_button() ?>
 					<a href="https://implecode.com/docs/ecommerce-product-catalog/theme-integration-wizard/#cam=default-mode&key=top-message-video" class="button"><?php _e( 'Theme Integration Video', 'ecommerce-product-catalog' ); ?></a>
@@ -104,15 +104,16 @@ add_filter( 'plugin_action_links_' . plugin_basename( AL_PLUGIN_MAIN_FILE ), 'im
 function implecode_plugin_review_notice() {
 	/* ?>
 	  <div class="update-nag implecode-review"><strong><?php _e( 'Rate this Plugin!', 'ecommerce-product-catalog' ) ?></strong> <?php echo sprintf( __( 'Please <a target="_blank" href="%s">rate</a> %s and tell me if it works for you or not. It really helps development.', 'ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', 'eCommerce Product Catalog' ) ?> <span class="dashicons dashicons-no"></span></div> */
+	$text = apply_filters( 'ic_review_notice_text', sprintf( __( '%s is a free software. Would you mind taking <strong>5 seconds</strong> to <a target="_blank" href="%s">rate the plugin</a> for us please? Your comments <strong>help others know what to expect</strong> when they install %s.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', IC_CATALOG_PLUGIN_NAME ) )
 	?>
-	<div class="update-nag implecode-review"><?php echo sprintf( __( 'eCommerce Product Catalog is a free software. Would you mind taking <strong>5 seconds</strong> to <a target="_blank" href="%s">rate the plugin</a> for us please? Your comments <strong>help others know what to expect</strong> when they install %s.', 'ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform', 'eCommerce Product Catalog' ) . ' ' . __( 'A <strong>huge thank you</strong> from impleCode and WordPress community in advance!', 'ecommerce-product-catalog' ) ?>
+	<div class="update-nag implecode-review"><?php echo $text . ' ' . __( 'A <strong>huge thank you</strong> from impleCode and WordPress community in advance!', 'ecommerce-product-catalog' ) ?>
 		<p><a target="_blank" href="https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform" class="button-primary"><?php _e( 'Rate Now & Hide Forever', 'ecommerce-product-catalog' ); ?></a> <a href="" class="button"><?php _e( 'Hide Forever', 'ecommerce-product-catalog' ); ?></a></div>
 	<div class="update-nag implecode-review-thanks" style="display: none"><?php echo sprintf( __( 'Thank you for <a target="_blank" href="%s">your rating</a>! We appreciate your time and input.', 'ecommerce-product-catalog' ), 'https://wordpress.org/support/view/plugin-reviews/ecommerce-product-catalog#postform' ) ?> <span class="dashicons dashicons-yes"></span></div><?php
 }
 
 function implecode_plugin_translation_notice() {
 	?>
-	<div class="update-nag implecode-translate"><?php echo sprintf( __( "<strong>Psst, it's less than 1 minute</strong> to add some translations to eCommerce Product Catalog collaborative <a target='_blank' href='%s'>translation project</a>", 'ecommerce-product-catalog' ), 'http://translate.implecode.com/projects/ecommerce-product-catalog', 'eCommerce Product Catalog' ) ?> <span class="dashicons dashicons-no"></span></div><?php
+	<div class="update-nag implecode-translate"><?php echo sprintf( __( "<strong>Psst, it's less than 1 minute</strong> to add some translations to %s collaborative <a target='_blank' href='%s'>translation project</a>", 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, 'http://translate.implecode.com/projects/ecommerce-product-catalog', IC_CATALOG_PLUGIN_NAME ) ?> <span class="dashicons dashicons-no"></span></div><?php
 }
 
 function implecode_plugin_review_notice_hide( $forever = false ) {

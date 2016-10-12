@@ -118,7 +118,7 @@ button.grey-box:hover {
     background-color: rgb(160, 160, 160);
 }
 
-.ic-design.button, article.al_product .ic-design.button, #product_listing .ic-design.button {
+.ic-design.button, article.al_product .ic-design.button, #product_listing .ic-design.button, body .ic-design.button {
     border-radius: 3px;
     cursor: pointer;
     line-height: 1;
@@ -130,10 +130,13 @@ button.grey-box:hover {
     font-size: 15px;
     display: inline-block;
     text-decoration: none;
+    background-image: none;
 }
 
 .ic-design.button:hover, article.al_product .ic-design.button:hover, #product_listing .ic-design.button:hover, .ic-design.button:active, article.al_product .ic-design.button:active, #product_listing .ic-design.button:active {
     text-decoration: none;
+    background-image: none;
+    color: #fff;
 }
 
 .green-box.button {
@@ -269,6 +272,7 @@ button.grey-box:hover {
     line-height: 14px;
     color: #fff;
     box-shadow: none;
+    background: transparent;
 }
 
 .catalog-header {
@@ -322,7 +326,7 @@ button.grey-box:hover {
 }
 
 .content-area.product-catalog #content{
-    width: 100%;   
+    width: 100%;
     overflow: hidden;
     margin: 0;
     padding: 0;
@@ -820,6 +824,7 @@ article#product_listing {
     margin: 0;
     border: none;
     width: auto;
+    background: transparent;
 }
 
 #product_details table table, #product_details table td {
@@ -840,7 +845,7 @@ article#product_listing {
 }
 
 #product_details table.shipping-table td.shipping-label {
-    /* text-align: center; */
+    /*text-align: center;*/
     font-size: 1.3em;
     padding: 5px;
 }
@@ -910,6 +915,7 @@ article#product_listing {
     max-width: 100%;
     display: inline-block;
     height: auto;
+    box-sizing: border-box;
 }
 
 .product-details .shortdesc {
@@ -1050,6 +1056,10 @@ article#product_listing {
     box-shadow: 0 0 1px 1px #444;
     box-sizing: border-box;
     line-height: 1.2;
+}
+
+#product_details .al-box, .boxed #product_details .al-box {
+    margin-top: 10px;
 }
 
 #product_listing_url {
@@ -1491,10 +1501,10 @@ div.relative-box {
 }
 .reset-filters a:before {
     font-family: dashicons;
-content: "\f531";
-vertical-align: bottom;
-padding-right: 1px;
-display:inline-block;
+    content: "\f531";
+    vertical-align: bottom;
+    padding-right: 1px;
+    display:inline-block;
 }
 
 #product_search_form {
@@ -1690,7 +1700,7 @@ input.product-search-box[type="search"], .entry-content input.product-search-box
 }
 
 .product-sort-bar .filter-active > a.filter-url.not-active-filter, .filter-active > a.filter-url.not-active-filter {
-    display: none; 
+    display: none;
 }
 
 .product-sort-bar .child-category-filters, .child-category-filters {
@@ -1708,6 +1718,19 @@ input.product-search-box[type="search"], .entry-content input.product-search-box
     -ms-transform: scale(-1, 1);
     -o-transform: scale(-1, 1);
     transform: scale(-1, 1);
+}
+
+.product-sort-bar .widget_product_categories ul {
+    margin: 0;
+    display: inline-block;
+}
+
+.product-sort-bar .widget_product_categories li.cat-item {
+    float: right;
+    margin-right: 25px;
+    list-style: disc;
+    list-style-position: inside;
+    margin-bottom: 0;
 }
 
 .price-filter-form {
@@ -1751,6 +1774,7 @@ input.product-search-box[type="search"], .entry-content input.product-search-box
 .empty-filters-info {
     margin-bottom: 10px;
     text-align: center;
+    color: #000;
 }
 
 /* Related Products Widget */
@@ -1791,7 +1815,7 @@ article.al_product.boxed * {
     width: 42%;
 }
 .boxed #product_details {
-    max-width: 53%;   
+    max-width: 53%;
 }
 
 .boxed #product_details, ic-block {
@@ -1820,6 +1844,10 @@ article.al_product.boxed * {
 .boxed #product_details *, .ic-blocks {
     margin: 0;
     list-style-position: inside;
+}
+
+.boxed #product_details p {
+    margin-bottom: 0.8em;
 }
 
 .boxed .after-product-details * {
@@ -2128,10 +2156,10 @@ table.ic-block td:first-child, .boxed #product_features table td:first-child {
         border: 0;
         margin: 0 auto;
     }
-        #product_archive_nav li {
+    #product_archive_nav li {
         display: none;
     }
-    
+
     #product_archive_nav li:last-child, #product_archive_nav li:first-child, #product_archive_nav li.active {
         display: inline-block;
     }

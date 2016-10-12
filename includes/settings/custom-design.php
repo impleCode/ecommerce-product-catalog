@@ -18,7 +18,7 @@ function design_menu() {
 	<?php
 }
 
-add_action( 'settings-menu', 'design_menu' );
+add_action( 'settings-menu', 'design_menu', 40 );
 
 function design_settings() {
 	register_setting( 'product_design', 'archive_template' );
@@ -38,8 +38,8 @@ function custom_design_content() {
 	<div class="design-product-settings settings-wrapper">
 		<div class="settings-submenu">
 			<h3>
-				<a id="archive-design" class="element current" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=archive-design' ) ?>"><?php _e( 'Product Listing', 'ecommerce-product-catalog' ); ?></a>
-				<a id="single-design" class="element" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=single-design' ) ?>"><?php _e( 'Product Page', 'ecommerce-product-catalog' ); ?></a>
+				<a id="archive-design" class="element current" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=archive-design' ) ?>"><?php _e( 'Listing Design', 'ecommerce-product-catalog' ); ?></a>
+				<a id="single-design" class="element" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=single-design' ) ?>"><?php _e( 'Single Page Design', 'ecommerce-product-catalog' ); ?></a>
 				<a id="design-schemes" class="element" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=design-settings&submenu=design-schemes' ) ?>"><?php _e( 'Design Schemes', 'ecommerce-product-catalog' ); ?></a>
 				<?php do_action( 'custom-design-submenu' ); ?>
 			</h3>
@@ -74,9 +74,10 @@ function archive_custom_design() {
 			$modern_grid_settings	 = get_modern_grid_settings();
 			$classic_grid_settings	 = get_classic_grid_settings();
 			$classic_list_settings	 = get_classic_list_settings();
+			$item_name				 = ic_catalog_item_name();
 			?>
 			<h2><?php _e( 'Design Settings', 'ecommerce-product-catalog' ); ?></h2>
-			<h3><?php _e( 'Product Listing', 'ecommerce-product-catalog' ); ?></h3>
+			<h3><?php _e( 'Listing Design', 'ecommerce-product-catalog' ); ?></h3>
 			<table class="design-table">
 				<thead></thead>
 				<tbody>
@@ -88,8 +89,8 @@ function archive_custom_design() {
 					<tr>
 						<td class="additional-styling">
 							<strong><?php _e( 'Additional Settings', 'ecommerce-product-catalog' ); ?></strong><br>
-							<?php _e( 'Per row', 'ecommerce-product-catalog' ) ?>: <input type="number" min="1" max="5" step="1" class="number_box" name="modern_grid_settings[per-row]" value="<?php echo $modern_grid_settings[ 'per-row' ] ?>"><?php _e( 'products', 'ecommerce-product-catalog' ); ?><br>
-							<input title="<?php _e( 'Use this only with short attributes labels and values e.g. Color: Red', 'ecommerce-product-catalog' ) ?>" type="checkbox" name="modern_grid_settings[attributes]" value="1"<?php checked( 1, isset( $modern_grid_settings[ 'attributes' ] ) ? $modern_grid_settings[ 'attributes' ] : ''  ); ?>> <?php _e( 'Show Attributes', 'ecommerce-product-catalog' ); ?><br>
+							<?php _e( 'Per row', 'ecommerce-product-catalog' ) ?>: <input type="number" min="1" max="5" step="1" class="number_box" name="modern_grid_settings[per-row]" value="<?php echo $modern_grid_settings[ 'per-row' ] ?>"><?php echo $item_name ?><br>
+							<?php _e( 'Per row', 'ecommerce-product-catalog' ) ?>: <input type="number" min="1" max="5" step="1" class="number_box" name="modern_grid_settings[per-row-categories]" value="<?php echo $modern_grid_settings[ 'per-row-categories' ] ?>"><?php _e( 'categories', 'ecommerce-product-catalog' ); ?><br>
 							<?php
 							do_action( 'modern_grid_additional_settings', $modern_grid_settings, 'modern_grid' );
 							?>
@@ -103,7 +104,6 @@ function archive_custom_design() {
 					<tr>
 						<td class="additional-styling">
 							<strong><?php _e( 'Additional Settings', 'ecommerce-product-catalog' ); ?></strong><br>
-							<input title="<?php _e( 'Use this only with short attributes labels and values e.g. Color: Red', 'ecommerce-product-catalog' ) ?>" type="checkbox" name="classic_list_settings[attributes]" value="1"<?php checked( 1, isset( $classic_list_settings[ 'attributes' ] ) ? $classic_list_settings[ 'attributes' ] : ''  ); ?>><?php _e( 'Show Attributes', 'ecommerce-product-catalog' ); ?><br>
 							<?php
 							do_action( 'classic_list_additional_settings', $classic_grid_settings, 'classic_grid' );
 							?>
@@ -118,8 +118,8 @@ function archive_custom_design() {
 					<tr>
 						<td class="additional-styling">
 							<strong><?php _e( 'Additional Settings', 'ecommerce-product-catalog' ); ?></strong><br>
-							<?php _e( 'Per row', 'ecommerce-product-catalog' ) ?>: <input type="number" min="1" step="1" class="number_box" title="<?php _e( 'The product listing element width will adjust accordingly to your theme content width.', 'ecommerce-product-catalog' ) ?>" name="classic_grid_settings[entries]" value="<?php echo $classic_grid_settings[ 'entries' ] ?>"><?php _e( 'products', 'ecommerce-product-catalog' ); ?><br>
-							<input title="<?php _e( 'Use this only with short attributes labels and values e.g. Color: Red', 'ecommerce-product-catalog' ) ?>" type="checkbox" name="classic_grid_settings[attributes]" value="1"<?php checked( 1, isset( $classic_grid_settings[ 'attributes' ] ) ? $classic_grid_settings[ 'attributes' ] : ''  ); ?>><?php _e( 'Show Attributes', 'ecommerce-product-catalog' ); ?><br>
+							<?php _e( 'Per row', 'ecommerce-product-catalog' ) ?>: <input type="number" min="1" step="1" class="number_box" title="<?php _e( 'The product listing element width will adjust accordingly to your theme content width.', 'ecommerce-product-catalog' ) ?>" name="classic_grid_settings[entries]" value="<?php echo $classic_grid_settings[ 'entries' ] ?>"><?php echo $item_name ?><br>
+							<?php _e( 'Per row', 'ecommerce-product-catalog' ) ?>: <input type="number" min="1" step="1" class="number_box" title="<?php _e( 'The product listing element width will adjust accordingly to your theme content width.', 'ecommerce-product-catalog' ) ?>" name="classic_grid_settings[per-row-categories]" value="<?php echo $classic_grid_settings[ 'per-row-categories' ] ?>"><?php _e( 'categories', 'ecommerce-product-catalog' ); ?><br>
 							<?php
 							do_action( 'classic_grid_additional_settings', $classic_grid_settings, 'classic_grid' );
 							?>
@@ -163,10 +163,10 @@ function single_custom_design() {
 			implecode_upload_image( __( 'Upload Default Image', 'ecommerce-product-catalog' ), 'default_product_thumbnail', get_default_product_image_src() )
 			?>
 			<h3><?php _e( 'Product Gallery', 'ecommerce-product-catalog' ); ?></h3>
-			<input type="checkbox" title="<?php _e( 'The image will be used only for product listing when unchecked.', 'ecommerce-product-catalog' ) ?>" name="multi_single_options[enable_product_gallery]" value="1"<?php checked( 1, $single_options[ 'enable_product_gallery' ] ); ?>><?php _e( 'Enable product image', 'ecommerce-product-catalog' ); ?></br>
-			<input type="checkbox" title="<?php _e( 'The image on product page will not be linked when unchecked.', 'ecommerce-product-catalog' ) ?>" name="catalog_lightbox" value="1"<?php checked( 1, $enable_catalog_lightbox ); ?> ><?php _e( 'Enable lightbox on product image', 'ecommerce-product-catalog' ); ?></br>
-			<input type="checkbox" title="<?php _e( 'The default image will be used on product listing only when unchecked.', 'ecommerce-product-catalog' ) ?>" name="multi_single_options[enable_product_gallery_only_when_exist]" value="1"<?php checked( 1, $single_options[ 'enable_product_gallery_only_when_exist' ] ); ?> /><?php _e( 'Enable product image only when inserted', 'ecommerce-product-catalog' ); ?>
-			<h3><?php _e( 'Product Page Template', 'ecommerce-product-catalog' ) ?></h3>
+			<input type="checkbox" title="<?php _e( 'The image will be used only on the listing when unchecked.', 'ecommerce-product-catalog' ) ?>" name="multi_single_options[enable_product_gallery]" value="1"<?php checked( 1, $single_options[ 'enable_product_gallery' ] ); ?>><?php _e( 'Enable image', 'ecommerce-product-catalog' ); ?></br>
+			<input type="checkbox" title="<?php _e( 'The image on single page will not be linked when unchecked.', 'ecommerce-product-catalog' ) ?>" name="catalog_lightbox" value="1"<?php checked( 1, $enable_catalog_lightbox ); ?> ><?php _e( 'Enable lightbox on image on single page', 'ecommerce-product-catalog' ); ?></br>
+			<input type="checkbox" title="<?php _e( 'The default image will be used on the listing only when unchecked.', 'ecommerce-product-catalog' ) ?>" name="multi_single_options[enable_product_gallery_only_when_exist]" value="1"<?php checked( 1, $single_options[ 'enable_product_gallery_only_when_exist' ] ); ?> /><?php _e( 'Enable image only when inserted', 'ecommerce-product-catalog' ); ?>
+			<h3><?php _e( 'Single Page Template', 'ecommerce-product-catalog' ) ?></h3>
 			<table>
 				<?php
 				implecode_settings_radio( __( 'Select template', 'ecommerce-product-catalog' ), 'multi_single_options[template]', $single_options[ 'template' ], array( 'boxed' => __( 'Formatted', 'ecommerce-product-catalog' ), 'plain' => __( 'Plain', 'ecommerce-product-catalog' ) ) );
@@ -211,28 +211,7 @@ function color_schemes() {
 						<th><strong><?php _e( 'Impact', 'ecommerce-product-catalog' ); ?></strong></th>
 					</tr></thead>
 				<tbody>
-					<tr>
-						<td><label for="design_schemes[price-size]"><?php _e( 'Price Size', 'ecommerce-product-catalog' ); ?></label></td>
-						<td><select id="single_price" name="design_schemes[price-size]">
-								<option name="design_schemes[big-price]" value="big-price"<?php selected( 'big-price', $design_schemes[ 'price-size' ] ); ?>><?php _e( 'Big', 'ecommerce-product-catalog' ); ?></option>
-								<option name="design_schemes[small-price]" value="small-price"<?php selected( 'small-price', $design_schemes[ 'price-size' ] ); ?>><?php _e( 'Small', 'ecommerce-product-catalog' ); ?></option>
-							</select></td>
-						<td rowspan=2 class="price-value example <?php design_schemes(); ?>"><?php do_action( 'example_price' ); ?></td>
-						<td><?php _e( 'single product', 'ecommerce-product-catalog' ); ?></td>
-					</tr>
-					<tr>
-						<td><?php _e( 'Price Color', 'ecommerce-product-catalog' ); ?></td>
-						<td>
-							<select id="single_price" name="design_schemes[price-color]">
-								<option name="design_schemes[red-price]" value="red-price"<?php selected( 'red-price', $design_schemes[ 'price-color' ] ); ?>><?php _e( 'Red', 'ecommerce-product-catalog' ); ?></option>
-								<option name="design_schemes[orange-price]" value="orange-price"<?php selected( 'orange-price', $design_schemes[ 'price-color' ] ); ?>><?php _e( 'Orange', 'ecommerce-product-catalog' ); ?></option>
-								<option name="design_schemes[green-price]" value="green-price"<?php selected( 'green-price', $design_schemes[ 'price-color' ] ); ?>><?php _e( 'Green', 'ecommerce-product-catalog' ); ?></option>
-								<option name="design_schemes[blue-price]" value="blue-price"<?php selected( 'blue-price', $design_schemes[ 'price-color' ] ); ?>><?php _e( 'Blue', 'ecommerce-product-catalog' ); ?></option>
-								<option name="design_schemes[grey-price]" value="grey-price"<?php selected( 'grey-price', $design_schemes[ 'price-color' ] ); ?>><?php _e( 'Grey', 'ecommerce-product-catalog' ); ?></option>
-							</select>
-						</td>
-						<td><?php _e( 'single product', 'ecommerce-product-catalog' ); ?>, <?php _e( 'product archive', 'ecommerce-product-catalog' ); ?></td>
-					</tr>
+					<?php do_action( 'inside_color_schemes_settings_table', $design_schemes ) ?>
 					<tr>
 						<td><?php _e( 'Boxes Color', 'ecommerce-product-catalog' ); ?></td>
 						<td>
@@ -268,7 +247,7 @@ function get_default_product_image_src() {
 }
 
 function get_modern_grid_settings() {
-	$settings = wp_parse_args( get_option( 'modern_grid_settings' ), array( 'attributes' => 0, 'per-row' => 2, 'attributes_num' => 6 ) );
+	$settings = wp_parse_args( get_option( 'modern_grid_settings' ), array( 'attributes' => 0, 'per-row' => 2, 'per-row-categories' => 2, 'attributes_num' => 6 ) );
 	return $settings;
 }
 
@@ -278,4 +257,35 @@ function get_product_page_settings() {
 	$single_options[ 'enable_product_gallery_only_when_exist' ]	 = isset( $single_options[ 'enable_product_gallery_only_when_exist' ] ) ? $single_options[ 'enable_product_gallery_only_when_exist' ] : '';
 	$single_options[ 'template' ]								 = isset( $single_options[ 'template' ] ) ? $single_options[ 'template' ] : 'boxed';
 	return apply_filters( 'ic_product_page_settings', $single_options );
+}
+
+/**
+ * Returns currently selected product listing settings
+ *
+ * @return type
+ */
+function get_current_product_listing_settings() {
+	$archive_template	 = get_product_listing_template();
+	$settings			 = '';
+	if ( $archive_template == 'default' ) {
+		$settings = get_modern_grid_settings();
+	} else if ( $archive_template == 'grid' ) {
+		$settings = get_classic_grid_settings();
+	} else if ( $archive_template == 'list' ) {
+		$settings = get_classic_list_settings();
+	}
+	return apply_filters( 'current_product_listing_settings', $settings, $archive_template );
+}
+
+/**
+ * Returns currently selected listing design per row for categories
+ *
+ * @return int
+ */
+function get_current_category_per_row() {
+	$settings = get_current_product_listing_settings();
+	if ( !empty( $settings[ 'per-row-categories' ] ) ) {
+		return $settings[ 'per-row-categories' ];
+	}
+	return '';
 }

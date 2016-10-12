@@ -21,13 +21,15 @@ add_filter( 'enter_title_here', 'al_enter_title_here' );
  * @return str
  */
 function al_enter_title_here( $message ) {
-	$screen = get_current_screen();
-	if ( ic_string_contains( $screen->id, 'al_product' ) ) {
-		if ( is_plural_form_active() ) {
-			$names	 = get_catalog_names();
-			$message = sprintf( __( 'Enter %s name here', 'ecommerce-product-catalog' ), ic_strtolower( $names[ 'singular' ] ) );
-		} else {
-			$message = __( 'Enter item name here', 'ecommerce-product-catalog' );
+	if ( is_admin() ) {
+		$screen = get_current_screen();
+		if ( ic_string_contains( $screen->id, 'al_product' ) ) {
+			if ( is_plural_form_active() ) {
+				$names	 = get_catalog_names();
+				$message = sprintf( __( 'Enter %s name here', 'ecommerce-product-catalog' ), ic_strtolower( $names[ 'singular' ] ) );
+			} else {
+				$message = __( 'Enter item name here', 'ecommerce-product-catalog' );
+			}
 		}
 	}
 	return $message;

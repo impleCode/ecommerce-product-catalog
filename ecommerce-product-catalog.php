@@ -4,7 +4,7 @@
  * Plugin Name: eCommerce Product Catalog by impleCode
  * Plugin URI: https://implecode.com/wordpress/product-catalog/#cam=in-plugin-urls&key=plugin-url
  * Description: WordPress eCommerce easy to use, powerful and beautiful plugin from impleCode. Great choice if you want to sell easy and quick. Or just beautifully present your products on WordPress website. Full WordPress integration does great job not only for Merchants but also for Developers and Theme Constructors.
- * Version: 2.5.16
+ * Version: 2.5.23
  * Author: impleCode
  * Author URI: https://implecode.com/#cam=in-plugin-urls&key=author-url
  * Text Domain: ecommerce-product-catalog
@@ -103,6 +103,9 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 			if ( !defined( 'AL_PLUGIN_MAIN_FILE' ) ) {
 				define( 'AL_PLUGIN_MAIN_FILE', __FILE__ );
 			}
+			if ( !defined( 'AL_BASE_TEMPLATES_PATH' ) ) {
+				define( 'AL_BASE_TEMPLATES_PATH', dirname( __FILE__ ) );
+			}
 		}
 
 		/**
@@ -127,6 +130,8 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 			require_once(AL_BASE_PATH . '/functions/shortcodes.php' );
 			require_once(AL_BASE_PATH . '/functions/activation.php' );
 			require_once(AL_BASE_PATH . '/ext-comp/index.php' );
+
+			require_once(AL_BASE_PATH . '/modules/index.php' );
 		}
 
 		/**
@@ -194,6 +199,8 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 
 } // End if class_exists check
 
+add_action( 'plugins_loaded', 'impleCode_EPC', -1 );
+
 /**
  * The main function responsible for returning eCommerce_Product_Catalog
  *
@@ -205,4 +212,4 @@ function impleCode_EPC() {
 }
 
 // Get impleCode_EPC Running
-impleCode_EPC();
+//impleCode_EPC();

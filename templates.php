@@ -216,7 +216,7 @@ function theme_integration_wizard( $atts ) {
 		  //    return ((elemBottom <= docViewBottom) && (elemTop >= docViewTop));
 		  }</script>'; */
 		if ( !isset( $_GET[ 'test_advanced' ] ) ) {
-			$box_content .= '<p>' . __( 'eCommerce Product Catalog is currently running in Simple Mode.', 'ecommerce-product-catalog' ) . '</p>';
+			$box_content .= '<p>' . sprintf( __( '%s is currently running in Simple Mode.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) . '</p>';
 			$box_content .= '<p>' . __( 'In Simple Mode the product listing, product search and category pages are disabled (please read this Sample Product Page to fully understand the difference).', 'ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p>' . __( 'Please use the button below to check out how the product page looks in Automatic Advanced Mode.', 'ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p class="wp-core-ui"><a href="' . esc_url( add_query_arg( 'test_advanced', '1' ) ) . '" class="button-primary">' . __( 'Start Advanced Mode Test', 'ecommerce-product-catalog' ) . '</a><a href="' . esc_url( add_query_arg( 'test_advanced', 'simple' ) ) . '" class="button-secondary">' . __( 'Use Simple Mode', 'ecommerce-product-catalog' ) . '</a></p>';
@@ -323,7 +323,7 @@ function theme_integration_wizard( $atts ) {
 			enable_simple_mode();
 			echo '<div id="integration_wizard" class="' . $class . '">' . implecode_warning( $box_content, 0 ) . '</div>';
 		} else if ( isset( $_GET[ 'test_advanced' ] ) && $_GET[ 'test_advanced' ] == 'ok' ) {
-			$box_content .= '<p>' . __( 'Congratulations! eCommerce Product Catalog is working on Advanced Mode now. You can go to admin and add the products to the catalog.', 'ecommerce-product-catalog' ) . '</p>';
+			$box_content .= '<p>' . sprintf( __( 'Congratulations! %s is working on Advanced Mode now. You can go to admin and add the products to the catalog.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) . '</p>';
 			$box_content .= '<p>' . __( 'If you are a developer or would like to have full control on the product pages templates we still recommend to proceed with manual integration.', 'ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p>' . __( 'You can switch between modes at any time in Product Settings.', 'ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<p class="wp-core-ui"><a href="' . admin_url( 'edit.php?post_type=al_product' ) . '" class="button-primary">' . __( 'Go to Admin', 'ecommerce-product-catalog' ) . '</a><a target="_blank" href="https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=advanced-mode&key=integration-advanced-success" class="button-secondary">' . __( 'Free Theme Integration Guide', 'ecommerce-product-catalog' ) . '</a></p>';
@@ -352,9 +352,9 @@ function get_integration_settings() {
 	$settings[ 'disable_breadcrumbs' ]	 = isset( $archive_multiple_settings[ 'enable_product_breadcrumbs' ] ) && $archive_multiple_settings[ 'enable_product_breadcrumbs' ] == 1 ? 0 : 1;
 	$settings[ 'disable_name' ]			 = isset( $archive_multiple_settings[ 'disable_name' ] ) ? $archive_multiple_settings[ 'disable_name' ] : 0;
 	$settings[ 'disable_image' ]		 = is_ic_product_gallery_enabled() ? 0 : 1;
-	$settings[ 'disable_price' ]		 = is_ic_price_enabled() ? 0 : 1;
-	$settings[ 'disable_shipping' ]		 = is_ic_shipping_enabled() ? 0 : 1;
-	$settings[ 'disable_attributes' ]	 = is_ic_attributes_enabled() ? 0 : 1;
+	$settings[ 'disable_price' ]		 = function_exists( 'is_ic_price_enabled' ) && is_ic_price_enabled() ? 0 : 1;
+	$settings[ 'disable_shipping' ]		 = function_exists( 'is_ic_shipping_enabled' ) && is_ic_shipping_enabled() ? 0 : 1;
+	$settings[ 'disable_attributes' ]	 = function_exists( 'is_ic_attributes_enabled' ) && is_ic_attributes_enabled() ? 0 : 1;
 	$settings[ 'default_sidebar' ]		 = isset( $archive_multiple_settings[ 'default_sidebar' ] ) ? $archive_multiple_settings[ 'default_sidebar' ] : 'none';
 	return $settings;
 }

@@ -23,9 +23,9 @@ function ic_system_status() {
 				foreach ( all_ic_options( 'options' ) as $option ) {
 					delete_option( $option );
 				}
-				implecode_success( __( 'Product Settings successfully reset to default!', 'ecommerce-product-catalog' ) );
+				implecode_success( __( 'Catalog Settings successfully reset to default!', 'ecommerce-product-catalog' ) );
 			} else {
-				echo '<h3>' . __( 'All products settings will be reset to defaults. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
+				echo '<h3>' . __( 'All catalog settings will be reset to defaults. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
 				echo '<a class="button" href="' . esc_url( add_query_arg( 'reset_product_settings_confirm', 1 ) ) . '">' . __( 'Yes', 'ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'reset_product_settings' ) ) . '">' . __( 'No', 'ecommerce-product-catalog' ) . '</a>';
 			}
 		} else if ( isset( $_GET[ 'delete_all_products' ] ) ) {
@@ -33,9 +33,9 @@ function ic_system_status() {
 				global $wpdb;
 				$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'al_product' );" );
 				$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta LEFT JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL;" );
-				implecode_success( __( 'Product Settings successfully reset to default!', 'ecommerce-product-catalog' ) );
+				implecode_success( __( 'Catalog Settings successfully reset to default!', 'ecommerce-product-catalog' ) );
 			} else {
-				echo '<h3>' . __( 'All products will be permanently deleted. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
+				echo '<h3>' . __( 'All items will be permanently deleted. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
 				echo '<a class="button" href="' . esc_url( add_query_arg( 'delete_all_products_confirm', 1 ) ) . '">' . __( 'Yes', 'ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'delete_all_products' ) ) . '">' . __( 'No', 'ecommerce-product-catalog' ) . '</a>';
 			}
 		} else if ( isset( $_GET[ 'delete_all_product_categories' ] ) ) {
@@ -56,9 +56,9 @@ function ic_system_status() {
 
 				// Delete Taxonomy
 				$wpdb->delete( $wpdb->term_taxonomy, array( 'taxonomy' => $taxonomy ), array( '%s' ) );
-				implecode_success( __( 'All Product Categories successfully deleted!', 'ecommerce-product-catalog' ) );
+				implecode_success( __( 'All Catalog Categories successfully deleted!', 'ecommerce-product-catalog' ) );
 			} else {
-				echo '<h3>' . __( 'All product categories will be permanently deleted. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
+				echo '<h3>' . __( 'All catalog categories will be permanently deleted. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
 				echo '<a class="button" href="' . esc_url( add_query_arg( 'delete_all_product_categories_confirm', 1 ) ) . '">' . __( 'Yes', 'ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'delete_all_product_categories' ) ) . '">' . __( 'No', 'ecommerce-product-catalog' ) . '</a>';
 			}
 		} else if ( isset( $_GET[ 'delete_old_filters_bar' ] ) ) {
@@ -82,15 +82,15 @@ function ic_system_status() {
 				<tbody>
 					<tr>
 						<td><?php _e( 'Reset product settings', 'ecommerce-product-catalog' ); ?>:</td>
-						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'reset_product_settings', 1 ) ) ?>"><?php _e( 'Reset Product Settings', 'ecommerce-product-catalog' ) ?></a></td>
+						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'reset_product_settings', 1 ) ) ?>"><?php _e( 'Reset Catalog Settings', 'ecommerce-product-catalog' ) ?></a></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Delete all products', 'ecommerce-product-catalog' ); ?>:</td>
-						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_products', 1 ) ) ?>"><?php _e( 'Delete all Products', 'ecommerce-product-catalog' ) ?></a></td>
+						<td><?php _e( 'Delete all items', 'ecommerce-product-catalog' ); ?>:</td>
+						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_products', 1 ) ) ?>"><?php _e( 'Delete all Catalog Items', 'ecommerce-product-catalog' ) ?></a></td>
 					</tr>
 					<tr>
-						<td><?php _e( 'Delete all product categories', 'ecommerce-product-catalog' ); ?>:</td>
-						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_product_categories', 1 ) ) ?>"><?php _e( 'Delete all Product Categories', 'ecommerce-product-catalog' ) ?></a></td>
+						<td><?php _e( 'Delete all categories', 'ecommerce-product-catalog' ); ?>:</td>
+						<td><a class="button" href="<?php echo esc_url( add_query_arg( 'delete_all_product_categories', 1 ) ) ?>"><?php _e( 'Delete all Catalog Categories', 'ecommerce-product-catalog' ) ?></a></td>
 					</tr>
 					<?php
 					if ( get_option( 'old_sort_bar' ) == 1 ) {
@@ -101,7 +101,7 @@ function ic_system_status() {
 						</tr>
 					<?php } ?>
 					<tr>
-						<td><?php _e( 'Delete all products and categories on uninstall', 'ecommerce-product-catalog' ); ?>:</td>
+						<td><?php _e( 'Delete all items and categories on uninstall', 'ecommerce-product-catalog' ); ?>:</td>
 						<?php $checked		 = get_option( 'ic_delete_products_uninstall', 0 ); ?>
 						<td><input type="checkbox" name="delete_products_uninstall" <?php checked( 1, $checked ) ?> /></td>
 					</tr>
@@ -126,7 +126,7 @@ function ic_system_status() {
 					</tr>
 					<tr>
 						<td><?php
-							_e( 'eCommerce Product Catalog Version', 'ecommerce-product-catalog' );
+							echo sprintf( __( '%s Version', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME );
 							?>:
 						</td>
 						<td>
@@ -138,7 +138,7 @@ function ic_system_status() {
 						</td>
 					</tr>
 					<tr>
-						<td><?php _e( 'eCommerce Product Catalog Database Version', 'ecommerce-product-catalog' ); ?>:</td>
+						<td><?php echo sprintf( __( '%s Database Version', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ); ?>:</td>
 						<td><?php echo get_option( 'ecommerce_product_catalog_ver', $plugin_version ); ?></td>
 					</tr>
 					<tr>
@@ -313,7 +313,7 @@ function ic_system_status() {
 					<tr>
 						<td><?php _e( 'Child Theme', 'ecommerce-product-catalog' ); ?>:</td>
 						<td><?php
-							echo is_child_theme() ? '<mark class="yes">' . '&#10004;' . '</mark>' : '&#10005; &ndash; ' . sprintf( __( 'If you\'re modifying eCommerce Product Catalog or a parent theme you didn\'t build personally we recommend using a child theme. See: <a href="%s" target="_blank">How to create a child theme</a>', 'ecommerce-product-catalog' ), 'http://codex.wordpress.org/Child_Themes' );
+							echo is_child_theme() ? '<mark class="yes">' . '&#10004;' . '</mark>' : '&#10005; &ndash; ' . sprintf( __( 'If you\'re modifying %s or a parent theme you didn\'t build personally we recommend using a child theme. See: <a href="%s" target="_blank">How to create a child theme</a>', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, 'http://codex.wordpress.org/Child_Themes' );
 							?></td>
 					</tr>
 					<?php
@@ -334,7 +334,7 @@ function ic_system_status() {
 						</tr>
 					<?php endif ?>
 					<tr>
-						<td><?php _e( 'eCommerce Product Catalog Support', 'ecommerce-product-catalog' ); ?>:</td>
+						<td><?php echo sprintf( __( '%s Support', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ); ?>:</td>
 						<td><?php
 							if ( !is_theme_implecode_supported() ) {
 								_e( 'Not Declared', 'ecommerce-product-catalog' );

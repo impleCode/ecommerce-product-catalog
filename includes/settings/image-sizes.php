@@ -4,9 +4,9 @@ if ( !defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Manages attributes settings
+ * Manages image sizes settings
  *
- * Here attributes settings are defined and managed.
+ * Here image sizes settings are defined and managed.
  *
  * @version		1.1.4
  * @package		ecommerce-product-catalog/functions
@@ -24,7 +24,7 @@ function ic_catalog_image_sizes_settings() {
 	<table class="form-table">
 		<tbody>
 			<tr>
-				<th scope="row"><?php _e( 'Product Page Image', 'ecommerce-product-catalog' ) ?></th>
+				<th scope="row"><?php _e( 'Catalog Single Page Image', 'ecommerce-product-catalog' ) ?></th>
 				<td><fieldset><legend class="screen-reader-text"><span>Large size</span></legend>
 						<label for="product_page_image_w"><?php _e( 'Max Width' ) ?></label>
 						<input name="catalog_image_sizes[product_page_image_w]" type="number" step="1" min="0" id="product_page_image_w" value="<?php echo $images[ 'product_page_image_w' ] ?>" class="small-text">
@@ -33,7 +33,7 @@ function ic_catalog_image_sizes_settings() {
 					</fieldset></td>
 			</tr>
 			<tr>
-				<th scope="row"><?php _e( 'Product Category Page Image', 'ecommerce-product-catalog' ) ?></th>
+				<th scope="row"><?php _e( 'Catalog Category Page Image', 'ecommerce-product-catalog' ) ?></th>
 				<td><fieldset><legend class="screen-reader-text"><span>Large size</span></legend>
 						<label for="product_category_page_image_w"><?php _e( 'Max Width' ) ?></label>
 						<input name="catalog_image_sizes[product_category_page_image_w]" type="number" step="1" min="0" id="product_category_page_image_w" value="<?php echo $images[ 'product_category_page_image_w' ] ?>" class="small-text">

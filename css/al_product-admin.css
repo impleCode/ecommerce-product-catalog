@@ -179,6 +179,14 @@
 #implecode_settings .extension a:hover .click-span {
     color: #000;
 }
+.extensions-promo-box {
+    border: 3px solid #dde4e4;
+    border-right: 1px solid #ccc;
+    background: #edf2f2;
+    display: block;
+    padding: 10px;
+    margin-right: -1px;
+}
 
 .bundle-box {
     padding: 22px 20px;
@@ -211,6 +219,28 @@
     margin-left: 3px;
     position: relative;
     top: 2px;
+}
+
+#implecode_settings .extension.wpml {
+    height: 270px;
+    width: 330px;
+}
+#implecode_settings .extension.wpml h3 {
+    vertical-align: middle;
+    padding-top: 15px;
+}
+
+#implecode_settings .extension.wpml div.otgs_wp_installer_table_compact {
+    max-width: 100%;
+    box-sizing: border-box;
+    border: 0;
+}
+
+h2.partners-header {
+    clear: both;
+    padding-top: 20px;
+    margin-top: 30px;
+    overflow: hidden;
 }
 
 
@@ -299,6 +329,7 @@
 
 #admin-number-field, #archive_products_limit, input.admin-number-field{
     width: 50px;
+    max-width: 100px;
 }
 
 input[name="_price"], input[name="_sku"], #al_product_price.postbox input {
@@ -401,7 +432,7 @@ h2.tab-menu {
     /* border-top: 1px solid #d54e21;
     border-left: 1px solid #d54e21;
     border-right: 1px solid #d54e21;*/
-    border-bottom: 2px solid #ffffff; 
+    border-bottom: 2px solid #ffffff;
     z-index:2;
 }
 
@@ -500,9 +531,12 @@ h2.tab-menu {
 .overall-product-settings .setting-content.support-tab h2:nth-of-type(5):before {
     content: "\f238";
 }
-
 .setting-content select {
     max-width: 150px;
+}
+
+.setting-content .select-page-wrapper select {
+    max-width: 130px;
 }
 
 .attributes-product-settings .setting-content {
@@ -922,9 +956,9 @@ position: fixed;
     background: -webkit-linear-gradient(top, #a2a2a2 0%, #adacac 100%);
     background: linear-gradient(to bottom, #a2a2a2 0%, #adacac 100%);
     transform: scale(0.97);
-    -webkit-transform:scale(0.97); 
-    -moz-transform:scale(0.97); 
-    -o-transform:scale(0.97); 
+    -webkit-transform:scale(0.97);
+    -moz-transform:scale(0.97);
+    -o-transform:scale(0.97);
     -ms-transform:scale(0.97);
     outline: none;
 }
@@ -1014,4 +1048,4 @@ input.error {
     overflow-y: auto;
     /* prevent horizontal scrollbar */
     overflow-x: hidden;
-  }
+}

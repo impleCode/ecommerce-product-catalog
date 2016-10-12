@@ -86,7 +86,7 @@ function get_default_archive_theme( $post, $archive_template = null ) {
 		$return .= '<div class="pseudo"></div>';
 		$return .= '<a href="' . get_permalink( $product_id ) . '">' . $image;
 		$return .= '<h3 class="product-name ' . design_schemes( 'box', 0 ) . '">' . $product_name . '</h3>';
-		if ( $modern_grid_settings[ 'attributes' ] == 1 ) {
+		if ( $modern_grid_settings[ 'attributes' ] == 1 && function_exists( 'product_attributes_number' ) ) {
 			$attributes_number = product_attributes_number();
 			if ( $attributes_number > 0 && has_product_any_attributes( $product_id ) ) {
 				$max_listing_attributes	 = apply_filters( 'max_product_listing_attributes', $modern_grid_settings[ 'attributes_num' ] );
@@ -169,8 +169,13 @@ add_filter( 'product-list-class', 'add_modern_lising_class', 10, 3 );
  */
 function add_modern_lising_class( $class, $where = '', $archive_template = 'default' ) {
 	if ( $archive_template == 'default' ) {
-		$settings = get_modern_grid_settings();
+		$settings			 = get_modern_grid_settings();
+		$shortcode_per_row	 = ic_get_global( 'shortcode_per_row' );
+		if ( $shortcode_per_row ) {
+			$settings[ 'per-row' ] = $shortcode_per_row;
+		}
 		$class .= ' per-row-' . $settings[ 'per-row' ];
 	}
+	ic_delete_global( 'shortcode_per_row' );
 	return $class;
 }

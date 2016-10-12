@@ -31,13 +31,13 @@ jQuery( document ).ready( function ( $ ) {
     } );
 
     jQuery( ".boxed .after-product-details" ).ready( function () {
-        jQuery( ".boxed .after-product-details > div#product_description" ).prependTo( ".boxed .after-product-details" );
+        //jQuery( ".boxed .after-product-details > div#product_description" ).prependTo( ".boxed .after-product-details" );
         initialize_ic_tabs();
     } );
 
     $.ic = {
         /**
-         * Implement a WordPress-link Hook System for Javascript 
+         * Implement a WordPress-link Hook System for Javascript
          * TODO: Change 'tag' to 'args', allow number (priority), string (tag), object (priority+tag)
          */
         hooks: { action: { }, filter: { } },
@@ -102,6 +102,7 @@ function initialize_ic_tabs() {
     } else if ( jQuery( ".boxed" ).length ) {
         ic_tabs();
     }
+    jQuery( document ).trigger( "ic_tabs_initialized" );
 }
 
 function redefine_ic_tabs() {
@@ -185,38 +186,40 @@ function ic_accordion_initial_hide() {
 }
 
 function ic_tabs() {
-    var tabs = "<div class='ic_tabs'>";
-    jQuery( ".boxed .after-product-details > div" ).each( function () {
-        var ic_tab_content = jQuery( this );
-        var ic_tab_id = ic_tab_content.attr( "id" );
-        ic_tab_content.addClass( "ic_tab_content" );
-        var h = ic_tab_content.find( "> h3.catalog-header" );
-        if ( h.length ) {
-            tabs = tabs + "<h3 data-tab_id='" + ic_tab_id + "'><a href='#" + ic_tab_id + "_tab'>" + h.html() + "</a></h3>";
-            h.remove();
-        }
-    } );
-    tabs = tabs + "</div>";
-    jQuery( ".boxed .after-product-details" ).prepend( tabs );
-    if ( location.hash != "" ) {
-        var hash = location.hash.replace( "_tab", "" ).replace( "#", "" );
-        var current_tab = jQuery( ".boxed .after-product-details .ic_tabs > h3[data-tab_id='" + hash + "']" );
-        if ( current_tab.length ) {
-            current_tab.addClass( "active" );
-            jQuery( ".boxed .after-product-details > #" + hash ).addClass( "active" );
+    if ( !jQuery( ".boxed .after-product-details" ).hasClass( "ic_tabs_container" ) ) {
+        var tabs = "<div class='ic_tabs'>";
+        jQuery( ".boxed .after-product-details > div" ).each( function () {
+            var ic_tab_content = jQuery( this );
+            var ic_tab_id = ic_tab_content.attr( "id" );
+            ic_tab_content.addClass( "ic_tab_content" );
+            var h = ic_tab_content.find( "> h3.catalog-header" );
+            if ( h.length ) {
+                tabs = tabs + "<h3 data-tab_id='" + ic_tab_id + "'><a href='#" + ic_tab_id + "_tab'>" + h.html() + "</a></h3>";
+                h.remove();
+            }
+        } );
+        tabs = tabs + "</div>";
+        jQuery( ".boxed .after-product-details" ).prepend( tabs );
+        if ( location.hash != "" ) {
+            var hash = location.hash.replace( "_tab", "" ).replace( "#", "" );
+            var current_tab = jQuery( ".boxed .after-product-details .ic_tabs > h3[data-tab_id='" + hash + "']" );
+            if ( current_tab.length ) {
+                current_tab.addClass( "active" );
+                jQuery( ".boxed .after-product-details > #" + hash ).addClass( "active" );
+            } else {
+                set_default_ic_tab();
+            }
         } else {
             set_default_ic_tab();
         }
-    } else {
-        set_default_ic_tab();
+        jQuery( ".boxed .after-product-details .ic_tabs > h3" ).unbind( "click" );
+        jQuery( ".boxed .after-product-details .ic_tabs > h3" ).click( function ( e ) {
+            e.preventDefault();
+            var ic_tab_id = jQuery( this ).data( "tab_id" );
+            ic_enter_tab( ic_tab_id, jQuery( this ) );
+        } );
+        jQuery( ".boxed .after-product-details" ).addClass( "ic_tabs_container" );
     }
-    jQuery( ".boxed .after-product-details .ic_tabs > h3" ).unbind( "click" );
-    jQuery( ".boxed .after-product-details .ic_tabs > h3" ).click( function ( e ) {
-        e.preventDefault();
-        var ic_tab_id = jQuery( this ).data( "tab_id" );
-        ic_enter_tab( ic_tab_id, jQuery( this ) );
-    } );
-    jQuery( ".boxed .after-product-details" ).addClass( "ic_tabs_container" );
 }
 function ic_enter_tab( ic_tab_id, object ) {
     window.location.hash = ic_tab_id + "_tab";
@@ -237,8 +240,7 @@ function is_element_visible( element ) {
     var top_of_screen = jQuery( window ).scrollTop();
     if ( top_of_screen < top_of_element ) {
         return true;
-    }
-    else {
+    } else {
         return false;
     }
 }
@@ -258,8 +260,7 @@ function reponsive_product_catalog() {
         jQuery( "article.al_product" ).addClass( "responsive" );
         jQuery( ".product-list" ).addClass( "responsive" );
 
-    }
-    else {
+    } else {
         jQuery( "article.al_product" ).removeClass( "responsive" );
         jQuery( ".product-list" ).removeClass( "responsive" );
 

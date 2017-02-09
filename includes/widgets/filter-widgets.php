@@ -52,7 +52,7 @@ class product_category_filter extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		if ( get_integration_type() != 'simple' ) {
-			if ( (!empty( $instance[ 'shortcode_support' ] ) && has_show_products_shortcode()) || (is_ic_taxonomy_page() || is_ic_product_listing() || is_ic_product_search() ) ) {
+			if ( (!empty( $instance[ 'shortcode_support' ] ) && has_show_products_shortcode()) || (!is_ic_shortcode_query() && (is_ic_taxonomy_page() || is_ic_product_listing() || is_ic_product_search() )) ) {
 				$title = apply_filters( 'widget_title', empty( $instance[ 'title' ] ) ? '' : $instance[ 'title' ], $instance, $this->id_base );
 
 				$taxonomy = get_current_screen_tax();
@@ -72,7 +72,7 @@ class product_category_filter extends WP_Widget {
 				}
 				$class = 'product-category-filter-container';
 				if ( is_product_filter_active( 'product_category' ) ) {
-					$class .= ' filter-active';
+					$class			 .= ' filter-active';
 					$filter_value	 = get_product_filter_value( 'product_category' );
 					$children		 = get_terms( $taxonomy, array( 'parent' => $filter_value ) );
 					//if ( !is_ic_taxonomy_page() ) {
@@ -92,7 +92,7 @@ class product_category_filter extends WP_Widget {
 					if ( $title ) {
 						echo $args[ 'before_title' ] . $title . $args[ 'after_title' ];
 					}
-					echo '<div class="' . $class . '">';
+					echo '<div class="' . $class . ' ic_ajax" data-ic_ajax="product-category-filter-container">';
 					echo $form;
 					if ( !empty( $child_form ) ) {
 						echo '<div class="child-category-filters">' . $child_form . '</div>';
@@ -147,7 +147,7 @@ class product_sort_filter extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		if ( get_integration_type() != 'simple' ) {
-			if ( (!empty( $instance[ 'shortcode_support' ] ) && has_show_products_shortcode()) || (is_ic_taxonomy_page() || is_ic_product_listing() || is_ic_product_search() ) ) {
+			if ( (!empty( $instance[ 'shortcode_support' ] ) && has_show_products_shortcode()) || (!is_ic_shortcode_query() && (is_ic_taxonomy_page() || is_ic_product_listing() || is_ic_product_search()) ) ) {
 
 				$title = apply_filters( 'widget_title', empty( $instance[ 'title' ] ) ? '' : $instance[ 'title' ], $instance, $this->id_base );
 

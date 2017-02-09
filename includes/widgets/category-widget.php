@@ -48,7 +48,7 @@ class product_cat_widget extends WP_Widget {
 				} else {
 					$label = __( 'Select Category', 'ecommerce-product-catalog' );
 				}
-				$cat_args = array( 'orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h, 'taxonomy' => 'al_product-cat', 'walker' => new my_Walker_CategoryDropdown, 'show_option_none' => $label );
+				$cat_args = array( 'orderby' => 'name', 'show_count' => $c, 'hierarchical' => $h, 'taxonomy' => 'al_product-cat', 'walker' => new ic_cat_Walker_CategoryDropdown, 'show_option_none' => $label );
 				wp_dropdown_categories( apply_filters( 'widget_product_categories_dropdown_args', $cat_args ) );
 				?>
 
@@ -136,14 +136,14 @@ class product_cat_widget extends WP_Widget {
 
 }
 
-class my_Walker_CategoryDropdown extends Walker_CategoryDropdown {
+class ic_cat_Walker_CategoryDropdown extends Walker_CategoryDropdown {
 
 	function start_el( &$output, $category, $depth = 0, $args = Array(), $id = 0 ) {
 		$pad = str_repeat( '&nbsp;', $depth * 3 );
 
 		$cat_name = apply_filters( 'list_cats', $category->name, $category );
 		$output .= "\t<option class=\"level-$depth\" value=\"" . $category->slug . "\"";
-		if ( $category->term_id == isset( $args[ 'selected' ] ) ? $args[ 'selected' ] : '' ) {
+		if ( $category->slug == get_query_var( 'al_product-cat' ) ) {
 			$output .= ' selected="selected"';
 		}
 		$output .= '>';

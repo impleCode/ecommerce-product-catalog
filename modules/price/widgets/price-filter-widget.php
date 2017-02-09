@@ -29,42 +29,45 @@ class product_price_filter extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		if ( get_integration_type() != 'simple' ) {
-			$title = apply_filters( 'widget_title', empty( $instance[ 'title' ] ) ? '' : $instance[ 'title' ], $instance, $this->id_base );
+			if ( (!empty( $instance[ 'shortcode_support' ] ) && has_show_products_shortcode()) || (!is_ic_shortcode_query() && (is_ic_taxonomy_page() || is_ic_product_listing() || is_ic_product_search()) ) ) {
 
-			echo $args[ 'before_widget' ];
-			if ( $title )
-				echo $args[ 'before_title' ] . $title . $args[ 'after_title' ];
+				$title = apply_filters( 'widget_title', empty( $instance[ 'title' ] ) ? '' : $instance[ 'title' ], $instance, $this->id_base );
 
-			// Use current theme search form if it exists
-			$min_price	 = isset( $_GET[ 'min-price' ] ) ? floatval( $_GET[ 'min-price' ] ) : '';
-			$max_price	 = isset( $_GET[ 'max-price' ] ) ? floatval( $_GET[ 'max-price' ] ) : '';
-			$currency	 = product_currency();
-			$action		 = get_filter_widget_action( $instance );
-			?>
-			<div class="price-filter">
-				<span class="filter-label"><?php _e( 'Price', 'ecommerce-product-catalog' ) ?>:</span>
-				<form class="price-filter-form" action="<?php echo $action ?>">
-					<?php
-					foreach ( $_GET as $key => $value ) {
-						if ( $key != 'min-price' && $key != 'max-price' ) {
-							if ( is_array( $value ) ) {
-								foreach ( $value as $a_value ) {
-									if ( !empty( $a_value ) ) {
-										echo '<input type="hidden" name="' . esc_attr( $key ) . '[]" value="' . esc_attr( $a_value ) . '" />';
+				echo $args[ 'before_widget' ];
+				if ( $title )
+					echo $args[ 'before_title' ] . $title . $args[ 'after_title' ];
+
+				// Use current theme search form if it exists
+				$min_price	 = isset( $_GET[ 'min-price' ] ) ? floatval( $_GET[ 'min-price' ] ) : '';
+				$max_price	 = isset( $_GET[ 'max-price' ] ) ? floatval( $_GET[ 'max-price' ] ) : '';
+				$currency	 = product_currency();
+				$action		 = get_filter_widget_action( $instance );
+				?>
+				<div class="price-filter ic_ajax" data-ic_ajax="price-filter">
+					<span class="filter-label"><?php _e( 'Price', 'ecommerce-product-catalog' ) ?>:</span>
+					<form class="price-filter-form" action="<?php echo $action ?>">
+						<?php
+						foreach ( $_GET as $key => $value ) {
+							if ( $key != 'min-price' && $key != 'max-price' ) {
+								if ( is_array( $value ) ) {
+									foreach ( $value as $a_value ) {
+										if ( !empty( $a_value ) ) {
+											echo '<input type="hidden" name="' . esc_attr( $key ) . '[]" value="' . esc_attr( $a_value ) . '" />';
+										}
 									}
+								} else {
+									echo '<input type="hidden" name="' . esc_attr( $key ) . '" value="' . esc_attr( $value ) . '" />';
 								}
-							} else {
-								echo '<input type="hidden" name="' . esc_attr( $key ) . '" value="' . esc_attr( $value ) . '" />';
 							}
 						}
-					}
-					?>
-					<input class="number-box" placeholder="<?php echo $currency ?>" type="number" min="0" step="0.01" name="min-price" value="<?php echo $min_price ?>"> - <input placeholder="<?php echo $currency ?>" min="0" step="0.01" type="number" class="number-box" name="max-price" value="<?php echo $max_price ?>">
-					<input class="price-filter-submit" type="submit" value="OK">
-				</form>
-			</div>
-			<?php
-			echo $args[ 'after_widget' ];
+						?>
+						<input class="number-box" placeholder="<?php echo $currency ?>" type="number" min="0" step="0.01" name="min-price" value="<?php echo $min_price ?>"> - <input placeholder="<?php echo $currency ?>" min="0" step="0.01" type="number" class="number-box" name="max-price" value="<?php echo $max_price ?>">
+						<input class="price-filter-submit" type="submit" value="OK">
+					</form>
+				</div>
+				<?php
+				echo $args[ 'after_widget' ];
+			}
 		}
 	}
 
@@ -98,7 +101,7 @@ add_action( 'implecode_register_widgets', 'register_price_filter_widget' );
 
 /**
  * Registers price filter widget
- * 
+ *
  */
 function register_price_filter_widget() {
 	if ( is_ic_price_enabled() ) {

@@ -33,6 +33,7 @@ function ic_system_status() {
 				global $wpdb;
 				$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'al_product' );" );
 				$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta LEFT JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL;" );
+				ic_delete_all_attribute_terms();
 				implecode_success( __( 'Catalog Settings successfully reset to default!', 'ecommerce-product-catalog' ) );
 			} else {
 				echo '<h3>' . __( 'All items will be permanently deleted. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';

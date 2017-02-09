@@ -73,14 +73,15 @@
 #implecode_settings .extension {
     float: left;
     box-sizing: border-box;
-    width: 300px;
+    width: 31%;
     height: 230px;
-    margin: 10px 20px 10px 0;
+    margin: 10px 2% 10px 0;
     border: 1px solid #ccc;
 }
 
 #implecode_settings .support-tab .extension {
     height: 230px;
+    width: 48%;
 }
 #implecode_settings a.extension-name {
     overflow: hidden;

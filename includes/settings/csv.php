@@ -9,7 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * Here support settings are defined and managed.
  *
  * @version		1.0.0
- * @package		holland-utrecht-from-implecode/includes
+ * @package		ecommerce-product-catalog/includes
  * @author 		Norbert Dreszer
  */
 function implecode_custom_csv_menu() {
@@ -92,18 +92,33 @@ function simple_import_product_from_csv() {
 		$import_array = simple_prepare_csv_import_array();
 		if ( count( $csv_cols ) == count( $import_array ) ) {
 			$i		 = 0;
+			$error	 = 0;
 			while ( ($data	 = fgetcsv( $fp, 0, $sep, '"' )) !== FALSE ) {
+				$filtered_data = array_filter( $data );
+				if ( empty( $data ) || !is_array( $data ) || (is_array( $data ) && empty( $filtered_data ) ) || count( $data ) == 1 ) {
+					continue;
+				}
 				foreach ( $data as $key => $val ) {
 					unset( $data[ $key ] );
 					$new_key			 = $import_array[ $key ];
 					$data[ $new_key ]	 = $val;
 				}
-				simple_insert_csv_product( $data );
-				$i++;
+				$product_id = simple_insert_csv_product( $data );
+				if ( !empty( $product_id ) && !is_wp_error( $product_id ) ) {
+					$i++;
+				} else {
+					$error++;
+				}
 			}
-			echo '<div class="al-box success">';
-			echo '<p>' . $i . ' ';
-			_e( 'products successfully added to the catalog', 'ecommerce-product-catalog' ) . '.<p>';
+			$result = 'success';
+			if ( !empty( $error ) ) {
+				$result = 'warning';
+			}
+			echo '<div class="al-box ' . $result . '">';
+			echo '<p>' . sprintf( __( '%s products successfully added to the catalog', 'ecommerce-product-catalog' ), $i ) . '.<p>';
+			if ( !empty( $error ) ) {
+				echo '<p>' . sprintf( __( '%s failures occurred. Please check if the file is UTF-8 encoded', 'ecommerce-product-catalog' ), $error ) . '.</p>';
+			}
 			echo '</div>';
 		} else {
 			echo '<div class="al-box warning">';
@@ -138,7 +153,7 @@ function simple_insert_csv_product( $data ) {
 		'post_content'	 => $long_description
 	);
 	$id					 = wp_insert_post( $post );
-	if ( $id != false ) {
+	if ( !is_wp_error( $id ) && !empty( $id ) ) {
 		update_post_meta( $id, '_price', $data[ 'product_price' ] );
 		update_post_meta( $id, 'excerpt', $short_description );
 		update_post_meta( $id, 'content', $long_description );

@@ -81,12 +81,11 @@ function get_attribute_value( $i = 1, $product_id ) {
 	$value = ic_get_global( $product_id . "_attribute" . $i );
 	if ( !$value ) {
 		$value = get_post_meta( $product_id, "_attribute" . $i, true );
-		ic_save_global( $product_id . "_attribute" . $i, $value );
 	}
 	if ( function_exists( 'is_ic_product_page' ) && is_ic_product_page() && !is_array( $value ) ) {
 		$value = str_replace( 'rel="nofollow"', '', make_clickable( $value ) );
-		ic_save_global( $product_id . "_attribute" . $i, $value );
 	}
+	ic_save_global( $product_id . "_attribute" . $i, $value );
 	return apply_filters( 'ic_attribute_value', $value, $product_id, $i );
 }
 

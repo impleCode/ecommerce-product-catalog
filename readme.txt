@@ -3,8 +3,8 @@ Contributors: impleCode, ndre
 Donate link: https://implecode.com/wordpress/plugins/premium-support/#cam=wordpress-org-catalog-page&key=donate-link
 Tags: ecommerce, e-commerce, commerce, product catalog, product catalogue, catalog, catalogue, product, implecode, wordpress ecommerce, store, sales, sell, shop, shopping, shipping, attributes, manage, plugin, display products, list products, products, wp catalog, blog catalog, product feed, product management, product portfolio, directory, gallery, product gallery, widget, post, plugin, admin, posts, inventory, restaurant menu, responsive, wp catalogue, catalog of goods, collection, catalogs, digital goods, e-shop, ecomerce, list, listing, online shop, online store, products catalog, sell products, selling, shopping cart, woocommerce catalog, WordPress shopping cart, wordpress store, wp catalog, wp e-commerce, cart
 Requires at least: 3.5
-Tested up to: 4.6
-Stable tag: 2.5.22
+Tested up to: 4.7
+Stable tag: 2.6.5
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -127,7 +127,7 @@ Developers can contribute to the source code on the [eCommerce Product Catalog G
 * Serbian - Thanks to Ogi
 * Spanish - Thanks to Andrew, Norbert and Josu
 * Turkish - Thanks to Tahir
-* *Your translation? - [Just send it in](http://translate.implecode.com/projects/ecommerce-product-catalog#cam=wordpress-org-catalog-page&key=translation-link)*
+* *Your translation? - [Just send it in](https://translate.wordpress.org/projects/wp-plugins/ecommerce-product-catalog)*
 
 *Note:* All our plugins are localized/translatable by default. This is very important for all users worldwide. So please contribute your language to the plugin to make it even more useful. For translating we invite you to join this huge impleCode [translation project](http://translate.implecode.com/projects/ecommerce-product-catalog#cam=wordpress-org-catalog-page&key=translation-link).
 
@@ -189,6 +189,12 @@ We are available on the support forum and through impleCode website.
 
 Bugs can be reported on the support forum.
 
+= How to disable AJAX on filter widgets and pagination? =
+
+If you prefer page reload instead of AJAX functionality place the following line of code in your theme functions.php file:
+
+remove_action( 'enqueue_catalog_scripts', 'ic_product_ajax_enqueue_styles' );
+
 = Where can I find impleCode documentation and user guides? =
 
 Documentation is available [here](https://implecode.com/wordpress/product-catalog/#cam=wordpress-org-catalog-faq&key=catalog-docs "eCommerce Product Catalog Documentation on impleCode.com").
@@ -212,7 +218,59 @@ This is not a store. It's main purpose is to present products or services on the
 
 == Changelog ==
 
-Use [impleCode Translate Project](http://translate.implecode.com/projects/ecommerce-product-catalog/#cam=wordpress-org-changelog&key=epc-translate "eCommerce Product Catalog Translation Project") to add new or fix the existing translations.
+Use [EPC Translate Project](https://translate.wordpress.org/projects/wp-plugins/ecommerce-product-catalog "eCommerce Product Catalog Translation Project") to add new or fix the existing translations.
+
+= 2.6.5 - 07/02/2017 =
+
+* Tweak - enable ajax filters only if product list is visible
+
+= 2.6.4 - 03/02/2017 =
+
+* Tweak - browser back and forward navigation support for ajax filters and navigation
+
+= 2.6.3 - 02/02/2017 =
+
+* Tweak - filters and pagination usability improved. Now it works without page reload. You can check it out on our demo: [here](https://demo.implecode.com). This can be disabled with the following code added to the theme functions.php:
+
+remove_action( 'enqueue_catalog_scripts', 'ic_product_ajax_enqueue_styles' );
+
+= 2.6.2 - 09/01/2017 =
+
+* Tweak - theme integration improvement
+
+= 2.6.1 - 04/01/2017 =
+
+* Fix - desciprtion and attributes visible on mobile
+* Fix - PHP notices in debug mode
+
+= 2.6.0 - 03/01/2017 =
+
+* Feature - even better theme integration options
+
+= 2.5.28 - 05/12/2016 =
+
+* Localisation - Norwegian language improved thanks to Ketil on impleCode Translate Project
+
+= 2.5.28 - 05/12/2016 =
+
+* Tweak - initial configuration usability improvement
+* Fix - shortcode orderby fix on home page
+
+= 2.5.27 - 28/11/2016 =
+
+* Tweak - code improvements for even better performance and customizability
+
+= 2.5.26 - 17/11/2016 =
+
+* Tweak - code improvements for even better performance
+
+= 2.5.25 - 26/10/2016 =
+
+* Fix - compatibility with PHP < 5.5 restored
+
+= 2.5.24 - 26/10/2016 =
+
+* Fix - product category dropdown shows correct value when selected
 
 = 2.5.23 - 11/10/2016 =
 

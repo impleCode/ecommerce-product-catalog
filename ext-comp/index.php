@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  *
  * @version		1.0.0
- * @package		digital-products-order/functions
+ * @package		ecommerce-product-catalog/ext-comp
  * @author 		Norbert Dreszer
  */
 add_action( 'plugins_loaded', 'run_ext_comp_files' );

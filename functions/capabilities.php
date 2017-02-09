@@ -13,7 +13,19 @@ if ( !defined( 'ABSPATH' ) ) {
  * @package		ecommerce-product-catalog/includes
  * @author 		Norbert Dreszer
  */
-function add_product_caps() {
+add_action( 'admin_init', 'ic_restore_product_caps' );
+
+/**
+ * Restores product capabilities if admin doesn't have proper rights
+ *
+ */
+function ic_restore_product_caps() {
+	if ( !current_user_can( 'publish_products' ) && current_user_can( 'administrator' ) ) {
+		add_product_caps( false );
+	}
+}
+
+function add_product_caps( $additional = true ) {
 	if ( is_user_logged_in() && current_user_can( 'activate_plugins' ) ) {
 
 		$role = get_role( 'administrator' );
@@ -34,27 +46,56 @@ function add_product_caps() {
 		$role->add_cap( 'assign_product_categories' );
 		$role->add_cap( 'manage_product_settings' );
 
-		$current_user = wp_get_current_user();
-		foreach ( $current_user->roles as $current_role ) {
-			if ( $current_role != 'administrator' ) {
-				$role = get_role( $current_role );
-				$role->add_cap( 'publish_products' );
-				$role->add_cap( 'edit_products' );
-				$role->add_cap( 'edit_others_products' );
-				$role->add_cap( 'edit_private_products' );
-				$role->add_cap( 'delete_products' );
-				$role->add_cap( 'delete_others_products' );
-				$role->add_cap( 'read_private_products' );
-				$role->add_cap( 'delete_private_products' );
-				$role->add_cap( 'delete_published_products' );
-				$role->add_cap( 'edit_published_products' );
-				$role->add_cap( 'manage_product_categories' );
-				$role->add_cap( 'edit_product_categories' );
-				$role->add_cap( 'delete_product_categories' );
-				$role->add_cap( 'assign_product_categories' );
-				$role->add_cap( 'manage_product_settings' );
+		if ( $additional ) {
+			$current_user = wp_get_current_user();
+			foreach ( $current_user->roles as $current_role ) {
+				if ( $current_role == 'administrator' ) {
+					break;
+				}
+				$role			 = get_role( $current_role );
+				$capabilities	 = $role->capabilities;
+				if ( !empty( $capabilities[ 'activate_plugins' ] ) ) {
+					$role->add_cap( 'publish_products' );
+					$role->add_cap( 'edit_products' );
+					$role->add_cap( 'edit_others_products' );
+					$role->add_cap( 'edit_private_products' );
+					$role->add_cap( 'delete_products' );
+					$role->add_cap( 'delete_others_products' );
+					$role->add_cap( 'read_private_products' );
+					$role->add_cap( 'delete_private_products' );
+					$role->add_cap( 'delete_published_products' );
+					$role->add_cap( 'edit_published_products' );
+					$role->add_cap( 'manage_product_categories' );
+					$role->add_cap( 'edit_product_categories' );
+					$role->add_cap( 'delete_product_categories' );
+					$role->add_cap( 'assign_product_categories' );
+					$role->add_cap( 'manage_product_settings' );
+				}
 			}
+			ic_add_catalog_manager_role();
 		}
+	}
+}
+
+function ic_add_catalog_manager_role() {
+	$role			 = get_role( 'editor' );
+	$capabilities	 = $role->capabilities;
+	$manager_role	 = add_role( 'catalog_manager', __( 'Catalog Manager', 'ecommerce-product-catalog' ), $capabilities );
+	if ( is_object( $manager_role ) ) {
+		$manager_role->add_cap( 'publish_products' );
+		$manager_role->add_cap( 'edit_products' );
+		$manager_role->add_cap( 'edit_others_products' );
+		$manager_role->add_cap( 'edit_private_products' );
+		$manager_role->add_cap( 'delete_products' );
+		$manager_role->add_cap( 'delete_others_products' );
+		$manager_role->add_cap( 'read_private_products' );
+		$manager_role->add_cap( 'delete_private_products' );
+		$manager_role->add_cap( 'delete_published_products' );
+		$manager_role->add_cap( 'edit_published_products' );
+		$manager_role->add_cap( 'manage_product_categories' );
+		$manager_role->add_cap( 'edit_product_categories' );
+		$manager_role->add_cap( 'delete_product_categories' );
+		$manager_role->add_cap( 'assign_product_categories' );
 	}
 }
 

@@ -30,6 +30,8 @@ function ic_price_filter( $session ) {
 		} else if ( isset( $session[ 'filters' ][ 'min-price' ] ) ) {
 			unset( $session[ 'filters' ][ 'min-price' ] );
 		}
+	} else if ( isset( $session[ 'filters' ][ 'min-price' ] ) ) {
+		unset( $session[ 'filters' ][ 'min-price' ] );
 	}
 	if ( isset( $_GET[ 'max-price' ] ) ) {
 		$filter_value = floatval( $_GET[ 'max-price' ] );
@@ -41,6 +43,8 @@ function ic_price_filter( $session ) {
 		} else if ( isset( $session[ 'filters' ][ 'max-price' ] ) ) {
 			unset( $session[ 'filters' ][ 'max-price' ] );
 		}
+	} else if ( isset( $session[ 'filters' ][ 'max-price' ] ) ) {
+		unset( $session[ 'filters' ][ 'max-price' ] );
 	}
 	set_product_catalog_session( $session );
 }

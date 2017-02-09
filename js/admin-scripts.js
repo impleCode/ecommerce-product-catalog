@@ -101,6 +101,14 @@ jQuery( document ).ready( function () {
         }
     } );
 
+    jQuery( '.implecode-review.is-dismissible' ).on( 'click', '.notice-dismiss', function ( event ) {
+        var data = {
+            'action': 'hide_review_notice',
+            'forever': 'yes'
+        };
+        jQuery.post( ajaxurl, data );
+    } );
+
     jQuery( function () {
         jQuery( ".setting-content input" ).tooltip( {
             position: {
@@ -119,8 +127,7 @@ jQuery( document ).ready( function () {
         wp.media.editor.send.attachment = function ( props, attachment ) {
             if ( upload_type == "url" ) {
                 clicked.parent( "div" ).children( "#uploaded_image" ).val( attachment.url );
-            }
-            else {
+            } else {
                 clicked.parent( "div" ).children( "#uploaded_image" ).val( attachment.id );
             }
             clicked.prev( "div" ).children( "img" ).attr( "src", attachment.url );
@@ -140,8 +147,7 @@ jQuery( document ).ready( function () {
         clicked.next( ".media-image" ).attr( "src", src );
         if ( src != '' ) {
             clicked.next( ".media-image" ).show();
-        }
-        else {
+        } else {
             clicked.next( ".media-image" ).hide();
         }
         clicked.parent( "div" ).next( ".add_catalog_media" ).show();
@@ -190,7 +196,7 @@ jQuery( document ).ready( function () {
 jQuery( document ).ready( function ( $ ) {
     $.ic = {
         /**
-         * Implement a WordPress-link Hook System for Javascript 
+         * Implement a WordPress-link Hook System for Javascript
          * TODO: Change 'tag' to 'args', allow number (priority), string (tag), object (priority+tag)
          */
         hooks: { action: { }, filter: { } },
@@ -254,14 +260,12 @@ function reponsive_product_catalog() {
     var product_page_width = jQuery( "article.al_product" ).width();
     if ( list_width < 600 ) {
         jQuery( ".product-list" ).addClass( "responsive" );
-    }
-    else {
+    } else {
         jQuery( ".product-list" ).removeClass( "responsive" );
     }
     if ( product_page_width < 600 ) {
         jQuery( "article.al_product" ).addClass( "responsive" );
-    }
-    else {
+    } else {
         jQuery( "article.al_product" ).removeClass( "responsive" );
     }
 }

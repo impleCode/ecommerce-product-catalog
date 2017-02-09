@@ -4,13 +4,13 @@
  * Plugin Name: eCommerce Product Catalog by impleCode
  * Plugin URI: https://implecode.com/wordpress/product-catalog/#cam=in-plugin-urls&key=plugin-url
  * Description: WordPress eCommerce easy to use, powerful and beautiful plugin from impleCode. Great choice if you want to sell easy and quick. Or just beautifully present your products on WordPress website. Full WordPress integration does great job not only for Merchants but also for Developers and Theme Constructors.
- * Version: 2.5.23
+ * Version: 2.6.5
  * Author: impleCode
  * Author URI: https://implecode.com/#cam=in-plugin-urls&key=author-url
  * Text Domain: ecommerce-product-catalog
  * Domain Path: /lang/
 
-  Copyright: 2015 impleCode.
+  Copyright: 2016 impleCode.
   License: GNU General Public License v3.0
   License URI: http://www.gnu.org/licenses/gpl-3.0.html */
 if ( !defined( 'ABSPATH' ) ) {
@@ -55,8 +55,8 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 
 				self::$instance->includes();
 
-				register_activation_hook( __FILE__, 'add_product_caps' );
-				register_activation_hook( __FILE__, 'epc_activation_function' );
+				//register_activation_hook( __FILE__, 'add_product_caps' );
+				//register_activation_hook( __FILE__, 'epc_activation_function' );
 			}
 			return self::$instance;
 		}
@@ -140,6 +140,7 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 		public function implecode_register_styles() {
 			wp_register_style( 'al_product_styles', plugins_url() . '/' . dirname( plugin_basename( __FILE__ ) ) . '/css/al_product.css?' . filemtime( plugin_dir_path( __FILE__ ) . '/css/al_product.css' ), array( 'dashicons' ) );
 			do_action( 'register_catalog_styles' );
+			wp_register_script( 'ic-integration', AL_PLUGIN_BASE_PATH . 'js/integration-script.js?' . filemtime( AL_BASE_PATH . '/js/integration-script.js' ), array( 'al_product_scripts' ) );
 		}
 
 		/**
@@ -176,6 +177,9 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 			$colorbox_set = json_decode( apply_filters( 'colorbox_set', '{"transition": "elastic", "initialWidth": 200, "maxWidth": "90%", "maxHeight": "90%", "rel":"gal"}' ) );
 			wp_localize_script( 'al_product_scripts', 'product_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'lightbox_settings' => $colorbox_set ) );
 			wp_enqueue_script( 'al_product_scripts' );
+			if ( is_ic_integration_wizard_page() ) {
+				wp_enqueue_script( 'ic-integration' );
+			}
 			do_action( 'enqueue_catalog_scripts' );
 		}
 
@@ -199,17 +203,31 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 
 } // End if class_exists check
 
-add_action( 'plugins_loaded', 'impleCode_EPC', -1 );
+add_action( 'plugins_loaded', 'impleCode_EPC', -2 );
+if ( !function_exists( 'impleCode_EPC' ) ) {
 
-/**
- * The main function responsible for returning eCommerce_Product_Catalog
- *
- * @since 2.4.7
- * @return type
- */
-function impleCode_EPC() {
-	return eCommerce_Product_Catalog::instance();
+	/**
+	 * The main function responsible for returning eCommerce_Product_Catalog
+	 *
+	 * @since 2.4.7
+	 * @return type
+	 */
+	function impleCode_EPC() {
+		return eCommerce_Product_Catalog::instance();
+	}
+
 }
 
+register_activation_hook( __FILE__, 'IC_EPC_install' );
+
+if ( !function_exists( 'IC_EPC_install' ) ) {
+
+	function IC_EPC_install() {
+		eCommerce_Product_Catalog::instance();
+		update_option( 'IC_EPC_install', 1 );
+		epc_activation_function();
+	}
+
+}
 // Get impleCode_EPC Running
 //impleCode_EPC();

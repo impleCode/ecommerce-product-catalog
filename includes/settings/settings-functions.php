@@ -219,7 +219,11 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 	}
 
 	function implecode_success( $text, $echo = 1 ) {
-		return echo_ic_setting( '<div class="al-box success"><p>' . $text . '</p></div>', $echo );
+		return echo_ic_setting( '<div class="al-box success">' . $text . '</div>', $echo );
+	}
+
+	function implecode_plus( $text, $echo = 1 ) {
+		return echo_ic_setting( '<div class="al-box plus">' . $text . '</div>', $echo );
 	}
 
 }
@@ -238,37 +242,40 @@ if ( !function_exists( 'implecode_settings_text_color' ) ) {
 		$return = '<tr>';
 		$return .= '<td>' . $option_label . $star . ':</td>';
 		$return .= '<td><input ' . $regired_field . ' class="color-picker ' . $class . '" type="text" name="' . $option_name . '" value="' . $option_value . '" /></td>';
-		$return .= '<script>jQuery("input[name=\'' . $option_name . '\']").wpColorPicker(' . $change . ');</script>';
+		$return .= '<script>jQuery(document).ready(function() {jQuery("input[name=\'' . $option_name . '\']").wpColorPicker(' . $change . ');});</script>';
 		$return .= '</tr>';
 		return echo_ic_setting( $return, $echo );
 	}
 
 }
+if ( !function_exists( 'ic_catalog_item_name' ) ) {
 
-/**
- * Returns single catalog item name
- *
- * @return type
- */
-function ic_catalog_item_name( $plural = true, $uppercase = false ) {
-	if ( is_plural_form_active() ) {
-		$names = get_catalog_names();
-		if ( $plural ) {
-			$item_name = $names[ 'plural' ];
+	/**
+	 * Returns single catalog item name
+	 *
+	 * @return type
+	 */
+	function ic_catalog_item_name( $plural = true, $uppercase = false ) {
+		if ( is_plural_form_active() ) {
+			$names = get_catalog_names();
+			if ( $plural ) {
+				$item_name = $names[ 'plural' ];
+			} else {
+				$item_name = $names[ 'singular' ];
+			}
 		} else {
-			$item_name = $names[ 'singular' ];
+			if ( $plural ) {
+				$item_name = __( 'items', 'ecommerce-product-catalog' );
+			} else {
+				$item_name = __( 'item', 'ecommerce-product-catalog' );
+			}
 		}
-	} else {
-		if ( $plural ) {
-			$item_name = __( 'items', 'ecommerce-product-catalog' );
+		if ( $uppercase ) {
+			$item_name = ic_ucfirst( $item_name );
 		} else {
-			$item_name = __( 'item', 'ecommerce-product-catalog' );
+			$item_name = ic_lcfirst( $item_name );
 		}
+		return $item_name;
 	}
-	if ( $uppercase ) {
-		$item_name = ic_ucfirst( $item_name );
-	} else {
-		$item_name = ic_lcfirst( $item_name );
-	}
-	return $item_name;
+
 }

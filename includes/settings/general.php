@@ -88,8 +88,8 @@ function general_settings_content() {
 		<?php if ( $submenu == 'general-settings' OR $submenu == '' ) { ?>
 			<div class="setting-content submenu">
 				<script>
-		            jQuery( '.settings-submenu a' ).removeClass( 'current' );
-		            jQuery( '.settings-submenu a#general-settings' ).addClass( 'current' );
+					jQuery( '.settings-submenu a' ).removeClass( 'current' );
+					jQuery( '.settings-submenu a#general-settings' ).addClass( 'current' );
 				</script>
 				<h2><?php _e( 'General Settings', 'ecommerce-product-catalog' ); ?></h2>
 
@@ -117,12 +117,16 @@ function general_settings_content() {
 					  $product_archive = $page_get->ID;
 					  } */
 					$disabled					 = '';
-					if ( !is_advanced_mode_forced() ) {
+					if ( !is_advanced_mode_forced() || ic_is_woo_template_available() ) {
 						?>
 						<h3><?php _e( 'Theme Integration', 'ecommerce-product-catalog' ); ?></h3><?php
+						if ( ic_is_woo_template_available() ) {
+							echo '<p>' . __( 'If you have any problems with catalog layout you can use the theme integration to fix it.', 'ecommerce-product-catalog' ) . '</p>';
+						}
 						if ( get_integration_type() == 'simple' ) {
 							$disabled = 'disabled';
 						}
+						$theme = get_option( 'template' );
 						if ( is_integration_mode_selected() ) {
 							$selected = true;
 							if ( get_integration_type() == 'simple' ) {
@@ -131,12 +135,12 @@ function general_settings_content() {
 							?>
 							<table>
 								<?php
-								implecode_settings_radio( __( 'Choose theme integration type', 'ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type]', $archive_multiple_settings[ 'integration_type' ], array( 'simple' => __( 'Simple Integration', 'ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'ecommerce-product-catalog' ) ) );
+								implecode_settings_radio( __( 'Choose theme integration type', 'ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type][' . $theme . ']', $archive_multiple_settings[ 'integration_type' ][ $theme ], array( 'simple' => __( 'Simple Integration', 'ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'ecommerce-product-catalog' ) ) );
 								?></table>
 							<table class="advanced_mode_settings"><?php
-								implecode_settings_number( __( 'Catalog Container Width', 'ecommerce-product-catalog' ), 'archive_multiple_settings[container_width]', $archive_multiple_settings[ 'container_width' ], '%' );
-								implecode_settings_text_color( __( 'Catalog Container Background', 'ecommerce-product-catalog' ), 'archive_multiple_settings[container_bg]', $archive_multiple_settings[ 'container_bg' ] );
-								implecode_settings_number( __( 'Catalog Container Padding', 'ecommerce-product-catalog' ), 'archive_multiple_settings[container_padding]', $archive_multiple_settings[ 'container_padding' ], 'px' );
+								implecode_settings_number( __( 'Catalog Container Width', 'ecommerce-product-catalog' ), 'archive_multiple_settings[container_width][' . $theme . ']', $archive_multiple_settings[ 'container_width' ][ $theme ], '%' );
+								implecode_settings_text_color( __( 'Catalog Container Background', 'ecommerce-product-catalog' ), 'archive_multiple_settings[container_bg][' . $theme . ']', $archive_multiple_settings[ 'container_bg' ][ $theme ] );
+								implecode_settings_number( __( 'Catalog Container Padding', 'ecommerce-product-catalog' ), 'archive_multiple_settings[container_padding][' . $theme . ']', $archive_multiple_settings[ 'container_padding' ][ $theme ], 'px' );
 								if ( !defined( 'AL_SIDEBAR_BASE_URL' ) ) {
 									implecode_settings_radio( __( 'Default Sidebar', 'ecommerce-product-catalog' ), 'archive_multiple_settings[default_sidebar]', $archive_multiple_settings[ 'default_sidebar' ], array( 'none' => __( 'Disabled', 'ecommerce-product-catalog' ), 'left' => __( 'Left', 'ecommerce-product-catalog' ), 'right' => __( 'Right', 'ecommerce-product-catalog' ) ) );
 								}
@@ -152,8 +156,9 @@ function general_settings_content() {
 							?>
 							<table style="display: none">
 								<?php
-								implecode_settings_radio( __( 'Choose theme integration type', 'ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type]', $archive_multiple_settings[ 'integration_type' ], array( 'simple' => __( 'Simple Integration', 'ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'ecommerce-product-catalog' ) ) );
-								?></table>
+								implecode_settings_radio( __( 'Choose theme integration type', 'ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type][' . $theme . ']', $archive_multiple_settings[ 'integration_type' ][ $theme ], array( 'simple' => __( 'Simple Integration', 'ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Integration', 'ecommerce-product-catalog' ) ) );
+								?>
+							</table>
 							<?php
 							echo '<a href="' . sample_product_url() . '" class="button-primary">' . __( 'Start Auto Adjustment', 'ecommerce-product-catalog' ) . '</a>';
 						}
@@ -336,17 +341,26 @@ function general_settings_content() {
 }
 
 function get_multiple_settings() {
-	$archive_multiple_settings = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
+	$archive_multiple_settings	 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
+	$theme						 = get_option( 'template' );
+	$prev_int					 = 'simple';
+	if ( !isset( $archive_multiple_settings[ 'integration_type' ] ) || !is_array( $archive_multiple_settings[ 'integration_type' ] ) ) {
+		$support_check = ic_get_theme_support_check();
+		if ( !empty( $support_check[ $theme ] ) ) {
+			$prev_int = isset( $archive_multiple_settings[ 'integration_type' ] ) ? $archive_multiple_settings[ 'integration_type' ] : 'simple';
+		}
+		$archive_multiple_settings[ 'integration_type' ] = array();
+	}
 	if ( is_advanced_mode_forced() || (isset( $_GET[ 'test_advanced' ] ) && ($_GET[ 'test_advanced' ] == 1 || $_GET[ 'test_advanced' ] == 'ok')) ) {
-		$archive_multiple_settings[ 'integration_type' ] = 'advanced';
+		$archive_multiple_settings[ 'integration_type' ][ $theme ] = 'advanced';
 	} else {
-		$archive_multiple_settings[ 'integration_type' ] = isset( $archive_multiple_settings[ 'integration_type' ] ) ? $archive_multiple_settings[ 'integration_type' ] : 'simple';
+		$archive_multiple_settings[ 'integration_type' ][ $theme ] = isset( $archive_multiple_settings[ 'integration_type' ][ $theme ] ) ? $archive_multiple_settings[ 'integration_type' ][ $theme ] : $prev_int;
 	}
 	$archive_multiple_settings[ 'disable_sku' ]			 = isset( $archive_multiple_settings[ 'disable_sku' ] ) ? $archive_multiple_settings[ 'disable_sku' ] : '';
 	$archive_multiple_settings[ 'seo_title_sep' ]		 = isset( $archive_multiple_settings[ 'seo_title_sep' ] ) ? $archive_multiple_settings[ 'seo_title_sep' ] : '';
 	$archive_multiple_settings[ 'seo_title' ]			 = isset( $archive_multiple_settings[ 'seo_title' ] ) ? $archive_multiple_settings[ 'seo_title' ] : '';
-	$archive_multiple_settings[ 'category_archive_url' ] = isset( $archive_multiple_settings[ 'category_archive_url' ] ) ? $archive_multiple_settings[ 'category_archive_url' ] : 'product-category';
-	$archive_multiple_settings[ 'category_archive_url' ] = empty( $archive_multiple_settings[ 'category_archive_url' ] ) ? 'product-category' : $archive_multiple_settings[ 'category_archive_url' ];
+	$archive_multiple_settings[ 'category_archive_url' ] = isset( $archive_multiple_settings[ 'category_archive_url' ] ) ? $archive_multiple_settings[ 'category_archive_url' ] : 'products-category';
+	$archive_multiple_settings[ 'category_archive_url' ] = empty( $archive_multiple_settings[ 'category_archive_url' ] ) ? 'products-category' : $archive_multiple_settings[ 'category_archive_url' ];
 	$archive_multiple_settings[ 'product_listing_cats' ] = isset( $archive_multiple_settings[ 'product_listing_cats' ] ) ? $archive_multiple_settings[ 'product_listing_cats' ] : 'on';
 	$archive_multiple_settings[ 'category_top_cats' ]	 = isset( $archive_multiple_settings[ 'category_top_cats' ] ) ? $archive_multiple_settings[ 'category_top_cats' ] : 'on';
 	$archive_multiple_settings[ 'cat_template' ]		 = isset( $archive_multiple_settings[ 'cat_template' ] ) ? $archive_multiple_settings[ 'cat_template' ] : 'template';
@@ -357,9 +371,41 @@ function get_multiple_settings() {
 	$archive_multiple_settings[ 'container_width' ]		 = isset( $archive_multiple_settings[ 'container_width' ] ) ? $archive_multiple_settings[ 'container_width' ] : 100;
 	$archive_multiple_settings[ 'container_bg' ]		 = isset( $archive_multiple_settings[ 'container_bg' ] ) ? $archive_multiple_settings[ 'container_bg' ] : '';
 	$archive_multiple_settings[ 'container_padding' ]	 = isset( $archive_multiple_settings[ 'container_padding' ] ) ? $archive_multiple_settings[ 'container_padding' ] : 0;
+	$archive_multiple_settings[ 'container_text' ]		 = isset( $archive_multiple_settings[ 'container_text' ] ) ? $archive_multiple_settings[ 'container_text' ] : '';
 	$archive_multiple_settings[ 'disable_name' ]		 = isset( $archive_multiple_settings[ 'disable_name' ] ) ? $archive_multiple_settings[ 'disable_name' ] : '';
 	$archive_multiple_settings[ 'default_sidebar' ]		 = isset( $archive_multiple_settings[ 'default_sidebar' ] ) ? $archive_multiple_settings[ 'default_sidebar' ] : 'none';
 	$archive_multiple_settings[ 'related' ]				 = isset( $archive_multiple_settings[ 'related' ] ) ? $archive_multiple_settings[ 'related' ] : 'products';
+
+
+	$prev_container_width	 = !is_array( $archive_multiple_settings[ 'container_width' ] ) ? $archive_multiple_settings[ 'container_width' ] : 100;
+	$prev_container_bg		 = !is_array( $archive_multiple_settings[ 'container_bg' ] ) ? $archive_multiple_settings[ 'container_bg' ] : '';
+	$prev_container_padding	 = !is_array( $archive_multiple_settings[ 'container_padding' ] ) ? $archive_multiple_settings[ 'container_padding' ] : 0;
+
+	if ( !is_array( $archive_multiple_settings[ 'container_width' ] ) ) {
+		$archive_multiple_settings[ 'container_width' ] = array();
+	}
+	if ( !is_array( $archive_multiple_settings[ 'container_bg' ] ) ) {
+		$archive_multiple_settings[ 'container_bg' ] = array();
+	}
+	if ( !is_array( $archive_multiple_settings[ 'container_padding' ] ) ) {
+		$archive_multiple_settings[ 'container_padding' ] = array();
+	}
+	if ( !is_array( $archive_multiple_settings[ 'container_text' ] ) ) {
+		$archive_multiple_settings[ 'container_text' ] = array();
+	}
+
+	if ( !isset( $archive_multiple_settings[ 'container_width' ][ $theme ] ) ) {
+		$archive_multiple_settings[ 'container_width' ][ $theme ] = $prev_container_width;
+	}
+	if ( !isset( $archive_multiple_settings[ 'container_bg' ][ $theme ] ) ) {
+		$archive_multiple_settings[ 'container_bg' ][ $theme ] = $prev_container_bg;
+	}
+	if ( !isset( $archive_multiple_settings[ 'container_padding' ][ $theme ] ) ) {
+		$archive_multiple_settings[ 'container_padding' ][ $theme ] = $prev_container_padding;
+	}
+	if ( !isset( $archive_multiple_settings[ 'container_text' ][ $theme ] ) ) {
+		$archive_multiple_settings[ 'container_text' ][ $theme ] = $prev_container_padding;
+	}
 	return apply_filters( 'catalog_multiple_settings', $archive_multiple_settings );
 }
 
@@ -371,8 +417,9 @@ function get_catalog_names() {
 }
 
 function get_integration_type() {
-	$settings = get_multiple_settings();
-	return $settings[ 'integration_type' ];
+	$settings	 = get_multiple_settings();
+	$theme		 = get_option( 'template' );
+	return $settings[ 'integration_type' ][ $theme ];
 }
 
 function get_product_sort_options() {

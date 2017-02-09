@@ -14,6 +14,6 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 ?>
 
-<h1 class="entry-title product-name" itemprop="name"><?php the_title() ?></h1>
+<h1 class="entry-title product-name" itemprop="name"><?php echo get_product_name() ?></h1>
 
 <?php

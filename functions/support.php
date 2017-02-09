@@ -8,7 +8,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * Here support settings are defined and managed.
  *
  * @version		1.0.0
- * @package		holland-utrecht-from-implecode/includes
+ * @package		ecommerce-product-catalog/includes
  * @author 		Norbert Dreszer
  */
 if ( !function_exists( 'implecode_support_menu' ) ):

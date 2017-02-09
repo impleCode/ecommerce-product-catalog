@@ -30,9 +30,9 @@ add_action( 'al_product-cat_add_form', 'product_category_edit_form' );
 function product_category_edit_form() {
 	?>
 	<script type="text/javascript">
-		jQuery( document ).ready( function () {
-			jQuery( '#edittag' ).attr( "enctype", "multipart/form-data" ).attr( "encoding", "multipart/form-data" );
-		} );
+	    jQuery( document ).ready( function () {
+	        jQuery( '#edittag' ).attr( "enctype", "multipart/form-data" ).attr( "encoding", "multipart/form-data" );
+	    } );
 	</script>
 	<?php
 
@@ -112,7 +112,7 @@ function manage_product_category_columns( $depr, $column_name, $term_id ) {
 			break;
 
 		case 'shortcode':
-			echo '<code>[show_products category="' . $term_id . '"]</code><code>[show_categories include="' . $term_id . '"]</code>';
+			echo '[show_products category="' . $term_id . '"][show_categories include="' . $term_id . '"]';
 			break;
 
 		default:

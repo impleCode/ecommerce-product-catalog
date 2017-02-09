@@ -30,7 +30,7 @@ if ( $shipping_values != 'none' ) {
 				<td>
 					<ul><?php
 						foreach ( $shipping_values as $i => $shipping_value ) {
-							if ( empty( $shipping_value ) ) {
+							if ( $shipping_value === '' ) {
 								continue;
 							}
 							$shipping_value = function_exists( 'price_format' ) ? price_format( $shipping_value ) : number_format( $shipping_value, 2 );

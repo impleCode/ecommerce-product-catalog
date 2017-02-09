@@ -89,4 +89,6 @@ if ( !defined( 'AL_BASE_PATH' ) ) {
 	foreach ( $all_options as $option ) {
 		delete_option( $option );
 	}
+
+	delete_user_meta( get_current_user_id(), 'ic_review_hidden' );
 }

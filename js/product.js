@@ -6,17 +6,21 @@
 
 jQuery( document ).ready( function ( $ ) {
     reponsive_product_catalog();
+    initialize_ic_tabs();
     setTimeout( "modern_grid_font_size()", 0 );
     $( window ).resize( function () {
-        reponsive_product_catalog();
-        redefine_ic_tabs();
-        setTimeout( "modern_grid_font_size()", 0 );
+        if ( $( document.activeElement ).attr( 'type' ) === undefined ) {
+            reponsive_product_catalog();
+            redefine_ic_tabs();
+            setTimeout( "modern_grid_font_size()", 0 );
+        }
     } );
+
     if ( typeof colorbox == 'object' && $( ".a-product-image" ).length ) {
         $( ".a-product-image" ).colorbox( product_object.lightbox_settings );
     }
 
-    jQuery( ".ic_self_submit" ).change( function () {
+    jQuery( "body" ).on( 'change', ".ic_self_submit", function () {
         jQuery( this ).parent( "form" ).submit();
     } );
 
@@ -30,12 +34,7 @@ jQuery( document ).ready( function ( $ ) {
         } );
     } );
 
-    jQuery( ".boxed .after-product-details" ).ready( function () {
-        //jQuery( ".boxed .after-product-details > div#product_description" ).prependTo( ".boxed .after-product-details" );
-        initialize_ic_tabs();
-    } );
-
-    $.ic = {
+    jQuery.ic = {
         /**
          * Implement a WordPress-link Hook System for Javascript
          * TODO: Change 'tag' to 'args', allow number (priority), string (tag), object (priority+tag)
@@ -96,13 +95,28 @@ jQuery( document ).ready( function ( $ ) {
     }
 } );
 
-function initialize_ic_tabs() {
-    if ( jQuery( ".boxed" ).hasClass( "responsive" ) ) {
-        ic_accordion();
-    } else if ( jQuery( ".boxed" ).length ) {
-        ic_tabs();
+function ic_switch_popstate_tabs() {
+    var hash = 'product_description';
+    if ( location.hash !== "" ) {
+        hash = location.hash;
+        hash = hash.replace( "_tab", "" ).replace( "#", "" );
+        var current_tab = jQuery( ".boxed .after-product-details h3[data-tab_id=" + hash + "]" );
+        current_tab.trigger( "click" );
+    } else {
+        location.reload();
     }
-    jQuery( document ).trigger( "ic_tabs_initialized" );
+}
+
+function initialize_ic_tabs() {
+    if ( jQuery( ".boxed" ).length ) {
+        jQuery( window ).on( 'popstate', ic_switch_popstate_tabs );
+        if ( jQuery( ".boxed" ).hasClass( "responsive" ) ) {
+            ic_accordion();
+        } else if ( jQuery( ".boxed" ).length ) {
+            ic_tabs();
+        }
+        jQuery( document ).trigger( "ic_tabs_initialized" );
+    }
 }
 
 function redefine_ic_tabs() {
@@ -129,7 +143,7 @@ function redefine_ic_tabs() {
 
 function ic_accordion() {
     jQuery( ".boxed .after-product-details > div" ).each( function () {
-        jQuery( this ).children().wrapAll( "<div class='ic_accordion_content_container'>" );
+        jQuery( this ).children().wrapAll( "<div class='ic_accordion_content_container' />" );
         jQuery( this ).find( ".catalog-header" ).prependTo( jQuery( this ) );
     } );
     ic_accordion_initial_hide();
@@ -150,7 +164,7 @@ function ic_accordion() {
     jQuery( ".boxed.responsive .after-product-details .catalog-header" ).click( function () {
         ic_accordion_initial_hide();
         if ( jQuery( this ).hasClass( "open" ) ) {
-            history.pushState( "", document.title, window.location.pathname );
+            history.pushState( { }, document.title, window.location.pathname );
             jQuery( this ).removeClass( "open" );
         } else {
             var clicked_tab_id = jQuery( this ).parent( "div" ).attr( "id" );
@@ -200,7 +214,7 @@ function ic_tabs() {
         } );
         tabs = tabs + "</div>";
         jQuery( ".boxed .after-product-details" ).prepend( tabs );
-        if ( location.hash != "" ) {
+        if ( location.hash !== "" ) {
             var hash = location.hash.replace( "_tab", "" ).replace( "#", "" );
             var current_tab = jQuery( ".boxed .after-product-details .ic_tabs > h3[data-tab_id='" + hash + "']" );
             if ( current_tab.length ) {

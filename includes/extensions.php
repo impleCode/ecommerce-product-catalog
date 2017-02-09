@@ -12,7 +12,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @package        ecommerce-product-catalog/includes
  * @author        Norbert Dreszer
  */
-add_action( 'plugins_loaded', 'initialize_affiliate_scripts' );
+add_action( 'plugins_loaded', 'initialize_affiliate_scripts', 20 );
 
 function initialize_affiliate_scripts() {
 	if ( is_admin() && isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == 'extensions.php' ) {
@@ -97,8 +97,8 @@ function product_extensions() {
 				?>
 				<div class="extension-list">
 					<script>
-						jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-						jQuery( '.nav-tab-wrapper a#extensions' ).addClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a#extensions' ).addClass( 'nav-tab-active' );
 					</script><?php
 					start_implecode_install();
 					start_free_implecode_install();
@@ -140,8 +140,8 @@ function product_extensions() {
 				?>
 				<div class="extension-list">
 					<script>
-						jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-						jQuery( '.nav-tab-wrapper a#new-extensions' ).addClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a#new-extensions' ).addClass( 'nav-tab-active' );
 					</script><?php
 					start_implecode_install();
 					if ( false === ($extensions = get_site_transient( 'implecode_new_extensions_data' )) ) {
@@ -180,8 +180,8 @@ function product_extensions() {
 				?>
 				<div class="extension-list">
 					<script>
-						jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-						jQuery( '.nav-tab-wrapper a#extensions' ).addClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a#extensions' ).addClass( 'nav-tab-active' );
 					</script><?php
 					start_implecode_install();
 					if ( false === ($extensions = get_site_transient( 'implecode_extensions_data' )) ) {
@@ -220,8 +220,8 @@ function product_extensions() {
 				?>
 				<div class="help">
 					<script>
-						jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
-						jQuery( '.nav-tab-wrapper a#help' ).addClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a' ).removeClass( 'nav-tab-active' );
+		                jQuery( '.nav-tab-wrapper a#help' ).addClass( 'nav-tab-active' );
 					</script> <?php
 					echo '<h3>How to Install the extension?</h3>';
 					echo '<ol><li>Click the "Get your key" button on the extension that you want to install;</li>';
@@ -298,9 +298,23 @@ function implecode_extensions() {
 			'slug'	 => 'implecode-paypal-gateway',
 		),
 		array(
+			'url'	 => '2checkout-gateway',
+			'name'	 => '2Checkout Gateway',
+			'desc'	 => 'Take credit card payments with 2Checkout Gateway.',
+			'comp'	 => 'simple',
+			'slug'	 => '2checkout-gateway',
+		),
+		array(
+			'url'	 => 'catalog-users-manager',
+			'name'	 => 'Catalog Users Manager',
+			'desc'	 => 'Manage catalog visibility options depending on logged in visitor.',
+			'comp'	 => 'simple',
+			'slug'	 => 'catalog-users-manager',
+		),
+		array(
 			'url'	 => 'printable-coupons',
 			'name'	 => 'Printable Coupons',
-			'desc'	 => 'Sell printable coupons for your products or for certain value directly from the website. Generate customized coupons for your customers!',
+			'desc'	 => 'Sell printable coupons for your products or for certain value directly from the website. Generate customized coupons!',
 			'comp'	 => 'simple',
 			'slug'	 => 'implecode-printable-coupons',
 		),
@@ -331,6 +345,13 @@ function implecode_extensions() {
 			'desc'	 => 'Easily attach unlimited PDF files to the products, upload to server and provide to clients on product pages.',
 			'comp'	 => 'simple',
 			'slug'	 => 'implecode-upload-pdf',
+		),
+		array(
+			'url'	 => 'product-pdf',
+			'name'	 => 'Product Print & PDF',
+			'desc'	 => 'Print product pages with one click. Export product pages to PDF files with easy.',
+			'comp'	 => 'simple',
+			'slug'	 => 'product-pdf',
 		),
 		array(
 			'url'	 => 'product-manufacturers',
@@ -368,11 +389,18 @@ function implecode_extensions() {
 			'slug'	 => 'implecode-product-locations',
 		),
 		array(
-			'url'	 => 'drop-attributes',
-			'name'	 => 'Drop-down Attributes',
-			'desc'	 => 'Select attributes values with a drop-down. Define default drop-down values for each attribute in product settings.',
+			'url'	 => 'product-attributes-pro',
+			'name'	 => 'Product Attributes PRO',
+			'desc'	 => 'Filter products by attributes. Select attributes values with a drop-down, checkbox or radio button.',
 			'comp'	 => 'simple',
-			'slug'	 => 'drop-down-attributes',
+			'slug'	 => 'product-attributes-pro',
+		),
+		array(
+			'url'	 => 'advanced-shipping-tables',
+			'name'	 => 'Advanced Shipping Tables',
+			'desc'	 => 'Calculates shipping based on Shopping Cart total and checkout fields values.',
+			'comp'	 => 'simple',
+			'slug'	 => 'advanced-shipping-table',
 		),
 		array(
 			'url'	 => 'product-csv',
@@ -382,6 +410,13 @@ function implecode_extensions() {
 			'slug'	 => 'implecode-product-csv',
 		),
 		array(
+			'url'	 => 'multiple-prices',
+			'name'	 => 'Multiple Pricing',
+			'desc'	 => 'Set multiple, automatically calculated or manually inserted prices for each product.',
+			'comp'	 => 'simple',
+			'slug'	 => 'multiple-product-price',
+		),
+		array(
 			'url'	 => 'product-discounts',
 			'name'	 => 'Product Discounts',
 			'desc'	 => 'Apply percentage or value discounts for catalog products. Show the discount offers with a robust widget or shortcode and more!',
@@ -389,9 +424,16 @@ function implecode_extensions() {
 			'slug'	 => 'implecode-product-discounts',
 		),
 		array(
+			'url'	 => 'table-view',
+			'name'	 => 'Table View',
+			'desc'	 => 'Show products in nicely formatted table with customizable columns.',
+			'comp'	 => 'simple',
+			'slug'	 => 'table-view',
+		),
+		array(
 			'url'	 => 'classic-list-button',
 			'name'	 => 'Classic List with Button',
-			'desc'	 => 'Premium product listing theme for your ' . IC_CATALOG_PLUGIN_NAME . '. Easily set image size, description name and button position.',
+			'desc'	 => 'Premium product listing theme for your catalog. Easily set image size, description name and button position.',
 			'comp'	 => 'simple',
 			'slug'	 => 'classic-list-button',
 		),
@@ -401,6 +443,20 @@ function implecode_extensions() {
 			'desc'	 => 'Premium Grid Theme for product listing. Has additional settings for size, per row elements, description length and price.',
 			'comp'	 => 'simple',
 			'slug'	 => 'slim-classic-grid',
+		),
+		array(
+			'url'	 => 'no-image-grid',
+			'name'	 => 'No Image Grid Theme',
+			'desc'	 => 'Premium Grid Theme for product listing. Best for products without image.',
+			'comp'	 => 'simple',
+			'slug'	 => 'no-image-grid',
+		),
+		array(
+			'url'	 => 'side-grid',
+			'name'	 => 'Side Grid',
+			'desc'	 => 'Premium product listing grid with image on the left side.',
+			'comp'	 => 'simple',
+			'slug'	 => 'side-grid',
 		),
 	);
 	return $extensions;
@@ -678,7 +734,7 @@ function add_product_catalog_bundle_url() {
 	}
 }
 
-add_action( 'ic_before_extensions_list', 'extensions_bundle_box' );
+add_action( 'ic_before_extensions_list', 'extensions_bundle_box', 5 );
 
 /**
  * Shows bundle box before extensions list
@@ -755,27 +811,41 @@ function ic_epc_free_extensions() {
 			if ( $extensions ) {
 				set_site_transient( 'implecode_epc_free_extensions_data', $extensions, 60 * 60 * 24 * 7 );
 			}
+		} else {
+			$extensions = implecode_free_extensions();
 		}
 	}
-	if ( !is_wp_error( $extensions ) ) {
-		$all_ic_plugins = '';
-		if ( function_exists( 'get_free_implecode_active_plugins' ) ) {
-			$all_ic_plugins = get_free_implecode_active_plugins();
-		}
-		$not_active_ic_plugins = get_implecode_free_not_active_plugins();
-		echo '<div class="free-extensions">';
-		foreach ( $extensions as $extension ) {
-			$extension[ 'type' ] = isset( $extension[ 'type' ] ) ? $extension[ 'type' ] : 'premium';
-			echo extension_box( $extension[ 'name' ], $extension[ 'url' ], $extension[ 'desc' ], $extension[ 'comp' ], $extension[ 'slug' ], $all_ic_plugins, $not_active_ic_plugins, $extension[ 'type' ] );
-		}
-		echo '</div>';
+	$all_ic_plugins = '';
+	if ( function_exists( 'get_free_implecode_active_plugins' ) ) {
+		$all_ic_plugins = get_free_implecode_active_plugins();
 	}
+	$not_active_ic_plugins = get_implecode_free_not_active_plugins();
+	echo '<div class="free-extensions">';
+	foreach ( $extensions as $extension ) {
+		$extension[ 'type' ] = isset( $extension[ 'type' ] ) ? $extension[ 'type' ] : 'premium';
+		echo extension_box( $extension[ 'name' ], $extension[ 'url' ], $extension[ 'desc' ], $extension[ 'comp' ], $extension[ 'slug' ], $all_ic_plugins, $not_active_ic_plugins, $extension[ 'type' ] );
+	}
+	echo '</div>';
 }
 
-add_action( 'general_submenu', 'ic_epc_submenu_extensions_info', 99 );
+//add_action( 'general_submenu', 'ic_epc_submenu_extensions_info', 99 );
 
 function ic_epc_submenu_extensions_info() {
 	if ( !function_exists( 'start_implecode_updater' ) ) {
 		echo '<span class="extensions-promo-box">' . sprintf( __( 'Add free & premium features %shere%s.', 'ecommerce-product-catalog' ), '<a href="' . admin_url( 'edit.php?post_type=al_product&page=extensions.php' ) . '">', '</a>' ) . '</span>';
 	}
+}
+
+function implecode_free_extensions() {
+	$free_extensions = array(
+		array(
+			'url'	 => 'reviews-plus',
+			'name'	 => 'Product Reviews',
+			'desc'	 => 'Add reviews support for your catalog items. Use it for all or selected products.',
+			'comp'	 => 'simple',
+			'slug'	 => 'reviews-plus',
+			'type'	 => 'free'
+		),
+	);
+	return $free_extensions;
 }

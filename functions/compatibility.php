@@ -12,6 +12,8 @@ if ( !defined( 'ABSPATH' ) ) {
  * Time: 12:49
  * Package: compatibility.php
  */
+add_action( 'init', 'ic_start_compatibility' );
+
 function ic_start_compatibility() {
 	/* $first_version = (string) get_option( 'first_activation_version' );
 	  if ( version_compare( $first_version, '2.2.0' ) < 0 ) {
@@ -24,8 +26,6 @@ function ic_start_compatibility() {
 	add_filter( 'get_product_short_description', 'compatibility_product_short_description', 10, 2 );
 	add_filter( 'get_product_description', 'compatibility_product_description', 10, 2 );
 }
-
-add_action( 'init', 'ic_start_compatibility' );
 
 function compatibility_product_short_description( $product_desc, $product_id ) {
 	if ( empty( $product_desc ) ) {

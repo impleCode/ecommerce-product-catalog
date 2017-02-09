@@ -9,7 +9,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  *
  * @version		1.0.0
- * @package		digital-products-order/functions
+ * @package		ecommerce-product-catalog/ext-comp
  * @author 		Norbert Dreszer
  */
 add_filter( 'product_query_var', 'ic_qtranslate_mod_queryvar' );

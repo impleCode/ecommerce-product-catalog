@@ -15,6 +15,10 @@ if ( !defined( 'ABSPATH' ) ) {
  */
 require_once(AL_BASE_PATH . '/templates/templates-functions.php');
 
+if ( !in_array( 'woocommerce/woocommerce.php', apply_filters( 'active_plugins', get_option( 'active_plugins' ) ) ) ) {
+	require_once(AL_BASE_PATH . '/templates/templates-woo-functions.php');
+}
+
 add_action( 'after_setup_theme', 'initialize_product_adder_template', 11 );
 
 /**
@@ -31,6 +35,7 @@ function initialize_product_adder_template() {
 	$twentyfourteen	 = array( "twentyfourteen" );
 	$twentyfifteen	 = array( "twentyfifteen" );
 	$twentysixteen	 = array( "twentysixteen" );
+	$twentyseventeen = array( "twentyseventeen" );
 	$third_party	 = array( "storefront" );
 	$generic_content = array( "headway" );
 	if ( is_integraton_file_active() ) {
@@ -51,10 +56,14 @@ function initialize_product_adder_template() {
 		add_filter( 'template_include', 'al_product_adder_twentyfifteen_template' );
 	} else if ( in_array( $theme, $twentysixteen ) ) {
 		add_filter( 'template_include', 'al_product_adder_twentysixteen_template' );
+	} else if ( in_array( $theme, $twentyseventeen ) ) {
+		add_filter( 'template_include', 'al_product_adder_twentyseventeen_template' );
 	} else if ( in_array( $theme, $generic_content ) ) {
 		add_filter( 'template_include', 'al_product_enable_generic_content' );
 	} else if ( get_integration_type() == 'simple' && file_exists( get_page_php_path() ) ) {
 		add_filter( 'template_include', 'al_product_adder_page_template' );
+	} else if ( ic_is_woo_template_available() ) {
+		add_filter( 'template_include', 'al_product_woo_adder_template' );
 	} else {
 		add_filter( 'template_include', 'al_product_adder_custom_template' );
 	}
@@ -84,6 +93,13 @@ function al_product_adder_template( $template ) {
 function al_product_adder_custom_template( $template ) {
 	if ( is_ic_catalog_page() ) {
 		return dirname( __FILE__ ) . '/templates/product-adder.php';
+	}
+	return $template;
+}
+
+function al_product_woo_adder_template( $template ) {
+	if ( is_ic_catalog_page() ) {
+		return dirname( __FILE__ ) . '/templates/product-woo-adder.php';
 	}
 	return $template;
 }
@@ -148,6 +164,13 @@ function al_product_adder_twentysixteen_template( $template ) {
 	return $template;
 }
 
+function al_product_adder_twentyseventeen_template( $template ) {
+	if ( is_ic_catalog_page() ) {
+		return dirname( __FILE__ ) . '/templates/twenty/product-twentyseventeen-adder.php';
+	}
+	return $template;
+}
+
 function al_product_enable_generic_content( $template ) {
 	if ( is_ic_catalog_page() ) {
 		add_action( 'generic_content', 'content_product_adder' );
@@ -159,7 +182,7 @@ function al_product_adder_page_template( $template ) {
 	if ( is_ic_catalog_page() ) {
 		if ( is_archive() || is_search() || is_tax() ) {
 			$product_archive = get_product_listing_id();
-			if ( !empty( $product_archive ) ) {
+			if ( !empty( $product_archive ) && get_integration_type() != 'simple' ) {
 				wp_redirect( get_permalink( $product_archive ) );
 				exit;
 			}
@@ -224,91 +247,70 @@ function theme_integration_wizard( $atts ) {
 				echo '<div id="integration_wizard" class="' . $class . '">' . implecode_info( $box_content, 0 ) . '</div>';
 			}
 		} else if ( isset( $_GET[ 'test_advanced' ] ) && $_GET[ 'test_advanced' ] == 1 ) {
-			$box_content .= '<style>#integration_wizard.fixed-box {opacity: 0.8;}#integration_wizard.fixed-box:hover {opacity: 1;}</style>';
-			$box_content .= '<p>' . __( 'Advanced Mode is temporary enabled for this page now.', 'ecommerce-product-catalog' ) . '</p>';
-			//$box_content .= '<p>' . __( 'Please use the buttons below to let the script know if the Automatic Advanced Integration is done right.', 'ecommerce-product-catalog' ) . '</p>';
-			$box_content .= '<p style="margin-bottom: 0">' . __( 'Make some adjustments if necessary (you can change it at any time later)', 'ecommerce-product-catalog' ) . ':</p>';
-			$box_content .= '<table class="styling-adjustments">';
-			$integration_settings = get_integration_settings();
-			$box_content .= implecode_settings_number( __( 'Width', 'ecommerce-product-catalog' ), 'container_width', $integration_settings[ 'container_width' ], '%', 0, null, null, 0 );
-			$box_content .= implecode_settings_text_color( __( 'Background', 'ecommerce-product-catalog' ), 'container_bg', $integration_settings[ 'container_bg' ], null, 0, null, '{change: function(event, ui){ var hexcolor = jQuery( this ).wpColorPicker( "color" ); jQuery("#container").css("background", hexcolor); jQuery("#container").css("overflow", "hidden"); jQuery("#container").css("width", jQuery("input[name=\"container_width\"]").val()+"%");}}' );
-			$box_content .= implecode_settings_number( __( 'Padding', 'ecommerce-product-catalog' ), 'container_padding', $integration_settings[ 'container_padding' ], 'px', 0, null, null, 0 );
+			//$box_content .= '<style>#integration_wizard.fixed-box.opacity {opacity: 0.8;}#integration_wizard.fixed-box:hover {opacity: 1;}</style>';
+			$box_content			 .= '<p class="initial-description">' . __( 'Advanced Mode is temporary enabled for this page now.', 'ecommerce-product-catalog' ) . ' <strong>' . __( "Don't worry if it looks messy.", 'ecommerce-product-catalog' ) . '</strong> ' . __( 'Make some adjustments if necessary (you can change it at any time later).', 'ecommerce-product-catalog' ) . '</p>';
+			$box_content			 .= '<p class="initial-description"><strong>' . __( 'Click start to proceed with layout adjustment.', 'ecommerce-product-catalog' ) . '</strong></p>';
+//$box_content .= '<p>' . __( 'Please use the buttons below to let the script know if the Automatic Advanced Integration is done right.', 'ecommerce-product-catalog' ) . '</p>';
+			$box_content			 .= '<p class="wp-core-ui" style="margin-top: 20px;"><button class="button-primary start_section">' . __( 'Start', 'ecommerce-product-catalog' ) . '</button></p>';
+			$box_content			 .= '<table class="styling-adjustments">';
+			$integration_settings	 = get_integration_settings();
+			$box_content			 .= '<tbody class="section_1 integration-section" style="display: none">';
+			$box_content			 .= '<tr><td colspan="2"><p style="margin-bottom: 5px">' . sprintf( __( 'Use %1$swidth%2$s to change the product page horizontal size, %1$spadding%2$s to generate space around the content and %1$sbackground%2$s to match your theme color', 'ecommerce-product-catalog' ), '<strong>', '</strong>' ) . ':</p></td></tr>';
+			$box_content			 .= implecode_settings_number( __( 'Width', 'ecommerce-product-catalog' ), 'container_width', $integration_settings[ 'container_width' ], '%', 0, null, null, 0 );
+			$box_content			 .= implecode_settings_text_color( __( 'Background', 'ecommerce-product-catalog' ), 'container_bg', $integration_settings[ 'container_bg' ], null, 0, null, '{change: function(event, ui){ var hexcolor = jQuery( this ).wpColorPicker( "color" ); jQuery("#container").css("background", hexcolor); jQuery("#container").css("overflow", "hidden"); jQuery("#container").css("width", jQuery("input[name=\"container_width\"]").val()+"%");}}' );
+			$box_content			 .= implecode_settings_text_color( __( 'Text Color', 'ecommerce-product-catalog' ), 'container_text', $integration_settings[ 'container_text' ], null, 0, null, '{change: function(event, ui){ var hexcolor = jQuery( this ).wpColorPicker( "color" ); jQuery("#container *").css("color", hexcolor); }}' );
+			$box_content			 .= implecode_settings_number( __( 'Padding', 'ecommerce-product-catalog' ), 'container_padding', $integration_settings[ 'container_padding' ], 'px', 0, null, null, 0 );
+			$box_content			 .= '</tbody>';
+
 			if ( !defined( 'AL_SIDEBAR_BASE_URL' ) ) {
+				$box_content .= '<tbody class="section_2 integration-section" style="display: none">';
+				$box_content .= '<tr><td colspan="2"><p style="margin-bottom: 5px">' . __( 'Select the sidebar side to enable it on your product pages.', 'ecommerce-product-catalog' ) . ':</p></td></tr>';
+
 				$box_content .= implecode_settings_radio( __( 'Default Sidebar', 'ecommerce-product-catalog' ), 'default_sidebar', $integration_settings[ 'default_sidebar' ], array( 'none' => __( 'Disabled', 'ecommerce-product-catalog' ), 'left' => __( 'Left', 'ecommerce-product-catalog' ), 'right' => __( 'Right', 'ecommerce-product-catalog' ) ), 0 );
+				$box_content .= '<tr><td colspan="2"><p style="margin-top: 5px; margin-bottom: 5px; display: none;" class="integration-sidebar-info">' . __( 'If the sidebar is to close to the content you can go back and adjust the padding.', 'ecommerce-product-catalog' ) . '</p></td></tr>';
 				if ( $integration_settings[ 'default_sidebar' ] == 'none' ) {
 					$box_content .= '<style>#catalog_sidebar {display: none;}</style>';
 				}
+				$box_content .= '</tbody>';
 			}
+			$box_content .= '<tbody class="section_3 integration-section" style="display: none">';
+			$box_content .= '<tr><td colspan="2"><p style="margin-bottom: 5px">' . __( 'Disable unnecessary product page elements', 'ecommerce-product-catalog' ) . ':</p></td></tr>';
+
 			$box_content .= implecode_settings_checkbox( __( 'Disable breadcrumbs', 'ecommerce-product-catalog' ), 'disable_breadcrumbs', $integration_settings[ 'disable_breadcrumbs' ], 0 );
 			$box_content .= implecode_settings_checkbox( __( 'Disable Name', 'ecommerce-product-catalog' ), 'disable_name', $integration_settings[ 'disable_name' ], 0 );
 			$box_content .= implecode_settings_checkbox( __( 'Disable Image', 'ecommerce-product-catalog' ), 'disable_image', $integration_settings[ 'disable_image' ], 0 );
-			$box_content .= implecode_settings_checkbox( __( 'Disable Price', 'ecommerce-product-catalog' ), 'disable_price', $integration_settings[ 'disable_price' ], 0 );
-			$box_content .= implecode_settings_checkbox( __( 'Disable Shipping', 'ecommerce-product-catalog' ), 'disable_shipping', $integration_settings[ 'disable_shipping' ], 0 );
-			$box_content .= implecode_settings_checkbox( __( 'Disable Attributes', 'ecommerce-product-catalog' ), 'disable_attributes', $integration_settings[ 'disable_attributes' ], 0 );
+			if ( function_exists( 'get_currency_settings' ) ) {
+				$box_content .= implecode_settings_checkbox( __( 'Disable Price', 'ecommerce-product-catalog' ), 'disable_price', $integration_settings[ 'disable_price' ], 0 );
+			}
+			if ( function_exists( 'is_ic_sku_enabled' ) ) {
+				$box_content .= implecode_settings_checkbox( __( 'Disable SKU', 'ecommerce-product-catalog' ), 'disable_sku', $integration_settings[ 'disable_sku' ], 0 );
+			}
+			if ( function_exists( 'is_ic_shipping_enabled' ) ) {
+				$box_content .= implecode_settings_checkbox( __( 'Disable Shipping', 'ecommerce-product-catalog' ), 'disable_shipping', $integration_settings[ 'disable_shipping' ], 0 );
+			}
+			if ( function_exists( 'is_ic_attributes_enabled' ) ) {
+				$box_content .= implecode_settings_checkbox( __( 'Disable Attributes', 'ecommerce-product-catalog' ), 'disable_attributes', $integration_settings[ 'disable_attributes' ], 0 );
+			}
+			$box_content .= '</tbody>';
+
 			$box_content .= '</table>';
-			$box_content .= '<style>#integration_wizard .al-box table tbody, #integration_wizard .al-box table tr, #integration_wizard .al-box table td {border: 0; background: transparent;} #integration_wizard .al-box table.styling-adjustments td {vertical-align: middle;font-size: 14px; color: rgb(136, 136, 136); text-align: left;} #integration_wizard .wp-picker-container {padding-top: 5px;}html #integration_wizard.fixed-box .al-box table input.wp-picker-clear {background: #ededed; transition: none; padding: 1px 6px; border: 1px solid #000; color: #000; margin: 0; margin-left: 6px;}#integration_wizard .wp-picker-holder{position: absolute;}</style>';
-			$box_content .= '<script>jQuery("input[name=\"container_width\"]").change(function() { jQuery("#container").css("width", jQuery(this).val()+"%");jQuery("#container").css("margin", "0 auto");});';
-			$box_content .= 'jQuery("input[name=\"container_padding\"]").change(function() { jQuery("#container #content").css("padding", jQuery(this).val()+"px");jQuery("#container").css("box-sizing", "border-box");jQuery("#container #catalog_sidebar").css("padding", jQuery(this).val()+"px");});';
-			$box_content .= 'jQuery("input[name=\"disable_breadcrumbs\"]").change(function() { if (jQuery(this).is(":checked")) { jQuery("p#breadcrumbs").hide();} else {jQuery("p#breadcrumbs").show();}});';
-			$box_content .= 'jQuery("input[name=\"disable_name\"]").change(function() { if (jQuery(this).is(":checked")) { jQuery("h1.product-name").hide();} else {jQuery("h1.product-name").show();}});';
-			$box_content .= 'jQuery("input[name=\"disable_image\"]").change(function() { if (jQuery(this).is(":checked")) { jQuery("div.product-image").hide();jQuery("#product_details").addClass("no-image");} else {jQuery("div.product-image").show();jQuery("#product_details").removeClass("no-image");}});';
-			$box_content .= 'jQuery("input[name=\"disable_price\"]").change(function() { if (jQuery(this).is(":checked")) { jQuery("table.price-table").hide();} else {jQuery("table.price-table").show();}});';
-			$box_content .= 'jQuery("input[name=\"disable_shipping\"]").change(function() { if (jQuery(this).is(":checked")) { jQuery("table.shipping-table").hide();} else {jQuery("table.shipping-table").show();}});';
-			$box_content .= 'jQuery("input[name=\"disable_attributes\"]").change(function() { if (jQuery(this).is(":checked")) { jQuery("#product_features").hide();} else {jQuery("#product_features").show();}});';
-			$box_content .= 'jQuery("input[name=\"default_sidebar\"]").change(function() { if (jQuery(this).is(":checked")) { sidebar = jQuery(this).val();if (sidebar == "left") {jQuery("#catalog_sidebar").show();jQuery("#catalog_sidebar").css("float","left");jQuery(".product-catalog #content").css("width","70%");jQuery(".product-catalog #content").css("float","right");} else if (sidebar == "right") {jQuery("#catalog_sidebar").show();jQuery("#catalog_sidebar").css("float","right");jQuery(".product-catalog #content").css("width","70%");jQuery(".product-catalog #content").css("float","left");} else {jQuery("#catalog_sidebar").hide();jQuery(".product-catalog #content").css("width","100%");jQuery(".product-catalog #content").css("float","none");}}});';
-			$box_content .= '</script>';
-			//$box_content .= '<script>jQuery("input[name=\"container_bg\"]").change(function() { jQuery("#container").css("background", jQuery(this).val());});</script>';
+
+			$box_content .= '<style>#integration_wizard .al-box table tbody, #integration_wizard .al-box table tr, #integration_wizard .al-box table td {border: 0; background: transparent;} #integration_wizard .al-box table.styling-adjustments td {vertical-align: middle;font-size: 14px; color: rgb(136, 136, 136); text-align: left;} #integration_wizard .wp-picker-container {padding-top: 5px;}html #integration_wizard.fixed-box .al-box table input.wp-picker-clear {background: #ededed; transition: none; padding: 1px 6px; border: 1px solid #000; color: #000; margin: 0; margin-left: 6px;}#integration_wizard .wp-picker-holder{position: absolute;z-index: 99;}</style>';
+
+			$box_content .= '<div class="section_last integration-section" style="display: none">';
 			$box_content .= '<p>' . __( 'Is everything looking fine now?', 'ecommerce-product-catalog' ) . '</p>';
-			$box_content .= '<script>jQuery(document).ready(function() {
-    jQuery("a.integration-ok").click(function(e) {
-	clicked = jQuery(this).attr("href");
-	e.preventDefault();
-	var breadcrumbs = 0;
-	if (jQuery("input[name=\"disable_breadcrumbs\"]").is(":checked")) {
-		breadcrumbs = 1;
-	}
-	var name = 0;
-	if (jQuery("input[name=\"disable_name\"]").is(":checked")) {
-		name = 1;
-	}
-	var image = 0;
-	if (jQuery("input[name=\"disable_image\"]").is(":checked")) {
-		image = 1;
-	}
-	var price = 0;
-	if (jQuery("input[name=\"disable_price\"]").is(":checked")) {
-		price = 1;
-	}
-	var shipping = 0;
-	if (jQuery("input[name=\"disable_shipping\"]").is(":checked")) {
-		shipping = 1;
-	}
-	var attributes = 0;
-	if (jQuery("input[name=\"disable_attributes\"]").is(":checked")) {
-		attributes = 1;
-	}
-	default_sidebar = jQuery("input[name=\"default_sidebar\"]:checked").val();
-		var data = {
-			"action": "save_wizard",
-			"container_width": jQuery("input[name=\"container_width\"]").val(),
-			"container_padding": jQuery("input[name=\"container_padding\"]").val(),
-			"container_bg": jQuery("input[name=\"container_bg\"]").val(),
-			"disable_breadcrumbs": breadcrumbs,
-			"disable_name": name,
-			"disable_image": image,
-			"disable_price": price,
-			"disable_shipping": shipping,
-			"disable_attributes": attributes,
-			"default_sidebar": default_sidebar
-		};
-
-		jQuery.post("' . admin_url( 'admin-ajax.php' ) . '", data, function(response) {
-			window.location.href = clicked;
-		});
-	}); });
-</script>';
-			$box_content .= '<p class="wp-core-ui"><a href="' . esc_url( add_query_arg( 'test_advanced', 'ok' ) ) . '" class="button-primary integration-ok">' . __( 'It\'s Fine', 'ecommerce-product-catalog' ) . '</a><a href="' . esc_url( add_query_arg( 'test_advanced', 'bad' ) ) . '" class="button-secondary">' . __( 'It\'s Broken', 'ecommerce-product-catalog' ) . '</a></p>';
-
+			$box_content .= '<style>#integration_wizard .ic_spinner{background: url(' . admin_url() . '/images/spinner.gif) no-repeat;display: inline-block;
+    opacity: 0.7;
+    width: 20px;
+    height: 20px;
+    margin-left: 2px;
+    vertical-align: middle;
+    display: none;
+	margin-right:3px;
+	margin-left: -23px;}</style>';
+			$box_content .= '<p class="wp-core-ui"><span class="ic_spinner"></span><a href="' . esc_url( add_query_arg( 'test_advanced', 'ok' ) ) . '" class="button-primary integration-ok">' . __( 'It\'s Fine', 'ecommerce-product-catalog' ) . '</a><a href="' . esc_url( add_query_arg( 'test_advanced', 'bad' ) ) . '" class="button-secondary">' . __( 'It\'s Broken', 'ecommerce-product-catalog' ) . '</a> <button class="button-secondary show_third switch_section">' . __( 'Go Back', 'ecommerce-product-catalog' ) . '</button></p>';
+			$box_content .= '</div>';
+			$box_content .= '<p class="wp-core-ui" style="margin-top: 20px;"><button class="button-secondary show_prev_section switch_section" style="display: none">' . __( 'Go Back', 'ecommerce-product-catalog' ) . '</button><button class="button-primary show_next_section switch_section" style="display: none">' . __( 'Next', 'ecommerce-product-catalog' ) . '</button></p>';
 			echo '<div id="integration_wizard" class="' . $class . '">' . implecode_info( $box_content, 0 ) . '</div>';
 		} else if ( isset( $_GET[ 'test_advanced' ] ) && $_GET[ 'test_advanced' ] == 'bad' ) {
 			$box_content .= '<p>' . __( 'It seems that Manual Theme Integration is needed in order to use Advanced Mode with your current theme.', 'ecommerce-product-catalog' ) . '</p>';
@@ -346,13 +348,16 @@ function theme_integration_wizard( $atts ) {
  */
 function get_integration_settings() {
 	$archive_multiple_settings			 = get_multiple_settings();
-	$settings[ 'container_width' ]		 = isset( $archive_multiple_settings[ 'container_width' ] ) ? $archive_multiple_settings[ 'container_width' ] : 100;
-	$settings[ 'container_bg' ]			 = isset( $archive_multiple_settings[ 'container_bg' ] ) ? $archive_multiple_settings[ 'container_bg' ] : '';
-	$settings[ 'container_padding' ]	 = isset( $archive_multiple_settings[ 'container_padding' ] ) ? $archive_multiple_settings[ 'container_padding' ] : 0;
+	$theme								 = get_option( 'template' );
+	$settings[ 'container_width' ]		 = isset( $archive_multiple_settings[ 'container_width' ][ $theme ] ) ? $archive_multiple_settings[ 'container_width' ][ $theme ] : 100;
+	$settings[ 'container_bg' ]			 = isset( $archive_multiple_settings[ 'container_bg' ][ $theme ] ) ? $archive_multiple_settings[ 'container_bg' ][ $theme ] : '';
+	$settings[ 'container_padding' ]	 = isset( $archive_multiple_settings[ 'container_padding' ][ $theme ] ) ? $archive_multiple_settings[ 'container_padding' ][ $theme ] : 0;
+	$settings[ 'container_text' ]		 = isset( $archive_multiple_settings[ 'container_text' ][ $theme ] ) ? $archive_multiple_settings[ 'container_text' ][ $theme ] : '';
 	$settings[ 'disable_breadcrumbs' ]	 = isset( $archive_multiple_settings[ 'enable_product_breadcrumbs' ] ) && $archive_multiple_settings[ 'enable_product_breadcrumbs' ] == 1 ? 0 : 1;
 	$settings[ 'disable_name' ]			 = isset( $archive_multiple_settings[ 'disable_name' ] ) ? $archive_multiple_settings[ 'disable_name' ] : 0;
 	$settings[ 'disable_image' ]		 = is_ic_product_gallery_enabled() ? 0 : 1;
 	$settings[ 'disable_price' ]		 = function_exists( 'is_ic_price_enabled' ) && is_ic_price_enabled() ? 0 : 1;
+	$settings[ 'disable_sku' ]			 = function_exists( 'is_ic_sku_enabled' ) && is_ic_sku_enabled() ? 0 : 1;
 	$settings[ 'disable_shipping' ]		 = function_exists( 'is_ic_shipping_enabled' ) && is_ic_shipping_enabled() ? 0 : 1;
 	$settings[ 'disable_attributes' ]	 = function_exists( 'is_ic_attributes_enabled' ) && is_ic_attributes_enabled() ? 0 : 1;
 	$settings[ 'default_sidebar' ]		 = isset( $archive_multiple_settings[ 'default_sidebar' ] ) ? $archive_multiple_settings[ 'default_sidebar' ] : 'none';
@@ -366,29 +371,36 @@ add_action( 'wp_ajax_save_wizard', 'save_wizard_advanced_mode_settings' );
  */
 function save_wizard_advanced_mode_settings() {
 	if ( current_user_can( 'manage_product_settings' ) ) {
-		$archive_multiple_settings							 = get_multiple_settings();
-		$product_currency_settings							 = get_currency_settings();
-		$product_page_settings								 = get_product_page_settings();
-		$archive_multiple_settings[ 'container_width' ]		 = intval( $_POST[ 'container_width' ] );
-		$archive_multiple_settings[ 'container_bg' ]		 = isset( $_POST[ 'container_bg' ] ) ? strval( $_POST[ 'container_bg' ] ) : '';
-		$archive_multiple_settings[ 'container_padding' ]	 = intval( $_POST[ 'container_padding' ] );
-		$archive_multiple_settings[ 'disable_name' ]		 = intval( $_POST[ 'disable_name' ] );
-		$archive_multiple_settings[ 'default_sidebar' ]		 = strval( $_POST[ 'default_sidebar' ] );
-		$breadcrumbs										 = intval( $_POST[ 'disable_breadcrumbs' ] );
+		$archive_multiple_settings									 = get_multiple_settings();
+		$product_page_settings										 = get_product_page_settings();
+		$theme														 = get_option( 'template' );
+		$archive_multiple_settings[ 'container_width' ][ $theme ]	 = intval( $_POST[ 'container_width' ] );
+		$archive_multiple_settings[ 'container_bg' ][ $theme ]		 = isset( $_POST[ 'container_bg' ] ) ? strval( $_POST[ 'container_bg' ] ) : '';
+		$archive_multiple_settings[ 'container_padding' ][ $theme ]	 = intval( $_POST[ 'container_padding' ] );
+		$archive_multiple_settings[ 'container_text' ][ $theme ]	 = isset( $_POST[ 'container_text' ] ) ? strval( $_POST[ 'container_text' ] ) : '';
+		$archive_multiple_settings[ 'disable_name' ]				 = intval( $_POST[ 'disable_name' ] );
+		$archive_multiple_settings[ 'disable_sku' ]					 = intval( $_POST[ 'disable_sku' ] );
+		$archive_multiple_settings[ 'default_sidebar' ]				 = strval( $_POST[ 'default_sidebar' ] );
+		$breadcrumbs												 = intval( $_POST[ 'disable_breadcrumbs' ] );
 		if ( $breadcrumbs == 1 ) {
 			$archive_multiple_settings[ 'enable_product_breadcrumbs' ] = 0;
 		} else {
 			$archive_multiple_settings[ 'enable_product_breadcrumbs' ] = 1;
 		}
 		update_option( 'archive_multiple_settings', $archive_multiple_settings );
-		$price = intval( $_POST[ 'disable_price' ] );
-		if ( $price == 1 ) {
-			$product_currency_settings[ 'price_enable' ] = 'off';
-			update_option( 'product_currency_settings', $product_currency_settings );
-		} else {
-			$product_currency_settings[ 'price_enable' ] = 'on';
-			update_option( 'product_currency_settings', $product_currency_settings );
+
+		if ( function_exists( 'get_currency_settings' ) ) {
+			$price						 = intval( $_POST[ 'disable_price' ] );
+			$product_currency_settings	 = get_currency_settings();
+			if ( $price == 1 ) {
+				$product_currency_settings[ 'price_enable' ] = 'off';
+				update_option( 'product_currency_settings', $product_currency_settings );
+			} else {
+				$product_currency_settings[ 'price_enable' ] = 'on';
+				update_option( 'product_currency_settings', $product_currency_settings );
+			}
 		}
+
 		$image = intval( $_POST[ 'disable_image' ] );
 		if ( $image == 1 ) {
 			$product_page_settings[ 'enable_product_gallery' ] = 0;
@@ -397,17 +409,21 @@ function save_wizard_advanced_mode_settings() {
 			$product_page_settings[ 'enable_product_gallery' ] = 1;
 			update_option( 'multi_single_options', $product_page_settings );
 		}
-		$shipping = intval( $_POST[ 'disable_shipping' ] );
-		if ( $shipping == 1 ) {
-			update_option( 'product_shipping_options_number', 0 );
-		} else if ( !is_ic_shipping_enabled() ) {
-			update_option( 'product_shipping_options_number', 2 );
+		if ( function_exists( 'is_ic_shipping_enabled' ) ) {
+			$shipping = intval( $_POST[ 'disable_shipping' ] );
+			if ( $shipping == 1 ) {
+				update_option( 'product_shipping_options_number', 0 );
+			} else if ( !is_ic_shipping_enabled() ) {
+				update_option( 'product_shipping_options_number', 2 );
+			}
 		}
-		$attributes = intval( $_POST[ 'disable_attributes' ] );
-		if ( $attributes == 1 ) {
-			update_option( 'product_attributes_number', 0 );
-		} else if ( !is_ic_attributes_enabled() ) {
-			update_option( 'product_attributes_number', 3 );
+		if ( function_exists( 'is_ic_attributes_enabled' ) ) {
+			$attributes = intval( $_POST[ 'disable_attributes' ] );
+			if ( $attributes == 1 ) {
+				update_option( 'product_attributes_number', 0 );
+			} else if ( !is_ic_attributes_enabled() ) {
+				update_option( 'product_attributes_number', 3 );
+			}
 		}
 	}
 
@@ -436,34 +452,48 @@ function enqueue_sample_product_scripts() {
 }
 
 function enable_advanced_mode( $hide_info = 0 ) {
-	$archive_multiple_settings						 = get_multiple_settings();
-	$archive_multiple_settings[ 'integration_type' ] = 'advanced';
+	$archive_multiple_settings									 = get_multiple_settings();
+	$theme														 = get_option( 'template' );
+	$archive_multiple_settings[ 'integration_type' ][ $theme ]	 = 'advanced';
 	update_option( 'archive_multiple_settings', $archive_multiple_settings );
-	$template										 = get_option( 'template' );
 	if ( $hide_info == 1 ) {
-		update_option( 'product_adder_theme_support_check', $template );
+		$current_support_check			 = ic_get_theme_support_check();
+		$current_support_check[ $theme ] = $theme;
+		update_option( 'product_adder_theme_support_check', $current_support_check );
 	}
 }
 
 function enable_simple_mode() {
-	$archive_multiple_settings						 = get_multiple_settings();
-	$archive_multiple_settings[ 'integration_type' ] = 'simple';
+	$archive_multiple_settings									 = get_multiple_settings();
+	$theme														 = get_option( 'template' );
+	$archive_multiple_settings[ 'integration_type' ][ $theme ]	 = 'simple';
 	update_option( 'archive_multiple_settings', $archive_multiple_settings );
-	update_option( 'product_adder_theme_support_check', '' );
+	$current_support_check										 = ic_get_theme_support_check();
+	$current_support_check[ $theme ]							 = '';
+	update_option( 'product_adder_theme_support_check', $current_support_check );
 }
 
 function get_real_integration_mode() {
-	$archive_multiple_settings						 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
-	$archive_multiple_settings[ 'integration_type' ] = isset( $archive_multiple_settings[ 'integration_type' ] ) ? $archive_multiple_settings[ 'integration_type' ] : 'simple';
-	return $archive_multiple_settings[
-	'integration_type' ];
+	$archive_multiple_settings	 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
+	$theme						 = get_option( 'template' );
+	$prev_int					 = (isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] )) ? $archive_multiple_settings[ 'integration_type' ] : 'simple';
+	if ( isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] ) ) {
+		$archive_multiple_settings[ 'integration_type' ] = array();
+	}
+	$archive_multiple_settings[ 'integration_type' ][ $theme ] = isset( $archive_multiple_settings[ 'integration_type' ][ $theme ] ) ? $archive_multiple_settings[ 'integration_type' ][ $theme ] : $prev_int;
+	return $archive_multiple_settings[ 'integration_type' ][ $theme ];
 }
 
 function is_integration_mode_selected() {
-	$return											 = false;
-	$archive_multiple_settings						 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
-	$archive_multiple_settings[ 'integration_type' ] = isset( $archive_multiple_settings[ 'integration_type' ] ) ? $archive_multiple_settings[ 'integration_type' ] : '';
-	if ( $archive_multiple_settings[ 'integration_type' ] != '' || is_integraton_file_active() ) {
+	$return						 = false;
+	$archive_multiple_settings	 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
+	$theme						 = get_option( 'template' );
+	$prev_type					 = (isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] )) ? $archive_multiple_settings[ 'integration_type' ] : '';
+	if ( !isset( $archive_multiple_settings[ 'integration_type' ] ) || (isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] )) ) {
+		$archive_multiple_settings[ 'integration_type' ] = array();
+	}
+	$archive_multiple_settings[ 'integration_type' ][ $theme ] = isset( $archive_multiple_settings[ 'integration_type' ][ $theme ] ) ? $archive_multiple_settings[ 'integration_type' ][ $theme ] : $prev_type;
+	if ( $archive_multiple_settings[ 'integration_type' ][ $theme ] != '' || is_integraton_file_active() ) {
 		$return = true;
 	}
 	return $return;
@@ -477,20 +507,24 @@ function is_integraton_file_active() {
 	}
 }
 
+add_action( 'switch_theme', 'erase_integration_type_select' );
+
 function erase_integration_type_select() {
 	$archive_multiple_settings = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
-	unset( $archive_multiple_settings[ 'integration_type' ] );
-	unset( $archive_multiple_settings[ 'container_width' ] );
-	unset( $archive_multiple_settings[ 'container_bg' ] );
-	unset( $archive_multiple_settings[ 'disable_name' ] );
-	unset( $archive_multiple_settings[ 'container_padding' ] );
-	unset( $archive_multiple_settings[ 'default_sidebar' ] );
-	update_option( 'archive_multiple_settings', $archive_multiple_settings );
-	delete_option( 'product_adder_theme_support_check' );
-	permalink_options_update();
+	if ( isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] ) ) {
+		unset( $archive_multiple_settings[ 'integration_type' ] );
+		unset( $archive_multiple_settings[ 'container_width' ] );
+		unset( $archive_multiple_settings[ 'container_bg' ] );
+		unset( $archive_multiple_settings[ 'disable_name' ] );
+		unset( $archive_multiple_settings[ 'container_padding' ] );
+		unset( $archive_multiple_settings[ 'default_sidebar' ] );
+		update_option( 'archive_multiple_settings', $archive_multiple_settings );
+		delete_option( 'product_adder_theme_support_check' );
+		permalink_options_update();
+	}
 }
 
-add_action( 'switch_theme', 'erase_integration_type_select' );
+add_action( 'admin_init', 'create_sample_product_with_redirect' );
 
 function create_sample_product_with_redirect() {
 	if ( isset( $_GET[ 'create_sample_product_page' ] ) ) {
@@ -502,17 +536,15 @@ function create_sample_product_with_redirect() {
 	}
 }
 
-add_action( 'admin_init', 'create_sample_product_with_redirect' );
-
 function implecode_supported_themes() {
-	return array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen', 'twentyfifteen', 'twentysixteen', 'pub/minileven',
+	return array( 'twentythirteen', 'twentyeleven', 'twentytwelve', 'twentyten', 'twentyfourteen', 'twentyfifteen', 'twentysixteen', 'twentyseventeen', 'pub/minileven',
 		'storefront', 'headway' );
 }
 
 function is_theme_implecode_supported() {
 	$template	 = get_option( 'template' );
 	$return		 = false;
-	if ( in_array( $template, implecode_supported_themes() ) || current_theme_supports( 'ecommerce-product-catalog' ) ) {
+	if ( in_array( $template, implecode_supported_themes() ) || current_theme_supports( 'ecommerce-product-catalog' ) || ic_is_woo_template_available() ) {
 		$return = true;
 	}
 	return $return;
@@ -521,7 +553,7 @@ function is_theme_implecode_supported() {
 function is_advanced_mode_forced() {
 //    $template = get_option('template');
 	$return = false;
-	if ( is_theme_implecode_supported() || is_integraton_file_active() ) {
+	if ( is_theme_implecode_supported() || is_integraton_file_active() || ic_is_woo_template_available() ) {
 		$return = true;
 	}
 	return $return;

@@ -17,12 +17,12 @@ $product_image	 = get_product_image( $product_id );
 if ( !empty( $product_image ) ) {
 	do_action( 'before_product_image', $product_id );
 	?>
-	<div class="entry-thumbnail product-image">
+	<div class="entry-thumbnail product-image" itemprop="image" itemscope itemtype="http://schema.org/ImageObject">
 		<?php
 		do_action( 'above_product_image', $product_id );
 		if ( is_lightbox_enabled() && !is_ic_default_image( $product_id ) ) {
 			?>
-			<a class="a-product-image nofancybox" href="<?php echo get_product_image_url( $product_id ) ?>"><?php echo $product_image ?></a>
+			<a class="a-product-image nofancybox" href="<?php echo get_product_image_url( $product_id ) ?>" itemprop="url"><?php echo $product_image ?></a>
 			<?php
 		} else {
 			echo $product_image;

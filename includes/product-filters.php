@@ -50,15 +50,15 @@ function product_filter_element( $id, $what, $label, $class = null ) {
 	$class = isset( $class ) ? 'filter-url ' . $class : 'filter-url';
 	if ( is_product_filter_active( $what ) ) {
 		if ( is_product_filter_active( $what, $id ) ) {
-			$class .= ' active-filter';
-			$id = 'clear';
+			$class	 .= ' active-filter';
+			$id		 = 'clear';
 		} else {
 			$class .= ' not-active-filter';
 		}
 	}
 	if ( is_paged() ) {
 		if ( is_ic_permalink_product_catalog() ) {
-			//echo get_pagenum_link( 1 );
+//echo get_pagenum_link( 1 );
 			$url = esc_url_raw( remove_query_arg( $what, get_pagenum_link( 1, false ) ) );
 		} else {
 			$url = esc_url_raw( remove_query_arg( array( 'paged', $what ) ) );
@@ -66,7 +66,11 @@ function product_filter_element( $id, $what, $label, $class = null ) {
 	} else {
 		$url = esc_url_raw( remove_query_arg( array( $what ) ) );
 	}
-	return '<a class="' . $class . '" href="' . add_query_arg( array( $what => $id ), $url ) . '">' . $label . '</a>';
+	$attr = '';
+	if ( is_ic_ajax() && !empty( $_GET[ 'page' ] ) ) {
+		$attr = 'data-page="' . intval( $_GET[ 'page' ] ) . '"';
+	}
+	return '<a class="' . $class . '" href="' . add_query_arg( array( $what => $id ), $url ) . '" ' . $attr . '>' . $label . '</a>';
 }
 
 function get_product_category_filter_element( $category ) {
@@ -86,6 +90,9 @@ add_action( 'wp_loaded', 'set_product_filter' );
  */
 
 function set_product_filter() {
+	if ( is_admin() && !is_ic_ajax() ) {
+		return;
+	}
 	$session = get_product_catalog_session();
 	if ( isset( $_GET[ 'product_category' ] ) ) {
 		$filter_value = intval( $_GET[ 'product_category' ] );
@@ -102,24 +109,43 @@ function set_product_filter() {
 	do_action( 'ic_set_product_filters', $session );
 	$session = get_product_catalog_session();
 	if ( !empty( $session[ 'filters' ] ) && empty( $session[ 'filters' ][ 'filtered-url' ] ) ) {
-		$active_filters							 = get_active_product_filters();
-		$session[ 'filters' ][ 'filtered-url' ]	 = remove_query_arg( $active_filters );
+		$active_filters = get_active_product_filters();
+		if ( isset( $_POST[ 'request_url' ] ) && is_ic_ajax() ) {
+			$old_request_url						 = $_SERVER[ 'REQUEST_URI' ];
+			$_SERVER[ 'REQUEST_URI' ]				 = $_POST[ 'request_url' ];
+			add_filter( 'get_pagenum_link', 'ic_ajax_pagenum_link' );
+			$session[ 'filters' ][ 'filtered-url' ]	 = remove_query_arg( $active_filters, get_pagenum_link( 1, false ) );
+			remove_filter( 'get_pagenum_link', 'ic_ajax_pagenum_link' );
+			$_SERVER[ 'REQUEST_URI' ]				 = $old_request_url;
+		} else {
+			$session[ 'filters' ][ 'filtered-url' ] = remove_query_arg( $active_filters, get_pagenum_link( 1, false ) );
+		}
 		if ( ic_string_contains( $session[ 'filters' ][ 'filtered-url' ], '&s=' ) ) {
+			if ( is_ic_ajax() && empty( $_POST[ 'is_search' ] ) ) {
+				$session[ 'filters' ][ 'filtered-url' ] = remove_query_arg( array( 's', 'post_type' ), $session[ 'filters' ][ 'filtered-url' ] );
+			} else {
+				$session[ 'filters' ][ 'filtered-url' ] = add_query_arg( 'reset_filters', 'y', $session[ 'filters' ][ 'filtered-url' ] );
+			}
+		}
+		if ( is_ic_shortcode_query() ) {
 			$session[ 'filters' ][ 'filtered-url' ] = add_query_arg( 'reset_filters', 'y', $session[ 'filters' ][ 'filtered-url' ] );
 		}
-		$session[ 'filters' ][ 'filtered-url' ] = esc_url( $session[ 'filters' ][ 'filtered-url' ] );
+		$session[ 'filters' ][ 'filtered-url' ] = esc_url( $session[ 'filters' ][ 'filtered-url' ] . '#product_filters_bar' );
 		set_product_catalog_session( $session );
 	}
 }
 
-add_action( 'pre_get_posts', 'delete_product_filters', 2 );
+//add_action( 'ic_pre_get_products', 'delete_product_filters', 2 );
+//add_action( 'ic_pre_get_products_shortcode', 'delete_product_filters', 2 );
+add_action( 'wp_loaded', 'delete_product_filters', 11 );
 
 /**
  * Clears current filters if there is a page reload without new filter assignment
  *
  */
-function delete_product_filters( $query ) {
-	if ( !is_admin() && is_product_filters_active() && (!is_search() || isset( $_GET[ 'reset_filters' ] ) ) && $query->is_main_query() ) {
+function delete_product_filters() {
+//if ( !is_admin() && is_product_filters_active() && (!is_search() || isset( $_GET[ 'reset_filters' ] ) ) && $query->is_main_query() ) {
+	if ( is_product_filters_active() && (!is_search() || isset( $_GET[ 'reset_filters' ] ) ) ) {
 		$active_filters	 = get_active_product_filters();
 		$out			 = false;
 		foreach ( $active_filters as $filter ) {
@@ -153,7 +179,7 @@ function get_product_filter_value( $filter_name ) {
 	return '';
 }
 
-add_action( 'pre_get_posts', 'apply_product_filters' );
+add_action( 'ic_pre_get_products', 'apply_product_filters', 20 );
 
 /**
  * Applies current filters to the query
@@ -161,20 +187,20 @@ add_action( 'pre_get_posts', 'apply_product_filters' );
  * @param object $query
  */
 function apply_product_filters( $query ) {
-	if ( !is_admin() && !is_home_archive( $query ) && $query->is_main_query() && is_product_filters_active() && (is_ic_product_listing( $query ) || is_ic_taxonomy_page() || is_ic_product_search()) ) {
-		if ( is_product_filter_active( 'product_category' ) ) {
-			$category_id = get_product_filter_value( 'product_category' );
-			$taxonomy	 = get_current_screen_tax();
-			$taxquery	 = array(
-				array(
-					'taxonomy'	 => $taxonomy,
-					'terms'		 => $category_id,
-				)
-			);
-			$query->set( 'tax_query', $taxquery );
-		}
-		do_action( 'apply_product_filters', $query );
+//if ( ((!is_admin() && $query->is_main_query()) || (defined( 'DOING_AJAX' ))) && !is_home_archive( $query ) && (is_ic_product_listing( $query ) || is_ic_taxonomy_page() || is_ic_product_search()) ) {
+	if ( is_product_filters_active() && is_product_filter_active( 'product_category' ) ) {
+		$category_id = get_product_filter_value( 'product_category' );
+		$taxonomy	 = get_current_screen_tax();
+		$taxquery	 = array(
+			array(
+				'taxonomy'	 => $taxonomy,
+				'terms'		 => $category_id,
+			)
+		);
+		$query->set( 'tax_query', $taxquery );
 	}
+	do_action( 'apply_product_filters', $query );
+//}
 }
 
 add_filter( 'shortcode_query', 'apply_product_category_filter' );
@@ -223,7 +249,9 @@ function total_product_category_count( $cat_id ) {
 	if ( isset( $_GET[ 's' ] ) ) {
 		$query_args[ 's' ] = $_GET[ 's' ];
 	}
+	remove_action( 'pre_get_posts', 'ic_pre_get_products', 99 );
 	$q = new WP_Query( $query_args );
+	add_action( 'pre_get_posts', 'ic_pre_get_products', 99 );
 	return $q->post_count;
 }
 

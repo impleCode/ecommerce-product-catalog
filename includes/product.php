@@ -41,6 +41,7 @@ function create_product() {
 		$product_listing_t = $slug;
 	} else {
 		$product_listing_t = false;
+		//$product_listing_t	 = $slug;
 	}
 	$names		 = get_catalog_names();
 	$query_var	 = get_product_query_var();
@@ -110,7 +111,7 @@ function create_product() {
 			'labels'				 => $labels,
 			'public'				 => true,
 			'has_archive'			 => $product_listing_t,
-			'rewrite'				 => array( 'slug' => apply_filters( 'product_slug_value_register', $slug ), 'with_front' => false ),
+			'rewrite'				 => array( 'slug' => apply_filters( 'product_slug_value_register', $slug ), 'with_front' => false, 'pages' => true ),
 			'query_var'				 => $query_var,
 			'supports'				 => apply_filters( 'ic_products_type_support', array( 'title', 'thumbnail', 'editor', 'excerpt' ) ),
 			'register_meta_box_cb'	 => 'add_product_metaboxes',
@@ -269,7 +270,7 @@ function implecode_save_products_meta( $post_id, $post ) {
 			}
 			if ( isset( $value ) && !isset( $current_value ) ) {
 				add_post_meta( $post->ID, $key, $value, true );
-			} else if ( isset( $value ) && $value != $current_value ) {
+			} else if ( isset( $value ) && $value !== $current_value ) {
 				update_post_meta( $post->ID, $key, $value );
 			} else if ( !isset( $value ) && $current_value ) {
 				delete_post_meta( $post->ID, $key );

@@ -55,7 +55,7 @@ function get_list_archive_theme( $post, $archive_template = null ) {
 	$return				 = '';
 	if ( $archive_template == 'list' ) {
 		$product_id			 = $post->ID;
-		$product_name		 = get_product_name();
+		$product_name		 = get_product_name( $product_id );
 		$image_id			 = get_post_thumbnail_id( $product_id );
 		$thumbnail_product	 = wp_get_attachment_image_src( $image_id, 'classic-list-listing' );
 		if ( $thumbnail_product ) {
@@ -67,16 +67,16 @@ function get_list_archive_theme( $post, $archive_template = null ) {
 			$image	 = '<img src="' . $url . '" class="classic-list-image" alt="' . $product_name . '" >';
 		}
 		$return					 = '<div class="archive-listing product-' . $product_id . ' list ' . product_class( $post->ID ) . '">';
-		$return .= '<a href="' . get_permalink() . '"><span class="div-link"></span></a>';
-		$return .= '<div class="classic-list-image-wrapper"><div class="pseudo"></div>' . $image . '</div>';
-		$return .= '<div class="product-name">' . $product_name . '</div>';
-		$return .= '<div class="product-short-descr"><p>' . c_list_desc( $product_id ) . '</p></div>';
+		$return					 .= '<a href="' . get_permalink() . '"><span class="div-link"></span></a>';
+		$return					 .= '<div class="classic-list-image-wrapper"><div class="pseudo"></div>' . $image . '</div>';
+		$return					 .= '<div class="product-name">' . $product_name . '</div>';
+		$return					 .= '<div class="product-short-descr"><p>' . c_list_desc( $product_id ) . '</p></div>';
 		$classic_list_settings	 = get_classic_list_settings();
 		if ( $classic_list_settings[ 'attributes' ] == 1 && function_exists( 'product_attributes_number' ) ) {
 			$attributes_number = product_attributes_number();
 			if ( $attributes_number > 0 && has_product_any_attributes( $product_id ) ) {
 				$max_listing_attributes	 = apply_filters( 'max_product_listing_attributes', $classic_list_settings[ 'attributes_num' ] );
-				$return .= '<div class="product-attributes"><table class="attributes-table">';
+				$return					 .= '<div class="product-attributes"><table class="attributes-table">';
 				$a						 = 0;
 				for ( $i = 1; $i <= $attributes_number; $i++ ) {
 					$attribute_value = get_attribute_value( $i, $product_id );
@@ -91,8 +91,8 @@ function get_list_archive_theme( $post, $archive_template = null ) {
 				$return .= '</table></div>';
 			}
 		}
-		$return = apply_filters( 'classic_list_entry_bottom', $return );
-		$return .= '</div>';
+		$return	 = apply_filters( 'classic_list_entry_bottom', $return );
+		$return	 .= '</div>';
 	}
 	return $return;
 }
@@ -114,10 +114,10 @@ function get_list_category_theme( $product_cat, $archive_template ) {
 			$class = 'child-category';
 		}
 		$return	 = '<div class="archive-listing category-' . $product_cat->term_id . ' list ' . $class . '">';
-		$return .= '<a href="' . get_term_link( $product_cat ) . '"><span class="div-link"></span></a>';
-		$return .= '<div class="classic-list-image-wrapper"><div class="pseudo"></div>' . $image . '</div>';
-		$return .= '<div class="product-name">' . $product_cat->name . '</div>';
-		$return .= '<div class="product-short-descr"><p>' . c_list_desc( $post_id = null, $product_cat->description ) . '</p></div></div>';
+		$return	 .= '<a href="' . get_term_link( $product_cat ) . '"><span class="div-link"></span></a>';
+		$return	 .= '<div class="classic-list-image-wrapper"><div class="pseudo"></div>' . $image . '</div>';
+		$return	 .= '<div class="product-name">' . $product_cat->name . '</div>';
+		$return	 .= '<div class="product-short-descr"><p>' . c_list_desc( $post_id = null, $product_cat->description ) . '</p></div></div>';
 		return $return;
 	}
 }

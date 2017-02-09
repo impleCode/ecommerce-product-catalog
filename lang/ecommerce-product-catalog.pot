@@ -1,61 +1,59 @@
-# Copyright (C) 2016 eCommerce Product Catalog by impleCode
+# Copyright (C) 2017 eCommerce Product Catalog by impleCode
 # This file is distributed under the same license as the eCommerce Product Catalog by impleCode package.
 msgid ""
 msgstr ""
-"Project-Id-Version: eCommerce Product Catalog by impleCode 2.4.19\n"
+"Project-Id-Version: eCommerce Product Catalog by impleCode 2.6.3\n"
 "Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/ecommerce-product-"
 "catalog\n"
-"POT-Creation-Date: 2016-01-25 12:03:06+00:00\n"
+"POT-Creation-Date: 2017-02-03 12:52:39+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"PO-Revision-Date: 2016-MO-DA HO:MI+ZONE\n"
+"PO-Revision-Date: 2017-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: config/const.php:19
+msgid "Product"
+msgstr ""
+
+#: config/const.php:22 includes/settings/custom-names.php:70
+msgid "Products"
+msgstr ""
 
 #: ecommerce-product-catalog.php:74 ecommerce-product-catalog.php:86
 msgid "Cheatin&#8217; huh?"
 msgstr ""
 
-#: functions/activation.php:29 functions/activation.php:37
-#: includes/settings/general.php:221 includes/settings/general.php:261
-#: includes/settings/general.php:264 includes/settings/general.php:435
-msgid "Products"
-msgstr ""
-
-#: functions/activation.php:30 includes/settings/general.php:436
-msgid "Product"
-msgstr ""
-
-#: functions/activation.php:61
+#: functions/activation.php:68
 msgid "Sample Product Page"
 msgstr ""
 
-#: functions/activation.php:70
+#: functions/activation.php:77
 msgid "Color"
 msgstr ""
 
-#: functions/activation.php:71
+#: functions/activation.php:78
 msgid "Size"
 msgstr ""
 
-#: functions/activation.php:72
+#: functions/activation.php:79
 msgid "Weight"
 msgstr ""
 
-#: functions/activation.php:73
+#: functions/activation.php:80
 msgid "White"
 msgstr ""
 
-#: functions/activation.php:74 includes/settings/custom-design.php:188
+#: functions/activation.php:81 modules/price/price-settings.php:26
 msgid "Big"
 msgstr ""
 
-#: functions/activation.php:78
+#: functions/activation.php:85
 msgid "lbs"
 msgstr ""
 
-#: functions/activation.php:82
+#: functions/activation.php:89
 msgid ""
 "Welcome on product test page. This is short description. It should show up "
 "on the left of the product image and below product name. You shouldn't see "
@@ -64,13 +62,13 @@ msgid ""
 "you probably need Advanced Integration Mode."
 msgstr ""
 
-#: functions/activation.php:83
+#: functions/activation.php:90
 msgid ""
 "Please read this page carefully to fully understand the difference between "
 "simple and advanced mode and how the product page looks like."
 msgstr ""
 
-#: functions/activation.php:85
+#: functions/activation.php:92
 msgid ""
 "This section is product long description. It should appear under the "
 "attributes table. Between the short description and the attributes table you "
@@ -78,39 +76,37 @@ msgid ""
 "attributes also can be disabled."
 msgstr ""
 
-#: functions/activation.php:86
+#: functions/activation.php:93
 msgid "Advanced Theme Integration Mode"
 msgstr ""
 
-#: functions/activation.php:87
+#: functions/activation.php:94
 msgid ""
-"With Advanced Mode you will be able to use eCommerce Product Catalog in %s. "
-"The product listing page, category pages, product search and category widget "
-"will be enabled in advanced mode. You can enable the Advanced Mode %s free. "
-"To see how please see <a target=\"_blank\" href=\"%s\">Theme Integration "
-"Guide</a>"
+"With Advanced Mode you will be able to use %s in %s. The product listing "
+"page, category pages, product search and category widget will be enabled in "
+"advanced mode. You can enable the Advanced Mode %s free. To see how please "
+"see <a target=\"_blank\" href=\"%s\">Theme Integration Guide</a>"
 msgstr ""
 
-#: functions/activation.php:88
+#: functions/activation.php:95
 msgid ""
 "The Advanced Mode works out of the box on all default WordPress themes and "
 "all themes with the integration done properly."
 msgstr ""
 
-#: functions/activation.php:89
+#: functions/activation.php:96
 msgid "Simple Theme Integration Mode"
 msgstr ""
 
-#: functions/activation.php:90
+#: functions/activation.php:97
 msgid ""
-"The simple mode allows to use eCommerce Product Catalog most features. You "
-"can build the product listing pages and category pages by using a %s "
-"shortcode. Simple mode uses your theme page layout so it can show unwanted "
-"elements on product page. If it does please switch to Advanced Mode and see "
-"if it works out of the box."
+"The simple mode allows to use %s most features. You can build the product "
+"listing pages and category pages by using a %s shortcode. Simple mode uses "
+"your theme page layout so it can show unwanted elements on product page. If "
+"it does please switch to Advanced Mode and see if it works out of the box."
 msgstr ""
 
-#: functions/activation.php:91
+#: functions/activation.php:98
 msgid ""
 "Switching to Advanced Mode also gives additional features: automatic product "
 "listing, category pages, product search and category widget. Building a "
@@ -118,20 +114,19 @@ msgid ""
 "need to use a shortcode for everything."
 msgstr ""
 
-#: functions/activation.php:92
+#: functions/activation.php:99
 msgid "How to switch to Advanced Mode?"
 msgstr ""
 
-#: functions/activation.php:93
+#: functions/activation.php:100
 msgid ""
 "Click <a href=\"%s\">here</a> to test the Automatic Advanced Mode. If the "
-"test goes well you can keep it enabled and enjoy full eCommerce Product "
-"Catalog functionality. If the page layout during the test will not be "
-"satisfying please see <a target=\"_blank\" href=\"%s\">Theme Integration "
-"Guide</a>"
+"test goes well you can keep it enabled and enjoy full %s functionality. If "
+"the page layout during the test will not be satisfying please see <a target="
+"\"_blank\" href=\"%s\">Theme Integration Guide</a>"
 msgstr ""
 
-#: functions/activation.php:94
+#: functions/activation.php:101
 msgid ""
 "The theme integration guide will show you a step by step process. If you "
 "finish it successfully the integration will be done. It is recommended to "
@@ -139,82 +134,105 @@ msgid ""
 "automatic advanced mode because it reassures 100% theme integrity."
 msgstr ""
 
-#: functions/activation.php:95
+#: functions/activation.php:102
 msgid "Product Description End"
 msgstr ""
 
-#: functions/activation.php:96
+#: functions/activation.php:103
 msgid ""
 "Below the product description you should see nothing apart of return to "
 "products URL and Advanced Mode Test which will not show up on your product "
 "pages. When using advanced mode also the related products will show up."
 msgstr ""
 
-#: functions/activation.php:97
+#: functions/activation.php:104
 msgid ""
-"Thank you for choosing eCommerce Product Catalog. If you have any questions "
-"or comments please use <a target=\"_blank\" href=\"%s\">plugin support "
-"forum</a>."
+"Thank you for choosing %s. If you have any questions or comments please use "
+"<a target=\"_blank\" href=\"%s\">plugin support forum</a>."
 msgstr ""
 
-#: functions/activation.php:123 includes/settings/general.php:158
+#: functions/activation.php:130 includes/settings/general.php:163
 msgid "Start Auto Adjustment"
 msgstr ""
 
-#: functions/base.php:28
+#: functions/base.php:29
 msgid "Enter %s name here"
 msgstr ""
 
-#: functions/base.php:30
+#: functions/base.php:31
 msgid "Enter item name here"
 msgstr ""
 
-#: functions/content-functions.php:155
+#: functions/capabilities.php:83
+msgid "Catalog Manager"
+msgstr ""
+
+#: functions/catalog-admin.php:19
+msgid "Edit %s Listing"
+msgstr ""
+
+#: functions/catalog-admin.php:21
+msgid "Edit Product Listing"
+msgstr ""
+
+#: functions/content-functions.php:87
 msgid "Search"
 msgstr ""
 
-#: functions/content-functions.php:158 functions/functions.php:728
-#: includes/widgets/search-widget.php:23 includes/widgets/search-widget.php:36
+#: functions/content-functions.php:90 functions/functions.php:459
+#: includes/widgets/search-widget.php:23 includes/widgets/search-widget.php:80
 msgid "Product Search"
 msgstr ""
 
-#: functions/functions.php:92
+#: functions/duplicate.php:77
+msgid "Duplicate"
+msgstr ""
+
+#: functions/duplicate.php:97
+msgid "here"
+msgstr ""
+
+#: functions/duplicate.php:98
+msgid "%1$s successfully duplicated! You can edit your new %2$s %3$s."
+msgstr ""
+
+#: functions/functions.php:93
 msgid "Reset image"
 msgstr ""
 
-#: functions/functions.php:144
+#: functions/functions.php:146
 msgid "Custom URL"
 msgstr ""
 
-#: functions/functions.php:151
+#: functions/functions.php:153
 msgid "Edit"
 msgstr ""
 
-#: functions/functions.php:154
+#: functions/functions.php:156
 msgid "View Page"
 msgstr ""
 
-#: functions/functions.php:265 templates/templates-functions.php:443
+#: functions/functions.php:270 templates/templates-functions.php:577
 msgid "Search Results for:"
 msgstr ""
 
-#: functions/functions.php:415 includes/product.php:171
-msgid "Shipping"
-msgstr ""
-
-#: functions/functions.php:732
-msgid "Home"
-msgstr ""
-
-#: functions/functions.php:1018 functions/support.php:18
+#: functions/functions.php:783 functions/support.php:18
 msgid "Support"
 msgstr ""
 
-#: functions/functions.php:1227
+#: functions/functions.php:987
+msgid "Sort by Relevance"
+msgstr ""
+
+#: functions/functions.php:1045
+msgid "Reset Filters"
+msgstr ""
+
+#: functions/functions.php:1070
 msgid "Product Filters Bar has no widgets"
 msgstr ""
 
-#: functions/functions.php:1230
+#: functions/functions.php:1073
 msgid "Add widgets to the filters bar %snow%s or %sdismiss this notice%s."
 msgstr ""
 
@@ -224,8 +242,8 @@ msgstr ""
 
 #: functions/support.php:34
 msgid ""
-"<b>eCommerce Product Catalog is free to use</b>. That's great! It's a "
-"pleasure to serve it to you. Let's keep it free forever!"
+"<b>%s is free to use</b>. That's great! It's a pleasure to serve it to you. "
+"Let's keep it free forever!"
 msgstr ""
 
 #: functions/support.php:36
@@ -245,10 +263,9 @@ msgstr ""
 
 #: functions/support.php:50
 msgid ""
-"<b>Extensions</b> provide additional useful features. They improve eCommerce "
-"Product Catalog in a field of <a href=\"%1$s\">SEO</a>, <a href=\"%3$s"
-"\">Productivity</a>, <a href=\"%2$s\">Usability</a> and <a href=\"%4$s"
-"\">Conversion</a>."
+"<b>Extensions</b> provide additional useful features. They improve %s in a "
+"field of <a href=\"%1$s\">SEO</a>, <a href=\"%3$s\">Productivity</a>, <a "
+"href=\"%2$s\">Usability</a> and <a href=\"%4$s\">Conversion</a>."
 msgstr ""
 
 #: functions/support.php:54
@@ -258,8 +275,7 @@ msgstr ""
 #: functions/support.php:55
 msgid ""
 "Apart of fast, confidential email support <b>every premium support member "
-"will receive some advanced features</b> for eCommerce Product Catalog as a "
-"free welcome gift."
+"will receive some advanced features</b> for %s as a free welcome gift."
 msgstr ""
 
 #: functions/support.php:56
@@ -311,145 +327,163 @@ msgstr ""
 #: functions/support.php:67
 msgid ""
 "As you may already know some themes may need Theme Integration to fully "
-"support eCommerce Product Catalog. I wrote this <a href=\"%1$s\">theme "
-"integrations guide</a>, however to make it even easier you will get <a href="
-"\"%2$s\">Advanced Theme Integration</a> service for free if you choose <a "
-"href=\"%3$s\">Premium Support</a> service."
+"support %s. I wrote this <a href=\"%s\">theme integrations guide</a>, "
+"however to make it even easier you will get <a href=\"%s\">Advanced Theme "
+"Integration</a> service for free if you choose <a href=\"%s\">Premium "
+"Support</a> service."
 msgstr ""
 
 #: functions/support.php:68
-msgid "eCommerce Product Catalog documentation"
+msgid "%s documentation"
 msgstr ""
 
 #: functions/support.php:69
 msgid ""
-"<b>eCommerce Product Catalog</b> documentation is being developed <a href="
-"\"%1$s\">here</a>. For questions about eCommerce Product Catalog please use "
-"<a href=\"%2$s\">support forum</a> or <a href=\"%3$s\">Premium Support "
-"service</a>."
+"<b>%4$s</b> documentation is being developed <a href=\"%1$s\">here</a>. For "
+"questions about %4$s please use <a href=\"%2$s\">support forum</a> or <a "
+"href=\"%3$s\">Premium Support service</a>."
 msgstr ""
 
 #: functions/support.php:113
 msgid ""
-"<b>Please do not donate</b> (we finance the eCommerce Product Catalog "
-"development from <a href=\"%1$s\">premium support</a> and <a href=\"%2$s"
-"\">extensions</a>)"
+"<b>Please do not donate</b> (we finance the %3$s development from <a href="
+"\"%1$s\">premium support</a> and <a href=\"%2$s\">extensions</a>)"
 msgstr ""
 
 #: functions/support.php:118
 msgid "You can get instant premium support from plugin developers"
 msgstr ""
 
-#: includes/extensions.php:16
+#: includes/extensions.php:51 partners/wpml/includes/installer.class.php:824
+msgid "No repositories defined."
+msgstr ""
+
+#: includes/extensions.php:52
+msgid "Fully compatible plugins from our partners"
+msgstr ""
+
+#: includes/extensions.php:61
 msgid "Extensions"
 msgstr ""
 
-#: includes/extensions.php:24
-msgid "Extensions for %s"
-msgstr ""
-
-#: includes/extensions.php:25
-msgid ""
-"All the extensions come with premium support provided by dev team.<br>Feel "
-"free to contact impleCode for configuration help, troubleshooting, "
-"installation assistance and any other plugin support at any time!"
-msgstr ""
-
-#: includes/extensions.php:28
+#: includes/extensions.php:72
 msgid "Installation"
 msgstr ""
 
-#: includes/extensions.php:32
+#: includes/extensions.php:84
+msgid "Extensions for %s"
+msgstr ""
+
+#: includes/extensions.php:85
+msgid ""
+"All premium extensions come with premium support provided by dev team."
+"<br>Feel free to contact impleCode for configuration help, troubleshooting, "
+"installation assistance and any other plugin support at any time!"
+msgstr ""
+
+#: includes/extensions.php:89
 msgid "Help"
 msgstr ""
 
-#: includes/extensions.php:71 includes/extensions.php:110
-#: includes/extensions.php:150 includes/extensions.php:179
+#: includes/extensions.php:131 includes/extensions.php:170
+#: includes/extensions.php:210 includes/extensions.php:239
 msgid "Did you Know?"
 msgstr ""
 
-#: includes/extensions.php:72 includes/extensions.php:111
-#: includes/extensions.php:151
+#: includes/extensions.php:132 includes/extensions.php:171
+#: includes/extensions.php:211
 msgid "All extensions are designed to work with each other smoothly."
 msgstr ""
 
-#: includes/extensions.php:73 includes/extensions.php:112
-#: includes/extensions.php:152
+#: includes/extensions.php:133 includes/extensions.php:172
+#: includes/extensions.php:212
 msgid "Some extensions give even more features when combined with another one."
 msgstr ""
 
-#: includes/extensions.php:74 includes/extensions.php:113
-#: includes/extensions.php:153
+#: includes/extensions.php:134 includes/extensions.php:173
+#: includes/extensions.php:213
 msgid "Click on the extension to see full features list."
 msgstr ""
 
-#: includes/extensions.php:75 includes/extensions.php:114
-#: includes/extensions.php:154
+#: includes/extensions.php:135 includes/extensions.php:174
+#: includes/extensions.php:214
 msgid ""
 "Paste your license key and click install button to start the extension "
 "installation process."
 msgstr ""
 
-#: includes/extensions.php:180
+#: includes/extensions.php:240
 msgid "The installation process takes less than 10 seconds."
 msgstr ""
 
-#: includes/extensions.php:181
+#: includes/extensions.php:241
 msgid ""
 "You can take advantage of premium support and <a href=\"%s\">send support "
 "tickets</a> to impleCode developers once you have your license key."
 msgstr ""
 
-#: includes/extensions.php:351
+#: includes/extensions.php:471 includes/extensions.php:518
 msgid "Advanced Mode Required"
 msgstr ""
 
-#: includes/extensions.php:354
+#: includes/extensions.php:474 includes/extensions.php:524
 msgid "Ready to Install"
 msgstr ""
 
-#: includes/extensions.php:359
+#: includes/extensions.php:479 includes/extensions.php:529
 msgid "Click for more"
 msgstr ""
 
-#: includes/extensions.php:368
+#: includes/extensions.php:488 includes/extensions.php:538
 msgid "Active Extension"
 msgstr ""
 
-#: includes/extensions.php:370
+#: includes/extensions.php:490 includes/extensions.php:540
 msgid "Installed Extension"
 msgstr ""
 
-#: includes/extensions.php:406
+#: includes/extensions.php:521
+msgid "Price Required"
+msgstr ""
+
+#: includes/extensions.php:576
 msgid "This is not a valid license key! Get it <a href=\"%s\">here</a>."
 msgstr ""
 
-#: includes/extensions.php:412
+#: includes/extensions.php:582
 msgid ""
 "The supplied license key is not valid for this extension! Upgrade it <a href="
 "\"%s\">here</a>."
 msgstr ""
 
-#: includes/extensions.php:419
+#: includes/extensions.php:589
 msgid ""
 "You need to provide the license key to activate the extension. Get yours <a "
 "href=\"%s\">here</a>."
 msgstr ""
 
-#: includes/extensions.php:425
+#: includes/extensions.php:595
 msgid "You don't have permission to install and activate extensions."
 msgstr ""
 
-#: includes/extensions.php:432
+#: includes/extensions.php:619
+msgid "This extension is not available at this time. Try again later."
+msgstr ""
+
+#: includes/extensions.php:637
 msgid "Reload the Page"
 msgstr ""
 
-#: includes/extensions.php:518
+#: includes/extensions.php:745
 msgid "Do you need multiple extensions?"
 msgstr ""
 
-#: includes/extensions.php:518
+#: includes/extensions.php:745
 msgid "Check out extensions bundles"
+msgstr ""
+
+#: includes/extensions.php:835
+msgid "Add free & premium features %shere%s."
 msgstr ""
 
 #: includes/product-categories.php:31 includes/product-categories.php:41
@@ -494,7 +528,8 @@ msgid "New %s Category"
 msgstr ""
 
 #: includes/product-categories.php:45 includes/product-categories.php:55
-#: includes/settings/general.php:264
+#: includes/settings/csv.php:173 includes/settings/csv.php:214
+#: includes/settings/general.php:268
 msgid "Categories"
 msgstr ""
 
@@ -542,779 +577,668 @@ msgstr ""
 msgid "Select Category Image"
 msgstr ""
 
-#: includes/product-category-columns.php:87 includes/product-columns.php:20
-#: includes/product.php:368
+#: includes/product-category-columns.php:87 includes/product-columns.php:23
+#: includes/product.php:320
 msgid "Image"
 msgstr ""
 
-#: includes/product-category-columns.php:88 includes/product-columns.php:19
+#: includes/product-category-columns.php:88 includes/product-columns.php:21
 msgid "ID"
 msgstr ""
 
-#: includes/product-category-columns.php:91 includes/product-columns.php:25
+#: includes/product-category-columns.php:91 includes/product-columns.php:29
 msgid "Shortcode"
 msgstr ""
 
-#: includes/product-columns.php:21 includes/settings/csv.php:145
-#: includes/settings/csv.php:186
+#: includes/product-columns.php:25
 msgid "Product Name"
 msgstr ""
 
-#: includes/product-columns.php:23 includes/product-columns.php:190
-#: includes/product.php:196 includes/settings/general.php:314
-#: includes/widgets/filter-widgets.php:221
-msgid "Price"
-msgstr ""
-
-#: includes/product-columns.php:27 includes/settings/csv.php:147
-#: includes/settings/csv.php:188
+#: includes/product-columns.php:28
 msgid "Product Categories"
 msgstr ""
 
-#: includes/product-columns.php:28
-msgid "Date"
-msgstr ""
-
-#: includes/product-columns.php:126 includes/settings/custom-names.php:37
+#: includes/product-columns.php:113 includes/settings/custom-names.php:56
+#: includes/settings/custom-names.php:67
 msgid "All"
 msgstr ""
 
-#: includes/product-settings.php:16 includes/product-settings.php:50
+#: includes/product-settings.php:16 includes/product-settings.php:49
 msgid "Settings"
 msgstr ""
 
-#: includes/product-settings.php:165
+#: includes/product-settings.php:178
 msgid "%s Settings in Docs"
 msgstr ""
 
-#: includes/product-settings.php:167
+#: includes/product-settings.php:180
 msgid "See %s configuration tips in the impleCode documentation"
 msgstr ""
 
-#: includes/product-settings.php:168
+#: includes/product-settings.php:181
 msgid "See in Docs"
 msgstr ""
 
-#: includes/product-settings.php:169
+#: includes/product-settings.php:182
 msgid "Click the button to visit impleCode documentation"
 msgstr ""
 
-#: includes/product-settings.php:177
+#: includes/product-settings.php:190
 msgid "Did you know?"
 msgstr ""
 
-#: includes/product-settings.php:179
+#: includes/product-settings.php:192
 msgid "See Now"
 msgstr ""
 
-#: includes/product-settings.php:180
+#: includes/product-settings.php:193
 msgid "Click the button to visit impleCode website"
 msgstr ""
 
-#: includes/product-settings.php:195
+#: includes/product-settings.php:208
 msgid "Rate this Plugin!"
 msgstr ""
 
-#: includes/product-settings.php:196
+#: includes/product-settings.php:209
 msgid ""
 "Please <a href=\"%s\">rate</a> this plugin and tell me if it works for you "
 "or not. It really helps development."
 msgstr ""
 
-#: includes/product-settings.php:203
+#: includes/product-settings.php:216
 msgid "Need Help?"
 msgstr ""
 
-#: includes/product-types.php:24 includes/product-types.php:39
-msgid "Product Types"
+#: includes/product-settings.php:238
+msgid "Do you have a problem?"
 msgstr ""
 
-#: includes/product-types.php:25
-msgid "Product Type"
+#: includes/product-settings.php:239
+msgid "All bug reports and support tickets are tracked on a daily basis."
 msgstr ""
 
-#: includes/product-types.php:26
-msgid "Search Product Types"
+#: includes/product-settings.php:240
+msgid ""
+"Feel free to submit a ticket if you think that you found a bug or you have a "
+"problem while using %s."
 msgstr ""
 
-#: includes/product-types.php:27
-msgid "Popular Product Types"
+#: includes/product-settings.php:241
+msgid "Report a Problem"
 msgstr ""
 
-#: includes/product-types.php:28
-msgid "All Product Types"
+#: includes/product-settings.php:242
+msgid "Click the button to visit support forum."
 msgstr ""
 
-#: includes/product-types.php:31
-msgid "Edit Product Type"
-msgstr ""
-
-#: includes/product-types.php:32
-msgid "Update Product Type"
-msgstr ""
-
-#: includes/product-types.php:33
-msgid "Add New Product Type"
-msgstr ""
-
-#: includes/product-types.php:34
-msgid "New Product Type"
-msgstr ""
-
-#: includes/product-types.php:35
-msgid "Separate product types with commas"
-msgstr ""
-
-#: includes/product-types.php:36
-msgid "Add or remove product types"
-msgstr ""
-
-#: includes/product-types.php:37
-msgid "Choose from the most used product types"
-msgstr ""
-
-#: includes/product-types.php:38
-msgid "No product types found."
-msgstr ""
-
-#: includes/product.php:51 includes/product.php:52 includes/product.php:54
+#: includes/product.php:52 includes/product.php:53 includes/product.php:55
 msgid "Add New %s"
 msgstr ""
 
-#: includes/product.php:53
+#: includes/product.php:54
 msgid "Edit %s"
 msgstr ""
 
-#: includes/product.php:55
+#: includes/product.php:56
 msgid "View %s"
 msgstr ""
 
-#: includes/product.php:56
+#: includes/product.php:57
 msgid "Search %s"
 msgstr ""
 
-#: includes/product.php:57
+#: includes/product.php:58
 msgid "No %s found"
 msgstr ""
 
-#: includes/product.php:58
+#: includes/product.php:59
 msgid "No %s found in trash"
 msgstr ""
 
-#: includes/product.php:64
+#: includes/product.php:60
+msgid "Set main %s image"
+msgstr ""
+
+#: includes/product.php:61
+msgid "Remove main %s image"
+msgstr ""
+
+#: includes/product.php:67
 msgid "Add New"
 msgstr ""
 
-#: includes/product.php:65 includes/product.php:67
+#: includes/product.php:68 includes/product.php:70
 msgid "Add New Item"
 msgstr ""
 
-#: includes/product.php:66
+#: includes/product.php:69
 msgid "Edit Item"
 msgstr ""
 
-#: includes/product.php:68
+#: includes/product.php:71
 msgid "View Item"
 msgstr ""
 
-#: includes/product.php:69
+#: includes/product.php:72
 msgid "Search Items"
 msgstr ""
 
-#: includes/product.php:70
+#: includes/product.php:73
 msgid "Nothing found"
 msgstr ""
 
-#: includes/product.php:71
+#: includes/product.php:74
 msgid "Nothing found in trash"
 msgstr ""
 
-#: includes/product.php:162
+#: includes/product.php:75
+msgid "Set main image"
+msgstr ""
+
+#: includes/product.php:76
+msgid "Remove main image"
+msgstr ""
+
+#: includes/product.php:185
 msgid "%s Short Description"
 msgstr ""
 
-#: includes/product.php:163
+#: includes/product.php:186
 msgid "%s description"
 msgstr ""
 
-#: includes/product.php:164
+#: includes/product.php:187
 msgid "%s Details"
 msgstr ""
 
-#: includes/product.php:165
-msgid "%s Shipping"
-msgstr ""
-
-#: includes/product.php:166
-msgid "%s Attributes"
-msgstr ""
-
-#: includes/product.php:168 includes/settings/csv.php:148
-#: includes/settings/csv.php:189
+#: includes/product.php:189 includes/settings/csv.php:174
+#: includes/settings/csv.php:215
 msgid "Short Description"
 msgstr ""
 
-#: includes/product.php:169 includes/settings/csv.php:149
-#: includes/settings/csv.php:190
+#: includes/product.php:190 includes/settings/csv.php:175
+#: includes/settings/csv.php:216
 msgid "Long Description"
 msgstr ""
 
-#: includes/product.php:170
+#: includes/product.php:191
 msgid "Details"
 msgstr ""
 
-#: includes/product.php:172
-msgid "Attributes"
-msgstr ""
-
-#: includes/product.php:196
-msgid "Example price format: %s or %s"
-msgstr ""
-
-#: includes/product.php:196
-msgid "you can change it in product settings"
-msgstr ""
-
-#: includes/product.php:197
-msgid ""
-"Please provide a correct price format according to your currency settings. "
-"Example price format: %s or %s"
-msgstr ""
-
-#: includes/product.php:201
-msgid "SKU"
-msgstr ""
-
-#: includes/product.php:237
-msgid "Only attributes with values set will be shown on product page."
-msgstr ""
-
-#: includes/product.php:237
-msgid "See <a target=\"_blank\" href=\"%s\">docs</a>."
-msgstr ""
-
-#: includes/product.php:366
+#: includes/product.php:318
 msgid "%s Image"
 msgstr ""
 
-#: includes/product.php:386 includes/product.php:389
-msgid "Set featured image"
-msgstr ""
-
-#: includes/product.php:386
-msgid "Set %s image"
-msgstr ""
-
-#: includes/product.php:387 includes/product.php:390
-msgid "Remove featured image"
-msgstr ""
-
-#: includes/product.php:387
-msgid "Remove %s image"
-msgstr ""
-
-#: includes/product.php:389
-msgid "Set image"
-msgstr ""
-
-#: includes/product.php:390
-msgid "Remove image"
-msgstr ""
-
-#: includes/product.php:406
+#: includes/product.php:362
 msgid "Custom field updated."
 msgstr ""
 
-#: includes/product.php:407
+#: includes/product.php:363
 msgid "Custom field deleted."
 msgstr ""
 
-#: includes/product.php:408
+#: includes/product.php:364
 msgid "%s updated."
 msgstr ""
 
-#: includes/product.php:411
+#: includes/product.php:367
 msgid "Page saved."
 msgstr ""
 
-#: includes/product.php:412
+#: includes/product.php:368
 msgid "%s submitted. <a target=\"_blank\" href=\"%s\">Preview %s</a>"
 msgstr ""
 
-#: includes/product.php:413
+#: includes/product.php:369
 msgid "M j, Y @ G:i"
 msgstr ""
 
-#: includes/settings/attributes.php:17
-msgid "Product attributes"
-msgstr ""
-
-#: includes/settings/attributes.php:40 includes/settings/attributes.php:50
-msgid "Attributes Settings"
-msgstr ""
-
-#: includes/settings/attributes.php:56
-msgid "Product attributes options"
-msgstr ""
-
-#: includes/settings/attributes.php:59
-msgid "Number of product attributes"
-msgstr ""
-
-#: includes/settings/attributes.php:59 includes/settings/shipping.php:56
-msgid "Update"
-msgstr ""
-
-#: includes/settings/attributes.php:67
-msgid ""
-"If you fill out the fields below, system will automatically pre-fill the "
-"fields on product pages so you doesn't have to fill them every time you add "
-"product.</p><p>When every product in your catalogue is different you can "
-"leave all or a part of these field empty."
-msgstr ""
-
-#: includes/settings/attributes.php:67 includes/settings/shipping.php:62
-msgid "You can change these default values on every product page."
-msgstr ""
-
-#: includes/settings/attributes.php:72
-msgid "Attribute default name"
-msgstr ""
-
-#: includes/settings/attributes.php:74
-msgid "Attribute default value"
-msgstr ""
-
-#: includes/settings/attributes.php:75
-msgid "Attribute default unit"
-msgstr ""
-
-#: includes/settings/attributes.php:102
-#: includes/settings/custom-design.php:109
-#: includes/settings/custom-design.php:150
-#: includes/settings/custom-design.php:225
-#: includes/settings/custom-names.php:101
-#: includes/settings/custom-names.php:146 includes/settings/general.php:368
-#: includes/settings/shipping.php:79
-msgid "Save changes"
-msgstr ""
-
-#: includes/settings/attributes.php:109
-msgid "Attributes disabled. To enable set minimum 1 attribute."
-msgstr ""
-
-#: includes/settings/attributes.php:118
-msgid "attributes"
-msgstr ""
-
-#: includes/settings/csv.php:17 includes/settings/csv.php:32
+#: includes/settings/csv.php:17 includes/settings/csv.php:33
 msgid "Simple CSV"
 msgstr ""
 
-#: includes/settings/csv.php:33
-msgid "Simple Product Export"
-msgstr ""
-
-#: includes/settings/csv.php:38
-msgid "Download CSV"
+#: includes/settings/csv.php:36
+msgid "Simple Export"
 msgstr ""
 
 #: includes/settings/csv.php:41
-msgid "Export All Products to CSV file"
+msgid "Download CSV"
 msgstr ""
 
-#: includes/settings/csv.php:42
-msgid "Simple Product Import"
+#: includes/settings/csv.php:44
+msgid "Export all items to CSV file"
 msgstr ""
 
-#: includes/settings/csv.php:47
+#: includes/settings/csv.php:45
+msgid "Simple Import"
+msgstr ""
+
+#: includes/settings/csv.php:50
 msgid "import"
 msgstr ""
 
-#: includes/settings/csv.php:67
+#: includes/settings/csv.php:70
 msgid "There was a problem with your upload."
 msgstr ""
 
-#: includes/settings/csv.php:70
+#: includes/settings/csv.php:73
 msgid "Please upload only CSV files."
 msgstr ""
 
-#: includes/settings/csv.php:75
-msgid "Import Products"
+#: includes/settings/csv.php:78
+msgid "Import Now"
 msgstr ""
 
-#: includes/settings/csv.php:76
+#: includes/settings/csv.php:79
 msgid ""
-"The CSV fields should be in following order: Image URL, Product Name, "
-"Product Price, Product Categories, Short Description, Long Description."
+"The CSV fields should be in following order: Image URL, Name, Price, "
+"Categories, Short Description, Long Description."
 msgstr ""
 
-#: includes/settings/csv.php:76
+#: includes/settings/csv.php:79
 msgid ""
 "The first row should contain the field names. Semicolon should be used as "
 "the CSV separator."
 msgstr ""
 
-#: includes/settings/csv.php:76
+#: includes/settings/csv.php:79
 msgid "Download CSV Template"
 msgstr ""
 
-#: includes/settings/csv.php:99
-msgid "products successfully added to the catalog"
+#: includes/settings/csv.php:118
+msgid "%s products successfully added to the catalog"
 msgstr ""
 
-#: includes/settings/csv.php:103
-msgid "Number of product fields and number of fields in CSV file do not match!"
+#: includes/settings/csv.php:120
+msgid "%s failures occurred. Please check if the file is UTF-8 encoded"
 msgstr ""
 
-#: includes/settings/csv.php:113
+#: includes/settings/csv.php:125
+msgid ""
+"Number of fields in database and number of fields in CSV file do not match!"
+msgstr ""
+
+#: includes/settings/csv.php:135
 msgid ""
 "Permission error. Please check WordPress uploads %sfolder permissions%s."
 msgstr ""
 
-#: includes/settings/csv.php:144 includes/settings/csv.php:185
+#: includes/settings/csv.php:170 includes/settings/csv.php:211
 msgid "Image URL"
 msgstr ""
 
-#: includes/settings/csv.php:146 includes/settings/csv.php:187
-msgid "Product Price"
+#: includes/settings/csv.php:171 includes/settings/csv.php:212
+#: includes/system.php:297
+msgid "Name"
+msgstr ""
+
+#: includes/settings/csv.php:172 includes/settings/csv.php:213
+#: modules/price/price-meta.php:25 modules/price/price-meta.php:54
+#: modules/price/price-meta.php:106 modules/price/price-settings.php:76
+#: modules/price/widgets/price-filter-widget.php:47
+msgid "Price"
 msgstr ""
 
 #: includes/settings/custom-design.php:17
 msgid "Catalog Design"
 msgstr ""
 
-#: includes/settings/custom-design.php:40
-#: includes/settings/custom-design.php:80
-msgid "Product Listing"
-msgstr ""
-
 #: includes/settings/custom-design.php:41
-msgid "Product Page"
+#: includes/settings/custom-design.php:94
+msgid "Listing Design"
 msgstr ""
 
 #: includes/settings/custom-design.php:42
-#: includes/settings/custom-design.php:175
+msgid "Single Page Design"
+msgstr ""
+
+#: includes/settings/custom-design.php:43
+#: includes/settings/custom-design.php:212
 msgid "Design Schemes"
 msgstr ""
 
-#: includes/settings/custom-design.php:52
+#: includes/settings/custom-design.php:53
 msgid "gallery"
 msgstr ""
 
-#: includes/settings/custom-design.php:79
-#: includes/settings/custom-design.php:133
-#: includes/settings/custom-design.php:174
+#: includes/settings/custom-design.php:72
+#: includes/settings/custom-design.php:177
+#: includes/settings/custom-design.php:211
 msgid "Design Settings"
 msgstr ""
 
-#: includes/settings/custom-design.php:86
+#: includes/settings/custom-design.php:79
+#: includes/settings/custom-design.php:166
+#: includes/settings/custom-design.php:241
+#: includes/settings/custom-names.php:133
+#: includes/settings/custom-names.php:180 includes/settings/general.php:318
+#: modules/attributes/attributes-settings.php:107
+#: modules/shipping/shipping-settings.php:95
+msgid "Save changes"
+msgstr ""
+
+#: includes/settings/custom-design.php:100
 msgid "Modern Grid"
 msgstr ""
 
-#: includes/settings/custom-design.php:89
-#: includes/settings/custom-design.php:102 includes/settings/general.php:362
+#: includes/settings/custom-design.php:105
+#: includes/settings/custom-design.php:120
+#: includes/settings/custom-design.php:134 modules/sku/sku-settings.php:35
 msgid "Additional Settings"
 msgstr ""
 
-#: includes/settings/custom-design.php:89
-msgid "Use this only with short attributes labels and values e.g. Color: Red"
-msgstr ""
-
-#: includes/settings/custom-design.php:89
-msgid "Show Attributes"
-msgstr ""
-
-#: includes/settings/custom-design.php:89
-#: includes/settings/custom-design.php:102
+#: includes/settings/custom-design.php:106
+#: includes/settings/custom-design.php:107
+#: includes/settings/custom-design.php:135
+#: includes/settings/custom-design.php:136
 msgid "Per row"
 msgstr ""
 
-#: includes/settings/custom-design.php:89
-#: includes/settings/custom-design.php:102
-#: includes/settings/custom-names.php:40 includes/settings/general.php:217
-msgid "products"
+#: includes/settings/custom-design.php:107
+#: includes/settings/custom-design.php:136
+msgid "categories"
 msgstr ""
 
-#: includes/settings/custom-design.php:92
+#: includes/settings/custom-design.php:115
 msgid "Classic List"
 msgstr ""
 
-#: includes/settings/custom-design.php:98
+#: includes/settings/custom-design.php:129
 msgid "Classic Grid"
 msgstr ""
 
-#: includes/settings/custom-design.php:102
+#: includes/settings/custom-design.php:135
+#: includes/settings/custom-design.php:136
 msgid ""
 "The product listing element width will adjust accordingly to your theme "
 "content width."
 msgstr ""
 
-#: includes/settings/custom-design.php:134
+#: includes/settings/custom-design.php:179
 msgid "Default Product Image"
 msgstr ""
 
-#: includes/settings/custom-design.php:139
+#: includes/settings/custom-design.php:180
 msgid "Upload Default Image"
 msgstr ""
 
-#: includes/settings/custom-design.php:141
+#: includes/settings/custom-design.php:182
 msgid "Product Gallery"
 msgstr ""
 
-#: includes/settings/custom-design.php:142
-msgid "The image will be used only for product listing when unchecked."
+#: includes/settings/custom-design.php:183
+msgid "The image will be used only on the listing when unchecked."
 msgstr ""
 
-#: includes/settings/custom-design.php:142
-msgid "Enable product image"
+#: includes/settings/custom-design.php:183
+msgid "Enable image"
 msgstr ""
 
-#: includes/settings/custom-design.php:143
-msgid "The image on product page will not be linked when unchecked."
+#: includes/settings/custom-design.php:184
+msgid "The image on single page will not be linked when unchecked."
 msgstr ""
 
-#: includes/settings/custom-design.php:143
-msgid "Enable lightbox on product image"
+#: includes/settings/custom-design.php:184
+msgid "Enable lightbox on image on single page"
 msgstr ""
 
-#: includes/settings/custom-design.php:144
-msgid "The default image will be used on product listing only when unchecked."
+#: includes/settings/custom-design.php:185
+msgid "The default image will be used on the listing only when unchecked."
 msgstr ""
 
-#: includes/settings/custom-design.php:145
-msgid "Enable product image only when inserted"
+#: includes/settings/custom-design.php:185
+msgid "Enable image only when inserted"
 msgstr ""
 
-#: includes/settings/custom-design.php:176
+#: includes/settings/custom-design.php:186
+msgid "Single Page Template"
+msgstr ""
+
+#: includes/settings/custom-design.php:189
+msgid "Select template"
+msgstr ""
+
+#: includes/settings/custom-design.php:189
+msgid "Formatted"
+msgstr ""
+
+#: includes/settings/custom-design.php:189
+msgid "Plain"
+msgstr ""
+
+#: includes/settings/custom-design.php:213
 msgid ""
 "Changing design schemes has almost always impact on various elements. For "
 "example changing price color has impact on single product page and archive "
 "page price color."
 msgstr ""
 
-#: includes/settings/custom-design.php:176
+#: includes/settings/custom-design.php:213
 msgid "You can figure it out by checking \"impact\" column."
 msgstr ""
 
-#: includes/settings/custom-design.php:179
+#: includes/settings/custom-design.php:216
 msgid "Setting"
 msgstr ""
 
-#: includes/settings/custom-design.php:180
+#: includes/settings/custom-design.php:217
 msgid "Value"
 msgstr ""
 
-#: includes/settings/custom-design.php:181
+#: includes/settings/custom-design.php:218
 msgid "Example Effect"
 msgstr ""
 
-#: includes/settings/custom-design.php:182
+#: includes/settings/custom-design.php:219
 msgid "Impact"
 msgstr ""
 
-#: includes/settings/custom-design.php:186
-msgid "Price Size"
-msgstr ""
-
-#: includes/settings/custom-design.php:189
-msgid "Small"
-msgstr ""
-
-#: includes/settings/custom-design.php:192
-#: includes/settings/custom-design.php:205
-msgid "single product"
-msgstr ""
-
-#: includes/settings/custom-design.php:195
-msgid "Price Color"
-msgstr ""
-
-#: includes/settings/custom-design.php:198
-#: includes/settings/custom-design.php:211
-msgid "Red"
-msgstr ""
-
-#: includes/settings/custom-design.php:199
-#: includes/settings/custom-design.php:212
-msgid "Orange"
-msgstr ""
-
-#: includes/settings/custom-design.php:200
-#: includes/settings/custom-design.php:213
-msgid "Green"
-msgstr ""
-
-#: includes/settings/custom-design.php:201
-#: includes/settings/custom-design.php:214
-msgid "Blue"
-msgstr ""
-
-#: includes/settings/custom-design.php:202
-#: includes/settings/custom-design.php:215
-msgid "Grey"
-msgstr ""
-
-#: includes/settings/custom-design.php:205
-msgid "product archive"
-msgstr ""
-
-#: includes/settings/custom-design.php:208
+#: includes/settings/custom-design.php:224
 msgid "Boxes Color"
 msgstr ""
 
-#: includes/settings/custom-design.php:219
+#: includes/settings/custom-design.php:227 modules/price/price-settings.php:36
+msgid "Red"
+msgstr ""
+
+#: includes/settings/custom-design.php:228 modules/price/price-settings.php:37
+msgid "Orange"
+msgstr ""
+
+#: includes/settings/custom-design.php:229 modules/price/price-settings.php:38
+msgid "Green"
+msgstr ""
+
+#: includes/settings/custom-design.php:230 modules/price/price-settings.php:39
+msgid "Blue"
+msgstr ""
+
+#: includes/settings/custom-design.php:231 modules/price/price-settings.php:40
+msgid "Grey"
+msgstr ""
+
+#: includes/settings/custom-design.php:235
 msgid "product archive title"
 msgstr ""
 
-#: includes/settings/custom-design.php:219
+#: includes/settings/custom-design.php:235
 msgid "archive pagination"
 msgstr ""
 
-#: includes/settings/custom-names.php:17
-msgid "Product Price:"
+#: includes/settings/custom-names.php:19
+msgid "%s Price"
 msgstr ""
 
-#: includes/settings/custom-names.php:18
+#: includes/settings/custom-names.php:20 includes/settings/custom-names.php:32
 msgid "SKU:"
 msgstr ""
 
-#: includes/settings/custom-names.php:19
-msgid "Product Shipping"
-msgstr ""
-
-#: includes/settings/custom-names.php:20
-msgid "Product Features"
-msgstr ""
-
-#: includes/settings/custom-names.php:21
-msgid "See also different:"
+#: includes/settings/custom-names.php:21 modules/shipping/shipping-meta.php:25
+msgid "%s Shipping"
 msgstr ""
 
 #: includes/settings/custom-names.php:22
-msgid "<< return to products"
+msgid "%s Features"
 msgstr ""
 
-#: includes/settings/custom-names.php:23
+#: includes/settings/custom-names.php:23 includes/settings/custom-names.php:35
+msgid "See also different:"
+msgstr ""
+
+#: includes/settings/custom-names.php:24
+msgid "<< return to %s"
+msgstr ""
+
+#: includes/settings/custom-names.php:25 includes/settings/custom-names.php:37
 msgid "Free"
 msgstr ""
 
-#: includes/settings/custom-names.php:36
-msgid "All Products"
+#: includes/settings/custom-names.php:26
+msgid "%s Description"
 msgstr ""
 
-#: includes/settings/custom-names.php:38 includes/settings/general.php:221
+#: includes/settings/custom-names.php:31
+msgid "Price:"
+msgstr ""
+
+#: includes/settings/custom-names.php:33
+#: modules/shipping/shipping-functions.php:89
+#: modules/shipping/shipping-meta.php:27
+#: modules/shipping/shipping-settings.php:23
+msgid "Shipping"
+msgstr ""
+
+#: includes/settings/custom-names.php:34
+msgid "Features"
+msgstr ""
+
+#: includes/settings/custom-names.php:36
+msgid "<< return to listing"
+msgstr ""
+
+#: includes/settings/custom-names.php:38
+msgid "Description"
+msgstr ""
+
+#: includes/settings/custom-names.php:55
+msgid "All %s"
+msgstr ""
+
+#: includes/settings/custom-names.php:57 includes/settings/custom-names.php:68
+#: includes/settings/general.php:225
 msgid "Main Categories"
 msgstr ""
 
-#: includes/settings/custom-names.php:39
-msgid "subcategories"
+#: includes/settings/custom-names.php:58 includes/settings/custom-names.php:69
+#: includes/settings/general.php:265
+msgid "Subcategories"
 msgstr ""
 
-#: includes/settings/custom-names.php:41
+#: includes/settings/custom-names.php:60 includes/settings/custom-names.php:71
 msgid "Next Page »"
 msgstr ""
 
-#: includes/settings/custom-names.php:42
+#: includes/settings/custom-names.php:61 includes/settings/custom-names.php:72
 msgid "« Previous Page"
 msgstr ""
 
-#: includes/settings/custom-names.php:50 includes/settings/custom-names.php:85
+#: includes/settings/custom-names.php:62 includes/settings/custom-names.php:73
+msgid "Home"
+msgstr ""
+
+#: includes/settings/custom-names.php:66
+msgid "All Products"
+msgstr ""
+
+#: includes/settings/custom-names.php:82
 #: includes/settings/custom-names.php:118
+#: includes/settings/custom-names.php:150
 msgid "Front-end Labels"
 msgstr ""
 
-#: includes/settings/custom-names.php:71
-msgid "Single Product"
+#: includes/settings/custom-names.php:103
+msgid "Single Item Page"
 msgstr ""
 
-#: includes/settings/custom-names.php:72
-msgid "Product Listings"
+#: includes/settings/custom-names.php:104
+msgid "Listing Pages"
 msgstr ""
 
-#: includes/settings/custom-names.php:86
-msgid "Single Product Labels"
+#: includes/settings/custom-names.php:119
+msgid "Single Item Page Labels"
 msgstr ""
 
-#: includes/settings/custom-names.php:88
-#: includes/settings/custom-names.php:132
+#: includes/settings/custom-names.php:121
+#: includes/settings/custom-names.php:164
 msgid "Front-end Element"
 msgstr ""
 
-#: includes/settings/custom-names.php:88
-#: includes/settings/custom-names.php:132
+#: includes/settings/custom-names.php:121
+#: includes/settings/custom-names.php:164
 msgid "Front-end Text"
 msgstr ""
 
-#: includes/settings/custom-names.php:90
-msgid "Price Label"
+#: includes/settings/custom-names.php:124
+msgid "Description Label"
 msgstr ""
 
-#: includes/settings/custom-names.php:91
-msgid "Free Product Text"
-msgstr ""
-
-#: includes/settings/custom-names.php:92
-msgid "SKU Label"
-msgstr ""
-
-#: includes/settings/custom-names.php:93
-msgid "Shipping Label"
-msgstr ""
-
-#: includes/settings/custom-names.php:94
+#: includes/settings/custom-names.php:125
 msgid "Features Label"
 msgstr ""
 
-#: includes/settings/custom-names.php:95
+#: includes/settings/custom-names.php:126
 msgid "Another Categories"
 msgstr ""
 
-#: includes/settings/custom-names.php:96
+#: includes/settings/custom-names.php:127
 msgid "Return to Products"
 msgstr ""
 
-#: includes/settings/custom-names.php:123
+#: includes/settings/custom-names.php:155
 msgid ""
 "Product listing pages are disabled with simple theme integration. See <a "
 "href=\"%s\">Theme Integration Guide</a> to enable product listing pages."
 msgstr ""
 
-#: includes/settings/custom-names.php:125
+#: includes/settings/custom-names.php:157
 msgid ""
 "Product listing pages are disabled due to a lack of theme integration.%s"
 msgstr ""
 
-#: includes/settings/custom-names.php:129
-msgid "Product Listing Labels"
+#: includes/settings/custom-names.php:161
+msgid "Listing Pages Labels"
 msgstr ""
 
-#: includes/settings/custom-names.php:135
-msgid "Product Archive Title"
+#: includes/settings/custom-names.php:167
+msgid "Main Listing Title"
 msgstr ""
 
-#: includes/settings/custom-names.php:136
+#: includes/settings/custom-names.php:168
 msgid "Categories Header"
 msgstr ""
 
-#: includes/settings/custom-names.php:137
+#: includes/settings/custom-names.php:169
 msgid "Subcategories Header"
 msgstr ""
 
-#: includes/settings/custom-names.php:138
+#: includes/settings/custom-names.php:170
 msgid "Category Prefix"
 msgstr ""
 
-#: includes/settings/custom-names.php:139
+#: includes/settings/custom-names.php:171
 msgid "Category Products Header"
 msgstr ""
 
-#: includes/settings/custom-names.php:140
-msgid "Next Page Link"
+#: includes/settings/custom-names.php:172
+msgid "Next Page"
 msgstr ""
 
-#: includes/settings/custom-names.php:141
-msgid "Previous Page Link"
+#: includes/settings/custom-names.php:173
+msgid "Previous Page"
+msgstr ""
+
+#: includes/settings/custom-names.php:174
+msgid "Breadcrumbs Home Label"
 msgstr ""
 
 #: includes/settings/general.php:17 includes/settings/general.php:83
@@ -1322,16 +1246,22 @@ msgstr ""
 msgid "General Settings"
 msgstr ""
 
-#: includes/settings/general.php:129
+#: includes/settings/general.php:124
 msgid ""
-"The simple mode allows to use eCommerce Product Catalog most features. You "
-"can build the product listing pages and category pages by using a "
-"[show_products] shortcode. Simple mode uses your theme page layout so it can "
-"show unwanted elements on product page. If it does please switch to Advanced "
-"Mode and see if it works out of the box."
+"If you have any problems with catalog layout you can use the theme "
+"integration to fix it."
 msgstr ""
 
-#: includes/settings/general.php:129
+#: includes/settings/general.php:133
+msgid ""
+"The simple mode allows to use %s most features. You can build the product "
+"listing pages and category pages by using a [show_products] shortcode. "
+"Simple mode uses your theme page layout so it can show unwanted elements on "
+"product page. If it does please switch to Advanced Mode and see if it works "
+"out of the box."
+msgstr ""
+
+#: includes/settings/general.php:133
 msgid ""
 "Switching to Advanced Mode also gives additional features: automatic product "
 "listing, category pages, product search and category widget. Building a "
@@ -1339,75 +1269,75 @@ msgid ""
 "need to use a shortcode for everything."
 msgstr ""
 
-#: includes/settings/general.php:129 includes/settings/general.php:148
+#: includes/settings/general.php:133 includes/settings/general.php:152
 msgid "Restart Integration Wizard"
 msgstr ""
 
-#: includes/settings/general.php:134 includes/settings/general.php:155
+#: includes/settings/general.php:138 includes/settings/general.php:159
 msgid "Choose theme integration type"
 msgstr ""
 
-#: includes/settings/general.php:134 includes/settings/general.php:155
+#: includes/settings/general.php:138 includes/settings/general.php:159
 msgid "Simple Integration"
 msgstr ""
 
-#: includes/settings/general.php:134 includes/settings/general.php:155
+#: includes/settings/general.php:138 includes/settings/general.php:159
 msgid "Advanced Integration"
 msgstr ""
 
-#: includes/settings/general.php:137
+#: includes/settings/general.php:141
 msgid "Catalog Container Width"
 msgstr ""
 
-#: includes/settings/general.php:138
+#: includes/settings/general.php:142
 msgid "Catalog Container Background"
 msgstr ""
 
-#: includes/settings/general.php:139
+#: includes/settings/general.php:143
 msgid "Catalog Container Padding"
 msgstr ""
 
-#: includes/settings/general.php:141 templates.php:223
+#: includes/settings/general.php:145 templates.php:269
 msgid "Default Sidebar"
 msgstr ""
 
-#: includes/settings/general.php:141 templates.php:223
+#: includes/settings/general.php:145 templates.php:269
 msgid "Disabled"
 msgstr ""
 
-#: includes/settings/general.php:141 templates.php:223
+#: includes/settings/general.php:145 templates.php:269
 msgid "Left"
 msgstr ""
 
-#: includes/settings/general.php:141 templates.php:223
+#: includes/settings/general.php:145 templates.php:269
 msgid "Right"
 msgstr ""
 
-#: includes/settings/general.php:143
+#: includes/settings/general.php:147
 msgid "Disable Product Name"
 msgstr ""
 
-#: includes/settings/general.php:162
-msgid "Product Catalog"
-msgstr ""
-
-#: includes/settings/general.php:164
-msgid "Catalog Singular Name"
-msgstr ""
-
-#: includes/settings/general.php:164 includes/settings/general.php:165
-msgid "Admin panel customisation setting. Change it to what you sell."
-msgstr ""
-
-#: includes/settings/general.php:165
-msgid "Catalog Plural Name"
+#: includes/settings/general.php:167
+msgid "Catalog"
 msgstr ""
 
 #: includes/settings/general.php:169
-msgid "Product listing page"
+msgid "Catalog Singular Name"
+msgstr ""
+
+#: includes/settings/general.php:169 includes/settings/general.php:170
+msgid "Admin panel customisation setting. Change it to what you sell."
+msgstr ""
+
+#: includes/settings/general.php:170
+msgid "Catalog Plural Name"
 msgstr ""
 
 #: includes/settings/general.php:174
+msgid "Main listing page"
+msgstr ""
+
+#: includes/settings/general.php:179
 msgid ""
 "It seems that this page is already set to be a listing for different "
 "elements. Please change the product listing page to make sure that product "
@@ -1415,52 +1345,48 @@ msgid ""
 "show items on the same page."
 msgstr ""
 
-#: includes/settings/general.php:180
-msgid "Enable Product Listing Page"
-msgstr ""
-
-#: includes/settings/general.php:183
-msgid "Disable and use [show_products] shortcode to display the products."
+#: includes/settings/general.php:185
+msgid "Enable Main Listing Page"
 msgstr ""
 
 #: includes/settings/general.php:188
-msgid "Choose Product Listing Page"
+msgid "Disable and use [show_products] shortcode to display the products."
 msgstr ""
 
-#: includes/settings/general.php:193 includes/settings/general.php:195
-#: templates.php:416
+#: includes/settings/general.php:193
+msgid "Choose Main Listing Page"
+msgstr ""
+
+#: includes/settings/general.php:198 includes/settings/general.php:200
+#: templates.php:446
 msgid "Default"
 msgstr ""
 
-#: includes/settings/general.php:212
-msgid "Product listing shows at most"
+#: includes/settings/general.php:217
+msgid "Listing shows at most"
 msgstr ""
 
-#: includes/settings/general.php:214
+#: includes/settings/general.php:219
 msgid "You can also use shortcode with products_limit attribute to set this."
 msgstr ""
 
-#: includes/settings/general.php:221
-msgid "Product listing shows"
+#: includes/settings/general.php:225
+msgid "Main listing shows"
 msgstr ""
 
-#: includes/settings/general.php:221
-msgid "Products & Main Categories"
+#: includes/settings/general.php:227
+msgid "Default order"
 msgstr ""
 
-#: includes/settings/general.php:223
-msgid "Product order"
-msgstr ""
-
-#: includes/settings/general.php:223
+#: includes/settings/general.php:227
 msgid "This is also the default setting for sorting drop-down."
 msgstr ""
 
-#: includes/settings/general.php:229
+#: includes/settings/general.php:233
 msgid "Categories Settings"
 msgstr ""
 
-#: includes/settings/general.php:232
+#: includes/settings/general.php:236
 msgid ""
 "Category pages are disabled with simple theme integration. See <a href=\"%s"
 "\">Theme Integration Guide</a> to enable category pages or use "
@@ -1468,11 +1394,11 @@ msgid ""
 "show products from certain category."
 msgstr ""
 
-#: includes/settings/general.php:234
+#: includes/settings/general.php:238
 msgid "Category pages are disabled due to a lack of theme integration.%s"
 msgstr ""
 
-#: includes/settings/general.php:238
+#: includes/settings/general.php:242
 msgid ""
 "It seems that this categories parent URL is already set to be a parent for "
 "different elements. Please change the Categories Parent URL to make sure "
@@ -1480,171 +1406,112 @@ msgid ""
 "other plugin being set to show categoires with the same parent."
 msgstr ""
 
-#: includes/settings/general.php:244
+#: includes/settings/general.php:248
 msgid "Categories Parent URL"
 msgstr ""
 
-#: includes/settings/general.php:254
+#: includes/settings/general.php:258
 msgid "Cannot be the same as product listing page slug."
 msgstr ""
 
-#: includes/settings/general.php:256
+#: includes/settings/general.php:260
 msgid "category-name"
 msgstr ""
 
-#: includes/settings/general.php:261
+#: includes/settings/general.php:265
 msgid "Category Page shows"
 msgstr ""
 
-#: includes/settings/general.php:261
-msgid "Products & Subcategories"
-msgstr ""
-
-#: includes/settings/general.php:261
-msgid "Subcategories"
-msgstr ""
-
-#: includes/settings/general.php:262
+#: includes/settings/general.php:266
 msgid "Categories Display"
 msgstr ""
 
-#: includes/settings/general.php:262
+#: includes/settings/general.php:266
 msgid "Template"
 msgstr ""
 
-#: includes/settings/general.php:262
+#: includes/settings/general.php:266
 msgid "URLs"
 msgstr ""
 
-#: includes/settings/general.php:262
+#: includes/settings/general.php:266
 msgid "Display categories with the same listing theme as products."
 msgstr ""
 
-#: includes/settings/general.php:262
+#: includes/settings/general.php:266
 msgid "Display categories as simple links."
 msgstr ""
 
-#: includes/settings/general.php:263
+#: includes/settings/general.php:267
 msgid "Disable Image on Category Page"
 msgstr ""
 
-#: includes/settings/general.php:264
+#: includes/settings/general.php:268
 msgid "Show Related"
 msgstr ""
 
 #: includes/settings/general.php:268
+msgid "Nothing"
+msgstr ""
+
+#: includes/settings/general.php:272
 msgid "SEO Settings"
 msgstr ""
 
-#: includes/settings/general.php:271
+#: includes/settings/general.php:275
 msgid ""
 "SEO settings are disabled with simple theme integration. See <a href=\"%s"
 "\">Theme Integration Guide</a> to enable SEO settings."
 msgstr ""
 
-#: includes/settings/general.php:273
+#: includes/settings/general.php:277
 msgid "SEO settings are disabled due to a lack of theme integration.%s"
 msgstr ""
 
-#: includes/settings/general.php:279
+#: includes/settings/general.php:283
 msgid "Archive SEO Title"
 msgstr ""
 
-#: includes/settings/general.php:280
+#: includes/settings/general.php:284
 msgid "Enable SEO title separator"
 msgstr ""
 
-#: includes/settings/general.php:284
+#: includes/settings/general.php:288
 msgid "Breadcrumbs Settings"
 msgstr ""
 
-#: includes/settings/general.php:287
+#: includes/settings/general.php:291
 msgid ""
 "Breadcrumbs are disabled with simple theme integration. See <a href=\"%s"
 "\">Theme Integration Guide</a> to enable product breadcrumbs."
 msgstr ""
 
-#: includes/settings/general.php:289
+#: includes/settings/general.php:293
 msgid "Breadcrumbs are disabled due to a lack of theme integration.%s"
 msgstr ""
 
-#: includes/settings/general.php:295
-msgid "Enable Product Breadcrumbs:"
+#: includes/settings/general.php:299
+msgid "Enable Catalog Breadcrumbs:"
 msgstr ""
 
-#: includes/settings/general.php:302
-msgid "Product listing breadcrumbs title:"
+#: includes/settings/general.php:306
+msgid "Main listing breadcrumbs title:"
 msgstr ""
 
-#: includes/settings/general.php:311
-msgid "Payment and currency"
-msgstr ""
-
-#: includes/settings/general.php:314 includes/settings/general.php:345
-msgid "On"
-msgstr ""
-
-#: includes/settings/general.php:314 includes/settings/general.php:345
-msgid "Off"
-msgstr ""
-
-#: includes/settings/general.php:318
-msgid "Your currency"
-msgstr ""
-
-#: includes/settings/general.php:330
-msgid ""
-"If you choose custom currency symbol, it will override \"Your Currency\" "
-"setting. This is very handy if you want to use not supported currency or a "
-"preferred symbol for your currency."
-msgstr ""
-
-#: includes/settings/general.php:334
-msgid "Custom Currency Symbol"
-msgstr ""
-
-#: includes/settings/general.php:340
-msgid "Currency position"
-msgstr ""
-
-#: includes/settings/general.php:341
-msgid "Before Price"
-msgstr ""
-
-#: includes/settings/general.php:342
-msgid "After Price"
-msgstr ""
-
-#: includes/settings/general.php:345
-msgid "Space between currency & price"
-msgstr ""
-
-#: includes/settings/general.php:346
-msgid "Thousands Separator"
-msgstr ""
-
-#: includes/settings/general.php:347
-msgid "Decimal Separator"
-msgstr ""
-
-#: includes/settings/general.php:363
-msgid "Disable SKU"
-msgstr ""
-
-#: includes/settings/general.php:375
+#: includes/settings/general.php:325
 msgid "shortcode"
 msgstr ""
 
-#: includes/settings/general.php:376
+#: includes/settings/general.php:326
 msgid "sorting"
 msgstr ""
 
-#: includes/settings/general.php:460
+#: includes/settings/general.php:426
 msgid "Sort by Newest"
 msgstr ""
 
-#: includes/settings/general.php:460
-msgid "Sort by Product Name"
+#: includes/settings/general.php:426
+msgid "Sort by Name"
 msgstr ""
 
 #: includes/settings/image-sizes.php:18
@@ -1652,7 +1519,7 @@ msgid "Product Catalog Images"
 msgstr ""
 
 #: includes/settings/image-sizes.php:27
-msgid "Product Page Image"
+msgid "Catalog Single Page Image"
 msgstr ""
 
 #: includes/settings/image-sizes.php:29 includes/settings/image-sizes.php:38
@@ -1668,7 +1535,7 @@ msgid "Max Height"
 msgstr ""
 
 #: includes/settings/image-sizes.php:36
-msgid "Product Category Page Image"
+msgid "Catalog Category Page Image"
 msgstr ""
 
 #: includes/settings/image-sizes.php:45
@@ -1683,274 +1550,242 @@ msgstr ""
 msgid "Classic List Image"
 msgstr ""
 
-#: includes/settings/shipping.php:17
-msgid "Product shipping"
+#: includes/settings/settings-functions.php:268
+msgid "items"
 msgstr ""
 
-#: includes/settings/shipping.php:39 includes/settings/shipping.php:48
-msgid "Shipping Settings"
-msgstr ""
-
-#: includes/settings/shipping.php:53
-msgid "Product shipping options"
-msgstr ""
-
-#: includes/settings/shipping.php:56
-msgid "Number of shipping options"
-msgstr ""
-
-#: includes/settings/shipping.php:62
-msgid ""
-"If you fill out the fields below, system will automatically pre-fill the "
-"fields on product pages so you doesn't have to fill them every time you add "
-"product.</p><p>When every product in your catalogue has different shipping "
-"options you can leave all or just a part of these fields empty."
-msgstr ""
-
-#: includes/settings/shipping.php:65
-msgid "Shipping default name"
-msgstr ""
-
-#: includes/settings/shipping.php:65
-msgid "Shipping default cost"
-msgstr ""
-
-#: includes/settings/shipping.php:83
-msgid "Shipping disabled. To enable set minimum 1 shipping option."
+#: includes/settings/settings-functions.php:270
+msgid "item"
 msgstr ""
 
 #: includes/system.php:14
 msgid "System Status"
 msgstr ""
 
-#: includes/system.php:26 includes/system.php:36
-msgid "Product Settings successfully reset to default!"
+#: includes/system.php:26 includes/system.php:37
+msgid "Catalog Settings successfully reset to default!"
 msgstr ""
 
 #: includes/system.php:28
 msgid ""
-"All products settings will be reset to defaults. Would you like to proceed?"
+"All catalog settings will be reset to defaults. Would you like to proceed?"
 msgstr ""
 
-#: includes/system.php:29 includes/system.php:39 includes/system.php:62
+#: includes/system.php:29 includes/system.php:40 includes/system.php:63
 msgid "Yes"
 msgstr ""
 
-#: includes/system.php:29 includes/system.php:39 includes/system.php:62
+#: includes/system.php:29 includes/system.php:40 includes/system.php:63
 msgid "No"
 msgstr ""
 
-#: includes/system.php:38
-msgid "All products will be permanently deleted. Would you like to proceed?"
+#: includes/system.php:39
+msgid "All items will be permanently deleted. Would you like to proceed?"
 msgstr ""
 
-#: includes/system.php:59
-msgid "All Product Categories successfully deleted!"
+#: includes/system.php:60
+msgid "All Catalog Categories successfully deleted!"
 msgstr ""
 
-#: includes/system.php:61
+#: includes/system.php:62
 msgid ""
-"All product categories will be permanently deleted. Would you like to "
+"All catalog categories will be permanently deleted. Would you like to "
 "proceed?"
 msgstr ""
 
-#: includes/system.php:67
+#: includes/system.php:68
 msgid "Filters bar is now empty by default!"
 msgstr ""
 
-#: includes/system.php:69
+#: includes/system.php:70
 msgid "Default filters bar will become empty."
 msgstr ""
 
-#: includes/system.php:70
+#: includes/system.php:71 partners/wpml/templates/repository-listing.php:26
 msgid "OK"
 msgstr ""
 
-#: includes/system.php:70
+#: includes/system.php:71 partners/wpml/templates/repository-listing.php:27
 msgid "Cancel"
 msgstr ""
 
-#: includes/system.php:79
+#: includes/system.php:80
 msgid "impleCode Tools"
 msgstr ""
 
-#: includes/system.php:84
+#: includes/system.php:85
 msgid "Reset product settings"
 msgstr ""
 
-#: includes/system.php:85
-msgid "Reset Product Settings"
-msgstr ""
-
-#: includes/system.php:88
-msgid "Delete all products"
+#: includes/system.php:86
+msgid "Reset Catalog Settings"
 msgstr ""
 
 #: includes/system.php:89
-msgid "Delete all Products"
+msgid "Delete all items"
 msgstr ""
 
-#: includes/system.php:92
-msgid "Delete all product categories"
+#: includes/system.php:90
+msgid "Delete all Catalog Items"
 msgstr ""
 
 #: includes/system.php:93
-msgid "Delete all Product Categories"
+msgid "Delete all categories"
 msgstr ""
 
-#: includes/system.php:99
-msgid "Make default filters bar empty."
+#: includes/system.php:94
+msgid "Delete all Catalog Categories"
 msgstr ""
 
 #: includes/system.php:100
+msgid "Make default filters bar empty."
+msgstr ""
+
+#: includes/system.php:101
 msgid "Empty Default Filters Bar"
 msgstr ""
 
-#: includes/system.php:104
-msgid "Delete all products and categories on uninstall"
+#: includes/system.php:105
+msgid "Delete all items and categories on uninstall"
 msgstr ""
 
-#: includes/system.php:114
+#: includes/system.php:116
 msgid "WordPress Environment"
 msgstr ""
 
-#: includes/system.php:119
+#: includes/system.php:121
 msgid "Home URL"
 msgstr ""
 
-#: includes/system.php:123
+#: includes/system.php:125
 msgid "Site URL"
 msgstr ""
 
-#: includes/system.php:128
-msgid "eCommerce Product Catalog Version"
+#: includes/system.php:130
+msgid "%s Version"
 msgstr ""
 
-#: includes/system.php:140
-msgid "eCommerce Product Catalog Database Version"
+#: includes/system.php:142
+msgid "%s Database Version"
 msgstr ""
 
-#: includes/system.php:144
+#: includes/system.php:146
 msgid "WP Version"
 msgstr ""
 
-#: includes/system.php:148
+#: includes/system.php:150
 msgid "WP Multisite"
 msgstr ""
 
-#: includes/system.php:157
+#: includes/system.php:159
 msgid "WP Memory Limit"
 msgstr ""
 
-#: includes/system.php:164
+#: includes/system.php:166
 msgid "WP Debug Mode"
 msgstr ""
 
-#: includes/system.php:173
+#: includes/system.php:175
 msgid "Language"
 msgstr ""
 
-#: includes/system.php:182
+#: includes/system.php:184
 msgid "Server Environment"
 msgstr ""
 
-#: includes/system.php:187
+#: includes/system.php:189
 msgid "Server Info"
 msgstr ""
 
-#: includes/system.php:191
+#: includes/system.php:193
 msgid "PHP Version"
 msgstr ""
 
-#: includes/system.php:196
+#: includes/system.php:198
 msgid "PHP Post Max Size"
 msgstr ""
 
-#: includes/system.php:200
+#: includes/system.php:202
 msgid "PHP Time Limit"
 msgstr ""
 
-#: includes/system.php:204
+#: includes/system.php:206
 msgid "PHP Max Input Vars"
 msgstr ""
 
-#: includes/system.php:209
+#: includes/system.php:211
 msgid "MySQL Version"
 msgstr ""
 
-#: includes/system.php:219
+#: includes/system.php:221
 msgid "Max Upload Size"
 msgstr ""
 
-#: includes/system.php:228
+#: includes/system.php:230
 msgid "Server Locale"
 msgstr ""
 
-#: includes/system.php:236
+#: includes/system.php:238
 msgid "N/A"
 msgstr ""
 
-#: includes/system.php:246
+#: includes/system.php:248
 msgid "Active Plugins"
 msgstr ""
 
-#: includes/system.php:270
+#: includes/system.php:272
 msgid "Visit plugin homepage"
 msgstr ""
 
-#: includes/system.php:275
+#: includes/system.php:277
 msgctxt "by author"
 msgid "by %s"
 msgstr ""
 
-#: includes/system.php:287
+#: includes/system.php:289
 msgid "Theme"
 msgstr ""
 
-#: includes/system.php:295
-msgid "Name"
-msgstr ""
-
-#: includes/system.php:299
+#: includes/system.php:301
 msgid "Version"
 msgstr ""
 
-#: includes/system.php:304
+#: includes/system.php:306
 msgid "is available"
 msgstr ""
 
-#: includes/system.php:309
+#: includes/system.php:311
 msgid "Author URL"
 msgstr ""
 
-#: includes/system.php:313
+#: includes/system.php:315
 msgid "Child Theme"
 msgstr ""
 
-#: includes/system.php:315
+#: includes/system.php:317
 msgid ""
-"If you're modifying eCommerce Product Catalog or a parent theme you didn't "
-"build personally we recommend using a child theme. See: <a href=\"%s\" "
-"target=\"_blank\">How to create a child theme</a>"
+"If you're modifying %s or a parent theme you didn't build personally we "
+"recommend using a child theme. See: <a href=\"%s\" target=\"_blank\">How to "
+"create a child theme</a>"
 msgstr ""
 
-#: includes/system.php:323
+#: includes/system.php:325
 msgid "Parent Theme Name"
 msgstr ""
 
-#: includes/system.php:327
+#: includes/system.php:329
 msgid "Parent Theme Version"
 msgstr ""
 
-#: includes/system.php:331
+#: includes/system.php:333
 msgid "Parent Theme Author URL"
 msgstr ""
 
-#: includes/system.php:336
-msgid "eCommerce Product Catalog Support"
+#: includes/system.php:338
+msgid "%s Support"
 msgstr ""
 
-#: includes/system.php:339
+#: includes/system.php:341
 msgid "Not Declared"
 msgstr ""
 
@@ -1976,10 +1811,10 @@ msgstr ""
 
 #: includes/widgets/category-widget.php:105
 #: includes/widgets/filter-widgets.php:112
-#: includes/widgets/filter-widgets.php:170
-#: includes/widgets/filter-widgets.php:244
+#: includes/widgets/filter-widgets.php:171
 #: includes/widgets/related-products-widget.php:53
-#: includes/widgets/search-widget.php:61
+#: includes/widgets/search-widget.php:50
+#: modules/price/widgets/price-filter-widget.php:79
 msgid "Title:"
 msgstr ""
 
@@ -2042,7 +1877,7 @@ msgid "Filter items by categories."
 msgstr ""
 
 #: includes/widgets/filter-widgets.php:113
-#: includes/widgets/filter-widgets.php:245
+#: modules/price/widgets/price-filter-widget.php:80
 msgid "Support shortcode output filtering"
 msgstr ""
 
@@ -2074,36 +1909,20 @@ msgstr ""
 msgid "Sort catalog items dropdown."
 msgstr ""
 
-#: includes/widgets/filter-widgets.php:171
+#: includes/widgets/filter-widgets.php:172
 msgid "Support shortcode output sorting"
 msgstr ""
 
-#: includes/widgets/filter-widgets.php:174
-#: includes/widgets/filter-widgets.php:248
+#: includes/widgets/filter-widgets.php:175
+#: modules/price/widgets/price-filter-widget.php:83
 msgid ""
 "Sort widget is disabled with simple theme integration. Please see <a href="
 "\"%s\">Theme Integration Guide</a> to enable product sort widget."
 msgstr ""
 
-#: includes/widgets/filter-widgets.php:176
-#: includes/widgets/filter-widgets.php:250
+#: includes/widgets/filter-widgets.php:177
+#: modules/price/widgets/price-filter-widget.php:85
 msgid "Sort widget is disabled due to a lack of theme integration.%s"
-msgstr ""
-
-#: includes/widgets/filter-widgets.php:196
-msgid "%s Price Filter"
-msgstr ""
-
-#: includes/widgets/filter-widgets.php:197
-msgid "Filter %s by price."
-msgstr ""
-
-#: includes/widgets/filter-widgets.php:199
-msgid "Catalog Price Filter"
-msgstr ""
-
-#: includes/widgets/filter-widgets.php:200
-msgid "Filter items by price."
 msgstr ""
 
 #: includes/widgets/related-products-widget.php:20
@@ -2123,18 +1942,18 @@ msgid "Shows related catalog items."
 msgstr ""
 
 #: includes/widgets/related-products-widget.php:56
-#: includes/widgets/search-widget.php:64
+#: includes/widgets/search-widget.php:54
 msgid ""
 "Search widget is disabled with simple theme integration. Please see <a href="
 "\"%s\">Theme Integration Guide</a> to enable product search widget."
 msgstr ""
 
 #: includes/widgets/related-products-widget.php:58
-#: includes/widgets/search-widget.php:66
+#: includes/widgets/search-widget.php:56
 msgid "Search widget is disabled due to a lack of theme integration.%s"
 msgstr ""
 
-#: includes/widgets/search-widget.php:20 includes/widgets/search-widget.php:34
+#: includes/widgets/search-widget.php:20 includes/widgets/search-widget.php:78
 msgid "%s Search"
 msgstr ""
 
@@ -2146,261 +1965,930 @@ msgstr ""
 msgid "A search form for your catalog items."
 msgstr ""
 
-#: templates/content-al_product.php:36
+#: modules/attributes/attributes-meta.php:24
+msgid "%s Attributes"
+msgstr ""
+
+#: modules/attributes/attributes-meta.php:26
+#: modules/attributes/attributes-settings.php:23
+msgid "Attributes"
+msgstr ""
+
+#: modules/attributes/attributes-meta.php:43
+msgid "Only attributes with values set will be shown on product page."
+msgstr ""
+
+#: modules/attributes/attributes-meta.php:43
+msgid "See <a target=\"_blank\" href=\"%s\">docs</a>."
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:45
+#: modules/attributes/attributes-settings.php:55
+msgid "Attributes Settings"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:61
+msgid "Attributes options"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:64
+msgid "Number of attributes"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:64
+#: modules/shipping/shipping-settings.php:69
+msgid "Update"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:72
+msgid ""
+"If you fill out the fields below, system will automatically pre-fill the "
+"fields on when adding new item so you doesn't have to fill them every time "
+"again.</p><p>When every item in your catalogue is different you can leave "
+"all or a part of these field empty."
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:72
+msgid "You can change these default values for every item."
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:77
+msgid "Attribute name"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:79
+msgid "Attribute value"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:80
+msgid "Unit"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:114
+msgid "Attributes disabled. To enable set minimum 1 attribute."
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:123
+msgid "attributes"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:197
+msgid "Use this only with short attributes labels and values e.g. Color: Red"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:197
+msgid "Show Attributes"
+msgstr ""
+
+#: modules/price/price-meta.php:25
+msgid "Example price format: %s or %s"
+msgstr ""
+
+#: modules/price/price-meta.php:25
+msgid "you can change it in product settings"
+msgstr ""
+
+#: modules/price/price-meta.php:26
+msgid ""
+"Please provide a correct price format according to your currency settings. "
+"Example price format: %s or %s"
+msgstr ""
+
+#: modules/price/price-settings.php:24
+msgid "Price Size"
+msgstr ""
+
+#: modules/price/price-settings.php:27
+msgid "Small"
+msgstr ""
+
+#: modules/price/price-settings.php:30 modules/price/price-settings.php:43
+msgid "single product"
+msgstr ""
+
+#: modules/price/price-settings.php:33
+msgid "Price Color"
+msgstr ""
+
+#: modules/price/price-settings.php:43
+msgid "product archive"
+msgstr ""
+
+#: modules/price/price-settings.php:57
+msgid "Price Label"
+msgstr ""
+
+#: modules/price/price-settings.php:58
+msgid "Free Product Text"
+msgstr ""
+
+#: modules/price/price-settings.php:59
+msgid "After Price Text"
+msgstr ""
+
+#: modules/price/price-settings.php:73
+msgid "Payment and currency"
+msgstr ""
+
+#: modules/price/price-settings.php:76 modules/price/price-settings.php:107
+msgid "On"
+msgstr ""
+
+#: modules/price/price-settings.php:76 modules/price/price-settings.php:107
+msgid "Off"
+msgstr ""
+
+#: modules/price/price-settings.php:80
+msgid "Your currency"
+msgstr ""
+
+#: modules/price/price-settings.php:92
+msgid ""
+"If you choose custom currency symbol, it will override \"Your Currency\" "
+"setting. This is very handy if you want to use not supported currency or a "
+"preferred symbol for your currency."
+msgstr ""
+
+#: modules/price/price-settings.php:96
+msgid "Custom Currency Symbol"
+msgstr ""
+
+#: modules/price/price-settings.php:102
+msgid "Currency position"
+msgstr ""
+
+#: modules/price/price-settings.php:103
+msgid "Before Price"
+msgstr ""
+
+#: modules/price/price-settings.php:104
+msgid "After Price"
+msgstr ""
+
+#: modules/price/price-settings.php:107
+msgid "Space between currency & price"
+msgstr ""
+
+#: modules/price/price-settings.php:108
+msgid "Thousands Separator"
+msgstr ""
+
+#: modules/price/price-settings.php:109
+msgid "Decimal Separator"
+msgstr ""
+
+#: modules/price/widgets/price-filter-widget.php:20
+msgid "%s Price Filter"
+msgstr ""
+
+#: modules/price/widgets/price-filter-widget.php:21
+msgid "Filter %s by price."
+msgstr ""
+
+#: modules/price/widgets/price-filter-widget.php:23
+msgid "Catalog Price Filter"
+msgstr ""
+
+#: modules/price/widgets/price-filter-widget.php:24
+msgid "Filter items by price."
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:51
+#: modules/shipping/shipping-settings.php:60
+msgid "Shipping Settings"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:66
+msgid "Shipping options"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:69
+msgid "Number of shipping options"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:75
+msgid ""
+"If you fill out the fields below, system will automatically pre-fill the "
+"fields when adding new item so you doesn't have to fill them every time.</"
+"p><p>When every item in your catalogue has different shipping options you "
+"can leave all or just a part of these fields empty."
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:75
+msgid "You can change these default values for every new item in the catalog."
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:78
+msgid "Shipping default name"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:78
+msgid "Shipping default cost"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:99
+msgid "Shipping disabled. To enable set minimum 1 shipping option."
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:145
+msgid "Shipping Label"
+msgstr ""
+
+#: modules/sku/sku-meta.php:25
+msgid "SKU"
+msgstr ""
+
+#: modules/sku/sku-settings.php:23
+msgid "SKU Label"
+msgstr ""
+
+#: modules/sku/sku-settings.php:36 templates.php:286
+msgid "Disable SKU"
+msgstr ""
+
+#: partners/wpml/includes/class-installer-dependencies.php:100
+msgid ""
+"Downloading is not possible. WordPress cannot create required folders "
+"because of the\n"
+"                                        256 characters limitation of the "
+"current Windows environment."
+msgstr ""
+
+#: partners/wpml/includes/class-installer-dependencies.php:252
+#: partners/wpml/includes/installer.class.php:2541
+msgid "Update Plugin"
+msgstr ""
+
+#: partners/wpml/includes/class-installer-dependencies.php:253
+msgid "Return to the updates page"
+msgstr ""
+
+#: partners/wpml/includes/class-installer-theme.php:878
+msgid "To install and update %s, please %sregister%s %s for this site."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:118
+msgid "Installing %s"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:119
+msgid "Updating %s"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:120
+msgid "Activating %s"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:221
+#: partners/wpml/includes/installer.class.php:789
+msgid "Installer"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:342
+msgid "Registered"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:347
+msgid "Register"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:608
+msgid ""
+"To get automatic updates, you need to register %s for this site. %sRegister "
+"%s%s"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:612
+msgid "Dismiss"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:634
+msgid "Commercial"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:715
+msgid ""
+"Installer cannot display the products information because the automatic "
+"updating for %s was explicitly disabled with the configuration below "
+"(usually in wp-config.php):"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:717
+msgid ""
+"In order to see the products information, please run the %smanual updates "
+"check%s to initialize the products list or (temporarily) remove the above "
+"code."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:741
+msgid ""
+"Installer cannot contact our updates server to get information about the "
+"available products and check for new versions. If you are seeing this "
+"message for the first time, you can ignore it, as it may be a temporary "
+"communication problem. If the problem persists and your WordPress admin is "
+"slowing down, you can disable automated version checks. Add the following "
+"line to your wp-config.php file:"
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:1043
+msgid "Invalid site key for the current site."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:1049
+#: partners/wpml/includes/installer.class.php:1145
+msgid ""
+"%s cannot access %s to register. Try again to see if it's a temporary "
+"problem. If the problem continues, make sure that this site has access to "
+"the Internet. You can still use the plugin without registration, but you "
+"will not receive automated updates."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:1138
+msgid ""
+"Invalid site key for the current site. If the error persists, try to "
+"unregister first and then register again with the same site key."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:1334
+#: partners/wpml/includes/installer.class.php:1396
+msgid ""
+"You will have to renew your subscription in order to continue getting the "
+"updates and support."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:1348
+#: partners/wpml/includes/installer.class.php:1403
+msgid "Your subscription expires in %d day."
+msgid_plural "Your subscription expires in %d days."
+msgstr[0] ""
+msgstr[1] ""
+
+#: partners/wpml/includes/installer.class.php:1480
+msgid "%sRenew here%s."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:1826
+msgid ""
+"Your subscription appears to no longer be valid. Please try to register "
+"again using a valid site key."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:2111
+msgid ""
+"You need to have a valid subscription in order to get upgrades or support "
+"for this plugin. %sPurchase a subscription or enter an existing site key%s."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:2453
+#: partners/wpml/includes/installer.class.php:2517
+msgid ""
+"%s cannot update because your site's registration is not valid. Please "
+"%sregister %s%s again for this site first."
+msgstr ""
+
+#: partners/wpml/includes/installer.class.php:2542
+msgid "Return to the plugins page"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:8
+#: partners/wpml/templates/downloads-list.php:10
+msgid "Plugin"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:9
+msgid "Available"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:10
+msgid "Installed"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:11
+msgid "Downloading"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:12
+msgid "Activate"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:52
+msgid "downloading..."
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:53
+#: partners/wpml/templates/downloads-list.php:52
+#: partners/wpml/templates/downloads-list.php:53
+msgid "failed!"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:53
+msgid "downloaded"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:56
+#: partners/wpml/templates/downloads-list.php:56
+msgid "activating"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:57
+#: partners/wpml/templates/downloads-list.php:57
+msgid "activated"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:65
+#: partners/wpml/templates/downloads-list.php:69
+msgid ""
+"Downloading is not possible because WordPress cannot write into the plugins "
+"folder. %sHow to fix%s."
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:72
+#: partners/wpml/templates/downloads-list.php:76
+msgid "Download"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:74
+#: partners/wpml/templates/downloads-list.php:78
+msgid "Activate after download"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:77
+#: partners/wpml/templates/downloads-list.php:82
+msgid "Operation complete!"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list-compact.php:79
+msgid ""
+"Download failed!\n"
+"\n"
+"Click OK to revalidate your subscription or CANCEL to try again."
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:2
+msgid "Downloads:"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:11
+msgid "Current version"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:12
+msgid "Released"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:13
+msgid "Installed version"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:46
+msgid "(embedded)"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:50
+msgid "installing..."
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:51
+msgid "updating..."
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:52
+msgid "installed"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:53
+msgid "updated"
+msgstr ""
+
+#: partners/wpml/templates/downloads-list.php:84
+msgid ""
+"Download failed!\n"
+"\n"
+"Please refresh the page and try again."
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:5
+msgid "Incorrect setup"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:25
+msgid "Invalid product"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:36
+msgid "Unknown repository"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:44
+msgid " Your current site key (%s) does not match the selected product (%s)."
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:65
+msgid "Buy %s"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:69
+msgid "Already bought %s?"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:70
+msgid "Enter site key"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:77
+msgid "Add"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:86
+msgid "Subscription is expired."
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:95
+msgid "Renew %s"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:105
+msgid "Are you sure you want to remove this site key?"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:105
+msgid "Remove current site key (%s)"
+msgstr ""
+
+#: partners/wpml/templates/products-compact.php:120
+msgid "%s support on wpml.org"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:18
+msgid "Already bought?"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:19
+msgid "Register %s"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:24
+msgid "2. Enter your site key"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:29
+msgid "1. Go to your %s%s account%s and add this site URL: %s"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:54
+msgid ""
+"Subscription expired. You need to either purchase a new subscription or "
+"upgrade if available."
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:57
+msgid "Revalidate subscription"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:61
+msgid ""
+"If you have already purchased or renewed your subscription and you can still "
+"see this message, please revalidate your subscription"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:69
+msgid "Are you sure you want to unregister?"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:69
+msgid "Unregister %s from this site"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:71
+msgid "Check for updates"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:78
+msgid ""
+"%s is registered on this site. You will receive automatic updates until %s"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:80
+msgid ""
+"%s is registered on this site. Your Lifetime account gives you updates for "
+"life."
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:134
+msgid "Click to see individual components options."
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:134
+msgid "Individual components"
+msgstr ""
+
+#: partners/wpml/templates/repository-listing.php:175
+msgid ""
+"This page lets you install plugins and update existing plugins. To remove "
+"any of these plugins, go to the %splugins%s page and if you have the "
+"permission to remove plugins you should be able to do this."
+msgstr ""
+
+#: templates/full/product-page.php:42
 msgid "Edit Product"
 msgstr ""
 
-#: templates/templates-functions.php:903
+#: templates/templates-functions.php:1077
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different keywords."
 msgstr ""
 
-#: templates/templates-functions.php:911
+#: templates/templates-functions.php:1081
 msgid ""
 "Sorry, but nothing matched your search terms. Please try again with some "
 "different options or %sreset filters%s."
 msgstr ""
 
-#: templates.php:192
+#: templates.php:229
 msgid "Advanced Mode Test"
 msgstr ""
 
-#: templates.php:205
-msgid "eCommerce Product Catalog is currently running in Simple Mode."
+#: templates.php:242
+msgid "%s is currently running in Simple Mode."
 msgstr ""
 
-#: templates.php:206
+#: templates.php:243
 msgid ""
 "In Simple Mode the product listing, product search and category pages are "
 "disabled (please read this Sample Product Page to fully understand the "
 "difference)."
 msgstr ""
 
-#: templates.php:207
+#: templates.php:244
 msgid ""
 "Please use the button below to check out how the product page looks in "
 "Automatic Advanced Mode."
 msgstr ""
 
-#: templates.php:208
+#: templates.php:245
 msgid "Start Advanced Mode Test"
 msgstr ""
 
-#: templates.php:208 templates.php:308
+#: templates.php:245 templates.php:324
 msgid "Use Simple Mode"
 msgstr ""
 
-#: templates.php:214
+#: templates.php:251
 msgid "Advanced Mode is temporary enabled for this page now."
 msgstr ""
 
-#: templates.php:216
-msgid ""
-"Make some adjustments if necessary (you can change it at any time later)"
+#: templates.php:251
+msgid "Don't worry if it looks messy."
 msgstr ""
 
-#: templates.php:219
+#: templates.php:251
+msgid ""
+"Make some adjustments if necessary (you can change it at any time later)."
+msgstr ""
+
+#: templates.php:252
+msgid "Click start to proceed with layout adjustment."
+msgstr ""
+
+#: templates.php:254
+msgid "Start"
+msgstr ""
+
+#: templates.php:258
+msgid ""
+"Use %1$swidth%2$s to change the product page horizontal size, %1$spadding"
+"%2$s to generate space around the content and %1$sbackground%2$s to match "
+"your theme color"
+msgstr ""
+
+#: templates.php:259
 msgid "Width"
 msgstr ""
 
-#: templates.php:220
+#: templates.php:260
 msgid "Background"
 msgstr ""
 
-#: templates.php:221
+#: templates.php:261
+msgid "Text Color"
+msgstr ""
+
+#: templates.php:262
 msgid "Padding"
 msgstr ""
 
-#: templates.php:228
+#: templates.php:267
+msgid "Select the sidebar side to enable it on your product pages."
+msgstr ""
+
+#: templates.php:270
+msgid ""
+"If the sidebar is to close to the content you can go back and adjust the "
+"padding."
+msgstr ""
+
+#: templates.php:277
+msgid "Disable unnecessary product page elements"
+msgstr ""
+
+#: templates.php:279
 msgid "Disable breadcrumbs"
 msgstr ""
 
-#: templates.php:229
+#: templates.php:280
 msgid "Disable Name"
 msgstr ""
 
-#: templates.php:230
+#: templates.php:281
 msgid "Disable Image"
 msgstr ""
 
-#: templates.php:231
+#: templates.php:283
 msgid "Disable Price"
 msgstr ""
 
-#: templates.php:232
+#: templates.php:289
 msgid "Disable Shipping"
 msgstr ""
 
-#: templates.php:233
+#: templates.php:292
 msgid "Disable Attributes"
 msgstr ""
 
-#: templates.php:247
+#: templates.php:301
 msgid "Is everything looking fine now?"
 msgstr ""
 
-#: templates.php:296
+#: templates.php:311
 msgid "It's Fine"
 msgstr ""
 
-#: templates.php:296
+#: templates.php:311
 msgid "It's Broken"
 msgstr ""
 
-#: templates.php:300
+#: templates.php:311 templates.php:313
+msgid "Go Back"
+msgstr ""
+
+#: templates.php:313
+msgid "Next"
+msgstr ""
+
+#: templates.php:316
 msgid ""
 "It seems that Manual Theme Integration is needed in order to use Advanced "
 "Mode with your current theme."
 msgstr ""
 
-#: templates.php:301
+#: templates.php:317
 msgid "You Have 3 choices"
 msgstr ""
 
-#: templates.php:303
+#: templates.php:319
 msgid "Get the Manual Theme Integration done."
 msgstr ""
 
-#: templates.php:304
+#: templates.php:320
 msgid "Keep using Simple Mode which is still functional."
 msgstr ""
 
-#: templates.php:305
+#: templates.php:321
 msgid "Switch the theme."
 msgstr ""
 
-#: templates.php:307
+#: templates.php:323
 msgid "Please make your choice below or switch the theme."
 msgstr ""
 
-#: templates.php:308 templates.php:315
+#: templates.php:324 templates.php:331
 msgid "Free Theme Integration Guide"
 msgstr ""
 
-#: templates.php:312
+#: templates.php:328
 msgid ""
-"Congratulations! eCommerce Product Catalog is working on Advanced Mode now. "
-"You can go to admin and add the products to the catalog."
+"Congratulations! %s is working on Advanced Mode now. You can go to admin and "
+"add the products to the catalog."
 msgstr ""
 
-#: templates.php:313
+#: templates.php:329
 msgid ""
 "If you are a developer or would like to have full control on the product "
 "pages templates we still recommend to proceed with manual integration."
 msgstr ""
 
-#: templates.php:314 templates.php:320
+#: templates.php:330 templates.php:336
 msgid "You can switch between modes at any time in Product Settings."
 msgstr ""
 
-#: templates.php:315 templates.php:322
+#: templates.php:331 templates.php:338
 msgid "Go to Admin"
 msgstr ""
 
-#: templates.php:319
+#: templates.php:335
 msgid "You are using simple mode now."
 msgstr ""
 
-#: templates.php:321
+#: templates.php:337
 msgid ""
 "Use the buttons below to try the advanced integration again or go to admin "
 "and start adding your products."
 msgstr ""
 
-#: templates.php:322
+#: templates.php:338
 msgid "Restart Advanced Mode Test"
 msgstr ""
 
-#: templates.php:415
+#: templates.php:445
 msgid "Clear"
 msgstr ""
 
-#: templates.php:417
+#: templates.php:447
 msgid "Select Color"
 msgstr ""
 
-#: theme-product_adder_support.php:51
+#: theme-product_adder_support.php:53
 msgid ""
-"You are currently using eCommerce Product Catalog in Simple Mode. It is "
-"perfectly fine to use it this way, however some features are limited. To "
-"switch to Advanced Mode you probably need Theme Integration."
+"You are currently using %s in Simple Mode. It is perfectly fine to use it "
+"this way, however some features are limited. To switch to Advanced Mode you "
+"probably need Theme Integration."
 msgstr ""
 
-#: theme-product_adder_support.php:52
+#: theme-product_adder_support.php:53 theme-product_adder_support.php:87
+msgid "You can also use a fully compatible %sCatalog Me! theme%s."
+msgstr ""
+
+#: theme-product_adder_support.php:54
 msgid "Theme Integration Guide"
 msgstr ""
 
-#: theme-product_adder_support.php:52
+#: theme-product_adder_support.php:54
 msgid "Plugin Support"
 msgstr ""
 
-#: theme-product_adder_support.php:52
+#: theme-product_adder_support.php:54
 msgid "I know, don't bug me"
 msgstr ""
 
-#: theme-product_adder_support.php:66
-msgid ""
-"Congratulations! Now your theme is fully integrated with eCommerce Product "
-"Catalog."
+#: theme-product_adder_support.php:68
+msgid "Congratulations! Now your theme is fully integrated with %s."
 msgstr ""
 
-#: theme-product_adder_support.php:67
+#: theme-product_adder_support.php:69
 msgid "Add Product"
 msgstr ""
 
-#: theme-product_adder_support.php:67
+#: theme-product_adder_support.php:69
 msgid "Product Settings"
 msgstr ""
 
-#: theme-product_adder_support.php:67
+#: theme-product_adder_support.php:69
 msgid "Help & Documentation"
 msgstr ""
 
-#: theme-product_adder_support.php:83
+#: theme-product_adder_support.php:87
 msgid ""
-"<strong>Your theme does not declare eCommerce Product Catalog support</"
-"strong> &#8211; please proceed to sample product page where automatic layout "
-"adjustment can be done."
+"<strong>Your theme does not declare %s support</strong> &#8211; please "
+"proceed to sample product page where automatic layout adjustment can be done."
 msgstr ""
 
-#: theme-product_adder_support.php:86
+#: theme-product_adder_support.php:90
 msgid "Theme Integration Video"
 msgstr ""
 
-#: theme-product_adder_support.php:89 theme-product_adder_support.php:109
+#: theme-product_adder_support.php:93
 msgid "Hide Forever"
 msgstr ""
 
-#: theme-product_adder_support.php:108
+#: theme-product_adder_support.php:115
 msgid ""
-"eCommerce Product Catalog is a free software. Would you mind taking "
-"<strong>5 seconds</strong> to <a target=\"_blank\" href=\"%s\">rate the "
-"plugin</a> for us please? Your comments <strong>help others know what to "
-"expect</strong> when they install %s."
+"%s is a free software. Would you mind taking <strong>5 seconds</strong> to "
+"<a target=\"_blank\" href=\"%s\">rate the plugin</a> for us please? Your "
+"comments <strong>help others know what to expect</strong> when they install "
+"%s."
 msgstr ""
 
-#: theme-product_adder_support.php:108
+#: theme-product_adder_support.php:118
 msgid ""
 "A <strong>huge thank you</strong> from impleCode and WordPress community in "
 "advance!"
 msgstr ""
 
-#: theme-product_adder_support.php:109
+#: theme-product_adder_support.php:119
 msgid "Rate Now & Hide Forever"
 msgstr ""
 
-#: theme-product_adder_support.php:110
+#: theme-product_adder_support.php:122
 msgid ""
 "Thank you for <a target=\"_blank\" href=\"%s\">your rating</a>! We "
 "appreciate your time and input."
 msgstr ""
 
-#: theme-product_adder_support.php:115
+#: theme-product_adder_support.php:127
 msgid ""
 "<strong>Psst, it's less than 1 minute</strong> to add some translations to "
-"eCommerce Product Catalog collaborative <a target='_blank' "
-"href='%s'>translation project</a>"
+"%s collaborative <a target='_blank' href='%s'>translation project</a>"
 msgstr ""
 
 #. Plugin Name of the plugin/theme

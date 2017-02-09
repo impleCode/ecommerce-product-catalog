@@ -36,6 +36,6 @@ add_filter( 'product_meta_save', 'ic_save_product_sku', 1 );
  * @return type
  */
 function ic_save_product_sku( $product_meta ) {
-	$product_meta[ '_sku' ] = isset( $_POST[ '_sku' ] ) && !empty( $_POST[ '_sku' ] ) ? $_POST[ '_sku' ] : '';
+	$product_meta[ '_sku' ] = isset( $_POST[ '_sku' ] ) ? sanitize_text_field( $_POST[ '_sku' ] ) : '';
 	return $product_meta;
 }

@@ -147,7 +147,7 @@ function product_price( $product_id, $unfiltered = null ) {
 
 /**
  * 3 letter product currency format
- * 
+ *
  * @return type
  */
 function product_currency_letters() {
@@ -183,7 +183,7 @@ function show_archive_price( $post ) {
 	if ( !empty( $price_value ) ) {
 		?>
 		<div class="product-price <?php design_schemes( 'color' ); ?>">
-		<?php echo price_format( $price_value ) ?>
+			<?php echo price_format( $price_value ) ?>
 		</div>
 		<?php
 	}

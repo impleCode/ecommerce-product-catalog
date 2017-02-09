@@ -74,7 +74,7 @@ function manage_product_price_column( $column_name, $product_id ) {
 	}
 }
 
-add_action( 'pre_get_posts', 'column_orderby_price' );
+add_action( 'pre_get_posts', 'column_orderby_price', 20 );
 
 /**
  * Manages order by price in admin

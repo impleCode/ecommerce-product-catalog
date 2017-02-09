@@ -12,12 +12,19 @@ if ( !defined( 'ABSPATH' ) ) {
  * @package		ecommerce-product-catalog/functions
  * @author 		Norbert Dreszer
  */
+//add_action( 'admin_init', 'epc_activation_function', 1 );
+
 function epc_activation_function() {
-	create_products_page();
-	create_sample_product();
-	implecode_plugin_review_notice_hide();
-	save_default_multiple_settings();
-	permalink_options_update();
+	$activation = get_option( 'IC_EPC_install', 0 );
+	if ( !empty( $activation ) && current_user_can( 'activate_plugins' ) ) {
+		add_product_caps();
+		create_products_page();
+		create_sample_product();
+		implecode_plugin_review_notice_hide();
+		save_default_multiple_settings();
+		permalink_options_update();
+		delete_option( 'IC_EPC_install' );
+	}
 }
 
 /**
@@ -128,6 +135,8 @@ function sample_product_button( $p = null, $text = null ) {
 	}
 }
 
+add_action( 'admin_init', 'ecommerce_product_catalog_upgrade' );
+
 function ecommerce_product_catalog_upgrade() {
 	if ( is_admin() ) {
 		$plugin_data			 = get_plugin_data( AL_PLUGIN_MAIN_FILE );
@@ -195,9 +204,10 @@ function ecommerce_product_catalog_upgrade() {
 				$single_options[ 'template' ]	 = 'plain';
 				update_option( 'multi_single_options', $single_options );
 			}
-			flush_rewrite_rules();
+			if ( version_compare( $first_version, '2.6.0' ) < 0 && version_compare( $database_plugin_version, '2.6.0' ) < 0 ) {
+				ic_add_catalog_manager_role();
+			}
+			//flush_rewrite_rules();
 		}
 	}
 }
-
-add_action( 'admin_init', 'ecommerce_product_catalog_upgrade' );

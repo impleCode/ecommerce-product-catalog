@@ -77,7 +77,8 @@ function ic_ajax_update_product_listing( form_data, url_replace = false ) {
         'request_url': '/' + ( location.pathname + location.search ).substr( 1 ),
         'ajax_elements': { },
         'shortcode': shortcode,
-        'is_search': ic_ajax.is_search
+        'is_search': ic_ajax.is_search,
+        'security': ic_ajax.nonce
     };
     if ( jQuery( ".product-sort-bar" ).length ) {
         data['ajax_elements']['product-sort-bar'] = 1;

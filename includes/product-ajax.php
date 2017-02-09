@@ -20,13 +20,14 @@ add_action( 'wp_ajax_ic_self_submit', 'ic_ajax_self_submit' );
  *
  */
 function ic_ajax_self_submit() {
+	check_ajax_referer( 'ic_ajax', 'security' );
 	if ( isset( $_POST[ 'self_submit_data' ] ) ) {
 		$params				 = array();
 		parse_str( $_POST[ 'self_submit_data' ], $params );
 		$_GET				 = $params;
 		global $ic_ajax_query_vars;
 		$ic_ajax_query_vars	 = json_decode( stripslashes( $_POST[ 'query_vars' ] ), true );
-		if ( (isset( $ic_ajax_query_vars[ 'post_type' ] ) && !in_array( $ic_ajax_query_vars[ 'post_type' ], product_post_type_array() ) ) || (isset( $ic_ajax_query_vars[ 'post_status' ] ) && $ic_ajax_query_vars[ 'post_status' ] !== 'publish') ) {
+		if ( (isset( $ic_ajax_query_vars[ 'post_type' ] ) && !in_array( $ic_ajax_query_vars[ 'post_type' ], product_post_type_array() ) ) ) {
 			wp_die();
 			return;
 		}
@@ -40,7 +41,8 @@ function ic_ajax_self_submit() {
 		if ( $ic_ajax_query_vars[ 'post_type' ] != 'al_product' ) {
 			$_GET[ 'post_type' ] = $ic_ajax_query_vars[ 'post_type' ];
 		}
-		$posts = new WP_Query( $ic_ajax_query_vars );
+		$ic_ajax_query_vars[ 'post_status' ] = 'publish';
+		$posts								 = new WP_Query( $ic_ajax_query_vars );
 		if ( !empty( $ic_ajax_query_vars[ 'paged' ] ) && $ic_ajax_query_vars[ 'paged' ] > 1 && empty( $posts->post ) ) {
 			unset( $ic_ajax_query_vars[ 'paged' ] );
 			unset( $_GET[ 'page' ] );
@@ -96,7 +98,7 @@ add_action( 'register_catalog_styles', 'ic_product_ajax_register_styles' );
 
 function ic_product_ajax_register_styles() {
 	//wp_register_style( 'ic_variations', plugins_url( '/', __FILE__ ) . '/css/variations-front.css', array( 'al_product_styles' ) );
-	wp_register_script( 'ic_product_ajax', AL_PLUGIN_BASE_PATH . 'js/product-ajax.js' );
+	wp_register_script( 'ic_product_ajax', AL_PLUGIN_BASE_PATH . 'js/product-ajax.js?' . filemtime( AL_BASE_PATH . '/js/product-ajax.js' ) );
 }
 
 add_action( 'enqueue_catalog_scripts', 'ic_product_ajax_enqueue_styles' );
@@ -113,7 +115,8 @@ function ic_product_ajax_enqueue_styles() {
 		'query_vars'		 => json_encode( $query_vars ),
 		'request_url'		 => remove_query_arg( array( 'page', 'paged' ), get_pagenum_link() ),
 		'filters_reset_url'	 => get_filters_bar_reset_url(),
-		'is_search'			 => is_search()
+		'is_search'			 => is_search(),
+		'nonce'				 => wp_create_nonce( "ic_ajax" )
 	) );
 }
 

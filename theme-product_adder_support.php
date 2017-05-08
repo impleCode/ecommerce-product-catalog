@@ -82,12 +82,13 @@ function product_adder_theme_check_notice() {
 			$sample_product_url = esc_url( add_query_arg( 'create_sample_product_page', 'true' ) );
 		}
 		?>
-		<div id="implecode_message" class="error product-adder-message messages-connect">
+		<div id="implecode_message" class="updated product-adder-message messages-connect">
 			<div class="squeezer">
-				<h4><?php echo sprintf( __( '<strong>Your theme does not declare %s support</strong> &#8211; please proceed to sample product page where automatic layout adjustment can be done.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) ?> <?php echo sprintf( __( 'You can also use a fully compatible %sCatalog Me! theme%s.', 'ecommerce-product-catalog' ), '<a href="' . admin_url( 'theme-install.php?search=Catalog%20me' ) . '">', '</a>' ) ?></h4>
+				<h4><?php echo sprintf( __( 'Thank you for choosing %1$s! If you have any questions or issues feel free to %2$spost a support ticket%3$s.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, '<a href="https://implecode.com/support/?cam=simple-mode&key=support-top">', '</a>' ) ?></h4>
+				<h4><?php echo sprintf( __( '%s requires initial configuration in order to work properly &#8211; please click the Initial Configuration button to proceed.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) ?> <?php echo sprintf( __( 'If you are looking for a great customizable product theme we recommend free %sCatalog Me! theme%s.', 'ecommerce-product-catalog' ), '<a href="' . admin_url( 'theme-install.php?search=Catalog+me%21' ) . '">', '</a>' ) ?></h4>
 				<p class="submit">
 					<?php echo sample_product_button() ?>
-					<a href="https://implecode.com/docs/ecommerce-product-catalog/theme-integration-wizard/#cam=default-mode&key=top-message-video" class="button"><?php _e( 'Theme Integration Video', 'ecommerce-product-catalog' ); ?></a>
+					<a href="https://implecode.com/docs/ecommerce-product-catalog/theme-integration-wizard/#cam=default-mode&key=top-message-video" class="button"><?php _e( 'Configuration Video', 'ecommerce-product-catalog' ); ?></a>
 					<?php /* <a href="https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=default-mode&key=top-message" target="_blank" class="button"><?php _e( 'Theme Integration Guide', 'ecommerce-product-catalog' ); ?></a> */ ?>
 					<?php /* <a class="skip button" href="<?php echo admin_url( 'edit.php?post_type=al_product&page=product-settings.php&tab=product-settings&submenu=support' ) ?>"><?php _e( 'Plugin Support', 'ecommerce-product-catalog' ); ?></a> */ ?>
 					<a class="skip button" href="<?php echo esc_url( add_query_arg( 'hide_al_product_adder_support_check', 'true' ) ); ?>"><?php _e( 'Hide Forever', 'ecommerce-product-catalog' ); ?></a>

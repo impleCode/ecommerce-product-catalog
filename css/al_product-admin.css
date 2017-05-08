@@ -999,15 +999,25 @@ div.setting-content table.no-limit td{
 
 /* Admin ToolTip */
 
-.ui-tooltip {
+.ui-tooltip, .tooltip {
     background: #edf2f2;
     border: 3px solid #dde4e4;
     padding: 10px;
-    color: #0a063b;
+    color: #0a063b !important;
     border-radius: 5px;
     font: normal 14px "Helvetica Neue", Sans-Serif;
     max-width: 220px;
     position: fixed;
+    opacity: 1 !important;
+}
+#integration_wizard .tooltip {
+    left: 0 !important;
+    font: normal 14px "Helvetica Neue", Sans-Serif;
+}
+#integration_wizard .tooltip * {
+    background: transparent !important;
+    color: #0a063b !important;
+    opacity: 1 !important;
 }
 
 /* Admin Validation */
@@ -1049,4 +1059,19 @@ input.error {
     overflow-y: auto;
     /* prevent horizontal scrollbar */
     overflow-x: hidden;
+}
+
+span.ic_tip, input.ic_tip {
+    cursor: help;
+}
+
+@media (max-width: 782px) {
+    .post-type-al_product .wp-list-table .column-image, .post-type-al_product .wp-list-table .column-img, .post-type-al_product .wp-list-table .column-id {
+        display: none !important;
+        text-align: left;
+        padding-bottom: 0;
+    }
+    .post-type-al_product .wp-list-table td.column-id, .post-type-al_product .wp-list-table td.column-image {
+        padding: 3px 8px 3px 35%;
+    }
 }

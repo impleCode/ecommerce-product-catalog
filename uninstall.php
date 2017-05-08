@@ -15,6 +15,31 @@ if ( !defined( 'AL_BASE_PATH' ) ) {
 	$uninstall_products = get_option( 'ic_delete_products_uninstall', 0 );
 
 	if ( $uninstall_products == 1 ) {
+
+		if ( !function_exists( 'ic_delete_all_attribute_terms' ) ) {
+
+			/**
+			 * Delete all product attribute terms
+			 *
+			 * @global type $wpdb
+			 */
+			function ic_delete_all_attribute_terms() {
+				global $wpdb;
+				$taxonomy	 = 'al_product-attributes';
+				$terms		 = $wpdb->get_results( $wpdb->prepare( "SELECT t.*, tt.* FROM $wpdb->terms AS t INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('%s') ORDER BY t.name ASC", $taxonomy ) );
+
+				// Delete Terms
+				if ( $terms ) {
+					foreach ( $terms as $term ) {
+						$wpdb->delete( $wpdb->term_taxonomy, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
+						$wpdb->delete( $wpdb->term_relationships, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
+						$wpdb->delete( $wpdb->terms, array( 'term_id' => $term->term_id ) );
+					}
+				}
+			}
+
+		}
+
 		global $wpdb;
 		$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'al_product' );" );
 		$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta LEFT JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL;" );
@@ -37,30 +62,6 @@ if ( !defined( 'AL_BASE_PATH' ) ) {
 
 		ic_delete_all_attribute_terms();
 		$wpdb->delete( $wpdb->term_taxonomy, array( 'taxonomy' => 'al_product-attributes' ), array( '%s' ) );
-	}
-
-	if ( !function_exists( 'ic_delete_all_attribute_terms' ) ) {
-
-		/**
-		 * Delete all product attribute terms
-		 *
-		 * @global type $wpdb
-		 */
-		function ic_delete_all_attribute_terms() {
-			global $wpdb;
-			$taxonomy	 = 'al_product-attributes';
-			$terms		 = $wpdb->get_results( $wpdb->prepare( "SELECT t.*, tt.* FROM $wpdb->terms AS t INNER JOIN $wpdb->term_taxonomy AS tt ON t.term_id = tt.term_id WHERE tt.taxonomy IN ('%s') ORDER BY t.name ASC", $taxonomy ) );
-
-			// Delete Terms
-			if ( $terms ) {
-				foreach ( $terms as $term ) {
-					$wpdb->delete( $wpdb->term_taxonomy, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
-					$wpdb->delete( $wpdb->term_relationships, array( 'term_taxonomy_id' => $term->term_taxonomy_id ) );
-					$wpdb->delete( $wpdb->terms, array( 'term_id' => $term->term_id ) );
-				}
-			}
-		}
-
 	}
 
 

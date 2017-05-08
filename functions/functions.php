@@ -93,24 +93,24 @@ function upload_product_image( $name, $button_value, $option_name, $option_value
 		   href="#"><?php _e( 'Reset image', 'ecommerce-product-catalog' ); ?></a>
 	</div>
 	<script>
-		jQuery( document ).ready( function () {
-			jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
-				wp.media.editor.send.attachment = function ( props, attachment ) {
-					jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
-					jQuery( '.media-image' ).attr( "src", attachment.url );
-				}
+	    jQuery( document ).ready( function () {
+	        jQuery( '#button_<?php echo $name; ?>' ).on( 'click', function () {
+	            wp.media.editor.send.attachment = function ( props, attachment ) {
+	                jQuery( '#<?php echo $name; ?>' ).val( attachment.url );
+	                jQuery( '.media-image' ).attr( "src", attachment.url );
+	            }
 
-				wp.media.editor.open( this );
+	            wp.media.editor.open( this );
 
-				return false;
-			} );
-		} );
+	            return false;
+	        } );
+	    } );
 
-		jQuery( '#reset-image-button' ).on( 'click', function () {
-			jQuery( '#<?php echo $name; ?>' ).val( '' );
-			src = jQuery( '#default' ).val();
-			jQuery( '.media-image' ).attr( "src", src );
-		} );
+	    jQuery( '#reset-image-button' ).on( 'click', function () {
+	        jQuery( '#<?php echo $name; ?>' ).val( '' );
+	        src = jQuery( '#default' ).val();
+	        jQuery( '.media-image' ).attr( "src", src );
+	    } );
 	</script>
 	<?php
 }
@@ -182,8 +182,10 @@ function verify_page_status( $page_id ) {
  * @return string
  */
 function design_schemes( $which = null, $echo = 1 ) {
-	$custom_design_schemes	 = unserialize( DEFAULT_DESIGN_SCHEMES );
-	$design_schemes			 = get_option( 'design_schemes', $custom_design_schemes );
+	$design_schemes					 = ic_get_design_schemes();
+	$design_schemes[ 'price-color' ] = isset( $design_schemes[ 'price-color' ] ) ? $design_schemes[ 'price-color' ] : '';
+	$design_schemes[ 'price-size' ]	 = isset( $design_schemes[ 'price-size' ] ) ? $design_schemes[ 'price-size' ] : '';
+	$design_schemes[ 'box-color' ]	 = isset( $design_schemes[ 'box-color' ] ) ? $design_schemes[ 'box-color' ] : '';
 	if ( $which == 'color' ) {
 		$output = $design_schemes[ 'price-color' ];
 	} else if ( $which == 'size' ) {
@@ -375,7 +377,7 @@ function show_simple_product_listing( $content ) {
 	if ( is_main_query() && in_the_loop() && get_integration_type() == 'simple' && is_ic_product_listing() && is_ic_product_listing_enabled() ) {
 		if ( !has_shortcode( $content, 'show_products' ) ) {
 			$archive_multiple_settings	 = get_multiple_settings();
-			$content					 .= do_shortcode( '[show_products products_limit="' . $archive_multiple_settings[ 'archive_products_limit' ] . '"]' );
+			$content					 .= do_shortcode( '[show_products pagination=1 products_limit="' . $archive_multiple_settings[ 'archive_products_limit' ] . '"]' );
 		}
 	}
 	return $content;
@@ -446,41 +448,46 @@ function product_breadcrumbs() {
 			$current_product	 = $obj->name;
 			$taxonomy			 = isset( $obj->taxonomy ) ? $obj->taxonomy : 'al_product-cat';
 			$current_category_id = $obj->term_id;
-			$parents			 = array_filter( explode( '|', ic_get_product_category_parents( $current_category_id, $taxonomy, true, '|' ) ) );
+			$parents			 = array_filter( explode( '|', ic_get_product_category_parents( $current_category_id, $taxonomy, true, '|', null, array(), ' itemprop="item" ', '<span itemprop="name">', '</span>' ) ) );
 			array_pop( $parents );
-			foreach ( $parents as $parent ) {
-				if ( !empty( $parent ) ) {
-					$additional .= ' » <span typeof="v:Breadcrumb">
-		<span class="breadcrumb_last" property="v:title">' . $parent . '</span>
-	</span>';
-				}
-			}
 		} else if ( is_search() ) {
 			$current_product = __( 'Product Search', 'ecommerce-product-catalog' );
 		} else {
 			$current_product = '';
 		}
 		$archive_names	 = get_archive_names();
-		$bread			 = '<p id="breadcrumbs"><span xmlns:v="http://rdf.data-vocabulary.org/#">';
+		$bread			 = '<p id="breadcrumbs"><span itemscope itemtype="http://schema.org/BreadcrumbList">';
+		$count			 = 0;
 		if ( !empty( $archive_names[ 'bread_home' ] ) ) {
-			$bread .= apply_filters( 'product_breadcrumbs_home', '<span typeof="v:Breadcrumb" class="breadcrumbs-home"><a href="' . $home_page . '" rel="v:url" property="v:title">' . $archive_names[ 'bread_home' ] . '</a></span> » ' );
+			$count++;
+			$bread .= apply_filters( 'product_breadcrumbs_home', '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumbs-home"><a itemprop="item" href="' . $home_page . '"><span itemprop="name">' . $archive_names[ 'bread_home' ] . '</span></a><meta itemprop="position" content="' . $count . '" /></span> » ' );
 		}
 		if ( !empty( $product_archive ) ) {
-			$bread .= '<span typeof="v:Breadcrumb" class="breadcrumbs-product-archive"><a href="' . $product_archive . '" rel="v:url" property="v:title">' . $product_archive_title . '</a></span>';
+			$count++;
+			$bread .= '<span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem" class="breadcrumbs-product-archive"><a itemprop="item" href="' . $product_archive . '"><span itemprop="name">' . $product_archive_title . '</span></a><meta itemprop="position" content="' . $count . '" /></span>';
 		}
-		if ( !empty( $additional ) ) {
-			$bread .= $additional;
+		if ( !empty( $parents ) && is_array( $parents ) ) {
+			foreach ( $parents as $parent ) {
+				if ( !empty( $parent ) ) {
+					$count++;
+					$additional .= ' » <span itemprop="itemListElement" itemscope itemtype="http://schema.org/ListItem">' . $parent . '<meta itemprop="position" content="' . $count . '" /></span>';
+				}
+			}
+			if ( !empty( $additional ) ) {
+				$bread .= $additional;
+			}
 		}
 		if ( !empty( $current_product ) ) {
-			$bread .= ' » <span typeof="v:Breadcrumb"><span class="breadcrumb_last" property="v:title">' . $current_product . '</span></span></span>';
+			$bread .= ' » <span><span class="breadcrumb_last">' . $current_product . '</span></span>';
 		}
-		$bread .= '</p>';
+		$bread	 .= '</span>';
+		$bread	 .= '</p>';
 		return $bread;
 	}
 }
 
 function ic_get_product_category_parents( $id, $taxonomy, $link = false, $separator = '/', $nicename = false,
-										  $visited = array() ) {
+										  $visited = array(), $attr = '', $open = null, $close = null ) {
 	$chain	 = '';
 	$parent	 = get_term( $id, $taxonomy );
 
@@ -495,14 +502,14 @@ function ic_get_product_category_parents( $id, $taxonomy, $link = false, $separa
 
 	if ( $parent->parent && ($parent->parent != $parent->term_id) && !in_array( $parent->parent, $visited ) ) {
 		$visited[]	 = $parent->parent;
-		$chain		 .= ic_get_product_category_parents( $parent->parent, $taxonomy, $link, $separator, $nicename, $visited );
+		$chain		 .= ic_get_product_category_parents( $parent->parent, $taxonomy, $link, $separator, $nicename, $visited, $attr, $open, $close );
 	}
 
 	if ( !$link ) {
 		$chain .= $name . $separator;
 	} else {
 		$url	 = get_term_link( $parent );
-		$chain	 .= '<a href="' . $url . '">' . $name . '</a>' . $separator;
+		$chain	 .= '<a ' . $attr . ' href="' . $url . '">' . $open . $name . $close . '</a>' . $separator;
 	}
 	return $chain;
 }
@@ -638,7 +645,7 @@ function get_product_image( $product_id, $show_default = true ) {
 	}
 	if ( has_post_thumbnail( $product_id ) ) {
 		$image_size		 = apply_filters( 'product_image_size', 'product-page-image' );
-		$product_image	 = get_the_post_thumbnail( $product_id, $image_size, 'itemprop="image"' );
+		$product_image	 = get_the_post_thumbnail( $product_id, $image_size, 'itemprop=image' );
 	} else if ( $show_default ) {
 		$single_options = get_product_page_settings();
 		if ( $single_options[ 'enable_product_gallery_only_when_exist' ] != 1 ) {
@@ -724,9 +731,7 @@ function product_archive_custom_title( $title = null, $sep = null, $seplocation 
 	global $post;
 	if ( is_post_type_archive( 'al_product' ) && is_object( $post ) && $post->post_type == 'al_product' ) {
 		$settings = get_multiple_settings();
-
 		if ( $settings[ 'seo_title' ] != '' ) {
-			$settings					 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
 			$settings[ 'seo_title' ]	 = isset( $settings[ 'seo_title' ] ) ? $settings[ 'seo_title' ] : '';
 			$settings[ 'seo_title_sep' ] = isset( $settings[ 'seo_title_sep' ] ) ? $settings[ 'seo_title_sep' ] : '';
 			if ( $settings[ 'seo_title_sep' ] == 1 ) {

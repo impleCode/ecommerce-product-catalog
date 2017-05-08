@@ -26,8 +26,8 @@ function implecode_custom_csv_settings_content() {
 	<?php if ( $submenu == 'csv' ) { ?>
 		<div class="setting-content submenu csv-tab">
 			<script>
-				jQuery( '.settings-submenu a' ).removeClass( 'current' );
-				jQuery( '.settings-submenu a#csv-settings' ).addClass( 'current' );
+		        jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		        jQuery( '.settings-submenu a#csv-settings' ).addClass( 'current' );
 			</script>
 			<h2><?php
 				_e( 'Simple CSV', 'ecommerce-product-catalog' );
@@ -76,7 +76,13 @@ function simple_upload_csv_products_file() {
 	} else {
 		$url = sample_import_file_url();
 		echo '<form method="POST" enctype="multipart/form-data"><input type="file" accept=".csv" name="product_csv" id="product_csv" /><input type="submit" class="button" value="' . __( 'Import Now', 'ecommerce-product-catalog' ) . '" /></form>';
-		echo '<div class="al-box info"><p>' . __( "The CSV fields should be in following order: Image URL, Name, Price, Categories, Short Description, Long Description.", "ecommerce-product-catalog" ) . '</p><p>' . __( "The first row should contain the field names. Semicolon should be used as the CSV separator.", "ecommerce-product-catalog" ) . '</p><a href="' . $url . '" class="button-primary">' . __( 'Download CSV Template', 'ecommerce-product-catalog' ) . '</a></div>';
+		$sep = get_simple_separator();
+		if ( $sep === ';' ) {
+			$sep_label = __( 'Semicolon', 'ecommerce-product-catalog' );
+		} else {
+			$sep_label = __( 'Comma', 'ecommerce-product-catalog' );
+		}
+		echo '<div class="al-box info"><p>' . __( "The CSV fields should be in following order: Image URL, Name, Price, Categories, Short Description, Long Description.", "ecommerce-product-catalog" ) . '</p><p>' . sprintf( __( "The first row should contain the field names. %s should be used as the CSV separator.", "ecommerce-product-catalog" ), $sep_label ) . '</p><a href="' . $url . '" class="button-primary">' . __( 'Download CSV Template', 'ecommerce-product-catalog' ) . '</a></div>';
 	}
 }
 
@@ -121,9 +127,18 @@ function simple_import_product_from_csv() {
 			}
 			echo '</div>';
 		} else {
-			echo '<div class="al-box warning">';
-			_e( 'Number of fields in database and number of fields in CSV file do not match!', 'ecommerce-product-catalog' );
+			//echo '<div class="al-box warning">';
+			//_e( 'Number of fields in database and number of fields in CSV file do not match!', 'ecommerce-product-catalog' );
+			$included		 = str_replace( array( 'Array', '(', ')', ']', '[' ), array( '', '', '', '', '<br>' ), print_r( $csv_cols, true ) );
+			$export_array	 = prepare_sample_import_file();
+			$expected		 = str_replace( array( 'Array', '(', ')', ']', '[' ), array( '', '', '', '', '<br>' ), print_r( array_values( $export_array[ 1 ] ), true ) );
+			echo '<div class = "al-box warning">';
+			echo '<p>' . __( 'Number of product fields and number of fields in CSV file do not match!', 'ecommerce-product-catalog' ) . '</p>';
+			echo '<p>' . sprintf( __( 'Columns included in file: %s', 'al-product-csv' ), $included ) . '</p>';
+			echo '<p>' . sprintf( __( 'Columns expected in file: %s', 'al-product-csv' ), $expected ) . '</p>';
+			echo '<p>' . __( 'Please make sure that only the expected columns exist in the import file and the correct CSV separator is set.', 'ecommerce-product-catalog' ) . '</p>';
 			echo '</div>';
+			//echo '</div>';
 		}
 	}
 	fclose( $fp );
@@ -180,8 +195,9 @@ function sample_import_file_url() {
 	$fp		 = simple_prepare_csv_file();
 	$fields	 = prepare_sample_import_file();
 	fprintf( $fp, chr( 0xEF ) . chr( 0xBB ) . chr( 0xBF ) );
+	$sep	 = apply_filters( 'simple_csv_separator', ';' );
 	foreach ( $fields as $field ) {
-		fputcsv( $fp, $field, ';', '"' );
+		fputcsv( $fp, $field, $sep, '"' );
 	}
 	simple_close_csv_file( $fp );
 	$csv_temp = wp_upload_dir();
@@ -195,7 +211,7 @@ function simple_close_csv_file( $fp ) {
 
 function simple_get_all_exported_products() {
 	$args		 = array(
-		'posts_per_page'	 => -1,
+		'posts_per_page'	 => 1000,
 		'orderby'			 => 'title',
 		'order'				 => 'ASC',
 		'post_type'			 => 'al_product',
@@ -260,9 +276,13 @@ add_filter( 'simple_csv_separator', 'get_simple_separator' );
  * @return type
  */
 function get_simple_separator() {
-	$product_currency_settings = get_currency_settings();
-	if ( $product_currency_settings[ 'dec_sep' ] == ',' ) {
-		$sep = ';';
+	if ( function_exists( 'get_currency_settings' ) ) {
+		$product_currency_settings = get_currency_settings();
+		if ( $product_currency_settings[ 'dec_sep' ] == ',' ) {
+			$sep = ';';
+		} else {
+			$sep = ',';
+		}
 	} else {
 		$sep = ',';
 	}

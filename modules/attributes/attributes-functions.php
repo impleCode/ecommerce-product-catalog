@@ -104,3 +104,36 @@ function get_attribute_unit( $i = 1, $product_id ) {
 	}
 	return $label;
 }
+
+if ( !function_exists( 'get_attribute_label_id' ) ) {
+
+	function get_attribute_label_id( $label ) {
+		$args[ 'taxonomy' ]	 = 'al_product-attributes';
+		$args[ 'name' ]		 = $label;
+		$args[ 'parent' ]	 = 0;
+		$args[ 'fields' ]	 = 'ids';
+		$label_ids			 = get_terms( $args );
+		if ( !empty( $label_ids ) && !is_wp_error( $label_ids ) ) {
+			return $label_ids[ 0 ];
+		}
+		return false;
+	}
+
+}
+
+if ( !function_exists( 'get_attribute_value_id' ) ) {
+
+	function get_attribute_value_id( $label, $value ) {
+		$label_id			 = get_attribute_label_id( $label );
+		$args[ 'taxonomy' ]	 = 'al_product-attributes';
+		$args[ 'name' ]		 = $value;
+		$args[ 'child_of' ]	 = $label_id;
+		$args[ 'fields' ]	 = 'ids';
+		$value_ids			 = get_terms( $args );
+		if ( !empty( $value_ids ) && !is_wp_error( $value_ids ) ) {
+			return $value_ids[ 0 ];
+		}
+		return false;
+	}
+
+}

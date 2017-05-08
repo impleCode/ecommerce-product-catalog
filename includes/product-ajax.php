@@ -42,7 +42,12 @@ function ic_ajax_self_submit() {
 			$_GET[ 'post_type' ] = $ic_ajax_query_vars[ 'post_type' ];
 		}
 		$ic_ajax_query_vars[ 'post_status' ] = 'publish';
-		$posts								 = new WP_Query( $ic_ajax_query_vars );
+		//print_r( $ic_ajax_query_vars );
+		if ( !empty( $ic_ajax_query_vars[ 'posts_per_page' ] ) ) {
+			remove_action( 'ic_pre_get_products', 'set_products_limit', 99 );
+		}
+
+		$posts = new WP_Query( $ic_ajax_query_vars );
 		if ( !empty( $ic_ajax_query_vars[ 'paged' ] ) && $ic_ajax_query_vars[ 'paged' ] > 1 && empty( $posts->post ) ) {
 			unset( $ic_ajax_query_vars[ 'paged' ] );
 			unset( $_GET[ 'page' ] );
@@ -107,7 +112,7 @@ function ic_product_ajax_enqueue_styles() {
 	//wp_enqueue_style( 'ic_variations' );
 	wp_enqueue_script( 'ic_product_ajax' );
 	global $wp_query;
-	$query_vars = $wp_query->query;
+	$query_vars = apply_filters( 'ic_product_ajax_query_vars', $wp_query->query );
 	if ( empty( $query_vars ) && is_home_archive() ) {
 		$query_vars = array( 'post_type' => 'al_product' );
 	}
@@ -125,6 +130,7 @@ add_filter( 'product-list-attr', 'ic_ajax_shortcode_query_data', 10, 2 );
 function ic_ajax_shortcode_query_data( $attr, $query ) {
 	global $shortcode_query;
 	if ( !empty( $shortcode_query->query ) ) {
+		unset( $shortcode_query->query[ 'post_status' ] );
 		$attr .= " data-ic_ajax_query='" . json_encode( $shortcode_query->query ) . "'";
 	}
 	return $attr;
@@ -134,7 +140,7 @@ function ic_ajax_pagenum_link( $link ) {
 	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
 		global $wp_rewrite;
 		parse_str( str_replace( '?', '', strstr( $link, '?' ) ), $params );
-		$pagenum = (int) $params[ 'paged' ];
+		$pagenum = isset( $params[ 'paged' ] ) ? (int) $params[ 'paged' ] : 0;
 
 		$request = remove_query_arg( array( 'paged' ) );
 

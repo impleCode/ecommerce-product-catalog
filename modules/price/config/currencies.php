@@ -43,13 +43,3 @@ function available_currencies() {
 	);
 	return $currencies;
 }
-
-define( 'DEF_CURRENCY_SETTINGS', serialize( array(
-	'custom_symbol'	 => '$',
-	'price_format'	 => 'before',
-	'price_space'	 => 'off',
-	'price_enable'	 => 'on',
-) ) );
-
-define( 'DEF_CURRENCY', 'USD' );
-

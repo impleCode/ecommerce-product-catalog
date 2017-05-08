@@ -33,8 +33,10 @@ function ic_system_status() {
 				global $wpdb;
 				$wpdb->query( "DELETE FROM {$wpdb->posts} WHERE post_type IN ( 'al_product' );" );
 				$wpdb->query( "DELETE meta FROM {$wpdb->postmeta} meta LEFT JOIN {$wpdb->posts} posts ON posts.ID = meta.post_id WHERE posts.ID IS NULL;" );
-				ic_delete_all_attribute_terms();
-				implecode_success( __( 'Catalog Settings successfully reset to default!', 'ecommerce-product-catalog' ) );
+				if ( function_exists( 'ic_delete_all_attribute_terms' ) ) {
+					ic_delete_all_attribute_terms();
+				}
+				implecode_success( __( 'All Catalog Products successfully deleted!', 'ecommerce-product-catalog' ) );
 			} else {
 				echo '<h3>' . __( 'All items will be permanently deleted. Would you like to proceed?', 'ecommerce-product-catalog' ) . '</h3>';
 				echo '<a class="button" href="' . esc_url( add_query_arg( 'delete_all_products_confirm', 1 ) ) . '">' . __( 'Yes', 'ecommerce-product-catalog' ) . '</a> <a class="button" href="' . esc_url( remove_query_arg( 'delete_all_products' ) ) . '">' . __( 'No', 'ecommerce-product-catalog' ) . '</a>';

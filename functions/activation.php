@@ -32,7 +32,7 @@ function epc_activation_function() {
  *
  */
 function save_default_multiple_settings() {
-	$archive_multiple_settings						 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
+	$archive_multiple_settings						 = get_option( 'archive_multiple_settings', get_default_multiple_settings() );
 	$archive_multiple_settings[ 'catalog_plural' ]	 = isset( $archive_multiple_settings[ 'catalog_plural' ] ) ? $archive_multiple_settings[ 'catalog_plural' ] : DEF_CATALOG_PLURAL;
 	$archive_multiple_settings[ 'catalog_singular' ] = isset( $archive_multiple_settings[ 'catalog_singular' ] ) ? $archive_multiple_settings[ 'catalog_singular' ] : DEF_CATALOG_SINGULAR;
 	update_option( 'archive_multiple_settings', $archive_multiple_settings );
@@ -64,6 +64,7 @@ function create_products_page() {
 function create_sample_product() {
 	$sample_id = sample_product_id();
 	if ( current_user_can( 'publish_products' ) && ((!is_advanced_mode_forced() && empty( $sample_id )) || isset( $_GET[ 'create_sample_product_page' ] )) ) {
+
 		$product_sample							 = array(
 			'post_title'	 => __( 'Sample Product Page', 'ecommerce-product-catalog' ),
 			'post_type'		 => 'al_product',
@@ -86,22 +87,23 @@ function create_sample_product() {
 		$product_field[ '_shipping-label1' ]	 = 'UPS';
 		$product_field[ '_shipping1' ]			 = 15;
 		//$product_field[ 'excerpt' ]				 = '[theme_integration class="fixed-box"]';
-		$product_field[ 'excerpt' ]				 = '<p>' . __( 'Welcome on product test page. This is short description. It should show up on the left of the product image and below product name. You shouldn\'t see nothing between product name and short description. No author, time or date. Absolutely nothing. If there is something that you don\'t want to see than you probably need Advanced Integration Mode.', 'ecommerce-product-catalog' ) . '</p>';
-		$product_field[ 'excerpt' ] .= '<p><strong>' . __( 'Please read this page carefully to fully understand the difference between simple and advanced mode and how the product page looks like.', 'ecommerce-product-catalog' ) . '</strong></p>';
+		$product_field[ 'excerpt' ]				 = '<p>' . __( 'Welcome on product test page. This is short description. It should show up on the left (for plain product page template) or right (for Formatted product page template) of the product image and below product name.', 'ecommerce-product-catalog' ) . '</p>';
+		$product_field[ 'excerpt' ]				 = '<p>' . __( 'You can change the product page template in catalog settings.', 'ecommerce-product-catalog' ) . '</p>';
+		$product_field[ 'excerpt' ]				 .= '<p><strong>' . __( 'Please read this page carefully to fully understand all product page elements.', 'ecommerce-product-catalog' ) . '</strong></p>';
 
-		$long_desc					 = '<p>' . __( 'This section is product long description. It should appear under the attributes table. Between the short description and the attributes table you should see the price, SKU and shipping options (all can be disabled). The attributes also can be disabled.', 'ecommerce-product-catalog' ) . '</p>';
-		$long_desc .= '<h2>' . __( 'Advanced Theme Integration Mode', 'ecommerce-product-catalog' ) . '</h2>';
-		$long_desc .= '<p>' . sprintf( __( 'With Advanced Mode you will be able to use %s in %s. The product listing page, category pages, product search and category widget will be enabled in advanced mode. You can enable the Advanced Mode %s free. To see how please see <a target="_blank" href="%s">Theme Integration Guide</a>', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, '100%', '100%', 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=sample-product-page&key=integration-mode-test' ) . '</p>';
-		$long_desc .= '<p>' . __( 'The Advanced Mode works out of the box on all default WordPress themes and all themes with the integration done properly.', 'ecommerce-product-catalog' ) . '</p>';
-		$long_desc .= '<h2>' . __( 'Simple Theme Integration Mode', 'ecommerce-product-catalog' ) . '</h2>';
-		$long_desc .= '<p>' . sprintf( __( 'The simple mode allows to use %s most features. You can build the product listing pages and category pages by using a %s shortcode. Simple mode uses your theme page layout so it can show unwanted elements on product page. If it does please switch to Advanced Mode and see if it works out of the box.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, '[[show_products]]' ) . '</p>';
-		$long_desc .= '<p>' . __( 'Switching to Advanced Mode also gives additional features: automatic product listing, category pages, product search and category widget. Building a product catalog in Advanced Mode will be less time consuming as you don\'t need to use a shortcode for everything.', 'ecommerce-product-catalog' ) . '</p>';
-		$long_desc .= '<h2>' . __( 'How to switch to Advanced Mode?', 'ecommerce-product-catalog' ) . '</h2>';
-		$long_desc .= '<p>' . sprintf( __( 'Click <a href="%s">here</a> to test the Automatic Advanced Mode. If the test goes well you can keep it enabled and enjoy full %s functionality. If the page layout during the test will not be satisfying please see <a target="_blank" href="%s">Theme Integration Guide</a>', 'ecommerce-product-catalog' ), '?test_advanced=1', IC_CATALOG_PLUGIN_NAME, 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=sample-product-page&key=integration-mode-test' ) . '</p>';
-		$long_desc .= '<p>' . __( 'The theme integration guide will show you a step by step process. If you finish it successfully the integration will be done. It is recommended to use theme integration guide even if the page looks good in simple mode or automatic advanced mode because it reassures 100% theme integrity.', 'ecommerce-product-catalog' ) . '</p>';
-		$long_desc .= '<h2>' . __( 'Product Description End', 'ecommerce-product-catalog' ) . '</h2>';
-		$long_desc .= '<p>' . __( 'Below the product description you should see nothing apart of return to products URL and Advanced Mode Test which will not show up on your product pages. When using advanced mode also the related products will show up.', 'ecommerce-product-catalog' ) . '</p>';
-		$long_desc .= '<p>' . sprintf( __( 'Thank you for choosing %s. If you have any questions or comments please use <a target="_blank" href="%s">plugin support forum</a>.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, 'https://wordpress.org/support/plugin/ecommerce-product-catalog' ) . '</p>';
+		$long_desc					 = '<p>' . __( 'This section is product long description. It should appear under the attributes table or in the description tab. Before that you should see the price, SKU and shipping options (all can be disabled). The attributes also can be disabled.', 'ecommerce-product-catalog' ) . '</p>';
+		$long_desc					 .= '<h2>' . __( 'Advanced Theme Integration Mode', 'ecommerce-product-catalog' ) . '</h2>';
+		$long_desc					 .= '<p>' . sprintf( __( 'With Advanced Mode you will be able to use %s in %s. The product listing page, category pages, product search and category widget will be enabled in advanced mode. You can enable the Advanced Mode %s free. To see how please see <a target="_blank" href="%s">Theme Integration Guide</a>', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, '100%', '100%', 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=sample-product-page&key=integration-mode-test' ) . '</p>';
+		$long_desc					 .= '<p>' . __( 'The Advanced Mode works out of the box on all default WordPress themes and all themes with the integration done properly.', 'ecommerce-product-catalog' ) . '</p>';
+		$long_desc					 .= '<h2>' . __( 'Simple Theme Integration Mode', 'ecommerce-product-catalog' ) . '</h2>';
+		$long_desc					 .= '<p>' . sprintf( __( 'The simple mode allows to use %s most features. You can build the product listing pages and category pages by using a %s shortcode. Simple mode uses your theme page layout so it can show unwanted elements on product page. If it does please switch to Advanced Mode and see if it works out of the box.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, '[[show_products]]' ) . '</p>';
+		//$long_desc					 .= '<p>' . __( 'Switching to Advanced Mode also gives additional features: automatic product listing, category pages, product search and category widget. Building a product catalog in Advanced Mode will be less time consuming as you don\'t need to use a shortcode for everything.', 'ecommerce-product-catalog' ) . '</p>';
+		$long_desc					 .= '<h2>' . __( 'How to switch to Advanced Mode?', 'ecommerce-product-catalog' ) . '</h2>';
+		$long_desc					 .= '<p>' . sprintf( __( 'Click <a href="%s">here</a> to test the Automatic Advanced Mode. If the test goes well you can keep it enabled and enjoy full %s functionality. If the page layout during the test will not be satisfying please see <a target="_blank" href="%s">Theme Integration Guide</a>', 'ecommerce-product-catalog' ), '?test_advanced=1', IC_CATALOG_PLUGIN_NAME, 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=sample-product-page&key=integration-mode-test' ) . '</p>';
+		$long_desc					 .= '<p>' . __( 'The theme integration guide will show you a step by step process. If you finish it successfully the integration will be done. It is recommended to use theme integration guide even if the page looks good in simple mode or automatic advanced mode because it reassures 100% theme integrity.', 'ecommerce-product-catalog' ) . '</p>';
+		//$long_desc					 .= '<h2>' . __( 'Product Description End', 'ecommerce-product-catalog' ) . '</h2>';
+		//$long_desc					 .= '<p>' . __( 'Below the product description you should see nothing apart of return to products URL and Advanced Mode Test which will not show up on your product pages. When using advanced mode also the related products will show up.', 'ecommerce-product-catalog' ) . '</p>';
+		//$long_desc					 .= '<p>' . sprintf( __( 'Thank you for choosing %s. If you have any questions or comments please use <a target="_blank" href="%s">plugin support forum</a>.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME, 'https://wordpress.org/support/plugin/ecommerce-product-catalog' ) . '</p>';
 		//$long_desc .= '[theme_integration]';
 		$product_field[ 'content' ]	 = $long_desc;
 		foreach ( $product_field as $key => $value ) {
@@ -127,7 +129,7 @@ function sample_product_url() {
 }
 
 function sample_product_button( $p = null, $text = null ) {
-	$text = isset( $text ) ? $text : __( 'Start Auto Adjustment', 'ecommerce-product-catalog' );
+	$text = isset( $text ) ? $text : __( 'Start Initial Configuration', 'ecommerce-product-catalog' );
 	if ( !isset( $p ) ) {
 		return '<a href="' . sample_product_url() . '" class="button-primary">' . $text . '</a>';
 	} else {

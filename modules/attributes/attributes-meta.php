@@ -75,17 +75,22 @@ function al_product_attributes() {
 		$attributes_label_option_field	 = !empty( $attributes_label_option_field ) ? $attributes_label_option_field : $attributes_label_option[ $i ];
 		$attributes_unit_option_field	 = !empty( $attributes_unit_option_field ) ? $attributes_unit_option_field : $attributes_unit_option[ $i ];
 		$attribute_value_field			 = '';
-		if ( is_array( $attributes_option_field ) ) {
-			$attributes_option_field = '';
-		}
-		$autocomplete = '';
+		/*
+		  if ( is_array( $attributes_option_field ) ) {
+		  $attributes_option_field = '';
+		  }
+		 *
+		 */
+		$autocomplete					 = '';
 		if ( !empty( $attributes_label_option_field ) ) {
 			$available_attribute_values = ic_get_attribute_values( $attributes_label_option_field );
 			if ( $available_attribute_values ) {
 				$autocomplete = 'data-ic-autocomplete="' . esc_attr( json_encode( $available_attribute_values ) ) . '"';
 			}
 		}
-		$attribute_value_field = '<input ' . $autocomplete . ' class="ic_autocomplete attribute-value" type="text" name="_attribute' . $i . '" value="' . esc_html( $attributes_option_field ) . '" />';
+
+		$field_value			 = is_array( $attributes_option_field ) ? $attributes_option_field[ 0 ] : $attributes_option_field;
+		$attribute_value_field	 = '<input ' . $autocomplete . ' class="ic_autocomplete attribute-value" type="text" name="_attribute' . $i . '" value="' . esc_html( $field_value ) . '" />';
 		?>
 		<tr>
 			<td class="attributes-label-column"><input <?php echo $label_autocomplete ?> class="ic_autocomplete attribute-label" type="text" name="_attribute-label<?php echo $i ?>" value="<?php echo esc_html( $attributes_label_option_field ) ?>"/></td>

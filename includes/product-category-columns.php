@@ -127,5 +127,6 @@ function manage_product_category_columns( $depr, $column_name, $term_id ) {
  * @return int
  */
 function get_product_category_image_id( $cat_id ) {
-	return get_option( 'al_product_cat_image_' . $cat_id );
+	$image_id = get_option( 'al_product_cat_image_' . $cat_id );
+	return apply_filters( 'ic_category_image_id', $image_id, $cat_id );
 }

@@ -24,7 +24,6 @@
                 var data = otgs_wp_installer.getQueryParameters(settings.data);
                 if(typeof data.action != 'undefined' && data.action == 'update-plugin'){
                     response = xhr.responseJSON.data;
-                    console.log(typeof response.error);
                     if(typeof response.error != 'undefined'){
                         var default_error = jQuery('#' + response.slug + '-update .update-message').html();
                         jQuery('#' + response.slug + '-update .update-message').html(default_error + ' &raquo;<span class="installer-red-text"> ' + response.error + '</span>');
@@ -33,6 +32,10 @@
                 return false;
             });
 
+        }
+
+        if( typeof pagenow != 'undefined' && pagenow == 'plugin-install' ){
+            jQuery( '.plugin-install-tab-commercial .search-plugins' ).remove();
         }
 
     },
@@ -50,6 +53,12 @@
     },
     
     show_site_key_form: function(){
+
+        if( jQuery(this).hasClass('disabled') ) {
+            alert( jQuery(this).attr('title') );
+            return false;
+        }
+
         otgs_wp_installer.reset_errors();
         
         var form = jQuery(this).parent().find('form.otgsi_site_key_form');
@@ -112,14 +121,23 @@
     },
     
     remove_site_key: function(){
-        
-        if(confirm(jQuery(this).data('confirmation'))){
-            
-            jQuery('<span class="spinner"></span>').css({visibility: 'visible', float: 'none'}).prependTo(jQuery(this).parent());
-            data = {action: 'remove_site_key', repository_id: jQuery(this).data('repository'), nonce: jQuery(this).data('nonce')}
-            jQuery.ajax({url: ajaxurl, type: 'POST', data: data, success: otgs_wp_installer.removed_site_key});
+
+        if( jQuery(this).attr('disabled') == 'disabled' ){
+
+            alert( jQuery(this).attr('title') );
+            return false;
+
+        } else {
+
+            if(confirm(jQuery(this).data('confirmation'))){
+
+                jQuery('<span class="spinner"></span>').css({visibility: 'visible', float: 'none'}).prependTo(jQuery(this).parent());
+                data = {action: 'remove_site_key', repository_id: jQuery(this).data('repository'), nonce: jQuery(this).data('nonce')}
+                jQuery.ajax({url: ajaxurl, type: 'POST', data: data, success: otgs_wp_installer.removed_site_key});
+            }
+
         }
-        
+
         return false;  
     },
 

@@ -1,3 +1,28 @@
+= 1.7.15 =
+* Bug fix: New search, results not visible with WordPress 4.6 when searching from installer page
+* Bug fix: A js error was showing on the admin pages: `pagenow` is undefined
+* Added support for equivalent subscriptions
+
+= 1.7.14 =
+* Refactoring for compliance with Envato market
+
+= 1.7.13 =
+* Added sanitization for some inputs
+* Fixed PHP notice being logged when installing a plugin from the WP plugins directory
+
+= 1.7.12 =
+* Allow to set the site keys in PHP (as constants)
+* Fixed an issue with unregistered sites gets wrong info (or error) when clicking "View version x.y.x details" link
+
+= 1.7.11 =
+* Fixed styling for 'must-register' warnings on the plugins page
+
+= 1.7.10 =
+* Fixed a notice that was appearing when the site key registration failed
+
+= 1.7.9 =
+* Save the client_id value from the site_key_validation API call response and make it available via WP_Installer_API::get_ts_client_id API call
+
 = 1.7.8 =
 * Small fix for hiding the WPML registration notice
 

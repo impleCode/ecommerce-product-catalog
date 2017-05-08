@@ -1,16 +1,16 @@
 <?php
 
 /**
- * Plugin Name: eCommerce Product Catalog by impleCode
+ * Plugin Name: eCommerce Product Catalog for WordPress
  * Plugin URI: https://implecode.com/wordpress/product-catalog/#cam=in-plugin-urls&key=plugin-url
  * Description: WordPress eCommerce easy to use, powerful and beautiful plugin from impleCode. Great choice if you want to sell easy and quick. Or just beautifully present your products on WordPress website. Full WordPress integration does great job not only for Merchants but also for Developers and Theme Constructors.
- * Version: 2.6.6
+ * Version: 2.7.0
  * Author: impleCode
  * Author URI: https://implecode.com/#cam=in-plugin-urls&key=author-url
  * Text Domain: ecommerce-product-catalog
  * Domain Path: /lang/
 
-  Copyright: 2016 impleCode.
+  Copyright: 2017 impleCode.
   License: GNU General Public License v3.0
   License URI: http://www.gnu.org/licenses/gpl-3.0.html */
 if ( !defined( 'ABSPATH' ) ) {
@@ -47,7 +47,7 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 				self::$instance->setup_constants();
 
 				add_action( 'plugins_loaded', array( self::$instance, 'load_textdomain' ) );
-				add_action( 'plugins_loaded', array( self::$instance, 'implecode_addons' ) );
+				add_action( 'plugins_loaded', array( self::$instance, 'implecode_addons' ), 30 );
 				add_action( 'admin_enqueue_scripts', array( self::$instance, 'implecode_run_admin_styles' ) );
 				add_action( 'init', array( self::$instance, 'implecode_register_styles' ) );
 				add_action( 'admin_init', array( self::$instance, 'implecode_register_admin_styles' ) );
@@ -57,6 +57,7 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 
 				//register_activation_hook( __FILE__, 'add_product_caps' );
 				//register_activation_hook( __FILE__, 'epc_activation_function' );
+				do_action( 'ic_epc_loaded' );
 			}
 			return self::$instance;
 		}
@@ -120,7 +121,6 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 			require_once(AL_BASE_PATH . '/includes/index.php' );
 			require_once(AL_BASE_PATH . '/includes/product.php' );
 			require_once(AL_BASE_PATH . '/includes/product-settings.php' );
-			require_once(AL_BASE_PATH . '/includes/settings-defaults.php' );
 			require_once(AL_BASE_PATH . '/functions/base.php' );
 			require_once(AL_BASE_PATH . '/functions/capabilities.php' );
 			require_once(AL_BASE_PATH . '/functions/functions.php' );
@@ -141,6 +141,7 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 			wp_register_style( 'al_product_styles', plugins_url() . '/' . dirname( plugin_basename( __FILE__ ) ) . '/css/al_product.css?' . filemtime( plugin_dir_path( __FILE__ ) . '/css/al_product.css' ), array( 'dashicons' ) );
 			do_action( 'register_catalog_styles' );
 			wp_register_script( 'ic-integration', AL_PLUGIN_BASE_PATH . 'js/integration-script.js?' . filemtime( AL_BASE_PATH . '/js/integration-script.js' ), array( 'al_product_scripts' ) );
+			wp_register_style( 'al_product_admin_styles', plugins_url() . '/' . dirname( plugin_basename( __FILE__ ) ) . '/css/al_product-admin.css?' . filemtime( plugin_dir_path( __FILE__ ) . '/css/al_product-admin.css' ), array( 'wp-color-picker' ) );
 		}
 
 		/**
@@ -178,6 +179,7 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 			wp_localize_script( 'al_product_scripts', 'product_object', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ), 'lightbox_settings' => $colorbox_set ) );
 			wp_enqueue_script( 'al_product_scripts' );
 			if ( is_ic_integration_wizard_page() ) {
+				wp_enqueue_style( 'al_product_admin_styles' );
 				wp_enqueue_script( 'ic-integration' );
 			}
 			do_action( 'enqueue_catalog_scripts' );
@@ -203,8 +205,9 @@ if ( !class_exists( 'eCommerce_Product_Catalog' ) ) {
 
 } // End if class_exists check
 
-add_action( 'plugins_loaded', 'impleCode_EPC', -2 );
 if ( !function_exists( 'impleCode_EPC' ) ) {
+
+	add_action( 'plugins_loaded', 'impleCode_EPC', -2 );
 
 	/**
 	 * The main function responsible for returning eCommerce_Product_Catalog
@@ -218,9 +221,10 @@ if ( !function_exists( 'impleCode_EPC' ) ) {
 
 }
 
-register_activation_hook( __FILE__, 'IC_EPC_install' );
 
 if ( !function_exists( 'IC_EPC_install' ) ) {
+
+	register_activation_hook( __FILE__, 'IC_EPC_install' );
 
 	function IC_EPC_install() {
 		eCommerce_Product_Catalog::instance();

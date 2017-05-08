@@ -12,9 +12,12 @@ if ( !defined( 'ABSPATH' ) ) {
  * @package        ecommerce-product-catalog/includes
  * @author        Norbert Dreszer
  */
-add_action( 'plugins_loaded', 'initialize_affiliate_scripts', 20 );
+add_action( 'ic_epc_loaded', 'initialize_affiliate_scripts', 20 );
 
 function initialize_affiliate_scripts() {
+	if ( is_admin() ) {
+		include(AL_BASE_PATH . '/partners/wpml/loader.php');
+	}
 	if ( is_admin() && isset( $_GET[ 'page' ] ) && $_GET[ 'page' ] == 'extensions.php' ) {
 		if ( !defined( 'ICL_AFFILIATE_ID' ) ) {
 			define( 'ICL_AFFILIATE_ID', '89119' );
@@ -22,8 +25,12 @@ function initialize_affiliate_scripts() {
 		if ( !defined( 'ICL_AFFILIATE_KEY' ) ) {
 			define( 'ICL_AFFILIATE_KEY', 'x7MQob0JrgTA' );
 		}
-		include(AL_BASE_PATH . '/partners/wpml/loader.php');
-		global $wp_installer_instances;
+
+		//global $wp_installer_instances;
+		//print_r( $wp_installer_instances );
+
+		$wp_installer_instance = AL_BASE_PATH . '\partners\wpml/installer.php';
+		//print_r( $wp_installer_instances[ $wp_installer_instance ] );
 		WP_Installer_Setup( $wp_installer_instance, array(
 			'plugins_install_tab'	 => 0, // optional, default value: 0
 			'affiliate_id:wpml'		 => '89119', // optional, default value: empty
@@ -492,9 +499,9 @@ function extension_box( $name, $url, $desc, $comp = 'simple', $slug, $all_ic_plu
 		if ( $comp_class == 'wrong' ) {
 			$return .= '<p><a href="https://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '" class="button-primary">See the Extension</a><span class="comp ' . $comp_class . '">' . $comp_txt . '</span></p>';
 		} else {
-			$return .= '<form class="license_form" action=""><input type="hidden" name="implecode_install" value="1"><input type="hidden" name="url" value="' . $url . '"><input type="hidden" name="slug" value="' . $slug . '"><input type="hidden" name="post_type" value="al_product"><input type="hidden" name="page" value="extensions.php"><input type="text" name="license_key" ' . $disabled . ' class="wide" placeholder="License Key..." value="' . $current_key . '">';
-			$return .= wp_nonce_field( 'install-implecode-plugin_' . $slug, '_wpnonce', 0, 0 );
-			$return .= '<p class="submit"><input type="submit" ' . $disabled . ' value="Install" class="button-primary"><span class="comp ' . $comp_class . '">' . $comp_txt . '</span> <a href="https://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '" class="button-secondary right">Get your key</a></form></p>';
+			$return	 .= '<form class="license_form" action=""><input type="hidden" name="implecode_install" value="1"><input type="hidden" name="url" value="' . $url . '"><input type="hidden" name="slug" value="' . $slug . '"><input type="hidden" name="post_type" value="al_product"><input type="hidden" name="page" value="extensions.php"><input type="text" name="license_key" ' . $disabled . ' class="wide" placeholder="License Key..." value="' . $current_key . '">';
+			$return	 .= wp_nonce_field( 'install-implecode-plugin_' . $slug, '_wpnonce', 0, 0 );
+			$return	 .= '<p class="submit"><input type="submit" ' . $disabled . ' value="Install" class="button-primary"><span class="comp ' . $comp_class . '">' . $comp_txt . '</span> <a href="https://implecode.com/wordpress/plugins/' . $url . '/#cam=extensions&key=' . $url . '" class="button-secondary right">Get your key</a></form></p>';
 		}
 	}
 	$return .= '</div>';
@@ -542,9 +549,9 @@ function free_extension_box( $name, $url, $desc, $comp = 'simple', $slug, $all_i
 		if ( $comp_class == 'wrong' ) {
 			$return .= '<p><a href="https://wordpress.org/plugins/' . $url . '" class="button-primary">See the Extension</a><span class="comp ' . $comp_class . '">' . $comp_txt . '</span></p>';
 		} else {
-			$return .= '<form class="license_form" action=""><input type="hidden" name="free_implecode_install" value="1"><input type="hidden" name="url" value="' . $url . '"><input type="hidden" name="slug" value="' . $slug . '"><input type="hidden" name="post_type" value="al_product"><input type="hidden" name="page" value="extensions.php"><input type="hidden" name="tab" value="product-extensions">';
-			$return .= wp_nonce_field( 'install-implecode-plugin_' . $slug, '_wpnonce', 0, 0 );
-			$return .= '<p class="submit"><input type="submit" ' . $disabled . ' value="Install" class="button-primary"><span class="comp ' . $comp_class . '">' . $comp_txt . '</span></form></p>';
+			$return	 .= '<form class="license_form" action=""><input type="hidden" name="free_implecode_install" value="1"><input type="hidden" name="url" value="' . $url . '"><input type="hidden" name="slug" value="' . $slug . '"><input type="hidden" name="post_type" value="al_product"><input type="hidden" name="page" value="extensions.php"><input type="hidden" name="tab" value="product-extensions">';
+			$return	 .= wp_nonce_field( 'install-implecode-plugin_' . $slug, '_wpnonce', 0, 0 );
+			$return	 .= '<p class="submit"><input type="submit" ' . $disabled . ' value="Install" class="button-primary"><span class="comp ' . $comp_class . '">' . $comp_txt . '</span></form></p>';
 		}
 	}
 	$return .= '</div>';

@@ -6,6 +6,11 @@
 
 
 jQuery( document ).ready( function ( ) {
+    jQuery( "#integration_wizard" ).hover( function () {
+        jQuery( this ).removeClass( "opacity" );
+    }, function () {
+        jQuery( this ).addClass( "opacity" );
+    } );
     jQuery( "input[name=\"container_width\"]" ).change( function ( ) {
         jQuery( "#container" ).css( "width", jQuery( this ).val( ) + "%" );
         jQuery( "#container" ).css( "margin", "0 auto" );
@@ -88,6 +93,7 @@ jQuery( document ).ready( function ( ) {
         }
     } );
     jQuery( ".start_section" ).click( function ( ) {
+        jQuery( ".integration_start" ).removeClass( "integration_start" );
         jQuery( ".initial-description" ).hide();
         jQuery( this ).hide( );
         jQuery( "table.styling-adjustments tbody:first-child" ).show( );
@@ -184,6 +190,17 @@ jQuery( document ).ready( function ( ) {
         jQuery( ".ic_spinner" ).css( "display", "inline-block" );
         jQuery.post( product_object.ajaxurl, data, function ( response ) {
             window.location.href = clicked;
+        } );
+    } );
+
+    jQuery( function () {
+        jQuery( "span.ic_tip" ).tooltip( {
+            position: {
+                my: "left-48 top+37",
+                at: "right+48 bottom-37",
+                collision: "flip"
+            },
+            track: true,
         } );
     } );
 } );

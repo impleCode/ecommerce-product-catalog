@@ -83,15 +83,22 @@ function ic_assign_product_attributes( $product_meta, $post, $clear_empty = true
 				continue;
 			}
 			if ( !empty( $product_meta[ '_attribute-label' . $i ] ) ) {
-				$label = is_array( $product_meta[ '_attribute-label' . $i ] ) ? ic_sanitize_product_attribute( $product_meta[ '_attribute-label' . $i ][ 0 ] ) : ic_sanitize_product_attribute( $product_meta[ '_attribute-label' . $i ] );
+				//$label = is_array( $product_meta[ '_attribute-label' . $i ] ) ? ic_sanitize_product_attribute( $product_meta[ '_attribute-label' . $i ][ 0 ] ) : ic_sanitize_product_attribute( $product_meta[ '_attribute-label' . $i ] );
+				$label = ic_sanitize_product_attribute( $product_meta[ '_attribute-label' . $i ] );
 				if ( !empty( $label ) ) {
-					$value = is_array( $product_meta[ '_attribute' . $i ] ) ? ic_sanitize_product_attribute( $product_meta[ '_attribute' . $i ][ 0 ] ) : ic_sanitize_product_attribute( $product_meta[ '_attribute' . $i ] );
+					//$value = is_array( $product_meta[ '_attribute' . $i ] ) ? ic_sanitize_product_attribute( $product_meta[ '_attribute' . $i ][ 0 ] ) : ic_sanitize_product_attribute( $product_meta[ '_attribute' . $i ] );
+					$value = ic_sanitize_product_attribute( $product_meta[ '_attribute' . $i ] );
 					if ( !empty( $value ) ) {
 						$label_id = ic_add_product_attribute_label( $label );
 						if ( !empty( $label_id ) ) {
-							$attr_ids[]	 = $label_id;
-							$value_id	 = ic_add_product_attribute_value( $label_id, $value );
-							$attr_ids[]	 = $value_id;
+							$attr_ids[] = $label_id;
+							if ( !is_array( $value ) ) {
+								$value = array( $value );
+							}
+							foreach ( $value as $val ) {
+								$value_id	 = ic_add_product_attribute_value( $label_id, $val );
+								$attr_ids[]	 = $value_id;
+							}
 						}
 					}
 				}
@@ -291,6 +298,10 @@ function ic_get_attribute_values( $label, $format = 'names' ) {
  * @return type
  */
 function ic_sanitize_product_attribute( $attribute ) {
+	if ( is_array( $attribute ) ) {
+		$sanitized_attribute = array_filter( $attribute, 'ic_sanitize_product_attribute' );
+		return $sanitized_attribute;
+	}
 	$sanitized_attribute = trim( wp_unslash( sanitize_term_field( 'name', $attribute, 0, 'al_product-attributes', 'db' ) ) );
 	if ( strlen( $sanitized_attribute ) > 200 ) {
 		return '';
@@ -313,12 +324,16 @@ function ic_delete_all_attribute_terms() {
 	}
 }
 
-/**
- * Returns all attrubutes labels
- *
- * @return type
- */
-function get_all_attribute_labels() {
-	$attributes_labels = get_terms( 'al_product-attributes', array( 'parent' => 0, 'fields' => 'names', 'hide_empty' => true ) );
-	return $attributes_labels;
+if ( !function_exists( 'get_all_attribute_labels' ) ) {
+
+	/**
+	 * Returns all attrubutes labels
+	 *
+	 * @return type
+	 */
+	function get_all_attribute_labels() {
+		$attributes_labels = get_terms( 'al_product-attributes', array( 'parent' => 0, 'fields' => 'names', 'hide_empty' => true ) );
+		return $attributes_labels;
+	}
+
 }

@@ -20,5 +20,6 @@ require_once(AL_BASE_PATH . '/includes/system.php');
 require_once(AL_BASE_PATH . '/includes/extensions.php');
 require_once(AL_BASE_PATH . '/includes/product-filters.php');
 require_once(AL_BASE_PATH . '/includes/product-ajax.php');
+require_once(AL_BASE_PATH . '/includes/customizer.php');
 
 

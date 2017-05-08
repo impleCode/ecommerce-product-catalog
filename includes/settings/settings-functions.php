@@ -22,37 +22,44 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 	 * @param array $elements
 	 * @param int $echo
 	 * @param string $tip
+	 * @param string $line
+	 * @param string $class
 	 * @return string
 	 */
 	function implecode_settings_radio( $option_label, $option_name, $option_value, $elements = array(), $echo = 1,
-									$tip = '', $line = '<br>' ) {
+									$tip = '', $line = '<br>', $class = "number_box" ) {
 		if ( !empty( $tip ) && !is_array( $tip ) ) {
 			$tip = 'title="' . $tip . '"';
 		}
-		$return = '<tr>';
-		$return .= '<td>' . $option_label . ':</td>';
-		$return .= '<td class="ic_radio_td">';
-		foreach ( $elements as $key => $element ) {
-			$show_tip = is_array( $tip ) ? 'title="' . $tip[ $key ] . '" ' : $tip;
-			$return .= '<input type="radio" ' . $show_tip . 'class="number_box" id="' . $option_name . '_' . $key . '" name="' . $option_name . '" value="' . $key . '"' . checked( $key, $option_value, 0 ) . '/>' . '<label for="' . $option_name . '_' . $key . '">' . $element . '</label>' . $line;
+		$return	 = '<tr>';
+		$return	 .= '<td>';
+		if ( !empty( $tip ) ) {
+			$return .= '<span ' . $tip . ' class="dashicons dashicons-editor-help ic_tip"></span>';
 		}
-		$return .= '</td>';
-		$return .= '</tr>';
+		$return	 .= $option_label . ':</td>';
+		$return	 .= '<td class="ic_radio_td">';
+		foreach ( $elements as $key => $element ) {
+			//$show_tip	 = is_array( $tip ) ? 'title="' . $tip[ $key ] . '" ' : $tip;
+			$return .= '<input type="radio" class="' . $class . '" id="' . $option_name . '_' . $key . '" name="' . $option_name . '" value="' . $key . '"' . checked( $key, $option_value, 0 ) . '/>' . '<label for="' . $option_name . '_' . $key . '">' . $element . '</label>' . $line;
+		}
+		$return	 .= '</td>';
+		$return	 .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
 	}
 
-	function implecode_settings_dropdown( $option_label, $option_name, $option_value, $elements = array(), $echo = 1 ) {
-		$return = '<tr>';
-		$return .= '<td>' . $option_label . ':</td>';
-		$return .= '<td>';
-		$return .= '<select name="' . $option_name . '">';
+	function implecode_settings_dropdown( $option_label, $option_name, $option_value, $elements = array(), $echo = 1,
+									   $attr = null ) {
+		$return	 = '<tr>';
+		$return	 .= '<td>' . $option_label . ':</td>';
+		$return	 .= '<td>';
+		$return	 .= '<select name="' . $option_name . '" ' . $attr . '>';
 		foreach ( $elements as $key => $element ) {
 			$return .= '<option value="' . $key . '" ' . selected( $key, $option_value, 0 ) . '>' . $element . '</option>';
 		}
-		$return .= '</select>';
-		$return .= '</td>';
-		$return .= '</tr>';
+		$return	 .= '</select>';
+		$return	 .= '</td>';
+		$return	 .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
 	}
@@ -67,14 +74,22 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 	 * @param string $tip
 	 * @return string
 	 */
-	function implecode_settings_checkbox( $option_label, $option_name, $option_enabled, $echo = 1, $tip = '', $value = 1 ) {
+	function implecode_settings_checkbox( $option_label, $option_name, $option_enabled, $echo = 1, $tip = '', $value = 1,
+									   $class = '' ) {
 		if ( !empty( $tip ) && !is_array( $tip ) ) {
 			$tip = 'title="' . $tip . '" ';
 		}
-		$return = '<tr>';
-		$return .= '<td>' . $option_label . ':</td>';
-		$return .= '<td><input ' . $tip . 'type="checkbox" name="' . $option_name . '" value="' . $value . '" ' . checked( 1, $option_enabled, 0 ) . '/></td>';
-		$return .= '</tr>';
+		$return	 = '<tr>';
+		$return	 .= '<td>';
+		if ( !empty( $tip ) ) {
+			$return .= '<span ' . $tip . ' class="dashicons dashicons-editor-help ic_tip"></span>';
+		}
+		$return .= $option_label . ':</td>';
+		if ( !empty( $class ) ) {
+			$class = 'class="' . $class . '" ';
+		}
+		$return	 .= '<td><input type="checkbox" ' . $class . 'name="' . $option_name . '" value="' . $value . '" ' . checked( 1, $option_enabled, 0 ) . '/></td>';
+		$return	 .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
 	}
@@ -104,13 +119,18 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 			$regired_field	 = '';
 			$star			 = '';
 		}
-		$tip	 = !empty( $tip ) ? 'title="' . $tip . '" ' : '';
-		$return	 = '<tr>';
+		$tip = !empty( $tip ) ? 'title="' . $tip . '" ' : '';
+
+		$return = '<tr>';
 		if ( $option_label != '' ) {
-			$return .= '<td>' . $option_label . $star . ':</td>';
+			$return .= '<td>';
+			if ( !empty( $tip ) ) {
+				$return .= '<span ' . $tip . ' class="dashicons dashicons-editor-help ic_tip"></span>';
+			}
+			$return .= $option_label . $star . ':</td>';
 		}
-		$return .= '<td><input ' . $attributes . ' ' . $regired_field . ' ' . $disabled . 'class="' . $class . '" ' . $tip . 'type="text" name="' . $option_name . '" value="' . esc_html( $option_value ) . '" /></td>';
-		$return .= '</tr>';
+		$return	 .= '<td><input ' . $attributes . ' ' . $regired_field . ' ' . $disabled . 'class="' . $class . '" type="text" name="' . $option_name . '" value="' . esc_html( $option_value ) . '" /></td>';
+		$return	 .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
 	}
@@ -132,21 +152,28 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 	function implecode_settings_number( $option_label, $option_name, $option_value, $unit, $echo = 1, $step = 1,
 									 $tip = null, $min = null, $max = null ) {
 		$return	 = '<tr>';
-		$return .= '<td>' . $option_label . ':</td>';
+		$return	 .= '<td>';
+		$class	 = 'number_box';
 		$tip	 = !empty( $tip ) ? 'title="' . $tip . '" ' : '';
+		if ( !empty( $tip ) ) {
+			$return .= '<span ' . $tip . ' class="dashicons dashicons-editor-help ic_tip"></span>';
+		}
+		$return	 .= $option_label . ':</td>';
 		$min	 = isset( $min ) ? 'min="' . intval( $min ) . '" ' : '';
 		$max	 = isset( $max ) ? 'max="' . intval( $max ) . '" ' : '';
-		$return .= '<td><input type="number" step="' . $step . '" ' . $min . ' ' . $max . ' ' . $tip . ' class="number_box" name="' . $option_name . '" value="' . floatval( $option_value ) . '" />' . $unit . '</td>';
-		$return .= '</tr>';
+
+		$return	 .= '<td>';
+		$return	 .= '<input type="number" step="' . $step . '" ' . $min . ' ' . $max . ' class="' . $class . '" name="' . $option_name . '" value="' . floatval( $option_value ) . '" />' . $unit . '</td>';
+		$return	 .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
 	}
 
 	function implecode_settings_textarea( $option_label, $option_name, $option_value, $echo = 1, $attr = null ) {
-		$return = '<tr>';
-		$return .= '<td>' . $option_label . ':</td>';
-		$return .= '<td><textarea name="' . $option_name . '" ' . $attr . '>' . esc_textarea( $option_value ) . '</textarea></td>';
-		$return .= '</tr>';
+		$return	 = '<tr>';
+		$return	 .= '<td>' . $option_label . ':</td>';
+		$return	 .= '<td><textarea name="' . $option_name . '" ' . $attr . '>' . esc_textarea( $option_value ) . '</textarea></td>';
+		$return	 .= '</tr>';
 
 		return echo_ic_setting( $return, $echo );
 	}
@@ -173,19 +200,19 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 			$class = 'empty';
 		}
 		$content .= '<div class="implecode-admin-media-image ' . $class . '">';
-		$style = '';
+		$style	 = '';
 		if ( $option_value == null ) {
 			$style = 'style="display: none"';
 		}
 		$content .= '<span ' . $style . ' option_name="' . $option_name . '" class="catalog-reset-image-button">X</span>';
-		$style = '';
+		$style	 = '';
 		if ( empty( $image_src ) ) {
 			$style = ' style="display: none"';
 		}
 		$content .= '<img' . $style . ' class="media-image" name="' . $option_name . '_image" src="' . $image_src . '" />';
 		$content .= '</div>';
 //}
-		$style = '';
+		$style	 = '';
 		if ( $option_value != null ) {
 			$style = 'style="display: none"';
 		}
@@ -218,8 +245,15 @@ if ( !function_exists( 'echo_ic_setting' ) ) {
 		return echo_ic_setting( $return, $echo );
 	}
 
-	function implecode_success( $text, $echo = 1 ) {
-		return echo_ic_setting( '<div class="al-box success">' . $text . '</div>', $echo );
+	function implecode_success( $text, $echo = 1, $p = 1 ) {
+		$return = '<div class="al-box success">';
+		if ( $p == 1 ) {
+			$return .= '<p>' . $text . '</p>';
+		} else {
+			$return .= $text;
+		}
+		$return .= '</div>';
+		return echo_ic_setting( $return, $echo );
 	}
 
 	function implecode_plus( $text, $echo = 1 ) {
@@ -239,11 +273,11 @@ if ( !function_exists( 'implecode_settings_text_color' ) ) {
 			$regired_field	 = '';
 			$star			 = '';
 		}
-		$return = '<tr>';
-		$return .= '<td>' . $option_label . $star . ':</td>';
-		$return .= '<td><input ' . $regired_field . ' class="color-picker ' . $class . '" type="text" name="' . $option_name . '" value="' . $option_value . '" /></td>';
-		$return .= '<script>jQuery(document).ready(function() {jQuery("input[name=\'' . $option_name . '\']").wpColorPicker(' . $change . ');});</script>';
-		$return .= '</tr>';
+		$return	 = '<tr>';
+		$return	 .= '<td>' . $option_label . $star . ':</td>';
+		$return	 .= '<td><input ' . $regired_field . ' class="color-picker ' . $class . '" type="text" name="' . $option_name . '" value="' . $option_value . '" /></td>';
+		$return	 .= '<script>jQuery(document).ready(function() {jQuery("input[name=\'' . $option_name . '\']").wpColorPicker(' . $change . ');});</script>';
+		$return	 .= '</tr>';
 		return echo_ic_setting( $return, $echo );
 	}
 

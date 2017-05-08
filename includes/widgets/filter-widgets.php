@@ -53,12 +53,11 @@ class product_category_filter extends WP_Widget {
 	function widget( $args, $instance ) {
 		if ( get_integration_type() != 'simple' ) {
 			if ( (!empty( $instance[ 'shortcode_support' ] ) && has_show_products_shortcode()) || (!is_ic_shortcode_query() && (is_ic_taxonomy_page() || is_ic_product_listing() || is_ic_product_search() )) ) {
-				$title = apply_filters( 'widget_title', empty( $instance[ 'title' ] ) ? '' : $instance[ 'title' ], $instance, $this->id_base );
-
-				$taxonomy = get_current_screen_tax();
+				$title		 = apply_filters( 'widget_title', empty( $instance[ 'title' ] ) ? '' : $instance[ 'title' ], $instance, $this->id_base );
+				$taxonomy	 = get_current_screen_tax();
 				if ( is_ic_taxonomy_page() && !is_product_filter_active( 'product_category' ) ) {
 					$categories = get_terms( $taxonomy, array( 'parent' => get_queried_object()->term_id ) );
-				} else if ( !empty( $instance[ 'shortcode_support' ] ) && !is_ic_product_listing() && has_show_products_shortcode() ) {
+				} else if ( !empty( $instance[ 'shortcode_support' ] ) && !is_ic_product_listing() && has_show_products_shortcode() && !is_product_filter_active( 'product_category' ) ) {
 					global $shortcode_query;
 					$parent		 = isset( $shortcode_query->query_vars[ 'term_id' ] ) ? $shortcode_query->query_vars[ 'term_id' ] : 0;
 					$categories	 = get_terms( $taxonomy, array( 'parent' => $parent ) );

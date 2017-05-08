@@ -66,8 +66,8 @@ function archive_custom_design() {
 	if ( $submenu == 'archive-design' ) {
 		?>
 		<script>
-			jQuery( '.settings-submenu a' ).removeClass( 'current' );
-			jQuery( '.settings-submenu a#archive-design' ).addClass( 'current' );
+		    jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		    jQuery( '.settings-submenu a#archive-design' ).addClass( 'current' );
 		</script>
 		<h2><?php _e( 'Design Settings', 'ecommerce-product-catalog' ); ?></h2>
 		<form method="post" action="options.php">
@@ -154,8 +154,8 @@ function single_custom_design() {
 	if ( $submenu == 'single-design' ) {
 		?>
 		<script>
-			jQuery( '.settings-submenu a' ).removeClass( 'current' );
-			jQuery( '.settings-submenu a#single-design' ).addClass( 'current' );
+		    jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		    jQuery( '.settings-submenu a#single-design' ).addClass( 'current' );
 		</script>
 		<form method="post" action="options.php">
 			<?php
@@ -171,7 +171,7 @@ function single_custom_design() {
 }
 
 function ic_product_page_design_settings() {
-	$enable_catalog_lightbox = get_option( 'catalog_lightbox', ENABLE_CATALOG_LIGHTBOX );
+	$enable_catalog_lightbox = get_option( 'catalog_lightbox', 1 );
 	$single_options			 = get_product_page_settings();
 	?>
 	<h2><?php _e( 'Design Settings', 'ecommerce-product-catalog' ); ?></h2>
@@ -180,9 +180,13 @@ function ic_product_page_design_settings() {
 	implecode_upload_image( __( 'Upload Default Image', 'ecommerce-product-catalog' ), 'default_product_thumbnail', get_default_product_image_src() )
 	?>
 	<h3><?php _e( 'Product Gallery', 'ecommerce-product-catalog' ); ?></h3>
-	<input type="checkbox" title="<?php _e( 'The image will be used only on the listing when unchecked.', 'ecommerce-product-catalog' ) ?>" name="multi_single_options[enable_product_gallery]" value="1"<?php checked( 1, $single_options[ 'enable_product_gallery' ] ); ?>><?php _e( 'Enable image', 'ecommerce-product-catalog' ); ?></br>
-	<input type="checkbox" title="<?php _e( 'The image on single page will not be linked when unchecked.', 'ecommerce-product-catalog' ) ?>" name="catalog_lightbox" value="1"<?php checked( 1, $enable_catalog_lightbox ); ?> ><?php _e( 'Enable lightbox on image on single page', 'ecommerce-product-catalog' ); ?></br>
-	<input type="checkbox" title="<?php _e( 'The default image will be used on the listing only when unchecked.', 'ecommerce-product-catalog' ) ?>" name="multi_single_options[enable_product_gallery_only_when_exist]" value="1"<?php checked( 1, $single_options[ 'enable_product_gallery_only_when_exist' ] ); ?> /><?php _e( 'Enable image only when inserted', 'ecommerce-product-catalog' ); ?>
+	<table>
+		<?php
+		implecode_settings_checkbox( __( 'Enable image', 'ecommerce-product-catalog' ), 'multi_single_options[enable_product_gallery]', $single_options[ 'enable_product_gallery' ], 1, __( 'The image will be used only on the listing when unchecked.', 'ecommerce-product-catalog' ) );
+		implecode_settings_checkbox( __( 'Enable lightbox gallery', 'ecommerce-product-catalog' ), 'catalog_lightbox', $enable_catalog_lightbox, 1, __( 'The image on single page will not be linked when unchecked.', 'ecommerce-product-catalog' ) );
+		implecode_settings_checkbox( __( 'Enable image only when inserted', 'ecommerce-product-catalog' ), 'multi_single_options[enable_product_gallery_only_when_exist]', $single_options[ 'enable_product_gallery_only_when_exist' ], 1, __( 'The default image will be used on the listing only when unchecked.', 'ecommerce-product-catalog' ) );
+		?>
+	</table>
 	<h3><?php _e( 'Single Page Template', 'ecommerce-product-catalog' ) ?></h3>
 	<table>
 		<?php
@@ -199,14 +203,13 @@ function color_schemes() {
 	if ( $submenu == 'design-schemes' ) {
 		?>
 		<script>
-			jQuery( '.settings-submenu a' ).removeClass( 'current' );
-			jQuery( '.settings-submenu a#design-schemes' ).addClass( 'current' );
+		    jQuery( '.settings-submenu a' ).removeClass( 'current' );
+		    jQuery( '.settings-submenu a#design-schemes' ).addClass( 'current' );
 		</script>
 		<form method="post" action="options.php">
 			<?php
 			settings_fields( 'design_schemes' );
-			$custom_single_styles	 = unserialize( DEFAULT_DESIGN_SCHEMES );
-			$design_schemes			 = get_option( 'design_schemes', $custom_single_styles );
+			$design_schemes = ic_get_design_schemes();
 			?>
 			<h2><?php _e( 'Design Settings', 'ecommerce-product-catalog' ); ?></h2>
 			<h3><?php _e( 'Design Schemes', 'ecommerce-product-catalog' ); ?></h3>
@@ -247,6 +250,14 @@ function color_schemes() {
 
 add_action( 'custom-design-settings', 'color_schemes' );
 
+function ic_get_design_schemes() {
+	$design_schemes					 = get_option( 'design_schemes' );
+	$design_schemes[ 'price-color' ] = isset( $design_schemes[ 'price-color' ] ) ? $design_schemes[ 'price-color' ] : 'red-price';
+	$design_schemes[ 'price-size' ]	 = isset( $design_schemes[ 'price-size' ] ) ? $design_schemes[ 'price-size' ] : 'big-price';
+	$design_schemes[ 'box-color' ]	 = isset( $design_schemes[ 'box-color' ] ) ? $design_schemes[ 'box-color' ] : 'green-box';
+	return $design_schemes;
+}
+
 function get_default_product_image_src() {
 	$default_image	 = AL_PLUGIN_BASE_PATH . 'img/no-default-thumbnail.png';
 	$defined_image	 = get_option( 'default_product_thumbnail' );
@@ -260,7 +271,10 @@ function get_modern_grid_settings() {
 }
 
 function get_product_page_settings() {
-	$single_options												 = get_option( 'multi_single_options', unserialize( MULTI_SINGLE_OPTIONS ) );
+	$single_options												 = get_option( 'multi_single_options', array(
+		'enable_product_gallery' => 1,
+		'template'				 => 'boxed'
+	) );
 	$single_options[ 'enable_product_gallery' ]					 = isset( $single_options[ 'enable_product_gallery' ] ) ? $single_options[ 'enable_product_gallery' ] : '';
 	$single_options[ 'enable_product_gallery_only_when_exist' ]	 = isset( $single_options[ 'enable_product_gallery_only_when_exist' ] ) ? $single_options[ 'enable_product_gallery_only_when_exist' ] : '';
 	$single_options[ 'template' ]								 = isset( $single_options[ 'template' ] ) ? $single_options[ 'template' ] : 'boxed';

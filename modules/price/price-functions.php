@@ -151,7 +151,7 @@ function product_price( $product_id, $unfiltered = null ) {
  * @return type
  */
 function product_currency_letters() {
-	return get_option( 'product_currency', DEF_CURRENCY );
+	return get_option( 'product_currency', 'USD' );
 }
 
 /**
@@ -161,7 +161,12 @@ function product_currency_letters() {
  */
 function product_currency() {
 	$product_currency			 = product_currency_letters();
-	$product_currency_settings	 = get_option( 'product_currency_settings', unserialize( DEF_CURRENCY_SETTINGS ) );
+	$product_currency_settings	 = get_option( 'product_currency_settings', array(
+		'custom_symbol'	 => '$',
+		'price_format'	 => 'before',
+		'price_space'	 => 'off',
+		'price_enable'	 => 'on',
+	) );
 	if ( !empty( $product_currency_settings[ 'custom_symbol' ] ) ) {
 		$currency = $product_currency_settings[ 'custom_symbol' ];
 	} else {
@@ -199,9 +204,9 @@ function show_archive_price( $post ) {
 function set_archive_price( $archive_price, $post ) {
 	$price_value = product_price( $post->ID );
 	if ( !empty( $price_value ) ) {
-		$archive_price = '<span class="product-price ' . design_schemes( 'color', 0 ) . '">';
-		$archive_price .= price_format( $price_value );
-		$archive_price .= '</span>';
+		$archive_price	 = '<span class="product-price ' . design_schemes( 'color', 0 ) . '">';
+		$archive_price	 .= price_format( $price_value );
+		$archive_price	 .= '</span>';
 	}
 	return $archive_price;
 }

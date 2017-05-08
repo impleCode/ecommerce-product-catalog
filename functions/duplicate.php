@@ -73,7 +73,7 @@ add_filter( 'post_row_actions', 'ic_product_duplicator_action_row', 99, 2 );
  * @return string
  */
 function ic_product_duplicator_action_row( $actions, $post ) {
-	if ( $post->post_type == 'al_product' && current_user_can( 'publish_products' ) && !isset( $actions[ 'clone' ] ) && !isset( $actions[ 'duplicate_post' ] ) ) {
+	if ( ic_string_contains( $post->post_type, 'al_product' ) && current_user_can( 'publish_products' ) && !isset( $actions[ 'clone' ] ) && !isset( $actions[ 'duplicate_post' ] ) ) {
 		$label	 = __( 'Duplicate', 'ecommerce-product-catalog' );
 		$url	 = wp_nonce_url( admin_url( 'edit.php?post_type=al_product&ic-duplicate=' . $post->ID ), 'ic_duplicate_product', 'ic_duplicate_product_nonce' );
 

@@ -77,11 +77,11 @@ function shipping_settings_content() {
 						<table class="wp-list-table widefat product-settings-table dragable">
 							<thead><tr><th></th><th class="title"><b><?php _e( 'Shipping default name', 'ecommerce-product-catalog' ); ?></b></th><th></th><th class="title"><b><?php _e( 'Shipping default cost', 'ecommerce-product-catalog' ); ?></b></th><th class="dragger"></th></tr></thead><tbody>
 								<?php
-								$shipping_cost	 = get_option( 'product_shipping_cost', DEF_VALUE );
-								$shipping_label	 = get_option( 'product_shipping_label' );
+								$shipping_cost	 = get_option( 'product_shipping_cost', array() );
+								$shipping_label	 = get_option( 'product_shipping_label', array() );
 								for ( $i = 1; $i <= $shipping_count; $i++ ) {
 									$shipping_label[ $i ]	 = isset( $shipping_label[ $i ] ) ? $shipping_label[ $i ] : '';
-									$shipping_cost[ $i ]	 = isset( $shipping_cost[ $i ] ) ? $shipping_cost[ $i ] : '';
+									$shipping_cost[ $i ]	 = isset( $shipping_cost[ $i ] ) ? $shipping_cost[ $i ] : 0;
 									// Echo out the field
 									echo '<tr><td class="lp-column">' . $i . '.</td><td class="product-shipping-label-column"><input class="product-shipping-label" type="text" name="product_shipping_label[' . $i . ']" value="' . esc_html( $shipping_label[ $i ] ) . '" /></td><td class="lp-column">:</td><td><input id="admin-number-field" class="product-shipping-cost" type="number" min="0" name="product_shipping_cost[' . $i . ']" value="' . floatval( $shipping_cost[ $i ] ) . '" /> ' . product_currency() . '</td><td class="dragger"></td></tr>';
 								}

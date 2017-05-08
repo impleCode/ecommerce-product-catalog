@@ -62,6 +62,8 @@ function initialize_product_adder_template() {
 		add_filter( 'template_include', 'al_product_enable_generic_content' );
 	} else if ( get_integration_type() == 'simple' && file_exists( get_page_php_path() ) ) {
 		add_filter( 'template_include', 'al_product_adder_page_template' );
+	} else if ( is_integraton_file_active( true ) && ic_is_woo_template_available() ) {
+		add_filter( 'template_include', 'al_product_auto_adder_template' );
 	} else if ( ic_is_woo_template_available() ) {
 		add_filter( 'template_include', 'al_product_woo_adder_template' );
 	} else {
@@ -86,6 +88,13 @@ function ic_setup_postdata() {
 function al_product_adder_template( $template ) {
 	if ( is_ic_catalog_page() ) {
 		return get_product_adder_path();
+	}
+	return $template;
+}
+
+function al_product_auto_adder_template( $template ) {
+	if ( is_ic_catalog_page() ) {
+		return get_product_adder_path( true );
 	}
 	return $template;
 }
@@ -226,7 +235,7 @@ function theme_integration_wizard( $atts ) {
 			'class' => 'fixed-box',
 		), $atts );
 		$class		 = esc_attr( $args[ 'class' ] );
-		$box_content = '<h4>' . __( 'Advanced Mode Test', 'ecommerce-product-catalog' ) . '</h4>';
+		$box_content = '<h4>' . __( 'Catalog Configuration', 'ecommerce-product-catalog' ) . '</h4>';
 		/* $box_content .= '<script>jQuery(window).scroll( function() { if (isScrolledIntoView(".relative-box")) {jQuery(".fixed-box").hide("slow");}
 		  else {jQuery(".fixed-box").show("slow");}});
 		  function isScrolledIntoView(elem)
@@ -255,11 +264,11 @@ function theme_integration_wizard( $atts ) {
 			$box_content			 .= '<table class="styling-adjustments">';
 			$integration_settings	 = get_integration_settings();
 			$box_content			 .= '<tbody class="section_1 integration-section" style="display: none">';
-			$box_content			 .= '<tr><td colspan="2"><p style="margin-bottom: 5px">' . sprintf( __( 'Use %1$swidth%2$s to change the product page horizontal size, %1$spadding%2$s to generate space around the content and %1$sbackground%2$s to match your theme color', 'ecommerce-product-catalog' ), '<strong>', '</strong>' ) . ':</p></td></tr>';
-			$box_content			 .= implecode_settings_number( __( 'Width', 'ecommerce-product-catalog' ), 'container_width', $integration_settings[ 'container_width' ], '%', 0, null, null, 0 );
+			$box_content			 .= '<tr><td colspan="2"><p style="margin-bottom: 5px">' . sprintf( __( '%1$sDecrease width%2$s to change the product page horizontal size, %1$sincrease padding%2$s to generate space around the content and %1$sset background & text colors%2$s to match your theme style', 'ecommerce-product-catalog' ), '<strong>', '</strong>' ) . ':</p></td></tr>';
+			$box_content			 .= implecode_settings_number( __( 'Width', 'ecommerce-product-catalog' ), 'container_width', $integration_settings[ 'container_width' ], '%', 0, null, __( 'In most cases you should decrease this number to match your template container size.', 'ecommerce-product-catalog' ), 0 );
 			$box_content			 .= implecode_settings_text_color( __( 'Background', 'ecommerce-product-catalog' ), 'container_bg', $integration_settings[ 'container_bg' ], null, 0, null, '{change: function(event, ui){ var hexcolor = jQuery( this ).wpColorPicker( "color" ); jQuery("#container").css("background", hexcolor); jQuery("#container").css("overflow", "hidden"); jQuery("#container").css("width", jQuery("input[name=\"container_width\"]").val()+"%");}}' );
 			$box_content			 .= implecode_settings_text_color( __( 'Text Color', 'ecommerce-product-catalog' ), 'container_text', $integration_settings[ 'container_text' ], null, 0, null, '{change: function(event, ui){ var hexcolor = jQuery( this ).wpColorPicker( "color" ); jQuery("#container *").css("color", hexcolor); }}' );
-			$box_content			 .= implecode_settings_number( __( 'Padding', 'ecommerce-product-catalog' ), 'container_padding', $integration_settings[ 'container_padding' ], 'px', 0, null, null, 0 );
+			$box_content			 .= implecode_settings_number( __( 'Padding', 'ecommerce-product-catalog' ), 'container_padding', $integration_settings[ 'container_padding' ], 'px', 0, null, __( 'Increase this number to make a space also on the top and bottom of the container. This is useful also if you are planning to enable the sidebar in next step.', 'ecommerce-product-catalog' ), 0 );
 			$box_content			 .= '</tbody>';
 
 			if ( !defined( 'AL_SIDEBAR_BASE_URL' ) ) {
@@ -311,7 +320,7 @@ function theme_integration_wizard( $atts ) {
 			$box_content .= '<p class="wp-core-ui"><span class="ic_spinner"></span><a href="' . esc_url( add_query_arg( 'test_advanced', 'ok' ) ) . '" class="button-primary integration-ok">' . __( 'It\'s Fine', 'ecommerce-product-catalog' ) . '</a><a href="' . esc_url( add_query_arg( 'test_advanced', 'bad' ) ) . '" class="button-secondary">' . __( 'It\'s Broken', 'ecommerce-product-catalog' ) . '</a> <button class="button-secondary show_third switch_section">' . __( 'Go Back', 'ecommerce-product-catalog' ) . '</button></p>';
 			$box_content .= '</div>';
 			$box_content .= '<p class="wp-core-ui" style="margin-top: 20px;"><button class="button-secondary show_prev_section switch_section" style="display: none">' . __( 'Go Back', 'ecommerce-product-catalog' ) . '</button><button class="button-primary show_next_section switch_section" style="display: none">' . __( 'Next', 'ecommerce-product-catalog' ) . '</button></p>';
-			echo '<div id="integration_wizard" class="' . $class . '">' . implecode_info( $box_content, 0 ) . '</div>';
+			echo '<div id="integration_wizard" class="integration_start ' . $class . '">' . implecode_info( $box_content, 0 ) . '</div>';
 		} else if ( isset( $_GET[ 'test_advanced' ] ) && $_GET[ 'test_advanced' ] == 'bad' ) {
 			$box_content .= '<p>' . __( 'It seems that Manual Theme Integration is needed in order to use Advanced Mode with your current theme.', 'ecommerce-product-catalog' ) . '</p>';
 			$box_content .= '<h4>' . __( 'You Have 3 choices', 'ecommerce-product-catalog' ) . ':</h4>';
@@ -326,9 +335,11 @@ function theme_integration_wizard( $atts ) {
 			echo '<div id="integration_wizard" class="' . $class . '">' . implecode_warning( $box_content, 0 ) . '</div>';
 		} else if ( isset( $_GET[ 'test_advanced' ] ) && $_GET[ 'test_advanced' ] == 'ok' ) {
 			$box_content .= '<p>' . sprintf( __( 'Congratulations! %s is working on Advanced Mode now. You can go to admin and add the products to the catalog.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) . '</p>';
-			$box_content .= '<p>' . __( 'If you are a developer or would like to have full control on the product pages templates we still recommend to proceed with manual integration.', 'ecommerce-product-catalog' ) . '</p>';
-			$box_content .= '<p>' . __( 'You can switch between modes at any time in Product Settings.', 'ecommerce-product-catalog' ) . '</p>';
-			$box_content .= '<p class="wp-core-ui"><a href="' . admin_url( 'edit.php?post_type=al_product' ) . '" class="button-primary">' . __( 'Go to Admin', 'ecommerce-product-catalog' ) . '</a><a target="_blank" href="https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=advanced-mode&key=integration-advanced-success" class="button-secondary">' . __( 'Free Theme Integration Guide', 'ecommerce-product-catalog' ) . '</a></p>';
+			$box_content .= '<p>' . sprintf( __( 'If you are a developer or would like to have full control on the product pages templates make sure to see the %stemplates docs%s.', 'ecommerce-product-catalog' ), '<a href="https://implecode.com/docs/ecommerce-product-catalog/product-page-template/">', '</a>' ) . '</p>';
+			//$box_content .= '<p>' . __( 'You can switch between modes at any time in Product Settings.', 'ecommerce-product-catalog' ) . '</p>';
+			$box_content .= '<p class="wp-core-ui"><a href="' . admin_url( 'edit.php?post_type=al_product' ) . '" class="button-primary">' . __( 'Go to Admin', 'ecommerce-product-catalog' ) . '</a>';
+			//$box_content .= '<a target="_blank" href="https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=advanced-mode&key=integration-advanced-success" class="button-secondary">' . __( 'Free Theme Integration Guide', 'ecommerce-product-catalog' ) . '</a>';
+			$box_content .= '</p>';
 			enable_advanced_mode();
 			echo '<div id="integration_wizard" class="' . $class . '">' . implecode_success( $box_content, 0 ) . '</div>';
 		} else if ( isset( $_GET[ 'test_advanced' ] ) && $_GET[ 'test_advanced' ] == 'simple' ) {
@@ -474,7 +485,7 @@ function enable_simple_mode() {
 }
 
 function get_real_integration_mode() {
-	$archive_multiple_settings	 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
+	$archive_multiple_settings	 = get_option( 'archive_multiple_settings', get_default_multiple_settings() );
 	$theme						 = get_option( 'template' );
 	$prev_int					 = (isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] )) ? $archive_multiple_settings[ 'integration_type' ] : 'simple';
 	if ( isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] ) ) {
@@ -486,7 +497,7 @@ function get_real_integration_mode() {
 
 function is_integration_mode_selected() {
 	$return						 = false;
-	$archive_multiple_settings	 = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
+	$archive_multiple_settings	 = get_option( 'archive_multiple_settings', get_default_multiple_settings() );
 	$theme						 = get_option( 'template' );
 	$prev_type					 = (isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] )) ? $archive_multiple_settings[ 'integration_type' ] : '';
 	if ( !isset( $archive_multiple_settings[ 'integration_type' ] ) || (isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] )) ) {
@@ -499,8 +510,8 @@ function is_integration_mode_selected() {
 	return $return;
 }
 
-function is_integraton_file_active() {
-	if ( file_exists( get_product_adder_path() ) ) {
+function is_integraton_file_active( $auto = false ) {
+	if ( file_exists( get_product_adder_path( $auto ) ) ) {
 		return true;
 	} else {
 		return false;
@@ -510,7 +521,7 @@ function is_integraton_file_active() {
 add_action( 'switch_theme', 'erase_integration_type_select' );
 
 function erase_integration_type_select() {
-	$archive_multiple_settings = get_option( 'archive_multiple_settings', unserialize( DEFAULT_ARCHIVE_MULTIPLE_SETTINGS ) );
+	$archive_multiple_settings = get_option( 'archive_multiple_settings', get_default_multiple_settings() );
 	if ( isset( $archive_multiple_settings[ 'integration_type' ] ) && !is_array( $archive_multiple_settings[ 'integration_type' ] ) ) {
 		unset( $archive_multiple_settings[ 'integration_type' ] );
 		unset( $archive_multiple_settings[ 'container_width' ] );
@@ -559,8 +570,12 @@ function is_advanced_mode_forced() {
 	return $return;
 }
 
-function get_product_adder_path() {
-	return get_stylesheet_directory() . '/product-adder.php';
+function get_product_adder_path( $auto = false ) {
+	if ( $auto ) {
+		return get_stylesheet_directory() . '/auto-product-adder.php';
+	} else {
+		return get_stylesheet_directory() . '/product-adder.php';
+	}
 }
 
 function get_custom_templates_folder() {

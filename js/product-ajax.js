@@ -3,10 +3,10 @@
  Manages product related scripts
  (c) 2014 Norbert Dreszer - https://implecode.com
  */
-
+var ic_popstate = false;
 jQuery( document ).ready( function ( ) {
     if ( jQuery( ".product-entry" ).length || jQuery( ".product-list" ).length !== 1 ) {
-        return false;
+        return true;
     }
     var ic_submit_elements = jQuery.ic.applyFilters( "ic_ajax_submit_elements", 'form.ic_ajax, form.product_order, form#product_search_form, form.price-filter-form' );
     jQuery( "body" ).on( 'submit', ic_submit_elements, function ( e ) {
@@ -19,7 +19,8 @@ jQuery( document ).ready( function ( ) {
         var form_data = form.serialize();
         var url_replace = form_clear.serialize();
         if ( url_replace !== '' ) {
-            url_replace = "?" + url_replace;
+            var form_action = form.attr( 'action' );
+            url_replace = form_action + "?" + url_replace;
         }
         ic_ajax_update_product_listing( form_data, url_replace );
     } );
@@ -57,12 +58,14 @@ jQuery( document ).ready( function ( ) {
     }
 } );
 
-function ic_ajax_update_product_listing( form_data, url_replace = false ) {
+function ic_ajax_update_product_listing( form_data, url_replace ) {
+    url_replace = ic_defaultFor( url_replace, false );
     if ( url_replace === false ) {
         url_replace = '?' + form_data;
     }
     if ( url_replace !== 'none' ) {
         window.history.pushState( { form_data: form_data }, document.title, url_replace );
+        ic_popstate = true;
     }
     var query_vars = ic_ajax.query_vars;
     var shortcode = 0;
@@ -70,6 +73,7 @@ function ic_ajax_update_product_listing( form_data, url_replace = false ) {
         query_vars = JSON.stringify( jQuery( ".product-list" ).data( "ic_ajax_query" ) );
         shortcode = 1;
     }
+
     var data = {
         'action': 'ic_self_submit',
         'self_submit_data': form_data,
@@ -104,10 +108,11 @@ function ic_ajax_update_product_listing( form_data, url_replace = false ) {
         response = jQuery.parseJSON( response );
         var listing = jQuery( response['product-listing'] ).not( "form, div.product-sort-bar, .reset-filters" );
         //jQuery( ".product-list" ).replaceWith( listing );
-        jQuery( ".product-list" ).animate( { opacity: 0 }, function () {
+        jQuery( ".product-list" ).animate( { opacity: 0 }, 'fast', function () {
             listing = listing.hide();
             jQuery( ".product-list" ).replaceWith( listing );
-            jQuery( ".product-list" ).fadeIn( "slow" );
+            jQuery( ".product-list" ).fadeIn( "fast" );
+            setTimeout( "modern_grid_font_size()", 0 );
         } );
         if ( jQuery( "#product_archive_nav" ).length ) {
             jQuery( "#product_archive_nav" ).replaceWith( response['product-pagination'] );
@@ -142,7 +147,6 @@ function ic_ajax_update_product_listing( form_data, url_replace = false ) {
         }
     } );
 }
-
 function ic_ajax_back_button_filters() {
     jQuery( window ).unbind( 'popstate', ic_ajax_run_filters );
     jQuery( window ).on( 'popstate', ic_ajax_run_filters );
@@ -156,10 +160,10 @@ function ic_ajax_run_filters( e ) {
             if ( form_data.length ) {
                 ic_ajax_update_product_listing( form_data, 'none' );
             } else {
-                location.reload();
+                window.location.reload();
             }
         }
-    } else {
+    } else if ( ic_popstate ) {
         location.reload();
     }
 }

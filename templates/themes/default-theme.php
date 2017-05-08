@@ -82,15 +82,15 @@ function get_default_archive_theme( $post, $archive_template = null ) {
 			$url	 = default_product_thumbnail_url();
 			$image	 = '<img class="modern-grid-image" src="' . $url . '" alt="' . $product_name . '">';
 		}
-		$return = '<div class="al_archive product-' . $product_id . ' modern-grid-element ' . design_schemes( 'box', 0 ) . ' ' . product_listing_size_class( $thumbnail_product ) . ' ' . product_class( $product_id ) . '">';
-		$return .= '<div class="pseudo"></div>';
-		$return .= '<a href="' . get_permalink( $product_id ) . '">' . $image;
-		$return .= '<h3 class="product-name ' . design_schemes( 'box', 0 ) . '">' . $product_name . '</h3>';
+		$return	 = '<div class="al_archive product-' . $product_id . ' modern-grid-element ' . design_schemes( 'box', 0 ) . ' ' . product_listing_size_class( $thumbnail_product ) . ' ' . product_class( $product_id ) . '">';
+		$return	 .= '<div class="pseudo"></div>';
+		$return	 .= '<a href="' . get_permalink( $product_id ) . '">' . $image;
+		$return	 .= '<h3 class="product-name ' . design_schemes( 'box', 0 ) . '">' . $product_name . '</h3>';
 		if ( $modern_grid_settings[ 'attributes' ] == 1 && function_exists( 'product_attributes_number' ) ) {
 			$attributes_number = product_attributes_number();
 			if ( $attributes_number > 0 && has_product_any_attributes( $product_id ) ) {
 				$max_listing_attributes	 = apply_filters( 'max_product_listing_attributes', $modern_grid_settings[ 'attributes_num' ] );
-				$return .= '<div class="product-attributes"><table class="attributes-table">';
+				$return					 .= '<div class="product-attributes"><table class="attributes-table">';
 				$a						 = 0;
 				for ( $i = 1; $i <= $attributes_number; $i++ ) {
 					$attribute_value = get_attribute_value( $i, $product_id );
@@ -136,12 +136,12 @@ function get_default_category_theme( $product_cat, $archive_template ) {
 		$image	 = '<img class="modern-grid-image" src="' . $url . '" alt="' . $product_cat->name . '">';
 	}
 	//$modern_grid_settings	 = get_modern_grid_settings();
-	$return = '<div class="al_archive category-' . $product_cat->term_id . ' modern-grid-element ' . design_schemes( 'box', 0 ) . ' ' . product_listing_size_class( $thumbnail_product ) . '">';
+	$return	 = '<div class="al_archive category-' . $product_cat->term_id . ' modern-grid-element ' . design_schemes( 'box', 0 ) . ' ' . product_listing_size_class( $thumbnail_product ) . '">';
 	//$return .= '<a class="pseudo-a" href="' . get_term_link($product_cat) . '"></a>';
-	$return .= '<div class="pseudo"></div>';
-	$return .= '<a href="' . get_term_link( $product_cat ) . '">' . $image;
-	$return .= '<h3 class="product-name ' . design_schemes( 'box', 0 ) . '">' . $product_cat->name . '</h3></a>';
-	$return .= '</div>';
+	$return	 .= '<div class="pseudo"></div>';
+	$return	 .= '<a href="' . get_term_link( $product_cat ) . '">' . $image;
+	$return	 .= '<h3 class="product-name ' . design_schemes( 'box', 0 ) . '">' . $product_cat->name . '</h3></a>';
+	$return	 .= '</div>';
 	return $return;
 }
 

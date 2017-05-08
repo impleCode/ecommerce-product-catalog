@@ -28,4 +28,4 @@ function start_admin_only_functions() {
 	}
 }
 
-add_action( 'plugins_loaded', 'start_admin_only_functions' );
+add_action( 'ic_epc_loaded', 'start_admin_only_functions' );

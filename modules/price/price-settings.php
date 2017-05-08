@@ -66,18 +66,18 @@ add_action( 'general-settings', 'ic_price_settings' );
  * Shows price settings
  *
  */
-function ic_price_settings( $archive_multiple_settings ) {
+function ic_price_settings() {
 	$product_currency			 = get_product_currency_code();
 	$product_currency_settings	 = get_currency_settings();
 	?>
 	<h3><?php _e( 'Payment and currency', 'ecommerce-product-catalog' ); ?></h3>
 	<table id="payment_table">
 		<thead>
-			<?php implecode_settings_radio( __( 'Price', 'ecommerce-product-catalog' ), 'product_currency_settings[price_enable]', $product_currency_settings[ 'price_enable' ], array( 'on' => __( 'On', 'ecommerce-product-catalog' ), 'off' => __( 'Off', 'ecommerce-product-catalog' ) ) ); ?>
+			<?php implecode_settings_radio( __( 'Price', 'ecommerce-product-catalog' ), 'product_currency_settings[price_enable]', $product_currency_settings[ 'price_enable' ], array( 'on' => __( 'On', 'ecommerce-product-catalog' ), 'off' => __( 'Off', 'ecommerce-product-catalog' ) ), 1, __( 'Whether to enable or disable price functionality for the catalog.', 'ecommerce-product-catalog' ) ); ?>
 		</thead>
 		<tbody><?php do_action( 'payment_settings_table_start' ) ?>
 			<tr>
-				<td><?php _e( 'Your currency', 'ecommerce-product-catalog' ); ?>:</td>
+				<td><span title="<?php _e( 'Select a currency from the list. If your currency is not available in the list, please use the Custom Currency Symbol option below.', 'ecommerce-product-catalog' ) ?>" class="dashicons dashicons-editor-help ic_tip"></span><?php _e( 'Your currency', 'ecommerce-product-catalog' ); ?>:</td>
 				<td><select id="product_currency" name="product_currency">
 						<?php
 						$currencies					 = available_currencies();
@@ -87,18 +87,9 @@ function ic_price_settings( $archive_multiple_settings ) {
 									value="<?php echo $currency; ?>"<?php selected( $currency, $product_currency ); ?>><?php echo $currency; ?></option>
 								<?php endforeach; ?>
 					</select></td>
-				<td rowspan="4">
-					<div
-						class="al-box info"><?php _e( 'If you choose custom currency symbol, it will override "Your Currency" setting. This is very handy if you want to use not supported currency or a preferred symbol for your currency.', 'ecommerce-product-catalog' ); ?></div>
-				</td>
-			</tr>
-			<tr>
-				<td><?php _e( 'Custom Currency Symbol', 'ecommerce-product-catalog' ); ?>:</td>
-				<td><input type="text" name="product_currency_settings[custom_symbol]"
-						   class="small_text_box" id="product_currency_settings"
-						   value="<?php echo $product_currency_settings[ 'custom_symbol' ]; ?>"/></td>
 			</tr>
 			<?php
+			implecode_settings_text( __( 'Custom Currency Symbol', 'ecommerce-product-catalog' ), 'product_currency_settings[custom_symbol]', $product_currency_settings[ 'custom_symbol' ], null, 1, 'small_text_box', __( 'If you choose custom currency symbol, it will override Your Currency setting and let you use any currency.', 'ecommerce-product-catalog' ) );
 			implecode_settings_radio( __( 'Currency position', 'ecommerce-product-catalog' ), 'product_currency_settings[price_format]', $product_currency_settings[ 'price_format' ], array(
 				'before' => __( 'Before Price', 'ecommerce-product-catalog' ),
 				'after'	 => __( 'After Price', 'ecommerce-product-catalog' )
@@ -131,7 +122,12 @@ function get_currency_settings() {
 	if ( $product_currency_settings = ic_get_global( 'product_currency_settings' ) ) {
 		return $product_currency_settings;
 	}
-	$product_currency_settings						 = get_option( 'product_currency_settings', unserialize( DEF_CURRENCY_SETTINGS ) );
+	$product_currency_settings						 = get_option( 'product_currency_settings', array(
+		'custom_symbol'	 => '$',
+		'price_format'	 => 'before',
+		'price_space'	 => 'off',
+		'price_enable'	 => 'on',
+	) );
 	global $wp_locale;
 	$local[ 'mon_thousands_sep' ]					 = isset( $wp_locale->number_format[ 'thousands_sep' ] ) ? $wp_locale->number_format[ 'thousands_sep' ] : ',';
 	$local[ 'decimal_point' ]						 = isset( $wp_locale->number_format[ 'decimal_point' ] ) ? $wp_locale->number_format[ 'decimal_point' ] : '.';
@@ -152,5 +148,5 @@ function get_currency_settings() {
  * @return string
  */
 function get_product_currency_code() {
-	return get_option( 'product_currency', DEF_CURRENCY );
+	return get_option( 'product_currency', 'USD' );
 }

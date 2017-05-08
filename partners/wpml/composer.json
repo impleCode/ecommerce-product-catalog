@@ -3,7 +3,7 @@
   "description": "Installs and updates WPML and Toolset dependencies automatically",
   "keywords": ["plugins", "install", "utils", "update"],
   "homepage": "https://git.onthegosystems.com/installer/installer",
-  "type": "wordpress-plugin",
+  "type": "library",
   "license": "GPL-2.0",
   "authors": [
     {

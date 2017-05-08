@@ -54,3 +54,21 @@ function product_catalog_multilingual_post_types( $post_types ) {
 	$post_types[] = 'al_product';
 	return $post_types;
 }
+
+add_action( 'ic_ajax_self_submit', 'ic_multilingual_ajax_apply_lang' );
+
+function ic_multilingual_ajax_apply_lang( $query_vars ) {
+	if ( isset( $query_vars[ 'ic_lang' ] ) ) {
+		do_action( 'wpml_switch_language', $query_vars[ 'ic_lang' ] );
+	}
+}
+
+add_filter( 'ic_product_ajax_query_vars', 'ic_multilingual_ajax_query_vars' );
+
+function ic_multilingual_ajax_query_vars( $query_vars ) {
+	$my_current_lang = apply_filters( 'wpml_current_language', NULL );
+	if ( $my_current_lang ) {
+		$query_vars[ 'ic_lang' ] = $my_current_lang;
+	}
+	return $query_vars;
+}

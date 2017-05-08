@@ -88,7 +88,7 @@ class WP_Session_Utils {
 			$expires = $expiration->option_value;
 
 			if ( $now > $expires ) {
-				$session_id = addslashes( substr( $key, 20 ) );
+				$session_id = preg_replace("/[^A-Za-z0-9_]/", '', substr( $key, 20 ) );
 
 				$expired[] = $key;
 				$expired[] = "_wp_session_{$session_id}";
@@ -99,8 +99,12 @@ class WP_Session_Utils {
 
 		// Delete expired sessions
 		if ( ! empty( $expired ) ) {
-			$names = implode( "','", $expired );
-			$wpdb->query( "DELETE FROM $wpdb->options WHERE option_name IN ('{$names}')" );
+		    $placeholders = array_fill( 0, count( $expired ), '%s' );
+		    $format = implode( ', ', $placeholders );
+		    $query = "DELETE FROM $wpdb->options WHERE option_name IN ($format)";
+
+		    $prepared = $wpdb->prepare( $query, $expired );
+			$wpdb->query( $prepared );
 		}
 
 		return $count;

@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
  * @package		ecommerce-product-catalog/ext-comp
  * @author 		Norbert Dreszer
  */
-add_action( 'plugins_loaded', 'run_ext_comp_files' );
+add_action( 'ic_epc_loaded', 'run_ext_comp_files' );
 
 function run_ext_comp_files() {
 	if ( function_exists( 'pll_get_post' ) || function_exists( 'icl_object_id' ) ) {
@@ -28,7 +28,7 @@ function run_ext_comp_files() {
 }
 
 if ( !function_exists( 'run_ic_session' ) ) {
-	add_action( 'plugins_loaded', 'run_ic_session', -1 );
+	add_action( 'ic_epc_loaded', 'run_ic_session', -1 );
 
 	function run_ic_session() {
 		if ( (!is_admin() || (defined( 'DOING_AJAX' ) && DOING_AJAX )) && !class_exists( 'WP_Session' ) && !ic_use_php_session() ) {

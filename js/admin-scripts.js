@@ -32,30 +32,37 @@ jQuery( document ).ready( function () {
 //jQuery('.attributes .ui-sortable').height(jQuery('.attributes .ui-sortable').height());
 //jQuery('.shipping .ui-sortable').height(jQuery('.shipping .ui-sortable').height());
     var fields = new Array( 'input[name="archive_multiple_settings\[category_archive_url\]"]', 'input[name="archive_multiple_settings\[seo_title\]"]', 'input[name="archive_multiple_settings\[seo_title_sep\]"]', 'input[name="archive_multiple_settings\[breadcrumbs_title\]"]', 'input[name="archive_multiple_settings\[enable_product_breadcrumbs\]"]', 'input[name="archive_multiple_settings\[product_listing_cats\]"]', 'input[name="archive_multiple_settings\[category_top_cats\]"]', 'input[name="archive_multiple_settings\[cat_template\]"]' );
-    jQuery( 'input[name="archive_multiple_settings\[integration_type\]"]' ).change( function () {
+    jQuery( '.integration-mode-selection' ).change( function () {
         var disable = false;
         if ( jQuery( this ).is( ':checked' ) && jQuery( this ).val() == 'simple' ) {
             disable = true;
         }
         if ( jQuery( this ).is( ':checked' ) ) {
             if ( !disable ) {
-                jQuery( ".al-box.warning" ).hide( 'slow' );
-                jQuery( ".advanced_mode_settings" ).show( 'slow' );
+                jQuery( ".simple_mode_settings" ).hide( 'slow' );
+                jQuery( ".advanced_mode_settings" ).show(  );
+                jQuery.each( fields, function ( index, element ) {
+                    //jQuery( element ).prop( "disabled", disable );
+                    jQuery( element ).closest( "tr" ).show();
+                } );
             } else {
                 jQuery( ".advanced_mode_settings" ).hide();
-                jQuery( ".al-box.warning" ).show( 'slow' );
+                jQuery( ".simple_mode_settings" ).show( 'slow' );
+                jQuery.each( fields, function ( index, element ) {
+                    //jQuery( element ).prop( "disabled", disable );
+                    jQuery( element ).closest( "tr" ).hide();
+                } );
             }
-            jQuery.each( fields, function ( index, element ) {
-                jQuery( element ).prop( "disabled", disable );
-            } );
         }
     } );
-    jQuery( 'input[name="archive_multiple_settings\[integration_type\]"]' ).trigger( "change" );
-    jQuery( ".overall-product-settings .submit .button-primary" ).click( function () {
-        jQuery.each( fields, function ( index, element ) {
-            jQuery( element ).prop( "disabled", false );
-        } );
-    } );
+    jQuery( '.integration-mode-selection' ).trigger( "change" );
+    /*
+     jQuery( ".overall-product-settings .submit .button-primary" ).click( function () {
+     jQuery.each( fields, function ( index, element ) {
+     jQuery( element ).prop( "disabled", false );
+     } );
+     } );
+     */
 
     jQuery( ".implecode-review .dashicons-no" ).click( function () {
         var data = {
@@ -110,14 +117,13 @@ jQuery( document ).ready( function () {
     } );
 
     jQuery( function () {
-        jQuery( ".setting-content input" ).tooltip( {
+        jQuery( ".setting-content input, span.ic_tip" ).tooltip( {
             position: {
                 my: "left-48 top+37",
                 at: "right+48 bottom-37",
                 collision: "flip"
             },
             track: true,
-            show: { delay: 200 }
         } );
     } );
 

@@ -92,18 +92,24 @@ jQuery( document ).ready( function ( $ ) {
                 }
             }
         }
-    }
+    };
 } );
 
-function ic_switch_popstate_tabs() {
+function ic_switch_popstate_tabs( state ) {
     var hash = 'product_description';
-    if ( location.hash !== "" ) {
-        hash = location.hash;
+    if ( window.location.hash !== "" ) {
+        hash = window.location.hash;
         hash = hash.replace( "_tab", "" ).replace( "#", "" );
         var current_tab = jQuery( ".boxed .after-product-details h3[data-tab_id=" + hash + "]" );
-        current_tab.trigger( "click" );
+        ic_enter_tab( hash, current_tab );
+        //current_tab.trigger( "click" );
     } else {
-        location.reload();
+        var current_tab = jQuery( ".boxed .after-product-details h3:first-of-type" );
+        if ( !current_tab.hasClass( 'active' ) ) {
+            set_default_ic_tab();
+            history.replaceState( "", document.title, window.location.pathname + window.location.search );
+        }
+        //location.reload();
     }
 }
 
@@ -147,8 +153,8 @@ function ic_accordion() {
         jQuery( this ).find( ".catalog-header" ).prependTo( jQuery( this ) );
     } );
     ic_accordion_initial_hide();
-    if ( location.hash !== "" ) {
-        var hash = location.hash.replace( "_tab", "" ).replace( "#", "" );
+    if ( window.location.hash !== "" ) {
+        var hash = window.location.hash.replace( "_tab", "" ).replace( "#", "" );
 
         var current_tab = jQuery( ".boxed .after-product-details > #" + hash + " > .catalog-header" );
         if ( current_tab.length ) {
@@ -214,12 +220,11 @@ function ic_tabs() {
         } );
         tabs = tabs + "</div>";
         jQuery( ".boxed .after-product-details" ).prepend( tabs );
-        if ( location.hash !== "" ) {
-            var hash = location.hash.replace( "_tab", "" ).replace( "#", "" );
+        if ( window.location.hash !== "" ) {
+            var hash = window.location.hash.replace( "_tab", "" ).replace( "#", "" );
             var current_tab = jQuery( ".boxed .after-product-details .ic_tabs > h3[data-tab_id='" + hash + "']" );
             if ( current_tab.length ) {
-                current_tab.addClass( "active" );
-                jQuery( ".boxed .after-product-details > #" + hash ).addClass( "active" );
+                ic_enter_tab( hash, current_tab );
             } else {
                 set_default_ic_tab();
             }
@@ -236,17 +241,24 @@ function ic_tabs() {
     }
 }
 function ic_enter_tab( ic_tab_id, object ) {
-    window.location.hash = ic_tab_id + "_tab";
-    jQuery( ".boxed .after-product-details .ic_tab_content.active" ).hide();
-    jQuery( "#" + ic_tab_id ).show();
-    jQuery( ".boxed .after-product-details *" ).removeClass( "active" );
-    jQuery( "#" + ic_tab_id ).addClass( "active" );
-    object.addClass( "active" );
+    if ( !jQuery( "#" + ic_tab_id ).hasClass( "active" ) ) {
+        var hash = ic_tab_id + "_tab";
+        if ( window.location.hash !== '#' + hash ) {
+            window.location.hash = hash;
+        }
+        jQuery( ".boxed .after-product-details .ic_tab_content.active" ).hide();
+        jQuery( "#" + ic_tab_id ).show();
+        jQuery( ".boxed .after-product-details *" ).removeClass( "active" );
+        jQuery( "#" + ic_tab_id ).addClass( "active" );
+        object.addClass( "active" );
+    }
 }
 
 function set_default_ic_tab() {
+    jQuery( ".boxed .after-product-details .ic_tabs > h3" ).removeClass( "active" );
+    jQuery( ".boxed .after-product-details > .ic_tab_content" ).removeClass( "active" ).hide();
     jQuery( ".boxed .after-product-details .ic_tabs > h3:first-child" ).addClass( "active" );
-    jQuery( ".boxed .after-product-details > .ic_tab_content:first" ).addClass( "active" );
+    jQuery( ".boxed .after-product-details > .ic_tab_content:first" ).addClass( "active" ).show();
 }
 
 function is_element_visible( element ) {
@@ -289,4 +301,8 @@ function modern_grid_font_size() {
         fontSize = fontSize * 0.8;
         jQuery( ".modern-grid-element .product-attributes table" ).css( 'font-size', fontSize );
     }
+}
+
+function ic_defaultFor( arg, val ) {
+    return typeof arg !== 'undefined' ? arg : val;
 }

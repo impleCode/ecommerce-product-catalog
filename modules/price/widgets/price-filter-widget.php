@@ -50,9 +50,9 @@ class product_price_filter extends WP_Widget {
 						foreach ( $_GET as $key => $value ) {
 							if ( $key != 'min-price' && $key != 'max-price' ) {
 								if ( is_array( $value ) ) {
-									foreach ( $value as $a_value ) {
+									foreach ( $value as $a_name => $a_value ) {
 										if ( !empty( $a_value ) ) {
-											echo '<input type="hidden" name="' . esc_attr( $key ) . '[]" value="' . esc_attr( $a_value ) . '" />';
+											echo '<input type="hidden" name="' . esc_attr( $key ) . '[' . $a_name . ']" value="' . esc_attr( $a_value ) . '" />';
 										}
 									}
 								} else {
@@ -77,7 +77,7 @@ class product_price_filter extends WP_Widget {
 			$title		 = $instance[ 'title' ];
 			?>
 			<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'ecommerce-product-catalog' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
-			<p><input class="widefat" id="<?php echo $this->get_field_id( 'shortcode_support' ); ?>" name="<?php echo $this->get_field_name( 'shortcode_support' ); ?>" type="checkbox" value="1" <?php checked( 1, $instance[ 'shortcode_support' ] ) ?> /> <label for="<?php echo $this->get_field_id( 'shortcode_support' ); ?>"><?php _e( 'Support shortcode output filtering', 'ecommerce-product-catalog' ); ?></label></p><?php
+			<p><input class="widefat" id="<?php echo $this->get_field_id( 'shortcode_support' ); ?>" name="<?php echo $this->get_field_name( 'shortcode_support' ); ?>" type="checkbox" value="1" <?php checked( 1, $instance[ 'shortcode_support' ] ) ?> /> <label for="<?php echo $this->get_field_id( 'shortcode_support' ); ?>"><?php _e( 'Enable also for shortcodes', 'ecommerce-product-catalog' ); ?></label></p><?php
 		} else {
 			if ( is_integration_mode_selected() ) {
 				implecode_warning( sprintf( __( 'Sort widget is disabled with simple theme integration. Please see <a href="%s">Theme Integration Guide</a> to enable product sort widget.', 'ecommerce-product-catalog' ), 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=search-widget' ) );

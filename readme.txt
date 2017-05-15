@@ -1,10 +1,10 @@
 === eCommerce Product Catalog for WordPress ===
 Contributors: impleCode, ndre
 Donate link: https://implecode.com/wordpress/plugins/premium-support/#cam=wordpress-org-catalog-page&key=donate-link
-Tags: e-commerce, ecommerce, product catalog, catalog, store, sales, shop, product catalogue, catalogue, WordPress eCommerce, display products, inventory, wp-ecommerce
+Tags: e-commerce, ecommerce, product catalog, catalog, store, sales, shop, product catalogue, catalogue, WordPress eCommerce, display products, inventory
 Requires at least: 3.5
 Tested up to: 4.7
-Stable tag: 2.7.0
+Stable tag: 2.7.1
 License: GPLv3
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 
@@ -12,7 +12,7 @@ eCommerce Product Catalog 100% responsive plugin is a powerful and free software
 
 == Description ==
 
-Beautiful, easy-to-use, 100% responsive and free product catalogue plugin for your __WordPress ecommerce__ or __simple product catalog website__.
+Reward your __WordPress ecommerce__ or __simple product catalog website__ with a beautiful, easy-to-use, 100% responsive and free product catalogue plugin.
 
 = Great product catalog plugin for full ecommerce or simple quote based WordPress website =
 
@@ -94,7 +94,7 @@ Two main shortcodes:
 
 = Lightbox Gallery on product image =
 
-Yes, we all like the fancy effects! You can enable the lighbox gallery on product image. This comes with eCommerce Product Catalog out of the box.
+Yes, we all like the fancy effects! You can display product image in a nice lightbox gallery. This comes with eCommerce Product Catalog out of the box.
 
 However, we realize that this is not a requirement for all the projects so you can easily disable it in the settings. You can also use any third party lightbox with some templates adjustment.
 

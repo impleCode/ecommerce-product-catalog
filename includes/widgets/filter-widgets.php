@@ -109,7 +109,7 @@ class product_category_filter extends WP_Widget {
 			$title		 = $instance[ 'title' ];
 			?>
 			<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'ecommerce-product-catalog' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
-			<p><input class="widefat" id="<?php echo $this->get_field_id( 'shortcode_support' ); ?>" name="<?php echo $this->get_field_name( 'shortcode_support' ); ?>" type="checkbox" value="1" <?php checked( 1, $instance[ 'shortcode_support' ] ) ?> /> <label for="<?php echo $this->get_field_id( 'shortcode_support' ); ?>"><?php _e( 'Support shortcode output filtering', 'ecommerce-product-catalog' ); ?></label></p><?php
+			<p><input class="widefat" id="<?php echo $this->get_field_id( 'shortcode_support' ); ?>" name="<?php echo $this->get_field_name( 'shortcode_support' ); ?>" type="checkbox" value="1" <?php checked( 1, $instance[ 'shortcode_support' ] ) ?> /> <label for="<?php echo $this->get_field_id( 'shortcode_support' ); ?>"><?php _e( 'Enable also for shortcodes', 'ecommerce-product-catalog' ); ?></label></p><?php
 		} else {
 			if ( is_integration_mode_selected() ) {
 				implecode_warning( sprintf( __( 'Category filter widget is disabled with simple theme integration. Please see <a href="%s">Theme Integration Guide</a> to enable product category filter widget.', 'ecommerce-product-catalog' ), 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=search-widget' ) );
@@ -168,7 +168,7 @@ class product_sort_filter extends WP_Widget {
 			$title		 = $instance[ 'title' ];
 			?>
 			<p><label for="<?php echo $this->get_field_id( 'title' ); ?>"><?php _e( 'Title:', 'ecommerce-product-catalog' ); ?> <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" /></label></p>
-			<p><input class="widefat" id="<?php echo $this->get_field_id( 'shortcode_support' ); ?>" name="<?php echo $this->get_field_name( 'shortcode_support' ); ?>" type="checkbox" value="1" <?php checked( 1, $instance[ 'shortcode_support' ] ) ?> /> <label for="<?php echo $this->get_field_id( 'shortcode_support' ); ?>"><?php _e( 'Support shortcode output sorting', 'ecommerce-product-catalog' ); ?></label></p><?php
+			<p><input class="widefat" id="<?php echo $this->get_field_id( 'shortcode_support' ); ?>" name="<?php echo $this->get_field_name( 'shortcode_support' ); ?>" type="checkbox" value="1" <?php checked( 1, $instance[ 'shortcode_support' ] ) ?> /> <label for="<?php echo $this->get_field_id( 'shortcode_support' ); ?>"><?php _e( 'Enable also for shortcodes', 'ecommerce-product-catalog' ); ?></label></p><?php
 		} else {
 			if ( is_integration_mode_selected() ) {
 				implecode_warning( sprintf( __( 'Sort widget is disabled with simple theme integration. Please see <a href="%s">Theme Integration Guide</a> to enable product sort widget.', 'ecommerce-product-catalog' ), 'https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=search-widget' ) );
@@ -203,9 +203,10 @@ function register_filter_widgets() {
  * @return string
  */
 function get_filter_widget_action( $instance ) {
-	$action = product_listing_url();
 	if ( (!empty( $instance[ 'shortcode_support' ] ) && has_show_products_shortcode()) || is_ic_taxonomy_page() ) {
 		$action = '';
+	} else {
+		$action = apply_filters( 'ic_product_listing_widget_action', product_listing_url() );
 	}
 	return $action;
 }

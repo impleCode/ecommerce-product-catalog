@@ -37,7 +37,7 @@ if ( !function_exists( 'implecode_support_menu' ) ):
 				<div style="clear: both; height: 10px;"></div>
 				<div class="extension premium-support">
 					<a href="https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link"><h3><span><?php echo IC_CATALOG_PLUGIN_NAME ?> Premium</span></h3></a>
-					<p><?php _e( '<b>One year</b> of high quality and speedy email', 'ecommerce-product-catalog' ) ?> <a href="https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link">Premium Support</a> <?php _e( 'from impleCode support team for just', 'ecommerce-product-catalog' ) ?> $19.99.</p>
+					<p><?php echo sprintf( __( '<b>One year</b> of high quality and speedy email %sPremium Support%s from impleCode support team for just %s', 'ecommerce-product-catalog' ), '<a href="https://implecode.com/wordpress/plugins/premium-support/#cam=catalog-support-tab&key=support-link">', '</a>', '$19.99' ) ?> </p>
 					<form style="text-align: center; position: relative; top: 10px;" action="https://www.paypal.com/cgi-bin/webscr" method="post" target="_top">
 						<input type="hidden" name="cmd" value="_s-xclick">
 						<input type="hidden" name="hosted_button_id" value="LCRGR95EST66S">
@@ -160,6 +160,10 @@ if ( !function_exists( 'implecode_support_menu' ) ):
 	function ic_disable_license_message() {
 		remove_action( 'admin_init', 'check_if_license_exists', 99 );
 	}
+
+
+
+
 
 
 

@@ -332,7 +332,7 @@ if ( !function_exists( 'get_all_attribute_labels' ) ) {
 	 * @return type
 	 */
 	function get_all_attribute_labels() {
-		$attributes_labels = get_terms( 'al_product-attributes', array( 'parent' => 0, 'fields' => 'names', 'hide_empty' => true ) );
+		$attributes_labels = get_terms( 'al_product-attributes', array( 'parent' => 0, 'fields' => 'names', 'hide_empty' => true, 'ic_post_type' => array( get_current_screen_post_type() ) ) );
 		return $attributes_labels;
 	}
 

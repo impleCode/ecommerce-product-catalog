@@ -915,7 +915,7 @@ function thumbnail_support_products() {
 add_action( 'pre_get_posts', 'ic_pre_get_products', 99 );
 
 function ic_pre_get_products( $query ) {
-	if ( ((!is_admin() && $query->is_main_query()) || (defined( 'DOING_AJAX' ) && DOING_AJAX)) && !isset( $_GET[ 'order' ] ) && (is_ic_product_listing( $query ) || is_ic_taxonomy_page( $query ) || is_ic_product_search( $query ) || is_home_archive( $query )) ) {
+	if ( ((!is_admin() && $query->is_main_query()) || is_ic_ajax()) && !isset( $_GET[ 'order' ] ) && (is_ic_product_listing( $query ) || is_ic_taxonomy_page( $query ) || is_ic_product_search( $query ) || is_home_archive( $query )) ) {
 		do_action( 'ic_pre_get_products', $query );
 	}
 }
@@ -942,7 +942,10 @@ function set_product_order( $query ) {
 			$query->set( 'orderby', 'title' );
 			$query->set( 'order', 'ASC' );
 		}
-		$query = apply_filters( 'modify_product_order', $query, $archive_multiple_settings );
+		$query	 = apply_filters( 'modify_product_order', $query, $archive_multiple_settings );
+		$session = get_product_catalog_session();
+		unset( $session[ 'filters' ][ 'product_order' ] );
+		set_product_catalog_session( $session );
 	} else if ( !empty( $_GET[ 'product_order' ] ) ) {
 		$orderby = translate_product_order();
 		$query->set( 'orderby', $orderby );
@@ -951,7 +954,10 @@ function set_product_order( $query ) {
 		} else {
 			$query->set( 'order', 'ASC' );
 		}
-		$query = apply_filters( 'modify_product_order-dropdown', $query, $archive_multiple_settings );
+		$query									 = apply_filters( 'modify_product_order-dropdown', $query, $archive_multiple_settings );
+		$session								 = get_product_catalog_session();
+		$session[ 'filters' ][ 'product_order' ] = esc_attr( $_GET[ 'product_order' ] );
+		set_product_catalog_session( $session );
 	}
 	//}
 }
@@ -1037,8 +1043,8 @@ add_action( 'before_product_list', 'show_product_sort_bar', 10, 2 );
  * @param array $multiple_settings
  */
 function show_product_sort_bar( $archive_template = null, $multiple_settings = null ) {
-	if ( is_product_sort_bar_active() || defined( 'DOING_AJAX' ) && DOING_AJAX ) {
-		if ( is_active_sidebar( 'product_sort_bar' ) || defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+	if ( is_product_sort_bar_active() || is_ic_ajax() ) {
+		if ( is_active_sidebar( 'product_sort_bar' ) || is_ic_ajax() ) {
 			global $is_filter_bar;
 			$is_filter_bar	 = true;
 			ob_start();

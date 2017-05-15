@@ -48,14 +48,14 @@ function ic_show_affiliate_content() {
 	$config[ 'product_name' ]	 = 'WPML';
 	$config[ 'box_title' ]		 = 'Multilingual ' . IC_CATALOG_PLUGIN_NAME;
 	$config[ 'name' ]			 = IC_CATALOG_PLUGIN_NAME; //name of theme/plugin
-	$config[ 'box_description' ] = IC_CATALOG_PLUGIN_NAME . ' is fully compatible with WPML - the WordPress Multilingual plugin. WPML lets you add languages to your existing sites and includes advanced translation management.';
+	$config[ 'box_description' ] = sprintf( __( '%s is fully compatible with WPML - the WordPress Multilingual plugin. WPML lets you add languages to your existing sites and includes advanced translation management.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME );
 	$config[ 'repository' ]		 = 'wpml'; // required
 	$config[ 'package' ]		 = 'multilingual-cms'; // required
 	$config[ 'product' ]		 = 'multilingual-cms'; // required
 	ob_start();
 	WP_Installer_Show_Products( $config );
 	$output						 = ob_get_clean();
-	if ( $output != '<center>' . __( 'No repositories defined.', 'installer' ) . '</center>' ) {
+	if ( $output != '<center>' . __( 'No repositories defined.', 'ecommerce-product-catalog' ) . '</center>' ) {
 		echo '<h2 class="partners-header">' . __( 'Fully compatible plugins from our partners', 'ecommerce-product-catalog' ) . '</h2>';
 		echo '<p>You can also use third party plugins and themes fully compatible with ' . IC_CATALOG_PLUGIN_NAME . '. Please note that ' . IC_CATALOG_PLUGIN_NAME . ' developers get a small affiliate commision from every purchase made through the links below. This actually helps the devs to support the integration between plugins more effectively.</p>';
 		echo '<div class="extension wpml">';
@@ -522,18 +522,18 @@ function extension_box( $name, $url, $desc, $comp = 'simple', $slug, $all_ic_plu
  */
 function free_extension_box( $name, $url, $desc, $comp = 'simple', $slug, $all_ic_plugins, $not_active_ic_plugins ) {
 	if ( $comp == 'adv' && get_integration_type() == 'simple' ) {
-		$comp_txt	 = __( 'Advanced Mode Required', 'post-type-x' );
+		$comp_txt	 = __( 'Advanced Mode Required', 'ecommerce-product-catalog' );
 		$comp_class	 = 'wrong';
 	} else if ( $comp == 'price' && !function_exists( 'is_ic_price_enabled' ) ) {
-		$comp_txt	 = __( 'Price Required', 'post-type-x' );
+		$comp_txt	 = __( 'Price Required', 'ecommerce-product-catalog' );
 		$comp_class	 = 'wrong';
 	} else {
-		$comp_txt	 = __( 'Ready to Install', 'post-type-x' );
+		$comp_txt	 = __( 'Ready to Install', 'ecommerce-product-catalog' );
 		$comp_class	 = 'good';
 	}
 
 	$return		 = '<div class="extension free ' . $url . '">
-	<a class="extension-name" href="https://wordpress.org/plugins/' . $url . '"><h3><span>' . $name . '</span></h3><span class="click-span">' . __( 'Click for more', 'post-type-x' ) . '</span></a>
+	<a class="extension-name" href="https://wordpress.org/plugins/' . $url . '"><h3><span>' . $name . '</span></h3><span class="click-span">' . __( 'Click for more', 'ecommerce-product-catalog' ) . '</span></a>
 	<p>' . $desc . '</p>';
 	$disabled	 = '';
 	$current_key = get_option( 'custom_license_code' );
@@ -542,9 +542,9 @@ function free_extension_box( $name, $url, $desc, $comp = 'simple', $slug, $all_i
 		$current_key = '';
 	}
 	if ( !empty( $all_ic_plugins ) && is_ic_plugin_active( $slug, $all_ic_plugins ) ) {
-		$return .= '<p><a href="https://wordpress.org/support/plugin/' . $url . '" class="button-primary">Support</a> <a href="https://implecode.com/docs/" class="button-primary">Docs</a> <span class="comp installed">' . __( 'Active Extension', 'post-type-x' ) . '</span></p>';
+		$return .= '<p><a href="https://wordpress.org/support/plugin/' . $url . '" class="button-primary">Support</a> <a href="https://implecode.com/docs/" class="button-primary">Docs</a> <span class="comp installed">' . __( 'Active Extension', 'ecommerce-product-catalog' ) . '</span></p>';
 	} else if ( !empty( $not_active_ic_plugins ) && is_ic_plugin_active( $slug, $not_active_ic_plugins ) ) {
-		$return .= '<p><a ' . $disabled . ' href="' . wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . urlencode( $slug . '/' . $slug . '.php' ), 'activate-plugin_' . $slug . '/' . $slug . '.php' ) . '" class="button-primary">Activate Now</a><span class="comp info">' . __( 'Installed Extension', 'post-type-x' ) . '</span></p>';
+		$return .= '<p><a ' . $disabled . ' href="' . wp_nonce_url( 'plugins.php?action=activate&amp;plugin=' . urlencode( $slug . '/' . $slug . '.php' ), 'activate-plugin_' . $slug . '/' . $slug . '.php' ) . '" class="button-primary">Activate Now</a><span class="comp info">' . __( 'Installed Extension', 'ecommerce-product-catalog' ) . '</span></p>';
 	} else {
 		if ( $comp_class == 'wrong' ) {
 			$return .= '<p><a href="https://wordpress.org/plugins/' . $url . '" class="button-primary">See the Extension</a><span class="comp ' . $comp_class . '">' . $comp_txt . '</span></p>';
@@ -623,7 +623,7 @@ function start_free_implecode_install() {
 		} else {
 			echo '<div id="message error" class="error product-adder-message messages-connect">
 				<div class="squeezer">
-					<h4><strong>' . __( 'This extension is not available at this time. Try again later.', 'post-type-x' ) . '</strong></h4>
+					<h4><strong>' . __( 'This extension is not available at this time. Try again later.', 'ecommerce-product-catalog' ) . '</strong></h4>
 				</div>
 			</div>';
 		}
@@ -632,7 +632,7 @@ function start_free_implecode_install() {
 	/* else if ( !current_user_can( 'install_plugins' ) ) {
 	  echo '<div id="message error" class="error product-adder-message messages-connect">
 	  <div class="squeezer">
-	  <h4><strong>' . __( 'You don\'t have permission to install and activate extensions.', 'post-type-x' ) . '</strong></h4>
+	  <h4><strong>' . __( 'You don\'t have permission to install and activate extensions.', 'ecommerce-product-catalog' ) . '</strong></h4>
 	  </div>
 	  </div>';
 	  }

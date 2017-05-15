@@ -38,15 +38,15 @@ function ic_ajax_self_submit() {
 		if ( isset( $params[ 'page' ] ) ) {
 			$ic_ajax_query_vars[ 'paged' ] = $params[ 'page' ];
 		}
-		if ( $ic_ajax_query_vars[ 'post_type' ] != 'al_product' ) {
+		if ( !empty( $ic_ajax_query_vars[ 'post_type' ] ) && !ic_string_contains( $ic_ajax_query_vars[ 'post_type' ], 'al_product' ) ) {
 			$_GET[ 'post_type' ] = $ic_ajax_query_vars[ 'post_type' ];
 		}
 		$ic_ajax_query_vars[ 'post_status' ] = 'publish';
 		//print_r( $ic_ajax_query_vars );
 		if ( !empty( $ic_ajax_query_vars[ 'posts_per_page' ] ) ) {
 			remove_action( 'ic_pre_get_products', 'set_products_limit', 99 );
+			remove_action( 'pre_get_posts', 'set_multi_products_limit', 99 );
 		}
-
 		$posts = new WP_Query( $ic_ajax_query_vars );
 		if ( !empty( $ic_ajax_query_vars[ 'paged' ] ) && $ic_ajax_query_vars[ 'paged' ] > 1 && empty( $posts->post ) ) {
 			unset( $ic_ajax_query_vars[ 'paged' ] );
@@ -58,15 +58,16 @@ function ic_ajax_self_submit() {
 			global $shortcode_query;
 			$shortcode_query = $posts;
 		}
-		$GLOBALS[ 'wp_query' ]			 = $posts;
-		$archive_template				 = get_product_listing_template();
-		$multiple_settings				 = get_multiple_settings();
+		$GLOBALS[ 'wp_query' ]	 = $posts;
+		$archive_template		 = get_product_listing_template();
+		$multiple_settings		 = get_multiple_settings();
 		remove_all_actions( 'before_product_list' );
 		ob_start();
 		ic_product_listing_products( $archive_template, $multiple_settings );
+
 		$return[ 'product-listing' ]	 = ob_get_clean();
 		$old_request_url				 = $_SERVER[ 'REQUEST_URI' ];
-		$_SERVER[ 'REQUEST_URI' ]		 = $_POST[ 'request_url' ];
+		$_SERVER[ 'REQUEST_URI' ]		 = ic_get_ajax_request_url();
 		ob_start();
 		add_filter( 'get_pagenum_link', 'ic_ajax_pagenum_link' );
 		product_archive_pagination();
@@ -111,14 +112,22 @@ add_action( 'enqueue_catalog_scripts', 'ic_product_ajax_enqueue_styles' );
 function ic_product_ajax_enqueue_styles() {
 	//wp_enqueue_style( 'ic_variations' );
 	wp_enqueue_script( 'ic_product_ajax' );
-	global $wp_query;
-	$query_vars = apply_filters( 'ic_product_ajax_query_vars', $wp_query->query );
-	if ( empty( $query_vars ) && is_home_archive() ) {
-		$query_vars = array( 'post_type' => 'al_product' );
+	$query_vars = array();
+	if ( is_ic_catalog_page() ) {
+		global $wp_query;
+		$query_vars = apply_filters( 'ic_product_ajax_query_vars', $wp_query->query );
+		if ( empty( $query_vars ) && is_home_archive() ) {
+			$query_vars = array( 'post_type' => 'al_product' );
+		}
+		if ( empty( $query_vars[ 'post_type' ] ) ) {
+			$query_vars[ 'ic_post_type' ] = get_post_type();
+		}
 	}
+	$active_filters = get_active_product_filters();
 	wp_localize_script( 'ic_product_ajax', 'ic_ajax', array(
 		'query_vars'		 => json_encode( $query_vars ),
-		'request_url'		 => remove_query_arg( array( 'page', 'paged' ), get_pagenum_link() ),
+		'request_url'		 => esc_url( remove_query_arg( array_merge( array( 'page', 'paged' ), $active_filters ) ) ),
+		//'request_url'		 => remove_query_arg( array( 'page', 'paged' ) ),
 		'filters_reset_url'	 => get_filters_bar_reset_url(),
 		'is_search'			 => is_search(),
 		'nonce'				 => wp_create_nonce( "ic_ajax" )
@@ -137,21 +146,25 @@ function ic_ajax_shortcode_query_data( $attr, $query ) {
 }
 
 function ic_ajax_pagenum_link( $link ) {
-	if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+	if ( is_ic_ajax() ) {
 		global $wp_rewrite;
-		parse_str( str_replace( '?', '', strstr( $link, '?' ) ), $params );
-		$pagenum = isset( $params[ 'paged' ] ) ? (int) $params[ 'paged' ] : 0;
+		$query_string	 = str_replace( '?', '', strstr( $link, '?' ) );
+		parse_str( $query_string, $params );
+		$pagenum		 = isset( $params[ 'paged' ] ) ? (int) $params[ 'paged' ] : 0;
+		$request		 = remove_query_arg( array( 'paged' ), ic_get_ajax_request_url() );
+		$active_filters	 = get_active_product_filters( true );
 
-		$request = remove_query_arg( array( 'paged' ) );
+		$request = add_query_arg( $active_filters, $request );
 
+		$site_url	 = home_url();
 		$home_root	 = parse_url( home_url() );
 		$home_root	 = ( isset( $home_root[ 'path' ] ) ) ? $home_root[ 'path' ] : '';
 		$home_root	 = preg_quote( $home_root, '|' );
 
 		$request = preg_replace( '|^' . $home_root . '|i', '', $request );
 		$request = preg_replace( '|^/+|', '', $request );
-
-		if ( !$wp_rewrite->using_permalinks() || (is_admin() && !(defined( 'DOING_AJAX' ) && DOING_AJAX)) ) {
+		$request = $site_url . '/' . $request;
+		if ( !$wp_rewrite->using_permalinks() ) {
 			$base = trailingslashit( get_bloginfo( 'url' ) );
 
 			if ( $pagenum > 1 ) {
@@ -166,8 +179,8 @@ function ic_ajax_pagenum_link( $link ) {
 			if ( !empty( $qs_match[ 0 ] ) ) {
 				$query_string	 = $qs_match[ 0 ];
 				$request		 = preg_replace( $qs_regex, '', $request );
-			} else {
-				$query_string = '';
+			} else if ( !empty( $pagenum ) ) {
+				$query_string = str_replace( 'paged=' . $pagenum, '', $query_string );
 			}
 
 			$request = preg_replace( "|$wp_rewrite->pagination_base/\d+/?$|", '', $request );
@@ -183,10 +196,15 @@ function ic_ajax_pagenum_link( $link ) {
 				$request = ( (!empty( $request ) ) ? trailingslashit( $request ) : $request ) . user_trailingslashit( $wp_rewrite->pagination_base . "/" . $pagenum, 'paged' );
 			}
 
-			$result = $base . $request . $query_string;
+			//$result = $base . $request . $query_string;
+			$result = $request . $query_string;
 		}
 
 		return $result;
 	}
 	return $link;
+}
+
+function ic_get_ajax_request_url() {
+	return esc_url( $_POST[ 'request_url' ] );
 }

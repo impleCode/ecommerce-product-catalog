@@ -16,7 +16,7 @@ if ( !defined( 'ABSPATH' ) ) {
 if ( !function_exists( 'get_product_catalog_session' ) ) {
 
 	function get_product_catalog_session() {
-		if ( (!is_admin() || (defined( 'DOING_AJAX' ) && DOING_AJAX ) ) ) {
+		if ( (!is_admin() || is_ic_ajax() ) ) {
 			if ( ic_use_php_session() ) {
 				if ( !session_id() && !headers_sent() ) {
 					session_start();
@@ -59,18 +59,21 @@ function product_filter_element( $id, $what, $label, $class = null ) {
 	if ( is_paged() ) {
 		if ( is_ic_permalink_product_catalog() ) {
 //echo get_pagenum_link( 1 );
-			$url = esc_url_raw( remove_query_arg( $what, get_pagenum_link( 1, false ) ) );
+			$url = remove_query_arg( $what );
 		} else {
-			$url = esc_url_raw( remove_query_arg( array( 'paged', $what ) ) );
+			$url = remove_query_arg( array( 'paged', $what ) );
 		}
 	} else {
-		$url = esc_url_raw( remove_query_arg( array( $what ) ) );
+		$url = remove_query_arg( array( $what ) );
 	}
 	$attr = '';
 	if ( is_ic_ajax() && !empty( $_GET[ 'page' ] ) ) {
 		$attr = 'data-page="' . intval( $_GET[ 'page' ] ) . '"';
 	}
-	return '<a class="' . $class . '" href="' . add_query_arg( array( $what => $id ), $url ) . '" ' . $attr . '>' . $label . '</a>';
+	$active_filters	 = get_active_product_filters( true );
+	unset( $active_filters[ $what ] );
+	$final_url		 = add_query_arg( array_merge( array( $what => $id ), $active_filters ), $url );
+	return '<a class="' . $class . '" href="' . esc_url( $final_url ) . '" ' . $attr . '>' . $label . '</a>';
 }
 
 function get_product_category_filter_element( $category ) {
@@ -109,16 +112,17 @@ function set_product_filter() {
 	do_action( 'ic_set_product_filters', $session );
 	$session = get_product_catalog_session();
 	if ( !empty( $session[ 'filters' ] ) && empty( $session[ 'filters' ][ 'filtered-url' ] ) ) {
-		$active_filters = get_active_product_filters();
 		if ( isset( $_POST[ 'request_url' ] ) && is_ic_ajax() ) {
-			$old_request_url						 = $_SERVER[ 'REQUEST_URI' ];
-			$_SERVER[ 'REQUEST_URI' ]				 = $_POST[ 'request_url' ];
-			add_filter( 'get_pagenum_link', 'ic_ajax_pagenum_link' );
-			$session[ 'filters' ][ 'filtered-url' ]	 = remove_query_arg( $active_filters, get_pagenum_link( 1, false ) );
-			remove_filter( 'get_pagenum_link', 'ic_ajax_pagenum_link' );
-			$_SERVER[ 'REQUEST_URI' ]				 = $old_request_url;
+			//$old_request_url						 = $_SERVER[ 'REQUEST_URI' ];
+			//$_SERVER[ 'REQUEST_URI' ]				 = $_POST[ 'request_url' ];
+			//add_filter( 'get_pagenum_link', 'ic_ajax_pagenum_link' );
+			//$session[ 'filters' ][ 'filtered-url' ]	 = remove_query_arg( $active_filters, get_pagenum_link( 1, false ) );
+			$session[ 'filters' ][ 'filtered-url' ] = ic_get_ajax_request_url();
+			//remove_filter( 'get_pagenum_link', 'ic_ajax_pagenum_link' );
+			//$_SERVER[ 'REQUEST_URI' ]				 = $old_request_url;
 		} else {
-			$session[ 'filters' ][ 'filtered-url' ] = remove_query_arg( $active_filters, get_pagenum_link( 1, false ) );
+			$active_filters							 = get_active_product_filters();
+			$session[ 'filters' ][ 'filtered-url' ]	 = remove_query_arg( $active_filters, get_pagenum_link( 1, false ) );
 		}
 		if ( ic_string_contains( $session[ 'filters' ][ 'filtered-url' ], '&s=' ) ) {
 			if ( is_ic_ajax() && empty( $_POST[ 'is_search' ] ) ) {
@@ -130,7 +134,7 @@ function set_product_filter() {
 		if ( is_ic_shortcode_query() ) {
 			$session[ 'filters' ][ 'filtered-url' ] = add_query_arg( 'reset_filters', 'y', $session[ 'filters' ][ 'filtered-url' ] );
 		}
-		$session[ 'filters' ][ 'filtered-url' ] = esc_url( $session[ 'filters' ][ 'filtered-url' ] . '#product_filters_bar' );
+		$session[ 'filters' ][ 'filtered-url' ] = $session[ 'filters' ][ 'filtered-url' ] . '#product_filters_bar';
 		set_product_catalog_session( $session );
 	}
 }
@@ -166,9 +170,20 @@ function delete_product_filters() {
  *
  * @return array
  */
-function get_active_product_filters() {
-	return apply_filters( 'active_product_filters', array( 'product_category', 'min-price',
-		'max-price' ) );
+function get_active_product_filters( $values = false ) {
+	$active_filters = apply_filters( 'active_product_filters', array( 'product_category', 'min-price',
+		'max-price', 'product_order' ) );
+	if ( $values ) {
+		$filters = array();
+		foreach ( $active_filters as $filter_name ) {
+			$filter_value = get_product_filter_value( $filter_name );
+			if ( !empty( $filter_value ) ) {
+				$filters[ $filter_name ] = $filter_value;
+			}
+		}
+		return $filters;
+	}
+	return $active_filters;
 }
 
 function get_product_filter_value( $filter_name ) {

@@ -1,5 +1,30 @@
 == Changelog ==
 
+= 2.7.1 - 12/05/2017 =
+
+* Tweak - ajax filters usability improvements
+* Localisation - Polish language improved
+
+= 2.7.0 - 08/05/2017 =
+
+* Feature - ability to customize product page in WordPress customizer
+* Tweak - settings usability improved
+* Tweak - initial configuration improved
+* Tweak - simple mode improved
+
+= 2.6.18 - 02/05/2017 =
+
+* Fix - per row attribute when modern grid is used
+* Security - WP Sessions Manager updated
+
+= 2.6.17 - 01/05/2017 =
+
+* Localisation - synchronisation with WordPress.org translations
+
+= 2.6.16 - 24/04/2017 =
+
+* Tweak - breadcrumbs schema.org
+
 = 2.6.15 - 11/04/2017 =
 
 Fix - remove unnecessary CSS rules

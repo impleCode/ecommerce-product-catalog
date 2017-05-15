@@ -137,19 +137,19 @@ function general_settings_content() {
 							<?php
 							if ( get_integration_type() == 'simple' ) {
 								//implecode_warning( '<p>' . sprintf( __( 'The simple mode allows to use %s most features. You can build the product listing pages and category pages by using a [show_products] shortcode. Simple mode uses your theme page layout so it can show unwanted elements on product page. If it does please switch to Advanced Mode and see if it works out of the box.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) . '</p><p>' . __( 'Switching to Advanced Mode also gives additional features: automatic product listing, category pages, product search and category widget. Building a product catalog in Advanced Mode will be less time consuming as you don’t need to use a shortcode for everything.', 'ecommerce-product-catalog' ) . '</p>' . sample_product_button( 'p', __( 'Restart Integration Wizard', 'ecommerce-product-catalog' ) ) );
-								implecode_info( __( 'In simple mode you will have to use shortcodes to display category pages. The advanced mode will build them for you automatically.', 'ecommerce-product-catalog' ) . '</p>' . '<p>' . __( 'Simple mode will use your theme layout so it can show some unwanted elements on product catalog pages.', 'ecommerce-product-catalog' ) . '</p>' );
+								implecode_info( __( 'In simple mode you will have to use shortcodes to display category pages. The advanced mode will display them for you automatically.', 'ecommerce-product-catalog' ) . '</p>' . '<p>' . __( 'Simple mode will use your theme layout so it can show some unwanted elements on product catalog pages.', 'ecommerce-product-catalog' ) . '</p>' );
 							}
 							?>
 						</div>
 						<table>
 							<?php
-							implecode_settings_radio( __( 'Choose catalog mode', 'ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type][' . $theme . ']', $archive_multiple_settings[ 'integration_type' ][ $theme ], array( 'simple' => __( 'Simple Mode', 'ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Mode', 'ecommerce-product-catalog' ) ), 1, __( 'Choose Advanced Mode if you want to use catalog categories and search with eCommerce Product Catalog layout.', 'ecommerce-product-catalog' ), '<br>', "integration-mode-selection" );
+							implecode_settings_radio( __( 'Choose catalog mode', 'ecommerce-product-catalog' ), 'archive_multiple_settings[integration_type][' . $theme . ']', $archive_multiple_settings[ 'integration_type' ][ $theme ], array( 'simple' => __( 'Simple Mode', 'ecommerce-product-catalog' ), 'advanced' => __( 'Advanced Mode', 'ecommerce-product-catalog' ) ), 1, sprintf( __( 'Choose Advanced Mode if you want to display catalog categories and search with %s layout.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ), '<br>', "integration-mode-selection" );
 							?></table>
 						<div class="advanced_mode_settings">
 							<?php
 							implecode_info(
 							sprintf( __( 'In Advanced Mode %s must figure out your theme markup to display products properly.', 'ecommerce-product-catalog' ), IC_CATALOG_PLUGIN_NAME ) . '</p>' .
-							'<p>' . __( 'Use the blue button below to begin the easy auto adjustment.', 'ecommerce-product-catalog' ) . '</p>' .
+							'<p>' . __( 'Use the button below to begin the easy auto adjustment.', 'ecommerce-product-catalog' ) . '</p>' .
 							'<p>' . sprintf( __( 'If you have access to the server files you can also use our %sTheme Integration Guide%s to achieve it quickly.', 'ecommerce-product-catalog' ), '<a href="https://implecode.com/wordpress/product-catalog/theme-integration-guide/#cam=simple-mode&key=general-integration-info">', '</a>' ) . '</p>'
 							);
 							?>
@@ -222,7 +222,7 @@ function general_settings_content() {
 							<td></td>
 						</tr>
 						<?php
-						implecode_settings_checkbox( __( 'Enable Main Listing Page', 'ecommerce-product-catalog' ), 'enable_product_listing', $enable_product_listing, 1, __( 'Disable and use [show_products] shortcode to display the products.', 'ecommerce-product-catalog' ) );
+						implecode_settings_checkbox( __( 'Enable Main Listing Page', 'ecommerce-product-catalog' ), 'enable_product_listing', $enable_product_listing, 1, sprintf( __( 'Disable and use %s shortcode to display the products.', 'ecommerce-product-catalog' ), '[show_products]' ) );
 						?>
 						<tr>
 							<td>

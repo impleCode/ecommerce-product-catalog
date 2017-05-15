@@ -73,12 +73,12 @@ function ic_ajax_update_product_listing( form_data, url_replace ) {
         query_vars = JSON.stringify( jQuery( ".product-list" ).data( "ic_ajax_query" ) );
         shortcode = 1;
     }
-
     var data = {
         'action': 'ic_self_submit',
         'self_submit_data': form_data,
         'query_vars': query_vars,
-        'request_url': '/' + ( location.pathname + location.search ).substr( 1 ),
+        //'request_url': '/' + ( location.pathname + location.search ).substr( 1 ),
+        'request_url': ic_ajax.request_url,
         'ajax_elements': { },
         'shortcode': shortcode,
         'is_search': ic_ajax.is_search,

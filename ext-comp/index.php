@@ -31,7 +31,7 @@ if ( !function_exists( 'run_ic_session' ) ) {
 	add_action( 'ic_epc_loaded', 'run_ic_session', -1 );
 
 	function run_ic_session() {
-		if ( (!is_admin() || (defined( 'DOING_AJAX' ) && DOING_AJAX )) && !class_exists( 'WP_Session' ) && !ic_use_php_session() ) {
+		if ( (!is_admin() || is_ic_ajax()) && !class_exists( 'WP_Session' ) && !ic_use_php_session() ) {
 
 			if ( !defined( 'WP_SESSION_COOKIE' ) ) {
 				define( 'WP_SESSION_COOKIE', '_wp_session' );

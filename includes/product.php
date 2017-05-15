@@ -255,7 +255,7 @@ function implecode_save_products_meta( $post_id, $post ) {
 		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
 			return $post->ID;
 		}
-		if ( defined( 'DOING_AJAX' ) && DOING_AJAX ) {
+		if ( is_ic_ajax() ) {
 			return $post->ID;
 		}
 		if ( !current_user_can( 'edit_post', $post->ID ) ) {

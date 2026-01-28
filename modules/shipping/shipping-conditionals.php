@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.0.0
  * @package		ecommerce-product-catalog/includes
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 
 /**
@@ -23,5 +23,5 @@ function is_ic_shipping_enabled() {
 	if ( $shipping_count > 0 ) {
 		return true;
 	}
-	return false;
+	return apply_filters( 'ic_is_shipping_enabled', false );
 }

@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.1.2
  * @package		ecommerce-product-catalog/templates/template-parts/product-listing
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 $category_id	 = ic_get_global( 'current_product_category_id' );
 $category_img	 = get_product_category_image_id( $category_id );

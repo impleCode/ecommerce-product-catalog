@@ -1,6 +1,6 @@
 <?php
 
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
@@ -8,9 +8,9 @@ if ( !defined( 'ABSPATH' ) ) {
  * Manages compatibility functions with WordPress SEO plugin
  *
  *
- * @version		1.0.0
- * @package		ecommerce-product-catalog/ext-comp
- * @author 		Norbert Dreszer
+ * @version        1.0.0
+ * @package        ecommerce-product-catalog/ext-comp
+ * @author        impleCode
  */
 function implecode_wpseo_compatible() {
 	$post_type = get_quasi_post_type();
@@ -42,7 +42,7 @@ add_action( 'add_meta_boxes', 'product_listing_remove_wpseo', 16 );
  */
 function product_listing_remove_wpseo() {
 	$id = get_product_listing_id();
-	if ( is_admin() && isset( $_GET[ 'post' ] ) && $_GET[ 'post' ] == $id ) {
+	if ( is_admin() && isset( $_GET['post'] ) && $_GET['post'] == $id && ! is_ic_shortcode_integration() ) {
 		remove_meta_box( 'wpseo_meta', 'page', 'normal' );
 	}
 }
@@ -52,9 +52,29 @@ function product_listing_remove_wpseo() {
  */
 function product_listing_remove_wpseo_js() {
 	$id = get_product_listing_id();
-	if ( is_admin() && isset( $_GET[ 'post' ] ) && $_GET[ 'post' ] == $id ) {
+	if ( is_admin() && isset( $_GET['post'] ) && $_GET['post'] == $id && ! is_ic_shortcode_integration() ) {
 		wp_deregister_script( 'yoast-seo' );
 	}
 }
 
 add_action( 'admin_print_footer_scripts', 'product_listing_remove_wpseo_js', 1 );
+
+add_filter( 'wpseo_title', 'ic_remove_seo_archives', 20 );
+
+/**
+ * Removes unnecessary archives element from title
+ *
+ * @param type $title
+ *
+ * @return type
+ */
+function ic_remove_seo_archives( $title ) {
+	if ( is_ic_admin() ) {
+		return $title;
+	}
+
+	return str_replace( array(
+		' ' . __( 'Archives', 'wordpress-seo' ),
+		' ' . __( 'Archive', 'wordpress-seo' )
+	), '', $title );
+}

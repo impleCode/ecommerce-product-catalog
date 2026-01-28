@@ -7,24 +7,44 @@ if ( !defined( 'ABSPATH' ) ) {
 /**
  * Defines URL rewrite rules
  *
- * Created by Norbert Dreszer.
+ * Created by impleCode.
  * Package: functions
  */
-add_action( 'post_updated', 'ic_rewrite_product_listing_change', 10, 2 );
+class ic_catalog_listing_modified {
 
-/**
- * Enables permalink rewrite when editing the product listing page
- *
- * @param type $post_id
- * @param type $post
- * @return type
- */
-function ic_rewrite_product_listing_change( $post_id, $post ) {
-	if ( isset( $post->post_type ) && $post->post_type == 'page' ) {
+	function __construct() {
+		add_action( 'post_updated', array( $this, 'rewrite_listing' ), 10, 2 );
+		add_action( 'delete_post', array( $this, 'remove_listing' ) );
+		add_action( 'trashed_post', array( $this, 'remove_listing' ) );
+	}
+
+	/**
+	 * Enables permalink rewrite when editing the product listing page
+	 *
+	 * @param type $post_id
+	 * @param type $post
+	 * @return type
+	 */
+	static function rewrite_listing( $post_id, $post = null ) {
+		if ( (isset( $post->post_type ) && $post->post_type == 'page') || !isset( $post->post_type ) ) {
+			$id = get_product_listing_id();
+			if ( $post_id == $id ) {
+				permalink_options_update();
+			}
+		}
+		return;
+	}
+
+	static function remove_listing( $post_id ) {
 		$id = get_product_listing_id();
 		if ( $post_id == $id ) {
+			delete_option( 'product_archive_page_id' );
+			delete_option( 'product_archive' );
 			permalink_options_update();
 		}
+		return;
 	}
-	return;
+
 }
+
+$ic_catalog_listing_modified = new ic_catalog_listing_modified;

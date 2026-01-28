@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version        1.0.0
  * @package        ecommerce-product-catalog/functions
- * @author        Norbert Dreszer
+ * @author        impleCode
  */
 add_filter( 'enter_title_here', 'al_enter_title_here' );
 

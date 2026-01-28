@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/show-products",
+  "title": "Show Products",
+  "textdomain": "ecommerce-product-catalog",
+  "icon": "grid-view",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "category": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "integer"
+      }
+    },
+    "selectedCategory": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object"
+      }
+    },
+    "categorySearch": {
+      "type": "string",
+      "default": ""
+    },
+    "product": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "integer"
+      }
+    },
+    "products_limit": {
+      "type": "string",
+      "default": ""
+    },
+    "orderby": {
+      "type": "string",
+      "default": ""
+    },
+    "order": {
+      "type": "string",
+      "default": ""
+    },
+    "archive_template": {
+      "type": "string",
+      "default": ""
+    },
+    "per_row": {
+      "type": "string",
+      "default": ""
+    },
+    "productSearch": {
+      "type": "string",
+      "default": ""
+    },
+    "selectedProduct": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "editorScript": "file:./block.js"
+}

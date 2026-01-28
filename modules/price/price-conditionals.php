@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.0.0
  * @package		ecommerce-product-catalog/includes
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 
 /**
@@ -23,7 +23,7 @@ function is_ic_price_enabled() {
 	if ( $product_currency[ 'price_enable' ] == 'on' ) {
 		return true;
 	}
-	return false;
+	return apply_filters( 'is_ic_price_enabled', false );
 }
 
 /**

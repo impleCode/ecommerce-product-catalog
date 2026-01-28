@@ -1,0 +1,100 @@
+/*
+ * impleCode Shopping Cart Admin
+ * http://impleCode.com
+ *
+ * Copyright 2014 impleCode
+ * Free to use under the GPLv3 license.
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Contributing author: Norbert Dreszer
+ */
+
+.ic_popup {
+    display: none;
+    position: fixed;
+    top: 100px;
+    width: 60%;
+    height: 60%;
+    min-height: 60%;
+    max-height: 80%;
+    background: #fff;
+    margin: 5% auto;
+    left: 0;
+    right: 0;
+    z-index: 9;
+    box-shadow: 1px 1px 5px #888888;
+    overflow-y: scroll;
+}
+
+.ic_popup h2 {
+    background: #ededed;
+}
+
+.ic_popup h2 span {
+    float:right;
+    cursor: pointer;
+}
+
+.ic_popup .popup-container {
+    padding: 15px;
+}
+
+.ic_popup .save_variation_details {
+    margin-top: 20px;
+}
+
+td.variation_shipping {
+    max-width: 100px;
+}
+.variations {
+    width: 100%;
+}
+.variations th {
+    text-align: left;
+    border-bottom: 1px solid #ededed;
+    line-height: 2.5;
+    padding-left: 10px;
+}
+.variations td {
+    padding:10px;
+    border-bottom: 1px solid #ededed;
+}
+
+.variations td.variation_values input, .variations td.variation_shipping input, .variations td.variation_prices input{
+    display: block;
+}
+.variations input.admin-number-field {
+    width: 70px;
+}
+.product-variation-label-column .product-variation-label {
+    width: 150px;
+}
+.variations div.button.edit_variation{
+    margin: 3px 0
+}
+.add_variation span {
+    vertical-align: middle
+}
+.add_variation {
+    font-weight: bold
+}
+.variation_prices textarea, .variation_prices {
+    width: 100px;
+}
+
+input.same-as-main, textarea.same-as-main {
+    opacity: 0.5;
+}
+
+.excluded-variations-container {
+    margin-bottom: 20px;
+}
+
+tr.type-custom td.variation_values input, tr.type-custom td.variation_details .variations-details-container, tr.type-custom td.variation_prices input, tr.type-custom td.variation_shipping input, tr.type-custom td.variation_modificator select {
+    display: none;
+}
+
+tr.type-custom td.variation_details .variations-details-container:first-of-type, tr.type-custom td.variation_values input:first-of-type, tr.type-custom td.variation_prices input:first-of-type, tr.type-custom td.variation_shipping input:first-of-type, tr.type-custom td.variation_modificator select:first-of-type {
+    display: block;
+    visibility: hidden;
+}

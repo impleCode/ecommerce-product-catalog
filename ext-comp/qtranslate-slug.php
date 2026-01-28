@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.0.0
  * @package		ecommerce-product-catalog/ext-comp
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 add_filter( 'product_query_var', 'ic_qtranslate_mod_queryvar' );
 

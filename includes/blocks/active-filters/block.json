@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/active-filters",
+  "textdomain": "ecommerce-product-catalog",
+  "title": "Active Filters",
+  "icon": "filter",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./block.js"
+}

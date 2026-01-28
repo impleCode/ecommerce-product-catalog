@@ -1,5 +1,793 @@
 == Changelog ==
 
+= 3.2.0 - 07/11/2022 =
+
+* Dynamically fetch the state list when the country is selected in checkout
+* Number field removed from the inquiry checkout
+* Welcome screen improvements for WordPress 6.1
+
+= 3.1.0 - 31/10/2022 =
+
+* Multiple WordPress blocks added to display the catalog parts
+* WordPress 6.1 compatibility update
+
+= 3.0.72 - 14/10/2022 =
+
+* Filters performance improvements
+* Welcome screen design improvement
+* Security update
+
+= 3.0.71 - 11/10/2022 =
+
+* Fix the price table block dependencies
+* Security update
+
+= 3.0.70 - 08/10/2022 =
+
+* Security update
+
+= 3.0.69 - 27/09/2022 =
+
+* Session handling improvements
+* Price block introduced
+* Fix double add to cart button for free products
+
+= 3.0.68 - 30/08/2022 =
+
+* Support for filtering multiple shortcodes on one page using the filters bar
+
+= 3.0.67 - 23/08/2022 =
+
+* Theme integration improvements
+
+= 3.0.66 - 16/08/2022 =
+
+* Fix the per_row parameter for the show_categories shortcode
+
+= 3.0.65 - 22/07/2022 =
+
+* Stop showing empty list message when unnecessary
+
+= 3.0.64 - 14/07/2022 =
+
+* Improved performance on the front-end and in the admin side
+* Improved size filter
+
+= 3.0.63 - 07/07/2022 =
+
+* Improved filters handling
+
+= 3.0.62 - 30/06/2022 =
+
+* Cart cache support improvements
+* Mutlilingual support improvements
+
+= 3.0.61 - 24/06/2022 =
+
+* Improved product block editor
+* Additional classes for attributes table
+* Order edit screen styling improvements
+
+= 3.0.60 - 13/06/2022 =
+
+* Improved session handling
+
+= 3.0.59 - 13/05/2022 =
+
+* WordPress 6.0 compatibility update
+
+= 3.0.58 - 28/04/2022 =
+
+* Magnifier and lightbox position fixed when body width is applied
+
+= 3.0.57 - 15/04/2022 =
+
+* Session handling improvements
+
+= 3.0.56 - 08/04/2022 =
+
+* Fix the plugin activation notice
+
+= 3.0.55 - 07/04/2022 =
+
+* AJAX filters handling improvements
+* SiteGround CSS and JS optimization compatibility
+
+= 3.0.54 - 17/03/2022 =
+
+* Elementor compatibility update
+
+= 3.0.53 - 15/03/2022 =
+
+* Multiple improvements for event better performance
+* Improved ajax filters handling
+
+= 3.0.52 - 07/03/2022 =
+
+* A new [catalog_filters_bar] shortcode to show the catalog filters bar widget area
+
+= 3.0.51 - 17/02/2022 =
+
+* Improved default product image assignment
+* Attributes sanitization changed to allow links in values
+
+= 3.0.50 - 11/02/2022 =
+
+* Fix page title on search results page for some themes
+
+= 3.0.49 - 07/02/2022 =
+
+* Fix recent price formatting issue when decimal is set to comma
+
+= 3.0.48 - 04/02/2022 =
+
+* The query for uncategorized products fixed
+* Fix the price without decimals
+
+= 3.0.47 - 26/01/2022 =
+
+* Fix styling error in product details when the formatted template is active
+* Ability to filter private products when logged in with the correct capabilities
+
+= 3.0.46 - 24/01/2022 =
+
+* Display more items in related categories section
+* Compatibility with WordPress 5.9
+
+= 3.0.45 - 17/01/2022 =
+
+* Fix catalog container width for some themes
+
+= 3.0.44 - 13/01/2022 =
+
+* A new option to display only main categories without loose products on main listing page
+* Separate label for free shipping
+
+= 3.0.43 - 16/12/2021 =
+
+* Fix error when adding a new product
+
+= 3.0.42 - 10/12/2021 =
+
+* Fix product duplication issue on some configurations
+* Multiple code adjustments for even better performance
+
+= 3.0.41 - 03/11/2021 =
+
+* New Product Attributes PRO addon compatibility
+
+= 3.0.40 - 02/11/2021 =
+
+* Performance improvements on search and filters
+* Added div container to wrap all catalog content
+
+= 3.0.39 - 18/10/2021 =
+
+* Performance - use WordPress object cache for some queries
+
+= 3.0.38 - 12/10/2021 =
+
+* Fixed rare error on outdated PHP versions
+
+= 3.0.37 - 28/09/2021 =
+
+* Improved multiligual support (Polylang)
+
+= 3.0.36 - 15/09/2021 =
+
+* Improved optimization for mobile
+
+= 3.0.35 - 06/09/2021 =
+
+* Improved multiligual support
+
+= 3.0.34 - 13/08/2021 =
+
+* Fix catalog blocks on widgets screen
+
+= 3.0.33 - 12/08/2021 =
+
+* Divi Builder compatibility improved
+* Size filter performance improved
+
+= 3.0.32 - 27/07/2021 =
+
+* Fix missing data on individual product page for some configurations
+
+= 3.0.31 - 23/07/2021 =
+
+* Improved Elementor support
+
+= 3.0.30 - 21/07/2021 =
+
+* WordPress 5.8 compatibility update
+
+= 3.0.29 - 09/07/2021 =
+
+* Fix the category description HTML
+
+= 3.0.28 - 22/06/2021 =
+
+* Fix template issues with structured data enabled
+
+= 3.0.27 - 14/06/2021 =
+
+* Attributes sorting improved
+
+= 3.0.26 - 21/05/2021 =
+
+* Improved price summary on the order edit screen
+* Improved tax rounding options
+
+= 3.0.25 - 10/05/2021 =
+
+* Fix the number showing up in header for some configurations
+
+= 3.0.24 - 10/05/2021 =
+
+* Fix catalog blocks selector styling
+* Set duplicated product as draft
+* Automatically fill the user data in checkout if available
+
+= 3.0.23 - 13/04/2021 =
+
+* Fix Elementor compatibility
+
+= 3.0.22 - 09/04/2021 =
+
+* PHP 8 compatiblity
+
+= 3.0.21 - 22/03/2021 =
+
+* Display free shipping options when shippping price set to zero
+
+= 3.0.20 - 11/03/2021 =
+
+* Ability to edit labels for size and weight
+* WordPress compatibility update
+
+= 3.0.19 - 04/03/2021 =
+
+* Checkbox for privacy terms acceptance if WordPress privacy terms page is configured
+* Order history date format according to WordPress settings
+
+= 3.0.18 - 12/02/2021 =
+
+* Security - fixed nonce check
+
+= 3.0.17 - 09/02/2021 =
+
+* Variations selector fixed
+
+= 3.0.16 - 03/02/2021 =
+
+* Ability to enable Gutenberg editor for product description
+* Improved support for non latin characters in catalog slugs
+* Theme breadcrumbs compatibility improvements
+* Product search and product categories blocks added
+
+= 3.0.15 - 12/01/2021 =
+
+* Fix breadcrumbs data attributes
+
+= 3.0.14 - 22/12/2020 =
+
+* Compatibility update
+
+= 3.0.13 - 09/12/2020 =
+
+* Fix the unnecessary popup message on product edit screen in WordPress 5.6
+
+= 3.0.12 - 09/12/2020 =
+
+* Fixed saving zero values on product edit screen
+* Improved page builder and theme support
+* WordPress 5.6 compatibility update
+
+= 3.0.11 - 26/11/2020 =
+
+* Outdated PHP compatibility errors fixed
+
+= 3.0.10 - 18/11/2020 =
+
+* Support for payment gateways in web store mode
+
+= 3.0.9 - 04/11/2020 =
+
+* Multilingual compatibility improvements
+* Product filters fix for certain configurations
+
+= 3.0.8 - 21/10/2020 =
+
+* Better Elementor support
+* Ability to force the category page header display
+
+= 3.0.7 - 16/10/2020 =
+
+* Affiliate button support for products without price
+
+= 3.0.6 - 13/10/2020 =
+
+* Fix eCommerce Product Catalog pagination on some configurations
+
+= 3.0.5 - 12/10/2020 =
+
+* Translation improvements
+
+= 3.0.4 - 05/10/2020 =
+
+* eCommerce Multilingual compatibility improvements
+
+= 3.0.3 - 28/09/2020 =
+
+* improved theme integration to support more themes
+
+= 3.0.2 - 24/09/2020 =
+
+* Minor eCommerce Product Catalog styling adjustments for better theme compatibility
+
+= 3.0.1 - 10/09/2020 =
+
+* Category filter fixed on product search
+
+= 3.0 - 27/08/2020 =
+
+* 3 additional eCommerce Product Catalog catalog modes: shopping cart, quote cart and affiliate button
+* New initial configuration tutorial and screen
+* Navigation bar added on category edit and product edit screens
+
+= 2.9.44 - 25/08/2020 =
+
+* Security - fixed nonce check
+
+= 2.9.43 - 18/08/2020 =
+
+* Product duplication fixed
+* Improved responsiveness for settings screens
+* Support forum link added in settings
+
+= 2.9.42 - 13/08/2020 =
+
+* eCommerce Product Catalog WordPress compatibility update
+
+= 2.9.41 - 06/08/2020 =
+
+* New hooks added for eCommerce Product Catalog
+
+= 2.9.40 - 04/08/2020 =
+
+* Minor catalog admin styling changes
+
+= 2.9.39 - 17/07/2020 =
+
+* Navigation bar added on catalog admin pages
+
+= 2.9.38 - 15/07/2020 =
+
+* Ability to search the catalog settings
+* Missing images on some ajax calls fixed
+
+= 2.9.37 - 01/07/2020 =
+
+* Fix the disappearing data problem when switching product status from draft
+
+= 2.9.36 - 09/06/2020 =
+
+* eCommerce Product Catalog shortcode mode improved
+
+= 2.9.35 - 04/06/2020 =
+
+* Multiple caching and db query performance improvements
+
+= 2.9.34 - 26/05/2020 =
+
+* Classic grid styling fixed
+
+= 2.9.33 - 25/05/2020 =
+
+* Fixed admin notification issue
+
+= 2.9.32 - 18/05/2020 =
+
+* Shortcode mode with default main catalog listing
+* Ability to create main listing page from settings screen
+* New help boxes added
+* Improved attributes compatibility with multilingual plugins
+* Improved compatibility with page builders
+
+= 2.9.31 - 11/05/2020 =
+
+* Additional CSS and JS  performance improvements
+
+= 2.9.30 - 05/05/2020 =
+
+* Optimization for even better performance
+
+= 2.9.29 - 27/04/2020 =
+
+* Elementor compatibility improvement
+
+= 2.9.28 - 20/04/2020 =
+
+* Multiple eCommerce Product Catalog performance improvements
+* Fix default attribute value
+
+= 2.9.27 - 14/04/2020 =
+
+* Display correct eCommerce attribute value when the order is changed in settings
+* Fix the default image showing main product catalog page featured image
+
+= 2.9.26 - 06/04/2020 =
+
+* Fix empty catalog output in admin side block editor
+
+= 2.9.25 - 30/03/2020 =
+
+* ft added to available size units
+* WordPress compatibility update
+
+= 2.9.24 - 19/03/2020 =
+
+* Theme compatibility improvement
+
+= 2.9.23 - 10/03/2020 =
+
+* New catalog layout integration options to manage template, product name display, breadcrumbs position and other options
+
+= 2.9.22 - 09/03/2020 =
+
+* Correct product filters values when using shortcode
+
+= 2.9.21 - 03/03/2020 =
+
+* Fix empty eCommerce Product Catalog pages for some configurations
+
+= 2.9.20 - 02/03/2020 =
+
+* Notifications adjustment
+
+= 2.9.19 - 27/02/2020 =
+
+* Display eCommerce configuration wizard only on plugins screen and product catalog admin screens
+* Fix the image on product catalog listing for some configurations
+
+= 2.9.18 - 20/02/2020 =
+
+* Ability to add Manufacturer Product Number (UPC/EAN) which is also included in the structured data
+* Multiple eCommerce Product Catalog performance improvements
+* Compatibility with older WordPress versions (up to 3.7)
+
+= 2.9.17 - 28/01/2020 =
+
+* Remove the unnecessary no products available message in some configurations
+
+= 2.9.16 - 24/01/2020 =
+
+* The option: Category Page shows > subcategories will display products on category page only if the product is directly assigned to the currently viewed category
+* Price color on listing shows now according to the settings
+
+= 2.9.15 - 14/01/2020 =
+
+* Multiple eCommerce Product Catalog performance improvements
+
+= 2.9.14 - 28/11/2019 =
+
+* Wider attributes table on modern listing without price
+
+= 2.9.13 - 20/11/2019 =
+
+* Multiple eCommerce Product Catalog performance improvements
+* Price filter reset button added
+
+= 2.9.12 - 28/10/2019 =
+
+* Minor responsive styling improvements
+* Theme integration improvements
+* Product import and export link added on products admin screen
+
+= 2.9.11 - 21/10/2019 =
+
+* Structured data improved
+* Empty product category page content fixed
+
+= 2.9.10 - 16/10/2019 =
+
+* New block to display main catalog page content
+* New block to display product categories
+* Ability to select product subcategories in show products block
+
+= 2.9.9 - 10/10/2019 =
+
+* eCommerce product catalog translation update
+
+= 2.9.8 - 02/10/2019 =
+
+* Product image uploader usability improvements
+* eCommerce Product Catalog error reporting improved
+
+= 2.9.7 - 29/08/2019 =
+
+* Product catalog category filter full support for product shortcodes
+
+= 2.9.6 - 02/08/2019 =
+
+* eCommerce Product Catalog activation error fix
+
+= 2.9.5 - 31/07/2019 =
+
+* eCommerce structured data template fix
+
+= 2.9.4 - 31/07/2019 =
+
+* eCommerce structured data feature improvements
+* Product catalog theme integration improvements in simple mode
+
+= 2.9.3 - 18/07/2019 =
+
+* The product structured data is now optional
+* eCommerce Structured data is fully customizable with the template file from templates/template-parts/product-page/structured-data.php
+
+= 2.9.2 - 17/06/2019 =
+
+* Compatibility update
+
+= 2.9.1 - 06/06/2019 =
+
+* Simple mode integration improvement to support more themes
+
+= 2.9.0 - 13/05/2019 =
+
+* eCommerce Product Catalog now has support for category pages in theme simple mode
+* eCommerce icons in main menu or on the top of the screen on mobile - icons for catalog and search - the icons are optional and customizable - eCommerce icons can be enabled in Catalog Settings > Catalog Design > Design Schemes or inside theme customizer
+
+= 2.8.29 - 12/02/2019 =
+
+* Free price label only if the price is set to zero
+
+= 2.8.28 - 08/02/2019 =
+
+* Responsive filters performance and usability improvements
+
+= 2.8.27 - 01/02/2019 =
+
+* Ability to assign featured products and show them with [show_featured_product] shortcode
+* Responsive pagination usability improvement
+
+= 2.8.26 - 24/01/2019 =
+
+* Fix price formatting
+
+= 2.8.25 - 24/01/2019 =
+
+* Product Filters Bar filters usability improvement for small screens
+* Fix price formatting with different decimal separators
+
+= 2.8.24 - 17/01/2019 =
+
+* Different price format support for filters
+
+= 2.8.23 - 10/01/2019 =
+
+* Better support for shortcode mode on home page
+* Classic list description on category listing fixed
+
+= 2.8.22 - 31/12/2018 =
+
+* Twenty Nineteen theme native support
+
+= 2.8.21 - 17/12/2018 =
+
+* New block to display catalog products
+
+= 2.8.20 - 10/12/2018 =
+
+* WordPress 5.0 compatibility update (nothing changes in products editing)
+
+= 2.8.19 - 21/11/2018 =
+
+* Fix the error when the main listing is disabled in shortcode mode
+
+= 2.8.18 - 24/10/2018 =
+
+* Product catalog general settings screen markup improved for some configurations
+
+= 2.8.17 - 08/10/2018 =
+
+* Product size filter improved
+
+= 2.8.16 - 26/09/2018 =
+
+* Fix the product listing price styling
+* Fix the [show_products] template problem on pagination
+
+= 2.8.15 - 12/09/2018 =
+
+* New theme integration mode that will use theme default design for listing pages
+* Better usability for integration settings
+
+= 2.8.14 - 17/08/2018 =
+
+* Display the no products available message when the product list is empty
+
+= 2.8.13 - 17/08/2018 =
+
+* Ability to display main product catalog listing anywhere on the website with a shortcode without changing the catalog parent slug
+
+= 2.8.12 - 17/07/2018 =
+
+* Fix compatibility errors for PHP < 5.3
+* Product listing theme files names changed to avoid confusion when creating a custom template
+
+= 2.8.11 - 05/07/2018 =
+
+* Admin usability and styling improvements - configuration tips added
+
+= 2.8.10 - 29/06/2018 =
+
+* Fix a problem when eCommerce Product Catalog breaks WordPress customizer with some themes
+* [show_products] shortcode now by default shows up to 100 products to avoid server timeout errors, this can be changed with product_limit shortcode parameter
+
+= 2.8.9 - 27/06/2018 =
+
+* Fix the eCommerce Product Catalog plugin activation problems with some themes
+
+= 2.8.8 - 22/06/2018 =
+
+* Fix show products shortcode when sorting by include parameter
+* Now the ecommerce configuration wizard will reset on activation only if there are no products added
+
+= 2.8.7 - 04/06/2018 =
+
+* eCommerce shortcodes to display products work fine again
+
+= 2.8.6 - 01/06/2018 =
+
+* eCommerce Product Catalog privacy info added
+* Now eCommerce Product Catalog doesn't use any cookies if the Quote Cart and Shopping Cart are disabled
+
+= 2.8.5 - 17/05/2018 =
+
+* Problems with ecommerce category page title on some themes fixed
+* Unnecessary semicolon on modern grid product listing removed
+* Same image showing up on the ecommerce product listing on some themes fixed
+
+= 2.8.4 - 11/05/2018 =
+
+* Ability to edit each individual ecommerce product listing element, also classic grid, modern grid and classic list with template files placed in child theme folder
+* Database and disk usage performance improved when displaying ecommerce pages
+* Now product details box shows up when the product weight or product size is disabled
+
+= 2.8.3 - 08/05/2018 =
+
+* Fix the product listing on category page when category widget is placed in the ecommerce filters bar
+* Fix the edit product link on the WordPress admin bar when logged in as administrator on any of the eCommerce Product Catalog pages
+* The currency switcher in the catalog settings and the configuration wizard now shows the currency code first for better usability
+
+= 2.8.2 - 07/05/2018 =
+
+* Fix wrong page title for some themes on eCommerce Product Catalog category pages. If you still see some incompatibility with the theme please let us know on the [support forum](https://wordpress.org/support/plugin/ecommerce-product-catalog)
+
+= 2.8.1 - 05/05/2018 =
+
+Two tweaks for the magnifier feature that appears on each ecommerce product page:
+
+* Tweak - magnifier disabled on small screens for better usability - now the product page magnifier will not work on the smartphone screen. Only the lightbox will be available as in previous releases. On desktop the magnifier will work as expected on each ecommerce page.
+* Tweak - magnifier option in WordPress customizer to disable or enable (the customizer opens when you click the Customize Page Design link on individual ecommerce page in admin options section when logged in)
+
+= 2.8.0 - 29/04/2018 =
+
+eCommerce Product Catalog gets 4 new features:
+
+* Feature - optional ecommerce product comparison - when you define ecommerce parameters comparison page in settings > attributes a new compare button will show up on each product page. When the button is clicked it will redirect the user to the comparison page where another product can be selected to be compared. 
+* Feature - optional magnifier on main product image - when you point the mouse cursor over the main product image on ecommerce product catalog individual product page it wil show the magnified portion of the image on the left or right side depending of the product page template enabled
+* Feature - optional size field with different units available and size filter widget - now you can define height, width and length for each product in ecommerce. You can use it if the size is important for the products that you sell of offer. The customer will be able to use the size filter to display products only within certain range for height, width or length.
+* Feature - optional weight field - if you enable the weight you will be able to define it for each ecommerce product. Different units are available. You can define it in the ecommerce attributes settings.
+
+= 2.7.25 - 02/03/2018 =
+
+* Fix - better session handling on some configurations
+
+= 2.7.24 - 02/03/2018 =
+
+* Tweak - template file for shortcode integration container
+
+= 2.7.23 - 23/02/2018 =
+
+* Tweak - shortcode product catalog compatibility with more themes
+
+= 2.7.22 - 13/02/2018 =
+
+* Fix - pagination on main product listing page with shortcode integration
+
+= 2.7.21 - 08/02/2018 =
+
+* Fix - multiple titles on category page on some themes
+
+= 2.7.20 - 06/02/2018 =
+
+* Tweak - startup tutorial added
+
+= 2.7.19 - 30/01/2018 =
+
+* Fix - product page not displaying properly on some configurations
+
+= 2.7.18 - 29/01/2018 =
+
+* Tweak - show admin notices only on catalog admin pages
+* Tweak - better page builders support for eCommerce pages
+
+= 2.7.17 - 23/01/2018 =
+
+* Tweak - shortcode integration improved
+* Fix - price filter fixed
+
+= 2.7.16 - 10/01/2018 =
+
+* Fix - search pagination fixed
+* Fix - shortcode integration improved on category pages
+
+= 2.7.15 - 04/01/2018 =
+
+* Tweak - support for categories import from other post type
+* Tweak - compatibility info modified
+
+= 2.7.14 - 02/01/2018 =
+
+* Tweak - support for multiple product categories import
+* Tweak - ecommerce multilingual support improved
+
+= 2.7.13 - 18/12/2017 =
+
+* Tweak - shortcode theme integration improved
+
+= 2.7.12 - 13/12/2017 =
+
+* Tweak - shortcode theme integration improved
+
+= 2.7.11 - 11/12/2017 =
+
+* Tweak - more unique class name for tooltips to avoid incompatibility with other plugins
+* Tweak - code improvements for even better performance and readability
+
+= 2.7.10 - 06/12/2017 =
+
+* Tweak - code improvements for even better performance and readability
+
+= 2.7.9 - 09/11/2017 =
+
+* Fix - show only subcategories setting with eCommerce shortcode integration
+
+= 2.7.8 - 04/11/2017 =
+
+* Fix - product name on classic grid listing
+
+= 2.7.7 - 03/11/2017 =
+
+* Tweak - new shortcode theme integration method for eCommerce Product Catalog
+* Tweak - multiple code improvements for even better performance and readability
+
+= 2.7.6 - 31/10/2017 =
+
+* Tweak - support for comma decimal separator in price filter
+
+= 2.7.5 - 23/10/2017 =
+
+* Tweak - support for decimal price in eCommerce price filter
+
+= 2.7.4 - 05/07/2017 =
+
+* Tweak - compatibility with WordPress password protected feature
+* Tweak - admin edit links on product page when logged in as admin
+
+= 2.7.3 - 12/06/2017 =
+
+* Tweak - speed optimization for eCommerce Product Catalog CSS and JS files on product display pages
+* Tweak - 168 currencies available out of the box for ecommerce
+
+= 2.7.2 - 29/05/2017 =
+
+* Tweak - ability to import products from other post type
+
 = 2.7.1 - 12/05/2017 =
 
 * Tweak - ajax filters usability improvements
@@ -443,7 +1231,7 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 = 2.3.9 - 03/08/2015 =
 
 * Tweak - support for theme sidebar with automatic adjustment
-* Localization - Portuguese language improved thanks to Fábio on impleCode Translate Project
+* Localization - Portuguese language improved thanks to Fï¿½bio on impleCode Translate Project
 * Localization - Russian language introduced thanks to Stanly on impleCode Translate Project
 
 = 2.3.8 - 27/07/2015 =
@@ -459,7 +1247,7 @@ See more on [Dev Blog](https://implecode.com/product-catalog-2-4-0/)!
 
 * Tweak - new show_products shortcode attributes order & orderby https://implecode.com/docs/ecommerce-product-catalog/product-shortcodes/
 * Tweak - new shortcodes introduced see https://implecode.com/docs/ecommerce-product-catalog/product-catalog-shortcodes/
-* Localization - Spanish language improved thanks to César on impleCode Translate Project
+* Localization - Spanish language improved thanks to Cï¿½sar on impleCode Translate Project
 * Localization - Arabic language improved thanks to Supermekki on impleCode Translate Project
 
 = 2.3.6 - 13/07/2015 =

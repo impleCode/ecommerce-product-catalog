@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.0.0
  * @package		ecommerce-product-catalog/includes
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 require_once(dirname( __FILE__ ) . '/price-filter-widget.php');
 

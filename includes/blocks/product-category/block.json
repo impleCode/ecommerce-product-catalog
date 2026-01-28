@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/product-category",
+  "textdomain": "ecommerce-product-catalog",
+  "title": "Product Category Page",
+  "icon": "store",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "alignment": {
+      "type": "string",
+      "default": "none"
+    },
+    "border": {
+      "type": "string",
+      "default": "none"
+    },
+    "spacing": {
+      "type": "string",
+      "default": ""
+    },
+    "selectedCategory": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object"
+      }
+    },
+    "categorySearch": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./block.js"
+}

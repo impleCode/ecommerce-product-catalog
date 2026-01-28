@@ -1,0 +1,7862 @@
+msgid ""
+msgstr ""
+"PO-Revision-Date: 2026-01-19 13:30+0000\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && "
+"n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Loco https://localise.biz/\n"
+"Language: sr_RS\n"
+"Project-Id-Version: eCommerce Product Catalog\n"
+"Language-Team: Serbian"
+
+#: includes/register-product.php:763
+#, php-format
+msgid " published. <a href=\"%1$s\">View %2$s</a>"
+msgstr ""
+
+#: theme-product_adder_support.php:237
+#, php-format
+msgid "%1$s and %2$s separately for different product catalogs"
+msgstr ""
+
+#: theme-product_adder_support.php:239
+#, php-format
+msgid "%1$s as an alternative to %2$s"
+msgstr ""
+
+#: includes/register-product.php:767
+#, php-format
+msgid "%1$s draft updated. <a target=\"_blank\" href=\"%2$s\">Preview %1$s</a>"
+msgstr ""
+
+#: includes/register-product.php:762
+#, php-format
+#| msgid " restored to revision from %s"
+msgid "%1$s restored to revision from %2$s"
+msgstr ""
+
+#: includes/register-product.php:765
+#, php-format
+msgid "%1$s submitted. <a target=\"_blank\" href=\"%2$s\">Preview %1$s</a>"
+msgstr ""
+
+#: functions/duplicate.php:130
+#, php-format
+msgid "%1$s successfully duplicated! You can edit your new %2$s %3$s."
+msgstr "%1$s uspešno kopirano. Možete urediti svojih novih %2$s %3$s."
+
+#: includes/register-product.php:758
+#, php-format
+msgid "%1$s updated. <a href=\"%2$s\">View %1$s</a>"
+msgstr ""
+
+#: theme-product_adder_support.php:241
+#, php-format
+msgid "%1$s with %2$s design"
+msgstr ""
+
+#: includes/settings/general.php:348
+#, php-format
+msgid ""
+"%1$sCreate a main catalog listing page%2$s with %3$s to have more styling "
+"options."
+msgstr ""
+
+#: templates/theme-integration.php:97
+#, php-format
+msgid ""
+"%1$sDecrease width%2$s to change the product page horizontal size, "
+"%1$sincrease padding%2$s to generate space around the content and %1$sset "
+"background & text colors%2$s to match your theme style"
+msgstr ""
+
+#: includes/register-product.php:766
+#, php-format
+msgid ""
+"%3$s scheduled for: <strong>%1$s</strong>. <a target=\"_blank\" "
+"href=\"%2$s\">Preview %3$s</a>"
+msgstr ""
+
+#: includes/settings/search.php:110
+#, php-format
+msgid "%s adjustment options found in settings for '%s'"
+msgstr ""
+
+#: modules/attributes/attributes-meta.php:24
+#, php-format
+msgid "%s Attributes"
+msgstr "%s Odlike"
+
+#: includes/product-categories.php:31 includes/product-categories.php:41
+#: includes/widgets/category-widget.php:20
+#, php-format
+msgid "%s Categories"
+msgstr ""
+
+#: includes/product-categories.php:32
+#, php-format
+msgid "%s Category"
+msgstr ""
+
+#: includes/blocks/widgets.php:112 includes/widgets/filter-widgets.php:129
+#, php-format
+msgid "%s Category Filter"
+msgstr ""
+
+#: includes/system.php:200
+#, php-format
+msgid "%s Database Version"
+msgstr ""
+
+#: includes/settings/custom-names.php:28
+#, php-format
+msgid "%s Description"
+msgstr "%s Opis"
+
+#: includes/register-product.php:302
+#, php-format
+msgid "%s description"
+msgstr "%s opis"
+
+#: includes/register-product.php:303
+#, php-format
+msgid "%s Details"
+msgstr "%s Detalji"
+
+#: functions/support.php:155
+#, php-format
+msgid "%s documentation"
+msgstr ""
+
+#: includes/settings/search.php:230
+#, php-format
+msgid "%s documentation pages found for '%s'"
+msgstr ""
+
+#: includes/settings/csv.php:169
+#, php-format
+msgid "%s failures occurred. Please check if the file is UTF-8 encoded"
+msgstr ""
+
+#: includes/settings/custom-names.php:23
+#, php-format
+msgid "%s Features"
+msgstr "%s Odlika"
+
+#: includes/widgets/filter-widgets.php:20
+#, php-format
+msgid "%s Filters Bar"
+msgstr ""
+
+#: includes/register-product.php:150 includes/register-product.php:715
+#, php-format
+msgid "%s Image"
+msgstr "%s Slika"
+
+#: includes/activation-config.php:281
+#, php-format
+msgid "%s is active now!"
+msgstr ""
+
+#: includes/welcome/start.php:92
+#, php-format
+msgid "%s is carefully crafted for seamless usability by everyday users."
+msgstr ""
+
+#: templates/theme-integration.php:70
+#, php-format
+msgid "%s is currently running in Advanced Mode."
+msgstr ""
+
+#: templates/theme-integration.php:64
+#, php-format
+msgid "%s is currently running in Shortcode Mode."
+msgstr ""
+
+#: templates/theme-integration.php:67
+#, php-format
+msgid "%s is currently running in Simple Mode."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:84 includes/welcome/new.php:138
+#: includes/welcome/start.php:117
+#, php-format
+msgid "%s is designed to make it easy for developers to customize things."
+msgstr ""
+
+#: theme-product_adder_support.php:334
+#, php-format
+msgid ""
+"%s is free software. Would you mind taking <strong>5 seconds</strong> to <a "
+"target=\"_blank\" href=\"%s\">rate the plugin</a> for us, please? Your "
+"comments <strong>help others know what to expect</strong> when they install "
+"%s."
+msgstr ""
+
+#: includes/customizer.php:255 includes/customizer.php:277
+#, php-format
+msgid "%s Label"
+msgstr ""
+
+#: includes/settings/custom-names.php:19
+#, php-format
+msgid "%s Price"
+msgstr "%s Cene"
+
+#: modules/price/widgets/price-filter-widget.php:20
+#, php-format
+msgid "%s Price Filter"
+msgstr "%s Filter cene"
+
+#: includes/settings/csv.php:167
+#, php-format
+msgid "%s products successfully added to the catalog"
+msgstr ""
+
+#: theme-product_adder_support.php:195
+#, php-format
+msgid ""
+"%s requires initial configuration in order to work properly &#8211; please "
+"click the Initial Configuration button to proceed."
+msgstr ""
+
+#: includes/blocks/widgets.php:110 includes/widgets/search-widget.php:20
+#: includes/widgets/search-widget.php:101
+#, php-format
+msgid "%s Search"
+msgstr "%s traži"
+
+#: includes/product-settings.php:332
+#, php-format
+msgid "%s Settings in Docs"
+msgstr "%s podešavanja u dokumentaciji"
+
+#: includes/settings/custom-names.php:22 modules/shipping/shipping-meta.php:25
+#, php-format
+msgid "%s Shipping"
+msgstr "%s Dostava"
+
+#: includes/register-product.php:301
+#, php-format
+msgid "%s Short Description"
+msgstr "%s Kratak opis"
+
+#: includes/blocks/widgets.php:113 includes/widgets/filter-widgets.php:408
+#, php-format
+msgid "%s Size Filter"
+msgstr ""
+
+#: includes/blocks/widgets.php:111 includes/widgets/filter-widgets.php:335
+#, php-format
+msgid "%s Sort"
+msgstr ""
+
+#: includes/settings/csv.php:550
+#, php-format
+msgid "%s successfully imported!"
+msgstr ""
+
+#: includes/system.php:420
+#, php-format
+msgid "%s Support"
+msgstr ""
+
+#: modules/cart/includes/orders/functions/functions.php:334
+#, php-format
+msgid "%s Team"
+msgstr ""
+
+#: includes/register-product.php:761
+#, php-format
+msgid "%s updated."
+msgstr "%s unapređeno."
+
+#: includes/system.php:188
+#, php-format
+msgid "%s Version"
+msgstr ""
+
+#: includes/blocks/widgets.php:73
+#: modules/price/blocks/price-filter/index.php:28
+#, php-format
+msgid ""
+"%s will only show up on the front-end if something is available in the "
+"context."
+msgstr ""
+
+#: includes/blocks/context-blocks.php:45
+#, php-format
+msgid ""
+"%s will only show up on the product page if the product has the related data "
+"assigned."
+msgstr ""
+
+#: functions/functions.php:1270
+#, php-format
+msgid "%sAdd widgets to the filters bar now%s or %sdismiss this notice%s."
+msgstr ""
+
+#: ext-comp/elementor/show_catalog_widget.php:103
+#, php-format
+msgid ""
+"%sHere%s you can edit all text that is displayed inside the catalog "
+"container."
+msgstr ""
+
+#: includes/settings/custom-names.php:25
+#, php-format
+msgid "<< return to %s"
+msgstr "<< povratak na %s"
+
+#: includes/settings/custom-names.php:39
+msgid "<< return to listing"
+msgstr ""
+
+#: functions/support.php:156
+#, php-format
+msgid ""
+"<b>%4$s</b> documentation is being developed <a href=\"%1$s\">here</a>. For "
+"questions about %4$s please use <a href=\"%2$s\">support forum</a> or <a "
+"href=\"%3$s\">Premium Support service</a>."
+msgstr ""
+
+#: functions/support.php:40
+#, php-format
+msgid ""
+"<b>%s is free to use</b>. That's great! It's a pleasure to serve it to you. "
+"Let's keep it free forever!"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:220
+msgid "<b>BILLING ADDRESS</b>"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:248
+msgid ""
+"<b>DELIVERY ADDRESS</b> (FILL ONLY IF DIFFERENT FROM THE BILLING ADDRESS)"
+msgstr ""
+
+#: functions/support.php:67
+#, php-format
+msgid ""
+"<b>Extensions apart of premium support</b> provide additional useful "
+"features. They improve %s in a field of <a href=\"%1$s\">SEO</a>, <a "
+"href=\"%3$s\">Productivity</a>, <a href=\"%2$s\">Usability</a> and <a "
+"href=\"%4$s\">Conversion</a>."
+msgstr ""
+
+#: theme-product_adder_support.php:352
+#, php-format
+msgid ""
+"<strong>Psst, it's less than 1 minute</strong> to add some translations to "
+"%s collaborative <a target='_blank' href='%s'>translation project</a>."
+msgstr ""
+
+#: theme-product_adder_support.php:196
+#, php-format
+msgid ""
+"<strong>Your theme does not declare %s support</strong> &#8211; please "
+"proceed to sample product page where automatic layout adjustment can be made."
+msgstr ""
+
+#: theme-product_adder_support.php:339
+msgid ""
+"A <strong>huge thank you</strong> from impleCode and WordPress community in "
+"advance!"
+msgstr ""
+
+#: includes/widgets/category-widget.php:21
+#, php-format
+msgid "A list or dropdown of %s categories"
+msgstr ""
+
+#: includes/widgets/category-widget.php:24
+msgid "A list or dropdown of catalog categories"
+msgstr ""
+
+#: includes/widgets/search-widget.php:21
+#, php-format
+msgid "A search form for your %s."
+msgstr ""
+
+#: includes/widgets/search-widget.php:24
+msgid "A search form for your catalog items."
+msgstr ""
+
+#: includes/extensions.php:585 includes/extensions.php:649
+msgid "Active Extension"
+msgstr ""
+
+#: includes/product-filters.php:586
+msgid "Active Filters"
+msgstr ""
+
+#: includes/blocks/index.php:321
+msgid ""
+"Active filters will only show up on the front-end if any filters are active "
+"in the current context."
+msgstr ""
+
+#: includes/system.php:328
+msgid "Active Plugins"
+msgstr "Активирај додатак"
+
+#: modules/cart/includes/variations/variations-meta.php:156
+msgid "Add"
+msgstr ""
+
+#: includes/settings/general.php:345
+#, php-format
+msgid "Add %1$s to the %2$smain catalog page%3$s to have more styling options."
+msgstr ""
+
+#: modules/cart/includes/orders/functions/functions.php:173
+msgid "Add Custom Product"
+msgstr ""
+
+#: includes/activation-config.php:316
+#, php-format
+msgid "Add First %s"
+msgstr ""
+
+#: modules/quote-cart/index.php:107
+msgid "Add more Products"
+msgstr ""
+
+#: includes/register-product.php:156
+msgid "Add New"
+msgstr "Dodoajte novu"
+
+#: includes/register-product.php:140 includes/register-product.php:141
+#: includes/register-product.php:143
+#, php-format
+msgid "Add New %s"
+msgstr "Додајте нови %s"
+
+#: includes/product-columns.php:257
+#, php-format
+msgid "Add new %s"
+msgstr ""
+
+#: includes/product-categories.php:39
+#, php-format
+msgid "Add New %s Category"
+msgstr ""
+
+#: includes/product-categories.php:53
+msgid "Add New Category"
+msgstr "Dodaj Novu Kategoriju"
+
+#: includes/register-product.php:157 includes/register-product.php:159
+msgid "Add New Item"
+msgstr "Dodati novu stavku"
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:42
+msgid "Add New Order"
+msgstr ""
+
+#: includes/activation-config.php:181 includes/activation-config.php:182
+msgid "Add new product"
+msgstr ""
+
+#: modules/quote-cart/index.php:59
+msgid "Add New Quote"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:44
+msgid "Add Order"
+msgstr ""
+
+#: modules/cart/includes/orders/functions/functions.php:171
+msgid "Add Product"
+msgstr "Додајте производ"
+
+#: modules/quote-cart/index.php:61
+msgid "Add Quote"
+msgstr ""
+
+#: theme-product_adder_support.php:150
+msgid "Add Shortcode Now"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:49
+#: modules/cart/includes/orders/includes/save-order.php:215
+msgid "Add to Cart"
+msgstr ""
+
+#: modules/quote-cart/index.php:106
+msgid "Add to Inquiry"
+msgstr ""
+
+#: includes/activation-config.php:338
+#, php-format
+msgid "Add your first %s here."
+msgstr ""
+
+#: includes/welcome/new.php:119
+msgid "Add your review"
+msgstr ""
+
+#: theme-product_adder_support.php:320 includes/extensions.php:915
+#: includes/welcome/welcome-screen.php:188
+msgid "Add-ons & Integrations"
+msgstr ""
+
+#: modules/cart/includes/cart/cart-info.php:70
+#, php-format
+msgid "Added! %sSee your cart%s."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:118
+msgid "Additional Information"
+msgstr ""
+
+#: includes/settings/custom-design.php:119
+#: includes/settings/custom-design.php:149
+#: includes/settings/custom-design.php:167 modules/sku/sku-settings.php:33
+msgid "Additional Settings"
+msgstr "Dodatna podešavanja"
+
+#: modules/quote-cart/index.php:283
+#: modules/cart/includes/shopping-settings.php:220
+#: modules/cart/includes/shopping-settings.php:249
+msgid "Address"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:172
+msgid "Admin Email Subject"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:173
+msgid "Admin Email template"
+msgstr ""
+
+#: functions/catalog-admin.php:57 functions/catalog-admin.php:74
+msgid "Admin Options"
+msgstr ""
+
+#: includes/activation-config.php:584 includes/activation-config.php:585
+#: includes/settings/general.php:371 includes/settings/general.php:372
+msgid "Admin panel customisation setting. Change it to what you sell."
+msgstr ""
+
+#: includes/settings/general.php:205 includes/settings/general.php:239
+msgid "Advanced Mode"
+msgstr ""
+
+#: templates/theme-integration.php:90
+msgid "Advanced Mode is temporary enabled for this page now."
+msgstr "Napredni režim sada je privremeno aktiviran za ovu stranicu."
+
+#: includes/extensions.php:568 includes/extensions.php:629
+#: includes/extensions.php:669
+msgid "Advanced Mode Required"
+msgstr ""
+
+#: includes/settings/general.php:221 includes/settings/general.php:316
+msgid "Advanced Mode Visual Wizard"
+msgstr ""
+
+#: functions/activation.php:164
+msgid "Advanced Theme Integration Mode"
+msgstr "Napredni režim za integraciju teme"
+
+#: includes/activation-config.php:115 modules/button/index.php:126
+msgid "Affiliate Button"
+msgstr ""
+
+#: includes/settings/general.php:361
+msgid "Affiliate Catalog"
+msgstr ""
+
+#: modules/price/config/currencies.php:195
+msgid "Afghan afghani"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:586
+msgid "Afghanistan"
+msgstr ""
+
+#: modules/price/price-settings.php:100
+msgid "After Price"
+msgstr "Iza cene"
+
+#: modules/price/price-settings.php:67
+msgid "After Price Text"
+msgstr "Tekst iza cene"
+
+#: modules/cart/includes/orders/includes/digital-order-columns.php:98
+msgid "ago"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:587
+msgid "Albania"
+msgstr ""
+
+#: modules/price/config/currencies.php:196
+msgid "Albanian lek"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:588
+msgid "Algeria"
+msgstr ""
+
+#: modules/price/config/currencies.php:235
+msgid "Algerian dinar"
+msgstr ""
+
+#: functions/functions.php:1004 includes/product-columns.php:117
+#: includes/blocks/index.php:123 includes/blocks/index.php:341
+#: includes/blocks/index.php:375 includes/settings/custom-names.php:60
+#: includes/settings/custom-names.php:71
+msgid "All"
+msgstr "Svi"
+
+#: includes/settings/custom-names.php:59
+#, php-format
+msgid "All %s"
+msgstr "Svi %s"
+
+#: includes/product-categories.php:34
+#, php-format
+msgid "All %s Categories"
+msgstr ""
+
+#: includes/product-settings.php:393
+msgid "All bug reports and support tickets are tracked on a daily basis."
+msgstr "Sve prijave smetnji i zahtevi za podrškom se prate na dnevnoj bazi. "
+
+#: includes/system.php:71
+msgid "All Catalog Categories successfully deleted!"
+msgstr ""
+
+#: includes/system.php:73
+msgid ""
+"All catalog categories will be permanently deleted. Would you like to "
+"proceed?"
+msgstr ""
+
+#: includes/system.php:44
+msgid "All Catalog Products successfully deleted!"
+msgstr ""
+
+#: includes/system.php:29
+msgid ""
+"All catalog settings will be reset to defaults. Would you like to proceed?"
+msgstr ""
+
+#: includes/product-categories.php:48
+msgid "All Categories"
+msgstr "Sve Kategorije"
+
+#: includes/class-ic-sitewide-bar.php:201
+msgid "All devices"
+msgstr ""
+
+#: includes/extensions.php:117 includes/extensions.php:156
+#: includes/extensions.php:198
+msgid "All extensions are designed to work with each other smoothly."
+msgstr ""
+
+#: includes/system.php:46
+msgid "All items will be permanently deleted. Would you like to proceed?"
+msgstr ""
+
+#: includes/extensions.php:43
+msgid ""
+"All premium extensions come with premium support provided by the dev team."
+"<br>Feel free to contact impleCode for configuration help, troubleshooting, "
+"installation assistance and any other plugin support at any time!"
+msgstr ""
+
+#: includes/settings/custom-names.php:70
+msgid "All Products"
+msgstr "Svi proizvodi"
+
+#: includes/welcome/mode-selected.php:96 includes/welcome/new.php:150
+#: includes/welcome/start.php:129
+msgid "All the templates are located in the plugin templates folder."
+msgstr ""
+
+#: templates/shortcode-catalog.php:722
+msgid ""
+"All your individual product pages will include this page slug as a parent."
+msgstr ""
+
+#: includes/tracking.php:318
+msgid "Allow"
+msgstr ""
+
+#: includes/tracking.php:317
+#, php-format
+msgid ""
+"Allow %s to track plugin usage? Opt-in to tracking to help in plugin "
+"development. No sensitive data is tracked."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:164
+msgid ""
+"Alternately, try using the Email to send confirmations that matches your "
+"website domain."
+msgstr ""
+
+#: functions/support.php:111
+msgid "Alternative listing template"
+msgstr ""
+
+#: functions/support.php:78
+msgid "Alternative Products"
+msgstr ""
+
+#: functions/support.php:82
+msgid "Alternative Products Table"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:589
+msgid "American Samoa"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/digital-order-columns.php:28
+msgid "Amount"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:124
+#, php-format
+msgid "An error occurred. Please try again. Auto refresh in %s seconds."
+msgstr ""
+
+#: includes/settings/search.php:219
+msgid "An error ocurred while searching. Please try again. "
+msgstr ""
+
+#: functions/support.php:51
+msgid ""
+"An upgrade that will add many valuable features to the catalog functionality!"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:590
+msgid "Andorra"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:591
+msgid "Angola"
+msgstr ""
+
+#: modules/price/config/currencies.php:199
+msgid "Angolan kwanza"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:592
+msgid "Anguilla"
+msgstr ""
+
+#: includes/settings/custom-names.php:139
+msgid "Another Categories Label"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:593
+msgid "Antarctica"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:594
+msgid "Antigua and Barbuda"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:59
+msgid ""
+"Apart from the main catalog page, you can display products and categories "
+"anywhere on the website."
+msgstr ""
+
+#: functions/support.php:75
+#, php-format
+msgid ""
+"Apart of fast, confidential email support <b>you will receive some advanced "
+"features</b> for %s."
+msgstr ""
+
+#: includes/widgets/filter-widgets.php:21
+#, php-format
+msgid ""
+"Appears above the product list. Recommended widgets: %1$s Search, %1$s Price "
+"Filter, %1$s Sort and %1$s Category Filter."
+msgstr ""
+
+#: includes/widgets/filter-widgets.php:24
+msgid ""
+"Appears above the product list. Recommended widgets: Catalog Search, Catalog "
+"Price Filter, Catalog Sort and Catalog Category Filter."
+msgstr ""
+
+#: includes/settings/custom-design.php:309
+msgid "archive pagination"
+msgstr "paginacija arhive"
+
+#: includes/settings/general.php:495
+msgid "Archive SEO Title"
+msgstr "Arhiviraj SEO naziv"
+
+#: includes/settings/tooltips.php:182
+msgid "Are you sure? This will disable all tutorial boxes on all screens."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:595
+msgid "Argentina"
+msgstr ""
+
+#: modules/price/config/currencies.php:200
+msgid "Argentine peso"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:596
+msgid "Armenia"
+msgstr ""
+
+#: modules/price/config/currencies.php:197
+msgid "Armenian dram"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:597
+msgid "Aruba"
+msgstr ""
+
+#: modules/price/config/currencies.php:202
+msgid "Aruban florin"
+msgstr ""
+
+#: functions/support.php:154
+#, php-format
+msgid ""
+"As you may already know some themes may need Theme Integration to support %s "
+"fully. We wrote this <a href=\"%s\">theme integrations guide</a>, however, "
+"to make it even easier you will get <a href=\"%s\">Advanced Theme "
+"Integration</a> service for free if you choose <a href=\"%s\">Premium "
+"Support</a> service."
+msgstr ""
+
+#: includes/blocks/index.php:411
+msgid "ASC"
+msgstr ""
+
+#: includes/activation-config.php:192
+msgid "Assign or add the product categories and subcategories here."
+msgstr ""
+
+#: modules/attributes/ext/polylang.php:49
+msgid "Attribute Label"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:99
+#: modules/attributes/attributes-settings.php:107
+msgid "Attribute name"
+msgstr "Naziv karakteristike"
+
+#: modules/attributes/attributes-settings.php:109
+#: modules/attributes/ext/polylang.php:56
+msgid "Attribute Unit"
+msgstr ""
+
+#: modules/attributes/ext/polylang.php:42
+msgid "Attribute Value"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:102
+#: modules/attributes/attributes-settings.php:108
+msgid "Attribute value"
+msgstr "Vrednost karakteristike"
+
+#: includes/activation-config.php:194 modules/attributes/attributes-meta.php:26
+#: modules/attributes/attributes-settings.php:25
+msgid "Attributes"
+msgstr "Atributi"
+
+#: modules/attributes/attributes-settings.php:157
+msgid "attributes"
+msgstr "atributi"
+
+#: includes/activation-config.php:349
+msgid "Attributes box"
+msgstr ""
+
+#: includes/activation-config.php:126
+msgid "Attributes Configuration"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:132
+msgid "Attributes disabled. To enable set minimum 1 attribute."
+msgstr ""
+"Atributi deaktivirani. Da biste ih aktivirali, podesite vrednost na minumim "
+"1 atribut."
+
+#: modules/attributes/attributes-settings.php:75
+msgid "Attributes options"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:49
+#: modules/attributes/attributes-settings.php:66
+msgid "Attributes Settings"
+msgstr "Podešavanja atributa"
+
+#: modules/cart/ext/formbuilder/index.php:598
+msgid "Australia"
+msgstr ""
+
+#: modules/price/config/currencies.php:201
+msgid "Australian dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:599
+msgid "Austria"
+msgstr ""
+
+#: includes/system.php:390
+msgid "Author URL"
+msgstr "URL autora"
+
+#: includes/extensions.php:771
+#, php-format
+msgid ""
+"Automatic installation is currently unavailable because your website cannot "
+"connect to WordPress.org. You can <a href=\"%s\">download the extension "
+"manually</a> and install it via Plugins > Add New > Upload Plugin."
+msgstr ""
+
+#: functions/support.php:100
+msgid "Automatic Product Descriptions"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:74
+msgid "Available Shortcodes"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:600
+msgid "Azerbaijan"
+msgstr ""
+
+#: modules/price/config/currencies.php:203
+msgid "Azerbaijani manat"
+msgstr ""
+
+#: includes/customizer.php:198 templates/theme-integration.php:99
+msgid "Background"
+msgstr "Pozadina"
+
+#: modules/cart/ext/formbuilder/index.php:601
+msgid "Bahamas"
+msgstr ""
+
+#: modules/price/config/currencies.php:214
+msgid "Bahamian dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:602
+msgid "Bahrain"
+msgstr ""
+
+#: modules/price/config/currencies.php:208
+msgid "Bahraini dinar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:603
+msgid "Bangladesh"
+msgstr ""
+
+#: modules/price/config/currencies.php:206
+msgid "Bangladeshi taka"
+msgstr ""
+
+#: modules/price/config/currencies.php:205
+msgid "Barbadian dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:604
+msgid "Barbados"
+msgstr ""
+
+#: modules/price/price-settings.php:99
+msgid "Before Price"
+msgstr "Pre cene"
+
+#: modules/cart/ext/formbuilder/index.php:605
+msgid "Belarus"
+msgstr ""
+
+#: modules/price/config/currencies.php:219
+msgid "Belarusian ruble"
+msgstr ""
+
+#: modules/price/config/currencies.php:218
+msgid "Belarusian ruble (old)"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:606
+msgid "Belgium"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:607
+msgid "Belize"
+msgstr ""
+
+#: modules/price/config/currencies.php:220
+msgid "Belize dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:608
+msgid "Benin"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:609
+msgid "Bermuda"
+msgstr ""
+
+#: modules/price/config/currencies.php:210
+msgid "Bermudian dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:610
+msgid "Bhutan"
+msgstr ""
+
+#: modules/price/config/currencies.php:216
+msgid "Bhutanese ngultrum"
+msgstr ""
+
+#: functions/activation.php:142 includes/customizer.php:164
+#: modules/price/price-settings.php:26
+msgid "Big"
+msgstr "Velika"
+
+#: modules/price/config/currencies.php:215
+msgid "Bitcoin"
+msgstr ""
+
+#: includes/blocks/block-edit.php:84
+msgid "Blocks"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:66 includes/welcome/start.php:99
+msgid "Blocks usage"
+msgstr ""
+
+#: includes/customizer.php:147 includes/settings/custom-design.php:300
+#: modules/price/price-settings.php:44
+msgid "Blue"
+msgstr "Plavi"
+
+#: modules/cart/ext/formbuilder/index.php:611
+msgid "Bolivia"
+msgstr ""
+
+#: modules/price/config/currencies.php:212
+msgid "Bolivian boliviano"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:612
+msgid "Bosnia and Herzegovina"
+msgstr ""
+
+#: modules/price/config/currencies.php:204
+msgid "Bosnia and Herzegovina convertible mark"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:613
+msgid "Botswana"
+msgstr ""
+
+#: modules/price/config/currencies.php:217
+msgid "Botswana pula"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:614
+msgid "Bouvet Island"
+msgstr ""
+
+#: includes/settings/custom-design.php:290
+msgid "Boxes Color"
+msgstr "Boja okvira"
+
+#: modules/cart/ext/formbuilder/index.php:615
+msgid "Brazil"
+msgstr ""
+
+#: modules/price/config/currencies.php:213
+msgid "Brazilian real"
+msgstr ""
+
+#: includes/settings/custom-names.php:197
+msgid "Breadcrumbs Home Label"
+msgstr ""
+
+#: includes/settings/general.php:502
+msgid "Breadcrumbs Settings"
+msgstr "Breadcrumbs podešavanja"
+
+#: includes/settings/general.php:568
+msgid ""
+"Breadcrumbs will be displayed before the page title. It may require some "
+"additional styling."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:616
+msgid "British Indian Ocean Territory"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:617
+msgid "Brunei Darrussalam"
+msgstr ""
+
+#: modules/price/config/currencies.php:211
+msgid "Brunei dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:618
+msgid "Bulgaria"
+msgstr ""
+
+#: modules/price/config/currencies.php:207
+msgid "Bulgarian lev"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:619
+msgid "Burkina Faso"
+msgstr ""
+
+#: modules/price/config/currencies.php:287
+msgid "Burmese kyat"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:620
+msgid "Burundi"
+msgstr ""
+
+#: modules/price/config/currencies.php:209
+msgid "Burundian franc"
+msgstr ""
+
+#: modules/button/index.php:72
+msgid "Button"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/login-url-widget.php:55
+msgid "Button Description"
+msgstr ""
+
+#: modules/button/index.php:106
+msgid "Button Label"
+msgstr ""
+
+#: includes/activation-config.php:209 modules/button/index.php:82
+msgid "Button URL"
+msgstr ""
+
+#: includes/blocks/index.php:120
+#, php-format
+msgid "By %s"
+msgstr ""
+
+#: includes/system.php:359
+#, php-format
+msgctxt "by author"
+msgid "by %s"
+msgstr "од %s"
+
+#: includes/blocks/index.php:119
+msgid "By Category"
+msgstr ""
+
+#: ext-comp/elementor/show_catalog_widget.php:103
+msgid "By default it shows the main catalog page content."
+msgstr ""
+
+#: includes/activation-config.php:339
+msgid "By default you should see a two-column layout here:"
+msgstr ""
+
+#: includes/settings/general.php:441
+#, php-format
+msgid ""
+"By default, the category parent slug cannot be the same as for products. If "
+"you want them to be the same, please look for %s extension in the catalog "
+"extensions menu."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:621
+msgid "Cambodia"
+msgstr ""
+
+#: modules/price/config/currencies.php:270
+msgid "Cambodian riel"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:622
+msgid "Cameroon"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:584
+msgid "Canada"
+msgstr ""
+
+#: modules/price/config/currencies.php:221
+msgid "Canadian dollar"
+msgstr ""
+
+#: includes/system.php:84 includes/tracking.php:400
+msgid "Cancel"
+msgstr "Zaustavi"
+
+#: includes/settings/general.php:455
+msgid "Cannot be the same as product listing page slug"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:623
+msgid "Cape Verde"
+msgstr ""
+
+#: modules/price/config/currencies.php:230
+msgid "Cape Verdean escudo"
+msgstr ""
+
+#: modules/price/config/currencies.php:351
+msgid "Caribbean guilder"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:109
+msgid "Cart"
+msgstr ""
+
+#: includes/activation-config.php:112 includes/activation-config.php:162
+#: includes/activation-config.php:163
+msgid "Cart Configuration"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:93
+msgid "Cart Settings"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:194
+msgid "Cart Widget"
+msgstr ""
+
+#: includes/blocks/index.php:332
+msgid "Catalog"
+msgstr ""
+
+#: includes/widgets/filter-widgets.php:498
+msgid "Catalog Active Filters"
+msgstr ""
+
+#: includes/activation-config.php:133
+msgid "Catalog Addons"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:63 includes/welcome/start.php:95
+msgid "Catalog Blocks"
+msgstr ""
+
+#: includes/activation-config.php:122 includes/widgets/category-widget.php:23
+msgid "Catalog Categories"
+msgstr "Kategorije kataloga"
+
+#: includes/blocks/widgets.php:118 includes/widgets/filter-widgets.php:132
+msgid "Catalog Category Filter"
+msgstr ""
+
+#: templates/block-catalog.php:39
+msgid "Catalog Category Page"
+msgstr ""
+
+#: includes/settings/image-sizes.php:44
+msgid "Catalog Category Page Image"
+msgstr ""
+
+#: includes/activation-config.php:109 includes/activation-config.php:127
+#: templates/theme-integration.php:50
+msgid "Catalog Configuration"
+msgstr ""
+
+#: includes/blocks/index.php:208
+msgid "Catalog Container"
+msgstr ""
+
+#: includes/settings/general.php:303
+msgid "Catalog Container Background"
+msgstr "Pozadina kontejnera kataloga"
+
+#: includes/settings/general.php:304
+msgid "Catalog Container Padding"
+msgstr ""
+
+#: includes/settings/general.php:302
+msgid "Catalog Container Width"
+msgstr "Širina kontejnera kataloga"
+
+#: includes/activation-config.php:125 includes/activation-config.php:143
+#: includes/settings/custom-design.php:19
+msgid "Catalog Design"
+msgstr "Dizajn kataloga"
+
+#: includes/widgets/filter-widgets.php:23
+msgid "Catalog Filters Bar"
+msgstr ""
+
+#: includes/settings/general.php:369
+msgid "Catalog Label"
+msgstr ""
+
+#: includes/activation-config.php:124 includes/activation-config.php:152
+msgid "Catalog Labels"
+msgstr ""
+
+#: includes/settings/general.php:173
+msgid "Catalog Layout Integration with the theme"
+msgstr ""
+
+#: includes/activation-config.php:128 includes/activation-config.php:129
+#: includes/activation-config.php:130 includes/activation-config.php:131
+msgid "Catalog Listing Configuration"
+msgstr ""
+
+#: functions/capabilities.php:114
+msgid "Catalog Manager"
+msgstr ""
+
+#: ext-comp/elementor/show_catalog_widget.php:101
+msgid "Catalog Markup Element"
+msgstr ""
+
+#: includes/settings/general.php:356 includes/settings/general.php:358
+msgid "Catalog Mode"
+msgstr ""
+
+#: includes/activation-config.php:585 includes/settings/general.php:372
+msgid "Catalog Plural Name"
+msgstr "Naziv kataloga u množini"
+
+#: modules/price/widgets/price-filter-widget.php:23
+#: modules/price/blocks/price-filter/index.php:28
+#: modules/price/blocks/price-filter/index.php:37
+msgid "Catalog Price Filter"
+msgstr "Filter cene kataloga"
+
+#: includes/activation-config.php:123
+msgid "Catalog Products"
+msgstr ""
+
+#: includes/activation-config.php:109
+msgid ""
+"Catalog settings are located here. Click on the settings link to finish the "
+"catalog configuration."
+msgstr ""
+
+#: includes/system.php:27
+msgid "Catalog Settings successfully reset to default!"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:71
+msgid "Catalog Shortcodes"
+msgstr ""
+
+#: includes/settings/image-sizes.php:28
+msgid "Catalog Single Page Image"
+msgstr ""
+
+#: includes/activation-config.php:584 includes/settings/general.php:371
+msgid "Catalog Singular Name"
+msgstr "Nazim kataloga u jednini"
+
+#: includes/blocks/widgets.php:119 includes/widgets/filter-widgets.php:411
+msgid "Catalog Size Filter"
+msgstr ""
+
+#: includes/blocks/widgets.php:117 includes/widgets/filter-widgets.php:338
+msgid "Catalog Sort"
+msgstr ""
+
+#: includes/activation-config.php:192 includes/product-categories.php:45
+#: includes/product-categories.php:55 includes/product-columns.php:247
+#: includes/settings/csv.php:263 includes/settings/csv.php:311
+#: includes/settings/general.php:474
+msgid "Categories"
+msgstr "Kategorije"
+
+#: includes/settings/custom-design.php:130
+#: includes/settings/custom-design.php:180
+msgid "categories"
+msgstr ""
+
+#: includes/activation-config.php:352
+msgid "Categories box"
+msgstr ""
+
+#: includes/settings/general.php:467
+msgid "Categories Display"
+msgstr ""
+
+#: includes/settings/custom-names.php:191
+msgid "Categories Header Label"
+msgstr ""
+
+#: includes/settings/general.php:443
+msgid "Categories Parent URL"
+msgstr "URL nadređenih kategorija"
+
+#: includes/settings/general.php:426
+msgid "Categories Settings"
+msgstr "Podešavanja kategorija"
+
+#: includes/product-categories.php:46 includes/widgets/filter-widgets.php:273
+msgid "Category"
+msgstr "Kategorija"
+
+#: includes/product-category-columns.php:21
+msgid "category"
+msgstr "kategorija"
+
+#: includes/product-category-columns.php:79
+#: includes/product-category-columns.php:93
+#: includes/product-category-columns.php:96
+msgid "Category Image"
+msgstr ""
+
+#: includes/blocks/widgets.php:129
+msgid "Category Links"
+msgstr ""
+
+#: includes/settings/general.php:462
+msgid "Category Page shows"
+msgstr ""
+
+#: includes/settings/custom-names.php:193
+msgid "Category Prefix Label"
+msgstr ""
+
+#: includes/settings/custom-names.php:194
+msgid "Category Products Header Label"
+msgstr ""
+
+#: functions/support.php:90
+msgid "Category template"
+msgstr ""
+
+#: functions/support.php:145
+msgid "Category widget enhancement"
+msgstr ""
+
+#: includes/settings/general.php:457
+msgid "category-name"
+msgstr "naziv kategorije"
+
+#: modules/cart/ext/formbuilder/index.php:624
+msgid "Cayman Islands"
+msgstr ""
+
+#: modules/price/config/currencies.php:275
+msgid "Cayman Islands dollar"
+msgstr ""
+
+#: modules/price/config/currencies.php:349
+msgid "Central African CFA franc"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:625
+msgid "Central African Republic"
+msgstr ""
+
+#: modules/price/config/currencies.php:353
+msgid "CFP franc"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:626
+msgid "Chad"
+msgstr ""
+
+#: includes/settings/custom-design.php:275
+#, fuzzy
+#| msgid ""
+#| "Changing design schemes has almost always impact on various elements. For "
+#| "example changing price color has impact on single product page and "
+#| "archive page price color."
+msgid ""
+"Changing design schemes has almost always impact on various elements. For "
+"example, changing price color has an impact on the single product page and "
+"archive page price color."
+msgstr ""
+"Promena shema dizajna gotovo uvek utiče na razne elemente. Na primer, "
+"promena boje cene utiče na stranicu pojedinačnog proizvoda i na boju cene "
+"arhivirane stranice. "
+
+#: ecommerce-product-catalog.php:81 ecommerce-product-catalog.php:93
+msgid "Cheatin&#8217; huh?"
+msgstr "Варање&#8217; ух?"
+
+#: includes/welcome/mode-selected.php:108 includes/welcome/new.php:162
+#: includes/welcome/start.php:141
+msgid "Check all the shortcodes"
+msgstr ""
+
+#: includes/extensions.php:959
+msgid "Check out extensions bundles"
+msgstr ""
+
+#: includes/controls.php:26
+#, php-format
+msgid ""
+"Check the %1$scatalog settings%2$s for more advanced configuration options."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:90 includes/welcome/new.php:144
+#: includes/welcome/start.php:123
+msgid "Check the advanced theme integration method"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:98 includes/welcome/new.php:152
+#: includes/welcome/start.php:131
+msgid "Check the details about template modification"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:185
+msgid "Check this checbox if you are not selling to USA."
+msgstr ""
+
+#: includes/activation-config.php:209
+msgid ""
+"Check this checkbox if you want to define a separate button URL for each "
+"product."
+msgstr ""
+
+#: includes/settings/general.php:564
+msgid ""
+"Check this if you want to display main catalog page content on every catalog "
+"page. For example, if you are using page builder on the main catalog page to "
+"design your catalog."
+msgstr ""
+
+#: functions/support.php:108
+msgid "Checkbox category filter"
+msgstr ""
+
+#: functions/support.php:109
+msgid "checkbox instead of links for category filter"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:125
+msgid "Checkout"
+msgstr ""
+
+#: modules/cart/includes/cart/cart-shipping.php:40
+msgid "Checkout Shipping Cost"
+msgstr ""
+
+#: includes/system.php:394
+msgid "Child Theme"
+msgstr "Podređena tema"
+
+#: modules/cart/ext/formbuilder/index.php:627
+msgid "Chile"
+msgstr ""
+
+#: modules/price/config/currencies.php:224
+msgid "Chilean peso"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:628
+msgid "China"
+msgstr ""
+
+#: modules/price/config/currencies.php:225
+msgid "Chinese yuan"
+msgstr ""
+
+#: includes/blocks/index.php:117
+#, php-format
+msgid "Choose %s to Display"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:103
+msgid "Choose Cart Page"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:119
+msgid "Choose Cart Submit Page"
+msgstr ""
+
+#: includes/blocks/index.php:118
+msgid "Choose Categories to Display"
+msgstr ""
+
+#: includes/blocks/block-edit.php:86
+msgid "Choose how would you like to edit the products."
+msgstr ""
+
+#: includes/settings/general.php:398
+msgid "Choose Main Listing Page"
+msgstr ""
+
+#: templates/shortcode-catalog.php:221
+msgid "Choose one of the available page templates to display catalog pages."
+msgstr ""
+
+#: modules/cart/includes/orders/index.php:53
+#: modules/cart/includes/orders/index.php:57
+#: modules/cart/includes/orders/includes/register-digital-orders.php:324
+#: modules/cart/includes/orders/includes/register-digital-orders.php:326
+msgid "Choose product from catalog"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:135
+msgid "Choose Thank You Page"
+msgstr ""
+
+#: modules/cart/functions/functions.php:133
+#: modules/cart/ext/formbuilder/index.php:934
+#: modules/cart/ext/formbuilder/index.php:1014
+msgid "Choose your country..."
+msgstr ""
+
+#: includes/welcome/start.php:17
+#, php-format
+msgid "Choose your preferred %s configuration."
+msgstr ""
+
+#: includes/settings/general.php:363
+msgid "Choose your usage scenario."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:629
+msgid "Christmas Island"
+msgstr ""
+
+#: modules/quote-cart/index.php:283
+#: modules/cart/includes/shopping-settings.php:220
+#: modules/cart/includes/shopping-settings.php:249
+msgid "City"
+msgstr ""
+
+#: includes/blocks/block-edit.php:83
+msgid "Classic Editor"
+msgstr ""
+
+#: templates/templates-functions.php:425
+#: includes/settings/custom-design.php:161
+msgid "Classic Grid"
+msgstr "Klasična mreža"
+
+#: includes/settings/image-sizes.php:76 includes/settings/image-sizes.php:80
+msgid "Classic Grid Image"
+msgstr ""
+
+#: templates/templates-functions.php:424
+#: includes/settings/custom-design.php:143
+msgid "Classic List"
+msgstr "Klasična lista"
+
+#: includes/settings/image-sizes.php:93 includes/settings/image-sizes.php:97
+msgid "Classic List Image"
+msgstr ""
+
+#: functions/activation.php:178
+#, php-format
+msgid "Click %shere%s to proceed."
+msgstr ""
+
+#: functions/activation.php:172
+#, php-format
+msgid ""
+"Click <a href=\"%s\">here</a> to test the Automatic Advanced Mode. If the "
+"test goes well, you can keep it enabled and enjoy full %s functionality. If "
+"the page layout during the test will not be satisfying, please see <a "
+"target=\"_blank\" href=\"%s\">Theme Integration Guide</a>."
+msgstr ""
+
+#: includes/extensions.php:576 includes/extensions.php:640
+#: includes/extensions.php:677
+msgid "Click for more"
+msgstr "Klikni za više detalja"
+
+#: includes/activation-config.php:181 includes/activation-config.php:182
+msgid "Click here to add new product."
+msgstr ""
+
+#: includes/activation-config.php:115
+msgid "Click here to configure your button settings, so it works as expected."
+msgstr ""
+
+#: includes/activation-config.php:112
+msgid ""
+"Click here to configure your cart settings, so it works correctly. Select "
+"the cart, checkout and thank you page. Set the email address for order "
+"notifications."
+msgstr ""
+
+#: includes/extensions.php:119 includes/extensions.php:158
+#: includes/extensions.php:200
+msgid "Click on the extension to see full features list."
+msgstr ""
+
+#: templates/theme-integration.php:91
+msgid "Click start to proceed with layout adjustment."
+msgstr ""
+
+#: includes/product-settings.php:336
+msgid "Click the button to visit impleCode documentation"
+msgstr "Kliknite na taster da biste videli impleCode dokumentaciju"
+
+#: includes/product-settings.php:347
+msgid "Click the button to visit impleCode website"
+msgstr "Kliknite na taster da biste posetili impleCode website"
+
+#: includes/product-settings.php:396
+#, fuzzy
+#| msgid "Click the button to visit support forum."
+msgid "Click the button to visit the support forum."
+msgstr "Klikni dugme da posetiš forum za podršku"
+
+#: includes/settings/general.php:185
+msgid "Click the Edit button near the Main Catalog Page option."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:48
+msgid "Click to add this item to cart."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:630
+msgid "Cocos Islands"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:631
+msgid "Colombia"
+msgstr ""
+
+#: modules/price/config/currencies.php:226
+msgid "Colombian peso"
+msgstr ""
+
+#: functions/activation.php:138
+msgid "Color"
+msgstr "Boja"
+
+#: includes/settings/csv.php:122
+msgid "Comma"
+msgstr ""
+
+#: modules/quote-cart/index.php:304
+#: modules/cart/includes/shopping-settings.php:247
+#: modules/cart/includes/shopping-settings.php:275
+msgid "Comment"
+msgstr ""
+
+#: modules/price/config/currencies.php:271
+msgid "Comorian franc"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:632
+msgid "Comoros"
+msgstr ""
+
+#: modules/quote-cart/index.php:283
+#: modules/cart/includes/shopping-settings.php:220
+#: modules/cart/includes/shopping-settings.php:249
+msgid "Company"
+msgstr ""
+
+#: modules/attributes/comparison.php:185
+#, php-format
+msgid "Compare %s"
+msgstr ""
+
+#: modules/attributes/comparison.php:210
+msgid "Comparison"
+msgstr ""
+
+#: modules/attributes/comparison.php:216
+msgid "Comparison Disabled"
+msgstr ""
+
+#: modules/attributes/comparison.php:213
+msgid "Comparison Page"
+msgstr ""
+
+#: modules/cart/includes/orders/functions/functions.php:17
+#: modules/cart/includes/orders/includes/digital-order-columns.php:67
+msgid "Complete"
+msgstr ""
+
+#: includes/settings/general.php:110
+msgid "Configuration Wizard"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:633
+msgid "Congo, Democratic People's Republic"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:634
+msgid "Congo, Republic of"
+msgstr ""
+
+#: modules/price/config/currencies.php:222
+msgid "Congolese franc"
+msgstr ""
+
+#: templates/theme-integration.php:177
+#, php-format
+msgid ""
+"Congratulations! %s is working on Advanced Mode now. You can go to admin and "
+"add the products to the catalog."
+msgstr ""
+
+#: includes/settings/tooltips.php:372
+msgid ""
+"Congratulations! You finished the tutorial on this screen. Check all the "
+"options here and go to another screen to continue."
+msgstr ""
+
+#: includes/activation-config.php:313
+#, php-format
+msgid "Congratulations! Your're ready to add %s."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:514
+msgid "Contact Email"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:517
+msgid ""
+"Contact email will be set as system user name. This email will be used to "
+"send all account credentials to a customer."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:130 includes/welcome/new.php:184
+#: includes/welcome/start.php:163
+msgid "Contact the developers"
+msgstr ""
+
+#: includes/class-ic-activation-wizard.php:100 modules/quote-cart/index.php:108
+msgid "Continue"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:54
+msgid "Continue shopping"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:635
+msgid "Cook Islands"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:182
+msgid "Cookie Save"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:636
+msgid "Costa Rica"
+msgstr ""
+
+#: modules/price/config/currencies.php:227
+msgid "Costa Rican col&oacute;n"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:637
+msgid "Cote d'Ivoire"
+msgstr ""
+
+#: includes/blocks/index.php:397
+msgid "Count"
+msgstr ""
+
+#: modules/quote-cart/index.php:284
+#: modules/cart/includes/shopping-settings.php:221
+#: modules/cart/includes/shopping-settings.php:250
+msgid "Country"
+msgstr ""
+
+#: theme-product_adder_support.php:270
+msgid "Create Main Catalog Listing"
+msgstr ""
+
+#: includes/settings/general.php:856
+#: includes/settings/settings-functions.php:610
+msgid "Create New"
+msgstr ""
+
+#: includes/activation-config.php:572
+msgid "Create Separate Catalog"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:638
+msgid "Croatia/Hrvatska"
+msgstr ""
+
+#: modules/price/config/currencies.php:253
+msgid "Croatian kuna"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:115 includes/welcome/new.php:169
+#: includes/welcome/start.php:148
+msgid "CSS code snippets"
+msgstr ""
+
+#: includes/welcome/new.php:35
+msgid "CTA Options"
+msgstr ""
+
+#: includes/welcome/new.php:37
+msgid ""
+"CTA stands for call to action, and it's the part of a webpage that "
+"encourages the audience to do something."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:639
+msgid "Cuba"
+msgstr ""
+
+#: modules/price/config/currencies.php:228
+msgid "Cuban convertible peso"
+msgstr ""
+
+#: modules/price/config/currencies.php:229
+msgid "Cuban peso"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:168
+msgid "Currency"
+msgstr ""
+
+#: modules/price/price-settings.php:98
+msgid "Currency position"
+msgstr "Pozicija valute"
+
+#: templates/shortcode-catalog.php:716
+#, php-format
+msgid ""
+"Currently %sanother page%s is set to show main product listing. Would you "
+"like to show product listing here instead?"
+msgstr ""
+
+#: functions/activation.php:175
+#, php-format
+msgid "Currently, %s is being used on the main product listing."
+msgstr ""
+
+#: templates/shortcode-catalog.php:718
+msgid ""
+"Currently, no page is set to show the main product listing. Would you like "
+"to show product listing here?"
+msgstr ""
+
+#: modules/price/price-settings.php:97
+msgid "Custom Currency Symbol"
+msgstr "Prilagođeni simbol valute"
+
+#: includes/register-product.php:760
+#: modules/cart/includes/orders/includes/register-digital-orders.php:780
+msgid "Custom field deleted."
+msgstr "Prilagođeno polje obrisano"
+
+#: includes/register-product.php:759
+#: modules/cart/includes/orders/includes/register-digital-orders.php:779
+msgid "Custom field updated."
+msgstr "Prilagođeno polje ažurirano"
+
+#: includes/settings/settings-functions.php:638
+msgid "Custom URL"
+msgstr "Custom URL"
+
+#: modules/cart/functions/activation.php:21
+msgid "Customer"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:115
+msgid "Customer Details"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/digital-client-list.php:25
+msgid "Customer Email"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/digital-client-list.php:23
+msgid "Customer ID"
+msgstr ""
+
+#: modules/cart/includes/customers/functions/users-functions.php:46
+#: modules/cart/includes/customers/includes/digital-customer.php:33
+msgid "Customer Login"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/digital-client-list.php:24
+msgid "Customer Name"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel-settings.php:25
+msgid "Customer Panel"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel-settings.php:47
+#: modules/cart/includes/customers/includes/transactions/customer-panel-settings.php:50
+msgid "Customer Panel Page"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel-settings.php:43
+msgid "Customer Panel Settings"
+msgstr ""
+
+#: includes/activation-config.php:369
+#, php-format
+msgid "Customize %s Page Layout"
+msgstr ""
+
+#: functions/catalog-admin.php:112
+msgid "Customize Filters Bar"
+msgstr ""
+
+#: functions/catalog-admin.php:95
+msgid "Customize Listing Design"
+msgstr ""
+
+#: includes/activation-config.php:384
+msgid "Customize Listing Layout"
+msgstr ""
+
+#: functions/catalog-admin.php:86
+msgid "Customize Page Design"
+msgstr ""
+
+#: functions/catalog-admin.php:105
+msgid "Customize Sitewide Icons"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:640
+msgid "Cyprus Island"
+msgstr ""
+
+#: modules/price/config/currencies.php:231
+msgid "Czech koruna"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:641
+msgid "Czech Republic"
+msgstr ""
+
+#: modules/price/config/currencies.php:233
+msgid "Danish krone"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/digital-order-columns.php:30
+#: modules/cart/includes/orders/includes/register-digital-orders.php:151
+msgid "Date"
+msgstr ""
+
+#: modules/cart/includes/orders/functions/functions.php:328
+#, php-format
+msgid "Dear %s,"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:61
+msgid "Dear Customer,"
+msgstr ""
+
+#: modules/price/price-settings.php:108
+msgid "Decimal Separator"
+msgstr "Decimalni separator"
+
+#: includes/settings/general.php:163 includes/settings/general.php:165
+#: includes/settings/general.php:403 includes/settings/general.php:405
+msgid "Default"
+msgstr "Podrazumevani"
+
+#: modules/button/index.php:107
+msgid "Default button URL"
+msgstr ""
+
+#: includes/system.php:82
+msgid "Default filters bar will become empty."
+msgstr ""
+
+#: includes/settings/custom-design.php:231
+msgid "Default Image"
+msgstr ""
+
+#: includes/settings/general.php:419
+msgid "Default order"
+msgstr ""
+
+#: includes/settings/custom-design.php:229
+msgid "Default Product Image"
+msgstr "Podrazumevana slika proizvoda"
+
+#: templates/theme-integration.php:108 includes/settings/general.php:306
+msgid "Default Sidebar"
+msgstr "Default Sidebar"
+
+#: templates/shortcode-catalog.php:221
+msgid "Default Template"
+msgstr ""
+
+#: includes/system.php:122
+msgid "Delete all Catalog Categories"
+msgstr ""
+
+#: includes/system.php:116
+msgid "Delete all Catalog Items"
+msgstr ""
+
+#: includes/system.php:120
+msgid "Delete all categories"
+msgstr ""
+
+#: includes/system.php:114
+msgid "Delete all items"
+msgstr ""
+
+#: includes/system.php:136
+msgid "Delete all items and categories on uninstall"
+msgstr ""
+
+#: modules/quote-cart/index.php:283
+msgid "DELIVERY ADDRESS"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:642
+msgid "Denmark"
+msgstr ""
+
+#: includes/blocks/index.php:412
+msgid "DESC"
+msgstr ""
+
+#: includes/settings/search.php:26
+msgid "Describe your issue"
+msgstr ""
+
+#: includes/activation-config.php:196 includes/settings/custom-names.php:42
+msgid "Description"
+msgstr ""
+
+#: includes/settings/custom-names.php:137
+msgid "Description Label"
+msgstr "Naziv opisa"
+
+#: includes/settings/custom-design.php:51
+#: includes/settings/custom-design.php:273
+msgid "Design Schemes"
+msgstr "Sheme dizajna"
+
+#: includes/settings/custom-design.php:82
+#: includes/settings/custom-design.php:227
+#: includes/settings/custom-design.php:271
+msgid "Design Settings"
+msgstr "Podešavanja dizajna"
+
+#: includes/register-product.php:307
+#: modules/cart/includes/orders/includes/register-digital-orders.php:81
+msgid "Details"
+msgstr "Detailji"
+
+#: includes/extensions.php:116 includes/extensions.php:155
+#: includes/extensions.php:197 includes/extensions.php:285
+msgid "Did you Know?"
+msgstr ""
+
+#: includes/product-settings.php:344
+msgid "Did you know?"
+msgstr "Da li ste znali?"
+
+#: includes/settings/search.php:105
+#, php-format
+msgid "Didn't find any adjustment options for '%s'."
+msgstr ""
+
+#: includes/settings/search.php:283
+#, php-format
+msgid "Didn't find any docs or tutorials for '%s'."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:787
+msgid "Digital order draft updated."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:783
+msgid "Digital order published."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:782
+#, php-format
+msgid "Digital order restored to revision from %s"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:786
+#, php-format
+msgid "Digital order scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:785
+msgid "Digital order submitted."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:778
+#: modules/cart/includes/orders/includes/register-digital-orders.php:781
+msgid "Digital order updated."
+msgstr ""
+
+#: includes/blocks/index.php:129 modules/price/blocks/price-table/index.php:89
+msgid "Disable add to cart button"
+msgstr ""
+
+#: includes/settings/general.php:391
+#, php-format
+msgid "Disable and use %s shortcode to display the products."
+msgstr ""
+
+#: templates/theme-integration.php:135
+msgid "Disable Attributes"
+msgstr ""
+
+#: templates/theme-integration.php:122
+msgid "Disable breadcrumbs"
+msgstr ""
+
+#: functions/support.php:97
+msgid ""
+"disable category name - useful if your category image already has the name "
+"included"
+msgstr ""
+
+#: functions/support.php:94
+msgid "disable default image for category pages"
+msgstr ""
+
+#: templates/theme-integration.php:124
+msgid "Disable Image"
+msgstr ""
+
+#: includes/settings/general.php:471
+msgid "Disable Image on Category Page"
+msgstr "Onemogući sliku na stranici Kategorija"
+
+#: modules/mpn/mpn-settings.php:32
+msgid "Disable MPN"
+msgstr ""
+
+#: templates/theme-integration.php:123
+msgid "Disable Name"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:191
+msgid "Disable Order Registration"
+msgstr ""
+
+#: templates/theme-integration.php:126
+msgid "Disable Price"
+msgstr ""
+
+#: includes/customizer.php:56 includes/settings/general.php:312
+msgid "Disable Product Name"
+msgstr "Onemogući naziv Proizvoda"
+
+#: templates/theme-integration.php:132
+msgid "Disable Shipping"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:317
+msgid "Disable Size"
+msgstr ""
+
+#: templates/theme-integration.php:129 modules/sku/sku-settings.php:36
+msgid "Disable SKU"
+msgstr "Deaktiviraj SKU"
+
+#: modules/cart/includes/shopping-settings.php:185
+msgid "Disable State Field"
+msgstr ""
+
+#: includes/blocks/index.php:137
+msgid "Disable to select product."
+msgstr ""
+
+#: templates/theme-integration.php:120
+msgid "Disable unnecessary product page elements"
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:78
+msgid "Disable variation price info"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:305
+msgid "Disable Weight"
+msgstr ""
+
+#: includes/class-ic-sitewide-bar.php:203 includes/customizer.php:229
+#: templates/theme-integration.php:109 includes/settings/general.php:307
+msgid "Disabled"
+msgstr "Искључено"
+
+#: functions/support.php:96
+msgid "Disabled category name"
+msgstr ""
+
+#: functions/support.php:93
+msgid "Disabled default image"
+msgstr ""
+
+#: theme-product_adder_support.php:255
+#, php-format
+msgid "Disabled due to a lack of main catalog listing.%s"
+msgstr ""
+
+#: theme-product_adder_support.php:257
+#, php-format
+msgid ""
+"Disabled in simple mode. Add %1$s to your %2$smain catalog listing page%3$s "
+"to enable it."
+msgstr ""
+
+#: includes/settings/settings-functions.php:443
+msgid "Dismiss this notice."
+msgstr ""
+
+#: functions/support.php:83
+msgid ""
+"display alternative products as a table with many different parameters to "
+"compare"
+msgstr ""
+
+#: includes/blocks/widgets.php:130 includes/widgets/category-widget.php:146
+msgid "Display as dropdown"
+msgstr "Prikaži kao opadajući"
+
+#: modules/cart/includes/customers/includes/login-url-widget.php:19
+msgid "Display button that triggers a popup login form."
+msgstr ""
+
+#: functions/support.php:120
+msgid "display pagination in any widget area"
+msgstr ""
+
+#: functions/support.php:123
+msgid "display selected or random product in widget area"
+msgstr ""
+
+#: modules/cart/includes/cart-widget.php:24
+msgid "Display Shopping Cart."
+msgstr ""
+
+#: includes/widgets/filter-widgets.php:499
+msgid "Displays active filters with an option to remove."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:643
+msgid "Djibouti"
+msgstr ""
+
+#: modules/price/config/currencies.php:232
+msgid "Djiboutian franc"
+msgstr ""
+
+#: templates/theme-integration.php:87
+msgid ""
+"Do it only if the catalog layout doesn't match your theme or if some "
+"unwanted elements from the theme are displayed on catalog pages."
+msgstr ""
+
+#: includes/tracking.php:319
+msgid "Do not allow"
+msgstr ""
+
+#: includes/product-settings.php:392
+msgid "Do you have a problem?"
+msgstr "Da li imate problem?"
+
+#: includes/extensions.php:959
+msgid "Do you need multiple extensions?"
+msgstr "Da li su vam potrebne višestruke nadogradnje?"
+
+#: includes/activation-config.php:415
+msgid "Documentation"
+msgstr ""
+
+#: includes/welcome/new.php:127
+msgid "Documentation & Help"
+msgstr ""
+
+#: theme-product_adder_support.php:238
+msgid "doesn't need any specific configuration"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:644
+msgid "Dominica"
+msgstr ""
+
+#: modules/price/config/currencies.php:234
+msgid "Dominican peso"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:645
+msgid "Dominican Republic"
+msgstr ""
+
+#: templates/theme-integration.php:90
+msgid "Don't worry if it looks messy."
+msgstr ""
+
+#: includes/settings/csv.php:53
+msgid "Download CSV"
+msgstr "Preuzmi CSV fajl"
+
+#: includes/settings/csv.php:124
+msgid "Download CSV Template"
+msgstr ""
+
+#: functions/duplicate.php:108
+msgid "Duplicate"
+msgstr "Дуплирај "
+
+#: modules/price/config/currencies.php:350
+msgid "East Caribbean dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:646
+msgid "East Timor"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Easy to use, powerful and beautiful WordPress eCommerce plugin from "
+"impleCode. A Great choice if you want to sell easy and quick. Or beautifully "
+"present your products on a WordPress website. Full WordPress integration "
+"does a great job not only for Merchants but also for Developers and Theme "
+"Constructors."
+msgstr ""
+
+#. Name of the plugin
+msgid "eCommerce Product Catalog for WordPress"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:647
+msgid "Ecuador"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/digital-order-columns.php:60
+msgid "Edit"
+msgstr "Promeni"
+
+#: includes/register-product.php:142
+#, php-format
+msgid "Edit %s"
+msgstr "Уредите %s"
+
+#: includes/product-categories.php:37
+#, php-format
+msgid "Edit %s Category"
+msgstr ""
+
+#: functions/catalog-admin.php:39
+#, php-format
+msgid "Edit %s Listing"
+msgstr "Uredi %s listiranje"
+
+#: includes/blocks/index.php:135
+msgid "Edit block settings."
+msgstr ""
+
+#: includes/product-categories.php:51
+msgid "Edit Category"
+msgstr "Prilagodi Kategoriju"
+
+#: includes/register-product.php:158
+msgid "Edit Item"
+msgstr "Urediti stavku"
+
+#: includes/activation-config.php:386
+msgid "Edit Main Listing"
+msgstr ""
+
+#: includes/blocks/block-edit.php:80
+msgid "Edit Mode"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:43
+msgid "Edit Order"
+msgstr ""
+
+#: functions/catalog-admin.php:59
+msgid "Edit Product"
+msgstr "Uredi proizvod"
+
+#: functions/catalog-admin.php:41
+msgid "Edit Product Listing"
+msgstr "Uredi prikaz liste Proizvoda"
+
+#: modules/quote-cart/index.php:60
+msgid "Edit Quote"
+msgstr ""
+
+#: modules/price/blocks/price-table/index.php:93
+msgid "Edit selected product."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:648
+msgid "Egypt"
+msgstr ""
+
+#: modules/price/config/currencies.php:236
+msgid "Egyptian pound"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:650
+msgid "El Salvador"
+msgstr ""
+
+#: modules/quote-cart/index.php:304
+#: modules/cart/includes/shopping-settings.php:247
+#: modules/cart/includes/shopping-settings.php:275
+msgid "Email"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:150
+msgid "Email settings"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:169
+msgid "Email to receive orders"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:170
+msgid "Email to send confirmations"
+msgstr ""
+
+#: includes/system.php:131
+msgid "Empty Default Filters Bar"
+msgstr ""
+
+#: includes/welcome/start.php:68
+msgid "Enable Affiliate Catalog Mode"
+msgstr ""
+
+#: includes/blocks/widgets.php:133 includes/widgets/filter-widgets.php:306
+#: includes/widgets/filter-widgets.php:381
+#: includes/widgets/filter-widgets.php:467 modules/price/blocks/index.php:32
+#: modules/price/widgets/price-filter-widget.php:96
+msgid "Enable also for shortcodes"
+msgstr ""
+
+#: includes/settings/general.php:516
+msgid "Enable Catalog Breadcrumbs"
+msgstr ""
+
+#: includes/customizer.php:74 includes/settings/custom-design.php:236
+msgid "Enable image"
+msgstr ""
+
+#: includes/customizer.php:109 includes/settings/custom-design.php:238
+msgid "Enable image magnifier"
+msgstr ""
+
+#: includes/customizer.php:126 includes/settings/custom-design.php:239
+msgid "Enable image only when inserted"
+msgstr ""
+
+#: includes/welcome/start.php:52
+msgid "Enable Inquiry Catalog Mode"
+msgstr ""
+
+#: includes/customizer.php:92 includes/settings/custom-design.php:237
+msgid "Enable lightbox gallery"
+msgstr ""
+
+#: includes/settings/general.php:391
+msgid "Enable Main Listing Page"
+msgstr ""
+
+#: includes/settings/general.php:496
+msgid "Enable SEO title separator"
+msgstr "Aktiviraj SEO separator naziva"
+
+#: includes/welcome/start.php:78
+msgid "Enable Simple Catalog Mode"
+msgstr ""
+
+#: includes/settings/general.php:497
+msgid "Enable Structured Data"
+msgstr ""
+
+#: includes/welcome/start.php:36
+msgid ""
+"Enable this option if you are planning to sell products directly from the "
+"website."
+msgstr ""
+
+#: includes/welcome/start.php:47
+msgid "Enable this option if you want the customers to ask for price."
+msgstr ""
+
+#: includes/welcome/start.php:63
+msgid ""
+"Enable this option if you want the customers to click the affiliate button."
+msgstr ""
+
+#: includes/welcome/start.php:74
+msgid ""
+"Enable this option if you want to display products without any call to "
+"action."
+msgstr ""
+
+#: includes/blocks/index.php:138
+msgid ""
+"Enable to get the product from context (inside a loop or on a product page)."
+msgstr ""
+
+#: includes/settings/general.php:497
+msgid ""
+"Enable to show structured data on each single product page. Test it with "
+"Google’s Structured Data Testing Tool. You can modify the output with the "
+"structured-data.php template file."
+msgstr ""
+
+#: includes/welcome/start.php:41
+msgid "Enable Web Store Mode"
+msgstr ""
+
+#: functions/support.php:104
+msgid "Enhanced category filter"
+msgstr ""
+
+#: functions/base.php:29
+#, php-format
+msgid "Enter %s name here"
+msgstr ""
+
+#: functions/base.php:31
+msgid "Enter item name here"
+msgstr "Unesite naziv stavke ovde"
+
+#: modules/cart/ext/formbuilder/index.php:649
+msgid "Equatorial Guinea"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:651
+msgid "Eritrea"
+msgstr ""
+
+#: modules/price/config/currencies.php:237
+msgid "Eritrean nakfa"
+msgstr ""
+
+#: includes/extensions.php:1299
+msgid "Error loading form. Please try again later."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:652
+msgid "Estonia"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:653
+msgid "Ethiopia"
+msgstr ""
+
+#: modules/price/config/currencies.php:238
+msgid "Ethiopian birr"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:210
+msgid "EU VAT"
+msgstr ""
+
+#: modules/price/config/currencies.php:239
+msgid "Euro"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:88 includes/welcome/new.php:142
+#: includes/welcome/start.php:121
+msgid ""
+"Even if the catalog works fine with any theme, you can take full control of "
+"the output."
+msgstr ""
+
+#: includes/settings/custom-design.php:283
+msgid "Example Effect"
+msgstr "Primer efekta"
+
+#: modules/price/price-meta.php:31
+#, php-format
+msgid "Example price format: %s or %s"
+msgstr "Primer formata cene: %s ili %s"
+
+#: includes/activation-config.php:584
+msgid "Examples: Service, Part, Flower, Photo"
+msgstr ""
+
+#: includes/activation-config.php:585
+msgid "Examples: Services, Parts, Flowers, Photos"
+msgstr ""
+
+#: includes/settings/csv.php:58
+msgid "Export all items to CSV file"
+msgstr ""
+
+#: includes/settings/csv.php:49
+msgid "Export Products"
+msgstr ""
+
+#: includes/extensions.php:1099
+msgid "Extension <strong>activated</strong>."
+msgstr ""
+
+#: includes/extensions.php:16
+msgid "Extensions"
+msgstr ""
+
+#: includes/extensions.php:40
+#, php-format
+msgid "Extensions for %s"
+msgstr ""
+
+#: includes/class-ic-activation-wizard.php:141
+msgid "Extensions Install Page"
+msgstr ""
+
+#: includes/blocks/index.php:127
+msgid "Extra Large"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:654
+msgid "Falkland Islands"
+msgstr ""
+
+#: modules/price/config/currencies.php:241
+msgid "Falkland Islands pound"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:655
+msgid "Faroe Islands"
+msgstr ""
+
+#: includes/class-ic-featured-products.php:78
+msgid "Featured"
+msgstr ""
+
+#: includes/class-ic-featured-products.php:56
+msgid "Featured Products"
+msgstr ""
+
+#: includes/settings/custom-names.php:37
+msgid "Features"
+msgstr ""
+
+#: includes/settings/custom-names.php:138
+msgid "Features Label"
+msgstr "Oznaka karakteristika"
+
+#: modules/cart/includes/orders/functions/functions.php:332
+msgid "Feel free to contact us in case of any questions or issues."
+msgstr ""
+
+#: includes/product-settings.php:394
+#, php-format
+msgid ""
+"Feel free to submit a ticket if you think that you found a bug or you have a "
+"problem while using %s."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:656
+msgid "Fiji"
+msgstr ""
+
+#: modules/price/config/currencies.php:240
+msgid "Fijian dollar"
+msgstr ""
+
+#: functions/content-functions.php:130
+msgid "Filter"
+msgstr ""
+
+#: includes/widgets/filter-widgets.php:130
+#, php-format
+msgid "Filter %s by categories."
+msgstr ""
+
+#: modules/price/widgets/price-filter-widget.php:21
+#, php-format
+msgid "Filter %s by price."
+msgstr "Filtriraj %s po ceni"
+
+#: includes/widgets/filter-widgets.php:409
+#, php-format
+msgid "Filter %s by size."
+msgstr ""
+
+#: includes/widgets/filter-widgets.php:133
+msgid "Filter items by categories."
+msgstr ""
+
+#: modules/price/widgets/price-filter-widget.php:24
+msgid "Filter items by price."
+msgstr "Filtriraj proizvode po ceni"
+
+#: includes/widgets/filter-widgets.php:412
+msgid "Filter items by size."
+msgstr ""
+
+#: functions/support.php:131
+msgid "filter products by tags"
+msgstr ""
+
+#: includes/system.php:80
+msgid "Filters bar is now empty by default!"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:657
+msgid "Finland"
+msgstr ""
+
+#: functions/support.php:43
+#, php-format
+msgid ""
+"For <b>free support</b>, please visit %ssupport forums%s where the plugin "
+"developers will give you valuable advice."
+msgstr ""
+
+#: includes/settings/general.php:566
+msgid "Force category name display"
+msgstr ""
+
+#: includes/settings/general.php:565
+msgid "Force product name display"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:178
+msgid "Form Settings"
+msgstr ""
+
+#: includes/customizer.php:38 includes/settings/custom-design.php:247
+msgid "Formatted"
+msgstr "Formatiran"
+
+#: modules/cart/ext/formbuilder/index.php:658
+msgid "France"
+msgstr ""
+
+#: includes/settings/custom-names.php:26 includes/settings/custom-names.php:27
+#: includes/settings/custom-names.php:40 includes/settings/custom-names.php:41
+msgid "Free"
+msgstr "Slobodan"
+
+#: includes/class-ic-activation-wizard.php:121
+msgid "free"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:163
+#, php-format
+msgid ""
+"Free %1$sSMTP plugin%2$s is recommended to make sure that your notifications "
+"are not treated as SPAM."
+msgstr ""
+
+#: modules/price/price-settings.php:66
+msgid "Free Product Text"
+msgstr "Tekst besplatnog proizvoda"
+
+#: modules/shipping/shipping-settings.php:204
+msgid "Free Shipping Text"
+msgstr ""
+
+#: templates/theme-integration.php:173
+msgid "Free Theme Integration Guide"
+msgstr "Besplatan vodič za integrisanje teme"
+
+#: modules/cart/ext/formbuilder/index.php:659
+msgid "French Guiana"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:660
+msgid "French Polynesia"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:661
+msgid "French Southern Territories"
+msgstr ""
+
+#: includes/welcome/new.php:89
+msgid ""
+"Frequent updates guarantee high security. The plugin is continuously being "
+"monitored for any security issues."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/digital-order-columns.php:29
+msgid "From"
+msgstr ""
+
+#: includes/settings/custom-names.php:131
+#: includes/settings/custom-names.php:184
+msgid "Front-end Element"
+msgstr "Front-end element"
+
+#: includes/settings/custom-names.php:88 includes/settings/custom-names.php:127
+#: includes/settings/custom-names.php:166
+msgid "Front-end Labels"
+msgstr "Front-end oznake"
+
+#: includes/settings/custom-names.php:132
+#: includes/settings/custom-names.php:185
+msgid "Front-end Text"
+msgstr "Front-end tekst"
+
+#: modules/quote-cart/index.php:283
+#: modules/cart/includes/shopping-settings.php:220
+#: modules/cart/includes/shopping-settings.php:249
+msgid "Full Name"
+msgstr ""
+
+#: includes/extensions.php:551
+msgid "Fully compatible plugins from our partners"
+msgstr ""
+
+#: includes/settings/general.php:205 includes/settings/general.php:239
+msgid "fully customizable layout with the visual configuration wizard."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:662
+msgid "Gabon"
+msgstr ""
+
+#: includes/settings/custom-design.php:62
+msgid "gallery"
+msgstr "galerija"
+
+#: modules/cart/ext/formbuilder/index.php:663
+msgid "Gambia"
+msgstr ""
+
+#: modules/price/config/currencies.php:247
+msgid "Gambian dalasi"
+msgstr ""
+
+#: includes/settings/general.php:19 includes/settings/general.php:97
+#: includes/settings/general.php:108
+msgid "General Settings"
+msgstr "Opšta podešavanja"
+
+#: functions/support.php:101
+msgid "generate product descriptions from category descriptions"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:664
+msgid "Georgia"
+msgstr ""
+
+#: modules/price/config/currencies.php:243
+msgid "Georgian lari"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:665
+msgid "Germany"
+msgstr ""
+
+#: includes/settings/general.php:191
+msgid "Get back here (refresh this page) and switch the layout mode again."
+msgstr ""
+
+#: includes/blocks/index.php:136
+msgid "Get product from context."
+msgstr ""
+
+#: templates/theme-integration.php:167
+msgid "Get the Manual Theme Integration done."
+msgstr "Obezbedite ručno integrisanje teme"
+
+#: includes/activation-config.php:45 includes/extensions.php:216
+#: includes/welcome/welcome-screen.php:182
+msgid "Getting Started"
+msgstr ""
+
+#: theme-product_adder_support.php:211 includes/activation-config.php:414
+msgid "Getting Started Guide"
+msgstr ""
+
+#: theme-product_adder_support.php:59
+msgid "Getting started guide with step by step instructions"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:667
+msgid "Ghana"
+msgstr ""
+
+#: modules/price/config/currencies.php:245
+msgid "Ghana cedi"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:668
+msgid "Gibraltar"
+msgstr ""
+
+#: modules/price/config/currencies.php:246
+msgid "Gibraltar pound"
+msgstr ""
+
+#: functions/support.php:150
+#, fuzzy
+#| msgid ""
+#| "Please just go ahead and use the Buy Now button above to receive the "
+#| "premium support service and the free additions immediately. You will "
+#| "receive the premium extension on your PayPal email address immediately "
+#| "after the payment is confirmed."
+msgid ""
+"Go ahead and use the Buy Now button above to receive the premium support "
+"service and the described features immediately. You will receive the premium "
+"extension on your PayPal email address immediately after the payment is "
+"confirmed."
+msgstr ""
+"Idite napred i kliknite na taster ‘Kupi sada’ da biste odmah dobili uslugu "
+"premium podrške i besplatne dodatke. Dobićete premium dodatke na svoju "
+"PayPal email adresu čim se potvrdi uplata."
+
+#: templates/theme-integration.php:158 templates/theme-integration.php:160
+msgid "Go Back"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:48
+msgid "GO BACK TO MODE SELECTION"
+msgstr ""
+
+#: theme-product_adder_support.php:240
+#, php-format
+msgid ""
+"go to %1$s %3$simport screen%4$s to transfer all %2$s products to %1$s and "
+"remove %2$s after that"
+msgstr ""
+
+#: ext-comp/elementor/show_catalog_widget.php:103
+#, php-format
+msgid "Go to %scatalog settings%s to adjust what is visible here."
+msgstr ""
+
+#: templates/theme-integration.php:180 templates/theme-integration.php:193
+msgid "Go to Admin"
+msgstr "Idite na stranicu za administratore"
+
+#: includes/customizer.php:300
+msgid ""
+"Go to catalog page that you want to style so you can see the effect "
+"immediately."
+msgstr ""
+
+#: includes/welcome/welcome-screen.php:208
+msgid "Go to settings"
+msgstr ""
+
+#: includes/activation-config.php:409
+msgid "Great! It looks like you are good to go with your catalog adventure."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:666
+msgid "Greece"
+msgstr ""
+
+#: includes/customizer.php:146 includes/settings/custom-design.php:298
+#: modules/price/price-settings.php:42
+msgid "Green"
+msgstr "Zelena"
+
+#: modules/cart/ext/formbuilder/index.php:669
+msgid "Greenland"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:670
+msgid "Grenada"
+msgstr ""
+
+#: includes/customizer.php:148 includes/settings/custom-design.php:302
+#: modules/price/price-settings.php:46
+msgid "Grey"
+msgstr "Сива"
+
+#: modules/cart/ext/formbuilder/index.php:671
+msgid "Guadeloupe"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:672
+msgid "Guam"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:673
+msgid "Guatemala"
+msgstr ""
+
+#: modules/price/config/currencies.php:249
+msgid "Guatemalan quetzal"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:674
+msgid "Guernsey"
+msgstr ""
+
+#: modules/price/config/currencies.php:244
+msgid "Guernsey pound"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:675
+msgid "Guinea"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:676
+msgid "Guinea-Bissau"
+msgstr ""
+
+#: modules/price/config/currencies.php:248
+msgid "Guinean franc"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:677
+msgid "Guyana"
+msgstr ""
+
+#: modules/price/config/currencies.php:250
+msgid "Guyanese dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:678
+msgid "Haiti"
+msgstr ""
+
+#: modules/price/config/currencies.php:254
+msgid "Haitian gourde"
+msgstr ""
+
+#: includes/welcome/start.php:107
+msgid "Headings & text customization"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:679
+msgid "Heard and McDonald Islands"
+msgstr ""
+
+#: modules/attributes/attributes-meta.php:379
+msgid "Height"
+msgstr ""
+
+#: modules/attributes/attributes-meta.php:364
+msgctxt "Height"
+msgid "H"
+msgstr ""
+
+#: includes/activation-config.php:134 includes/extensions.php:921
+#: includes/welcome/welcome-screen.php:190
+msgid "Help"
+msgstr "Pomoć"
+
+#: includes/activation-config.php:184
+msgid "Help Docs"
+msgstr ""
+
+#: includes/activation-config.php:185
+msgid "Help from devs"
+msgstr ""
+
+#: functions/duplicate.php:129
+msgid "here"
+msgstr "овде"
+
+#: includes/activation-config.php:183
+msgid ""
+"Here all the products will show up. Use the Add new product button on the "
+"top to add a product."
+msgstr ""
+
+#: includes/activation-config.php:195
+msgid "Here you can add images, videos, or any other media to the description."
+msgstr ""
+
+#: includes/activation-config.php:123
+msgid ""
+"Here you can add, edit, and remove products. You can have an unlimited "
+"number of products."
+msgstr ""
+
+#: includes/activation-config.php:134
+msgid "Here you can can get some help."
+msgstr ""
+
+#: includes/activation-config.php:124
+msgid "Here you can change catalog text output."
+msgstr ""
+
+#: includes/activation-config.php:152
+msgid "Here you can change the labels that appear on the product listing."
+msgstr ""
+
+#: includes/activation-config.php:126
+msgid "Here you can configure the attributes. Set the default values."
+msgstr ""
+
+#: includes/activation-config.php:125
+msgid ""
+"Here you can configure the catalog design. Select the listing template and "
+"product page template. Change gallery options."
+msgstr ""
+
+#: includes/activation-config.php:143
+msgid ""
+"Here you can configure the individual product page design and gallery "
+"settings."
+msgstr ""
+
+#: includes/activation-config.php:161
+msgid "Here you can configure the variations."
+msgstr ""
+
+#: includes/activation-config.php:133
+msgid "Here you can find many useful add-ons and integrations."
+msgstr ""
+
+#: includes/activation-config.php:194
+msgid ""
+"Here you can insert product attributes like color, size, or any other "
+"feature that the product has. With some add-ons, you will be able to sort, "
+"filter, and search products by these values."
+msgstr ""
+
+#: includes/activation-config.php:164
+msgid ""
+"Here you can insert product variations so the user can choose additional "
+"product features when buying or asking for a quote."
+msgstr ""
+
+#: includes/activation-config.php:193
+msgid "Here you can insert the product image."
+msgstr ""
+
+#: includes/activation-config.php:122
+msgid ""
+"Here you can manage categories and subcategories. You can add an unlimited "
+"number of categories and multiple levels of subcategories."
+msgstr ""
+
+#: theme-product_adder_support.php:234
+#, php-format
+msgid ""
+"Hey! It looks like you have %1$s installed. You can use %2$s with or without "
+"%1$s."
+msgstr ""
+
+#: includes/class-ic-sitewide-bar.php:190
+#: includes/class-ic-sitewide-bar.php:290
+msgid "Hide Catalog Icon"
+msgstr ""
+
+#: includes/settings/tooltips.php:177
+msgid "Hide Forever"
+msgstr ""
+
+#: includes/class-ic-sitewide-bar.php:191
+#: includes/class-ic-sitewide-bar.php:307
+msgid "Hide Search Icon"
+msgstr ""
+
+#: modules/cart/includes/cart/cart-shipping.php:43
+msgid "Highest cost of all products in cart"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:680
+msgid "Holy See (City Vatican State)"
+msgstr ""
+
+#: includes/settings/custom-names.php:66 includes/settings/custom-names.php:77
+msgid "Home"
+msgstr "Početna"
+
+#: includes/system.php:179
+msgid "Home URL"
+msgstr "URL naslovne"
+
+#: modules/price/config/currencies.php:252
+msgid "Honduran lempira"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:681
+msgid "Honduras"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:682
+msgid "Hong Kong"
+msgstr ""
+
+#: modules/price/config/currencies.php:251
+msgid "Hong Kong dollar"
+msgstr ""
+
+#: includes/settings/general.php:183
+msgid "How to do it?"
+msgstr ""
+
+#: includes/extensions.php:251
+msgid "How to get help?"
+msgstr ""
+
+#: includes/extensions.php:257
+msgid "How to Install the extension?"
+msgstr ""
+
+#: functions/activation.php:171
+msgid "How to switch to Advanced Mode?"
+msgstr "Kako da pređem na napredni režim?"
+
+#: includes/activation-config.php:589
+msgid "How would you like to name the products section in admin?"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://implecode.com/#cam=in-plugin-urls&key=author-url"
+msgstr ""
+
+#. URI of the plugin
+msgid ""
+"https://implecode.com/wordpress/product-catalog/#cam=in-plugin-"
+"urls&key=plugin-url"
+msgstr ""
+
+#: modules/price/config/currencies.php:255
+msgid "Hungarian forint"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:683
+msgid "Hungary"
+msgstr ""
+
+#: modules/quote-cart/index.php:309
+#, php-format
+msgid ""
+"I agree to let %1$s process my personal data to process my inquiry and for "
+"other purposes described in %1$s %2$sPrivacy Notice%3$s."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:280
+#, php-format
+msgid ""
+"I agree to let %1$s process my personal data to process my order and for "
+"other purposes described in %1$s %2$sPrivacy Notice%3$s."
+msgstr ""
+
+#: includes/tracking.php:412
+msgid "I couldn't understand how to make it work"
+msgstr ""
+
+#: includes/tracking.php:416
+msgid "I found a better plugin"
+msgstr ""
+
+#: theme-product_adder_support.php:154
+msgid "I know, don't bug me"
+msgstr "Znam, ne ometaj me"
+
+#: includes/activation-config.php:576
+#, php-format
+msgid "I would like to use %s to:"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:684
+msgid "Iceland"
+msgstr ""
+
+#: modules/price/config/currencies.php:263
+msgid "Icelandic kr&oacute;na"
+msgstr ""
+
+#: includes/class-ic-sitewide-bar.php:189
+#: includes/class-ic-sitewide-bar.php:272
+msgid "Icons Display"
+msgstr ""
+
+#: includes/product-category-columns.php:120 includes/product-columns.php:21
+#: modules/cart/includes/orders/includes/digital-order-columns.php:25
+msgid "ID"
+msgstr "ID"
+
+#: templates/theme-integration.php:87
+#, php-format
+msgid ""
+"If something goes wrong you will have to add %s to the product listing again."
+msgstr ""
+
+#: functions/activation.php:176
+msgid ""
+"If the catalog pages are not displayed correctly within your theme layout "
+"you can test a different integration method."
+msgstr ""
+
+#: templates/theme-integration.php:113
+msgid ""
+"If the sidebar is to close to the content, you can go back and adjust the "
+"padding."
+msgstr ""
+
+#: templates/theme-integration.php:178
+#, php-format
+msgid ""
+"If you are a developer or would like to have full control on the product "
+"pages templates, make sure to see the %stemplates docs%s."
+msgstr ""
+
+#: includes/activation-config.php:411
+#, php-format
+msgid ""
+"If you are looking for a customizable product theme, the free %sCatalog Me! "
+"theme%s is the way to go."
+msgstr ""
+
+#: theme-product_adder_support.php:198
+#, php-format
+msgid ""
+"If you are looking for a great customizable product theme we recommend free "
+"%sCatalog Me! theme%s."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:191
+msgid ""
+"If you check this the orders will not be saved into database. Only the "
+"notification email will be sent."
+msgstr ""
+
+#: modules/price/price-settings.php:97
+msgid ""
+"If you choose a custom currency symbol, it will override Your Currency "
+"setting and let you use any currency."
+msgstr ""
+
+#: includes/settings/general.php:471
+msgid "If you disable the image, it will be only used for categories listing."
+msgstr ""
+
+#: includes/welcome/new.php:78
+#, php-format
+msgid ""
+"If you face any configuration issues, please report it on the %1$ssupport "
+"forum%2$s."
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:87
+msgid ""
+"If you fill out the fields below, the system will automatically pre-fill the "
+"fields on product pages so you doesn't have to fill them every time you add "
+"product."
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:90
+msgid ""
+"If you fill out the fields below, the system will automatically pre-fill the "
+"fields on product pages, so you don't have to fill them every time you add "
+"product."
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:86
+msgid ""
+"If you fill out the fields below, the system will automatically pre-fill the "
+"fields when adding a new item, so you don't have to fill them every time."
+msgstr ""
+
+#: includes/tracking.php:391
+msgid "If you have a moment, please let us know why you are deactivating"
+msgstr ""
+
+#: includes/settings/general.php:267
+#, php-format
+msgid ""
+"If you have access to the server files, you can also use our %sTheme "
+"Integration Guide%s to achieve it quickly."
+msgstr ""
+
+#: includes/settings/general.php:329
+#, php-format
+msgid ""
+"If you have access to the server files, you can also use our %sTheme "
+"Integration Guide%s to have full control over the layout."
+msgstr ""
+
+#: includes/welcome/new.php:41
+#, php-format
+msgid ""
+"If you have an idea of a great CTA that could be included, please "
+"%1$scontact the developers%2$s!"
+msgstr ""
+
+#: includes/settings/general.php:216
+#, php-format
+msgid ""
+"If you have any problems with catalog layout, you can remove the %s and use "
+"the theme integration wizard to fix it."
+msgstr ""
+
+#: includes/settings/general.php:220
+msgid ""
+"If you have any problems with catalog layout, you can use the theme "
+"integration wizard to fix it."
+msgstr ""
+
+#: includes/settings/general.php:268 includes/settings/general.php:330
+#, php-format
+msgid ""
+"If you have any problems with the integration, please insert %s on any page "
+"to display the catalog."
+msgstr ""
+
+#: theme-product_adder_support.php:71
+#, php-format
+msgid ""
+"If you have any problems with your catalog display, please add %s to the "
+"page content and save."
+msgstr ""
+
+#: includes/activation-config.php:410
+#, php-format
+msgid ""
+"If you have any questions or issues, feel free to post a %ssupport ticket%s."
+msgstr ""
+
+#: includes/settings/tooltips.php:372
+#, php-format
+msgid ""
+"If you have any questions or issues, you can reach the developers on the "
+"%1$ssupport forum%2$s."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:125 includes/welcome/new.php:179
+#: includes/welcome/start.php:158
+msgid ""
+"If you need a custom feature, do not hesitate to contact the developers."
+msgstr ""
+
+#: functions/support.php:151
+#, php-format
+msgid ""
+"If you need to get it on a different email address, please use the <a "
+"href=\"%s\">impleCode website to order the premium support</a>. It will let "
+"you set a different email address than the one for PayPal."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:183
+msgid ""
+"If you select user account you will be able to select a page to become user "
+"account with the order history."
+msgstr ""
+
+#: includes/welcome/new.php:53
+#, php-format
+msgid ""
+"If you still face any theme or page builder integration issues, please "
+"report them on the %1$ssupport forum%2$s."
+msgstr ""
+
+#: includes/system.php:396
+#, php-format
+msgid ""
+"If you're modifying %s or a parent theme you didn't build personally we "
+"recommend using a child theme. See: <a href=\"%s\" target=\"_blank\">How to "
+"create a child theme</a>"
+msgstr ""
+
+#: includes/product-category-columns.php:119 includes/product-columns.php:23
+#: includes/register-product.php:166 includes/register-product.php:717
+msgid "Image"
+msgstr "Slika"
+
+#: includes/activation-config.php:350
+msgid "Image box"
+msgstr ""
+
+#: includes/settings/csv.php:258 includes/settings/csv.php:306
+msgid "Image URL"
+msgstr "URL slike"
+
+#: includes/settings/custom-design.php:284
+msgid "Impact"
+msgstr "Uticaj"
+
+#. Author of the plugin
+msgid "impleCode"
+msgstr ""
+
+#: functions/support.php:39
+msgid "impleCode Support"
+msgstr "impleCode Podrška"
+
+#: includes/system.php:103
+msgid "impleCode Tools"
+msgstr ""
+
+#: includes/settings/csv.php:529
+msgid "Import"
+msgstr ""
+
+#: includes/settings/csv.php:70
+msgid "import"
+msgstr ""
+
+#: includes/activation-config.php:317
+#, php-format
+msgid "Import %s"
+msgstr ""
+
+#: ecommerce-product-catalog.php:208 includes/settings/csv.php:20
+#: includes/settings/csv.php:29
+msgid "Import / Export"
+msgstr ""
+
+#: includes/settings/csv.php:524
+msgid "Import from other content"
+msgstr ""
+
+#: includes/settings/csv.php:117
+msgid "Import Now"
+msgstr ""
+
+#: includes/settings/csv.php:50
+msgid "Import Products"
+msgstr ""
+
+#: includes/activation-config.php:110
+msgid "Important Settings"
+msgstr ""
+
+#: includes/settings/general.php:265
+#, php-format
+msgid ""
+"In Advanced Mode %s must figure out your theme markup to display products "
+"properly."
+msgstr ""
+
+#: templates/theme-integration.php:98
+msgid ""
+"In most cases you should decrease this number to match your template "
+"container size."
+msgstr ""
+
+#: templates/theme-integration.php:65
+msgid ""
+"In Shortcode Mode all the catalog features work fine however your theme "
+"might display some unwanted elements on catalog pages."
+msgstr ""
+
+#: templates/theme-integration.php:68
+#, fuzzy
+#| msgid ""
+#| "In Simple Mode the product listing, product search and category pages are "
+#| "disabled (please read this Sample Product Page to fully understand the "
+#| "difference)."
+msgid ""
+"In Simple Mode the product listing, product search and category pages are "
+"disabled (please read this Sample Product Page to understand the difference "
+"fully)."
+msgstr ""
+"U jednostavnom režimu spisak proizvoda, pretraga proizvoda i stranice "
+"kategorije nisu aktivirane (pročitajte ovu stranicu za uzorke proizvoda da "
+"biste potpuno uvideli razliku)."
+
+#: includes/welcome/new.php:52
+msgid ""
+"In the current release, the theme integration goal is almost 100% complete."
+msgstr ""
+
+#: includes/settings/general.php:328
+msgid ""
+"In theme mode the catalog will use your theme layout for all the catalog "
+"pages."
+msgstr ""
+
+#: includes/welcome/new.php:74
+#, php-format
+msgid ""
+"In this release, %s is continuously improved in the field of front-end and "
+"back-end usability"
+msgstr ""
+
+#: templates/theme-integration.php:101
+msgid ""
+"Increase this number to make space also on the top and bottom of the "
+"container. This is useful also if you are planning to enable the sidebar in "
+"next step."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:685
+msgid "India"
+msgstr ""
+
+#: modules/price/config/currencies.php:259
+msgid "Indian rupee"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:686
+msgid "Indonesia"
+msgstr ""
+
+#: modules/price/config/currencies.php:256
+msgid "Indonesian rupiah"
+msgstr ""
+
+#: includes/settings/general.php:360
+msgid "Inquiry Catalog"
+msgstr ""
+
+#: includes/activation-config.php:196
+msgid ""
+"Insert the product description here. It will show up in a separate section "
+"or tab in the middle of the product page."
+msgstr ""
+
+#: includes/activation-config.php:198
+msgid "Insert the product name here."
+msgstr ""
+
+#: includes/activation-config.php:197
+msgid ""
+"Insert the product short description here. It will show up on the top of the "
+"product page."
+msgstr ""
+
+#: theme-product_adder_support.php:242
+#, php-format
+msgid "install free %1$s plugin from %2$scatalog extensions menu%3$s"
+msgstr ""
+
+#: includes/extensions.php:28
+msgid "Installation"
+msgstr "Instalacija"
+
+#: includes/extensions.php:588 includes/extensions.php:651
+msgid "Installed Extension"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:687
+msgid "Iran"
+msgstr ""
+
+#: modules/price/config/currencies.php:261
+msgid "Iranian rial"
+msgstr ""
+
+#: modules/price/config/currencies.php:262
+msgid "Iranian toman"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:688
+msgid "Iraq"
+msgstr ""
+
+#: modules/price/config/currencies.php:260
+msgid "Iraqi dinar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:689
+msgid "Ireland"
+msgstr ""
+
+#: templates/theme-integration.php:144
+msgid "Is everything looking fine now?"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:690
+msgid "Isle of Man"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:691
+msgid "Israel"
+msgstr ""
+
+#: modules/price/config/currencies.php:257
+msgid "Israeli new shekel"
+msgstr ""
+
+#: includes/activation-config.php:576
+#, php-format
+msgid ""
+"It looks like you also have %s active. Make a choice below for correct setup."
+msgstr ""
+
+#: templates/theme-integration.php:164
+msgid ""
+"It seems that Manual Theme Integration is needed in order to use Advanced "
+"Mode with your current theme."
+msgstr ""
+"Izgleda da je ručna integracija teme neophodna za korišćenje naprednog "
+"režima sa vašom tekućom temom. "
+
+#: includes/settings/general.php:434
+msgid ""
+"It seems that this categories parent URL is already set to be a parent for "
+"different elements. Please change the Categories Parent URL to make sure "
+"that product category pages work fine.<br><br>This is probably caused by "
+"other plugin being set to show categories with the same parent."
+msgstr ""
+
+#: includes/settings/general.php:381
+msgid ""
+"It seems that this page is already set to be a listing for different "
+"elements. Please change the product listing page to make sure that product "
+"pages work fine.<br><br>This is probably caused by other plugin being set to "
+"show items on the same page."
+msgstr ""
+
+#: templates/theme-integration.php:156
+msgid "It's Broken"
+msgstr "Ne radi"
+
+#: templates/theme-integration.php:154
+msgid "It's Fine"
+msgstr "U redu je"
+
+#: includes/tracking.php:428
+msgid "It's not what I was looking for"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:692
+msgid "Italy"
+msgstr ""
+
+#: includes/settings/settings-functions.php:585
+msgid "item"
+msgstr ""
+
+#: includes/settings/settings-functions.php:583
+msgid "items"
+msgstr ""
+
+#: includes/blocks/index.php:116
+msgid "Items Per Row"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:693
+msgid "Jamaica"
+msgstr ""
+
+#: modules/price/config/currencies.php:265
+msgid "Jamaican dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:694
+msgid "Japan"
+msgstr ""
+
+#: modules/price/config/currencies.php:267
+msgid "Japanese yen"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:695
+msgid "Jersey"
+msgstr ""
+
+#: modules/price/config/currencies.php:264
+msgid "Jersey pound"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:696
+msgid "Jordan"
+msgstr ""
+
+#: modules/price/config/currencies.php:266
+msgid "Jordanian dinar"
+msgstr ""
+
+#: functions/activation.php:350 modules/attributes/product-attributes.php:243
+msgid "Just Finished! Wait 10 minutes before restarting."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:697
+msgid "Kazakhstan"
+msgstr ""
+
+#: modules/price/config/currencies.php:276
+msgid "Kazakhstani tenge"
+msgstr ""
+
+#: templates/theme-integration.php:168
+msgid "Keep using Simple Mode which is still functional."
+msgstr "Nastavi da koristiš jednostavan režim koji je i dalje funkcionalan. "
+
+#: modules/cart/ext/formbuilder/index.php:698
+msgid "Kenya"
+msgstr ""
+
+#: modules/price/config/currencies.php:268
+msgid "Kenyan shilling"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:61
+#: modules/cart/includes/shopping-settings.php:62
+#: modules/cart/includes/orders/functions/functions.php:333
+msgid "Kind regards,"
+msgstr ""
+
+#: includes/tracking.php:425
+msgid "Kindly share what didn't work so we can fix it for future users..."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:699
+msgid "Kiribati"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:700
+msgid "Kuwait"
+msgstr ""
+
+#: modules/price/config/currencies.php:274
+msgid "Kuwaiti dinar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:701
+msgid "Kyrgyzstan"
+msgstr ""
+
+#: modules/price/config/currencies.php:269
+msgid "Kyrgyzstani som"
+msgstr ""
+
+#: includes/system.php:241
+msgid "Language"
+msgstr "Language"
+
+#: modules/price/config/currencies.php:277
+msgid "Lao kip"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:702
+msgid "Lao People's Democratic Republic"
+msgstr ""
+
+#: includes/blocks/index.php:126
+msgid "Large"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:703
+msgid "Latvia"
+msgstr ""
+
+#: includes/settings/general.php:207 includes/settings/general.php:241
+msgid "Layout mode"
+msgstr ""
+
+#: functions/activation.php:146
+msgid "lbs"
+msgstr "lbs"
+
+#: modules/price/config/currencies.php:278
+msgid "Lebanese pound"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:704
+msgid "Lebanon"
+msgstr ""
+
+#: includes/customizer.php:230 templates/theme-integration.php:110
+#: includes/settings/general.php:308
+msgid "Left"
+msgstr "Levo"
+
+#: modules/attributes/attributes-meta.php:378
+msgid "Length"
+msgstr ""
+
+#: modules/attributes/attributes-meta.php:363
+msgctxt "Length"
+msgid "L"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:705
+msgid "Lesotho"
+msgstr ""
+
+#: modules/price/config/currencies.php:281
+msgid "Lesotho loti"
+msgstr ""
+
+#: functions/support.php:112
+msgid ""
+"let the user switch the listing template on front-end - for example between "
+"grid or list."
+msgstr ""
+
+#: includes/activation-config.php:367
+#, php-format
+msgid "Let's customize your %s page layout."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:706
+msgid "Liberia"
+msgstr ""
+
+#: modules/price/config/currencies.php:280
+msgid "Liberian dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:707
+msgid "Libyan Arab Jamahiriya"
+msgstr ""
+
+#: modules/price/config/currencies.php:282
+msgid "Libyan dinar"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/transactions-client-list.php:24
+msgid "License"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:708
+msgid "Liechtenstein"
+msgstr ""
+
+#: includes/settings/custom-design.php:47
+#: includes/settings/custom-design.php:103
+#: includes/settings/custom-design.php:106
+msgid "Listing Design"
+msgstr ""
+
+#: includes/settings/custom-names.php:113
+msgid "Listing Pages"
+msgstr ""
+
+#: includes/settings/custom-names.php:177
+msgid "Listing Pages Labels"
+msgstr ""
+
+#: includes/settings/general.php:411
+msgid "Listing shows at most"
+msgstr ""
+
+#: includes/blocks/index.php:115
+msgid "Listing Template"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:709
+msgid "Lithuania"
+msgstr ""
+
+#: includes/blocks/index.php:122
+msgid "Loading"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:52
+#: modules/cart/includes/customers/includes/transactions/transactions-customer.php:137
+msgid "Login"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/login-form-widget.php:20
+msgid "Login Form"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/transactions-customer.php:140
+msgid "Login Now"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:54
+msgid "Logout"
+msgstr ""
+
+#: includes/register-product.php:306 includes/settings/csv.php:265
+#: includes/settings/csv.php:313
+msgid "Long Description"
+msgstr ""
+
+#: includes/activation-config.php:348
+msgid "Long Description field"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:710
+msgid "Luxembourgh"
+msgstr ""
+
+#: modules/price/config/currencies.php:289
+msgid "Macanese pataca"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:711
+msgid "Macau"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:712
+msgid "Macedonia"
+msgstr ""
+
+#: modules/price/config/currencies.php:286
+msgid "Macedonian denar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:713
+msgid "Madagascar"
+msgstr ""
+
+#: includes/activation-config.php:420
+msgid "Main Catalog Listing"
+msgstr ""
+
+#: templates/block-catalog.php:23 includes/settings/general.php:159
+msgid "Main Catalog Page"
+msgstr ""
+
+#: includes/settings/custom-names.php:61 includes/settings/custom-names.php:72
+#: includes/settings/general.php:414 includes/settings/general.php:416
+msgid "Main Categories"
+msgstr "Glavne Kategorije"
+
+#: includes/settings/general.php:415
+#, php-format
+msgid "Main Categories & Uncategorized %s"
+msgstr ""
+
+#: includes/settings/general.php:517
+msgid "Main listing breadcrumbs title"
+msgstr ""
+
+#: includes/settings/general.php:376
+msgid "Main listing page"
+msgstr ""
+
+#: includes/settings/general.php:412
+msgid "Main listing shows"
+msgstr ""
+
+#: includes/settings/custom-names.php:190
+msgid "Main Listing Title Label"
+msgstr ""
+
+#: includes/activation-config.php:284
+msgid "Make a choice below to continue with 1-minute catalog setup."
+msgstr ""
+
+#: includes/system.php:129
+msgid "Make default filters bar empty."
+msgstr ""
+
+#: templates/theme-integration.php:90
+#, fuzzy
+#| msgid ""
+#| "Make some adjustments if necessary (you can change it at any time later)"
+msgid ""
+"Make some adjustments if necessary (you can change it at any time later)."
+msgstr ""
+"Unesite neke izmene ako je potrebno (izmene možete vršiti i kasnije u svakom "
+"trenutku)"
+
+#: includes/activation-config.php:412
+msgid "Make sure to visit the documentation for more tweaks and tricks."
+msgstr ""
+
+#: modules/price/config/currencies.php:285
+msgid "Malagasy ariary"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:714
+msgid "Malawi"
+msgstr ""
+
+#: modules/price/config/currencies.php:293
+msgid "Malawian kwacha"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:715
+msgid "Malaysia"
+msgstr ""
+
+#: modules/price/config/currencies.php:295
+msgid "Malaysian ringgit"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:716
+msgid "Maldives"
+msgstr ""
+
+#: modules/price/config/currencies.php:292
+msgid "Maldivian rufiyaa"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:717
+msgid "Mali"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:718
+msgid "Malta"
+msgstr ""
+
+#: modules/price/config/currencies.php:258
+msgid "Manx pound"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:719
+msgid "Marshall Islands"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:720
+msgid "Martinique"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:721
+msgid "Mauritania"
+msgstr ""
+
+#: modules/price/config/currencies.php:290
+msgid "Mauritanian ouguiya"
+msgstr ""
+
+#: modules/price/config/currencies.php:291
+msgid "Mauritian rupee"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:722
+msgid "Mauritius"
+msgstr ""
+
+#: includes/system.php:296
+msgid "Max Upload Size"
+msgstr "Макс Величина Уплоада"
+
+#: modules/cart/ext/formbuilder/index.php:723
+msgid "Mayotte"
+msgstr ""
+
+#: includes/activation-config.php:195
+msgid "Media"
+msgstr ""
+
+#: includes/blocks/index.php:125
+msgid "Medium"
+msgstr ""
+
+#: modules/price/config/currencies.php:294
+msgid "Mexican peso"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:724
+msgid "Mexico"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:725
+msgid "Micronesia"
+msgstr ""
+
+#: ext-comp/woocommerce.php:75
+msgid "Missing Module!"
+msgstr ""
+
+#: templates/templates-functions.php:423
+#: includes/settings/custom-design.php:113
+msgid "Modern Grid"
+msgstr "Moderna mreža"
+
+#: includes/settings/image-sizes.php:60
+msgid "Modern Grid Image"
+msgstr ""
+
+#: includes/activation-config.php:574
+#, php-format
+msgid "Modify %s Design"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:726
+msgid "Moldova, Republic of"
+msgstr ""
+
+#: modules/price/config/currencies.php:284
+msgid "Moldovan leu"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:727
+msgid "Monaco"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:728
+msgid "Mongolia"
+msgstr ""
+
+#: modules/price/config/currencies.php:288
+msgid "Mongolian t&ouml;gr&ouml;g"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:729
+msgid "Montenegro"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:730
+msgid "Montserrat"
+msgstr ""
+
+#: includes/settings/extension-info.php:53
+#, php-format
+msgid "More free & premium features %shere%s."
+msgstr ""
+
+#: functions/support.php:141
+msgid "More styling"
+msgstr ""
+
+#: modules/price/config/currencies.php:283
+msgid "Moroccan dirham"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:731
+msgid "Morocco"
+msgstr ""
+
+#: includes/settings/general.php:568
+msgid "Move breadcrumbs to the top"
+msgstr ""
+
+#: modules/price/config/currencies.php:296
+msgid "Mozambican metical"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:732
+msgid "Mozambique"
+msgstr ""
+
+#: modules/mpn/mpn-settings.php:22
+msgid "MPN Label"
+msgstr ""
+
+#: includes/settings/custom-names.php:21 includes/settings/custom-names.php:35
+msgid "MPN:"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/digital-customer.php:94
+msgid "My Account"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:733
+msgid "Myanmar"
+msgstr ""
+
+#: includes/system.php:286
+msgid "MySQL Version"
+msgstr "MySQL Верзија"
+
+#: includes/system.php:318
+msgid "N/A"
+msgstr "N/A"
+
+#: includes/system.php:380 includes/blocks/index.php:398
+#: includes/settings/csv.php:259 includes/settings/csv.php:307
+#: modules/cart/includes/variations/variations-meta.php:40
+msgid "Name"
+msgstr "Name"
+
+#: includes/activation-config.php:346
+msgid "Name field"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:734
+msgid "Namibia"
+msgstr ""
+
+#: modules/price/config/currencies.php:297
+msgid "Namibian dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:735
+msgid "Nauru"
+msgstr ""
+
+#: includes/product-settings.php:370
+msgid "Need Help?"
+msgstr "Potrebna vam je pomoć?"
+
+#: modules/cart/ext/formbuilder/index.php:736
+msgid "Nepal"
+msgstr ""
+
+#: modules/price/config/currencies.php:301
+msgid "Nepalese rupee"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:737
+msgid "Netherlands"
+msgstr ""
+
+#: modules/price/config/currencies.php:198
+msgid "Netherlands Antillean guilder"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:738
+msgid "Netherlands Antilles"
+msgstr ""
+
+#: includes/product-categories.php:40
+#, php-format
+msgid "New %s Category"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:739
+msgid "New Caledonia"
+msgstr ""
+
+#: includes/product-categories.php:54
+msgid "New Category"
+msgstr "Nova kategorija"
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:41
+msgid "New Order"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:62
+msgid "New order from a customer."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:73
+#, php-format
+msgid "New Order on %s"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:74
+#, php-format
+msgid "New Packing List on %s"
+msgstr ""
+
+#: modules/cart/functions/shortcodes.php:70
+msgid "New quantity values saved."
+msgstr ""
+
+#: modules/quote-cart/index.php:58
+msgid "New Quote"
+msgstr ""
+
+#: modules/price/config/currencies.php:338
+msgid "New Taiwan dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:740
+msgid "New Zealand"
+msgstr ""
+
+#: modules/price/config/currencies.php:302
+msgid "New Zealand dollar"
+msgstr ""
+
+#: templates/theme-integration.php:160 includes/settings/tooltips.php:178
+msgid "Next"
+msgstr ""
+
+#: includes/settings/custom-names.php:195
+msgid "Next Page Label"
+msgstr ""
+
+#: includes/settings/custom-names.php:64 includes/settings/custom-names.php:75
+msgid "Next Page »"
+msgstr "Sledeća strana »"
+
+#: modules/cart/ext/formbuilder/index.php:741
+msgid "Nicaragua"
+msgstr ""
+
+#: modules/price/config/currencies.php:299
+msgid "Nicaraguan c&oacute;rdoba"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:742
+msgid "Niger"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:743
+msgid "Nigeria"
+msgstr ""
+
+#: modules/price/config/currencies.php:298
+msgid "Nigerian naira"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:744
+msgid "Niue"
+msgstr ""
+
+#: includes/system.php:31 includes/system.php:48 includes/system.php:75
+msgid "No"
+msgstr "No"
+
+#: functions/functions.php:1583
+#, php-format
+msgid "No %s available."
+msgstr ""
+
+#: includes/register-product.php:146
+#, php-format
+msgid "No %s found"
+msgstr "Nema  %s pronađenih"
+
+#: includes/register-product.php:147
+#, php-format
+msgid "No %s found in trash"
+msgstr "Nema  %s  pronađenih u smeću"
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:47
+msgid "No orders found"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:48
+msgid "No orders found in the trash"
+msgstr ""
+
+#: modules/cart/includes/cart/ic-cart.php:125
+msgid "No products."
+msgstr ""
+
+#: modules/cart/includes/cart/ic-cart.php:123
+#, php-format
+msgid "No products. <a href=\"%s\">Go back</a> and choose some."
+msgstr ""
+
+#: modules/quote-cart/index.php:64
+msgid "No quotes found"
+msgstr ""
+
+#: modules/quote-cart/index.php:65
+msgid "No quotes found in the trash"
+msgstr ""
+
+#: includes/blocks/index.php:399
+msgid "None"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:745
+msgid "Norfolk Island"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:746
+msgid "North Korea"
+msgstr ""
+
+#: modules/price/config/currencies.php:272
+msgid "North Korean won"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:747
+msgid "Northern Mariana Islands"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:748
+msgid "Norway"
+msgstr ""
+
+#: modules/price/config/currencies.php:300
+msgid "Norwegian krone"
+msgstr ""
+
+#: includes/system.php:425
+msgid "Not Declared"
+msgstr "Није декларисано"
+
+#: includes/settings/general.php:475
+msgid "Nothing"
+msgstr ""
+
+#: includes/register-product.php:162
+msgid "Nothing found"
+msgstr "Ništa nije pronađeno"
+
+#: includes/register-product.php:163
+msgid "Nothing found in trash"
+msgstr "Nije pronađeno u korpi"
+
+#: includes/extensions.php:935
+msgid "Now you can get multiple extensions at once with the lowest price ever."
+msgstr ""
+
+#: includes/welcome/new.php:128
+msgid ""
+"Now you can search through the catalog settings and docs from your admin "
+"dashboard!"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:72
+#: modules/attributes/attributes-settings.php:78
+msgid "Number of attributes"
+msgstr ""
+
+#: includes/settings/csv.php:191
+msgid "Number of product fields and number of fields in CSV file do not match!"
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:63
+msgid "Number of product variations"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:73
+#: modules/shipping/shipping-settings.php:82
+msgid "Number of shipping options"
+msgstr "Broj opcija isporuke"
+
+#: modules/price/price-settings.php:84 modules/price/price-settings.php:105
+msgid "Off"
+msgstr "Isključen"
+
+#: functions/content-functions.php:162 includes/system.php:84
+msgid "OK"
+msgstr "OK"
+
+#: modules/cart/ext/formbuilder/index.php:749
+msgid "Oman"
+msgstr ""
+
+#: modules/price/config/currencies.php:303
+msgid "Omani rial"
+msgstr ""
+
+#: modules/price/price-settings.php:83 modules/price/price-settings.php:104
+msgid "On"
+msgstr "Uključi"
+
+#: functions/support.php:134
+msgid "on main listing, individual product, catalog search and category pages"
+msgstr ""
+
+#: includes/settings/general.php:566
+msgid ""
+"On some themes, the category name is missing on the category page, so you "
+"can use this to restore it. Uncheck this if you see duplicated category name "
+"on the category page."
+msgstr ""
+
+#: includes/settings/general.php:565
+msgid ""
+"On some themes, the product name is missing on the product page, so you can "
+"use this to restore it. Uncheck this if you see duplicated product name on "
+"the product page."
+msgstr ""
+
+#: includes/activation-config.php:341
+msgid "on the left side"
+msgstr ""
+
+#: includes/activation-config.php:342
+msgid "on the right side"
+msgstr ""
+
+#: functions/support.php:52
+#, php-format
+msgid ""
+"One year of high quality and speedy %sPremium Support%s from the developers "
+"for just %s."
+msgstr ""
+
+#: modules/attributes/attributes-meta.php:44
+#, fuzzy
+#| msgid "Only attributes with values set will be shown on product page."
+msgid "Only attributes with values set will be shown on the product page."
+msgstr ""
+"Samo atributi sa podešenim vrednostima biće prikazani na stranici proizvoda."
+
+#: functions/support.php:105
+msgid "only bottom category clickable or always show child categories"
+msgstr ""
+
+#: modules/cart/includes/variations/variations-meta.php:36
+msgid "Only variations with non-empty values will show up on the product page."
+msgstr ""
+
+#: includes/activation-config.php:340
+msgid "optional"
+msgstr ""
+
+#: includes/blocks/index.php:128 modules/price/blocks/price-table/index.php:88
+msgid "Options"
+msgstr ""
+
+#: includes/customizer.php:145 includes/settings/custom-design.php:296
+#: modules/price/price-settings.php:40
+msgid "Orange"
+msgstr "Narandžasta"
+
+#: modules/quote-cart/index.php:95 modules/quote-cart/index.php:128
+#: modules/cart/includes/orders/includes/register-digital-orders.php:40
+msgid "Order"
+msgstr ""
+
+#: modules/quote-cart/index.php:96 modules/quote-cart/index.php:126
+msgid "order"
+msgstr ""
+
+#: includes/blocks/index.php:113
+msgid "Order by"
+msgstr ""
+
+#: modules/cart/includes/orders/functions/functions.php:335
+msgid "Order Completed"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:112
+msgid "Order Data"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:62
+msgid "Order details"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:72
+#, php-format
+msgid "Order from %s"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/save-order.php:215
+msgid "Order ID"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:129
+msgid "Order Status"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:463
+msgid "Order summary will show up after digital order is ready."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:481
+msgid "Order Tax"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:501
+msgid "Order Total"
+msgstr ""
+
+#: modules/cart/includes/cart-form.php:316
+msgid "Order Total:"
+msgstr ""
+
+#: includes/blocks/index.php:114
+msgid "Order Type"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:188
+#: modules/cart/includes/orders/includes/register-digital-orders.php:39
+#: modules/cart/includes/orders/includes/save-order.php:176
+#: modules/cart/includes/customers/includes/transactions/transactions-client-list.php:25
+msgid "Orders"
+msgstr ""
+
+#: modules/cart/includes/orders/functions/activation.php:74
+msgid "Orders Manager"
+msgstr ""
+
+#: includes/tracking.php:436
+msgid "Other"
+msgstr ""
+
+#: templates/theme-integration.php:101
+msgid "Padding"
+msgstr "Ispunjavanje"
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:784
+msgid "Page saved."
+msgstr "Stranica sačuvana."
+
+#: modules/cart/includes/payment.php:143
+msgid "Paid"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:750
+msgid "Pakistan"
+msgstr ""
+
+#: modules/price/config/currencies.php:308
+msgid "Pakistani rupee"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:751
+msgid "Palau"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:752
+msgid "Palestinian Territories"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:753
+msgid "Panama"
+msgstr ""
+
+#: modules/price/config/currencies.php:304
+msgid "Panamanian balboa"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:754
+msgid "Papua New Guinea"
+msgstr ""
+
+#: modules/price/config/currencies.php:306
+msgid "Papua New Guinean kina"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:755
+msgid "Paraguay"
+msgstr ""
+
+#: modules/price/config/currencies.php:311
+msgid "Paraguayan guaran&iacute;"
+msgstr ""
+
+#: includes/product-categories.php:35
+#, php-format
+msgid "Parent %s Category"
+msgstr ""
+
+#: includes/product-categories.php:36
+#, php-format
+msgid "Parent %s Category:"
+msgstr ""
+
+#: includes/product-categories.php:49
+msgid "Parent Category"
+msgstr "Надређена категорија"
+
+#: includes/product-categories.php:50
+msgid "Parent Category:"
+msgstr "Надређена категорија:"
+
+#: includes/system.php:412
+msgid "Parent Theme Author URL"
+msgstr ""
+
+#: includes/system.php:404
+msgid "Parent Theme Name"
+msgstr ""
+
+#: includes/system.php:408
+msgid "Parent Theme Version"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:76
+#: modules/cart/includes/customers/includes/transactions/transactions-customer.php:138
+msgid "Password"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:133
+#, php-format
+msgid ""
+"Password must be at least %d characters long. Auto refresh in %s seconds."
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:148
+#, php-format
+msgid ""
+"Password must include at least one lowercase letter. Auto refresh in %s "
+"seconds."
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:138
+#, php-format
+msgid "Password must include at least one number. Auto refresh in %s seconds."
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:153
+#, php-format
+msgid ""
+"Password must include at least one special character. Auto refresh in %s "
+"seconds."
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:143
+#, php-format
+msgid ""
+"Password must include at least one uppercase letter. Auto refresh in %s "
+"seconds."
+msgstr ""
+
+#: includes/extensions.php:120 includes/extensions.php:159
+#: includes/extensions.php:201
+msgid ""
+"Paste your license key and click the install button to start the extension "
+"installation process."
+msgstr ""
+
+#: modules/cart/includes/payment.php:75
+msgid "PAYMENT"
+msgstr ""
+
+#: modules/price/price-settings.php:79
+msgid "Payment and currency"
+msgstr "Plaćanje i valuta"
+
+#: modules/cart/includes/orders/includes/save-order.php:110
+msgid "Payment Gateway"
+msgstr ""
+
+#: modules/cart/includes/payment.php:100
+msgid "Payment Method"
+msgstr ""
+
+#: modules/cart/includes/orders/functions/functions.php:18
+msgid "Pending"
+msgstr ""
+
+#: includes/settings/custom-design.php:123
+#: includes/settings/custom-design.php:127
+#: includes/settings/custom-design.php:171
+#: includes/settings/custom-design.php:176
+msgid "Per row"
+msgstr "Po redu"
+
+#: includes/settings/custom-design.php:170
+msgid "Per row categories (Classic Grid)"
+msgstr ""
+
+#: includes/settings/custom-design.php:122
+msgid "Per row categories (Modern Grid)"
+msgstr ""
+
+#: includes/settings/custom-design.php:169
+msgid "Per row products (Classic Grid)"
+msgstr ""
+
+#: includes/settings/custom-design.php:121
+msgid "Per row products (Modern Grid)"
+msgstr ""
+
+#: includes/settings/csv.php:206
+#, php-format
+msgid ""
+"Permission error. Please check WordPress uploads %sfolder permissions%s."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:756
+msgid "Peru"
+msgstr ""
+
+#: modules/price/config/currencies.php:305
+msgid "Peruvian nuevo sol"
+msgstr ""
+
+#: modules/price/config/currencies.php:307
+msgid "Philippine peso"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:757
+msgid "Phillipines"
+msgstr ""
+
+#: modules/quote-cart/index.php:304
+#: modules/cart/includes/shopping-settings.php:247
+#: modules/cart/includes/shopping-settings.php:275
+msgid "Phone"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:117 includes/welcome/new.php:171
+#: includes/welcome/start.php:150
+msgid "PHP code snippets"
+msgstr ""
+
+#: includes/system.php:281
+msgid "PHP Max Input Vars"
+msgstr ""
+
+#: includes/system.php:266
+msgid "PHP Post Max Size"
+msgstr ""
+
+#: includes/system.php:277
+msgid "PHP Time Limit"
+msgstr ""
+
+#: includes/system.php:259
+msgid "PHP Version"
+msgstr "PHP Verzija"
+
+#: modules/cart/ext/formbuilder/index.php:758
+msgid "Pitcairn Island"
+msgstr ""
+
+#: includes/settings/general.php:154
+#, php-format
+msgid "Place %s on this page."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:53
+msgid "Place an order"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:331
+msgid "Place Order"
+msgstr ""
+
+#: includes/customizer.php:39 includes/settings/custom-design.php:248
+msgid "Plain"
+msgstr "Проста"
+
+#: modules/cart/includes/cart/ic-cart-ajax.php:44
+#, php-format
+msgid ""
+"Please %1$sselect the shopping cart pages%2$s for the cart to work correctly."
+msgstr ""
+
+#: includes/product-settings.php:363
+#, fuzzy, php-format
+#| msgid ""
+#| "Please <a href=\"%s\">rate</a> this plugin and tell me if it works for "
+#| "you or not. It really helps development."
+msgid ""
+"Please <a href=\"%s\">rate</a> this plugin and tell us if it works for you "
+"or not. It really helps development."
+msgstr ""
+"Molim vas, <a href=\"%s\">ocenite</a> ovaj dodatak i recite mi da li, u "
+"vašem slučaju, funkcioniše, ili ne. Ovo stvarno pomaže razvoju."
+
+#: includes/customizer.php:316
+msgid "Please adjust these settings on a product listing to see any effect."
+msgstr ""
+
+#: includes/customizer.php:310
+msgid "Please adjust these settings on a product page to see any effect."
+msgstr ""
+
+#: includes/tracking.php:398
+msgid "Please choose a reason..."
+msgstr ""
+
+#: modules/cart/functions/shortcodes.php:73
+msgid "Please choose product variations."
+msgstr ""
+
+#: functions/support.php:45
+msgid "Please consider upgrading to support the project."
+msgstr ""
+
+#: ext-comp/woocommerce.php:78
+#, php-format
+msgid ""
+"Please install free %1$s extension from %2$scatalog extensions menu%3$s."
+msgstr ""
+
+#: includes/settings/csv.php:194
+msgid ""
+"Please make sure that only the expected columns exist in the import file and "
+"the correct CSV separator is set."
+msgstr ""
+
+#: templates/theme-integration.php:172
+msgid "Please make your choice below or switch the theme."
+msgstr "Molimo vas da se odlučite ili da promenite temu."
+
+#: modules/price/price-meta.php:32
+#, php-format
+msgid ""
+"Please provide a correct price format according to your currency settings. "
+"Example price format: %s or %s"
+msgstr ""
+
+#: functions/activation.php:126
+msgid ""
+"Please read this page carefully to fully understand all product page "
+"elements."
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/transactions-customer.php:135
+msgid "Please see your account info below"
+msgstr ""
+
+#: includes/settings/csv.php:105
+msgid "Please upload only CSV files."
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:97
+msgid ""
+"Please use a strong password with at least 8 characters, including uppercase "
+"and lowercase letters, numbers, and symbols for better security."
+msgstr ""
+
+#: includes/settings/image-sizes.php:23
+#, php-format
+msgid "Please use the %s plugin to apply the size changes to existing images."
+msgstr ""
+
+#: templates/theme-integration.php:73
+msgid ""
+"Please use the button below to check out how the product page looks in "
+"Automatic Advanced Mode."
+msgstr ""
+"Koristite taster dole da biste videli kako stranica sa proizvodima izgleda u "
+"automatskom naprednom režimu."
+
+#: theme-product_adder_support.php:152
+msgid "Plugin Support"
+msgstr "Podrška za plugin"
+
+#: modules/cart/ext/formbuilder/index.php:759
+msgid "Poland"
+msgstr ""
+
+#: modules/price/config/currencies.php:309
+msgid "Polish z&#x142;oty"
+msgstr ""
+
+#: includes/class-ic-sitewide-bar.php:210
+msgid "Popup"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/login-url-widget.php:21
+msgid "Popup Login"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:760
+msgid "Portugal"
+msgstr ""
+
+#: modules/quote-cart/index.php:283
+#: modules/cart/includes/shopping-settings.php:220
+#: modules/cart/includes/shopping-settings.php:249
+msgid "Postal Code"
+msgstr ""
+
+#: modules/price/config/currencies.php:242
+msgid "Pound sterling"
+msgstr ""
+
+#: functions/support.php:76
+msgid "Premium Features:"
+msgstr "Premium funkcionalnosti:"
+
+#: functions/support.php:50
+msgid "Premium Toolset"
+msgstr ""
+
+#: functions/support.php:74
+msgid "Premium Toolset Features"
+msgstr ""
+
+#: includes/settings/custom-names.php:196
+msgid "Previous Page Label"
+msgstr ""
+
+#: includes/settings/csv.php:261 includes/settings/csv.php:309
+#: modules/price/price-meta.php:31 modules/price/price-meta.php:68
+#: modules/price/price-meta.php:122 modules/price/price-settings.php:82
+#: modules/cart/includes/cart-form.php:236
+#: modules/price/widgets/price-filter-widget.php:56
+#: modules/price/widgets/price-filter-widget.php:61
+msgid "Price"
+msgstr "Cena"
+
+#: includes/activation-config.php:353
+msgid "Price & SKU box"
+msgstr ""
+
+#: includes/customizer.php:139 modules/price/price-settings.php:34
+#: modules/price/price-settings.php:54
+msgid "Price Color"
+msgstr "Boja cene"
+
+#: includes/activation-config.php:565
+msgid "Price disabled completely"
+msgstr ""
+
+#: includes/activation-config.php:563
+msgid "Price enabled for all or some products"
+msgstr ""
+
+#: functions/support.php:86
+msgid "Price Filter Ranges"
+msgstr ""
+
+#: modules/price/price-settings.php:65
+msgid "Price Label"
+msgstr "Oznaka cene"
+
+#: modules/cart/includes/variations/variations-meta.php:46
+msgid "Price mod"
+msgstr ""
+
+#: modules/price/blocks/price-table/index.php:71
+#: modules/price/blocks/price-table/index.php:76
+msgid "Price not available."
+msgstr ""
+
+#: includes/extensions.php:632
+msgid "Price Required"
+msgstr ""
+
+#: includes/customizer.php:159 modules/price/price-settings.php:22
+#: modules/price/price-settings.php:53
+msgid "Price Size"
+msgstr "Veličina cene"
+
+#: includes/settings/custom-names.php:33
+msgid "Price:"
+msgstr ""
+
+#: modules/quote-cart/index.php:310
+#: modules/cart/includes/shopping-settings.php:281
+msgid "Privacy Notice"
+msgstr ""
+
+#: includes/tracking.php:358
+msgid "Processing..."
+msgstr ""
+
+#: config/const.php:19
+#: modules/cart/includes/orders/includes/digital-order-columns.php:27
+msgid "Product"
+msgstr "Proizvod"
+
+#: modules/price/price-settings.php:50
+msgid "product archive"
+msgstr "arhiva proizvoda"
+
+#: includes/settings/custom-design.php:308
+msgid "product archive title"
+msgstr "naziv arhive proizvoda"
+
+#: modules/button/index.php:103
+msgid "Product Button Options"
+msgstr ""
+
+#: includes/customizer.php:299
+msgid "Product Catalog"
+msgstr ""
+
+#: includes/settings/image-sizes.php:18
+msgid "Product Catalog Images"
+msgstr "Galerija kataloga proizvoda"
+
+#: includes/product-columns.php:28
+msgid "Product Categories"
+msgstr "Kategorije proizvoda"
+
+#: functions/support.php:115
+msgid "Product Count widget"
+msgstr ""
+
+#: functions/support.php:116
+msgid "product count widget that shows the number of displayed products"
+msgstr ""
+
+#: includes/blocks/block-edit.php:82
+msgid "Product Edit Mode"
+msgstr ""
+
+#: functions/functions.php:1264
+msgid "Product Filters Bar has no widgets"
+msgstr ""
+
+#: includes/settings/custom-design.php:233
+msgid "Product Gallery"
+msgstr "Galerija proizvoda"
+
+#: includes/activation-config.php:193
+msgid "Product Image"
+msgstr ""
+
+#: includes/settings/custom-names.php:173
+#, php-format
+msgid ""
+"Product listing pages are disabled due to a lack of theme integration.%s"
+msgstr ""
+"Stranica za izlistavanje proizvoda je onemogućena usled nemogućnosti "
+"integracije sa temom. %s"
+
+#: includes/settings/custom-names.php:171
+#, php-format
+msgid ""
+"Product listing pages are disabled with simple theme integration. See <a "
+"href=\"%s\">Theme Integration Guide</a> to enable product listing pages."
+msgstr ""
+"Stranice sa spiskom proizvoda deaktivirane su jednostavnim integrisanjem "
+"teme. Pogledajte <a href=\"%s\">Vodič za integrisanje teme </a> da biste "
+"aktivirali stranice sa spiskom proizvoda."
+
+#: includes/customizer.php:313
+msgid "Product Listing Style"
+msgstr ""
+
+#: includes/customizer.php:176
+msgid "Product Listing Template"
+msgstr ""
+
+#: includes/product-columns.php:25
+#: modules/cart/includes/orders/includes/register-digital-orders.php:272
+msgid "Product Name"
+msgstr "Naziv proizvoda"
+
+#: includes/activation-config.php:198 modules/quote-cart/index.php:240
+#: modules/cart/includes/cart-form.php:230
+#: modules/cart/includes/cart/ic-cart.php:64
+msgid "Product name"
+msgstr ""
+
+#: functions/activation.php:162
+msgid "Product Page Layout"
+msgstr ""
+
+#: includes/customizer.php:307
+msgid "Product Page Style"
+msgstr ""
+
+#: functions/support.php:119
+msgid "Product Pagination widget"
+msgstr ""
+
+#: functions/support.php:122
+msgid "Product Promo widget"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:275
+msgid "Product Quantity"
+msgstr ""
+
+#: functions/functions.php:564 includes/blocks/widgets.php:116
+#: includes/widgets/search-widget.php:23 includes/widgets/search-widget.php:103
+msgid "Product Search"
+msgstr "Pretraga proizvoda"
+
+#: functions/support.php:126
+msgid "Product tags"
+msgstr ""
+
+#: functions/support.php:130
+msgid "Product tags filter"
+msgstr ""
+
+#: includes/activation-config.php:164
+#: modules/cart/includes/variations/product-variations-settings.php:18
+#: modules/cart/includes/variations/variations-meta.php:29
+msgid "Product Variations"
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:174
+msgid "Product Variations disabled. To enable set minimum 1 variation."
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:56
+msgid "Product Variations Settings"
+msgstr ""
+
+#: config/const.php:22 includes/activation-config.php:183
+#: includes/settings/custom-names.php:74
+#: modules/cart/includes/orders/includes/register-digital-orders.php:85
+#: modules/cart/includes/customers/includes/transactions/transactions-client-list.php:23
+msgid "Products"
+msgstr "Proizvodi"
+
+#: includes/activation-config.php:191
+msgid "Publish"
+msgstr ""
+
+#: includes/activation-config.php:351
+msgid "Publish box"
+msgstr ""
+
+#: theme-product_adder_support.php:207
+msgid "Publish Main Catalog Listing"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:761
+msgid "Puerto Rico"
+msgstr ""
+
+#: modules/cart/index.php:74
+msgid "Purchase Total"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:762
+msgid "Qatar"
+msgstr ""
+
+#: modules/price/config/currencies.php:312
+msgid "Qatari riyal"
+msgstr ""
+
+#: modules/quote-cart/index.php:245 modules/cart/includes/cart-form.php:235
+#: modules/cart/includes/cart/ic-cart.php:69
+msgid "Quantity"
+msgstr ""
+
+#: modules/quote-cart/index.php:52 modules/quote-cart/index.php:57
+#: modules/quote-cart/index.php:98 modules/quote-cart/index.php:132
+msgid "Quote"
+msgstr ""
+
+#: modules/quote-cart/index.php:99 modules/quote-cart/index.php:131
+msgid "quote"
+msgstr ""
+
+#: modules/quote-cart/index.php:120
+msgid "Quote Cart"
+msgstr ""
+
+#: modules/quote-cart/index.php:53 modules/quote-cart/index.php:54
+#: modules/quote-cart/index.php:55 modules/quote-cart/index.php:56
+msgid "Quotes"
+msgstr ""
+
+#: theme-product_adder_support.php:342
+msgid "Rate Now & Hide Forever"
+msgstr ""
+
+#: includes/product-settings.php:362
+msgid "Rate this Plugin!"
+msgstr ""
+
+#: modules/button/index.php:141
+msgid "Read More"
+msgstr ""
+
+#: includes/extensions.php:571 includes/extensions.php:635
+#: includes/extensions.php:672
+msgid "Ready to Install"
+msgstr ""
+
+#: includes/system.php:148
+msgid "Reassign data"
+msgstr ""
+
+#: includes/system.php:142
+msgid "Reassign product data"
+msgstr ""
+
+#: includes/settings/general.php:204 includes/settings/general.php:238
+msgid "recommended"
+msgstr ""
+
+#: includes/class-ic-activation-wizard.php:145
+#, php-format
+msgid ""
+"Recommended extensions on the list below are highlighted with %s and red "
+"border."
+msgstr ""
+
+#: includes/customizer.php:144 includes/settings/custom-design.php:294
+#: modules/price/price-settings.php:38
+msgid "Red"
+msgstr "Crvena"
+
+#: includes/blocks/widgets.php:114
+#: includes/widgets/related-products-widget.php:20
+#, php-format
+msgid "Related %s"
+msgstr "Sličnih %s"
+
+#: includes/blocks/widgets.php:120
+#: includes/widgets/related-products-widget.php:23
+msgid "Related Catalog Items"
+msgstr "Povezani proizvodi u katalogu"
+
+#: modules/cart/includes/shopping-settings.php:180
+msgid "Remember fields by"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:149
+#, php-format
+msgid ""
+"Remember to use the %1$sShopping Cart widget%2$s to show the cart in the "
+"sidebar."
+msgstr ""
+
+#: includes/register-product.php:149
+#, php-format
+msgid "Remove main %s image"
+msgstr ""
+
+#: includes/register-product.php:165
+msgid "Remove main image"
+msgstr ""
+
+#: includes/settings/general.php:187
+#, php-format
+msgid "Remove the %s on the page edit screen."
+msgstr ""
+
+#: templates/theme-integration.php:88
+msgid "Remove the Shortcode and Start the Wizard"
+msgstr ""
+
+#: includes/product-settings.php:395
+msgid "Report a Problem"
+msgstr "Prijavi problem"
+
+#: modules/price/price-filters.php:151
+msgid "Reset"
+msgstr ""
+
+#: includes/system.php:110 includes/settings/general.php:112
+msgid "Reset Catalog Settings"
+msgstr ""
+
+#: functions/functions.php:1243
+msgid "Reset Filters"
+msgstr "Da li imate problem?"
+
+#: functions/functions.php:122
+msgid "Reset image"
+msgstr "Vrati sliku na početne verdnosti"
+
+#: includes/system.php:108
+msgid "Reset product settings"
+msgstr ""
+
+#: functions/support.php:137
+msgid "Responsive sidebar"
+msgstr ""
+
+#: templates/theme-integration.php:193
+msgid "Restart Advanced Mode Test"
+msgstr "Ponovo pokreni test za napredni režim"
+
+#: modules/cart/includes/cart-customer.php:86
+#: modules/cart/includes/shopping-cart.php:110
+msgid "Restore Previous Cart"
+msgstr ""
+
+#: includes/settings/custom-names.php:140
+msgid "Return to Products Label"
+msgstr ""
+
+#: modules/cart/functions/shortcodes.php:127
+#, php-format
+msgid "Returning customer? %s"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:763
+msgid "Reunion Island"
+msgstr ""
+
+#: includes/customizer.php:231 templates/theme-integration.php:111
+#: includes/settings/general.php:309
+msgid "Right"
+msgstr "Desno"
+
+#: modules/cart/ext/formbuilder/index.php:764
+msgid "Romania"
+msgstr ""
+
+#: modules/price/config/currencies.php:313
+msgid "Romanian leu"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:765
+msgid "Russian Federation"
+msgstr ""
+
+#: modules/price/config/currencies.php:315
+msgid "Russian ruble"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:766
+msgid "Rwanda"
+msgstr ""
+
+#: modules/price/config/currencies.php:316
+msgid "Rwandan franc"
+msgstr ""
+
+#: modules/price/config/currencies.php:328
+msgid "S&atilde;o Tom&eacute; and Pr&iacute;ncipe dobra"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:767
+msgid "Saint Helena"
+msgstr ""
+
+#: modules/price/config/currencies.php:323
+msgid "Saint Helena pound"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:768
+msgid "Saint Kitts and Nevis"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:769
+msgid "Saint Lucia"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:770
+msgid "Saint Pierre and Miquelon"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:771
+msgid "Saint Vincent and the Grenadines"
+msgstr ""
+
+#: modules/price/config/currencies.php:348
+msgid "Samoan t&#x101;l&#x101;"
+msgstr ""
+
+#: functions/activation.php:128
+msgid "Sample Product Page"
+msgstr "Stranica za uzorke proizvoda"
+
+#: modules/cart/ext/formbuilder/index.php:772
+msgid "San Marino"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:773
+msgid "Sao Tome and Principe"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:774
+msgid "Saudi Arabia"
+msgstr ""
+
+#: modules/price/config/currencies.php:317
+msgid "Saudi riyal"
+msgstr ""
+
+#: includes/settings/custom-design.php:90
+#: includes/settings/custom-design.php:215
+#: includes/settings/custom-design.php:316
+#: includes/settings/custom-names.php:148
+#: includes/settings/custom-names.php:205 includes/settings/general.php:524
+#: modules/attributes/attributes-settings.php:150 modules/button/index.php:115
+#: modules/shipping/shipping-settings.php:127
+#: modules/cart/includes/shopping-settings.php:203
+#: modules/cart/includes/variations/product-variations-settings.php:183
+#: modules/cart/includes/customers/includes/transactions/customer-panel-settings.php:59
+msgid "Save changes"
+msgstr "Sačuvaj izmene"
+
+#: includes/settings/general.php:189
+#, php-format
+msgid "Save the page without the %s"
+msgstr ""
+
+#: includes/activation-config.php:191
+msgid "Save the product so you can see how it shows up on the website."
+msgstr ""
+
+#: includes/welcome/new.php:62
+msgid "Say hello to the fastest catalog experience."
+msgstr ""
+
+#: includes/settings/tooltips.php:371
+msgid "Screen Tutorial Complete"
+msgstr ""
+
+#: functions/content-functions.php:95 includes/settings/search.php:64
+msgid "Search"
+msgstr "Traži"
+
+#: includes/register-product.php:145
+#, php-format
+msgid "Search %s"
+msgstr "Тражи те %s"
+
+#: includes/product-categories.php:33
+#, php-format
+msgid "Search %s Categories"
+msgstr ""
+
+#: includes/blocks/index.php:133
+msgid "Search by category name and select it in the section below"
+msgstr ""
+
+#: includes/blocks/index.php:132 modules/price/blocks/price-table/index.php:92
+msgid "Search by item name and select it in the section below"
+msgstr ""
+
+#: includes/product-categories.php:47
+msgid "Search Categories"
+msgstr "Pretraži Kategorije"
+
+#: includes/blocks/index.php:134
+msgid "Search Category"
+msgstr ""
+
+#: includes/activation-config.php:184
+msgid "Search for help here."
+msgstr ""
+
+#: includes/class-ic-sitewide-bar.php:192
+#: includes/class-ic-sitewide-bar.php:320
+msgid "Search Icon"
+msgstr ""
+
+#: includes/register-product.php:161
+msgid "Search Items"
+msgstr "Pretražiti stavke"
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:46
+msgid "Search Orders"
+msgstr ""
+
+#: includes/blocks/index.php:130 modules/price/blocks/price-table/index.php:90
+msgid "Search Product"
+msgstr ""
+
+#: modules/quote-cart/index.php:63
+msgid "Search Quotes"
+msgstr ""
+
+#: functions/functions.php:328 templates/templates-functions.php:714
+msgid "Search Results for:"
+msgstr "Rezultati pretrage za:"
+
+#: includes/settings/search.php:28
+msgid "Search settings & docs"
+msgstr ""
+
+#: includes/settings/search.php:182
+msgid "Searching also in docs..."
+msgstr ""
+
+#: includes/welcome/new.php:87
+msgid "Security, errors, feedback"
+msgstr ""
+
+#: includes/product-settings.php:334
+#, php-format
+msgid "See %s configuration tips in the impleCode documentation"
+msgstr "Vidite %s savete za konfiguraciju u impleCode dokumentaciji"
+
+#: modules/attributes/attributes-meta.php:44
+#, php-format
+msgid "See <a target=\"_blank\" href=\"%s\">docs</a>."
+msgstr ""
+
+#: includes/settings/custom-names.php:24 includes/settings/custom-names.php:38
+msgid "See also different:"
+msgstr "Vidite i drugačije:"
+
+#: includes/product-settings.php:335
+msgid "See in Docs"
+msgstr "Vidite u dokumentaciji"
+
+#: theme-product_adder_support.php:313
+msgid "See Main Catalog Listing"
+msgstr ""
+
+#: includes/product-settings.php:346
+msgid "See Now"
+msgstr "Vidite sada"
+
+#: modules/cart/includes/orders/includes/save-order.php:277
+msgid "See Order"
+msgstr ""
+
+#: theme-product_adder_support.php:235
+msgid "See the usage scenarios below:"
+msgstr ""
+
+#: includes/class-ic-activation-wizard.php:116
+msgid "See them below:"
+msgstr ""
+
+#: theme-product_adder_support.php:297
+msgid "See Your Product Listing"
+msgstr ""
+
+#: modules/cart/includes/variations/variations-selectors.php:96
+msgid "Select"
+msgstr ""
+
+#: includes/blocks/index.php:110
+#, php-format
+msgid "Select %s"
+msgstr ""
+
+#: includes/widgets/category-widget.php:58
+#, php-format
+msgid "Select %s Category"
+msgstr ""
+
+#: modules/attributes/comparison.php:125
+#, php-format
+msgid "Select %s to compare"
+msgstr ""
+
+#: modules/price/price-settings.php:90
+msgid ""
+"Select a currency from the list. If your currency is not available in the "
+"list, please use the Custom Currency Symbol option below."
+msgstr ""
+
+#: includes/settings/general.php:152
+msgid "Select a page to display your products."
+msgstr ""
+
+#: functions/support.php:79
+msgid ""
+"select alternative products for each product and display them in a separate "
+"tab or section"
+msgstr ""
+
+#: templates/shortcode-catalog.php:231
+msgid ""
+"Select an existing page or create new to have an option to choose different "
+"page template."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:108
+msgid "Select Cart Page"
+msgstr ""
+
+#: includes/activation-config.php:130
+msgid "Select catalog template here."
+msgstr ""
+
+#: includes/blocks/index.php:111
+msgid "Select Categories"
+msgstr ""
+
+#: includes/widgets/category-widget.php:64
+msgid "Select Category"
+msgstr "Изабери категорију"
+
+#: modules/cart/includes/tax.php:45
+msgid "Select Checkout Fields"
+msgstr ""
+
+#: functions/support.php:91
+msgid "select different template for categories"
+msgstr ""
+
+#: includes/activation-config.php:392
+#, php-format
+msgid "Select Main %s Listing Page"
+msgstr ""
+
+#: modules/cart/functions/buttons-fields.php:131
+msgid "Select Options"
+msgstr ""
+
+#: includes/activation-config.php:131
+msgid "Select or view your main catalog page here"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel-settings.php:51
+msgid "Select page..."
+msgstr ""
+
+#: includes/blocks/index.php:131 modules/price/blocks/price-table/index.php:91
+msgid "Select Product"
+msgstr ""
+
+#: functions/support.php:138
+msgid "select styling and appearance for sidebar on small screens"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:124
+msgid "Select Submit Page"
+msgstr ""
+
+#: includes/customizer.php:33 includes/settings/custom-design.php:250
+msgid "Select template"
+msgstr "Izaberi obrazac"
+
+#: modules/cart/includes/shopping-settings.php:140
+msgid "Select Thank You Page"
+msgstr ""
+
+#: templates/theme-integration.php:106
+msgid "Select the sidebar side to enable it on your product pages."
+msgstr ""
+
+#: includes/activation-config.php:163
+msgid "Select your cart pages. Each dropdown should point to a different page."
+msgstr ""
+
+#: includes/activation-config.php:473
+msgid ""
+"Select your currency. You can also set a custom currency in catalog settings "
+"later."
+msgstr ""
+
+#: modules/cart/includes/cart-customer.php:71
+#: modules/cart/includes/shopping-cart.php:114
+msgid "selected"
+msgstr ""
+
+#: includes/settings/csv.php:120
+msgid "Semicolon"
+msgstr ""
+
+#: includes/tracking.php:233
+msgid "Send anonymous statistics"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:775
+msgid "Senegal"
+msgstr ""
+
+#: includes/settings/general.php:481
+msgid "SEO Settings"
+msgstr "SEO podešavanja"
+
+#: functions/support.php:133
+msgid "Separate sidebar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:776
+msgid "Serbia"
+msgstr ""
+
+#: modules/price/config/currencies.php:314
+msgid "Serbian dinar"
+msgstr ""
+
+#: includes/system.php:250
+msgid "Server Environment"
+msgstr "Окружење сервера"
+
+#: includes/system.php:255
+msgid "Server Info"
+msgstr "Информације о серверу"
+
+#: includes/system.php:305
+msgid "Server Locale"
+msgstr ""
+
+#: includes/blocks/index.php:112
+#, php-format
+msgid "Set %s Limit"
+msgstr ""
+
+#: functions/support.php:87
+msgid "set clickable price filter ranges in the price filter widget"
+msgstr ""
+
+#: includes/register-product.php:148
+#, php-format
+msgid "Set main %s image"
+msgstr ""
+
+#: includes/register-product.php:164
+msgid "Set main image"
+msgstr ""
+
+#: functions/support.php:142
+msgid "set product sidebar and product description width"
+msgstr ""
+
+#: includes/activation-config.php:127
+msgid "Set the currency custom symbol."
+msgstr ""
+
+#: includes/activation-config.php:162
+msgid ""
+"Set the notification email address. The email to receive and send "
+"notifications can be the same."
+msgstr ""
+
+#: includes/settings/custom-design.php:281
+msgid "Setting"
+msgstr "Podešavanje"
+
+#: theme-product_adder_support.php:321 includes/product-settings.php:16
+#: includes/product-settings.php:16 includes/product-settings.php:54
+#: includes/blocks/widgets.php:127 includes/welcome/welcome-screen.php:186
+#: modules/price/blocks/index.php:34
+msgid "Settings"
+msgstr "Podešavanja"
+
+#: modules/cart/ext/formbuilder/index.php:777
+msgid "Seychelles"
+msgstr ""
+
+#: modules/price/config/currencies.php:319
+msgid "Seychellois rupee"
+msgstr ""
+
+#: modules/cart/includes/cart/cart-shipping.php:320
+msgid "SHIPPING"
+msgstr ""
+
+#: includes/settings/custom-names.php:36
+#: modules/shipping/shipping-functions.php:91
+#: modules/shipping/shipping-meta.php:27
+#: modules/shipping/shipping-settings.php:25
+#: modules/cart/includes/cart-form.php:277
+#: modules/cart/includes/cart/cart-shipping.php:468
+#: modules/cart/includes/orders/includes/save-order.php:99
+msgid "Shipping"
+msgstr "Dostava"
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:491
+msgid "Shipping & Handling"
+msgstr ""
+
+#: modules/cart/includes/cart/cart-shipping.php:45
+msgid "Shipping cost calculation disabled"
+msgstr ""
+
+#: modules/cart/includes/cart/cart-shipping.php:42
+msgid "Shipping Cost Mode"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:99
+msgid "Shipping default cost"
+msgstr "Podrazumevana cena isporuke"
+
+#: modules/shipping/shipping-settings.php:96
+msgid "Shipping default name"
+msgstr "Podrazumevani naziv isporuke"
+
+#: includes/activation-config.php:556
+msgid "Shipping disabled completely"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:132
+msgid "Shipping disabled. To enable set minimum 1 shipping option."
+msgstr ""
+"Isporuka je deaktivirana. Da biste je aktivirali, odredite najmanje 1 opciju "
+"isporuke."
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:199
+msgid "Shipping Email"
+msgstr ""
+
+#: includes/activation-config.php:554
+msgid "Shipping enabled for all or some products"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:203
+#: modules/shipping/ext/polylang.php:48
+msgid "Shipping Label"
+msgstr "Oznaka isporuke"
+
+#: modules/cart/includes/variations/variations-meta.php:50
+msgid "Shipping mod"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:70
+msgid "Shipping options"
+msgstr ""
+
+#: modules/shipping/ext/polylang.php:41
+msgid "Shipping Price"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:55
+#: modules/shipping/shipping-settings.php:64
+msgid "Shipping Settings"
+msgstr "Podešavanja isporuke"
+
+#: modules/cart/includes/cart-widget.php:25
+#: modules/cart/includes/shopping-settings.php:18
+msgid "Shopping Cart"
+msgstr ""
+
+#: includes/activation-config.php:197 includes/register-product.php:305
+#: includes/settings/csv.php:264 includes/settings/csv.php:312
+msgid "Short Description"
+msgstr "Kratak opis"
+
+#: includes/activation-config.php:347
+msgid "Short description field"
+msgstr ""
+
+#: includes/product-category-columns.php:123 includes/product-columns.php:29
+msgid "Shortcode"
+msgstr "Shortcode"
+
+#: includes/settings/general.php:531
+msgid "shortcode"
+msgstr "shortcode"
+
+#: includes/blocks/index.php:109
+msgid "Show"
+msgstr ""
+
+#: includes/blocks/index.php:107
+#, php-format
+msgid "Show %s"
+msgstr ""
+
+#: includes/settings/search.php:157
+#, php-format
+msgid "Show %s more related adjustment options"
+msgstr ""
+
+#: includes/settings/search.php:264
+#, php-format
+msgid "Show %s more related docs"
+msgstr ""
+
+#: includes/widgets/category-widget.php:62
+msgid "Show All"
+msgstr ""
+
+#: includes/widgets/category-widget.php:56
+#, php-format
+msgid "Show All %s"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:284
+#: modules/attributes/attributes-settings.php:288
+msgid "Show Attributes"
+msgstr "Prikaži atribute"
+
+#: ext-comp/elementor/show_catalog_widget.php:48 includes/blocks/index.php:106
+msgid "Show Catalog"
+msgstr ""
+
+#: includes/blocks/index.php:72
+msgid "Show Catalog block"
+msgstr ""
+
+#: includes/blocks/index.php:108
+msgid "Show Categories"
+msgstr ""
+
+#: functions/support.php:146
+msgid "Show child categories only on parent category pages"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/login-form-widget.php:18
+msgid "Show digital customers login form."
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:76
+msgid "Show full price if possible to calculate"
+msgstr ""
+
+#: includes/blocks/widgets.php:132 includes/widgets/category-widget.php:158
+msgid "Show hierarchy"
+msgstr "Prikaži hijerarhiju"
+
+#: includes/settings/general.php:564
+msgid "Show main catalog page content everywhere"
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:77
+msgid "Show price effect only"
+msgstr ""
+
+#: includes/blocks/widgets.php:131 includes/widgets/category-widget.php:152
+msgid "Show product counts"
+msgstr "Prikaži ukupan broj proizvoda"
+
+#: includes/settings/general.php:472
+msgid "Show Related"
+msgstr "Prikaži povezane"
+
+#: includes/settings/general.php:516
+msgid ""
+"Shows a path to the currently displayed product catalog page with URLs to "
+"parent pages and correct schema markup for SEO."
+msgstr ""
+
+#: includes/widgets/related-products-widget.php:21
+#, php-format
+msgid "Shows related %s."
+msgstr "Prikaži sličnih %s"
+
+#: includes/widgets/related-products-widget.php:24
+msgid "Shows related catalog items."
+msgstr "Prikaži povezane proizvode u katalogu"
+
+#: includes/customizer.php:224
+msgid "Sidebar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:778
+msgid "Sierra Leone"
+msgstr ""
+
+#: modules/price/config/currencies.php:324
+msgid "Sierra Leonean leone"
+msgstr ""
+
+#: includes/settings/general.php:362
+msgid "Simple Catalog"
+msgstr ""
+
+#: includes/settings/csv.php:43
+msgid "Simple CSV"
+msgstr "Jednostavan CSV"
+
+#: includes/settings/csv.php:46
+msgid "Simple Export"
+msgstr ""
+
+#: includes/class-ic-sitewide-bar.php:209
+msgid "Simple Field"
+msgstr ""
+
+#: includes/settings/csv.php:60
+msgid "Simple Import"
+msgstr ""
+
+#: includes/settings/general.php:204 includes/settings/general.php:238
+msgid "Simple Mode"
+msgstr ""
+
+#: includes/settings/general.php:211 includes/settings/general.php:245
+msgid ""
+"Simple mode is recommended. Choose Advanced Mode if you want more control "
+"over the layout or theme mode if your theme should control the layout. "
+msgstr ""
+
+#: functions/activation.php:169
+msgid "Simple Theme Integration Mode"
+msgstr "Jednostavan režim za integraciju tema"
+
+#: modules/cart/ext/formbuilder/index.php:779
+msgid "Singapore"
+msgstr ""
+
+#: modules/price/config/currencies.php:322
+msgid "Singapore dollar"
+msgstr ""
+
+#: templates/block-catalog.php:31
+msgid "Single Catalog Page"
+msgstr ""
+
+#: includes/settings/custom-names.php:111
+msgid "Single Item Page"
+msgstr ""
+
+#: includes/settings/custom-names.php:128
+msgid "Single Item Page Labels"
+msgstr ""
+
+#: includes/settings/custom-design.php:49
+msgid "Single Page Design"
+msgstr ""
+
+#: includes/settings/custom-design.php:243
+msgid "Single Page Template"
+msgstr ""
+
+#: modules/price/price-settings.php:31 modules/price/price-settings.php:49
+msgid "single product"
+msgstr "Pojedinačan proizvod"
+
+#: includes/system.php:183
+msgid "Site URL"
+msgstr "URL sajta"
+
+#: includes/class-ic-sitewide-bar.php:186
+#: includes/class-ic-sitewide-bar.php:258
+msgid "Sitewide Icons"
+msgstr ""
+
+#: functions/activation.php:139 includes/widgets/filter-widgets.php:439
+#: modules/attributes/attributes-meta.php:323
+#: modules/attributes/attributes-meta.php:361
+#: modules/attributes/attributes-meta.php:376
+msgid "Size"
+msgstr "Veličina"
+
+#: modules/attributes/attributes-settings.php:143
+msgid "Size Unit"
+msgstr ""
+
+#: includes/tracking.php:401
+msgid "Skip"
+msgstr ""
+
+#: modules/sku/sku-settings.php:22
+msgid "SKU Label"
+msgstr "SKU oznaka"
+
+#: includes/settings/custom-names.php:20 includes/settings/custom-names.php:34
+msgid "SKU:"
+msgstr "SKU:"
+
+#: modules/cart/ext/formbuilder/index.php:780
+msgid "Slovak Republic"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:781
+msgid "Slovenia"
+msgstr ""
+
+#: includes/customizer.php:165 includes/blocks/index.php:124
+#: modules/price/price-settings.php:28
+msgid "Small"
+msgstr "Mala"
+
+#: includes/class-ic-sitewide-bar.php:202
+msgid "Small screens only"
+msgstr ""
+
+#: modules/cart/includes/product-status.php:47
+#: modules/cart/includes/product-status.php:50
+#: modules/cart/includes/product-status.php:66
+#: modules/cart/includes/product-status.php:85
+msgid "Sold"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:782
+msgid "Solomon Islands"
+msgstr ""
+
+#: modules/price/config/currencies.php:318
+msgid "Solomon Islands dollar"
+msgstr ""
+
+#: modules/price/config/currencies.php:325
+msgid "Somali shilling"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:783
+msgid "Somalia"
+msgstr ""
+
+#: includes/extensions.php:118 includes/extensions.php:157
+#: includes/extensions.php:199
+msgid "Some extensions give even more features when combined with another one."
+msgstr ""
+
+#: templates/templates-functions.php:1297
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different keywords."
+msgstr ""
+"Жао нам је, али ништа не одговара вашем упиту. Молимо вас да покушате поново "
+"са другим кључним речима."
+
+#: templates/templates-functions.php:1303
+#, php-format
+msgid ""
+"Sorry, but nothing matched your search terms. Please try again with some "
+"different options or %sreset filters%s."
+msgstr ""
+
+#: includes/widgets/filter-widgets.php:336
+#, php-format
+msgid "Sort %s dropdown."
+msgstr ""
+
+#: includes/blocks/index.php:121
+msgid "Sort & Limit"
+msgstr ""
+
+#: functions/functions.php:1146
+msgid "Sort by"
+msgstr ""
+
+#: includes/settings/general.php:704
+msgid "Sort by Name"
+msgstr ""
+
+#: includes/settings/general.php:703
+msgid "Sort by Newest"
+msgstr "Sortiraj po najnovijim"
+
+#: functions/functions.php:1149
+msgid "Sort by Relevance"
+msgstr "Sortiraj po važnosti"
+
+#: includes/widgets/filter-widgets.php:339
+msgid "Sort catalog items dropdown."
+msgstr ""
+
+#: includes/settings/general.php:532
+msgid "sorting"
+msgstr "sortiranje"
+
+#: modules/cart/ext/formbuilder/index.php:784
+msgid "South Africa"
+msgstr ""
+
+#: modules/price/config/currencies.php:355
+msgid "South African rand"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:785
+msgid "South Georgia"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:786
+msgid "South Korea"
+msgstr ""
+
+#: modules/price/config/currencies.php:273
+msgid "South Korean won"
+msgstr ""
+
+#: modules/price/config/currencies.php:327
+msgid "South Sudanese pound"
+msgstr ""
+
+#: modules/price/price-settings.php:103
+msgid "Space between currency & price"
+msgstr "Razmak između valute i cene"
+
+#: modules/cart/ext/formbuilder/index.php:787
+msgid "Spain"
+msgstr ""
+
+#: includes/welcome/new.php:60
+msgid "Speed"
+msgstr ""
+
+#: includes/system.php:151
+msgid "Speed up"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:788
+msgid "Sri Lanka"
+msgstr ""
+
+#: modules/price/config/currencies.php:279
+msgid "Sri Lankan rupee"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:139
+msgid "Standard Attributes"
+msgstr ""
+
+#: templates/theme-integration.php:93
+msgid "Start"
+msgstr ""
+
+#: templates/theme-integration.php:75
+msgid "Start Advanced Mode Test"
+msgstr "Pokreni test za napredni režim"
+
+#: functions/activation.php:215
+msgid "Start Automatic Theme Integration"
+msgstr ""
+
+#: includes/welcome/start.php:97
+#, php-format
+msgid ""
+"Start with %s block to display your main listing page or %s to display only "
+"selected products."
+msgstr ""
+
+#: modules/quote-cart/index.php:294
+#: modules/cart/includes/shopping-settings.php:237
+#: modules/cart/includes/shopping-settings.php:265
+msgid "State"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/digital-order-columns.php:26
+msgid "Status"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:195
+msgid "Stick cart on top on scroll"
+msgstr ""
+
+#: includes/settings/custom-names.php:62 includes/settings/custom-names.php:73
+#: includes/settings/general.php:464 includes/settings/general.php:465
+msgid "Subcategories"
+msgstr "Подкатегорија"
+
+#: includes/settings/custom-names.php:192
+msgid "Subcategories Header Label"
+msgstr ""
+
+#: includes/tracking.php:399
+msgid "Submit & Deactivate"
+msgstr ""
+
+#: modules/quote-cart/index.php:114
+msgid "Submit Your Inquiry"
+msgstr ""
+
+#: modules/cart/includes/cart-form.php:237
+msgid "Subtotal"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:789
+msgid "Sudan"
+msgstr ""
+
+#: modules/price/config/currencies.php:320
+msgid "Sudanese pound"
+msgstr ""
+
+#: modules/cart/includes/cart/cart-shipping.php:44
+msgid "Sum of each product shipping cost"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:89
+msgid "Summary"
+msgstr ""
+
+#: functions/support.php:19
+msgid "Support"
+msgstr "Podrška"
+
+#: modules/cart/ext/formbuilder/index.php:790
+msgid "Suriname"
+msgstr ""
+
+#: modules/price/config/currencies.php:326
+msgid "Surinamese dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:791
+msgid "Svalbard and Jan Mayen Islands"
+msgstr ""
+
+#: modules/price/config/currencies.php:330
+msgid "Swazi lilangeni"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:792
+msgid "Swaziland"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:793
+msgid "Sweden"
+msgstr ""
+
+#: modules/price/config/currencies.php:321
+msgid "Swedish krona"
+msgstr ""
+
+#: modules/price/config/currencies.php:223
+msgid "Swiss franc"
+msgstr ""
+
+#: templates/theme-integration.php:170
+msgid "Switch the theme."
+msgstr "Promeni temu."
+
+#: modules/cart/ext/formbuilder/index.php:794
+msgid "Switzerland"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:795
+msgid "Syrian Arab Republic"
+msgstr ""
+
+#: modules/price/config/currencies.php:329
+msgid "Syrian pound"
+msgstr ""
+
+#: includes/system.php:14
+msgid "System Status"
+msgstr "Status sistema"
+
+#: modules/cart/ext/formbuilder/index.php:796
+msgid "Taiwan"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:797
+msgid "Tajikistan"
+msgstr ""
+
+#: modules/price/config/currencies.php:332
+msgid "Tajikistani somoni"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:798
+msgid "Tanzania"
+msgstr ""
+
+#: modules/price/config/currencies.php:339
+msgid "Tanzanian shilling"
+msgstr ""
+
+#: modules/cart/includes/tax.php:79
+msgid "Tax is already included in price"
+msgstr ""
+
+#: modules/cart/includes/tax.php:85
+msgid "Tax label"
+msgstr ""
+
+#: modules/cart/includes/tax.php:81
+msgid "Tax rate"
+msgstr ""
+
+#: modules/cart/includes/tax.php:83
+msgid "Tax round"
+msgstr ""
+
+#: modules/cart/includes/cart-form.php:305
+msgid "Tax:"
+msgstr ""
+
+#: templates/shortcode-catalog.php:221 includes/settings/general.php:468
+msgid "Template"
+msgstr "Template"
+
+#: includes/activation-config.php:383
+msgid "Template files will be used to display catalog pages."
+msgstr ""
+
+#: includes/settings/general.php:470
+msgid ""
+"Template option will display categories with the same listing theme as "
+"products. Link option will show categories as simple URLs without image."
+msgstr ""
+
+#: includes/customizer.php:211 templates/theme-integration.php:100
+msgid "Text Color"
+msgstr ""
+
+#: modules/price/config/currencies.php:331
+msgid "Thai baht"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:802
+msgid "Thailand"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:141
+msgid "Thank You"
+msgstr ""
+
+#: theme-product_adder_support.php:346
+#, php-format
+msgid ""
+"Thank you for <a target=\"_blank\" href=\"%s\">your rating</a>! We "
+"appreciate your time and input."
+msgstr ""
+
+#: includes/welcome/new.php:54
+msgid "Thank you for all your feedback regarding theme integration issues!"
+msgstr ""
+
+#: theme-product_adder_support.php:194
+#, php-format
+msgid ""
+"Thank you for choosing %1$s! If you have any questions or issues feel free "
+"to %2$spost a support ticket%3$s."
+msgstr ""
+
+#: modules/cart/includes/orders/functions/functions.php:329
+#, php-format
+msgid "Thank you for you order placed on %s."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:61
+msgid "Thank you for your order."
+msgstr ""
+
+#: modules/cart/functions/shortcodes.php:137
+msgid "Thank you. We have received your order. We will contact you shortly."
+msgstr ""
+
+#: includes/welcome/new.php:79
+msgid "Thanks to your feedback, we can make things easier together!"
+msgstr ""
+
+#: functions/activation.php:168
+#, fuzzy
+#| msgid ""
+#| "The Advanced Mode works out of the box on all default WordPress themes "
+#| "and all themes with the integration done properly."
+msgid ""
+"The Advanced Mode works out of the box on all default WordPress themes and "
+"all themes with the integration done correctly."
+msgstr ""
+"Napredni režim primenjuje se na sve podrazumevane WordPress teme, kao i na "
+"sve teme čija je integracija urađena kako treba."
+
+#: includes/welcome/start.php:64
+msgid "The affiliate button feature will be enabled in this mode."
+msgstr ""
+
+#: includes/welcome/new.php:39
+msgid ""
+"The aim of the 3.x releases is to make a variety of CTAs available so your "
+"catalog can convert your users to customers."
+msgstr ""
+
+#: includes/welcome/new.php:51
+msgid ""
+"The aim of the 3.x releases is to make it compatible with 99% of the themes "
+"and page builders."
+msgstr ""
+
+#: includes/settings/csv.php:124
+msgid ""
+"The CSV fields should be in the following order: Image URL, Name, Price, "
+"Categories, Short Description, Long Description."
+msgstr ""
+
+#: includes/settings/custom-design.php:239
+msgid "The default image will be used on the listing only when unchecked."
+msgstr ""
+
+#: includes/settings/csv.php:111
+msgid ""
+"The file could not be uploaded because of your server limit. Please contact "
+"the server administrator or decrease the file size."
+msgstr ""
+
+#: includes/settings/csv.php:124
+#, php-format
+msgid ""
+"The first row should contain the field names. %s should be used as the CSV "
+"separator."
+msgstr ""
+
+#: includes/class-ic-sitewide-bar.php:250
+msgid "The icons will appear in the main menu."
+msgstr ""
+
+#: includes/settings/custom-design.php:238
+msgid ""
+"The image on a single page will be magnified when pointed with a mouse "
+"cursor."
+msgstr ""
+
+#: includes/settings/custom-design.php:237
+msgid "The image on a single page will not be linked when unchecked."
+msgstr ""
+
+#: includes/settings/custom-design.php:236
+msgid "The image will be used only on the listing when unchecked."
+msgstr ""
+
+#: includes/extensions.php:286
+msgid "The installation process takes less than 10 seconds."
+msgstr ""
+
+#: templates/theme-integration.php:74
+msgid ""
+"The layout might look like broken at first; however, you will be able to "
+"adjust it."
+msgstr ""
+
+#: theme-product_adder_support.php:298
+msgid "The listing has been added successfully!"
+msgstr ""
+
+#: includes/settings/general.php:466
+msgid ""
+"The main listing can show only products, top-level categories and products "
+"or only the categories. With the subcategories option selected the products "
+"will show up only if they are directly assigned to the category. If you want "
+"to display the products only on the bottom category level, please assign the "
+"products only to it (not to all categories in the tree)."
+msgstr ""
+
+#: includes/activation-config.php:110
+msgid "The most important general catalog settings are located here."
+msgstr ""
+
+#: includes/settings/general.php:396
+msgid ""
+"The page where the main product listing shows. Also this page slug will be "
+"included in product url."
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:122
+#, php-format
+msgid "The password has been changed! Auto refresh in %s seconds."
+msgstr ""
+
+#: includes/tracking.php:432
+msgid "The plugin didn't work as expected"
+msgstr ""
+
+#: includes/tracking.php:420
+msgid ""
+"The plugin is excellent, but I need a specific feature that you don't support"
+msgstr ""
+
+#: includes/tracking.php:424
+msgid "The plugin is not working"
+msgstr ""
+
+#: includes/settings/custom-design.php:173
+#: includes/settings/custom-design.php:178
+msgid ""
+"The product listing element width will adjust accordingly to your theme "
+"content width."
+msgstr ""
+
+#: includes/welcome/start.php:48
+msgid "The quote cart feature will be enabled in this mode."
+msgstr ""
+
+#: includes/settings/general.php:476
+msgid ""
+"The related products or categories will be shown on the bottom of product "
+"pages."
+msgstr ""
+
+#: includes/settings/general.php:153
+msgid "The selected page will become a parent for each product."
+msgstr ""
+
+#: includes/welcome/start.php:37
+msgid "The shopping cart feature will be enabled in this mode."
+msgstr ""
+
+#: functions/activation.php:170
+#, php-format
+msgid ""
+"The simple mode allows using %s most features. You can build the product "
+"listing pages and category pages by using a %s shortcode. Simple mode uses "
+"your theme page layout so it can show unwanted elements on a product page. "
+"If it does please switch to Advanced Mode and see if it works out of the box."
+msgstr ""
+
+#: includes/extensions.php:728
+#, php-format
+msgid ""
+"The supplied license key is not valid for this extension! Upgrade it <a "
+"href=\"%s\">here</a>."
+msgstr ""
+
+#: functions/activation.php:173
+#, fuzzy
+#| msgid ""
+#| "The theme integration guide will show you a step by step process. If you "
+#| "finish it successfully the integration will be done. It is recommended to "
+#| "use theme integration guide even if the page looks good in simple mode or "
+#| "automatic advanced mode because it reassures 100% theme integrity."
+msgid ""
+"The theme integration guide will show you a step by step process. If you "
+"finish it successfully, the integration will be done. It is recommended to "
+"use theme integration guide even if the page looks good in simple mode or "
+"advanced mode because it reassures 100% theme integrity."
+msgstr ""
+"Vodič za integrisanje tema prikazaće vam proces, korak po korak. Ako ga "
+"uspešno savladate, integracija će biti obavljena. Preporučujemo vam da "
+"koristite vodič za integrisanje tema čak i ako vam stranica izgleda dobro u "
+"jednostavnom režimu ili u automatskom naprednom režimu jer 100% osigurava "
+"integritet teme."
+
+#: includes/welcome/new.php:49
+msgid ""
+"The theme integration is continuously being improved to support more themes "
+"and page builders."
+msgstr ""
+
+#: includes/settings/general.php:517
+msgid "The title for main product listing in breadcrumbs."
+msgstr ""
+
+#: includes/settings/general.php:495
+msgid ""
+"The title tag for selected product listing page. If you are using separate "
+"SEO plugin you should set it there. E.g. in Yoast SEO look for it in Custom "
+"Post Types archive titles section."
+msgstr ""
+
+#: includes/system.php:371
+msgid "Theme"
+msgstr "Tema"
+
+#: functions/support.php:153
+msgid "Theme Integration"
+msgstr "Integrisanje teme"
+
+#: includes/welcome/mode-selected.php:87 includes/welcome/new.php:47
+#: includes/welcome/new.php:141 includes/welcome/start.php:120
+msgid "Theme integration"
+msgstr ""
+
+#: includes/settings/general.php:206 includes/settings/general.php:240
+msgid "Theme Mode"
+msgstr ""
+
+#: includes/extensions.php:708
+msgid ""
+"There is a problem with the connection. Please contact your server "
+"administrator with the following error:"
+msgstr ""
+
+#: includes/settings/csv.php:102
+msgid "There was a problem with your upload."
+msgstr ""
+
+#: includes/settings/csv.php:113
+msgid "There was an error while uploading the file to your server."
+msgstr ""
+
+#: includes/controls.php:31
+#, php-format
+msgid ""
+"There's also a range of %1$sCatalog add-ons%2$s available to put additional "
+"power in your hands. Check out the %1$sextensions page%2$s in your dashboard "
+"for more information."
+msgstr ""
+
+#: modules/cart/includes/product-status.php:122
+#, php-format
+msgid "This %s is currently not available."
+msgstr ""
+
+#: functions/support.php:42
+#, fuzzy
+#| msgid ""
+#| "This awesome plugin is developed under impleCode brand which is a legally "
+#| "operating company. It means that <b>you can be assured that the high "
+#| "quality development will be continuous</b>."
+msgid ""
+"This awesome plugin is being developed under impleCode brand, which is a "
+"legally operating European company. It means that you can be assured that "
+"the high-quality <b>development will be continuous</b>."
+msgstr ""
+"Ovaj fantastični plugin razvijen je pod impleCode brendom koji predstavlja "
+"legalnu kompaniju. To znači da <b> možete biti sigurni kako će razvoj "
+"visokog kvaliteta biti nastavljen</b>."
+
+#: includes/activation-config.php:357
+msgid "This help box will disappear once you add your first product."
+msgstr ""
+
+#: includes/settings/general.php:419
+msgid "This is also the default setting for sorting drop-down."
+msgstr ""
+
+#: includes/extensions.php:722
+#, php-format
+msgid "This is not a valid license key! Get it <a href=\"%s\">here</a>."
+msgstr ""
+
+#: theme-product_adder_support.php:68
+#, php-format
+msgid ""
+"This page is defined as the main catalog listing. You can change this in "
+"%scatalog settings%s."
+msgstr ""
+
+#: functions/activation.php:161
+#, fuzzy
+#| msgid ""
+#| "This section is product long description. It should appear under the "
+#| "attributes table. Between the short description and the attributes table "
+#| "you should see the price, SKU and shipping options (all can be disabled). "
+#| "The attributes also can be disabled."
+msgid ""
+"This section is a product long description. It should appear under the "
+"attributes table or in the description tab. Before that, you should see the "
+"price, SKU and shipping options (all can be disabled). The attributes also "
+"can be disabled."
+msgstr ""
+"U ovom delu nalazi se dugačak opis proizvoda. Treba da se pojavi ispod "
+"tabele sa atributima. Između kratkog opisa i tabele sa atributima treba da "
+"vidite cenu, SKU i mogućnosti isporuke (sve može biti deaktivirano). "
+"Atributi se, takođe, mogu deaktivirati."
+
+#: includes/activation-config.php:590
+msgid ""
+"This will personalize the admin experience. Leave the default values if you "
+"are not sure."
+msgstr ""
+
+#: modules/price/price-settings.php:107
+msgid "Thousands Separator"
+msgstr "Separator hiljada"
+
+#: includes/blocks/widgets.php:128 modules/price/blocks/index.php:33
+msgid "Title"
+msgstr ""
+
+#: includes/util/widget.php:138 includes/widgets/category-widget.php:137
+#: includes/widgets/filter-widgets.php:299
+#: includes/widgets/filter-widgets.php:374
+#: includes/widgets/filter-widgets.php:460
+#: includes/widgets/filter-widgets.php:529
+#: includes/widgets/related-products-widget.php:61
+#: includes/widgets/search-widget.php:63
+#: modules/cart/includes/cart-widget.php:86
+#: modules/price/widgets/price-filter-widget.php:89
+#: modules/cart/includes/customers/includes/login-form-widget.php:50
+#: modules/cart/includes/customers/includes/login-url-widget.php:50
+msgid "Title:"
+msgstr "Naziv:"
+
+#: functions/activation.php:180
+#, php-format
+msgid ""
+"To proceed with such test, remove %s from your main product listing page and "
+"see how the catalog pages look like without it."
+msgstr ""
+
+#: theme-product_adder_support.php:146
+#, php-format
+msgid "To switch to Advanced Mode, please add %s to your product listing page."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:799
+msgid "Togo"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:800
+msgid "Tokelau"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:801
+msgid "Tonga"
+msgstr ""
+
+#: modules/price/config/currencies.php:335
+msgid "Tongan pa&#x2bb;anga"
+msgstr ""
+
+#: modules/cart/includes/cart/ic-cart.php:73
+#: modules/cart/includes/cart/ic-cart.php:268
+msgid "Total"
+msgstr ""
+
+#: modules/cart/includes/cart/ic-cart.php:300
+msgid "Total GROSS"
+msgstr ""
+
+#: modules/cart/includes/cart-form.php:309
+msgid "Total Gross:"
+msgstr ""
+
+#: modules/cart/includes/cart/ic-cart.php:270
+msgid "Total NET"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:469
+msgid "Total Net"
+msgstr ""
+
+#: modules/cart/includes/cart-form.php:304
+msgid "Total Net:"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/transactions-client-list.php:26
+msgid "Total Spendings"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:163
+msgid "Transaction ID"
+msgstr ""
+
+#: modules/price/config/currencies.php:310
+msgid "Transnistrian ruble"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:803
+msgid "Trinidad and Tobago"
+msgstr ""
+
+#: modules/price/config/currencies.php:337
+msgid "Trinidad and Tobago dollar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:804
+msgid "Tunisia"
+msgstr ""
+
+#: modules/price/config/currencies.php:334
+msgid "Tunisian dinar"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:805
+msgid "Turkey"
+msgstr ""
+
+#: modules/price/config/currencies.php:336
+msgid "Turkish lira"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:806
+msgid "Turkmenistan"
+msgstr ""
+
+#: modules/price/config/currencies.php:333
+msgid "Turkmenistan manat"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:807
+msgid "Turks and Caicos Islands"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:808
+msgid "Tuvalu"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:809
+msgid "Uganda"
+msgstr ""
+
+#: modules/price/config/currencies.php:341
+msgid "Ugandan shilling"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:810
+msgid "Ukraine"
+msgstr ""
+
+#: modules/price/config/currencies.php:340
+msgid "Ukrainian hryvnia"
+msgstr ""
+
+#: modules/button/index.php:108
+msgid "Unique URL for each Product"
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:104
+msgid "Unit"
+msgstr "Jedinica mere"
+
+#: modules/cart/includes/cart/ic-cart.php:71
+msgid "Unit Price"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:811
+msgid "United Arab Emirates"
+msgstr ""
+
+#: modules/price/config/currencies.php:194
+msgid "United Arab Emirates dirham"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:585
+msgid "United Kingdom"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:583
+msgid "United States"
+msgstr ""
+
+#: modules/price/config/currencies.php:342
+msgid "United States dollar"
+msgstr ""
+
+#: includes/welcome/new.php:40
+msgid ""
+"Until now there are 3 CTAs available: Shopping Cart add to cart, Quote Cart "
+"add to cart and an affiliate button."
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:82
+#: modules/shipping/shipping-settings.php:77
+#: modules/cart/includes/variations/product-variations-settings.php:68
+msgid "Update"
+msgstr "Ažuriraj"
+
+#: includes/product-categories.php:38
+#, php-format
+msgid "Update %s Category"
+msgstr ""
+
+#: includes/product-categories.php:52
+msgid "Update Category"
+msgstr "Unapredi Kategoriju"
+
+#: includes/extensions.php:935
+msgid "Upgrade Now!"
+msgstr ""
+
+#: includes/settings/general.php:469
+msgid "URLs"
+msgstr "URL –ovi"
+
+#: modules/cart/ext/formbuilder/index.php:812
+msgid "Uruguay"
+msgstr ""
+
+#: modules/price/config/currencies.php:343
+msgid "Uruguayan peso"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:813
+msgid "US Minor Outlying Islands"
+msgstr ""
+
+#: includes/welcome/new.php:72
+msgid "Usability"
+msgstr ""
+
+#: templates/theme-integration.php:169
+#, php-format
+msgid "Use %s on your product listing page."
+msgstr ""
+
+#: modules/button/index.php:109
+msgid "Use default if empty"
+msgstr ""
+
+#: templates/theme-integration.php:77
+msgid "Use Shortcode Mode"
+msgstr ""
+
+#: templates/theme-integration.php:79 templates/theme-integration.php:173
+msgid "Use Simple Mode"
+msgstr "Koristi jednostavan režim"
+
+#: templates/shortcode-catalog.php:725
+#, php-format
+msgid ""
+"Use the %s or %s shortcode if you just want to display products or "
+"categories."
+msgstr ""
+
+#: includes/settings/general.php:266
+msgid "Use the button below to begin the easy auto adjustment."
+msgstr ""
+
+#: includes/extensions.php:1147
+msgid "Use the button below to fix it."
+msgstr ""
+
+#: includes/welcome/start.php:21
+msgid ""
+"Use the buttons below to choose the catalog mode. Simple Catalog is enabled "
+"by default."
+msgstr ""
+
+#: templates/theme-integration.php:192
+msgid ""
+"Use the buttons below to try the advanced integration again or go to admin "
+"and start adding your products."
+msgstr ""
+"Koristite tastere ispod da biste ponovo oprobali napredno integrisanje ili "
+"idite na stranicu administratora i počnite da dodajete svoje proizvode."
+
+#: theme-product_adder_support.php:89
+msgid "Use the dropdown below to define the template for all catalog pages."
+msgstr ""
+
+#: includes/activation-config.php:185
+msgid ""
+"Use the forum to get help on the integration, configuration, or any problem "
+"that you face."
+msgstr ""
+
+#: includes/settings/general.php:251
+msgid "Use the options below to adjust the output."
+msgstr ""
+
+#: theme-product_adder_support.php:79
+msgid ""
+"Use the permalink option below to define the parent URL for all catalog "
+"pages."
+msgstr ""
+
+#: includes/activation-config.php:129
+msgid ""
+"Use the Show main catalog page content everywhere option if you are using a "
+"page builder to build your catalog design."
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:286
+#, fuzzy
+#| msgid ""
+#| "Use this only with short attributes labels and values e.g. Color: Red"
+msgid "Use this only with short attributes labels and values, e.g. Color: Red"
+msgstr ""
+"Koristi ovo samo uz pomoć kratkih oznaka odlika i vrednosti, npr. boja: "
+"crvena"
+
+#: includes/activation-config.php:128
+msgid ""
+"Use this option to select what should be shown on your main catalog page."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:181
+msgid "User Account"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:174
+msgid "User Email Subject"
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:175
+msgid "User Email template"
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:113
+#, php-format
+msgid "User not logged in or invalid customer ID. Auto refresh in %s seconds."
+msgstr ""
+
+#: modules/cart/includes/customers/index.php:56
+#: modules/cart/includes/customers/includes/digital-customer.php:40
+msgid "Username or Email"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:814
+msgid "Uzbekistan"
+msgstr ""
+
+#: modules/price/config/currencies.php:344
+msgid "Uzbekistani som"
+msgstr ""
+
+#: includes/settings/custom-design.php:282
+msgid "Value"
+msgstr "Vrednost"
+
+#: modules/cart/includes/variations/variations-meta.php:42
+msgid "Values"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:815
+msgid "Vanuatu"
+msgstr ""
+
+#: modules/price/config/currencies.php:347
+msgid "Vanuatu vatu"
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:95
+msgid "Variation default name"
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:106
+msgid "Variation default price effects"
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:114
+msgid "Variation default shipping effects"
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:98
+msgid "Variation default values"
+msgstr ""
+
+#: modules/cart/includes/variations/ext/polylang.php:45
+msgid "Variation Label"
+msgstr ""
+
+#: modules/cart/includes/variations/ext/polylang.php:59
+msgid "Variation Price"
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:75
+msgid "Variation price info"
+msgstr ""
+
+#: modules/cart/includes/variations/ext/polylang.php:52
+msgid "Variation Value"
+msgstr ""
+
+#: includes/activation-config.php:161
+msgid "Variations Configuration"
+msgstr ""
+
+#: modules/cart/includes/tax.php:112
+msgid "VAT"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:219
+msgid "VAT Address"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:214
+msgid "VAT Name"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:816
+msgid "Venezuela"
+msgstr ""
+
+#: modules/price/config/currencies.php:345
+msgid "Venezuelan bol&iacute;var"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:227
+msgid "Ver. ID"
+msgstr ""
+
+#: includes/system.php:384
+msgid "Version"
+msgstr "Верзија"
+
+#: templates/theme-integration.php:93
+msgid "Video Tutorial"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:817
+msgid "Vietnam"
+msgstr ""
+
+#: modules/price/config/currencies.php:346
+msgid "Vietnamese &#x111;&#x1ed3;ng"
+msgstr ""
+
+#: includes/register-product.php:144
+#, php-format
+msgid "View %s"
+msgstr "Види %s"
+
+#: includes/register-product.php:160
+msgid "View Item"
+msgstr "Pregledati stavku"
+
+#: modules/cart/includes/orders/includes/register-digital-orders.php:45
+msgid "View Order"
+msgstr ""
+
+#: modules/quote-cart/index.php:62
+msgid "View Quote"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:818
+msgid "Virgin Islands (British)"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:819
+msgid "Virgin Islands (USA)"
+msgstr ""
+
+#: includes/activation-config.php:388
+msgid "Visit Main Listing"
+msgstr ""
+
+#: includes/system.php:354
+msgid "Visit plugin homepage"
+msgstr "Посети страницу додатка"
+
+#: modules/cart/ext/formbuilder/index.php:820
+msgid "Wallis and Futuna Islands"
+msgstr ""
+
+#: includes/welcome/mode-selected.php:113 includes/welcome/new.php:167
+#: includes/welcome/start.php:146
+msgid "We keep the list of most useful code snippets to adjust things."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:126 includes/welcome/new.php:180
+#: includes/welcome/start.php:159
+msgid ""
+"We know the plugin and WordPress to the ground, can adjust small things and "
+"create very complex features or integrations."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:127 includes/welcome/new.php:181
+#: includes/welcome/start.php:160
+msgid "We provide custom coding services in a professional and timely manner."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:61
+msgid "We will get in touch with you soon."
+msgstr ""
+
+#: modules/cart/includes/orders/functions/functions.php:330
+msgid "We've received your payment."
+msgstr ""
+
+#: includes/settings/general.php:359
+msgid "Web Store"
+msgstr ""
+
+#: functions/activation.php:140 modules/attributes/attributes-meta.php:360
+#: modules/attributes/attributes-meta.php:373
+msgid "Weight"
+msgstr "Težina"
+
+#: modules/attributes/attributes-settings.php:144
+msgid "Weight Unit"
+msgstr ""
+
+#: functions/activation.php:124
+msgid ""
+"Welcome on a product test page. This is a short description. It should show "
+"up on the left side of the product image and below the product name."
+msgstr ""
+
+#: modules/price/config/currencies.php:352
+msgid "West African CFA franc"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:821
+msgid "Western Sahara"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:822
+msgid "Western Samoa"
+msgstr ""
+
+#: includes/tracking.php:413
+msgid "What could we do better?"
+msgstr ""
+
+#: includes/tracking.php:433
+msgid "What did you expect?"
+msgstr ""
+
+#: includes/tracking.php:421
+msgid "What feature?"
+msgstr ""
+
+#: includes/tracking.php:437
+msgid "What is the reason?"
+msgstr ""
+
+#: includes/tracking.php:429
+msgid "What you've been looking for?"
+msgstr ""
+
+#: includes/welcome/welcome-screen.php:184
+msgid "What&#8217;s New"
+msgstr ""
+
+#: includes/tracking.php:417
+msgid "What's the plugin's name?"
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:87
+msgid ""
+"When every item in your catalogue has different shipping options you can "
+"leave all or just a part of these fields empty."
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:88
+msgid ""
+"When every product in your catalogue is different you can leave all or a "
+"part of these fields empty."
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:91
+msgid ""
+"When every product in your catalogue is different, you can leave all or a "
+"part of these fields empty."
+msgstr ""
+
+#: modules/price/price-settings.php:85
+msgid "Whether to enable or disable price functionality for the catalog."
+msgstr ""
+
+#: functions/support.php:127
+msgid "which is considered as SEO booster if used properly"
+msgstr ""
+
+#: functions/activation.php:141
+msgid "White"
+msgstr "Bela"
+
+#: templates/theme-integration.php:98
+#: modules/attributes/attributes-meta.php:377
+msgid "Width"
+msgstr "Широчина"
+
+#: modules/attributes/attributes-meta.php:362
+msgctxt "Width"
+msgid "W"
+msgstr ""
+
+#: includes/settings/general.php:204 includes/settings/general.php:238
+msgid "will use your theme page template with catalog custom styling applied."
+msgstr ""
+
+#: includes/settings/extension-info.php:38
+#, php-format
+msgid ""
+"With %sProduct CSV%s you can import, export and update an unlimited number "
+"of products at once even on a very limited server. It also supports all "
+"product fields and will import external images to the WordPress media "
+"library. You can also enjoy scheduled sync and many more features that come "
+"with the premium support service!"
+msgstr ""
+
+#: functions/activation.php:167
+#, php-format
+msgid ""
+"With Advanced Mode, you will be able to use %s in %s. The product listing "
+"page, category pages, product search and category widget will be enabled in "
+"advanced mode. You can enable the Advanced Mode %s free. To see how please "
+"see <a target=\"_blank\" href=\"%s\">Theme Integration Guide</a>"
+msgstr ""
+
+#: includes/system.php:174
+msgid "WordPress Environment"
+msgstr ""
+
+#: templates/theme-integration.php:87
+msgid ""
+"Would you like to remove the shortcode integration and try the configuration "
+"wizard?"
+msgstr ""
+
+#: includes/system.php:231
+msgid "WP Debug Mode"
+msgstr ""
+
+#: includes/system.php:220
+msgid "WP Memory Limit"
+msgstr ""
+
+#: includes/system.php:210
+msgid "WP Multisite"
+msgstr ""
+
+#: includes/system.php:206
+msgid "WP Version"
+msgstr "Верзија"
+
+#: modules/cart/ext/formbuilder/index.php:823
+msgid "Yemen"
+msgstr ""
+
+#: modules/price/config/currencies.php:354
+msgid "Yemeni rial"
+msgstr ""
+
+#: includes/system.php:31 includes/system.php:48 includes/system.php:75
+#: templates/shortcode-catalog.php:723
+msgid "Yes"
+msgstr "Da"
+
+#: theme-product_adder_support.php:145
+#, php-format
+msgid ""
+"You are currently using %s in Simple Mode. It is perfectly fine to use it "
+"this way, however some features are limited."
+msgstr ""
+
+#: functions/activation.php:166
+#, php-format
+msgid "You are currently using %s mode."
+msgstr ""
+
+#: includes/settings/general.php:216
+#, php-format
+msgid ""
+"You are currently using %s on your product listing to integrate the catalog "
+"with the theme."
+msgstr ""
+
+#: templates/theme-integration.php:187
+msgid "You are using shortcode mode now."
+msgstr ""
+
+#: templates/theme-integration.php:189
+msgid "You are using simple mode now."
+msgstr "Trenutno koristite jednostavan režim"
+
+#: ext-comp/woocommerce.php:84
+#, php-format
+msgid "You can also %1$simport WooCommerce products into separate catalog%2$s."
+msgstr ""
+
+#: includes/class-ic-sitewide-bar.php:254
+#, php-format
+msgid ""
+"You can also %sadd the Catalog Icons block to the menu%s if your theme "
+"supports site editing with blocks."
+msgstr ""
+
+#: functions/support.php:152
+#, php-format
+msgid ""
+"You can also choose one of the %scatalog extensions%s to get the premium "
+"support."
+msgstr ""
+
+#: theme-product_adder_support.php:147
+#, php-format
+msgid "You can also use awesome %sCatalog Me! theme%s."
+msgstr ""
+
+#: includes/settings/general.php:411
+msgid "You can also use shortcode with products_limit attribute to set this."
+msgstr ""
+
+#: modules/price/price-meta.php:31
+msgid "you can change it in product settings"
+msgstr "možete ga izmeniti u podešavanjima proizvoda"
+
+#: functions/activation.php:125
+msgid "You can change the product page template in catalog settings."
+msgstr ""
+
+#: modules/attributes/attributes-settings.php:92
+msgid "You can change these default values for every item."
+msgstr ""
+
+#: modules/shipping/shipping-settings.php:88
+msgid "You can change these default values for every new item in the catalog."
+msgstr ""
+
+#: modules/cart/includes/variations/product-variations-settings.php:89
+msgid "You can change these default values on every product page."
+msgstr ""
+
+#: theme-product_adder_support.php:197
+#, php-format
+msgid ""
+"You can create your product listing page automatically or insert %s on any "
+"of your existing pages."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:95 includes/welcome/new.php:149
+#: includes/welcome/start.php:128
+msgid ""
+"You can customize the output by placing the template file in your theme "
+"'implecode' folder."
+msgstr ""
+
+#: includes/activation-config.php:349
+msgid "you can define their number in catalog settings."
+msgstr ""
+
+#: includes/settings/custom-design.php:276
+#, fuzzy
+#| msgid "You can figure it out by checking \"impact\" column."
+msgid "You can figure it out by checking the 'impact' column."
+msgstr "Možete videti o čemu se radi kad kliknete na kolonu \"uticaj\". "
+
+#: includes/welcome/new.php:129
+#, php-format
+msgid ""
+"You can find the search box in the %1$scatalog settings%3$s or %2$shelp "
+"tab%3$s."
+msgstr ""
+
+#: functions/support.php:206
+msgid "You can get instant premium support from plugin developers"
+msgstr ""
+
+#: includes/welcome/start.php:26
+msgid "You can make additional adjustments in the settings later."
+msgstr ""
+
+#: includes/welcome/start.php:105
+msgid ""
+"You can make the catalog multilingual thanks to full Polylang compatibility."
+msgstr ""
+
+#: modules/cart/includes/customers/includes/transactions/customer-panel.php:90
+#, php-format
+msgid ""
+"You can manage your license when you log in on %s. Use your email as "
+"username and license key as the password. You can change the password after "
+"login."
+msgstr ""
+
+#: functions/activation.php:163
+msgid ""
+"You can modify the product page and product listing layout by clicking on "
+"the admin options links located under the image."
+msgstr ""
+
+#: includes/activation-config.php:356
+msgid "You can move all the boxes around to better suit your needs."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:58
+msgid ""
+"You can select the main catalog page in the general settings screen. It will "
+"show categories and products according to the catalog settings."
+msgstr ""
+
+#: templates/theme-integration.php:191
+msgid "You can switch between modes at any time in Product Settings."
+msgstr ""
+"Možete preći s jednog režima na drugi u ‘Podešavanju proizvoda’ kad god "
+"poželite."
+
+#: includes/extensions.php:287
+#, php-format
+msgid ""
+"You can take advantage of premium support and <a href=\"%s\">send support "
+"tickets</a> to impleCode developers once you have your license key."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:72
+msgid "You can use many different shortcodes to displays catalog parts."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:106 includes/welcome/new.php:160
+#: includes/welcome/start.php:139
+msgid ""
+"You can use many shortcodes to display the entire catalog or even each "
+"smallest part."
+msgstr ""
+
+#: includes/welcome/mode-selected.php:64 includes/welcome/start.php:96
+msgid "You can use three different blocks to display catalog parts."
+msgstr ""
+
+#: modules/cart/includes/orders/includes/save-order.php:169
+msgid "You don't have any completed orders yet."
+msgstr ""
+
+#: includes/extensions.php:741
+msgid "You don't have permission to install and activate extensions."
+msgstr ""
+
+#: includes/settings/csv.php:372
+msgid "You don't have permission to read the exported file."
+msgstr ""
+
+#: templates/theme-integration.php:165
+msgid "You Have 3 choices"
+msgstr "Imate 3 izbora"
+
+#: includes/welcome/start.php:104
+msgid ""
+"You have complete control over tailoring any text visible on the front-end "
+"through an intuitive settings screen."
+msgstr ""
+
+#: includes/blocks/index.php:209
+#, php-format
+msgid ""
+"You have disabled the main listing page in %scatalog settings%s so this "
+"block will not display anything. It will only be used to output content on "
+"catalog categories and individual product pages."
+msgstr ""
+
+#: includes/class-ic-activation-wizard.php:115
+msgid ""
+"You have some recommended extensions based on your initial setup answers!"
+msgstr ""
+
+#: includes/settings/general.php:180
+#, php-format
+msgid ""
+"You have to remove the %s from the main catalog page to switch the "
+"integration method."
+msgstr ""
+
+#: includes/extensions.php:735
+#, php-format
+msgid ""
+"You need to provide the license key to activate the extension. Get yours <a "
+"href=\"%s\">here</a>."
+msgstr ""
+
+#: includes/activation-config.php:326
+msgid ""
+"You will be able to change your choice later in catalog settings or by "
+"reactivating the plugin."
+msgstr ""
+
+#: ext-comp/woocommerce.php:81
+msgid ""
+"You will be able to customize the WooCommerce catalog design, disable cart, "
+"enable inquiry and many more."
+msgstr ""
+
+#: modules/price/price-settings.php:91 modules/price/price-settings.php:186
+msgid "Your currency"
+msgstr "Vaša valuta"
+
+#: includes/extensions.php:1146
+msgid ""
+"Your license is expired. The latest security and feature updates cannot be "
+"applied without an active license."
+msgstr ""
+
+#: includes/extensions.php:1141
+msgid ""
+"Your license will expire soon. Use the button below to prevent it, so the "
+"updates work without any interruptions."
+msgstr ""
+
+#: includes/activation-config.php:382
+#, php-format
+msgid "Your main %s listing page is defined."
+msgstr ""
+
+#: includes/activation-config.php:390
+#, php-format
+msgid ""
+"Your main %s listing page is not selected. You can use shortcodes to display "
+"your products, but in most cases, it will be more convenient to use the "
+"templates."
+msgstr ""
+
+#: theme-product_adder_support.php:205
+msgid ""
+"Your main catalog listing page has been created automatically with private "
+"status (it is not visible for visitors)."
+msgstr ""
+
+#: modules/cart/includes/shopping-settings.php:171
+msgid "Your name in emails"
+msgstr ""
+
+#: modules/cart/includes/orders/includes/save-order.php:232
+msgid "Your Orders"
+msgstr ""
+
+#: includes/settings/general.php:206 includes/settings/general.php:240
+msgid ""
+"your theme default template files will be used to display catalog pages."
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:824
+msgid "Zambia"
+msgstr ""
+
+#: modules/price/config/currencies.php:356
+msgid "Zambian kwacha"
+msgstr ""
+
+#: modules/cart/ext/formbuilder/index.php:825
+msgid "Zimbabwe"
+msgstr ""
+
+#: includes/settings/custom-names.php:65 includes/settings/custom-names.php:76
+msgid "« Previous Page"
+msgstr "« Prethodna strana"

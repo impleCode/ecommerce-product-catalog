@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/short-description",
+  "textdomain": "ecommerce-product-catalog",
+  "title": "Short Description",
+  "icon": "text",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "productFromContext": {
+      "type": "boolean",
+      "default": true
+    },
+    "productSearch": {
+      "type": "string",
+      "default": ""
+    },
+    "selectedProduct": {
+      "type": "integer",
+      "default": 0
+    },
+    "alignment": {
+      "type": "string",
+      "default": "none"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": ""
+    },
+    "colors": {
+      "type": "string",
+      "default": ""
+    },
+    "spacing": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./block.js"
+}

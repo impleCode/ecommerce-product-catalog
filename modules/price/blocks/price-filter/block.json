@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/product-price-filter",
+  "title": "Catalog Price Filter",
+  "textdomain": "ecommerce-product-catalog",
+  "icon": "filter",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "shortcode_support": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "editorScript": "file:./block.js"
+}

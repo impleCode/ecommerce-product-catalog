@@ -10,10 +10,10 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.4.0
  * @package		ecommerce-product-catalog/includes
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 define( 'DEFAULT_ARCHIVE_MULTIPLE_SETTINGS', serialize( array(
-	'archive_products_limit'	 => 10,
+	'archive_products_limit'	 => 12,
 	'category_archive_url'		 => 'product-category',
 	'enable_product_breadcrumbs' => 0,
 	'breadcrumbs_title'			 => '',

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/product-sort-filter",
+  "title": "Catalog Sort",
+  "textdomain": "ecommerce-product-catalog",
+  "icon": "sort",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "shortcode_support": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "editorScript": "file:./block.js"
+}

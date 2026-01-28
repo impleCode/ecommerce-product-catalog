@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/sitewide-icons",
+  "textdomain": "ecommerce-product-catalog",
+  "title": "Catalog Icons",
+  "icon": "editor-kitchensink",
+  "category": "ic-epc-block-cat",
+  "parent": [
+    "core/navigation"
+  ],
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./block.js"
+}

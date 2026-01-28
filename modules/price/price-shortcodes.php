@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.0.0
  * @package		ecommerce-product-catalog/includes
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 add_shortcode( 'product_price', 'ic_product_price' );
 
@@ -23,10 +23,17 @@ function ic_product_price( $atts ) {
 	$args	 = shortcode_atts( apply_filters( 'product_price_shortcode_args', array(
 		'product'	 => get_the_ID(),
 		'formatted'	 => 1,
+		'container'	 => 1
 	) ), $atts );
 	$price	 = apply_filters( 'shortcode_product_price', product_price( $args[ 'product' ] ), $args );
 	if ( !empty( $price ) && $args[ 'formatted' ] == 1 ) {
 		$price = price_format( $price );
+	}
+	if ( !empty( $price ) && $args[ 'container' ] == 1 ) {
+		$price = '<span class="product-price ' . design_schemes( null, 0 ) . '">' . $price . '</span>';
+	}
+	if ( !empty( $price ) && function_exists( 'ic_enqueue_main_catalog_js_css' ) ) {
+		ic_enqueue_main_catalog_js_css();
 	}
 	return $price;
 }
@@ -43,7 +50,7 @@ function ic_product_price_table( $atts ) {
 	$args = shortcode_atts( array(
 		'product' => get_the_ID(),
 	), $atts );
-	return get_product_price_table( $args[ 'product' ] );
+	return ic_price_display::get_product_price_table( $args[ 'product' ] );
 }
 
 add_shortcode( 'product_price_label', 'product_price_label_shortcode' );

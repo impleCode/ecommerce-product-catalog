@@ -1,0 +1,112 @@
+/*
+ * Digital Product Orders
+ * http://impleCode.com
+ *
+ * Copyright 2014 impleCode
+ * Free to use under the GPLv3 license.
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Contributing author: Norbert Dreszer
+ */
+
+/* Digital Order Edit/Add */
+#al_digital_order_details h3.hndle, #al_digital_order_details .handlediv {
+    display:none;
+}
+
+#al_digital_order_details input[name=payment_details_currency] {
+    width: 50px;
+}
+
+#al_digital_order_details table, #al_digital_order_products table {
+    width: 100%;
+}
+
+#al_digital_order_details table table td {
+    vertical-align: middle;
+}
+
+#al_digital_order_details table th, #al_digital_order_products table th {
+    background: #ededed;
+    padding: 5px 7px;
+}
+
+#al_digital_order_details table td {
+    vertical-align: top;
+}
+
+#al_digital_order_products table td {
+    text-align: center;
+}
+
+input[name="payment_details_company"] {
+    width: 100%;
+}
+
+.column-id, .column-amount, .column-trans_date {
+    width: 5.2em;
+}
+
+.column-from {
+    width: 20em;
+}
+
+.column-status {
+    width: 5.5em;
+}
+
+.column-status div {
+    padding: 2px 4px;
+    border-radius: 5px;
+    color: #fff;
+    max-width: 67px;
+    text-align: center;
+}
+
+.box-confirmed {
+    border: 1px solid #012669;
+    background: #013ba5;
+}
+
+.box-completed, .box-active {
+    border: 1px solid #034203;
+    background: #008000;
+}
+
+.box-pending, .box-expired {
+    border: 1px solid #de0303;
+    background: #ff0000;
+}
+
+div.add-digital-product {
+    margin: 0 auto;
+    display: block;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.post-type-al_digital_orders .preview.button, .post-type-al_digital_orders .misc-pub-visibility {
+    display: none;
+}
+
+#al_digital_order_products .all-products-dropdown {
+    max-width: 100%;
+    width: 100%;
+}
+
+/* Menu Icons */
+#menu-posts-al_digital_orders  div.wp-menu-image:before {
+    content: "\f175" !important;
+}
+
+.branch-3-7 #menu-posts-al_digital_orders div.wp-menu-image:before {
+    content: "" !important;
+}
+
+#toplevel_page_digital_customers  div.wp-menu-image:before {
+    content: "\f307" !important;
+}
+
+.branch-3-7 #toplevel_page_digital_customers div.wp-menu-image:before {
+    content: "" !important;
+}

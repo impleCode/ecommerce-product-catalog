@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.0.0
  * @package		ecommerce-product-catalog/includes
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 $dirname = dirname( __FILE__ );
 require_once($dirname . '/attributes-conditionals.php');
@@ -22,5 +22,8 @@ require_once($dirname . '/attributes-meta.php');
 require_once($dirname . '/attributes-functions.php');
 require_once($dirname . '/product-attributes.php');
 require_once($dirname . '/attributes-shortcodes.php');
+require_once($dirname . '/attribute-filters.php');
+require_once($dirname . '/comparison.php');
+require_once($dirname . '/ext/index.php');
 
 

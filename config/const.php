@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.0.0
  * @package		ecommerce-product-catalog/functions
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 define( 'DEF_SHIPPING_OPTIONS_NUMBER', '1' );
 define( 'DEF_ATTRIBUTES_OPTIONS_NUMBER', '3' );
@@ -24,4 +24,8 @@ if ( !defined( 'DEF_CATALOG_PLURAL' ) ) {
 
 if ( !defined( 'IC_CATALOG_PLUGIN_NAME' ) ) {
 	define( 'IC_CATALOG_PLUGIN_NAME', 'eCommerce Product Catalog' );
+}
+
+if ( !defined( 'IC_CATALOG_PLUGIN_SLUG' ) ) {
+	define( 'IC_CATALOG_PLUGIN_SLUG', 'ecommerce-product-catalog' );
 }

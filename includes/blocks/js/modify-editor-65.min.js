@@ -1,0 +1,1 @@
+wp.data.dispatch("core/editor").removeEditorPanel("post-excerpt");wp.data.dispatch("core/editor").removeEditorPanel("featured-image");

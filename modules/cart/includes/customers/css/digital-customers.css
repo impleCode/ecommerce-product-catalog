@@ -1,0 +1,295 @@
+/*
+ * impleCode Digital Customers
+ * http://impleCode.com
+ *
+ * Copyright 2015 impleCode
+ * Free to use under the GPLv3 license.
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Contributing author: Norbert Dreszer
+ */
+.customer_panel_actions {
+    clear: both;
+}
+
+#customer_email {
+    font-size: 20px;
+    float: left;
+}
+
+#customer_logout {
+    float: right;
+}
+
+#customer_panel_tabs {
+    margin-top: 20px;
+    clear: both;
+}
+
+#customer_products_table {
+    margin-top: 20px;
+}
+
+#customer_products_table .table-cell {
+    min-width: 80px;
+}
+
+.dialog .order_form_row, .renewal-dialog .order_form_row {
+    display: table;
+}
+
+.dialog .order_form_row .label, .dialog .order_form_row .field, .renewal-dialog .order_form_row .label, .renewal-dialog .order_form_row .field {
+    display: table-cell;
+    vertical-align: top;
+    padding: 5px;
+}
+
+.dialog .order_form_row .field span, .renewal-dialog .order_form_row .field span {
+    vertical-align: top;
+    margin-right: 5px;
+}
+
+.dialog .order_form_row .label, .renewal-dialog .order_form_row .label {
+    padding: 0px;
+}
+
+.edit-websites, .no-edit-websites {
+    font-size: 14px;
+}
+
+.edit-websites .al-box {
+    font-size: 13px;
+}
+
+.edit-websites input {
+    border: none;
+    padding-left: 0;
+}
+
+
+.edit-websites span.delete:before, .edit-websites span.delete {
+    cursor: pointer;
+    color: red;
+    content: "\f158";
+    font-family: dashicons;
+    font-size: 18px;
+}
+
+.edit-websites table, .edit-websites table tr, .edit-websites table td {
+    border: none;
+}
+
+.edit-websites table td.lp-td, .edit-websites table td.delete-td {
+    max-width: 25px;
+    width: 25px;
+    vertical-align: middle;
+}
+
+#customer_panel_tabs span.active, #customer_panel_tabs span.expired {
+    padding: 2px 4px;
+    border-radius: 5px;
+    color: #fff;
+    max-width: 67px;
+    text-align: center;
+}
+
+#customer_panel_tabs span.active {
+    border: 1px solid green;
+    background: green;
+}
+
+#customer_panel_tabs span.expired {
+    border: 1px solid red;
+    background: red;
+}
+
+.spinner_gif {
+    margin-right: 3px;
+    position: relative;
+    top: 5px;
+}
+
+/* Reset Password */
+#customer_panel_tabs-password input {
+    max-width: 300px;
+    width: 50%;
+}
+
+#customer_panel_tabs-password label {
+    min-width: 220px;
+    display: inline-block;
+}
+
+#customer_panel_tabs-password .new-password-button {
+    display: table;
+}
+
+#customer_panel_tabs-password .new-password, #customer_panel_tabs-password .repeat-new-password {
+    margin-bottom: 10px;
+}
+
+#customer_panel_tabs-password .spinner {
+    opacity: .7;
+    padding-left: 5px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+#customer_panel_tabs-password .spinner img {
+    display: none;
+}
+
+/* Login normal */
+
+.login_form.panel_login {
+    max-width: 400px;
+    margin: 0 auto;
+    border-radius: 3px;
+    padding: 10px 20px;
+}
+
+.login_form.panel_login h2 {
+    margin-top: 0;
+}
+
+/* Login Popup */
+.popup_login_form {
+    position: fixed;
+    top: 5%;
+    left: 30%;
+    background: #fff;
+    box-shadow: 0 0 1px #000;
+    max-width: 360px;
+    z-index: 1000;
+    border-radius: 4px;
+    width: 25%;
+    min-width: 280px;
+}
+
+.popup_login_form .closer {
+    top: 0;
+    right: 0;
+    left: auto;
+}
+
+.popup_login_form form {
+    width: 100%;
+}
+
+.popup_login_form label, .login_form label {
+    min-width: 90px;
+    display: block;
+    font-size: 1.1em;
+}
+
+.popup_login_form #user_login, .popup_login_form #user_pass, #activation_form form input[type="text"], #activation_form form input[type="email"] {
+    padding: 10px;
+    font-size: 1.1em;
+    width: 100%;
+}
+
+.popup_login_form .inside_login {
+    max-width: 360px;
+}
+
+.popup_login_form .inside_login .ui-tabs-nav a {
+    font-size: 1.2em;
+}
+
+.popup_login_form .button-primary, .popup_login_form .button {
+    padding: 10px;
+    font-size: 1.2em;
+    font-weight: normal;
+}
+
+#ic_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    opacity: 0.6;
+    z-index: 1;
+}
+
+.popup_login_form .closer {
+    top: 7px;
+    right: 7px;
+    left: auto;
+}
+
+.closer {
+    position: absolute;
+    top: 5px;
+    left: 0;
+    z-index: 99;
+    cursor: pointer;
+}
+
+.closer:before {
+    font-family: dashicons;
+    content: "\f158";
+    font-size: 25px;
+    color: #000;
+}
+
+/* Upgrade License Dialog */
+.upgrade-dialog h3, .renewal-dialog h3 {
+    margin: 15px 0;
+}
+
+.upgrade-dialog .upgrade_types, .upgrade-dialog .payment-options, .renewal-dialog .payment-options {
+    margin: 10px;
+}
+
+.ui-dialog.edit-websites .ui-dialog-titlebar-close span, .ui-dialog.upgrade-dialog .ui-dialog-titlebar-close span, .ui-dialog.renew-license .ui-dialog-titlebar-close span {
+    margin: 0;
+    left: 0;
+    top: 0;
+}
+
+.upgrade-dialog #license_upgrade_price {
+    display: inline-block;
+}
+
+/* License Renewal */
+#customer_products_table .expiry-date {
+    font-size: 0.9em;
+}
+
+.ui-dialog.renew-license .renew-normal-price div, .ui-dialog.renew-license .renew-renewal-price div {
+    display: inline-block;
+}
+
+.ui-dialog.renew-license .renew-normal-price div {
+    text-decoration: line-through;
+}
+
+.ui-dialog.renew-license .renew-renewal-price {
+    color: #027E02;
+}
+
+.ui-dialog.renew-license .renew-normal-price, .ui-dialog.renew-license .renew-normal-price div, .ui-dialog.renew-license .renew-renewal-price, .ui-dialog.renew-license .renew-renewal-price div, .ui-dialog.renew-license .renewed-valid-until {
+    font-size: 1.2em;
+    margin: 5px 0;
+}
+
+.renewal-dialog .order_form_row .label {
+    padding-top: 6px;
+}
+
+#customer_panel .add-to-shopping-cart button.button {
+    padding: 12px;
+    min-width: 185px;
+}
+
+#customer_orders_table .table-row .table-cell .dashicons {
+    cursor: pointer;
+    vertical-align: bottom;
+    font-size: 1em;
+}
+
+#customer_orders_table .order-name-edit {
+    padding: 0;
+}

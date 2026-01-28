@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/product-category-widget",
+  "textdomain": "ecommerce-product-catalog",
+  "title": "Catalog Category Links",
+  "icon": "list-view",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "dropdown": {
+      "type": "boolean",
+      "default": false
+    },
+    "count": {
+      "type": "boolean",
+      "default": false
+    },
+    "hierarchical": {
+      "type": "boolean",
+      "default": false
+    }
+  },
+  "editorScript": "file:./block.js"
+}

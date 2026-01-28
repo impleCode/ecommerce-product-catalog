@@ -1,0 +1,1 @@
+Copyright (c) 2012 Andrew Eades Dual licensed under the GPL and MIT licenses.

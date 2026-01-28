@@ -1,0 +1,46 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/show-categories",
+  "textdomain": "ecommerce-product-catalog",
+  "title": "Show Categories",
+  "icon": "networking",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "category": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "integer"
+      }
+    },
+    "selectedCategory": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object"
+      }
+    },
+    "categorySearch": {
+      "type": "string",
+      "default": ""
+    },
+    "orderby": {
+      "type": "string",
+      "default": ""
+    },
+    "order": {
+      "type": "string",
+      "default": ""
+    },
+    "archive_template": {
+      "type": "string",
+      "default": "default"
+    },
+    "per_row": {
+      "type": "string",
+      "default": "3"
+    }
+  },
+  "editorScript": "file:./block.js"
+}

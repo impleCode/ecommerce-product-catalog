@@ -4,7 +4,7 @@
 *
  * @version		1.1.2
  * @package		ecommerce-product-catalog/templates
- * @author 		Norbert Dreszer
+ * @author 		impleCode
 */
 
 if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly

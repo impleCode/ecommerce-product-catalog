@@ -1,0 +1,66 @@
+/*
+ * impleCode Quote Cart
+ * http://impleCode.com
+ *
+ * Copyright 2014 impleCode
+ * Free to use under the GPLv3 license.
+ * http://www.gnu.org/licenses/gpl-3.0.html
+ *
+ * Contributing author: Norbert Dreszer
+ */
+
+/* Product Variations */
+#shopping-cart-container table.cart-products .variation_select {
+    padding: 0;
+    margin: 0;
+    margin-top: 1px;
+    max-width: 100%;
+}
+
+.chosen_variation {
+    display: block;
+    font-style: italic;
+}
+
+.variation_select, .boxed #product_details .variation_select {
+    margin-bottom: 5px;
+    min-width: 100px;
+    width: 100%;
+    max-width: 100%;
+}
+
+input[type='text'].variation_select, .boxed #product_details input[type='text'].variation_select {
+    padding: 15px 10px;
+}
+
+.variation-select-container {
+    margin-bottom: 5px;
+}
+
+.boxed #product_details .variation_select:last-of-type {
+    margin-bottom: 0;
+}
+
+article.variable-single-price-effect .product-entry .price-container, .boxed.variable-single-price-effect #product_details > div.price-container, #content .boxed.variable-single-price-effect #product_details > div.price-container,
+article.variable-single-price-effect .product-entry .shipping-table-container, .boxed.variable-price-effect #product_details > div.shipping-table-container, #content .boxed.variable-single-price-effect #product_details > div.shipping-table-container,
+article.variable-single-price-effect .product-entry .sku-table, .boxed.variable-single-price-effect #product_details > div.sku-table, #content .boxed.variable-single-price-effect #product_details > div.sku-table {
+    opacity:0;
+}
+
+
+.ic_spinner, .boxed #product_details .ic_spinner {
+    display: inline-block;
+    opacity: 0.7;
+    width: 20px !important;
+    height: 20px;
+    margin-left: 2px;
+    vertical-align: middle;
+    display: none;
+}
+
+@media (max-width: 1000px) {
+    .table-listing-element .variation_select {
+        min-width: 50px;
+        max-width: 79px;
+    }
+}

@@ -10,10 +10,9 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.0.0
  * @package		ecommerce-product-catalog/includes
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 $dirname = dirname( __FILE__ );
-require_once($dirname . '/sku-conditionals.php');
 require_once($dirname . '/sku-functions.php');
 require_once($dirname . '/sku-meta.php');
 require_once($dirname . '/sku-settings.php');

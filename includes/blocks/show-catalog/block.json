@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 3,
+  "name": "ic-epc/show-catalog",
+  "textdomain": "ecommerce-product-catalog",
+  "title": "Show Catalog",
+  "icon": "store",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "alignment": {
+      "type": "string",
+      "default": "none"
+    },
+    "border": {
+      "type": "string",
+      "default": "none"
+    },
+    "spacing": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./block.js"
+}

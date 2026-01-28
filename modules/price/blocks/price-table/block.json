@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-price-field/ic-price-table",
+  "title": "Price Table",
+  "textdomain": "ecommerce-product-catalog",
+  "icon": "embed-generic",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "productFromContext": {
+      "type": "boolean",
+      "default": true
+    },
+    "no_add_to_cart": {
+      "type": "boolean",
+      "default": false
+    },
+    "alignment": {
+      "type": "string",
+      "default": "none"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": ""
+    },
+    "colors": {
+      "type": "string",
+      "default": ""
+    },
+    "spacing": {
+      "type": "string",
+      "default": ""
+    },
+    "productSearch": {
+      "type": "string",
+      "default": ""
+    },
+    "selectedProduct": {
+      "type": "integer",
+      "default": 0
+    },
+    "metaField": {
+      "meta": "_price",
+      "type": "string",
+      "source": "meta"
+    }
+  },
+  "editorScript": "file:./block.js",
+  "editorStyle": "file:./editor.css",
+  "style": "file:./style.css"
+}

@@ -10,19 +10,19 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.1.2
  * @package		ecommerce-product-catalog/templates/template-parts/product-page
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 $product_id		 = ic_get_product_id();
 $product_image	 = get_product_image( $product_id );
 if ( !empty( $product_image ) ) {
 	do_action( 'before_product_image', $product_id );
 	?>
-	<div class="entry-thumbnail product-image" itemscope itemtype="http://schema.org/ImageObject">
+	<div class="entry-thumbnail product-image">
 		<?php
 		do_action( 'above_product_image', $product_id );
 		if ( is_lightbox_enabled() && !is_ic_default_image( $product_id ) ) {
 			?>
-			<a class="a-product-image nofancybox" href="<?php echo get_product_image_url( $product_id ) ?>" itemprop="url"><?php echo $product_image ?></a>
+			<a class="a-product-image nofancybox nolightbox no-ajaxy" href="<?php echo get_product_image_url( $product_id ) ?>"><?php echo $product_image ?></a>
 			<?php
 		} else {
 			echo $product_image;

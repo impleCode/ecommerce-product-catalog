@@ -11,7 +11,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.1.3
  * @package		ecommerce-product-catalog/
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 if ( !function_exists( 'is_product' ) ) {
 
@@ -74,6 +74,35 @@ if ( !function_exists( 'woocommerce_get_sidebar' ) ) {
 
 	function woocommerce_get_sidebar() {
 		get_sidebar();
+	}
+
+}
+
+if ( !function_exists( 'wc_get_page_id' ) ) {
+
+	function wc_get_page_id() {
+		return -1;
+	}
+
+}
+
+if ( !function_exists( 'woocommerce_page_title' ) ) {
+
+	function woocommerce_page_title( $echo = true ) {
+		$title = get_the_title();
+		if ( $echo ) {
+			echo $title;
+		} else {
+			return $title;
+		}
+	}
+
+}
+
+if ( !function_exists( 'woocommerce_template_single_title' ) ) {
+
+	function woocommerce_template_single_title() {
+		the_title( '<h1 class="product_title entry-title">', '</h1>' );
 	}
 
 }

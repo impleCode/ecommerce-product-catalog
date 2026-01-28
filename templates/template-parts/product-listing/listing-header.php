@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.1.2
  * @package		ecommerce-product-catalog/templates/template-parts/product-listing
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 global $post;
 $archive_names = get_archive_names();

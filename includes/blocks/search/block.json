@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/product-search-widget",
+  "textdomain": "ecommerce-product-catalog",
+  "title": "Catalog Search",
+  "icon": "search",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./block.js"
+}

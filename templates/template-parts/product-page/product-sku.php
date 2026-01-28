@@ -10,7 +10,7 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * @version		1.1.2
  * @package		ecommerce-product-catalog/templates/template-parts/product-page
- * @author 		Norbert Dreszer
+ * @author 		impleCode
  */
 $product_id		 = ic_get_product_id();
 $single_names	 = get_single_names();

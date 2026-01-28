@@ -1,5 +1,5 @@
 <?php
-if ( !defined( 'ABSPATH' ) ) {
+if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly
 }
 
@@ -8,16 +8,19 @@ if ( !defined( 'ABSPATH' ) ) {
  *
  * Copy it to your theme implecode folder to edit the output: your-theme-folder-name/implecode/product-header.php
  *
- * @version		1.1.2
- * @package		ecommerce-product-catalog/templates/template-parts/product-page
- * @author 		Norbert Dreszer
+ * @version        1.1.2
+ * @package        ecommerce-product-catalog/templates/template-parts/product-page
+ * @author        impleCode
  */
 global $post;
 $single_names = get_single_names();
-?>
-
-<header class="entry-header product-page-header">
-	<?php do_action( 'single_product_header', $post, $single_names ); ?>
-</header>
-
-<?php
+ob_start();
+do_action( 'single_product_header', $post, $single_names );
+$header_content = ob_get_clean();
+if ( ! empty( $header_content ) ) {
+	?>
+    <header class="entry-header product-page-header">
+		<?php echo $header_content ?>
+    </header>
+	<?php
+}

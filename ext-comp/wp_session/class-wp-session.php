@@ -1,4 +1,5 @@
 <?php
+
 /**
  * WordPress session managment.
  *
@@ -7,36 +8,37 @@
  *
  * @package WordPress
  * @subpackage Session
- * @since   3.7.0
+ * @since   3.6.0
  */
 
 /**
  * WordPress Session class for managing user session data.
  *
  * @package WordPress
- * @since   3.7.0
+ * @since   3.6.0
  */
-final class WP_Session extends Recursive_ArrayAccess {
+class WP_Session implements ArrayAccess, Iterator, Countable {
+
+	/**
+	 * Internal data collection.
+	 *
+	 * @var array
+	 */
+	private $container;
+
 	/**
 	 * ID of the current session.
 	 *
 	 * @var string
 	 */
-	public $session_id;
+	private $session_id;
 
 	/**
 	 * Unix timestamp when session expires.
 	 *
 	 * @var int
 	 */
-	protected $expires;
-
-	/**
-	 * Unix timestamp indicating when the expiration time needs to be reset.
-	 *
-	 * @var int
-	 */
-	protected $exp_variant;
+	private $expires;
 
 	/**
 	 * Singleton instance.
@@ -66,66 +68,34 @@ final class WP_Session extends Recursive_ArrayAccess {
 	 * create a new session with that ID.
 	 *
 	 * @param $session_id
+	 *
 	 * @uses apply_filters Calls `wp_session_expiration` to determine how long until sessions expire.
 	 */
-	protected function __construct() {
-		if ( isset( $_COOKIE[WP_SESSION_COOKIE] ) ) {
-			$cookie = stripslashes( $_COOKIE[WP_SESSION_COOKIE] );
-			$cookie_crumbs = explode( '||', $cookie );
-
-            $this->session_id = preg_replace("/[^A-Za-z0-9_]/", '', $cookie_crumbs[0] );
-            $this->expires = absint( $cookie_crumbs[1] );
-            $this->exp_variant = absint( $cookie_crumbs[2] );
-
-			// Update the session expiration if we're past the variant time
-			if ( time() > $this->exp_variant ) {
-				$this->set_expiration();
-				delete_option( "_wp_session_expires_{$this->session_id}" );
-				add_option( "_wp_session_expires_{$this->session_id}", $this->expires, '', 'no' );
-			}
+	private function __construct() {
+		if ( isset( $_COOKIE[ WP_SESSION_COOKIE ] ) ) {
+			$this->session_id = stripslashes( $_COOKIE[ WP_SESSION_COOKIE ] );
 		} else {
-			$this->session_id = WP_Session_Utils::generate_id();
-			$this->set_expiration();
+			$this->session_id = $this->generate_id();
 		}
 
+		$this->expires = time() + intval( apply_filters( 'wp_session_expiration', 24 * 60 ) );
+
 		$this->read_data();
-
-		$this->set_cookie();
-
+		if ( headers_sent() !== true ) {
+			setcookie( WP_SESSION_COOKIE, $this->session_id, $this->expires, COOKIEPATH, COOKIE_DOMAIN );
+		}
 	}
 
 	/**
-	 * Set both the expiration time and the expiration variant.
+	 * Generate a cryptographically strong unique ID for the session token.
 	 *
-	 * If the current time is below the variant, we don't update the session's expiration time. If it's
-	 * greater than the variant, then we update the expiration time in the database.  This prevents
-	 * writing to the database on every page load for active sessions and only updates the expiration
-	 * time if we're nearing when the session actually expires.
-	 *
-	 * By default, the expiration time is set to 30 minutes.
-	 * By default, the expiration variant is set to 24 minutes.
-	 *
-	 * As a result, the session expiration time - at a maximum - will only be written to the database once
-	 * every 24 minutes.  After 30 minutes, the session will have been expired. No cookie will be sent by
-	 * the browser, and the old session will be queued for deletion by the garbage collector.
-	 *
-	 * @uses apply_filters Calls `wp_session_expiration_variant` to get the max update window for session data.
-	 * @uses apply_filters Calls `wp_session_expiration` to get the standard expiration time for sessions.
+	 * @return string
 	 */
-	protected function set_expiration() {
-		$this->exp_variant = time() + (int) apply_filters( 'wp_session_expiration_variant', 24 * 60 );
-		$this->expires = time() + (int) apply_filters( 'wp_session_expiration', 30 * 60 );
-	}
+	private function generate_id() {
+		require_once ABSPATH . 'wp-includes/class-phpass.php';
+		$hasher = new PasswordHash( 8, false );
 
-	/**
-	* Set the session cookie
-     	* @uses apply_filters Calls `wp_session_cookie_secure` to set the $secure parameter of setcookie()
-     	* @uses apply_filters Calls `wp_session_cookie_httponly` to set the $httponly parameter of setcookie()
-     	*/
-	protected function set_cookie() {
-        	$secure = apply_filters('wp_session_cookie_secure', false);
-        	$httponly = apply_filters('wp_session_cookie_httponly', false);
-		setcookie( WP_SESSION_COOKIE, $this->session_id . '||' . $this->expires . '||' . $this->exp_variant , $this->expires, COOKIEPATH, COOKIE_DOMAIN, $secure, $httponly );
+		return md5( $hasher->get_random_bytes( 32 ) );
 	}
 
 	/**
@@ -135,7 +105,8 @@ final class WP_Session extends Recursive_ArrayAccess {
 	 *
 	 * @return array
 	 */
-	protected function read_data() {
+	private function read_data() {
+		$this->touch_session();
 		$this->container = get_option( "_wp_session_{$this->session_id}", array() );
 
 		return $this->container;
@@ -145,15 +116,30 @@ final class WP_Session extends Recursive_ArrayAccess {
 	 * Write the data from the current session to the data storage system.
 	 */
 	public function write_data() {
-		$option_key = "_wp_session_{$this->session_id}";
-		
-		if ( false === get_option( $option_key ) ) {
-			add_option( "_wp_session_{$this->session_id}", $this->container, '', 'no' );
-			add_option( "_wp_session_expires_{$this->session_id}", $this->expires, '', 'no' );
-		} else {
-			delete_option( "_wp_session_{$this->session_id}" );
-			add_option( "_wp_session_{$this->session_id}", $this->container, '', 'no' );
+		$session_list = get_option( '_wp_session_list', array() );
+
+		$this->touch_session();
+
+		update_option( "_wp_session_{$this->session_id}", $this->container );
+	}
+
+	private function touch_session() {
+		$session_list = get_option( '_wp_session_list', array() );
+
+		$session_list[ $this->session_id ] = $this->expires;
+		$i                                 = 0;
+		foreach ( $session_list as $id => $expires ) {
+			if ( time() > $expires ) {
+				delete_option( "_wp_session_{$id}" );
+				unset( $session_list[ $id ] );
+				$i ++;
+			}
+			if ( $i > 300 ) {
+				break;
+			}
 		}
+
+		update_option( '_wp_session_list', $session_list );
 	}
 
 	/**
@@ -177,6 +163,7 @@ final class WP_Session extends Recursive_ArrayAccess {
 
 		if ( is_array( $array ) ) {
 			$this->container = $array;
+
 			return true;
 		}
 
@@ -191,11 +178,15 @@ final class WP_Session extends Recursive_ArrayAccess {
 	public function regenerate_id( $delete_old = false ) {
 		if ( $delete_old ) {
 			delete_option( "_wp_session_{$this->session_id}" );
+
+			$session_list = get_option( '_wp_session_list', array() );
+			unset( $session_list[ $this->session_id ] );
+			update_option( '_wp_session_list', $session_list );
 		}
 
-		$this->session_id = WP_Session_Utils::generate_id();
+		$this->session_id = $this->generate_id();
 
-		$this->set_cookie();
+		setcookie( WP_SESSION_COOKIE, $this->session_id, time() + $this->expires, COOKIEPATH, COOKIE_DOMAIN );
 	}
 
 	/**
@@ -204,7 +195,7 @@ final class WP_Session extends Recursive_ArrayAccess {
 	 * @return bool
 	 */
 	public function session_started() {
-		return !!self::$instance;
+		return ! ! self::$instance;
 	}
 
 	/**
@@ -222,4 +213,150 @@ final class WP_Session extends Recursive_ArrayAccess {
 	public function reset() {
 		$this->container = array();
 	}
+
+	/*	 * ************************************************************** */
+	/*                   ArrayAccess Implementation                  */
+	/*	 * ************************************************************** */
+
+	/**
+	 * Whether a offset exists
+	 *
+	 * @link http://php.net/manual/en/arrayaccess.offsetexists.php
+	 *
+	 * @param mixed $offset An offset to check for.
+	 *
+	 * @return boolean true on success or false on failure.
+	 */
+	#[\ReturnTypeWillChange]
+	public function offsetExists( $offset ) {
+		return isset( $this->container[ $offset ] );
+	}
+
+	/**
+	 * Offset to retrieve
+	 *
+	 * @link http://php.net/manual/en/arrayaccess.offsetget.php
+	 *
+	 * @param mixed $offset The offset to retrieve.
+	 *
+	 * @return mixed Can return all value types.
+	 */
+	#[\ReturnTypeWillChange]
+	public function offsetGet( $offset ) {
+		return isset( $this->container[ $offset ] ) ? $this->container[ $offset ] : null;
+	}
+
+	/**
+	 * Offset to set
+	 *
+	 * @link http://php.net/manual/en/arrayaccess.offsetset.php
+	 *
+	 * @param mixed $offset The offset to assign the value to.
+	 * @param mixed $value The value to set.
+	 *
+	 * @return void
+	 */
+	#[\ReturnTypeWillChange]
+	public function offsetSet( $offset, $value ) {
+		if ( is_null( $offset ) ) {
+			$this->container[] = $value;
+		} else {
+			$this->container[ $offset ] = $value;
+		}
+	}
+
+	/**
+	 * Offset to unset
+	 *
+	 * @link http://php.net/manual/en/arrayaccess.offsetunset.php
+	 *
+	 * @param mixed $offset The offset to unset.
+	 *
+	 * @return void
+	 */
+	#[\ReturnTypeWillChange]
+	public function offsetUnset( $offset ) {
+		unset( $this->container[ $offset ] );
+	}
+
+	/*	 * ************************************************************** */
+	/*                     Iterator Implementation                   */
+	/*	 * ************************************************************** */
+
+	/**
+	 * Current position of the array.
+	 *
+	 * @link http://php.net/manual/en/iterator.current.php
+	 *
+	 * @return mixed
+	 */
+	#[\ReturnTypeWillChange]
+	public function current() {
+		return current( $this->container );
+	}
+
+	/**
+	 * Key of the current element.
+	 *
+	 * @link http://php.net/manual/en/iterator.key.php
+	 *
+	 * @return mixed
+	 */
+	#[\ReturnTypeWillChange]
+	public function key() {
+		return key( $this->container );
+	}
+
+	/**
+	 * Move the internal point of the container array to the next item
+	 *
+	 * @link http://php.net/manual/en/iterator.next.php
+	 *
+	 * @return void
+	 */
+	#[\ReturnTypeWillChange]
+	public function next() {
+		next( $this->container );
+	}
+
+	/**
+	 * Rewind the internal point of the container array.
+	 *
+	 * @link http://php.net/manual/en/iterator.rewind.php
+	 *
+	 * @return void
+	 */
+	#[\ReturnTypeWillChange]
+	public function rewind() {
+		reset( $this->container );
+	}
+
+	/**
+	 * Is the current key valid?
+	 *
+	 * @link http://php.net/manual/en/iterator.rewind.php
+	 *
+	 * @return bool
+	 */
+	#[\ReturnTypeWillChange]
+	public function valid() {
+		return $this->offsetExists( $this->key() );
+	}
+
+	/*	 * ************************************************************** */
+	/*                    Countable Implementation                   */
+	/*	 * ************************************************************** */
+
+	/**
+	 * Get the count of elements in the container array.
+	 *
+	 * @link http://php.net/manual/en/countable.count.php
+	 *
+	 * @return int
+	 */
+	#[\ReturnTypeWillChange]
+	public function count() {
+		return count( $this->container );
+	}
+
 }

@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json.schemastore.org/block.json",
+  "apiVersion": 2,
+  "name": "ic-epc/related-products",
+  "textdomain": "ecommerce-product-catalog",
+  "title": "Related Products",
+  "icon": "rest-api",
+  "category": "ic-epc-block-cat",
+  "attributes": {
+    "productFromContext": {
+      "type": "boolean",
+      "default": true
+    },
+    "title": {
+      "type": "string",
+      "default": ""
+    },
+    "productSearch": {
+      "type": "string",
+      "default": ""
+    },
+    "selectedProduct": {
+      "type": "integer",
+      "default": 0
+    },
+    "alignment": {
+      "type": "string",
+      "default": "none"
+    },
+    "fontSize": {
+      "type": "string",
+      "default": ""
+    },
+    "colors": {
+      "type": "string",
+      "default": ""
+    },
+    "spacing": {
+      "type": "string",
+      "default": ""
+    }
+  },
+  "editorScript": "file:./block.js"
+}
